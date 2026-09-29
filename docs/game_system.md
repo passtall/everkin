@@ -1,6 +1,6 @@
 # Everkin — Game Design Document
 
-**Version:** 0.1 — consolidated design baseline
+**Version:** 0.2 — design baseline with recovered conversation history
 
 **Updated:** 2026-09-29
 
@@ -76,7 +76,7 @@ Exact launch platforms, device requirements, screen orientation, controller supp
 
 ### 3.1 Party baseline
 
-The established party baseline is **six active team members**, placed freely among three rows. Earlier summaries also describe combat without reserve-member swapping. Moving or swapping battlefield positions is a separate mechanic and is permitted when its rules allow it.
+Each team begins with **six active team members**, placed freely among three rows. All six participate; there is **no reserve-member swapping during combat**. Moving or swapping battlefield positions is a separate mechanic and is permitted when its rules allow it.
 
 Whether a player may deliberately begin with fewer than six members remains open, especially in relation to summons. Enemy party-size exceptions and boss composition have not been finalized.
 
@@ -160,9 +160,19 @@ For example, a marking ability could develop toward ranged-damage support, timel
 
 ### 4.4 Skill availability in combat
 
-Combat uses the team's learned skills. A limit of **four to six equipped active skills per unit** was proposed to keep choices readable, with loadout selection before battle. The cap and the distinction between learned and equipped skills are not yet finalized.
+Each unit begins with a few default skills associated with its creature type and unlocks more through its skill trees. **All unlocked skills are available in combat. There is no separate skill loadout or equipped-skill cap.** The earlier four-to-six-skill loadout proposal was superseded by this explicit decision. The point budget controls build breadth.
 
-There is no established generic standard-attack action separate from skills. If an ordinary attack is required, its definition belongs in the skill system rather than an additional global damage stat.
+There is **no separate Basic Attack system**. Bite, Claw, Shoot, and comparable attacks are ordinary skills. Detailed tree topology and node design were deliberately deferred.
+
+### 4.6 Skill costs and prerequisites
+
+**No mana. No cooldowns.** Skills are balanced through timeline costs or other consequences: HP loss, sacrifice, unfavorable movement, self-inflicted statuses, harm or disruption to allies, and changes to later actions.
+
+Skills may have specific requirements involving position, range, statuses, HP thresholds, allies, formation, free space, KO targets, or earlier actions. The UI must show the concrete reason whenever a skill is unavailable.
+
+There is no global anti-spam rule. A skill's consequences and the resulting combat state must make repetition an interesting choice. Skills may modify their own future behavior, become faster or slower, accumulate recoil, transform into another version, or consume a required state. These are individual skill definitions rather than a replacement universal cooldown system.
+
+**Design principle:** rules that do not require global consistency belong in the individual skill or effect definition. This includes effect order, costs, targeting exceptions, and behavior when the user or target becomes KO.
 
 ### 4.5 Proposed skill-tree roster
 
@@ -181,7 +191,7 @@ The following twenty trees were proposed as a design inventory. They are not a c
 | Tactician / Taktiker | Enemy timeline control | Delay turns and exploit timing; interruption only if preparation mechanics are added. |
 | Disruptor / Störer | Impairment | Blindness, weakening, silence-like effects, movement disruption. |
 | Healer / Heiler | Recovery | Direct healing, regeneration, rescue abilities. |
-| Lifeweaver / Lebensweber | HP redistribution | Share life steal, transfer HP, convert overhealing into benefits. |
+| Lifeweaver / Lebensweber | HP redistribution | Share life steal and transfer HP. The earlier overheal-conversion suggestion conflicts with the no-overheal rule and is not part of the baseline. |
 | Protector / Beschützer | Preventive defense | Shields, damage reduction, protection against statuses. |
 | Alchemist / Alchemist | Effect combinations | Poison, acid, restorative mixtures, effects built over time. |
 | Elementalist / Elementarist | Elemental utility | Distinct status, movement, and tempo effects rather than recolored damage. |
@@ -208,9 +218,9 @@ The important test for any tree is whether it changes the decisions a unit makes
 | Physical Defense | Percentage reduction of physical damage. |
 | Magic Defense | Percentage reduction of magical damage. |
 
-Defense may be **0%**. Units may be strongly specialized in physical or magical power.
+Defense may be **0%**. There is no universal built-in defense allowance: defense comes from the creature type, skill tree, or explicit effects. Display it as the actual percentage reduction rather than an opaque rating. Units may be strongly specialized in physical or magical power.
 
-Accuracy, evasion, critical chance, critical damage, mana, universal resistance, and healing power are **not additional global stats**. Individual skills, traits, or trees may introduce a relevant mechanic when needed, but the baseline stat sheet remains limited to the six values above.
+Accuracy, evasion, critical chance, critical damage, mana, universal resistance, and healing power are **not additional global stats**. Skill-specific hit chances, defensive effects, or healing scaling may be defined without expanding the stat sheet. Mana and critical-hit systems remain excluded.
 
 ### 5.2 Damage scaling
 
@@ -224,13 +234,23 @@ Illustrative definitions:
 
 These values demonstrate the selected model; they are not approved balance data. A skill may explicitly scale from HP, defense, or multiple stats, but that exception must be part of its definition.
 
-Physical damage interacts with Physical Defense; magical damage interacts with Magic Defense. The exact order of damage modifiers, random sampling, rounding, defense bounds, penetration, shields, and interception is **open**. No undocumented formula should be treated as settled.
+**Physical and Magic are the only baseline damage categories.** Physical damage interacts with Physical Defense; magical damage interacts with Magic Defense. Fire, frost, poison, bleeding, mental effects, and similar themes use properties or statuses rather than additional global resistance categories. Defense bypass is a property of a skill, not a third defense stat.
 
-### 5.3 Stat sources and growth
+Damage is sampled **uniformly within the skill's damage range**. Each value is equally likely; the range itself defines the variance. Some skills may have a very wide range. There are **no separate critical hits or critical multipliers**; a high roll can provide the excitement of a critical hit without another system.
+
+Defense then reduces the appropriate raw damage by its stated percentage. Exact rounding, bounds, and interactions with penetration, shields, and interception remain open. Target previews should show the resulting damage range against the selected target wherever determinable.
+
+### 5.3 Hit reliability
+
+An ordinary attack hits a valid target by default, subject to applicable defenses and explicit effects. Random hit chance is an explicit property of selected risky skills, not a universal accuracy/evasion roll. A status or skill may introduce an exception, such as blindness affecting attacks that require sight.
+
+Status application is separate: a status-applying skill states its own status chance. Successful damage does not automatically guarantee a status unless that skill says so.
+
+### 5.4 Stat sources and growth
 
 The discussed sources of values are creature identity, build investments, and temporary combat effects. Level growth and the relative contribution of levels versus skill trees remain open.
 
-Healing scaling, damage-over-time calculation, status durations, stacking, cleansing, and critical-hit behavior also require individual rules before implementation.
+Healing scaling, damage-over-time calculation, status durations, stacking behavior, and cleansing belong in the relevant skill or effect definitions. Critical hits are excluded from the design.
 
 ## 6. Turn timeline and action execution
 
@@ -238,7 +258,11 @@ Healing scaling, damage-over-time calculation, status durations, stacking, clean
 
 Combat uses a visible turn timeline inspired by the tactical function of FFX's conditional turn order. Units do not simply alternate sides or each act once within a rigid round.
 
-Speed affects action frequency. Skills and effects may accelerate allies, delay enemies, or change when the user acts again. The player should be able to evaluate timing as part of choosing an action.
+Speed has a substantial effect on action frequency: a fox should act much more often than a stone colossus. The proposed narrow speed band was rejected. Skill recovery costs and effects can strongly override natural speed; a slow colossus may build rolling momentum and act progressively faster.
+
+The conceptual model is time until next action = action cost / Speed, but the exact implementation formula remains to be finalized. Distinguish changing Speed, shifting the next turn, and changing a particular action's recovery. The player should see foreseeable timeline consequences while selecting a skill.
+
+Normal timeline manipulation advances or delays turns rather than deleting them. Bosses may use more extreme tricks as explicit mechanics. No fixed numerical manipulation cap has been selected.
 
 **Open:** initial initiative, the scheduling formula, tie-breaking, per-skill recovery costs, speed limits, and safeguards against indefinite action denial or repeated-turn loops.
 
@@ -253,7 +277,9 @@ Speed affects action frequency. Skills and effects may accelerate allies, delay 
 
 The timeline determines **who acts**, not a general queue in which already-selected actions wait to resolve. An animation may take time to play, but it does not open additional tactical decision windows.
 
-Delayed casting or preparation was discussed only as a possible explicit exception. It is not part of the standard execution model.
+The timeline normally displays **turns, not intended attacks**. Enemy skill choices are not automatically revealed in advance.
+
+**Delayed events are supported exceptions.** Once a skill creates a delayed effect, such as a comet impact, it appears as its own visible timeline object. An event can be manipulated only when its definition allows that. Each skill specifies whether the effect follows a unit, remains on a slot or area, or uses another condition, including what movement and KO do to it. A delayed event is distinct from an enemy's unchosen future action.
 
 ### 6.3 Minimal decisions
 
@@ -261,7 +287,29 @@ The desired interaction is **skill → target → resolution**, or **skill → r
 
 Parry, counter, interception, thorns, and comparable reactions trigger automatically when their conditions are met. Their strategic control comes from builds, positioning, prior skills, or active effects, not repeated confirmation prompts.
 
-If an action has meaningfully different modes, a distinct skill or directly selectable mode is preferable to a chain of follow-up questions. The maximum reaction depth, trigger ordering, and recursion prevention remain to be defined.
+If an action has meaningfully different modes, a distinct skill or directly selectable mode is preferable to a chain of follow-up questions. **There are never decision popups during the enemy turn.**
+
+### 6.4 Required actions and skipped turns
+
+A unit must use a viable skill or reposition when it has a viable action. There is **no Wait command and no universal Defend command**. Defensive actions belong to specific creature or class movesets.
+
+If no viable action exists, the turn is automatically skipped and the timeline continues. There is no requirement to invent an always-available emergency attack. The precise scheduling cost of this skipped turn still needs implementation detail.
+
+### 6.5 Event resolution and KO checks
+
+Skills define a fixed order for their effects. **Check KO after each event.** Moving before damage and moving after damage may intentionally produce different outcomes; meaningful order must be visible in the skill description or preview.
+
+A skill may declare a **simultaneous event block**. Apply the whole block together, check its resulting KO state, then collect and process the resulting reactions. Internal slot iteration must not change who receives effects intended to be simultaneous.
+
+Each skill determines whether it continues or stops when its user becomes KO during resolution. Each hit of a multi-hit skill is an event with its own KO check; the skill defines whether remaining hits expire, retarget, or follow another explicit rule.
+
+### 6.6 Reaction chains
+
+Reactions are additional effects, not automatically normal turns. They change the timeline only when explicitly defined to do so.
+
+Each reaction specifies whether it can trigger further reactions. Clear limits must prevent endless chains. Proposed safeguards are no self-recursion, at most one firing per concrete reaction instance in a chain, and a global chain limit. The exact numeric limit is open; eight or ten were examples, not selected values.
+
+Simultaneously triggered reactions use a small set of priority levels. Equal priorities resolve according to their owners' current timeline order, with explicit skill exceptions allowed. High/Normal/Low was an example classification; final categories and a secondary tie-break when owners have equal timeline positions remain open.
 
 ## 7. Battlefield and formation
 
@@ -305,7 +353,15 @@ For range calculations, empty rows are skipped. A unit in Back remains in Back f
 
 Example: if the enemy Front and Middle contain no relevant active visible units, the enemy Back loses the distance protection those rows would otherwise provide. Reviving a visible unit in Front can restore that protection without moving the surviving units.
 
-An exact distance formula, the treatment of allied rows in that formula, and the range of each skill remain open.
+Both the attacker's row and the target's row matter to reach. A melee attack from Back cannot automatically reach the opposing Back. The original discussion proposed the following distances before empty-row compression:
+
+| Attacker row | Enemy Front | Enemy Middle | Enemy Back |
+|---|---:|---:|---:|
+| Front | 1 | 2 | 3 |
+| Middle | 2 | 3 | 4 |
+| Back | 3 | 4 | 5 |
+
+This numeric table is a proposed implementation, not an explicitly selected final formula. Its interaction with skipped empty rows and the range of each skill still need precise definitions.
 
 ### 7.5 Different meanings of occupancy
 
@@ -347,7 +403,9 @@ Eligible defenders in front of a target may intercept appropriate attacks. Prote
 - Further eligible defenders may attempt to intercept it.
 - Partial interception does not remove a later defender's defense opportunity or the intended target's applicable defense.
 
-Sequential protection is intentional. Unlimited recursive redirection between defenders is not specified and needs a separate resolution rule.
+Sequential protection is intentional and must obey the reaction-chain safeguards in section 6.6.
+
+The project owner's examples establish two important skill concepts: **Sniper Shot** can bypass interception, while **Shield Wall** can allow three cooperating Front units to block 100% of physical attacks directed at rear rows. Their exact requirements, exceptions, and costs remain to be designed.
 
 Proposed interception effects include taking the attack, absorbing part of its damage, reducing its remaining strength, removing one effect, or stopping a projectile component. The attack types eligible for each defense, exact probabilities, processing order, and interaction with the six stats are open.
 
@@ -367,7 +425,11 @@ An aggregate interception chance was proposed for the main display, with further
 
 ### 8.4 Area patterns
 
-Discussed patterns include a target and its neighbors, adjacent slots, a row derived from a target, a line, and multiple selected or random units. These define content possibilities rather than a mandatory catalog.
+Area and multi-target skills use **fixed, skill-specific patterns based on slots, rows, and adjacency**. There is no freely positioned radius or cone. Patterns may include a target and neighbors, a row, a line, or a chain with defined rules.
+
+The UI highlights all foreseeable affected units before execution, including secondary damage, healing, movement, statuses, and friendly fire. For random outcomes, distinguish possible targets from guaranteed targets.
+
+Friendly fire is **skill-specific** and may be an intentional consequence of a powerful ability. Skills define whether they affect enemies, allies, the user, any unit, or all units in an area. Only legal choices should appear as selectable targets.
 
 Area effects can affect stealthed units physically inside their area. Whether they affect corpses, objects, allies, or the user must be defined by the skill.
 
@@ -427,11 +489,33 @@ Slot blocking is distinct from range and protection. A row containing only knock
 
 Healing and resurrection are intended parts of the system. Keeping the body's slot makes resurrection at its retained position the natural baseline. Reviving an active defender can immediately change range and protection relationships.
 
-Resurrection HP, turn timing, repeated revival limits, body-removal behavior, and persistence of statuses remain open. The distinction between temporary battle KO and permanent death has not been selected.
+**Healing is capped at maximum HP. There is no overheal.** Excess healing does not automatically create shields or additional health.
+
+**0 HP means KO. KO removes all statuses**, including temporary positive and negative effects. Units are not automatically removed from the battlefield.
+
+By default, resurrection returns the unit to its existing slot and schedules it **as though resurrection had been its own action**. It does not grant an immediate free turn. A particular resurrection skill may explicitly override that default. Revival HP, exact scheduling cost, and other consequences belong to the skill definition.
+
+Permanent death outside combat, body-removal exceptions, and detailed repeat-revival mechanics remain open.
+
+### 10.4 Named recovery skills
+
+**Burnout Heal:** massively heals units around the user's current position and sacrifices the user. Its healing effects resolve simultaneously, then their reactions are processed. The skill specifies the exact point at which the user's KO resolves. Exact healing amount, affected pattern, team eligibility, and timeline cost remain to be designed; the discussion used allied area healing as its working example.
+
+**Bound Resurrect:** revives a KO unit, after which the revived unit and the reviver share one HP pool. The shared maximum, initial pool value, multiple-hit handling, what happens when the pool reaches zero, and persistence through KO require skill-level decisions. Adding both maximum HP values was a proposal, not a final rule. Its relationship to the rule that KO removes statuses also needs an explicit definition.
+
+Other proposed recovery concepts included Life Exchange, Sacrifice, Emergency Revival, temporary Reanimate, Second Wind, and revival with Exhausted-like consequences. They are not a finalized skill roster.
+
+### 10.5 Status framework
+
+Each status has its own application chance, duration, triggering conditions, and stacking behavior as defined by its source skill and status type. There is no universal stack rule. Creature types or skill-tree choices may grant specific status immunities. The suggestion that statuses always apply after a successful hit was rejected.
+
+The owner's initial status list is **Blind, Poison, Bleeding, and Silenced**. Their exact mechanics remain to be designed. Suggested distinctions include blindness affecting sight-dependent skills, poison ticking on its own schedule, bleeding responding to physical activity or movement, and silence blocking appropriately tagged abilities.
+
+Additional welcomed design candidates are Rooted/Immobilized, Disarmed, Stunned, Slowed/Hasted, Weakened, Enfeebled, Exposed/Armor Broken, Marked, Taunted/Provoked, Fear, Burning, Frozen, and Bound. Delayed/Accelerated can be one-off timeline changes rather than persistent statuses. These are a design pool, not finalized effects. A unit with no viable action because of statuses simply loses that turn.
 
 ## 11. Summoning
 
-**Status: proposed subsystem.** The dedicated discussion explored a model but did not settle its global limits or approve every detail.
+**Status: proposed subsystem, with one established loss-condition rule.** Summons never count as original party members for avoiding defeat. The dedicated discussion explored a model but did not settle its global limits or approve every detail.
 
 ### 11.1 Proposed summon categories
 
@@ -509,7 +593,9 @@ Terrain was discussed as a later encounter layer: blocked positions, restrictive
 
 Boss concepts include pushing or pulling units, disrupting a formation, and manipulating available space. Multi-row bosses and slot destruction are possibilities rather than current core rules.
 
-Enemy behavior, difficulty progression, encounter length, victory/defeat conditions, draws, retreat, and special objectives are still open. Even the normal battle-ending rule must be specified explicitly when the combat rules are finalized.
+**Standard defeat condition:** a team loses when all six original members are simultaneously KO. Active summons do not prevent that loss. A revived original member counts as active again. A team does not automatically lose merely because it currently lacks an offensive action.
+
+Enemy behavior, difficulty progression, encounter length, simultaneous team wipes, retreat, and special objectives remain open. Boss defeat, survival, protection, positional objectives, and interrupting a ritual were proposed encounter variants.
 
 ## 13. Card interface and combat presentation
 
@@ -557,7 +643,7 @@ The former low-poly discussion contributes simple shapes, strong silhouettes, cl
 ### 14.2 Character illustration
 
 - Give each creature a clear silhouette and one or two memorable visual features.
-- Keep faces simple but expressive.
+- Keep faces simple but expressive. Do not give every creature a friendly expression: foxes and otters may look approachable, while other creatures should look suitably menacing.
 - Use slightly stylized humanoid proportions where appropriate.
 - Preserve variety among humans, animals, humanoids, floating beings, and unconventional fantasy forms.
 - Avoid mandatory class-specific outfits, colors, or silhouettes.
@@ -594,9 +680,11 @@ No final sound or music direction has been defined.
 
 ### 14.7 Existing concept exploration
 
-The available card-art discussion records requests for batches of ten additional animals, ten humanoid fantasy creatures, ten large extravagant fantasy creatures, ten male humans, and ten female humans.
+The card-art discussion began with five animals and five fantasy creatures, initially excluding humans. Later requests added batches of ten animals, ten humanoid fantasy creatures, ten large extravagant fantasy creatures, ten male humans, and ten female humans.
 
-The image outputs were not returned by the chat reader. These requests demonstrate intended breadth, but do not provide a recoverable named creature roster or approved card statistics. Individual designs must be recovered before they can be cataloged accurately.
+**Artwork delivery rule:** create separate artwork images in a card-friendly aspect ratio, not finished cards with baked-in UI and not a single collage. The precise numerical aspect ratio is not established in the recovered text.
+
+The browser exposes generated-image galleries, but the individual images have not been cataloged as a named creature roster in this document. The text establishes direction and requested batch sizes, not approved creature statistics. Fox and otter are explicitly referenced in the expression feedback.
 
 ## 15. World and narrative
 
@@ -625,11 +713,15 @@ Chance-based mechanics still exist. Reproducibility would require controlled ran
 
 A reusable card component and shared content definitions were proposed for collection, team-building, inspection, and combat. Earlier sample folders, code, engine-version claims, and platform-export claims are not frozen technical requirements.
 
+Input abstraction and a reusable card scene were proposed to support desktop and touch controls without duplicating game logic. Windows, Linux/Steam Deck, Android, and iOS were specifically discussed; the final delivery plan remains open. The working approach assumes substantial AI-assisted development with the owner reviewing decisions and results.
+
 ### 16.2 Asset workflow
 
 The production direction is creature concept → illustrated card artwork → UI integration → lightweight animation and effects. AI-assisted artwork and code were discussed as production aids.
 
-The former Blender/model/material/rig/skin/animation pipeline is superseded. There is no requirement to build 3D characters, environments, cameras, navigation, or collision for this product.
+The former Blender/model/material/rig/skin/animation pipeline is superseded. There is no requirement to build 3D characters, environments, cameras, navigation, or collision for this product. Historical triangle budgets, skeleton families, LOD guidance, and GLB export rules are not current card-art requirements.
+
+Retained production guidelines are consistent asset naming, reusable presentation components, coherent palettes, and checking each asset for identity, phone-size readability, manageable detail, and battlefield clarity before acceptance. Artwork is supplied separately from card UI so the same illustration can serve several contexts.
 
 ### 16.3 Cost and delivery planning
 
@@ -681,19 +773,20 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 
 | Area | Outstanding specification |
 |---|---|
-| Party | Starting with fewer than six, reserve rules confirmation, enemy limits, duplicate recruits. |
+| Party | Starting with fewer than six, enemy exceptions, duplicate recruits. No combat reserve swapping. |
 | Timeline | Initial order, scheduling and recovery formulas, ties, delay/acceleration limits. |
-| Skills | Equipped-skill cap, costs, cooldowns, exact action economy, preparation exceptions. |
-| Damage | Roll distribution, modifier order, rounding, defense bounds, penetration, shield interaction. |
-| Defense | Interception probabilities, eligible attacks, column relationships, reaction ordering. |
+| Skills | Individual prerequisites, consequence costs, effect order, and delayed-event definitions. No loadout cap, mana, or cooldowns. |
+| Damage | Modifier order, rounding, defense bounds, penetration, shield interaction. Uniform rolls and no crits are fixed. |
+| Defense | Interception probabilities, eligible attacks, column relationships, precise interaction with damage events. |
+| Reactions | Numeric chain limit, exact priority categories, secondary tie-breaks. Skill-controlled propagation and safeguards are required. |
 | Range | Exact effective-distance calculation and per-skill ranges. |
 | Movement | Destination selection, combined-action failure behavior, recovery time, swaps. |
-| Statuses | Catalog, stacking, durations, expiry timing, cleansing, stealth breaks. |
-| KO and revival | Health on revival, timeline re-entry, body removal, permanence of death. |
+| Statuses | Individual stacking, durations, expiry timing, cleansing, stealth breaks. Application chances are explicit; KO removes all statuses. |
+| KO and revival | Per-skill revival HP and recovery cost, body-removal exceptions, out-of-combat consequences, shared-HP details. |
 | Summons | Six-member versus battlefield-capacity limits, placement, control, lifetime, costs. |
 | Builds | Point total, tree contents, unlock schedule, respec, progression curves. |
 | Recruitment | Acquisition process, human generation, individual persistence, collection progression. |
-| Encounters | Victory/defeat, draws, retreat, objectives, enemy behavior, difficulty, length. |
+| Encounters | Simultaneous wipes, retreat, special objectives, enemy behavior, difficulty, length. All six original members KO means defeat. |
 | Product structure | Campaign or challenge format, between-battle flow, rewards, launch content. |
 | Presentation | Final card design, mobile board layout, size framing, input scheme, audio. |
 | Delivery | Launch platforms, technical validation, save system, business model, final name. |
@@ -716,10 +809,20 @@ These are intentional gaps in the current design, not permission to inherit equi
 | Alpha/legendary shapes treated as color variants | Different size or anatomy means a separate creature. |
 | Runtime-generated humans as a settled requirement | Open; statically pre-rolled individuals were subsequently considered. |
 | Full six-member party automatically leaves no summon space | Unresolved capacity conflict; not adopted as a rule. |
+| Four-to-six equipped active skills | Superseded: all default and unlocked skills are available. |
+| Mana, cooldowns, universal Wait or Defend | Rejected; use skill consequences and required viable actions. |
+| Mandatory always-available emergency skill | Superseded: automatically skip a turn with no viable action. |
+| Separate critical hits or weighted damage rolls | Rejected; uniformly sample the skill's damage range. |
+| Status always applies after a successful hit | Rejected; status-applying skills specify their chance. |
+| Overheal automatically becomes another benefit | Excluded by the maximum-HP healing cap. |
+| Timeline displays every enemy's next intended attack | Rejected; show turns and already-created delayed events. |
+| Narrow speed band with only modest frequency differences | Rejected; fast creatures may act substantially more often. |
 
 ## Appendix B. Discussion sources and coverage
 
-This revision reviewed all eleven earlier Everkin project chats returned by the available chat listing, plus the current documentation conversation and the project instructions. No archived ChatGPT chats were returned. The local synced `sources/` directory contained no reference files.
+The source inventory contains eleven earlier Everkin project chats, plus the current documentation conversation and the project instructions. No archived ChatGPT chats were returned. The local synced `sources/` directory contained no reference files.
+
+Version 0.1 used the chat reader. Version 0.2 recovered the earlier messages in the longer conversations through the signed-in browser, including the original formation discussion, lane-system opening, card-art feedback, founding concept, engine discussion, and the previously truncated art rulebook. The shorter discussions had already been returned in full by the reader.
 
 | Discussion | Design contribution |
 |---|---|
@@ -727,7 +830,7 @@ This revision reviewed all eleven earlier Everkin project chats returned by the 
 | [Summon Typen Erkunden](https://chatgpt.com/c/6ab40232-9ca8-83ed-85b5-997191fcf989) | Summon categories, behavior, costs, archetypes, and unresolved capacity assumptions. |
 | [Klassen vorschlagen](https://chatgpt.com/c/6ab3dc44-2a40-83ed-b8a1-4b7d32393951) | Twenty proposed skill-tree identities. |
 | [Kartenspiel Kartenentwürfe](https://chatgpt.com/c/6ab3bf0f-1cd4-83eb-b0e1-9ef0f814ab20) | Creature and human concept-art requests. |
-| [Kampfformation Entwerfen](https://chatgpt.com/c/6ab2e78f-9ea8-83eb-b2a9-2f729a5a474c) | Six stats, skill damage scaling, species consistency, human individuality. |
+| [Kampfformation Entwerfen](https://chatgpt.com/c/6ab2e78f-9ea8-83eb-b2a9-2f729a5a474c) | Full combat decisions: initiative, costs, targeting, damage, statuses, recovery, defeat, reactions, delayed events, skill availability, and recruit stats. |
 | [Lanes Positioning System](https://chatgpt.com/c/6ab3941b-e650-83ed-9cff-825f7439909d) | Position, range, movement, stealth, corpses, interception, minimal-decision philosophy. |
 | [Projektideen sammeln](https://chatgpt.com/c/6ab391c2-c6dc-83ed-98b2-ec69bef52a29) | Core loop, formation summary, small-scope prototype proposals. |
 | [Rechtsrisiken Spielkonzept](https://chatgpt.com/c/6ab2e228-aee4-83eb-8467-6f4b8ba5a8eb) | Working title, reference comparisons, original identity, baseline system summary. |
@@ -735,6 +838,6 @@ This revision reviewed all eleven earlier Everkin project chats returned by the 
 | [Story für Everkin](https://chatgpt.com/c/6ab2eab3-5118-83eb-a1b3-01c7c7d3d1e3) | Lightweight narrative and optional party-driven storytelling. |
 | [Klassenunabhängige Kreaturen](https://chatgpt.com/c/6ab2e8dd-1dbc-83eb-b3f3-0d5811b574e4) | Species/class separation, one to three trees, shared point budget. |
 
-**Coverage limitation:** the reader returned at most five recent exchanges for several longer chats and reported no older page. Some conversations consequently begin mid-discussion. The art-rulebook response was also truncated, and generated concept images were not included. The browser required sign-in to attempt fuller retrieval. This is therefore a consolidation of all retrievable material, not a claim that every historical message or image has been recovered.
+**Remaining coverage boundary:** generated-image galleries are accessible, but individual illustrations and image-version branches have not been cataloged here. This document consolidates the written design discussion and explicit feedback rather than claiming a complete visual asset inventory. Unselected response branches are not treated as additional approved decisions.
 
 Earlier rules repeated in later discussions are retained where supported. Missing details are left open rather than reconstructed as facts. Raw chat transcripts, unrelated personal content, installation troubleshooting, and conversational phrasing are excluded from the specification.
