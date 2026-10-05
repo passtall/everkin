@@ -81,7 +81,7 @@ Minimum OS/device requirements, supported aspect ratios, controller support, and
 - **Local two-player:** required; setup, controls, and collection access still need specification.
 - **Online PvP:** planned, but **do not implement it until the owner explicitly greenlights it**. Prepare code interfaces and architectural boundaries for future online play; the backend will be Spring Boot (Java) (section 16.1). This preparation is not authorization to implement networking, matchmaking, or online services.
 
-**Balance testing method.** AI-versus-AI battles start from random units. Each AI picks its action on its turn with a minimax search. Every battle is recorded so that it can be replayed exactly (section 2.5), and statistics are kept on which units, classes and skills win or lose more often. Those statistics drive balance adjustments. Battles must therefore be deterministic given a seed, and the rules core must be able to run battles without any presentation.
+**Balance testing method.** AI-versus-AI battles start from random units. Each AI picks its action on its turn with a minimax search. Every battle's setup and result are recorded (section 2.5), and statistics are kept on which units, classes and skills win or lose more often. Those statistics drive balance adjustments. Battles must therefore be deterministic given a seed, and the rules core must be able to run battles without any presentation.
 
 The AI-versus-AI milestone comes first once gameplay implementation begins. The current task remains defining the game before implementation.
 
@@ -98,12 +98,12 @@ The harness plays battles automatically for balance testing and debugging. Adopt
 - **Evaluation.** At the end of its look-ahead the search scores a position as a weighted sum of each side's remaining HP share, units still standing, and Momentum. The weights live in a config file.
 - **Information.** The AI knows only what a player would see. Because stealth limits targeting, not information (section 10.1), that includes stealthed units, their HP and statuses. Opposing future skill choices are not known.
 - **Length cap.** A battle stops after 500 unit turns in total and is recorded as a draw (section 12.3).
-- **Run size.** One test run plays 10,000 battles with seeds numbered 1 to 10,000. Each run gets an ID and stores a snapshot of the rules version, content and AI settings it used, so a battle is replayed by its run ID and seed, even after later balance changes.
-- **Saved per battle.** Run ID, seed, teams, formations, result and length, plus per-unit damage dealt and taken, healing, KOs and skill uses. The full event log is produced only when a battle is replayed.
+- **Run size.** One test run plays 10,000 battles with seeds numbered 1 to 10,000. Each run gets an ID and stores a snapshot of the rules version, content and AI settings it used, so the runner can reproduce a battle exactly from its run ID and seed, even after later balance changes.
+- **Saved per battle.** Run ID, seed, teams, formations, result and length, plus per-unit damage dealt and taken, healing, KOs and skill uses. No event log is stored.
 - **Report.** Win rate and appearance count per creature, class and skill; each creature's win rate by starting row; skill usage counts; battle length and draw rate; and pair statistics showing which creatures do well together and against each other.
 - **Imbalance flags.** The report flags the top and bottom 10% by win rate. Balancing starts with the most extreme ones.
 - **Balance changes.** Claude proposes changes from the report, the owner approves them, and the next run checks their effect.
-- **Watching battles.** Headless batch runs come first. A replay viewer then plays any recorded seed on the card UI as a debug mode, which is also used to debug UI issues.
+- **Watching battles.** Headless batch runs come first. A battle viewer on the card UI then serves as a debug mode, also used to debug UI issues. It can **start a new AI-versus-AI battle with the same setup** (teams and formations) as any recorded battle. It does not need to replay the recorded battle exactly, so the new battle may play out differently.
 
 Still open: the search depth for each difficulty level and the first evaluation weights.
 
