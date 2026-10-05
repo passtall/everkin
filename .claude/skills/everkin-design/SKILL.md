@@ -10,7 +10,7 @@ The design documents are the source of truth. Never answer, propose or edit from
 ## Before doing anything
 
 1. Read the relevant parts of **docs/game_system.md**. It is large (about 1000 lines); read it in pages or search for the section headings. The section map:
-   - §4 classes, tags and skill rules (§4.7) · §5 stats, damage formula, anchors · §6 timeline, auto events, Momentum (§6.7)
+   - §2.5 AI-versus-AI test harness · §4 classes, tags and skill rules (§4.7) · §5 stats, damage formula, anchors · §6 timeline, auto events, Momentum (§6.7)
    - §7 formation and rows · §8 targeting, interception (§8.2), columns (§8.4) · §9 movement · §10 stealth, KO, statuses
    - §11 summons · §19 decisions still required · §20 details before implementation
 2. Read **docs/classes_and_skills.md** for any class or skill work, and **docs/creatures.md** for any creature, stat or type-specific attack work.
