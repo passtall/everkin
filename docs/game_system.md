@@ -174,7 +174,7 @@ The exact creature roster lives in [creatures.md](creatures.md): size tiers (cri
 - **Classes** are hand-assigned per creature to fit its concept: humans usually three, animals one or two.
 - **No natural traits** for now. A creature's identity comes from its stats, classes and attack.
 - **Humans** are generated once during content creation and stored as fixed recruits (section 3.4), each with a name, its own class combination and small stat differences within the medium tier.
-- **IDs** are stable text IDs (such as `fox` or `stone_turtle`). Art files are mapped to them and may be renamed.
+- **IDs** are stable text IDs (such as `fox` or `stone_turtle`). Art files are renamed to match them, with separate front and rear files (section 16.1).
 
 ## 4. Classes and skill-tree progression
 
@@ -1094,6 +1094,20 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Compiler.** Nullable reference types on and warnings as errors in the core and the runner; relaxed in the Godot project.
 - **Parallel runs.** The runner plays battles in parallel on all CPU cores. Each battle is single-threaded and deterministic.
 - **Run output.** One folder per run: a snapshot (content JSON, git commit, AI settings), one CSV row per battle, and a Markdown report.
+
+**AI search and Godot app (adopted 2026-10-05):**
+
+- **Search algorithm.** Alpha-beta minimax with iterative deepening (depth 1, then 2, and so on up to the difficulty's limit).
+- **Candidate actions.** All legal actions are considered at the top of the search. Deeper down, only the best few candidates (for example 8) by a quick score are searched. Leaving Move and Skip Turn out of the deeper search is an option to try in testing.
+- **Weaker picks.** A lower difficulty sometimes picks among its top few actions instead of the best, using the AI's own seeded generator, separate from the battle's.
+- **Thinking time.** Fixed depth only, no time cap. Difficulty levels are tuned so the hardest stays quick on a mid-range phone.
+- **Cards.** One reusable Card scene with display modes, used in every screen.
+- **Input.** Godot input actions: mouse, touch and keyboard map to the same commands (select, confirm, inspect, cancel).
+- **Animation.** Battle events play one after another from a queue, each with its own duration, with a speed setting (1x, 2x, instant).
+- **Resolution.** The UI is designed for 1920 × 1080 and scaled down for phones.
+- **Creature art.** Art files are renamed to the creature IDs, with separate front and rear files (for example `fox_front` and `fox_rear`), and loaded by name.
+- **Text.** All UI and content text goes through translation keys from day one. English only at first.
+- **Battle viewer controls.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup to start from.
 
 The earlier proposal below is kept for context.
 
