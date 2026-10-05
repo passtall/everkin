@@ -79,7 +79,7 @@ Minimum OS/device requirements, supported aspect ratios, controller support, and
 - **AI versus AI:** the first development/testing mode, allowing both parties to play automatically for easier combat testing.
 - **Single-player versus AI:** required, including the story campaign and at least one post-story random-battle mode.
 - **Local two-player:** required; setup, controls, and collection access still need specification.
-- **Online PvP:** planned, but **do not implement it until the owner explicitly greenlights it**. Prepare code interfaces and architectural boundaries for future online play. This preparation is not authorization to implement networking, matchmaking, or online services.
+- **Online PvP:** planned, but **do not implement it until the owner explicitly greenlights it**. Prepare code interfaces and architectural boundaries for future online play; the backend will be Spring Boot (Java) (section 16.1). This preparation is not authorization to implement networking, matchmaking, or online services.
 
 **Balance testing method.** AI-versus-AI battles start from random units. Each AI picks its action on its turn with a minimax search. Every battle is recorded so that it can be replayed exactly (section 2.5), and statistics are kept on which units, classes and skills win or lose more often. Those statistics drive balance adjustments. Battles must therefore be deterministic given a seed, and the rules core must be able to run battles without any presentation.
 
@@ -1063,7 +1063,23 @@ The suggested ten to fifteen main chapters was an example. There is no approved 
 
 ### 16.1 Engine and architecture
 
-Godot has been installed and the repository contains a Godot project. The earlier technical recommendation was Godot with C#/.NET and a separate, engine-independent rules core. This architecture is a proposal, not an implemented system.
+Godot 4.7 with .NET is installed and the repository contains a Godot project. No code exists yet.
+
+**Adopted technical foundation (2026-10-05):**
+
+- **Language.** C# everywhere, including the Godot UI.
+- **Rules core.** A plain C# library with no Godot dependency. The game and the test runner both use it.
+- **Batch runner.** A small .NET command-line program built on the rules core runs AI-versus-AI batches (section 2.5).
+- **Code location.** The same repository: the core and the runner in a `src` folder, the Godot project stays at the root.
+- **Content format.** JSON files in the repository, one per creature list, class and status set, using the stable text IDs (section 3.7).
+- **Skill mechanics.** Numbers, tags and reach live in JSON. Each skill's mechanic is C# code built from shared building blocks (hit, heal, move, apply status).
+- **Source of truth.** The design documents stay the specification. A test checks that the JSON content matches the document tables.
+- **Randomness.** One seeded random generator per battle, implemented in the core (never the platform's own random). The AI's search never draws from it.
+- **Tests.** Every worked check in section 20.5 becomes an automated test, plus unit tests per rule.
+- **Where tests and batches run.** Locally on the owner's PC. There is no GitHub CI, and batches are not run in Claude's sessions.
+- **Online backend.** Online play stays deferred (section 2.4). When it comes, its backend server will be a **Spring Boot (Java)** application.
+
+The earlier proposal below is kept for context.
 
 The proposed separation is:
 
@@ -1155,7 +1171,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Encounters | Specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Four-stage illustrated campaign details, later full campaign design, post-story random-battle rules, local two-player flow, and final content. AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Final card styling, mobile readability, artwork framing, gestures, audio, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
-| Delivery | Windows/Android/iOS minimum requirements and distribution, landscape layouts, technical validation, save system, business model, final name. |
+| Delivery | Windows/Android/iOS minimum requirements and distribution, landscape layouts, technical validation, save system, business model, final name. Language, rules core, runner, content format, randomness, tests and the future online backend are adopted (section 16.1). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
 
@@ -1195,7 +1211,7 @@ Final content lists must be complete; examples and partially filled entries do n
 
 ### 20.4 Technical and delivery requirements
 
-Finalize the language/runtime, content format and IDs, authoritative rules state, UI preview/execution relationship, event ordering, random-number control, and build/export process for the selected platforms. The existing rules-core/presentation/content separation remains a proposal until selected.
+Finalize the authoritative rules state, UI preview/execution relationship, event ordering, and build/export process for the selected platforms. Language, the rules-core split, content format and IDs, and random-number control are adopted (section 16.1).
 
 Define persistent data and save timing, format/versioning, recovery from corruption, battle resume if included, and online responsibilities if relevant. Resolve performance targets, supported devices/resolutions, input, languages, accessibility, sound/music/VFX inventory, tutorials, settings, and missing-data/error behavior. Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
 
