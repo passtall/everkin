@@ -691,7 +691,7 @@ Useful design examples include an attack from Middle that advances its user, a p
 **Move (adopted).** Every unit has a basic Move action:
 
 - It moves the unit to **any other row on its own side**. It cannot reorder a unit within its own row.
-- It has **Delay 5**, the same as a skipped turn.
+- It has **Delay 5**, the same as a skipped turn, and the `move` tag, so it triggers Bleeding (section 10.5).
 - The player picks where the unit lands: **any gap in the destination row**, between two units or at either end. The row recenters. A full row cannot be chosen (section 9.2), so Move never bumps.
 - Move never swaps. Swapping places with an ally comes only from skills such as Swap Places.
 
@@ -810,8 +810,14 @@ Each status has its own application chance, duration, triggering conditions, and
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
 - **Limit.** There is no limit on the number of statuses per unit. The UI handles overflow.
 - **Momentum.** Periodic ticks shift Momentum by 0 (section 6.7).
+- **Damage from statuses.** Poison, Burning and Bleeding damage is not a hit, but Defense reduces it like any damage (rounded down, minimum 1). Shields absorb Burning damage; they do not absorb Poison or Bleeding.
+- **Status chances.** A skill's stated status chance is the real chance. Defense does not lower it.
+- **Reapplication with a different duration.** The new duration always replaces the old one, even if it is shorter.
+- **Skipped turns.** Durations counted in the unit's turns count every turn that arrives, including skipped ones (Skip Turn, Frozen).
+- **Immunities.** Only skills and statuses grant immunities (for example Purify's immunity until the unit's next turn). Creatures have no natural immunities for now (section 3.7).
+- **New statuses.** A status joins the table below only when a skill needs it.
 
-**The four named statuses:**
+**The named statuses:**
 
 | Status | Effect | Duration |
 |---|---|---|
@@ -819,8 +825,13 @@ Each status has its own application chance, duration, triggering conditions, and
 | **Poison** | 1 damage at the start of each of the unit's turns. It does less damage per tick than Burning (2) and lasts longer. | The unit's next 5 turns |
 | **Bleeding** | 2 damage after each `melee` or `move` skill the unit uses. | The unit's next 3 such skills |
 | **Silenced** | The unit cannot use `magical` skills. | The unit's next 2 turns |
+| **Burning** (`fire`) | 2 damage at the start of each of the unit's turns. | The unit's next 3 turns |
+| **Chilled** (`frost`) | The unit's Speed is lowered by 2 (section 6.1). | The unit's next 2 turns |
+| **Frozen** (`frost`) | The unit's next turn is skipped, at the normal skipped-turn cost (section 6.4). It ends early if the unit is hit by a `fire` skill. | The unit's next turn |
 
-The status design pool (Rooted, Disarmed, Stunned, Weakened, Exposed, Marked, Fear, Frozen, Bound and others) remains below as candidates.
+Blind and Silenced are adopted although no skill applies them yet. Any skill may apply any named status.
+
+The status design pool (Rooted, Disarmed, Stunned, Weakened, Exposed, Marked, Fear, Bound and others) remains below as candidates. None is added until a skill needs it.
 
 Additional welcomed design candidates (not decided) are Rooted/Immobilized, Disarmed, Stunned, Slowed/Hasted, Weakened, Enfeebled, Exposed/Armor Broken, Marked, Taunted/Provoked, Fear, Burning, Frozen, and Bound. Delayed/Accelerated can be one-off timeline changes rather than persistent statuses. These are a design pool, not finalized effects. A unit with no viable action because of statuses simply loses that turn.
 
@@ -1134,7 +1145,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Reactions | None open. Propagation, priority levels, tie-breaks, timing and KO'd owners are adopted (section 6.6). There is deliberately no chain limit or recursion safeguard for now: AI-versus-AI testing must detect endless chains. |
 | Range | Per-skill ranges. Opposing and same-side distance (both skip empty rows), unlimited "any visible", uncapped range bonuses and cast-time checks are adopted (section 7.4). Adjacency, which uses nominal rows, is adopted (section 8.4). |
 | Movement | None open. Move (any row, Delay 5, chosen gap, no swaps), movement inside skills and forced repositioning are adopted (sections 9.1 and 9.5). Skip Turn is always available (section 6.4). |
-| Statuses | The remaining status candidates. The framework (clocks, ticking, reapplication, cleansing, source, limit) and Blind, Bleeding and Silenced are adopted (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
+| Statuses | Further candidates, added only when a skill needs them. The framework (clocks, ticking, reapplication, cleansing, source, limit, damage from statuses, chances, skipped turns, immunities) and Blind, Poison, Bleeding, Silenced, Burning, Chilled and Frozen are adopted (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
 | KO and revival | Per-skill revival HP and recovery cost, and what a draw means in each mode. Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
 | Summons | Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
 | Builds | Class/skill designs and assignments, conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
@@ -1166,7 +1177,7 @@ In addition to section 19, resolve these edge cases:
 - Momentum: all adopted (section 6.7).
 - Damage: healing scaling, and multiple shields on one unit. Sampling, rounding, defense bounds, penetration, shield order and shared versus independent rolls are adopted.
 - Resolution: validation, cost payment, effect processing, Momentum updates, reactions, KO, and victory-check order. Reaction priorities, ties and the absence of a chain limit are adopted (section 6.6).
-- Statuses: immunity details and any statuses beyond the four named ones. Clocks, tick timing, reapplication, cleansing, source removal and shared HP are adopted (sections 10.4 and 10.5).
+- Statuses: none open beyond new candidates. Immunities, damage from statuses, clocks, tick timing, reapplication, cleansing, source removal and shared HP are adopted (sections 10.4 and 10.5).
 - Formation: whether anchored effects follow occupants or coordinates when rows recenter. Cover eligibility, defender order, Move, swaps and failed movement are adopted (sections 8.2 and 9.1).
 - Battle boundaries: encounter exceptions. Persistent consequences (none), simultaneous wipes (draw), stalemates, surrender and victory timing are adopted (section 12.3). Full starting HP, neutral-zero Momentum, and cleared temporary combat states are selected.
 
@@ -1241,6 +1252,11 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A Silence lands on an enemy | Momentum does not change. |
 | A projectile heal of 9 is partly intercepted | The interceptor is healed by 4 and the target by 5. |
 | A projectile status is partly intercepted | The interceptor gets the status; the target does not. |
+| A Burning tick hits a unit with 50% Defense and a Ward of 8 | The Ward absorbs the 2. |
+| A Poison tick hits a unit with 50% Defense and a Ward | It deals 1 (minimum 1); the Ward does not absorb it. |
+| Burning with 3 turns left is reapplied by a skill giving 2 turns | It now has 2 turns left. |
+| A Blind unit chooses Skip Turn | That turn counts toward Blind's 2 turns. |
+| A Bleeding unit uses Move | It takes 2 Bleeding damage after moving. |
 | A reaction's hit is aimed at a unit with a defender in front of it | The defender does not intercept: reaction hits go directly to their target. |
 | A unit is Poisoned | It takes 1 damage at the start of each of its next 5 turns, 5 in total. |
 | A Frozen unit's turn arrives | The turn is skipped and Frozen ends. |

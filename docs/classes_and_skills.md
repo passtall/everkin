@@ -652,11 +652,7 @@ Effect: The Speed penalty lasts for the target's next 4 turns instead of 2. Cost
 
 ## 7. Elementalist
 
-**Status:** All Draft (proposed by Claude). Identity: a caster whose skills leave **element** statuses that other skills react to. It uses `magical` skills only. Statuses are defined by the skill that applies them:
-
-- **Burning** (`fire`): 2 damage at the start of each of the target's next 3 turns. Reapplying refreshes the duration.
-- **Chilled** (`frost`): the target's Speed is lowered by 2 for its next 2 turns.
-- **Frozen** (`frost`): the target's next turn is skipped and costs the normal skipped-turn wait (game_system.md §6.4). It ends early if the target is hit by a `fire` skill.
+**Status:** All Draft (proposed by Claude). Identity: a caster whose skills leave **element** statuses that other skills react to. It uses `magical` skills only. Its statuses Burning (`fire`), Chilled (`frost`) and Frozen (`frost`) are defined in game_system.md §10.5.
 
 ### Branch A: Fire
 
