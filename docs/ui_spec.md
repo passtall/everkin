@@ -7,7 +7,7 @@
 
 | Interface requirements |
 |---|
-| Card fronts show front artwork, name, every class name, Life/HP, Speed, powers, defenses, statuses, and explicit KO. A stealthed unit shows a clear stealth cue (icon, optionally a dimmed card) to both sides, and its turns stay on the timeline (game_system.md §10.1). |
+| Card fronts show front artwork, name, every class name, Life/HP, Speed, Power, Defense, statuses, and explicit KO. A stealthed unit shows a clear stealth cue (icon, optionally a dimmed card) to both sides, and its turns stay on the timeline (game_system.md §10.1). |
 | Card backs show rear artwork and every currently usable skill with its actual build modifications. |
 | Front and back share the selected cosmetic frame; gameplay readability takes priority. |
 | Card backs are inspection, not the action menu. Opposing skills must be inspectable. |
