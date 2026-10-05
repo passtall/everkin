@@ -35,7 +35,7 @@ These are specification categories, not a mandated engine state-machine implemen
 ## Screens and layouts to complete
 
 - Support **Windows, Android, and iOS in landscape only**. Exact minimum device requirements, aspect ratios, and layout sizes remain open.
-- Begin development with an **AI-versus-AI testing view**. Its simulation controls and inspection tools still need definition.
+- Begin development with headless AI-versus-AI batch runs (game_system.md §2.5). A **replay viewer** then plays any recorded seed on the card UI as a debug mode, also used to debug UI issues. Its controls and inspection tools still need definition.
 - Party setup: recruit browser, card inspection, tree editing, row placement/reorder, validation, saved teams if selected.
 - Battle: landscape layouts for desktop and mobile, card dimensions, safe areas, timeline capacity, skill labels, status overflow, tooltips.
 - Card front/back inspection: all class names, long skill text, scrolling, modified values, source of modifiers, opponent visibility.

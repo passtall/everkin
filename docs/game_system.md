@@ -81,9 +81,31 @@ Minimum OS/device requirements, supported aspect ratios, controller support, and
 - **Local two-player:** required; setup, controls, and collection access still need specification.
 - **Online PvP:** planned, but **do not implement it until the owner explicitly greenlights it**. Prepare code interfaces and architectural boundaries for future online play. This preparation is not authorization to implement networking, matchmaking, or online services.
 
-**Balance testing method.** AI-versus-AI battles start from random units. Each AI picks its action on its turn with a minimax search. The whole battle is recorded, and statistics are kept on which units, classes and skills win or lose more often. Those statistics drive balance adjustments. Battles must therefore be deterministic given a seed, and the rules core must be able to run battles without any presentation.
+**Balance testing method.** AI-versus-AI battles start from random units. Each AI picks its action on its turn with a minimax search. Every battle is recorded so that it can be replayed exactly (section 2.5), and statistics are kept on which units, classes and skills win or lose more often. Those statistics drive balance adjustments. Battles must therefore be deterministic given a seed, and the rules core must be able to run battles without any presentation.
 
 The AI-versus-AI milestone comes first once gameplay implementation begins. The current task remains defining the game before implementation.
+
+### 2.5 AI-versus-AI test harness
+
+The harness plays battles automatically for balance testing and debugging. Adopted rules:
+
+- **Teams.** Each side gets 6 random creatures from the roster ([creatures.md](creatures.md)), with no duplicates within a side. The same creature may appear on both sides. Units are level 20 with all their creature and class skills (section 17.1).
+- **Party size.** Test battles are 6 versus 6 only for now.
+- **Formation.** Each side's starting formation is a random legal placement. It is recorded with the battle, so the statistics also show which rows work for which units.
+- **Search.** Each AI uses a minimax search over a fixed number of upcoming timeline turns, counted across both sides. Both AIs in a test battle use the same settings.
+- **Depth and difficulty.** Search depth comes from the AI's difficulty level: low difficulty searches shallow, and the highest level uses a high depth that still runs without problems. Test runs use the highest level. The depth for each level is set after measuring speed in the prototype (proposal: lowest 2, highest 8).
+- **Chance in the search.** The search uses average values for damage rolls and probabilities. The real seeded roll is applied once the action is chosen.
+- **Evaluation.** At the end of its look-ahead the search scores a position as a weighted sum of each side's remaining HP share, units still standing, and Momentum. The weights live in a config file.
+- **Information.** The AI knows only what a player would see. Because stealth limits targeting, not information (section 10.1), that includes stealthed units, their HP and statuses. Opposing future skill choices are not known.
+- **Length cap.** A battle stops after 500 unit turns in total and is recorded as a draw (section 12.3).
+- **Run size.** One test run plays 10,000 battles with seeds numbered 1 to 10,000. Each run gets an ID and stores a snapshot of the rules version, content and AI settings it used, so a battle is replayed by its run ID and seed, even after later balance changes.
+- **Saved per battle.** Run ID, seed, teams, formations, result and length, plus per-unit damage dealt and taken, healing, KOs and skill uses. The full event log is produced only when a battle is replayed.
+- **Report.** Win rate and appearance count per creature, class and skill; each creature's win rate by starting row; skill usage counts; battle length and draw rate; and pair statistics showing which creatures do well together and against each other.
+- **Imbalance flags.** The report flags the top and bottom 10% by win rate. Balancing starts with the most extreme ones.
+- **Balance changes.** Claude proposes changes from the report, the owner approves them, and the next run checks their effect.
+- **Watching battles.** Headless batch runs come first. A replay viewer then plays any recorded seed on the card UI as a debug mode, which is also used to debug UI issues.
+
+Still open: the search depth for each difficulty level and the first evaluation weights.
 
 ## 3. Party composition and creature identity
 
@@ -883,7 +905,7 @@ Boss concepts include pushing or pulling units, disrupting a formation, and mani
 - **Victory check.** Victory is checked after each event's KO check and after that event's reactions have fully resolved. A counter can therefore still KO the attacker and turn a win into a draw. Once the result is decided, pending events and remaining hits are cancelled.
 - **Objectives.** Every battle uses the standard defeat rule. Special objectives (boss defeat, survival, protection, positional objectives, interrupting a ritual) are **excluded for now** and may return later.
 - **Enemy side.** An enemy side has six original members by default. An encounter may use a different number, and the defeat rule then uses that side's own original members.
-- **Enemy behavior.** Enemies use the same search-based AI as AI-versus-AI testing. Difficulty changes how deep it searches or how often it picks a weaker action.
+- **Enemy behavior.** Enemies use the same search-based AI as AI-versus-AI testing (section 2.5). Difficulty changes how deep it searches or how often it picks a weaker action.
 - **Difficulty.** It is set through the enemy roster and formation. There are no hidden stat multipliers.
 
 ## 13. Card interface and combat presentation
@@ -1104,6 +1126,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Builds | Class/skill designs and assignments, conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
 | Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Tiers, stat ranges, the attack library rule, class counts, no natural traits and text IDs are adopted (section 3.7). |
 | Recruitment | Guaranteed encounter-to-unit reward assignments, repeats/duplicates, human generation, individual persistence, starting collection. Other acquisition methods are not currently required. |
+| Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Four-stage illustrated campaign details, later full campaign design, post-story random-battle rules, local two-player flow, and final content. AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Final card styling, mobile readability, artwork framing, gestures, audio, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
