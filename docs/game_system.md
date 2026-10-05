@@ -1079,6 +1079,22 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Where tests and batches run.** Locally on the owner's PC. There is no GitHub CI, and batches are not run in Claude's sessions.
 - **Online backend.** Online play stays deferred (section 2.4). When it comes, its backend server will be a **Spring Boot (Java)** application.
 
+**Rules core internals (adopted 2026-10-05):**
+
+- **Battle state and search.** The battle state is mutable with a fast `Clone()`. The AI search clones before trying an action.
+- **Events.** Every action returns an ordered list of events (hit, intercept, move, status applied, Momentum shift, KO). The UI animates them.
+- **Authority.** Only the core changes battle state. Godot sends chosen actions in and only reads state and events out.
+- **Previews.** The core answers preview queries (damage ranges, interception chances, timeline position, forced movement) with the same code that resolves actions, without changing state.
+- **Numbers.** The core uses integers only: percentages as whole numbers, coefficients in hundredths, explicit rounding down. No floating point in rules code.
+- **Online checking.** How the Spring Boot server checks battles is decided when online play starts; nothing in the core depends on it. The online transport is expected to use WebSockets.
+- **.NET version.** The newest long-term-support .NET that Godot 4.7 supports, shared by the core, the runner and the Godot project.
+- **Skill code.** One small C# class per skill, found by its skill ID. Shared behavior lives in reusable, specialized classes per tag or mechanic (for example interception, area shapes, forced movement), and skill classes delegate to them, so no rule is written twice.
+- **Broken content.** Content is validated at load. Any error stops the program with a clear message naming the file and ID.
+- **Tests.** xUnit.
+- **Compiler.** Nullable reference types on and warnings as errors in the core and the runner; relaxed in the Godot project.
+- **Parallel runs.** The runner plays battles in parallel on all CPU cores. Each battle is single-threaded and deterministic.
+- **Run output.** One folder per run: a snapshot (content JSON, git commit, AI settings), one CSV row per battle, and a Markdown report.
+
 The earlier proposal below is kept for context.
 
 The proposed separation is:
