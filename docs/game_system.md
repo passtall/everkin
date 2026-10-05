@@ -1,14 +1,14 @@
 # Everkin — Game Design Document
 
-**Version:** 0.4 — Class design rules: tags, damage formula, Momentum scale, interception chances
+**Version:** 0.5 — Four global stats (one Power, one Defense) and the creature roster
 
-**Updated:** 2026-10-03
+**Updated:** 2026-10-05
 
 **Format:** Digital tactical card game with creature collection and RPG character builds
 
 **Project name:** Everkin is a working title.
 
-**Companion documents:** [UI specification](ui_spec.md) owns screens and interactions. [Classes and skills](classes_and_skills.md) owns the class and skill definitions. This document owns game rules, scope, and implementation requirements.
+**Companion documents:** [UI specification](ui_spec.md) owns screens and interactions. [Classes and skills](classes_and_skills.md) owns the class and skill definitions. [Creatures](creatures.md) owns the creature roster, size tiers and the type-specific attack library. This document owns game rules, scope, and implementation requirements.
 
 **Current work:** define the whole game before gameplay implementation. Classes and skills are designed one class at a time, with about ten questions per round, and the answers are applied directly to these documents. Keep unresolved choices explicit; no separate decision history is maintained.
 
@@ -139,6 +139,21 @@ For example, a wolf and an alpha wolf are separate creature types if they differ
 
 The current direction avoids a general gear system. Some humans and other creatures may carry weapons, tools, or props dictated by their type. These are part of their identity and artwork rather than evidence of an interchangeable equipment or loot system.
 
+### 3.7 Creature roster
+
+The exact creature roster lives in [creatures.md](creatures.md): size tiers (critter, medium, large) with base stat blocks, the shared library of type-specific attacks, and every creature's ID, art, stats, classes and attack. Adopted rules for creatures:
+
+- **Size tiers.** Each creature belongs to one tier and tweaks that tier's base stat block slightly.
+- **HP** runs from 20 to 80 in steps of 5. The anchors in section 5.5 stay.
+- **Speed** follows the tier (critters 7–9, medium 4–7, large 1–4). A creature may break it with a stated reason.
+- **Power** runs from 1 to 10, with the reference human at 5.
+- **Natural Defense** is 0–40% in steps of 10. It is rare, and 0% is the default. Skills and statuses supply the rest, up to the 75% cap.
+- **Type-specific attack.** Each creature gets one attack from the shared library and cannot change its numbers.
+- **Classes** are hand-assigned per creature to fit its concept: humans usually three, animals one or two.
+- **No natural traits** for now. A creature's identity comes from its stats, classes and attack.
+- **Humans** are generated once during content creation and stored as fixed recruits (section 3.4), each with a name, its own class combination and small stat differences within the medium tier.
+- **IDs** are stable text IDs (such as `fox` or `stone_turtle`). Art files are mapped to them and may be renamed.
+
 ## 4. Classes and skill-tree progression
 
 ### 4.1 Access and point budget
@@ -231,7 +246,7 @@ Creature identity contributes one type-specific starting attack, such as Bite, S
 
 | Group | Tags | Rule |
 |---|---|---|
-| Damage type | `physical`, `magical` | Interact with Physical or Magic Defense. |
+| Damage type | `physical`, `magical` | What kind of skill it is, for rules that react to it (Shield Wall blocks `physical`, Silenced stops `magical`). Both scale with Power and are reduced by Defense (section 5.1). |
 | Delivery | `projectile` | Travels the battlefield from the user to the target, so it passes the units in front of the target and can be intercepted by them. |
 | | `melee` | Needs reach to the target. Triggers effects that react to melee. Can be intercepted. |
 | | `direct` | Hits a **specific slot** (the position on the half-card grid, section 7.3, of the selected target), with nothing passing between. It hits whoever occupies that slot when it resolves, so a delayed `direct` effect hits whatever stands there later. **Ignores interception.** Still needs a legal target and reach when it is cast. |
@@ -266,36 +281,34 @@ The tag list is a starting point. Exact shape definitions (for example which uni
 
 ## 5. Unit statistics and damage
 
-### 5.1 The six global stats
+### 5.1 The four global stats
 
 | Stat | Definition |
 |---|---|
 | HP | Maximum health; current HP is tracked during combat. |
 | Speed | 1–10, **10 is fastest**. Determines how quickly the unit completes its turn cycle (section 6.1). |
-| Physical Power | Scaling basis for physical skill damage. Each creature type defines its own value. |
-| Magic Power | Scaling basis for magical skill damage. Each creature type defines its own value. |
-| Physical Defense | Percentage reduction of physical damage. |
-| Magic Defense | Percentage reduction of magical damage. |
+| Power | 1–10. Scaling basis for all skill damage and healing, `physical` and `magical` alike. Each creature type defines its own value. |
+| Defense | 0–75%. Percentage reduction of all damage, `physical` and `magical` alike. |
 
-Defense may be **0%**. There is no universal built-in defense allowance: defense comes from the creature type, skill tree, or explicit effects. Display it as the actual percentage reduction rather than an opaque rating. Units may be strongly specialized in physical or magical power.
+Defense may be **0%**. There is no universal built-in defense allowance: defense comes from the creature type, skill tree, or explicit effects. Display it as the actual percentage reduction rather than an opaque rating. There is a single Power and a single Defense: the earlier split into Physical and Magic Power and Defense was removed on 2026-10-05 to keep the stat sheet small.
 
 Accuracy, evasion, critical chance, critical damage, mana, universal resistance, and healing power are **not additional global stats**. Skill-specific hit chances, defensive effects, or healing scaling may be defined without expanding the stat sheet. Mana and critical-hit systems remain excluded.
 
 ### 5.2 Damage scaling
 
-Each damaging skill has a hidden **coefficient range**. The displayed damage range is that range multiplied by the user's relevant Power stat.
+Each damaging skill has a hidden **coefficient range**. The displayed damage range is that range multiplied by the user's Power.
 
 Illustrative definitions:
 
-- Bite: 80–100% of Physical Power.
-- Heavy Slam: 150–190% of Physical Power.
-- Arc Bolt: 90–120% of Magic Power.
+- Bite: 80–100% of Power.
+- Heavy Slam: 150–190% of Power.
+- Arc Bolt: 90–120% of Power.
 
 These values demonstrate the selected model; they are not approved balance data. A skill may explicitly scale from HP, defense, or multiple stats, but that exception must be part of its definition.
 
-**Adopted damage formula:** each creature type defines its own attack power (Physical Power and Magic Power). A skill's damage is its hidden coefficient range multiplied by the user's relevant power, rolled uniformly, and the skill tree may change the formula. Players always see **whole numbers only**, shown for the actual user. Damage is **rounded down, with a minimum of 1**, unless a skill explicitly negates it. Numbers in the class documents assume a **reference human with attack power 5**.
+**Adopted damage formula:** each creature type defines its own Power. A skill's damage is its hidden coefficient range multiplied by the user's Power, rolled uniformly, and the skill tree may change the formula. Players always see **whole numbers only**, shown for the actual user. Damage is **rounded down, with a minimum of 1**, unless a skill explicitly negates it. Numbers in the class documents assume a **reference human with Power 5**.
 
-**Physical and Magic are the only baseline damage categories.** Physical damage interacts with Physical Defense; magical damage interacts with Magic Defense. Fire, frost, poison, bleeding, mental effects, and similar themes use properties or statuses rather than additional global resistance categories. Defense bypass is a property of a skill, not a third defense stat.
+**There is one damage category.** All damage interacts with the single Defense stat; the `physical` and `magical` tags only matter to rules that name them. Fire, frost, poison, bleeding, mental effects, and similar themes use properties or statuses rather than additional global resistance categories. Defense bypass is a property of a skill, not a third defense stat.
 
 Damage is sampled **uniformly within the skill's damage range**. Each value is equally likely; the range itself defines the variance. Some skills may have a very wide range. There are **no separate critical hits or critical multipliers**; a high roll can provide the excitement of a critical hit without another system.
 
@@ -327,7 +340,7 @@ Healing scaling, damage-over-time calculation, status durations, stacking behavi
 
 ### 5.5 HP and damage anchors
 
-HP anchors: a critter (the lowest HP in the game, such as a fox) has **20**, a human **35–45**, and a giant stone turtle **60**. Damage anchor: a critter with 0% Physical Defense dies to exactly **three Sniper Shots** from the reference human (Sniper Shot deals 7–9). Keep all numbers low.
+HP anchors: a critter (the lowest HP in the game, such as a fox) has **20**, a human **35–45**, and a giant stone turtle **60**. Damage anchor: a critter with 0% Defense dies to exactly **three Sniper Shots** from the reference human (Sniper Shot deals 7–9). Keep all numbers low.
 
 ## 6. Turn timeline and action execution
 
@@ -604,7 +617,7 @@ Sequential protection is intentional and must obey the reaction-chain safeguards
 
 The project owner's examples establish two important skill concepts: **Sniper Shot** can bypass interception, while **Shield Wall** can allow three cooperating Front units to block 100% of physical attacks directed at rear rows. Their exact requirements, exceptions, and costs remain to be designed.
 
-Proposed interception effects include taking the attack, absorbing part of its damage, reducing its remaining strength, removing one effect, or stopping a projectile component. The attack types eligible for each defense, exact probabilities, processing order, and interaction with the six stats are open.
+Proposed interception effects include taking the attack, absorbing part of its damage, reducing its remaining strength, removing one effect, or stopping a projectile component. The attack types eligible for each defense, exact probabilities, processing order, and interaction with the four stats are open.
 
 Whether an area effect can be intercepted is part of its skill definition; by default it respects interception.
 
@@ -883,7 +896,7 @@ The **front** contains:
 
 - A customizable cosmetic frame and an image of the unit from the front.
 - The unit's name and the names of all its classes.
-- Relevant combat stats, including Life (current and maximum HP), Speed, attack powers, and defenses.
+- Relevant combat stats, including Life (current and maximum HP), Speed, Power, and Defense.
 - Clear status and KO overlays on or around the border.
 
 Cosmetic frames must never reduce gameplay readability. KO must be unmistakable, for example through desaturation or darkening in addition to an explicit KO indication.
@@ -1041,7 +1054,7 @@ The first playable should exercise:
 - A small selection of humans, animals, and fantasy creatures.
 - Six-member formation across three rows.
 - Direct testing of active skills, passives, and modifiers on level-20 units; tree organization and point allocation follow later.
-- The six global stats and skill-specific damage scaling.
+- The four global stats and skill-specific damage scaling.
 - Visible turn order and a limited set of timing effects.
 - Movement, targeting, and a readable form of protection.
 - Card-based presentation and mobile-conscious controls.
@@ -1089,6 +1102,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | KO and revival | Per-skill revival HP and recovery cost, and what a draw means in each mode. Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
 | Summons | Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
 | Builds | Class/skill designs and assignments, conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
+| Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Tiers, stat ranges, the attack library rule, class counts, no natural traits and text IDs are adopted (section 3.7). |
 | Recruitment | Guaranteed encounter-to-unit reward assignments, repeats/duplicates, human generation, individual persistence, starting collection. Other acquisition methods are not currently required. |
 | Encounters | Specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Four-stage illustrated campaign details, later full campaign design, post-story random-battle rules, local two-player flow, and final content. AI-versus-AI testing comes first; online implementation requires greenlight. |
@@ -1121,7 +1135,7 @@ In addition to section 19, resolve these edge cases:
 
 ### 20.3 Complete content definitions
 
-Each included creature needs a stable ID, name, front/rear artwork, framing, all six stats and growth rules, classes, its one type-specific attack, natural passives/immunities, and acquisition rules. Artwork filenames are not approved creature names or combat values.
+Each included creature needs a stable ID, name, front/rear artwork, framing, all four stats and growth rules, classes, its one type-specific attack, natural passives/immunities, and acquisition rules. Artwork filenames are not approved creature names or combat values.
 
 Each class needs its complete skill-tree graph: node IDs, costs, ranks, prerequisites, branches, exclusivity, effects, and respec behavior. Define how multiple modifiers combine and how the final usable skill is displayed.
 
@@ -1164,7 +1178,7 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A 9-damage hit lands on a unit with 50% defense and no shield | 9 × 0.5 = 4.5, rounded down to 4. |
 | The same hit lands on a unit with a shield absorbing 8 and 50% defense | The shield takes 8 raw, the remaining 1 is reduced to 0.5 and becomes 1 (minimum 1). |
 | A 7-damage hit lands on a unit with a shield absorbing 8 | Nothing passes the shield, so no damage is dealt, and Momentum does not change. |
-| Two sources give 40% and 50% Physical Defense | The total is 75%, the cap. |
+| Two sources give 40% and 50% Defense | The total is 75%, the cap. |
 | Exposed is applied to a unit with 0% defense | Its defense stays at 0%. |
 | A skill with 30 points of penetration hits a unit with 20% defense | The unit's defense counts as 0% for that hit. |
 | A counter deals fixed 2 damage to a unit with 50% defense | It deals 1. |

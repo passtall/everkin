@@ -13,7 +13,7 @@ The design documents are the source of truth. Never answer, propose or edit from
    - §4 classes, tags and skill rules (§4.7) · §5 stats, damage formula, anchors · §6 timeline, auto events, Momentum (§6.7)
    - §7 formation and rows · §8 targeting, interception (§8.2), columns (§8.4) · §9 movement · §10 stealth, KO, statuses
    - §11 summons · §19 decisions still required · §20 details before implementation
-2. Read **docs/classes_and_skills.md** for any class or skill work.
+2. Read **docs/classes_and_skills.md** for any class or skill work, and **docs/creatures.md** for any creature, stat or type-specific attack work.
 3. Read **docs/ui_spec.md** for any UI, screen or interaction question.
 4. Check §19 of game_system.md. If a rule is listed there as undecided, do not invent it: ask the owner.
 
@@ -23,6 +23,7 @@ The design documents are the source of truth. Never answer, propose or edit from
 |---|---|
 | Game-wide rules (damage, Momentum, timeline, interception, tags, statuses, formation) | docs/game_system.md |
 | Class and skill definitions (one class at a time) | docs/classes_and_skills.md |
+| Creature roster, size tiers, type-specific attack library | docs/creatures.md |
 | Screens, layouts, interactions | docs/ui_spec.md |
 
 - When a decision is game-wide, **write it to game_system.md first**, update the §19 table and the §20.5 worked checks if relevant, and have the class document refer to it. Never duplicate global rules in the classes document.

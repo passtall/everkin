@@ -51,7 +51,7 @@ Wording that still says "ally" or "enemy" in a skill (for example "every allied 
 - **Lanes:** Mending (heals), Rites (revive, cleanse), Ward (shields, prevention). 8 skills plus 6 meaningful nodes over 3 branches.
 - **No class attacks.** Only the creature's type-specific attack.
 - **Momentum:** healing does not move the meter.
-- **Main single heal (Mend):** a heavy heal, 18–22 for the reference human (Magic Power 5), Delay 7.
+- **Main single heal (Mend):** a heavy heal, 18–22 for the reference human (Power 5), Delay 7.
 - **Revive:** one skill. Momentum cost 5, Delay 9, target returns at 25% HP.
 - **Cleanse:** one skill that removes one chosen status from a unit.
 - **No turn manipulation:** the Healer has no skill that pulls forward, pushes back or otherwise changes other units' turn timing.
@@ -320,7 +320,7 @@ Effect: A second shot on the same target resolves as an auto event 3 time units 
 
 ### Branch B: Trapper
 
-Traps are **summons that act as regular units**. Placed **between units** in one of your rows (recentering it, counting toward its 6-unit cap). A trap can only be placed in a row where one of your units is **directly behind** it, and never in front of the Front row. It takes one slot, has HP (0% Physical Defense), takes no turns, can be targeted, and **intercepts** like any unit for the 1–2 units directly behind it. No skill limits the number of traps: the side's cap of 18 units and its row capacity still apply (game_system.md §11.3). A KO'd trap is removed at once and frees its slot.
+Traps are **summons that act as regular units**. Placed **between units** in one of your rows (recentering it, counting toward its 6-unit cap). A trap can only be placed in a row where one of your units is **directly behind** it, and never in front of the Front row. It takes one slot, has HP (0% Defense), takes no turns, can be targeted, and **intercepts** like any unit for the 1–2 units directly behind it. No skill limits the number of traps: the side's cap of 18 units and its row capacity still apply (game_system.md §11.3). A KO'd trap is removed at once and frees its slot.
 
 ### Spike
 Class: Hunter · Tree slot: B1
