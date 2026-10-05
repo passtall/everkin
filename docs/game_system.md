@@ -410,7 +410,6 @@ The same model supports direct timeline manipulation:
 | Pull Forward | Directly removes time units from the remaining Wait. |
 | Push Back | Directly adds time units to the remaining Wait. |
 | Reset | Resets current turn progress. |
-| Turn Now | Immediately completes the Wait. |
 
 (The timeline effect formerly called Delay is now **Push Back**, because Delay is the skill scale.)
 
@@ -430,7 +429,9 @@ The UI shows multiple upcoming turns and previews where the acting unit's next t
 - **Action denial.** There is no safeguard against Slow, Push Back and turn-skipping statuses for now. Test first.
 - **Skipped turn.** A skipped turn costs as much as a Delay 5 skill: Wait = 5 + (11 − Speed).
 
-Still open: whether Delay may be pushed outside 1–10 by effects, and how Turn Now works in detail. Stop was removed from the timeline effects: its role is covered by Push Back and by statuses that skip turns (Frozen).
+- **Delay bounds.** Effects that add or remove Delay never take a skill outside 1–10: after all modifiers, Delay is clamped to 1–10.
+
+Stop was removed from the timeline effects: its role is covered by Push Back and by statuses that skip turns (Frozen). Turn Now (immediately completing a unit's Wait) was removed on 2026-10-05 because no skill uses it; Pull Forward covers the role.
 
 ### 6.2 Standard action sequence
 
@@ -514,7 +515,9 @@ Further adopted rules:
 - **Multi-hit and area actions.** By default an action causes **one** shift: 1 toward its side if any hit lands, otherwise 1 against if it missed, and 0 if everything was intercepted. A skill may state otherwise.
 - **Auto events.** Each auto event is its own event on the timeline and shifts the meter when it resolves, like a separate action. Rapid Shots therefore shifts the meter for each of its three shots.
 
-Still open: simultaneous opposing shifts in one effect block, and non-damaging actions.
+- **Non-damaging actions.** A skill that deals no damage moves the meter by 0, even when it is harmful and lands (a Mark, Provoke, Silence, or a push without damage). Move and Skip Turn also move it by 0. Healing already moves it by 0.
+- **Paying a cost.** A Momentum cost is paid when the skill is used, before any of its effects. It is never refunded, even if the skill achieves nothing (every hit intercepted or absorbed, or a chance-based effect failing).
+- **Several shifts in one simultaneous block.** They are applied one by one in the block's event order, and the meter is clamped after each one.
 
 **Core principle:** successful combat builds Momentum, mistakes and enemy success erode it, and powerful actions often consume it.
 
@@ -627,7 +630,7 @@ Normal cover depends on horizontal overlap between a forward unit and the unit b
 | 50% | Partial cover: a 25% chance to intercept. |
 | None | That forward unit provides no normal cover to this rearward unit. |
 
-**Which skills can be intercepted (adopted).** Only skills with the `melee` or `projectile` tag can be intercepted, whichever side uses them and whatever they do. A `projectile` heal can therefore be intercepted, while a `direct` heal cannot. A `melee` or `projectile` skill ignores interception only if it says so (for example Sniper Shot). What an interceptor receives from a skill that deals no damage (a status, a heal) is still open.
+**Which skills can be intercepted (adopted).** Only skills with the `melee` or `projectile` tag can be intercepted, whichever side uses them and whatever they do. A `projectile` heal can therefore be intercepted, while a `direct` heal cannot. A `melee` or `projectile` skill ignores interception only if it says so (for example Sniper Shot). **Intercepted effects that are not damage (adopted).** An interceptor receives the intercepted effect instead of the target. On a full interception it receives the whole effect. On a partial interception an amount that can be split, such as healing, is split like damage: the interceptor receives half, rounded down, and the rest continues. An effect that cannot be split, such as a status or a push, goes entirely to the interceptor, as on a full interception.
 
 **Defender order (adopted).** Defenders are tried from the nearest row toward the target. Within one row they are tried **from left to right**, as the player sees the board.
 
@@ -1123,11 +1126,11 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Area | Outstanding specification |
 |---|---|
 | Party | Prototype validation of six-versus-six readability, possible four- or five-unit standard, starting below the standard size, enemy exceptions, duplicate recruits. No combat reserve swapping. |
-| Timeline | Turn Now details, and whether effects may push Delay outside 1–10. Initial progress, ties, Haste/Slow, Reset, skipped turns and same-time order are adopted (section 6.1). Speed 1–10 (10 fastest), skill Delay 1–10 (1 quickest), and Wait = Delay + 11 − Speed are adopted (section 6.1). |
-| Momentum | Simultaneous opposing shifts and non-damaging actions. Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
+| Timeline | None open. Delay bounds (clamped to 1–10) are adopted and Turn Now was removed (section 6.1). Initial progress, ties, Haste/Slow, Reset, skipped turns and same-time order are adopted (section 6.1). Speed 1–10 (10 fastest), skill Delay 1–10 (1 quickest), and Wait = Delay + 11 − Speed are adopted (section 6.1). |
+| Momentum | None open. Non-damaging actions, payment timing, refunds and simultaneous shifts are adopted (section 6.7). Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
 | Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6?8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
 | Damage | Multiple shields on one unit (waiting for concrete examples). Roll, shield, defense, final reduction order, defense bounds (0–75%, additive), penetration, and fixed damage are adopted (section 5.2). Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
-| Defense | What an interceptor receives from a non-damaging skill, eligible attacks for other defenses and precise interaction with damage events. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, left-to-right defender order and the nearest-target tie rule are adopted (sections 8.2 and 8.5). |
+| Defense | Eligible attacks for other defenses and precise interaction with damage events. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, intercepted non-damaging effects, left-to-right defender order and the nearest-target tie rule are adopted (sections 8.2 and 8.5). |
 | Reactions | None open. Propagation, priority levels, tie-breaks, timing and KO'd owners are adopted (section 6.6). There is deliberately no chain limit or recursion safeguard for now: AI-versus-AI testing must detect endless chains. |
 | Range | Per-skill ranges. Opposing and same-side distance (both skip empty rows), unlimited "any visible", uncapped range bonuses and cast-time checks are adopted (section 7.4). Adjacency, which uses nominal rows, is adopted (section 8.4). |
 | Movement | None open. Move (any row, Delay 5, chosen gap, no swaps), movement inside skills and forced repositioning are adopted (sections 9.1 and 9.5). Skip Turn is always available (section 6.4). |
@@ -1159,8 +1162,8 @@ Use illustrated locations with selectable paths/events and a four-stage line for
 
 In addition to section 19, resolve these edge cases:
 
-- Timeline: progress overshoot, Speed bounds, Turn Now, skipped-turn cost, and whether time advances while choosing actions or playing animations.
-- Momentum: bounds and spending rules for the single contested meter starting at zero, success with interception/shields, multi-hit/area/reaction/periodic effects, non-damaging actions, payment timing, failed-action refunds, and simultaneous changes.
+- Timeline: progress overshoot. Speed and Delay bounds, the skipped-turn cost and the time model are adopted (section 6.1).
+- Momentum: all adopted (section 6.7).
 - Damage: healing scaling, and multiple shields on one unit. Sampling, rounding, defense bounds, penetration, shield order and shared versus independent rolls are adopted.
 - Resolution: validation, cost payment, effect processing, Momentum updates, reactions, KO, and victory-check order. Reaction priorities, ties and the absence of a chain limit are adopted (section 6.6).
 - Statuses: immunity details and any statuses beyond the four named ones. Clocks, tick timing, reapplication, cleansing, source removal and shared HP are adopted (sections 10.4 and 10.5).
@@ -1232,6 +1235,12 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A `projectile` heal is aimed at a unit with an ally in front of it | It can be intercepted. |
 | Two units in the row in front each half-cover the target | The left one, as the player sees it, rolls to intercept first. |
 | A skill hits the nearest enemy and two are equally near | The leftmost one is hit. |
+| A skill with Delay 9 gets +3 Delay from an effect | Its Delay is 10. |
+| A unit uses a Momentum 2 skill with its side at +2 and the first hit lands | The cost is paid first (meter 0), then the hit moves it to +1. |
+| Every hit of a Momentum 3 skill is intercepted | The 3 Momentum is not refunded. |
+| A Silence lands on an enemy | Momentum does not change. |
+| A projectile heal of 9 is partly intercepted | The interceptor is healed by 4 and the target by 5. |
+| A projectile status is partly intercepted | The interceptor gets the status; the target does not. |
 | A reaction's hit is aimed at a unit with a defender in front of it | The defender does not intercept: reaction hits go directly to their target. |
 | A unit is Poisoned | It takes 1 damage at the start of each of its next 5 turns, 5 in total. |
 | A Frozen unit's turn arrives | The turn is skipped and Frozen ends. |
