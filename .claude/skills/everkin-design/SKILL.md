@@ -36,5 +36,5 @@ The design documents are the source of truth. Never answer, propose or edit from
 - Label status clearly: decided vs TBD. Ask when something is unclear; do not guess.
 - Every skill is unique and has a clear role. Skills use **tags**, not categories.
 - Keep numbers low and whole. Always check new numbers against the damage anchor (critter 20 HP, three Sniper Shots).
-- Respect interception by default. Only specific tags ignore it by default. e.g. airstrike
+- Only `melee` and `projectile` skills can be intercepted (game_system.md §8.2); such a skill ignores interception only if it says so.
 - No mana, no cooldowns. Costs come from timeline, Momentum, HP, position or consequences.

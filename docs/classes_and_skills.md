@@ -516,7 +516,7 @@ Effect: Cleave gains `row`: select a row and hit every unit in it. Cost: Cleave'
 Class: Warrior · Tree slot: B1
 Delay: 4 · Momentum cost: 0
 Tags: `attack` `physical` `melee` `move` `single`
-Mechanic: If the Warrior is not in Front, it first moves to the Front row (if the row is full, the skill fails). It then hits one unit for 4–6. Respects interception.
+Mechanic: If the Warrior is not in Front, it first moves to the Front row, then hits one unit for 4–6. Respects interception. Landing and a blocked move follow game_system.md §9.1 and §9.5: if the move is blocked, the chain takes bump damage and the Warrior still makes the hit from where it stands, if the target is in reach.
 Reach: Range 3.
 Hidden stats: Coefficient 0.8–1.2.
 
@@ -618,7 +618,7 @@ Hidden stats: none.
 Class: Feral · Tree slot: B2
 Delay: 2 · Momentum cost: 0
 Tags: `move`
-Mechanic: The Feral moves one row back. Fails if the row behind is full or it is already in the Rear.
+Mechanic: The Feral moves one row back. Not available in the Rear. Landing and a blocked move follow game_system.md §9.1 and §9.5.
 Reach: Self.
 Hidden stats: none.
 

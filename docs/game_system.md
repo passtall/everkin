@@ -299,7 +299,7 @@ The tag list is a starting point. Exact shape definitions (for example which uni
 - **Classes declare no defenses.** Defense comes from the creature type, skill tree choices, and explicit effects.
 - **Every skill has a reach.** Cover, redirect, swap, push, and pull skills only work on units within their reach, and an attack can only be redirected to a unit that could legally be its target.
 - **Numbers stay low.** Players see whole numbers only.
-- **Every skill respects interception by default** (section 8.2). Only the `direct` tag, or a skill that states it explicitly, ignores it.
+- **Only `melee` and `projectile` skills can be intercepted** (section 8.2). A skill without either tag, such as a `direct` skill, cannot be. A `melee` or `projectile` skill ignores interception only if it says so.
 
 ## 5. Unit statistics and damage
 
@@ -459,9 +459,9 @@ If an action has meaningfully different modes, a distinct skill or directly sele
 
 ### 6.4 Required actions and skipped turns
 
-A unit must use a viable skill or reposition when it has a viable action. There is **no Wait command and no universal Defend command**. Defensive actions belong to specific creature or class movesets.
+Every unit always has three basic actions besides its class skills: its **type-specific attack**, **Move** (section 9.1) and **Skip Turn**. The attack still needs a legal target in reach. Skip Turn costs the same as a Delay 5 skill (section 6.1). There is **no universal Defend command**; defensive actions belong to specific creature or class movesets.
 
-If no viable action exists, the turn is automatically skipped and the timeline continues. There is no requirement to invent an always-available emergency attack. A skipped turn costs the same as a Delay 5 skill (section 6.1).
+No unit is ever forced to act or move: Skip Turn is always allowed. A turn is skipped automatically only when an effect says so (for example Frozen), with the same cost. (This replaces the earlier rule that a unit must act whenever it has a viable action and has no Wait command; it was changed on 2026-10-05 because Move is almost always possible.)
 
 ### 6.5 Event resolution and KO checks
 
@@ -627,7 +627,11 @@ Normal cover depends on horizontal overlap between a forward unit and the unit b
 | 50% | Partial cover: a 25% chance to intercept. |
 | None | That forward unit provides no normal cover to this rearward unit. |
 
-**Adopted chances.** A forward unit that is not the intended target (passively targeted) intercepts with a **50%** chance at **100% overlap** and a **25%** chance at **50% overlap**. When it intercepts, it takes the **full hit (50%)** or a **partial hit (50%)**. A partial hit splits the damage in half: the interceptor takes half **rounded down**, and the remainder continues down the interception chain. A hit of 1 cannot be split and goes entirely to the interceptor. An intercepted hit changes Momentum by 0. **Every skill respects interception by default**; a skill must state explicitly if it ignores it (for example Sniper Shot). Individual skills, passives, statuses, and attack types may override or modify these standard rules. Summons and constructs that act as regular units can intercept like any unit.
+**Which skills can be intercepted (adopted).** Only skills with the `melee` or `projectile` tag can be intercepted, whichever side uses them and whatever they do. A `projectile` heal can therefore be intercepted, while a `direct` heal cannot. A `melee` or `projectile` skill ignores interception only if it says so (for example Sniper Shot). What an interceptor receives from a skill that deals no damage (a status, a heal) is still open.
+
+**Defender order (adopted).** Defenders are tried from the nearest row toward the target. Within one row they are tried **from left to right**, as the player sees the board.
+
+**Adopted chances.** A forward unit that is not the intended target (passively targeted) intercepts with a **50%** chance at **100% overlap** and a **25%** chance at **50% overlap**. When it intercepts, it takes the **full hit (50%)** or a **partial hit (50%)**. A partial hit splits the damage in half: the interceptor takes half **rounded down**, and the remainder continues down the interception chain. A hit of 1 cannot be split and goes entirely to the interceptor. An intercepted hit changes Momentum by 0. Individual skills, passives, statuses, and attack types may override or modify these standard rules. Summons and constructs that act as regular units can intercept like any unit.
 
 - A full interception can stop or take over the incoming attack according to the effect.
 - A partial interception leaves a remaining attack or effect.
@@ -641,7 +645,7 @@ The project owner's examples establish two important skill concepts: **Sniper Sh
 
 Proposed interception effects include taking the attack, absorbing part of its damage, reducing its remaining strength, removing one effect, or stopping a projectile component. The attack types eligible for each defense, exact probabilities, processing order, and interaction with the four stats are open.
 
-Whether an area effect can be intercepted is part of its skill definition; by default it respects interception.
+An area effect can be intercepted when it is `melee` or `projectile`, like any other skill.
 
 ### 8.3 Target preview
 
@@ -671,7 +675,7 @@ A skill that hits units **behind** its target hits those with **100% overlap** a
 
 ### 8.5 Closest-target ties
 
-Stealth and empty-row rules affect nearest-target selection. Free target choice among equally close legal targets was proposed, unless the skill explicitly selects randomly. The tie rule remains to be finalized without adding unnecessary decisions to automatic actions.
+Stealth and empty-row rules affect nearest-target selection. **Adopted tie rule:** when several legal targets are equally close, the **leftmost** one as the player sees the board is chosen. The same rule applies to players, the AI and automatic effects, so a skill that says "nearest" never asks for a choice. A skill that selects randomly says so.
 
 ## 9. Movement and positional skills
 
@@ -681,7 +685,14 @@ Voluntary repositioning costs a turn, as carried forward in the lane discussion.
 
 Useful design examples include an attack from Middle that advances its user, a powerful action that leaves the user exposed, or a weaker action that improves the user's defensive position.
 
-Exact movement recovery time and the order of movement versus damage are open and must be specified for the relevant action.
+**Move (adopted).** Every unit has a basic Move action:
+
+- It moves the unit to **any other row on its own side**. It cannot reorder a unit within its own row.
+- It has **Delay 5**, the same as a skipped turn.
+- The player picks where the unit lands: **any gap in the destination row**, between two units or at either end. The row recenters. A full row cannot be chosen (section 9.2), so Move never bumps.
+- Move never swaps. Swapping places with an ally comes only from skills such as Swap Places.
+
+**Movement inside a skill (adopted).** When a skill moves its own user (for example Charge or Leap Away), the movement follows the forced-repositioning rules of section 9.5: realistic landing, bumping, and, if the chain is blocked, nothing moves and every unit in the chain takes 1 bump damage, allies included. A blocked movement does not cancel the rest of the skill: its other effects still resolve, from wherever the user ends up. The skill states the order of movement and damage (section 6.5).
 
 ### 9.2 Blocked movement
 
@@ -1116,10 +1127,10 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Momentum | Simultaneous opposing shifts and non-damaging actions. Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
 | Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6?8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
 | Damage | Multiple shields on one unit (waiting for concrete examples). Roll, shield, defense, final reduction order, defense bounds (0–75%, additive), penetration, and fixed damage are adopted (section 5.2). Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
-| Defense | Eligible attacks for each defense and precise interaction with damage events. Interception chances and the partial-hit split are adopted (section 8.2). |
+| Defense | What an interceptor receives from a non-damaging skill, eligible attacks for other defenses and precise interaction with damage events. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, left-to-right defender order and the nearest-target tie rule are adopted (sections 8.2 and 8.5). |
 | Reactions | None open. Propagation, priority levels, tie-breaks, timing and KO'd owners are adopted (section 6.6). There is deliberately no chain limit or recursion safeguard for now: AI-versus-AI testing must detect endless chains. |
 | Range | Per-skill ranges. Opposing and same-side distance (both skip empty rows), unlimited "any visible", uncapped range bonuses and cast-time checks are adopted (section 7.4). Adjacency, which uses nominal rows, is adopted (section 8.4). |
-| Movement | Destination selection, combined-action failure behavior, recovery time, swaps. Forced repositioning is specified in section 9.5. |
+| Movement | None open. Move (any row, Delay 5, chosen gap, no swaps), movement inside skills and forced repositioning are adopted (sections 9.1 and 9.5). Skip Turn is always available (section 6.4). |
 | Statuses | The remaining status candidates. The framework (clocks, ticking, reapplication, cleansing, source, limit) and Blind, Bleeding and Silenced are adopted (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
 | KO and revival | Per-skill revival HP and recovery cost, and what a draw means in each mode. Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
 | Summons | Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
@@ -1153,7 +1164,7 @@ In addition to section 19, resolve these edge cases:
 - Damage: healing scaling, and multiple shields on one unit. Sampling, rounding, defense bounds, penetration, shield order and shared versus independent rolls are adopted.
 - Resolution: validation, cost payment, effect processing, Momentum updates, reactions, KO, and victory-check order. Reaction priorities, ties and the absence of a chain limit are adopted (section 6.6).
 - Statuses: immunity details and any statuses beyond the four named ones. Clocks, tick timing, reapplication, cleansing, source removal and shared HP are adopted (sections 10.4 and 10.5).
-- Formation: cover eligibility and same-layer defender order, movement/reorder/swap costs, failed movement, and whether anchored effects follow occupants or coordinates when rows recenter.
+- Formation: whether anchored effects follow occupants or coordinates when rows recenter. Cover eligibility, defender order, Move, swaps and failed movement are adopted (sections 8.2 and 9.1).
 - Battle boundaries: encounter exceptions. Persistent consequences (none), simultaneous wipes (draw), stalemates, surrender and victory timing are adopted (section 12.3). Full starting HP, neutral-zero Momentum, and cleared temporary combat states are selected.
 
 ### 20.3 Complete content definitions
@@ -1213,6 +1224,14 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A multi-hit skill hits a unit with a once-per-hit reaction three times | The reaction triggers three times. |
 | A counter and a timeline pull trigger from the same hit | The counter (Normal) resolves before the pull (Last). |
 | A unit is KO'd by a hit and had a "when hit" counter | The counter does not fire. |
+| A Speed 6 unit uses Move | It lands in the gap its player chose and waits 5 + (11 − 6) = 10 time units. |
+| A unit chooses Skip Turn at Speed 9 | It waits 5 + (11 − 9) = 7 time units. |
+| A unit tries to Move into a full row | That row is not offered. |
+| A Warrior uses Charge from Middle while Front is full | Charge's move is blocked, every unit in the chain takes 1 bump damage, and the Warrior stays in Middle and still makes the hit if the target is in reach. |
+| A `direct` heal is aimed at a unit with an ally in front of it | It cannot be intercepted. |
+| A `projectile` heal is aimed at a unit with an ally in front of it | It can be intercepted. |
+| Two units in the row in front each half-cover the target | The left one, as the player sees it, rolls to intercept first. |
+| A skill hits the nearest enemy and two are equally near | The leftmost one is hit. |
 | A reaction's hit is aimed at a unit with a defender in front of it | The defender does not intercept: reaction hits go directly to their target. |
 | A unit is Poisoned | It takes 1 damage at the start of each of its next 5 turns, 5 in total. |
 | A Frozen unit's turn arrives | The turn is skipped and Frozen ends. |

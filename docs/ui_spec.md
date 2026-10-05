@@ -24,7 +24,7 @@
 | State | Established behavior | Still open |
 |---|---|---|
 | Reviewing battlefield | Timeline and unit state visible; unit inspection available. | Input gestures, pause/time behavior, inspection modality. |
-| Active unit awaiting action | All skills shown; unavailable actions explain why. | Reposition control, keyboard/touch bindings, layout for 7?9 skills and overflow beyond that in testing. |
+| Active unit awaiting action | All skills shown, plus the basic actions Move and Skip Turn (game_system.md §6.4); unavailable actions explain why. Move highlights the gaps the unit can land in. | Keyboard/touch bindings, layout for 7?9 skills and overflow beyond that in testing. |
 | Skill selected | Show legal targets, affected units, and timing preview. | Cancel/back behavior, targetless skills, multi-mode skills. |
 | Target preview | Expose relevant range/protection and foreseeable outcomes. | Hover versus touch preview/commit semantics, uncertain/hidden outcomes. |
 | Resolving | Automatic effect/reaction processing; no enemy-turn decision popups. | Input locking, animation speed/skip, inspection during resolution. |
