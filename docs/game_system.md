@@ -359,6 +359,10 @@ Damage is sampled **uniformly within the skill's damage range**. Each value is e
 
 **Rolls across targets.** There is no global rule: each skill states whether its targets share one roll (an explosion rolls once) or roll independently (each hit of a meteor shower rolls separately).
 
+**Healing scaling (adopted 2026-10-06).** Healing works like damage: a hidden coefficient range times the user's Power, rolled uniformly as a whole number, rounded down, minimum 1. A skill may define its healing differently, and that exception must be part of its definition. Healing is capped at maximum HP (section 10.3).
+
+**Several shields on one unit.** Deferred: decided when all skills are revisited after AI-versus-AI testing.
+
 Interception is defined in section 8.2. Target previews should show the resulting damage range against the selected target wherever determinable.
 
 ### 5.3 Hit reliability
@@ -443,6 +447,8 @@ The UI shows multiple upcoming turns and previews where the acting unit's next t
 - **Skipped turn.** A skipped turn costs as much as a Delay 5 skill: Wait = 5 + (11 − Speed).
 
 - **Delay bounds.** Effects that add or remove Delay never take a skill outside 1–10: after all modifiers, Delay is clamped to 1–10.
+- **Overshoot (adopted 2026-10-06).** If Pull Forward removes more time than remains, the turn arrives now and the extra is lost; it does not shorten a later Wait. Among turns due at the same time, the normal tie and same-time rules apply.
+- **When the next Wait starts (adopted 2026-10-06).** The acting unit's next Wait is set when its skill is used, before the skill's effects. Pushes, pulls, Haste or Slow that reach the user during its own action (for example from a counter) apply on top of it.
 
 Stop was removed from the timeline effects: its role is covered by Push Back and by statuses that skip turns (Frozen). Turn Now (immediately completing a unit's Wait) was removed on 2026-10-05 because no skill uses it; Pull Forward covers the role.
 
@@ -484,6 +490,16 @@ Skills define a fixed order for their effects. **Check KO after each event.** Mo
 A skill may declare a **simultaneous event block**. Apply the whole block together, check its resulting KO state, then collect and process the resulting reactions. Internal slot iteration must not change who receives effects intended to be simultaneous.
 
 Each skill determines whether it continues or stops when its user becomes KO during resolution. Each hit of a multi-hit skill is an event with its own KO check; the skill defines whether remaining hits expire, retarget, or follow another explicit rule.
+
+**Order for using a skill (adopted 2026-10-06):**
+
+1. Check that the skill is usable and the target legal.
+2. Pay the Momentum cost (section 6.7).
+3. Set the user's next Wait (section 6.1).
+4. For each event in the skill's order (or each simultaneous block): apply it, check KO, apply its Momentum shift, resolve its reactions (section 6.6), then check victory (section 12.3).
+5. The skill ends.
+
+**Targets that become illegal mid-skill.** Whether later hits of a skill continue to a target that has become illegal (for example pushed out of range by a counter) depends on the targeting type. Each targeting tag states this in its definition (section 4.7); the per-tag rules are still open.
 
 ### 6.6 Reaction chains
 
@@ -566,7 +582,7 @@ Overlap fraction = max(0, 1 - abs(centerA - centerB) / 2)
 
 A three-card row has centers `-2, 0, +2`; a two-card row has `-1, +1`, producing half-overlaps. Against a one-card row centered at `0`, only the middle card of the three-card row fully overlaps. This expresses the existing formation rules, not a new visible grid.
 
-The order of units within a row matters for adjacency, certain area attacks, positional abilities, and other effects. Internally, the game tracks ordered positions and their derived alignment. Row distance and horizontal alignment remain separate concepts. References elsewhere to a slot mean an occupied ordered position or capacity, not a permanently numbered visible cell; future position-bound effects must define how they interact with row recentering.
+The order of units within a row matters for adjacency, certain area attacks, positional abilities, and other effects. Internally, the game tracks ordered positions and their derived alignment. Row distance and horizontal alignment remain separate concepts. References elsewhere to a slot mean an occupied ordered position or capacity, not a permanently numbered visible cell; future position-bound effects must define how they interact with row recentering. **Default (adopted 2026-10-06):** an effect tied to a spot (a trap, a slot effect, a delayed `direct` effect) stays on its coordinate when rows recenter. When it triggers, it affects the unit covering that coordinate; if two units overlap it by 50% each, it affects **both** (as for `direct`, section 10.1).
 
 There is no general facing, rotation, or rear-attack subsystem. A backstab or similar behavior must be an explicit skill effect.
 
@@ -952,6 +968,7 @@ Boss concepts include pushing or pulling units, disrupting a formation, and mani
 - **Enemy side.** An enemy side has six original members by default. An encounter may use a different number, and the defeat rule then uses that side's own original members.
 - **Enemy behavior.** Enemies use the same search-based AI as AI-versus-AI testing (section 2.5). Difficulty changes how deep it searches or how often it picks a weaker action.
 - **Difficulty.** It is set through the enemy roster and formation. There are no hidden stat multipliers.
+- **Encounter exceptions (adopted 2026-10-06).** None for now. Encounters differ only in roster, formation and team size. Any other exception must be written into that encounter's definition and approved.
 
 ## 13. Card interface and combat presentation
 
@@ -1169,7 +1186,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Timeline | None open. Delay bounds (clamped to 1–10) are adopted and Turn Now was removed (section 6.1). Initial progress, ties, Haste/Slow, Reset, skipped turns and same-time order are adopted (section 6.1). Speed 1–10 (10 fastest), skill Delay 1–10 (1 quickest), and Wait = Delay + 11 − Speed are adopted (section 6.1). |
 | Momentum | None open. Non-damaging actions, payment timing, refunds and simultaneous shifts are adopted (section 6.7). Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
 | Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6–8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
-| Damage | Multiple shields on one unit (waiting for concrete examples). Roll, shield, defense, final reduction order, defense bounds (0–75%, additive), penetration, and fixed damage are adopted (section 5.2). Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
+| Damage | Multiple shields on one unit (deferred to the skill revisit after AI-versus-AI testing). Healing scaling is adopted (section 5.2). Roll, shield, defense, final reduction order, defense bounds (0–75%, additive), penetration, and fixed damage are adopted (section 5.2). Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
 | Defense | Eligible attacks for other defenses and precise interaction with damage events. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, intercepted non-damaging effects, left-to-right defender order and the nearest-target tie rule are adopted (sections 8.2 and 8.5). |
 | Reactions | None open. Propagation, priority levels, tie-breaks, timing and KO'd owners are adopted (section 6.6). There is deliberately no chain limit or recursion safeguard for now: AI-versus-AI testing must detect endless chains. |
 | Range | Per-skill ranges. Opposing and same-side distance (both skip empty rows), unlimited "any visible", uncapped range bonuses and cast-time checks are adopted (section 7.4). Adjacency, which uses nominal rows, is adopted (section 8.4). |
@@ -1202,13 +1219,13 @@ Use illustrated locations and a four-stage line of fixed-order battles for curre
 
 In addition to section 19, resolve these edge cases:
 
-- Timeline: progress overshoot. Speed and Delay bounds, the skipped-turn cost and the time model are adopted (section 6.1).
+- Timeline: none open. Overshoot, when the next Wait starts, Speed and Delay bounds, the skipped-turn cost and the time model are adopted (section 6.1).
 - Momentum: all adopted (section 6.7).
-- Damage: healing scaling, and multiple shields on one unit. Sampling, rounding, defense bounds, penetration, shield order and shared versus independent rolls are adopted.
-- Resolution: validation, cost payment, effect processing, Momentum updates, reactions, KO, and victory-check order. Reaction priorities, ties and the absence of a chain limit are adopted (section 6.6).
+- Damage: multiple shields on one unit (deferred to the skill revisit). Healing scaling, sampling, rounding, defense bounds, penetration, shield order and shared versus independent rolls are adopted.
+- Resolution: per-targeting-tag rules for targets that become illegal mid-skill. The full order for using a skill is adopted (section 6.5). Reaction priorities, ties and the absence of a chain limit are adopted (section 6.6).
 - Statuses: none open beyond new candidates. Immunities, damage from statuses, clocks, tick timing, reapplication, cleansing, source removal and shared HP are adopted (sections 10.4 and 10.5).
-- Formation: whether anchored effects follow occupants or coordinates when rows recenter. Cover eligibility, defender order, Move, swaps and failed movement are adopted (sections 8.2 and 9.1).
-- Battle boundaries: encounter exceptions. Persistent consequences (none), simultaneous wipes (draw), stalemates, surrender and victory timing are adopted (section 12.3). Full starting HP, neutral-zero Momentum, and cleared temporary combat states are selected.
+- Formation: none open. Spot-bound effects stay on their coordinate (section 7.3). Cover eligibility, defender order, Move, swaps and failed movement are adopted (sections 8.2 and 9.1).
+- Battle boundaries: none open. Encounter exceptions (none for now), persistent consequences (none), simultaneous wipes (draw), stalemates, surrender and victory timing are adopted (section 12.3). Full starting HP, neutral-zero Momentum, and cleared temporary combat states are selected.
 
 ### 20.3 Complete content definitions
 
