@@ -46,7 +46,7 @@ These are specification categories, not a mandated engine state-machine implemen
   - The Momentum meter is a vertical bar at the right edge, about 70% of the board's height, with the player's end at the bottom.
   - The timeline is a vertical list on the left, the same height as the Momentum bar (about 70% of the board's height), showing the next 8 entries from top to bottom; the rest are reached by scrolling it. Each entry shows a portrait, the time until the turn, the name and a side color; auto events are darker and show their owner.
   - A summon uses the same compact card with a summon marker; hovering it highlights its summoner.
-  - Skill buttons show an icon and short name, plus the skill's Delay and Momentum cost as small numbers.
+  - Skills sit in an **MMO-style action bar** (adopted 2026-10-06; a Hearthstone-like hand of cards was compared and not chosen): a framed bar of square icon slots with the skill's name below, a key number (1–9) in the corner, Delay in the bottom corner and the Momentum cost in a gold gem. Move and Skip Turn are round slots set apart at the end of the same frame.
   - A compact card shows up to four status icons, then a +N badge; the inspection panel lists all of them.
   - In the inspection panel and on skill buttons, hovering or tapping a keyword (Poison, `projectile`, Delay) shows a one-line explanation.
   - Damage, healing and absorbed damage appear as short floating numbers, colored and with an icon.
@@ -80,7 +80,7 @@ These are specification categories, not a mandated engine state-machine implemen
 
 Specify target screen sizes and minimum text/touch dimensions, distinction between cosmetic and gameplay borders, color-independent status cues, action/target selection appearance, damage/heal/status/KO feedback, reduced-motion behavior, and audio equivalents if selected.
 
-Produce annotated layouts before declaring UI specification complete. Claude builds them as clickable HTML mockups (battle screen, team editor, campaign map) for the owner to review; all three were reviewed on 2026-10-06 and their layouts are adopted above. **Visual direction (2026-10-06):** a **night fairytale** look: screens sit on an illustrated fairytale background (night sky, moon, castle, hills, fireflies), with deep plum panels, cream text and gold highlights. A lighter daytime storybook version was tried and rejected. The skill bar's form (a hand of cards or an action bar with icons) is being compared in the battle mockup. Existing creature images and contact sheets are art references, not approved finished card layouts.
+Produce annotated layouts before declaring UI specification complete. Claude builds them as clickable HTML mockups (battle screen, team editor, campaign map) for the owner to review; all three were reviewed on 2026-10-06 and their layouts are adopted above. **Visual direction (2026-10-06):** a **night fairytale** look: screens sit on an illustrated fairytale background (night sky, moon, castle, hills, fireflies), with deep plum panels, cream text and gold highlights. A lighter daytime storybook version was tried and rejected. Existing creature images and contact sheets are art references, not approved finished card layouts.
 
 ## Interaction checks
 
