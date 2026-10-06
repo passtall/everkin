@@ -37,6 +37,13 @@ Adopted 2026-10-06.
 - **Damaged saves.** The game writes to a temporary file and then swaps it in, and keeps the previous save as a backup that loads automatically if the newest one is damaged.
 - **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change. Otherwise it restarts from its setup.
 
+### 1.5 Story presentation
+
+Adopted 2026-10-06.
+
+- **Format.** No story text for now. Campaign locations show their illustrations only; story scenes may come with the full campaign design.
+- **Player role.** Decided together with the story later (game_system.md §15).
+
 ## 2. Technical foundation
 
 Godot 4.7 with .NET is installed and the repository contains a Godot project. No code exists yet. Background and the earlier proposal are in game_system.md §16.

@@ -60,17 +60,21 @@ The immediate playable experience is a team-building and combat game. Combat mus
 
 **Design intent:** discover or unlock recruits, gain access to new combinations, improve builds, and face encounters that reward different strategies.
 
-Players explore a **story campaign presented as illustrated locations with selectable paths and events**. For now, use a **linear sequence of four stages**; detailed campaign content and structure will be specified later. The four-stage sequence is the current testing scope, not a final campaign-length commitment.
+Players explore a **story campaign presented as illustrated locations**. For now, use a **linear sequence of four stages**. Each stage has **about five battles plus a boss battle** that ends the stage (about 24 battles in total), played in a fixed order; the location map is illustration, not a route choice. Detailed campaign content will be specified later. The four-stage sequence is the current testing scope, not a final campaign-length commitment.
 
-Units unlock through **guaranteed encounter rewards** for now. Exact encounter-to-unit assignments remain open. A won encounter can be replayed, but its unit reward is given only once. A mixture of acquisition methods may be considered later, but capture or other recruitment mechanics are not currently required.
+Units unlock through **guaranteed encounter rewards** for now. Each won encounter gives **one fixed creature**, shown on the map before the battle, and that creature is **one of the defeated enemy team**. Exact encounter-to-unit assignments remain open. A won encounter can be replayed, but its unit reward is given only once. A mixture of acquisition methods may be considered later, but capture or other recruitment mechanics are not currently required.
 
 **Collection.** A player owns each creature at most once, and a player's team uses each creature at most once. Enemy teams may repeat creatures.
 
-**Start of play.** A new player begins with the **campaign tutorial**, which unlocks the first full team of six. All other modes unlock once the tutorial is complete.
+**Start of play.** A new player begins with the **campaign tutorial**: three short battles. The player starts with two creatures and gains more after each win until the team has six. All other modes unlock once the tutorial is complete. Which creatures the tutorial gives is open.
 
-**Campaign rules (adopted 2026-10-06).** Losing a campaign battle has no penalty: the player can retry the encounter at once or change the team first. Campaign locations hold battles only for now; story events and other encounters come with the full campaign design.
+**Campaign rules (adopted 2026-10-06).** Losing a campaign battle has no penalty: the player can retry the encounter at once or change the team first. Campaign locations hold battles only for now; story events and other encounters come with the full campaign design. Encounters never restrict the player's team for now. The campaign cannot be restarted; finished encounters can be replayed instead.
 
-After completing the story, at least one **random-battle mode** provides continued play. The player picks a difficulty and the enemy team is drawn at random. Random battles give **no rewards**. Where post-story unit unlocks come from is open.
+**Levels.** Every unit is level 20 in every mode until skill trees exist. Levelling is decided together with the trees (section 4.1).
+
+After completing the story, at least one **random-battle mode** provides continued play. The player picks a difficulty and the enemy team is drawn at random. Random battles give **no rewards**.
+
+**After the story.** Fixed, harder **challenge encounters** appear on the map; each unlocks one more creature. After the story, and in online play, the player also earns **coins**. Coins unlock creatures that are not campaign rewards. Coins are only earned, never bought (production.md §1.2). Which post-story activities pay coins, how many, and creature prices are open.
 
 There is no established collectible-card business model. The use of cards does not itself imply booster packs, paid randomized acquisition, trading, or duplicate conversion.
 
@@ -148,7 +152,7 @@ A later system of visible natural variation or special traits remains a possibil
 
 Humans are intended to feel like individuals. Random names, stat variation, and assigned combinations of skill trees were specifically discussed.
 
-**Open, with a preference expressed toward static content:** humans may be generated or rolled during content creation and then stored as fixed recruits, rather than generated repeatedly at runtime. This would retain individual identities while keeping recruitment and balance controllable.
+**Adopted (2026-10-06):** human recruits are **fixed individuals** with names and their own class mix, made (possibly rolled) during content creation and stored as fixed content. They are never generated at runtime. This keeps individual identities while keeping recruitment and balance controllable.
 
 Related proposals to retain for evaluation:
 
@@ -1067,7 +1071,7 @@ The browser exposes generated-image galleries, but the individual images have no
 
 ## 15. World and narrative
 
-**Status: story campaign required; narrative details open.** Players explore the campaign and unlock units, then continue unlocking units through at least one post-story random-battle mode.
+**Status: story campaign required; narrative details open.** Players explore the campaign and unlock units, then continue with post-story challenge encounters and coin unlocks (section 2.2). Story presentation and the player's role are tracked in [production.md](production.md).
 
 The narrative should explain why the player encounters different beings, why they join a team, and why new combinations matter. A lightweight central conflict with local stories was proposed, with an explorer, wanderer, researcher, mercenary, or guardian-like player role rather than a required chosen-one premise.
 
@@ -1170,10 +1174,10 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Summons | Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
 | Builds | Class/skill designs and assignments, conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
 | Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Tiers, stat ranges, the attack library rule, class counts, no natural traits and text IDs are adopted (section 3.7). |
-| Recruitment | Guaranteed encounter-to-unit reward assignments, post-story unlock source, human generation, individual persistence, the tutorial's units. One copy per creature, rewards given once, and the tutorial unlocking the first team are adopted (section 2.2). Other acquisition methods are not currently required. |
+| Recruitment | Guaranteed encounter-to-unit reward assignments, the tutorial's creatures, coin sources and prices, individual persistence. One copy per creature, one fixed reward per encounter from the defeated team, rewards given once, the three-battle tutorial, post-story challenge encounters, coins, and fixed human recruits are adopted (sections 2.2 and 3.4). Other acquisition methods are not currently required. |
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
-| Product structure | Four-stage illustrated campaign details, later full campaign design, and final content. Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
+| Product structure | Campaign content (locations, encounters, boss rosters), later full campaign design, and final content. Stage size (about five battles plus a boss), fixed battle order, no team restrictions and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Final card styling, mobile readability, artwork framing, gestures, audio, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
 | Delivery | Landscape layout sizes, technical validation, cloud saves, final name. Platforms, stores, business model, languages, accessibility, crash reports, save files and the technical foundation are adopted ([production.md](production.md)). The battle screen arrangement and interactions are adopted (section 13.3, ui_spec.md). |
 
@@ -1187,7 +1191,7 @@ Required scope includes AI-versus-AI development testing, single-player AI battl
 
 For each required mode, define the full flow from launching the game through party setup, battle, results, and replay or progression. Specify AI behavior/difficulty and local handover rules. Define future online requirements and interface boundaries without implementing matchmaking, transport, or services before greenlight.
 
-Use illustrated locations with selectable paths/events and a four-stage line for current campaign testing, with guaranteed encounter unit rewards. Define the tutorial's units, specific rewards and the completion flow; the tutorial start, duplicates, loss consequences, replays and saved teams are adopted (sections 2.2 and 13.2). Respec is free outside battle. Full campaign design and normal progression details remain for later; test units start at level 20, and skills precede trees and point allocation. Unselected systems should be explicitly excluded rather than left ambiguous.
+Use illustrated locations and a four-stage line of fixed-order battles for current campaign testing, with guaranteed encounter unit rewards. Define the tutorial's creatures, specific rewards, coin sources and prices, and the completion flow; the tutorial, stage size, duplicates, loss consequences, replays, post-story challenge encounters, coins and saved teams are adopted (sections 2.2 and 13.2). Respec is free outside battle. Full campaign design and normal progression details remain for later; test units start at level 20, and skills precede trees and point allocation. Unselected systems should be explicitly excluded rather than left ambiguous.
 
 ### 20.2 Exact combat details
 
