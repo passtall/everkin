@@ -44,6 +44,7 @@ These are specification categories, not a mandated engine state-machine implemen
   - Cards keep full size up to the width a row can fit; beyond that every card in that row shrinks evenly.
   - The Momentum meter is a vertical bar at the right edge spanning both halves, with the player's end at the bottom.
   - The timeline shows the next 12 entries; the rest are reached by scrolling it.
+  - A summon uses the same compact card with a summon marker; hovering it highlights its summoner.
   - Still open: exact card dimensions, safe areas, skill labels, status overflow and tooltips.
 - Card front/back inspection: all class names, long skill text, scrolling, modified values, source of modifiers, opponent visibility.
 - Main menu, settings, collection, exploratory story campaign, unit-unlock presentation, free battle against the AI, and at least one post-story random-battle mode (no rewards). A new player starts with the campaign tutorial; the other menu entries unlock when it is complete (game_system.md §2.2). The battle viewer appears only in development builds.

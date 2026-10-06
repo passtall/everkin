@@ -827,7 +827,7 @@ Each status has its own application chance, duration, triggering conditions, and
 - **Status chances.** A skill's stated status chance is the real chance. Defense does not lower it.
 - **Reapplication with a different duration.** The new duration always replaces the old one, even if it is shorter.
 - **Skipped turns.** Durations counted in the unit's turns count every turn that arrives, including skipped ones (Skip Turn, Frozen).
-- **Immunities.** Only skills and statuses grant immunities (for example Purify's immunity until the unit's next turn). Creatures have no natural immunities for now (section 3.7).
+- **Immunities.** Only skills and statuses grant immunities (for example Purify's immunity until the unit's next turn). Creatures have no natural immunities for now (section 3.7). A summon's own definition may list immunities, since it comes from a skill (section 11.2).
 - **New statuses.** A status joins the table below only when a skill needs it.
 
 **The named statuses:**
@@ -850,18 +850,19 @@ Additional welcomed design candidates (not decided) are Rooted/Immobilized, Disa
 
 ## 11. Summoning
 
-**Status: in the first-release scope (adopted 2026-10-06); the subsystem below is still a proposal, with one established loss-condition rule.** Summons never count as original party members for avoiding defeat. The dedicated discussion explored a model but did not settle its global limits or approve every detail. The Hunter's traps (see [classes_and_skills.md](classes_and_skills.md)) are the first adopted summons: stationary constructs that take a slot, have HP, and can be targeted and intercept like any unit.
+**Status: in the first-release scope. Kinds, placement, cost, limits, Momentum and status handling are adopted (2026-10-06); section 11.2's first list remains background.** Summons never count as original party members for avoiding defeat. The dedicated discussion explored a model but did not settle its global limits or approve every detail. The Hunter's traps (see [classes_and_skills.md](classes_and_skills.md)) are the first adopted summons: stationary constructs that take a slot, have HP, and can be targeted and intercept like any unit.
 
-### 11.1 Proposed summon categories
+### 11.1 Summon kinds (adopted 2026-10-06)
 
-| Category | Battlefield behavior |
+| Kind | Battlefield behavior |
 |---|---|
 | Full unit | Occupies space, receives turns, uses skills, and can interact with ordinary unit systems. |
-| Temporary unit | Behaves as a unit but expires after a duration or condition. |
+| Temporary unit | Behaves as a unit but expires after a duration or condition. When it expires it disappears like a KO'd summon and frees its slot, but it does not count as a KO, so KO-triggered effects do not fire. |
 | Stationary construct | Occupies space and produces passive or triggered effects without ordinary turns. Has HP, can be targeted, and can intercept like any unit. |
-| Assist | Appears as part of a skill, performs its effect, and disappears; no persistent battlefield entity is required. |
 
-Examples discussed include skeletons, thorn spirits, wolf spirits, healing totems, ballistae, reactive mushrooms, and a briefly appearing raven swarm. These are concept examples, not committed content.
+There is **no assist kind**. A creature that appears only inside one skill (for example a raven swarm that strikes and leaves) is just that skill's effect and its animation. It takes no slot and is not a unit, and it follows the skill's tags: a swarm tagged `projectile` can be intercepted like any projectile (section 8.2).
+
+Examples discussed include skeletons, thorn spirits, wolf spirits, healing totems, ballistae and reactive mushrooms. These are concept examples, not committed content.
 
 ### 11.2 Proposed operating rules
 
@@ -878,6 +879,12 @@ Possible relationships include lasting until death, lasting for a number of turn
 Summoning before battle is **not adopted**: summoning happens only through skills in battle.
 
 **Adopted summon rules:**
+
+- **Placement (2026-10-06).** Each summoning skill states where its summon may appear. A skill may allow free placement: the player picks any gap in the allowed rows, including between units, as when a unit moves (section 9.1), and the row recenters.
+- **Cost.** Summoning costs only what the skill states, like any skill: its Delay and any Momentum cost. There is no summon resource and no HP cost. As a design guideline, summoning skills are slow (long Delay).
+- **Per-skill limits.** By default only the side cap applies. A skill may still state its own limit.
+- **Momentum.** Hits by summons and hits on summons move Momentum exactly like any unit's hits (section 6.7).
+- **Statuses.** Each summon's definition states in detail which statuses affect it. For example, a ballista may be immune to Poison but can burn. How statuses that tick or count on a unit's own turns work on a summon without turns is defined with that summon.
 
 - **Cap.** The per-side limit is the row capacity, 6 per row and **18 in total**. It may be revisited after readability testing. A summoning skill is unavailable when the side is at its cap or has no free slot, and the UI states why.
 - **Placement.** By default the player chooses the insertion point within the rows the skill allows. A skill may fix the position.
@@ -1169,7 +1176,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Movement | None open. Move (any row, Delay 5, chosen gap, no swaps), movement inside skills and forced repositioning are adopted (sections 9.1 and 9.5). Skip Turn is always available (section 6.4). |
 | Statuses | Further candidates, added only when a skill needs them. The framework (clocks, ticking, reapplication, cleansing, source, limit, damage from statuses, chances, skipped turns, immunities) and Blind, Poison, Bleeding, Silenced, Burning, Chilled and Frozen are adopted (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
 | KO and revival | Per-skill revival HP and recovery cost, and what a draw means in each mode. Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
-| Summons | In the first release (section 20.1); the full summon rules in section 11 still need adoption. Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
+| Summons | Per-summon status rules and individual summon content. Kinds, placement, cost, limits, Momentum and expiry are adopted (section 11). In the first release (section 20.1). Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
 | Builds | Class/skill designs and assignments, conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
 | Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Tiers, stat ranges, the attack library rule, class counts, no natural traits and text IDs are adopted (section 3.7). |
 | Recruitment | Guaranteed encounter-to-unit reward assignments, the tutorial's creatures, coin sources and prices, individual persistence. One copy per creature, one fixed reward per encounter from the defeated team, rewards given once, the three-battle tutorial, post-story challenge encounters, coins, and fixed human recruits are adopted (sections 2.2 and 3.4). Other acquisition methods are not currently required. |
