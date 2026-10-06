@@ -44,6 +44,24 @@ Adopted 2026-10-06.
 - **Format.** No story text for now. Campaign locations show their illustrations only; story scenes may come with the full campaign design.
 - **Player role.** Decided together with the story later (game_system.md §15).
 
+### 1.6 Art, audio and settings
+
+Adopted 2026-10-06.
+
+- **Art style.** The current faceted creature art is the final style. It is cleaned up and made consistent, but **the original files are never changed**: cleanup works on copies.
+- **Art files.** Cleaned copies use one canvas of 1024 × 1536 (2:3) with a transparent background, and every creature stands on a shared ground line.
+- **Creature size.** Cards do not show creature size: every creature fills its frame, with no size scaling or size icon. Size contrast was a leftover from the 3D direction (game_system.md §14.3).
+- **Card backgrounds.** A soft background behind the creature, tinted by its home biome. A few background designs are made and reused.
+- **Battle backgrounds.** An illustrated, dimmed background per campaign stage or biome, from designed backgrounds.
+- **Idle motion.** None. Cards only react to hits and effects.
+- **Music.** Quiet ambient sound only; no melodic soundtrack.
+- **Sound effects.** One set per tag and effect (melee, projectile, magic, heal, status, KO). No creature cries.
+- **Audio source.** AI-generated, with licensing checked for each tool used.
+- **Vibration.** Light vibration on hits and KOs on phones, with a setting to turn it off.
+- **Settings menu.** Music and sound volume, reduced motion, text size, vibration, language, crash reports, and key and controller bindings on Windows. No battle speed setting in the menu; speed is chosen in battle.
+- **Performance.** No hard numbers: the game must feel smooth. As orientation, about 30 frames per second on the test phone and 60 on Windows, and the AI deciding within about 2 seconds.
+- **Download size.** The mobile download stays under 200 MB, with art compressed for phones.
+
 ## 2. Technical foundation
 
 Godot 4.7 with .NET is installed and the repository contains a Godot project. No code exists yet. Background and the earlier proposal are in game_system.md §16.
@@ -88,7 +106,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Input.** Godot input actions: mouse, touch and keyboard map to the same commands (select, confirm, inspect, cancel).
 - **Animation.** Battle events play one after another from a queue, each with its own duration, with a speed setting (1x, 2x, instant).
 - **Resolution.** The UI is designed for 1920 × 1080 and scaled down for phones.
-- **Creature art.** Art files are renamed to the creature IDs, with separate front and rear files (for example `fox_front` and `fox_rear`), and loaded by name.
+- **Creature art.** The game loads art by creature ID, with separate front and rear files (for example `fox_front` and `fox_rear`). The original files in `images/kin` are never changed; cleaned and renamed copies are produced from them (section 1.6).
 - **Text.** All UI and content text goes through translation keys from day one. English only at first.
 - **Battle viewer controls.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup to start from.
 
@@ -97,4 +115,4 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - Final commercial name (game_system.md §18).
 - Cloud saves, and when they come.
 - Prices, store pages, and when a Steam page goes up.
-- Performance targets, sound and music, and settings beyond the ones above.
+- Which background designs to make, and the sound effect list.

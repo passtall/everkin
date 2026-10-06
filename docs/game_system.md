@@ -187,7 +187,7 @@ The exact creature roster lives in [creatures.md](creatures.md): size tiers (cri
 - **Classes** are hand-assigned per creature to fit its concept: humans usually three, animals one or two.
 - **No natural traits** for now. A creature's identity comes from its stats, classes and attack.
 - **Humans** are generated once during content creation and stored as fixed recruits (section 3.4), each with a name, its own class combination and small stat differences within the medium tier.
-- **IDs** are stable text IDs (such as `fox` or `stone_turtle`). Art files are renamed to match them, with separate front and rear files (section 16.1).
+- **IDs** are stable text IDs (such as `fox` or `stone_turtle`). The game loads art by ID, with separate front and rear files, from cleaned copies; the original files are never changed (production.md §1.6).
 
 ## 4. Classes and skill-tree progression
 
@@ -1037,9 +1037,7 @@ The concept-art requests for humans representing different classes explore varie
 
 ### 14.3 Size contrast
 
-The collection should include a range from mice to mountain-like beings. The selected intent is to preserve strong size contrast within readable limits.
-
-In the card format, artwork framing and visual scale cues must communicate that contrast while keeping each card usable. Exact framing standards are open. Visual size does not change the standard card width or normal one-unit row-capacity rule; possible large bosses remain deferred.
+Not used. Cards do not communicate creature size: every creature fills its frame (production.md §1.6). Size contrast was part of the former 3D direction. Size tiers in creatures.md only set stat blocks.
 
 ### 14.4 Color and detail
 
@@ -1059,7 +1057,7 @@ These are a proposed palette and setting library, not a confirmed launch-region 
 
 Use clean panels, modest ornament, generous spacing, bold icons, legible text, and comfortable touch targets. Effects may have recognizable elemental identities, but should not obscure the board or create constant screen-filling spectacle.
 
-No final sound or music direction has been defined.
+Art files, backgrounds, sound, music and settings are adopted in [production.md](production.md), section 1.6.
 
 ### 14.7 Existing concept exploration
 
@@ -1178,7 +1176,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Campaign content (locations, encounters, boss rosters), later full campaign design, and final content. Stage size (about five battles plus a boss), fixed battle order, no team restrictions and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
-| Presentation | Final card styling, mobile readability, artwork framing, gestures, audio, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
+| Presentation | Final card styling, mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
 | Delivery | Landscape layout sizes, technical validation, cloud saves, final name. Platforms, stores, business model, languages, accessibility, crash reports, save files and the technical foundation are adopted ([production.md](production.md)). The battle screen arrangement and interactions are adopted (section 13.3, ui_spec.md). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
