@@ -41,10 +41,10 @@ These are specification categories, not a mandated engine state-machine implemen
   - The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle.
   - Board cards are compact: front artwork, HP bar, statuses and KO. Name, classes, Speed, Power and Defense appear on hover and in the inspection panel.
   - Every row uses the same card size. Rows have no labels.
-  - **Phones:** only one side of the battle shows at a time, with bigger cards and a button to switch sides (adopted 2026-10-06). Desktop and tablets show both sides. Picking a skill that targets the enemy switches to the enemy side by itself, and the view returns to the player's side once the action has resolved. Every side switch is an animated transition (a short slide; a cut with reduced motion).
+  - **Phones:** only one side of the battle shows at a time, with bigger cards and a button to switch sides (adopted 2026-10-06). Desktop and tablets show both sides. Picking a skill that targets the enemy switches to the enemy side by itself, and the view returns to the player's side once the action has resolved. Every side switch is a smooth flyover: the view scrolls across the battle line to the other side (an instant cut with reduced motion).
   - Cards keep full size up to the width a row can fit; beyond that every card in that row shrinks evenly.
   - The Momentum meter is a vertical bar at the right edge, about 70% of the board's height, with the player's end at the bottom.
-  - The timeline is a vertical list on the left showing the next 8 entries from top to bottom; the rest are reached by scrolling it. Each entry shows a portrait, the time until the turn, the name and a side color; auto events are darker and show their owner.
+  - The timeline is a vertical list on the left, the same height as the Momentum bar (about 70% of the board's height), showing the next 8 entries from top to bottom; the rest are reached by scrolling it. Each entry shows a portrait, the time until the turn, the name and a side color; auto events are darker and show their owner.
   - A summon uses the same compact card with a summon marker; hovering it highlights its summoner.
   - Skill buttons show an icon and short name, plus the skill's Delay and Momentum cost as small numbers.
   - A compact card shows up to four status icons, then a +N badge; the inspection panel lists all of them.
@@ -80,7 +80,7 @@ These are specification categories, not a mandated engine state-machine implemen
 
 Specify target screen sizes and minimum text/touch dimensions, distinction between cosmetic and gameplay borders, color-independent status cues, action/target selection appearance, damage/heal/status/KO feedback, reduced-motion behavior, and audio equivalents if selected.
 
-Produce annotated layouts before declaring UI specification complete. Claude builds them as clickable HTML mockups (battle screen, team editor, campaign map) for the owner to review; all three were reviewed on 2026-10-06 and their layouts are adopted above. **Visual direction (2026-10-06):** the coloring is reworked toward a **fairytale** look: screens sit on an illustrated fairytale background, and panels, buttons and colors are styled to fit it. Existing creature images and contact sheets are art references, not approved finished card layouts.
+Produce annotated layouts before declaring UI specification complete. Claude builds them as clickable HTML mockups (battle screen, team editor, campaign map) for the owner to review; all three were reviewed on 2026-10-06 and their layouts are adopted above. **Visual direction (2026-10-06):** a **daytime storybook fairytale** look, light and colorful (a darker night version was reviewed and rejected): screens sit on an illustrated fairytale background, and panels (parchment), buttons and colors are styled to fit it. Existing creature images and contact sheets are art references, not approved finished card layouts.
 
 ## Interaction checks
 

@@ -993,7 +993,7 @@ The interface has a clear information hierarchy:
 | Unit cards | Current unit state, stats, statuses, and KO. |
 | Formation | Positional relationships, adjacency, and covering. |
 | Bottom horizontal skill bar | The active unit's immediately available actions, similar to an MMORPG skill interface. |
-| Left vertical timeline | The shared temporal state of combat: the next 8 entries from top to bottom, scrollable for more. |
+| Left vertical timeline | The shared temporal state of combat: the next 8 entries from top to bottom, scrollable for more, matching the Momentum bar's height. |
 | Right edge | The vertical Momentum meter, about 70% of the board's height, with the player's end at the bottom. |
 
 The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle. All rows use the same card size. Interaction details are in [ui_spec.md](ui_spec.md).
