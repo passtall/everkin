@@ -20,9 +20,10 @@ Adopted 2026-10-06.
 
 ### 1.2 Business model
 
-- **Price.** One-time purchase on every platform. No in-app purchases and no ads, ever. No booster packs, paid random draws, trading or duplicate conversion (game_system.md §2.2).
+- **Price.** One-time purchase on every platform. On mobile this is a free download with the demo content and one purchase that unlocks the full game. No ads, ever. No booster packs, paid random draws, trading or duplicate conversion (game_system.md §2.2).
+- **Coins.** Coins are earned in play (game_system.md §2.2) and **can also be bought**. They unlock specific creatures, never random ones. Coin packs and prices are open.
 - **Cosmetic frames.** Earned by playing, through campaign milestones and achievements. Never sold.
-- **Demo.** A free demo with the tutorial and the first campaign stage. Progress carries over on purchase.
+- **Demo.** A free demo with the tutorial and the first campaign stage. Progress carries over on purchase. On mobile the demo is the free download itself; on Steam it is a separate demo.
 
 ### 1.3 Languages, accessibility and data
 
@@ -61,6 +62,11 @@ Adopted 2026-10-06.
 - **Settings menu.** Music and sound volume, reduced motion, text size, vibration, language, crash reports, and key and controller bindings on Windows. No battle speed setting in the menu; speed is chosen in battle.
 - **Performance.** No hard numbers: the game must feel smooth. As orientation, about 30 frames per second on the test phone and 60 on Windows, and the AI deciding within about 2 seconds.
 - **Download size.** The mobile download stays under 200 MB, with art compressed for phones.
+- **Art pipeline.** A script in the repository reads `images/kin` and writes the cleaned, ID-named 1024 × 1536 copies to a separate folder. It can be re-run at any time.
+
+### 1.7 Playtesting
+
+- A closed test with friends through TestFlight and Google Play internal testing before release.
 
 ## 2. Technical foundation
 
@@ -110,9 +116,17 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Text.** All UI and content text goes through translation keys from day one. English only at first.
 - **Battle viewer controls.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup to start from.
 
-## 3. Still open
+## 3. Roadmap
+
+Adopted 2026-10-06.
+
+- **Specification first.** The specification is finished completely before implementation starts. How progress is tracked is decided just before implementation.
+- **Order after the AI-versus-AI milestone.** Battle viewer on the real cards, then free battle against the AI, then the tutorial and stage 1, then local two-player, then the rest of the campaign, then post-story content, then release.
+- **Code changes.** Code goes straight to main, like the docs. There are no pull requests.
+
+## 4. Still open
 
 - Final commercial name (game_system.md §18).
 - Cloud saves, and when they come.
-- Prices, store pages, and when a Steam page goes up.
+- Game price, coin packs and prices, store pages, and when a Steam page goes up.
 - Which background designs to make, and the sound effect list.

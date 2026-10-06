@@ -74,7 +74,7 @@ Units unlock through **guaranteed encounter rewards** for now. Each won encounte
 
 After completing the story, at least one **random-battle mode** provides continued play. The player picks a difficulty and the enemy team is drawn at random. Random battles give **no rewards**.
 
-**After the story.** Fixed, harder **challenge encounters** appear on the map; each unlocks one more creature. After the story, and in online play, the player also earns **coins**. Coins unlock creatures that are not campaign rewards. Coins are only earned, never bought (production.md §1.2). Which post-story activities pay coins, how many, and creature prices are open.
+**After the story.** Fixed, harder **challenge encounters** appear on the map; each unlocks one more creature. After the story, and in online play, the player also earns **coins**. Coins unlock creatures that are not campaign rewards. Random-battle wins, challenge encounters and online play pay coins. Each coin creature has its own price. Coins can also be bought (production.md §1.2). Coin amounts and the individual prices are open.
 
 There is no established collectible-card business model. The use of cards does not itself imply booster packs, paid randomized acquisition, trading, or duplicate conversion.
 
@@ -615,7 +615,7 @@ These properties must not collapse into a single occupied/unoccupied rule. In pa
 
 **Current rule:** every normal playable unit uses the standard card width and one unit of row capacity. Large units are not planned as a standard player mechanic.
 
-The underlying system should avoid assumptions that would make larger units impossible later. Bosses or special encounters may eventually use creatures that consume the space or capacity of multiple normal units. This is an architectural allowance, not a current player-facing rule. Multi-row footprints also remain deferred.
+The underlying system should avoid assumptions that would make larger units impossible later. Bosses or special encounters may eventually use creatures that consume the space or capacity of multiple normal units. **Large bosses are in the first-release scope (adopted 2026-10-06)**: their footprint, movement, protection and targeting rules still need specification. Player units stay one slot wide. Multi-row footprints remain deferred.
 
 Unresolved future questions include movement fit, protection across horizontal alignments, targeting a large body, and whether overlapping an area several times deals damage once or repeatedly.
 
@@ -850,7 +850,7 @@ Additional welcomed design candidates (not decided) are Rooted/Immobilized, Disa
 
 ## 11. Summoning
 
-**Status: proposed subsystem, with one established loss-condition rule.** Summons never count as original party members for avoiding defeat. The dedicated discussion explored a model but did not settle its global limits or approve every detail. The Hunter's traps (see [classes_and_skills.md](classes_and_skills.md)) are the first adopted summons: stationary constructs that take a slot, have HP, and can be targeted and intercept like any unit.
+**Status: in the first-release scope (adopted 2026-10-06); the subsystem below is still a proposal, with one established loss-condition rule.** Summons never count as original party members for avoiding defeat. The dedicated discussion explored a model but did not settle its global limits or approve every detail. The Hunter's traps (see [classes_and_skills.md](classes_and_skills.md)) are the first adopted summons: stationary constructs that take a slot, have HP, and can be targeted and intercept like any unit.
 
 ### 11.1 Proposed summon categories
 
@@ -1128,7 +1128,7 @@ The first playable should exercise:
 - Movement, targeting, and a readable form of protection.
 - Card-based presentation and mobile-conscious controls.
 
-The sequence after the AI-versus-AI milestone remains open. Summons, terrain, and multi-slot creatures should not silently enter the first playable simply because they have been explored. Prepare online-facing interfaces, but keep online PvP implementation gated on explicit owner greenlight.
+The order of work after the AI-versus-AI milestone is adopted in [production.md](production.md), section 3. Summons and large multi-slot bosses are in the first release; terrain is not (section 20.1). Prepare online-facing interfaces, but keep online PvP implementation gated on explicit owner greenlight.
 
 ### 17.2 Content counts remain proposals
 
@@ -1138,7 +1138,7 @@ The current class roster is fixed at seven: Hunter, Elementalist, Healer, Warrio
 
 ### 17.3 Deferred or unselected systems
 
-Multi-slot creatures, complex terrain, emergent relationships, genetic variation, and expanded summon archetypes remain deferred or open. The story campaign and post-story random battles are required; their detailed content and mechanics remain open.
+Complex terrain, emergent relationships and genetic variation remain deferred. Summons and large multi-slot bosses are in the first release and still need full specification (sections 7.6, 11 and 12.3). The story campaign and post-story content are required; their detailed content remains open.
 
 Online PvP is planned with interface preparation now, but implementation requires explicit owner greenlight. Its detailed rules and networking specification remain open. Cooperative play, rankings, trading, crafting, an equipment economy and achievements remain unspecified. The business model and saving are adopted in [production.md](production.md).
 
@@ -1169,12 +1169,12 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Movement | None open. Move (any row, Delay 5, chosen gap, no swaps), movement inside skills and forced repositioning are adopted (sections 9.1 and 9.5). Skip Turn is always available (section 6.4). |
 | Statuses | Further candidates, added only when a skill needs them. The framework (clocks, ticking, reapplication, cleansing, source, limit, damage from statuses, chances, skipped turns, immunities) and Blind, Poison, Bleeding, Silenced, Burning, Chilled and Frozen are adopted (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
 | KO and revival | Per-skill revival HP and recovery cost, and what a draw means in each mode. Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
-| Summons | Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
+| Summons | In the first release (section 20.1); the full summon rules in section 11 still need adoption. Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
 | Builds | Class/skill designs and assignments, conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
 | Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Tiers, stat ranges, the attack library rule, class counts, no natural traits and text IDs are adopted (section 3.7). |
 | Recruitment | Guaranteed encounter-to-unit reward assignments, the tutorial's creatures, coin sources and prices, individual persistence. One copy per creature, one fixed reward per encounter from the defeated team, rewards given once, the three-battle tutorial, post-story challenge encounters, coins, and fixed human recruits are adopted (sections 2.2 and 3.4). Other acquisition methods are not currently required. |
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
-| Encounters | Specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
+| Encounters | Large multi-slot boss rules (in scope, section 7.6), specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Campaign content (locations, encounters, boss rosters), later full campaign design, and final content. Stage size (about five battles plus a boss), fixed battle order, no team restrictions and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Final card styling, mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
 | Delivery | Landscape layout sizes, technical validation, cloud saves, final name. Platforms, stores, business model, languages, accessibility, crash reports, save files and the technical foundation are adopted ([production.md](production.md)). The battle screen arrangement and interactions are adopted (section 13.3, ui_spec.md). |
@@ -1185,7 +1185,7 @@ These are intentional gaps in the current design, not permission to inherit equi
 
 ### 20.1 Finished-game scope
 
-Required scope includes AI-versus-AI development testing, single-player AI battles, local two-player, an exploratory story campaign unlocking units, and at least one post-story random-battle mode unlocking further units. Target Windows, Android, and iOS in landscape only. Online PvP interfaces must be prepared, while online implementation remains gated on explicit owner greenlight. Select the complete roster and remaining systems; summons, terrain, and large bosses still need explicit inclusion or exclusion.
+Required scope includes AI-versus-AI development testing, single-player AI battles, local two-player, an exploratory story campaign unlocking units, and at least one post-story random-battle mode unlocking further units. Target Windows, Android, and iOS in landscape only. Online PvP interfaces must be prepared, while online implementation remains gated on explicit owner greenlight. Select the complete roster and remaining systems. **First-release scope (adopted 2026-10-06):** summons are developed fully, large multi-slot bosses are included, and terrain is excluded.
 
 For each required mode, define the full flow from launching the game through party setup, battle, results, and replay or progression. Specify AI behavior/difficulty and local handover rules. Define future online requirements and interface boundaries without implementing matchmaking, transport, or services before greenlight.
 
