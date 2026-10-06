@@ -11,7 +11,7 @@
 | Card backs show rear artwork and every currently usable skill with its actual build modifications. |
 | Front and back share the selected cosmetic frame; gameplay readability takes priority. |
 | Card backs are inspection, not the action menu. Opposing skills must be inspectable. |
-| Keep the horizontal upcoming-turn timeline at the top and the active unit's horizontal skill bar at the bottom. |
+| Keep the upcoming-turn timeline as a vertical list on the left and the active unit's horizontal skill bar at the bottom. |
 | Show valid targets distinctly; invalid targets are visibly unavailable. Preview affected cards and foreseeable timing changes. |
 | Execute target-requiring skills through skill selection then target selection, without redundant confirmations. |
 | Cards stay spatially stable during ordinary attacks; use traveling/targeted VFX and restrained reactions. |
@@ -40,10 +40,11 @@ These are specification categories, not a mandated engine state-machine implemen
 - **Battle screen** (decided 2026-10-06):
   - The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle.
   - Board cards are compact: front artwork, HP bar, statuses and KO. Name, classes, Speed, Power and Defense appear on hover and in the inspection panel.
-  - Every row uses the same card size; depth is shown by spacing and row labels.
+  - Every row uses the same card size. Rows have no labels.
+  - **Phones:** only one side of the battle shows at a time, with bigger cards and a button to switch sides (adopted 2026-10-06). Desktop and tablets show both sides.
   - Cards keep full size up to the width a row can fit; beyond that every card in that row shrinks evenly.
-  - The Momentum meter is a vertical bar at the right edge spanning both halves, with the player's end at the bottom.
-  - The timeline shows the next 12 entries; the rest are reached by scrolling it.
+  - The Momentum meter is a vertical bar at the right edge, about 70% of the board's height, with the player's end at the bottom.
+  - The timeline is a vertical list on the left showing the next 12 entries from top to bottom; the rest are reached by scrolling it.
   - A summon uses the same compact card with a summon marker; hovering it highlights its summoner.
   - Skill buttons show an icon and short name, plus the skill's Delay and Momentum cost as small numbers.
   - A compact card shows up to four status icons, then a +N badge; the inspection panel lists all of them.

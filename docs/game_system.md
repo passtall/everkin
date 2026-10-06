@@ -993,8 +993,8 @@ The interface has a clear information hierarchy:
 | Unit cards | Current unit state, stats, statuses, and KO. |
 | Formation | Positional relationships, adjacency, and covering. |
 | Bottom horizontal skill bar | The active unit's immediately available actions, similar to an MMORPG skill interface. |
-| Top horizontal timeline | The shared temporal state of combat: the next 12 entries, scrollable for more. |
-| Right edge | The vertical Momentum meter, spanning both halves, with the player's end at the bottom. |
+| Left vertical timeline | The shared temporal state of combat: the next 12 entries from top to bottom, scrollable for more. |
+| Right edge | The vertical Momentum meter, about 70% of the board's height, with the player's end at the bottom. |
 
 The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle. All rows use the same card size. Interaction details are in [ui_spec.md](ui_spec.md).
 
@@ -1002,7 +1002,7 @@ All of the active unit's skills should be directly visible, normally 7–9 inclu
 
 During targeting, area attacks and skills affecting additional units should preview all affected cards whenever possible. Target inspection also exposes range, protection, and relevant exceptions.
 
-The timeline is permanently displayed at the top. Selecting a skill previews where the acting unit's next turn would move before execution. Skills that manipulate other timeline positions preview their consequences whenever practical. Already-created delayed effects, such as a future comet impact, may appear as timeline events, and auto events (such as queued shots) appear with their owner; ordinary attack animations do not. Enemy units' unchosen future attacks are not revealed.
+The timeline is permanently displayed as a vertical list on the left. Selecting a skill previews where the acting unit's next turn would move before execution. Skills that manipulate other timeline positions preview their consequences whenever practical. Already-created delayed effects, such as a future comet impact, may appear as timeline events, and auto events (such as queued shots) appear with their owner; ordinary attack animations do not. Enemy units' unchosen future attacks are not revealed.
 
 ### 13.4 Animation and effects
 
@@ -1020,7 +1020,7 @@ Unit relationships may be visualized temporarily when relevant or inspected. Hov
 
 Preserve a strong distinction between **visual simplicity and mechanical depth**. Players see clean, centered card rows; internally, ordered positions use half-card-width alignment. Formation, cover, adjacency, summons, targeting, and future positional mechanics should work consistently without exposing unnecessary grids or slots.
 
-The default prototype is a six-versus-six battlefield with three rows per side, a top timeline, a bottom skill bar, card fronts for combat state, card backs for inspection and current skill information, and attack effects that leave cards spatially stable. Actual prototype testing must determine whether party size or total capacity needs to be reduced as described in sections 3.1 and 7.1.
+The default prototype is a six-versus-six battlefield with three rows per side, a left vertical timeline, a bottom skill bar, card fronts for combat state, card backs for inspection and current skill information, and attack effects that leave cards spatially stable. Actual prototype testing must determine whether party size or total capacity needs to be reduced as described in sections 3.1 and 7.1.
 
 ## 14. Art direction
 
@@ -1183,7 +1183,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters, boss stats, and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Campaign content (locations, encounters, boss rosters), later full campaign design, and final content. Stage size (about five battles plus a boss), fixed battle order, no team restrictions and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
-| Presentation | Final card styling, mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
+| Presentation | Final card styling, mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, left vertical timeline, and bottom skill bar are selected. |
 | Delivery | Landscape layout sizes, technical validation, cloud saves, final name. Platforms, stores, business model, languages, accessibility, crash reports, save files and the technical foundation are adopted ([production.md](production.md)). The battle screen arrangement and interactions are adopted (section 13.3, ui_spec.md). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
