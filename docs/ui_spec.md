@@ -34,7 +34,7 @@ These are specification categories, not a mandated engine state-machine implemen
 
 ## Screens and layouts to complete
 
-- Support **Windows, Android, and iOS in landscape only**. Exact minimum device requirements, aspect ratios, and layout sizes remain open.
+- Support **Windows, Android, and iOS in landscape only**. Devices and screen shapes are set in production.md §1.1; exact layout sizes remain open.
 - Begin development with headless AI-versus-AI batch runs (game_system.md §2.5). A **battle viewer** then runs AI-versus-AI battles on the card UI as a debug mode, also used to debug UI issues. It can start a battle with the same setup (teams and formations) as any recorded battle; it does not replay the recorded battle exactly. Its controls are pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup (production.md §2.3). It shows only what a player would see, not the AI's scores or alternatives.
 - Party setup: a **team editor** in the manner of a deck builder (game_system.md §13.2). Pick up to six creatures from the collection (each at most once), place them in rows, and save the team under a name. Several named teams; the last used one is preselected. Still open: recruit browser layout, filters, card inspection, tree editing, validation messages.
 - **Battle screen** (decided 2026-10-06):
