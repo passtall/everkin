@@ -54,7 +54,14 @@ These are specification categories, not a mandated engine state-machine implemen
   - The target preview is a floating panel with the damage range, the success chance in percent, and the units that may intercept.
   - Status icons carry a letter or short label inside, so they read without color. Final icons come with the art pass.
   - The arrangement in the reviewed mockup is adopted (timeline left, board middle, Momentum right, skill bar bottom, enemy above).
-  - Still open: exact card dimensions and safe areas.
+  - **Layout sizes** (adopted 2026-10-06):
+    - One 1920 × 1080 base layout, scaled evenly to the screen. The one-side phone view switches on below about 7 inches of screen diagonal; a setting lets the player override it.
+    - Board cards on desktop and tablets are 110 × 150 px at base, which meets the touch minimum and still fits six rows. Every card has a 5:7 shape; the compact board card crops the 2:3 art around the creature.
+    - Numbers and status letters on cards are at least 22 px at base, like all other text.
+    - On 19.5:9 to 21:9 phones the timeline and Momentum bar move out into the side margins, giving the board more room; background art fills the rest.
+    - On 4:3 and 16:10 tablets the action bar moves into the bottom band and the board grows into the space it frees.
+    - Nothing to tap or read goes into the system's unsafe areas (notches, rounded corners); background art runs edge to edge.
+    - Summons such as traps use the same 5:7 card with the summon marker; their art follows the same 1024 × 1536 canvas as creatures.
 - Card front/back inspection: all class names, long skill text, scrolling, modified values, source of modifiers, opponent visibility.
 - Main menu, settings, collection, exploratory story campaign, unit-unlock presentation, free battle against the AI, and at least one post-story random-battle mode (no rewards). A new player starts with the campaign tutorial; the other menu entries unlock when it is complete (game_system.md §2.2). The battle viewer appears only in development builds.
 - Campaign exploration uses **illustrated locations**; battles are played in a fixed order, and the map shows each encounter's creature reward before the battle. The current campaign is a linear sequence of **four stages**; detailed story/location content comes later. Show guaranteed encounter unit rewards and their unlock results; do not add capture interactions for now.
