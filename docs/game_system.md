@@ -62,9 +62,15 @@ The immediate playable experience is a team-building and combat game. Combat mus
 
 Players explore a **story campaign presented as illustrated locations with selectable paths and events**. For now, use a **linear sequence of four stages**; detailed campaign content and structure will be specified later. The four-stage sequence is the current testing scope, not a final campaign-length commitment.
 
-Units unlock through **guaranteed encounter rewards** for now. Exact encounter-to-unit assignments and repeat-reward behavior remain open. A mixture of acquisition methods may be considered later, but capture or other recruitment mechanics are not currently required.
+Units unlock through **guaranteed encounter rewards** for now. Exact encounter-to-unit assignments remain open. A won encounter can be replayed, but its unit reward is given only once. A mixture of acquisition methods may be considered later, but capture or other recruitment mechanics are not currently required.
 
-After completing the story, at least one **random-battle mode** provides further unit unlocks and continued play. Random-battle generation, difficulty, and reward rules remain to be specified.
+**Collection.** A player owns each creature at most once, and a player's team uses each creature at most once. Enemy teams may repeat creatures.
+
+**Start of play.** A new player begins with the **campaign tutorial**, which unlocks the first full team of six. All other modes unlock once the tutorial is complete.
+
+**Campaign rules (adopted 2026-10-06).** Losing a campaign battle has no penalty: the player can retry the encounter at once or change the team first. Campaign locations hold battles only for now; story events and other encounters come with the full campaign design.
+
+After completing the story, at least one **random-battle mode** provides continued play. The player picks a difficulty and the enemy team is drawn at random. Random battles give **no rewards**. Where post-story unit unlocks come from is open.
 
 There is no established collectible-card business model. The use of cards does not itself imply booster packs, paid randomized acquisition, trading, or duplicate conversion.
 
@@ -78,7 +84,10 @@ Minimum OS/device requirements, supported aspect ratios, controller support, and
 
 - **AI versus AI:** the first development/testing mode, allowing both parties to play automatically for easier combat testing.
 - **Single-player versus AI:** required, including the story campaign and at least one post-story random-battle mode.
-- **Local two-player:** required; setup, controls, and collection access still need specification.
+- **Free battle versus AI:** available once the tutorial is complete. The player picks a team from their collection, an enemy team (random or chosen from unlocked units) and the AI difficulty. No rewards.
+- **Local two-player:** required. Both players build their teams from the collection saved on the device, and both teams may use any creature in it, including the same ones. The board flips so the acting player's side is always at the bottom.
+- **AI strength.** Each campaign and random-battle encounter sets its own AI level. Only free battles let the player choose it.
+- **Battle viewer:** only in development builds.
 - **Online PvP:** planned, but **do not implement it until the owner explicitly greenlights it**. Prepare code interfaces and architectural boundaries for future online play; the backend will be Spring Boot (Java) (section 16.1). This preparation is not authorization to implement networking, matchmaking, or online services.
 
 **Balance testing method.** AI-versus-AI battles start from random units. Each AI picks its action on its turn with a minimax search. Every battle's setup and result are recorded (section 2.5), and statistics are kept on which units, classes and skills win or lose more often. Those statistics drive balance adjustments. Battles must therefore be deterministic given a seed, and the rules core must be able to run battles without any presentation.
@@ -960,7 +969,9 @@ Party setup uses the same battlefield interface with the enemy side absent. The 
 
 Setup can provide more room for inspecting card fronts and backs, comparing builds, allocating skill-tree points, and other character-management systems if those features require it. Equipment inspection would apply only if such a system were later selected; it does not establish a general gear system. Combat prioritizes speed and readability, while setup supports deeper inspection and optimization.
 
-Drag-and-drop was proposed, with mobile-friendly interaction required. Precise filters, sorting, saved teams, and gesture behavior remain to be designed.
+Teams are built in a **team editor**, in the manner of deck building: the player picks up to six creatures from the collection and their formation, and saves the team under a name. Several named teams can be saved, and the last used team is preselected. Each mode, including local two-player, starts from a saved team.
+
+Drag-and-drop was proposed, with mobile-friendly interaction required. Precise filters, sorting and gesture behavior remain to be designed.
 
 ### 13.3 Battle interface
 
@@ -1113,6 +1124,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Creature art.** Art files are renamed to the creature IDs, with separate front and rear files (for example `fox_front` and `fox_rear`), and loaded by name.
 - **Text.** All UI and content text goes through translation keys from day one. English only at first.
 - **Battle viewer controls.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup to start from.
+- **Saving (adopted 2026-10-06).** One profile per device, stored locally; cloud saves come later. The game saves automatically after every battle and campaign step, and after every action in a battle, so a battle closed by the device resumes where it was. No manual save slots.
 
 The earlier proposal below is kept for context.
 
@@ -1177,7 +1189,7 @@ Everkin remains a working title. A previous naming discussion raised potential e
 
 All artwork, character designs, UI, names, text, music, and branding must have an independent identity. References guide broad design goals rather than supplying assets or exact presentation.
 
-Previously discussed reference games include FFX for turn-order tactics; Hearthstone for card presentation; Siralim Ultimate and Monster Sanctuary for team-building and build synergies; and LumenTale, World of Final Fantasy, Cassette Beasts, Dragon Quest Monsters, and Monster Hunter Stories as comparison points. Their individual rules are not adopted by default.
+Previously discussed reference games include FFX for turn-order tactics; Hearthstone for card presentation and its deck builder as the model for the team editor; Siralim Ultimate and Monster Sanctuary for team-building and build synergies; and LumenTale, World of Final Fantasy, Cassette Beasts, Dragon Quest Monsters, and Monster Hunter Stories as comparison points. Their individual rules are not adopted by default.
 
 Minecraft and Super Mario 64 were earlier references for simple geometry and readable 3D form. They no longer define a 3D asset-production requirement.
 
@@ -1187,7 +1199,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 
 | Area | Outstanding specification |
 |---|---|
-| Party | Prototype validation of six-versus-six readability, possible four- or five-unit standard, starting below the standard size, enemy exceptions, duplicate recruits. No combat reserve swapping. |
+| Party | Prototype validation of six-versus-six readability, possible four- or five-unit standard, enemy exceptions. No combat reserve swapping. Each creature at most once per player team (enemies may repeat) is adopted (section 2.2). |
 | Timeline | None open. Delay bounds (clamped to 1–10) are adopted and Turn Now was removed (section 6.1). Initial progress, ties, Haste/Slow, Reset, skipped turns and same-time order are adopted (section 6.1). Speed 1–10 (10 fastest), skill Delay 1–10 (1 quickest), and Wait = Delay + 11 − Speed are adopted (section 6.1). |
 | Momentum | None open. Non-damaging actions, payment timing, refunds and simultaneous shifts are adopted (section 6.7). Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
 | Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6–8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
@@ -1201,12 +1213,12 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Summons | Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
 | Builds | Class/skill designs and assignments, conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
 | Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Tiers, stat ranges, the attack library rule, class counts, no natural traits and text IDs are adopted (section 3.7). |
-| Recruitment | Guaranteed encounter-to-unit reward assignments, repeats/duplicates, human generation, individual persistence, starting collection. Other acquisition methods are not currently required. |
+| Recruitment | Guaranteed encounter-to-unit reward assignments, post-story unlock source, human generation, individual persistence, the tutorial's units. One copy per creature, rewards given once, and the tutorial unlocking the first team are adopted (section 2.2). Other acquisition methods are not currently required. |
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
-| Product structure | Four-stage illustrated campaign details, later full campaign design, post-story random-battle rules, local two-player flow, and final content. AI-versus-AI testing comes first; online implementation requires greenlight. |
+| Product structure | Four-stage illustrated campaign details, later full campaign design, and final content. Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4, 13.2 and 16.1). AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Final card styling, mobile readability, artwork framing, gestures, audio, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
-| Delivery | Windows/Android/iOS minimum requirements and distribution, landscape layout sizes, technical validation, save system, business model, final name. Language, rules core, runner, content format, randomness, tests and the future online backend are adopted (section 16.1). The battle screen arrangement and interactions are adopted (section 13.3, ui_spec.md). |
+| Delivery | Windows/Android/iOS minimum requirements and distribution, landscape layout sizes, technical validation, cloud saves, business model, final name. Language, rules core, runner, content format, randomness, tests and the future online backend are adopted (section 16.1). The battle screen arrangement and interactions are adopted (section 13.3, ui_spec.md). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
 
@@ -1218,7 +1230,7 @@ Required scope includes AI-versus-AI development testing, single-player AI battl
 
 For each required mode, define the full flow from launching the game through party setup, battle, results, and replay or progression. Specify AI behavior/difficulty and local handover rules. Define future online requirements and interface boundaries without implementing matchmaking, transport, or services before greenlight.
 
-Use illustrated locations with selectable paths/events and a four-stage line for current campaign testing, with guaranteed encounter unit rewards. Define the starting collection, specific rewards, duplicate restrictions, loss consequences, saved teams, and completion flow. Respec is free outside battle. Full campaign design and normal progression details remain for later; test units start at level 20, and skills precede trees and point allocation. Unselected systems should be explicitly excluded rather than left ambiguous.
+Use illustrated locations with selectable paths/events and a four-stage line for current campaign testing, with guaranteed encounter unit rewards. Define the tutorial's units, specific rewards and the completion flow; the tutorial start, duplicates, loss consequences, replays and saved teams are adopted (sections 2.2 and 13.2). Respec is free outside battle. Full campaign design and normal progression details remain for later; test units start at level 20, and skills precede trees and point allocation. Unselected systems should be explicitly excluded rather than left ambiguous.
 
 ### 20.2 Exact combat details
 

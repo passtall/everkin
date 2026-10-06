@@ -36,7 +36,7 @@ These are specification categories, not a mandated engine state-machine implemen
 
 - Support **Windows, Android, and iOS in landscape only**. Exact minimum device requirements, aspect ratios, and layout sizes remain open.
 - Begin development with headless AI-versus-AI batch runs (game_system.md §2.5). A **battle viewer** then runs AI-versus-AI battles on the card UI as a debug mode, also used to debug UI issues. It can start a battle with the same setup (teams and formations) as any recorded battle; it does not replay the recorded battle exactly. Its controls are pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup (game_system.md §16.1). It shows only what a player would see, not the AI's scores or alternatives.
-- Party setup: recruit browser, card inspection, tree editing, row placement/reorder, validation, saved teams if selected.
+- Party setup: a **team editor** in the manner of a deck builder (game_system.md §13.2). Pick up to six creatures from the collection (each at most once), place them in rows, and save the team under a name. Several named teams; the last used one is preselected. Still open: recruit browser layout, filters, card inspection, tree editing, validation messages.
 - **Battle screen** (decided 2026-10-06):
   - The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle.
   - Board cards are compact: front artwork, HP bar, statuses and KO. Name, classes, Speed, Power and Defense appear on hover and in the inspection panel.
@@ -46,7 +46,7 @@ These are specification categories, not a mandated engine state-machine implemen
   - The timeline shows the next 12 entries; the rest are reached by scrolling it.
   - Still open: exact card dimensions, safe areas, skill labels, status overflow and tooltips.
 - Card front/back inspection: all class names, long skill text, scrolling, modified values, source of modifiers, opponent visibility.
-- Main menu, settings, collection, exploratory story campaign, unit-unlock presentation, and at least one post-story random-battle mode with further unit unlocks.
+- Main menu, settings, collection, exploratory story campaign, unit-unlock presentation, free battle against the AI, and at least one post-story random-battle mode (no rewards). A new player starts with the campaign tutorial; the other menu entries unlock when it is complete (game_system.md §2.2). The battle viewer appears only in development builds.
 - Campaign exploration uses **illustrated locations with selectable paths and events**. The current campaign is a linear sequence of **four stages**; detailed story/location content comes later. Show guaranteed encounter unit rewards and their unlock results; do not add capture interactions for now.
 - During continuous development testing, units start at **level 20 with all skills available through their creature and assigned classes**. **Design classes and skills first; the tree editor and point-spending UI come later.** Do not require a skill loadout or tree purchases for initial testing. The skill bar must expose all available active skills, normally one type-specific attack plus 6–8 additional usable skills (7–9 total), with overflow support for unrestricted initial testing. Later trees mix **10–15 meaningful active skills, passives, and modifiers across 3–4 branches** per class; avoid percentage-only upgrade filler.
 - A **surrender** control is available throughout a battle. It asks for confirmation once and counts as a defeat (game_system.md §12.3).
@@ -56,7 +56,7 @@ These are specification categories, not a mandated engine state-machine implemen
 - **Delayed `direct` effects.** A delayed `direct` event on the timeline marks its slot (a coordinate in a row, §4.7 and §7.3) on the battlefield, not a unit, so the player can see that it may hit someone else if the target moves away.
 - **Stealth feedback.** A unit that loses stealth (by attacking, being hit, or a reveal or cleanse) shows that change clearly. A stealthed unit cannot be selected as a normal target, and area or `direct` previews still highlight it when it is hit (game_system.md §10.1).
 - Provide **free respec outside battle** once point allocation is available. Reset/reallocation must respect the later-defined budget and prerequisites; exact controls and dependent-node handling still need specification.
-- Single-player AI battles and local two-player setup/handover flows; exact interaction rules remain open.
+- **Local two-player** (game_system.md §2.4): each player picks a saved team built from the device's collection; both may use the same creatures. During battle the board flips so the acting player's side is always at the bottom, with a clear cue when the side changes. No pause on inspection in online play applies only to online; locally inspection pauses as usual.
 - Prepare interfaces for future online PvP, but **do not implement the online mode or its connected flows/services until explicit owner greenlight**. Planning inspection and shared control boundaries is allowed; online implementation is gated.
 - First-time guidance and error/empty/loading states for every included flow.
 
