@@ -499,7 +499,16 @@ Each skill determines whether it continues or stops when its user becomes KO dur
 4. For each event in the skill's order (or each simultaneous block): apply it, check KO, apply its Momentum shift, resolve its reactions (section 6.6), then check victory (section 12.3).
 5. The skill ends.
 
-**Targets that become illegal mid-skill.** Whether later hits of a skill continue to a target that has become illegal (for example pushed out of range by a counter) depends on the targeting type. Each targeting tag states this in its definition (section 4.7); the per-tag rules are still open.
+**Targets that change mid-skill (adopted 2026-10-06).** What later hits of a skill do when their target moved, became illegal or was KO'd after an earlier hit depends on the targeting type. The targeting types are what the skill selects: a **unit**, a **slot** (`direct`) or a **row** (`row`); `melee` and `projectile` are delivery, not targeting.
+
+- **A unit, delivered `melee`.** If the target moves out of reach, the remaining hits are cancelled.
+- **A unit, delivered `projectile`.** The remaining shots fly to the target's **original column**. If the target is still in that column (for example moved to another row in it), it can be hit, and interception applies normally. If it left the column, the shots miss.
+- **A slot (`direct`).** The remaining hits land on the same coordinate and hit whoever covers it, both units at a 50% overlap.
+- **`random`.** Each hit picks again among the targets legal at that moment.
+- **`chain`.** Each jump is chosen when it happens, from the targets legal at that moment; if none is legal, the chain ends.
+- **Areas (`column`, `row`, `circular`, `all`).** The affected units are determined again for each hit, from the positions at that moment.
+
+A KO'd target still follows its skill's own KO rule (section 6.5 above).
 
 ### 6.6 Reaction chains
 
@@ -1222,7 +1231,7 @@ In addition to section 19, resolve these edge cases:
 - Timeline: none open. Overshoot, when the next Wait starts, Speed and Delay bounds, the skipped-turn cost and the time model are adopted (section 6.1).
 - Momentum: all adopted (section 6.7).
 - Damage: multiple shields on one unit (deferred to the skill revisit). Healing scaling, sampling, rounding, defense bounds, penetration, shield order and shared versus independent rolls are adopted.
-- Resolution: per-targeting-tag rules for targets that become illegal mid-skill. The full order for using a skill is adopted (section 6.5). Reaction priorities, ties and the absence of a chain limit are adopted (section 6.6).
+- Resolution: none open. The full order for using a skill and the rules for targets that change mid-skill are adopted (section 6.5). Reaction priorities, ties and the absence of a chain limit are adopted (section 6.6).
 - Statuses: none open beyond new candidates. Immunities, damage from statuses, clocks, tick timing, reapplication, cleansing, source removal and shared HP are adopted (sections 10.4 and 10.5).
 - Formation: none open. Spot-bound effects stay on their coordinate (section 7.3). Cover eligibility, defender order, Move, swaps and failed movement are adopted (sections 8.2 and 9.1).
 - Battle boundaries: none open. Encounter exceptions (none for now), persistent consequences (none), simultaneous wipes (draw), stalemates, surrender and victory timing are adopted (section 12.3). Full starting HP, neutral-zero Momentum, and cleared temporary combat states are selected.
