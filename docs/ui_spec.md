@@ -36,25 +36,34 @@ These are specification categories, not a mandated engine state-machine implemen
 
 - Support **Windows, Android, and iOS in landscape only**. Devices and screen shapes are set in production.md §1.1; exact layout sizes remain open.
 - Begin development with headless AI-versus-AI batch runs (game_system.md §2.5). A **battle viewer** then runs AI-versus-AI battles on the card UI as a debug mode, also used to debug UI issues. It can start a battle with the same setup (teams and formations) as any recorded battle; it does not replay the recorded battle exactly. Its controls are pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup (production.md §2.3). It shows only what a player would see, not the AI's scores or alternatives.
-- Party setup: a **team editor** in the manner of a deck builder (game_system.md §13.2). Pick up to six creatures from the collection (each at most once), place them in rows, and save the team under a name. Several named teams; the last used one is preselected. The collection can be filtered by class, size tier and attack type and sorted by name, HP, Speed or Power. Still open: recruit browser layout, tree editing, validation messages.
+- Party setup: a **team editor** in the manner of a deck builder (game_system.md §13.2). Pick up to six creatures from the collection (each at most once), place them in rows, and save the team under a name. Several named teams; the last used one is preselected. The collection can be filtered by class, size tier and attack type and sorted by name, HP, Speed or Power. Layout (adopted 2026-10-06 from the mockup): saved teams as chips across the top with the team name and Save; the formation on the left; the collection as a panel on the right, which becomes a drawer sliding in from the right on phones. Creatures are added and rearranged **by dragging only**: drag from the collection into a row, between rows, or out of the team to remove. On touch, a drag starts as soon as the finger moves; a long-press without moving opens inspection. Still open: recruit browser layout, tree editing, validation messages.
 - **Battle screen** (decided 2026-10-06):
   - The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle.
   - Board cards are compact: front artwork, HP bar, statuses and KO. Name, classes, Speed, Power and Defense appear on hover and in the inspection panel.
   - Every row uses the same card size. Rows have no labels.
-  - **Phones:** only one side of the battle shows at a time, with bigger cards and a button to switch sides (adopted 2026-10-06). Desktop and tablets show both sides.
+  - **Phones:** only one side of the battle shows at a time, with bigger cards and a button to switch sides (adopted 2026-10-06). Desktop and tablets show both sides. Picking a skill that targets the enemy switches to the enemy side by itself, and the view returns to the player's side once the action has resolved. Every side switch is an animated transition (a short slide; a cut with reduced motion).
   - Cards keep full size up to the width a row can fit; beyond that every card in that row shrinks evenly.
   - The Momentum meter is a vertical bar at the right edge, about 70% of the board's height, with the player's end at the bottom.
-  - The timeline is a vertical list on the left showing the next 12 entries from top to bottom; the rest are reached by scrolling it.
+  - The timeline is a vertical list on the left showing the next 8 entries from top to bottom; the rest are reached by scrolling it. Each entry shows a portrait, the time until the turn, the name and a side color; auto events are darker and show their owner.
   - A summon uses the same compact card with a summon marker; hovering it highlights its summoner.
   - Skill buttons show an icon and short name, plus the skill's Delay and Momentum cost as small numbers.
   - A compact card shows up to four status icons, then a +N badge; the inspection panel lists all of them.
   - In the inspection panel and on skill buttons, hovering or tapping a keyword (Poison, `projectile`, Delay) shows a one-line explanation.
   - Damage, healing and absorbed damage appear as short floating numbers, colored and with an icon.
   - Touch targets are at least 7 mm on the test phone (about 110 px at the 1920 × 1080 base). Body text is at least 22 px at base.
-  - Still open: exact card dimensions and safe areas, settled with the annotated layouts.
+  - The target preview is a floating panel with the damage range, the success chance in percent, and the units that may intercept.
+  - Status icons carry a letter or short label inside, so they read without color. Final icons come with the art pass.
+  - The arrangement in the reviewed mockup is adopted (timeline left, board middle, Momentum right, skill bar bottom, enemy above).
+  - Still open: exact card dimensions and safe areas.
 - Card front/back inspection: all class names, long skill text, scrolling, modified values, source of modifiers, opponent visibility.
 - Main menu, settings, collection, exploratory story campaign, unit-unlock presentation, free battle against the AI, and at least one post-story random-battle mode (no rewards). A new player starts with the campaign tutorial; the other menu entries unlock when it is complete (game_system.md §2.2). The battle viewer appears only in development builds.
 - Campaign exploration uses **illustrated locations**; battles are played in a fixed order, and the map shows each encounter's creature reward before the battle. The current campaign is a linear sequence of **four stages**; detailed story/location content comes later. Show guaranteed encounter unit rewards and their unlock results; do not add capture interactions for now.
+- **Campaign map** (adopted 2026-10-06 from the mockup):
+  - One illustrated screen per stage, with the encounters on a path in their fixed order and arrows to the other unlocked stages.
+  - Won encounters are marked done, the next one is highlighted, later ones stay dark; the boss is a larger node at the end.
+  - Selecting an encounter opens a panel with its reward creature, the **whole enemy team** (for the next encounter and won ones; locked ones show only the reward), the current saved team with a picker and an Edit team button, and Fight (Replay for won encounters, noting the reward was already received).
+  - After the story, challenge encounters appear as extra nodes on the stage maps.
+  - The coin balance is always shown in the map's top bar and the main menu.
 - During continuous development testing, units start at **level 20 with all skills available through their creature and assigned classes**. **Design classes and skills first; the tree editor and point-spending UI come later.** Do not require a skill loadout or tree purchases for initial testing. The skill bar must expose all available active skills, normally one type-specific attack plus 6–8 additional usable skills (7–9 total), with overflow support for unrestricted initial testing. Later trees mix **10–15 meaningful active skills, passives, and modifiers across 3–4 branches** per class; avoid percentage-only upgrade filler.
 - A **surrender** control is available throughout a battle. It asks for confirmation once and counts as a defeat (game_system.md §12.3).
 - Show **one contested Momentum meter** indicating advantage toward either party, starting at neutral zero. The meter runs from −10 to +10. It is a vertical bar at the right edge (see Battle screen). Spending previews remain open. A skill whose Momentum requirement is not met shows the reason. Every battle begins with all participating units at full HP.
@@ -71,7 +80,7 @@ These are specification categories, not a mandated engine state-machine implemen
 
 Specify target screen sizes and minimum text/touch dimensions, distinction between cosmetic and gameplay borders, color-independent status cues, action/target selection appearance, damage/heal/status/KO feedback, reduced-motion behavior, and audio equivalents if selected.
 
-Produce annotated layouts before declaring UI specification complete. Claude builds them as clickable HTML mockups (battle screen, team editor, campaign map) for the owner to review. Existing creature images and contact sheets are art references, not approved finished card layouts.
+Produce annotated layouts before declaring UI specification complete. Claude builds them as clickable HTML mockups (battle screen, team editor, campaign map) for the owner to review; all three were reviewed on 2026-10-06 and their layouts are adopted above. **Visual direction (2026-10-06):** the coloring is reworked toward a **fairytale** look: screens sit on an illustrated fairytale background, and panels, buttons and colors are styled to fit it. Existing creature images and contact sheets are art references, not approved finished card layouts.
 
 ## Interaction checks
 

@@ -982,7 +982,7 @@ Setup can provide more room for inspecting card fronts and backs, comparing buil
 
 Teams are built in a **team editor**, in the manner of deck building: the player picks up to six creatures from the collection and their formation, and saves the team under a name. Several named teams can be saved, and the last used team is preselected. Each mode, including local two-player, starts from a saved team.
 
-Drag-and-drop was proposed, with mobile-friendly interaction required. Precise filters, sorting and gesture behavior remain to be designed.
+Creatures are added, moved and removed **by dragging only** (adopted 2026-10-06); filters, sorting and layout are in ui_spec.md.
 
 ### 13.3 Battle interface
 
@@ -993,7 +993,7 @@ The interface has a clear information hierarchy:
 | Unit cards | Current unit state, stats, statuses, and KO. |
 | Formation | Positional relationships, adjacency, and covering. |
 | Bottom horizontal skill bar | The active unit's immediately available actions, similar to an MMORPG skill interface. |
-| Left vertical timeline | The shared temporal state of combat: the next 12 entries from top to bottom, scrollable for more. |
+| Left vertical timeline | The shared temporal state of combat: the next 8 entries from top to bottom, scrollable for more. |
 | Right edge | The vertical Momentum meter, about 70% of the board's height, with the player's end at the bottom. |
 
 The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle. All rows use the same card size. Interaction details are in [ui_spec.md](ui_spec.md).

@@ -54,6 +54,7 @@ Adopted 2026-10-06.
 - **Creature size.** Cards do not show creature size: every creature fills its frame, with no size scaling or size icon. Size contrast was a leftover from the 3D direction (game_system.md §14.3).
 - **Card backgrounds.** A soft background behind the creature, tinted by its home biome. A few background designs are made and reused.
 - **Battle backgrounds.** An illustrated, dimmed background per campaign stage or biome, from designed backgrounds.
+- **UI look.** Fairytale: menus and screens use an illustrated fairytale background, and the UI colors, panels and buttons are styled to fit it (adopted 2026-10-06 from the mockup review).
 - **Idle motion.** None. Cards only react to hits and effects.
 - **Music.** Quiet ambient sound only; no melodic soundtrack.
 - **Sound effects.** One set per tag and effect (melee, projectile, magic, heal, status, KO). No creature cries.
