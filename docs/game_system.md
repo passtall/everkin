@@ -78,7 +78,7 @@ There is no established collectible-card business model. The use of cards does n
 
 The required platforms are **Windows, Android, and iOS**, with **landscape orientation only**. Desktop and touch readability must influence the design from the start.
 
-Minimum OS/device requirements, supported aspect ratios, controller support, and distribution remain open. Required platform support must be verified during implementation; it is not an existing implementation milestone.
+Release order, stores, minimum devices, screen shapes and controller support are adopted in [production.md](production.md), section 1. Required platform support must be verified during implementation; it is not an existing implementation milestone.
 
 ### 2.4 Modes and development order
 
@@ -1081,50 +1081,7 @@ The suggested ten to fifteen main chapters was an example. There is no approved 
 
 Godot 4.7 with .NET is installed and the repository contains a Godot project. No code exists yet.
 
-**Adopted technical foundation (2026-10-05):**
-
-- **Language.** C# everywhere, including the Godot UI.
-- **Rules core.** A plain C# library with no Godot dependency. The game and the test runner both use it.
-- **Batch runner.** A small .NET command-line program built on the rules core runs AI-versus-AI batches (section 2.5).
-- **Code location.** The same repository: the core and the runner in a `src` folder, the Godot project stays at the root.
-- **Content format.** JSON files in the repository, one per creature list, class and status set, using the stable text IDs (section 3.7).
-- **Skill mechanics.** Numbers, tags and reach live in JSON. Each skill's mechanic is C# code built from shared building blocks (hit, heal, move, apply status).
-- **Source of truth.** The design documents stay the specification. A test checks that the JSON content matches the document tables.
-- **Randomness.** One seeded random generator per battle, implemented in the core (never the platform's own random). The AI's search never draws from it.
-- **Tests.** Every worked check in section 20.5 becomes an automated test, plus unit tests per rule.
-- **Where tests and batches run.** Locally on the owner's PC. There is no GitHub CI, and batches are not run in Claude's sessions.
-- **Online backend.** Online play stays deferred (section 2.4). When it comes, its backend server will be a **Spring Boot (Java)** application.
-
-**Rules core internals (adopted 2026-10-05):**
-
-- **Battle state and search.** The battle state is mutable with a fast `Clone()`. The AI search clones before trying an action.
-- **Events.** Every action returns an ordered list of events (hit, intercept, move, status applied, Momentum shift, KO). The UI animates them.
-- **Authority.** Only the core changes battle state. Godot sends chosen actions in and only reads state and events out.
-- **Previews.** The core answers preview queries (damage ranges, interception chances, timeline position, forced movement) with the same code that resolves actions, without changing state.
-- **Numbers.** The core uses integers only: percentages as whole numbers, coefficients in hundredths, explicit rounding down. No floating point in rules code.
-- **Online checking.** How the Spring Boot server checks battles is decided when online play starts; nothing in the core depends on it. The online transport is expected to use WebSockets.
-- **.NET version.** The newest long-term-support .NET that Godot 4.7 supports, shared by the core, the runner and the Godot project.
-- **Skill code.** One small C# class per skill, found by its skill ID. Shared behavior lives in reusable, specialized classes per tag or mechanic (for example interception, area shapes, forced movement), and skill classes delegate to them, so no rule is written twice.
-- **Broken content.** Content is validated at load. Any error stops the program with a clear message naming the file and ID.
-- **Tests.** xUnit.
-- **Compiler.** Nullable reference types on and warnings as errors in the core and the runner; relaxed in the Godot project.
-- **Parallel runs.** The runner plays battles in parallel on all CPU cores. Each battle is single-threaded and deterministic.
-- **Run output.** One folder per run: a snapshot (content JSON, git commit, AI settings), one CSV row per battle, and a Markdown report.
-
-**AI search and Godot app (adopted 2026-10-05):**
-
-- **Search algorithm.** Alpha-beta minimax with iterative deepening (depth 1, then 2, and so on up to the difficulty's limit).
-- **Candidate actions.** All legal actions are considered at the top of the search. Deeper down, only the best few candidates (for example 8) by a quick score are searched. Leaving Move and Skip Turn out of the deeper search is an option to try in testing.
-- **Weaker picks.** A lower difficulty sometimes picks among its top few actions instead of the best, using the AI's own seeded generator, separate from the battle's.
-- **Thinking time.** Fixed depth only, no time cap. Difficulty levels are tuned so the hardest stays quick on a mid-range phone.
-- **Cards.** One reusable Card scene with display modes, used in every screen.
-- **Input.** Godot input actions: mouse, touch and keyboard map to the same commands (select, confirm, inspect, cancel).
-- **Animation.** Battle events play one after another from a queue, each with its own duration, with a speed setting (1x, 2x, instant).
-- **Resolution.** The UI is designed for 1920 × 1080 and scaled down for phones.
-- **Creature art.** Art files are renamed to the creature IDs, with separate front and rear files (for example `fox_front` and `fox_rear`), and loaded by name.
-- **Text.** All UI and content text goes through translation keys from day one. English only at first.
-- **Battle viewer controls.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup to start from.
-- **Saving (adopted 2026-10-06).** One profile per device, stored locally; cloud saves come later. The game saves automatically after every battle and campaign step, and after every action in a battle, so a battle closed by the device resumes where it was. No manual save slots.
+The adopted technical foundation (language, rules core, content format, AI search, Godot app, saving) is in [production.md](production.md), section 2.
 
 The earlier proposal below is kept for context.
 
@@ -1151,7 +1108,7 @@ Retained production guidelines are consistent asset naming, reusable presentatio
 
 ### 16.3 Cost and delivery planning
 
-Engine costs, storefront fees, external assets, sound, fonts, and possible service costs were discussed as planning topics. This document sets no budget, engine version, commercial license conclusion, or online-service commitment. Licensing and platform support must be checked when delivery decisions are made.
+Engine costs, storefront fees, external assets, sound, fonts, and possible service costs were discussed as planning topics. This document sets no budget or commercial license conclusion. The business model, stores and other non-mechanics decisions are in [production.md](production.md). Licensing must be checked when delivery decisions are made.
 
 ## 17. Playable scope and development priorities
 
@@ -1181,7 +1138,7 @@ The current class roster is fixed at seven: Hunter, Elementalist, Healer, Warrio
 
 Multi-slot creatures, complex terrain, emergent relationships, genetic variation, and expanded summon archetypes remain deferred or open. The story campaign and post-story random battles are required; their detailed content and mechanics remain open.
 
-Online PvP is planned with interface preparation now, but implementation requires explicit owner greenlight. Its detailed rules and networking specification remain open. Cooperative play, rankings, trading, crafting, an equipment economy, monetization, achievements, and save-progression rules also remain unspecified.
+Online PvP is planned with interface preparation now, but implementation requires explicit owner greenlight. Its detailed rules and networking specification remain open. Cooperative play, rankings, trading, crafting, an equipment economy and achievements remain unspecified. The business model and saving are adopted in [production.md](production.md).
 
 ## 18. Identity and reference boundaries
 
@@ -1216,9 +1173,9 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Recruitment | Guaranteed encounter-to-unit reward assignments, post-story unlock source, human generation, individual persistence, the tutorial's units. One copy per creature, rewards given once, and the tutorial unlocking the first team are adopted (section 2.2). Other acquisition methods are not currently required. |
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
-| Product structure | Four-stage illustrated campaign details, later full campaign design, and final content. Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4, 13.2 and 16.1). AI-versus-AI testing comes first; online implementation requires greenlight. |
+| Product structure | Four-stage illustrated campaign details, later full campaign design, and final content. Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Final card styling, mobile readability, artwork framing, gestures, audio, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
-| Delivery | Windows/Android/iOS minimum requirements and distribution, landscape layout sizes, technical validation, cloud saves, business model, final name. Language, rules core, runner, content format, randomness, tests and the future online backend are adopted (section 16.1). The battle screen arrangement and interactions are adopted (section 13.3, ui_spec.md). |
+| Delivery | Landscape layout sizes, technical validation, cloud saves, final name. Platforms, stores, business model, languages, accessibility, crash reports, save files and the technical foundation are adopted ([production.md](production.md)). The battle screen arrangement and interactions are adopted (section 13.3, ui_spec.md). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
 
@@ -1260,7 +1217,7 @@ Final content lists must be complete; examples and partially filled entries do n
 
 Finalize the authoritative rules state, UI preview/execution relationship, event ordering, and build/export process for the selected platforms. Language, the rules-core split, content format and IDs, and random-number control are adopted (section 16.1).
 
-Define persistent data and save timing, format/versioning, recovery from corruption, battle resume if included, and online responsibilities if relevant. Resolve performance targets, supported devices/resolutions, input, languages, accessibility, sound/music/VFX inventory, tutorials, settings, and missing-data/error behavior. Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
+Save timing, format, versioning, corruption recovery, battle resume, supported devices and screen shapes, languages, accessibility and crash reporting are adopted in [production.md](production.md). Still to resolve: online responsibilities if relevant, performance targets, sound/music/VFX inventory, tutorials, settings, and missing-data/error behavior. Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
 
 ### 20.5 Worked checks
 

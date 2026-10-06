@@ -15,7 +15,8 @@ The design documents are the source of truth. Never answer, propose or edit from
    - §11 summons · §19 decisions still required · §20 details before implementation
 2. Read **docs/classes_and_skills.md** for any class or skill work, and **docs/creatures.md** for any creature, stat or type-specific attack work.
 3. Read **docs/ui_spec.md** for any UI, screen or interaction question.
-4. Check §19 of game_system.md. If a rule is listed there as undecided, do not invent it: ask the owner.
+4. Read **docs/production.md** for platforms, release, business model, technology or saving. New decisions that are not game mechanics go there, not into game_system.md.
+5. Check §19 of game_system.md. If a rule is listed there as undecided, do not invent it: ask the owner.
 
 ## Where things go
 
@@ -25,6 +26,7 @@ The design documents are the source of truth. Never answer, propose or edit from
 | Class and skill definitions (one class at a time) | docs/classes_and_skills.md |
 | Creature roster, size tiers, type-specific attack library | docs/creatures.md |
 | Screens, layouts, interactions | docs/ui_spec.md |
+| Non-mechanics decisions: platforms, release, business model, technology, saving, languages, accessibility | docs/production.md |
 
 - When a decision is game-wide, **write it to game_system.md first**, update the §19 table and the §20.5 worked checks if relevant, and have the class document refer to it. Never duplicate global rules in the classes document.
 - Class documents contain only that class's lanes, skills, numbers and class-specific rules, plus a TBD list.
