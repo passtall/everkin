@@ -469,7 +469,7 @@ The desired interaction is **skill → target → resolution**, or **skill → r
 
 Parry, counter, interception, thorns, and comparable reactions trigger automatically when their conditions are met. Their strategic control comes from builds, positioning, prior skills, or active effects, not repeated confirmation prompts.
 
-If an action has meaningfully different modes, a distinct skill or directly selectable mode is preferable to a chain of follow-up questions. **There are never decision popups during the enemy turn.**
+**Skills never have modes (adopted 2026-10-06).** If an action needs meaningfully different variants, each variant is a distinct skill. **There are never decision popups during the enemy turn.**
 
 ### 6.4 Required actions and skipped turns
 

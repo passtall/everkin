@@ -25,8 +25,8 @@
 |---|---|---|
 | Reviewing battlefield | Timeline and unit state visible. Right-click, long-press or the inspect key opens the inspection panel (front and back side by side). | None. |
 | Active unit awaiting action | All skills shown, plus the basic actions Move and Skip Turn (game_system.md §6.4) as two smaller buttons at the right end of the skill bar; unavailable actions explain why. Move highlights the gaps the unit can land in. More than 9 skills wrap into a second bar row. Keyboard: 1 to 9 pick skills, M Move, Space Skip Turn. | None. |
-| Skill selected | Show legal targets, affected units, and timing preview. Right-click, Esc, Android back, selecting the same skill again, or tapping empty space on the player's own side cancels; tapping empty space on the enemy side does not. Selecting another skill switches directly. | Targetless skills, multi-mode skills. |
-| Target preview | Expose relevant range/protection and foreseeable outcomes. Mouse: hover previews, click executes. Touch: the first tap on a target previews, tapping the same target again executes. Keyboard: arrows or Tab cycle targets, Enter executes, I inspects. | Uncertain/hidden outcomes. |
+| Skill selected | Show legal targets, affected units, and timing preview. A skill with a Momentum cost shows a ghost marker on the meter where it lands after paying. Right-click, Esc, Android back, selecting the same skill again, or tapping empty space on the player's own side cancels; tapping empty space on the enemy side does not. Selecting another skill switches directly. A skill that needs no target shows its preview on the first press and is used on the second press (or Enter). Skills never have modes (game_system.md §6.3). | None. |
+| Target preview | Expose relevant range/protection and foreseeable outcomes. The preview shows the damage range and, when targeting, the skill's success chance in percent. Mouse: hover previews, click executes. Touch: the first tap on a target previews, tapping the same target again executes. Keyboard: arrows or Tab cycle targets, Enter executes, I inspects. | None. |
 | Resolving | Automatic effect/reaction processing; no enemy-turn decision popups. Choosing actions is locked. Inspection, the speed setting (1x, 2x, instant) and surrender still work; there is no tap to finish the current action instantly. Opening inspection pauses the animation queue until it closes, except in online play. Enemy turns play their effects straight away, with no announcement banner; the timeline shows who acted. | None. |
 | Result | An overlay over the final board shows the result (victory, defeat, draw, surrender), any unlocked units, and Continue, Retry (after a defeat) and Exit. A draw reads as a defeat in single-player modes. | Reward contents (campaign). |
 
@@ -36,7 +36,7 @@ These are specification categories, not a mandated engine state-machine implemen
 
 - Support **Windows, Android, and iOS in landscape only**. Devices and screen shapes are set in production.md §1.1; exact layout sizes remain open.
 - Begin development with headless AI-versus-AI batch runs (game_system.md §2.5). A **battle viewer** then runs AI-versus-AI battles on the card UI as a debug mode, also used to debug UI issues. It can start a battle with the same setup (teams and formations) as any recorded battle; it does not replay the recorded battle exactly. Its controls are pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup (production.md §2.3). It shows only what a player would see, not the AI's scores or alternatives.
-- Party setup: a **team editor** in the manner of a deck builder (game_system.md §13.2). Pick up to six creatures from the collection (each at most once), place them in rows, and save the team under a name. Several named teams; the last used one is preselected. Still open: recruit browser layout, filters, card inspection, tree editing, validation messages.
+- Party setup: a **team editor** in the manner of a deck builder (game_system.md §13.2). Pick up to six creatures from the collection (each at most once), place them in rows, and save the team under a name. Several named teams; the last used one is preselected. The collection can be filtered by class, size tier and attack type and sorted by name, HP, Speed or Power. Still open: recruit browser layout, tree editing, validation messages.
 - **Battle screen** (decided 2026-10-06):
   - The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle.
   - Board cards are compact: front artwork, HP bar, statuses and KO. Name, classes, Speed, Power and Defense appear on hover and in the inspection panel.
@@ -45,7 +45,12 @@ These are specification categories, not a mandated engine state-machine implemen
   - The Momentum meter is a vertical bar at the right edge spanning both halves, with the player's end at the bottom.
   - The timeline shows the next 12 entries; the rest are reached by scrolling it.
   - A summon uses the same compact card with a summon marker; hovering it highlights its summoner.
-  - Still open: exact card dimensions, safe areas, skill labels, status overflow and tooltips.
+  - Skill buttons show an icon and short name, plus the skill's Delay and Momentum cost as small numbers.
+  - A compact card shows up to four status icons, then a +N badge; the inspection panel lists all of them.
+  - In the inspection panel and on skill buttons, hovering or tapping a keyword (Poison, `projectile`, Delay) shows a one-line explanation.
+  - Damage, healing and absorbed damage appear as short floating numbers, colored and with an icon.
+  - Touch targets are at least 7 mm on the test phone (about 110 px at the 1920 × 1080 base). Body text is at least 22 px at base.
+  - Still open: exact card dimensions and safe areas, settled with the annotated layouts.
 - Card front/back inspection: all class names, long skill text, scrolling, modified values, source of modifiers, opponent visibility.
 - Main menu, settings, collection, exploratory story campaign, unit-unlock presentation, free battle against the AI, and at least one post-story random-battle mode (no rewards). A new player starts with the campaign tutorial; the other menu entries unlock when it is complete (game_system.md §2.2). The battle viewer appears only in development builds.
 - Campaign exploration uses **illustrated locations**; battles are played in a fixed order, and the map shows each encounter's creature reward before the battle. The current campaign is a linear sequence of **four stages**; detailed story/location content comes later. Show guaranteed encounter unit rewards and their unlock results; do not add capture interactions for now.
@@ -57,7 +62,7 @@ These are specification categories, not a mandated engine state-machine implemen
 - **Delayed `direct` effects.** A delayed `direct` event on the timeline marks its slot (a coordinate in a row, §4.7 and §7.3) on the battlefield, not a unit, so the player can see that it may hit someone else if the target moves away.
 - **Stealth feedback.** A unit that loses stealth (by attacking, being hit, or a reveal or cleanse) shows that change clearly. A stealthed unit cannot be selected as a normal target, and area or `direct` previews still highlight it when it is hit (game_system.md §10.1).
 - Provide **free respec outside battle** once point allocation is available. Reset/reallocation must respect the later-defined budget and prerequisites; exact controls and dependent-node handling still need specification.
-- **Local two-player** (game_system.md §2.4): each player picks a saved team built from the device's collection; both may use the same creatures. During battle the board flips so the acting player's side is always at the bottom, with a clear cue when the side changes. Inspection pauses the animations as in single-player.
+- **Local two-player** (game_system.md §2.4): each player picks a saved team built from the device's collection; both may use the same creatures. There is no secrecy: both teams are shown before the battle. Local two-player is a nice extra for offline players, not a competitive mode. During battle the board flips so the acting player's side is always at the bottom, with a clear cue when the side changes. Inspection pauses the animations as in single-player.
 - Prepare interfaces for future online PvP, but **do not implement the online mode or its connected flows/services until explicit owner greenlight**. Planning inspection and shared control boundaries is allowed; online implementation is gated.
 - First-time guidance: short tips the first time something new happens, with no guided step-by-step battle (game_system.md §2.2 tutorial). Error/empty/loading states for every included flow.
 
@@ -65,7 +70,7 @@ These are specification categories, not a mandated engine state-machine implemen
 
 Specify target screen sizes and minimum text/touch dimensions, distinction between cosmetic and gameplay borders, color-independent status cues, action/target selection appearance, damage/heal/status/KO feedback, reduced-motion behavior, and audio equivalents if selected.
 
-Produce annotated layouts before declaring UI specification complete. Existing creature images and contact sheets are art references, not approved finished card layouts.
+Produce annotated layouts before declaring UI specification complete. Claude builds them as clickable HTML mockups (battle screen, team editor, campaign map) for the owner to review. Existing creature images and contact sheets are art references, not approved finished card layouts.
 
 ## Interaction checks
 
