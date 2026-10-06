@@ -80,7 +80,7 @@ These are specification categories, not a mandated engine state-machine implemen
 
 Specify target screen sizes and minimum text/touch dimensions, distinction between cosmetic and gameplay borders, color-independent status cues, action/target selection appearance, damage/heal/status/KO feedback, reduced-motion behavior, and audio equivalents if selected.
 
-Produce annotated layouts before declaring UI specification complete. Claude builds them as clickable HTML mockups (battle screen, team editor, campaign map) for the owner to review; all three were reviewed on 2026-10-06 and their layouts are adopted above. **Visual direction (2026-10-06):** a **daytime storybook fairytale** look, light and colorful (a darker night version was reviewed and rejected): screens sit on an illustrated fairytale background, and panels (parchment), buttons and colors are styled to fit it. Existing creature images and contact sheets are art references, not approved finished card layouts.
+Produce annotated layouts before declaring UI specification complete. Claude builds them as clickable HTML mockups (battle screen, team editor, campaign map) for the owner to review; all three were reviewed on 2026-10-06 and their layouts are adopted above. **Visual direction (2026-10-06):** a **night fairytale** look: screens sit on an illustrated fairytale background (night sky, moon, castle, hills, fireflies), with deep plum panels, cream text and gold highlights. A lighter daytime storybook version was tried and rejected. The skill bar's form (a hand of cards or an action bar with icons) is being compared in the battle mockup. Existing creature images and contact sheets are art references, not approved finished card layouts.
 
 ## Interaction checks
 
