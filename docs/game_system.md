@@ -222,9 +222,9 @@ Numerical values still define and balance real effects; the restriction is again
 
 ### 4.4 Skill availability in combat
 
-Each unit begins with **exactly one type-specific attack**, such as Bite, Sword Slash, Punch, or Arrow. Through its skill trees, a unit should gain **6?8 additional usable skills in total across its classes**, not 6?8 per class. **All unlocked skills are available in combat; there is no separate loadout or equipped-skill cap.**
+Each unit begins with **exactly one type-specific attack**, such as Bite, Sword Slash, Punch, or Arrow. Through its skill trees, a unit should gain **6–8 additional usable skills in total across its classes**, not 6–8 per class. **All unlocked skills are available in combat; there is no separate loadout or equipped-skill cap.**
 
-The intended developed unit therefore has **7?9 usable skills including its type-specific attack**. This is a content-design target, not a hard cap. Initial testing still grants all available creature/class skills before trees exist, so temporary test units may exceed that target. Passives and modifiers are mixed into the trees but do not each require a separate action button.
+The intended developed unit therefore has **7–9 usable skills including its type-specific attack**. This is a content-design target, not a hard cap. Initial testing still grants all available creature/class skills before trees exist, so temporary test units may exceed that target. Passives and modifiers are mixed into the trees but do not each require a separate action button.
 
 There is **no separate Basic Attack system**. Bite, Claw, Shoot, and comparable attacks are ordinary skills. Detailed tree topology and node design were deliberately deferred.
 
@@ -946,6 +946,8 @@ The **front** contains:
 - Relevant combat stats, including Life (current and maximum HP), Speed, Power, and Defense.
 - Clear status and KO overlays on or around the border.
 
+On the battlefield a unit is shown as a **compact card**: front artwork, HP bar, statuses and KO. The full front appears on hover and in the inspection panel, which shows front and back side by side ([ui_spec.md](ui_spec.md)).
+
 Cosmetic frames must never reduce gameplay readability. KO must be unmistakable, for example through desaturation or darkening in addition to an explicit KO indication.
 
 The **back** uses the same selected cosmetic frame and shows the unit from behind, together with every skill it can currently use. Descriptions show the actual current versions, including all modifications and effects selected through skill trees.
@@ -969,9 +971,12 @@ The interface has a clear information hierarchy:
 | Unit cards | Current unit state, stats, statuses, and KO. |
 | Formation | Positional relationships, adjacency, and covering. |
 | Bottom horizontal skill bar | The active unit's immediately available actions, similar to an MMORPG skill interface. |
-| Top horizontal timeline | The shared temporal state of combat and multiple upcoming turns. |
+| Top horizontal timeline | The shared temporal state of combat: the next 12 entries, scrollable for more. |
+| Right edge | The vertical Momentum meter, spanning both halves, with the player's end at the bottom. |
 
-All of the active unit's skills should be directly visible, normally 7?9 including the type-specific attack, without nested menus. The intended interaction is **select skill → highlight valid targets → select target → execute**. Invalid targets are visibly unavailable. Skills that require no target input execute directly according to section 6.3. Avoid unnecessary chained decisions and repeated confirmation prompts.
+The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle. All rows use the same card size. Interaction details are in [ui_spec.md](ui_spec.md).
+
+All of the active unit's skills should be directly visible, normally 7–9 including the type-specific attack, without nested menus. The intended interaction is **select skill → highlight valid targets → select target → execute**. Invalid targets are visibly unavailable. Skills that require no target input execute directly according to section 6.3. Avoid unnecessary chained decisions and repeated confirmation prompts.
 
 During targeting, area attacks and skills affecting additional units should preview all affected cards whenever possible. Target inspection also exposes range, protection, and relevant exceptions.
 
@@ -1185,7 +1190,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Party | Prototype validation of six-versus-six readability, possible four- or five-unit standard, starting below the standard size, enemy exceptions, duplicate recruits. No combat reserve swapping. |
 | Timeline | None open. Delay bounds (clamped to 1–10) are adopted and Turn Now was removed (section 6.1). Initial progress, ties, Haste/Slow, Reset, skipped turns and same-time order are adopted (section 6.1). Speed 1–10 (10 fastest), skill Delay 1–10 (1 quickest), and Wait = Delay + 11 − Speed are adopted (section 6.1). |
 | Momentum | None open. Non-damaging actions, payment timing, refunds and simultaneous shifts are adopted (section 6.7). Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
-| Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6?8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
+| Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6–8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
 | Damage | Multiple shields on one unit (waiting for concrete examples). Roll, shield, defense, final reduction order, defense bounds (0–75%, additive), penetration, and fixed damage are adopted (section 5.2). Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
 | Defense | Eligible attacks for other defenses and precise interaction with damage events. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, intercepted non-damaging effects, left-to-right defender order and the nearest-target tie rule are adopted (sections 8.2 and 8.5). |
 | Reactions | None open. Propagation, priority levels, tie-breaks, timing and KO'd owners are adopted (section 6.6). There is deliberately no chain limit or recursion safeguard for now: AI-versus-AI testing must detect endless chains. |
@@ -1201,7 +1206,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Encounters | Specific encounter rosters and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Four-stage illustrated campaign details, later full campaign design, post-story random-battle rules, local two-player flow, and final content. AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Final card styling, mobile readability, artwork framing, gestures, audio, and prototype validation of party/capacity limits. Centered rows, front/back roles, top timeline, and bottom skill bar are selected. |
-| Delivery | Windows/Android/iOS minimum requirements and distribution, landscape layouts, technical validation, save system, business model, final name. Language, rules core, runner, content format, randomness, tests and the future online backend are adopted (section 16.1). |
+| Delivery | Windows/Android/iOS minimum requirements and distribution, landscape layout sizes, technical validation, save system, business model, final name. Language, rules core, runner, content format, randomness, tests and the future online backend are adopted (section 16.1). The battle screen arrangement and interactions are adopted (section 13.3, ui_spec.md). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
 
