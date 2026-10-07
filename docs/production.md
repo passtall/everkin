@@ -36,7 +36,7 @@ Adopted 2026-10-06.
 - **Profiles and timing.** One profile per device, stored locally; cloud saves come later. The game saves automatically after every battle and campaign step, and after every action in a battle, so a battle closed by the device resumes where it was. No manual save slots.
 - **Format.** JSON with a version number. Older saves are upgraded step by step when loaded.
 - **Damaged saves.** The game writes to a temporary file and then swaps it in, and keeps the previous save as a backup that loads automatically if the newest one is damaged.
-- **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change. Otherwise it restarts from its setup.
+- **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change. Otherwise it is dropped, and a short note says so (changed 2026-10-07; it used to restart from its setup).
 
 ### 1.5 Story presentation
 
