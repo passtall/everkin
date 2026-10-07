@@ -72,7 +72,7 @@ Units unlock through **guaranteed encounter rewards** for now. Each won encounte
 
 **Levels.** Every unit is level 20 in every mode until skill trees exist. Levelling is decided together with the trees (section 4.1).
 
-After completing the story, at least one **random-battle mode** provides continued play. The player picks a difficulty and the enemy team is drawn at random. Random battles give **no rewards**.
+After completing the story, at least one **random-battle mode** provides continued play. The player picks a difficulty and the enemy team is drawn at random. Random battles unlock no creatures; their wins pay coins (see below).
 
 **After the story.** Fixed, harder **challenge encounters** appear on the map; each unlocks one more creature. After the story, and in online play, the player also earns **coins**. Coins unlock creatures that are not campaign rewards. Random-battle wins and online play pay coins; challenge encounters give only their creature, no coins. Each coin creature has its own price. Coins can also be bought (production.md §1.2).
 
