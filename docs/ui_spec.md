@@ -65,6 +65,15 @@ These are specification categories, not a mandated engine state-machine implemen
 - Card front/back inspection: all class names, long skill text, scrolling, modified values, source of modifiers, opponent visibility.
 - Main menu, settings, collection, exploratory story campaign, unit-unlock presentation, free battle against the AI, and at least one post-story random-battle mode (no rewards). A new player starts with the campaign tutorial; the other menu entries unlock when it is complete (game_system.md §2.2). The battle viewer appears only in development builds.
 - Campaign exploration uses **illustrated locations**; battles are played in a fixed order, and the map shows each encounter's creature reward before the battle. The current campaign is a linear sequence of **four stages**; detailed story/location content comes later. Show guaranteed encounter unit rewards and their unlock results; do not add capture interactions for now.
+- **Game flow** (adopted 2026-10-07):
+  - **First launch.** The full main menu appears with only Campaign available; the other entries are visible but locked until the tutorial is complete.
+  - **Main menu.** Campaign · Battle (free battle, random battles after the story, local two-player) · Collection and teams · Shop · Settings. There is no Continue button. How a returning player resumes an open battle or the campaign is still open and is specified separately.
+  - **Starting a battle.** After Fight, the board appears with both teams sliding in, then the first turn starts. There is no versus screen.
+  - **New creature.** After a win that unlocks a creature, its card flips over large with its name and classes, and Continue moves on. There is no Add to team button.
+  - **After a campaign win.** Continue returns to the stage map with the next encounter selected.
+  - **After a defeat.** Retry restarts the battle with the same team and formation; a second button opens the team editor first.
+  - **Random battles.** The result shows the coins earned and offers Next battle (same difficulty and team) or Exit.
+  - **Local two-player.** Player 1 picks a saved team, then player 2; both teams are shown side by side, then Fight.
 - **Campaign map** (adopted 2026-10-06 from the mockup):
   - One illustrated screen per stage, with the encounters on a path in their fixed order and arrows to the other unlocked stages.
   - Won encounters are marked done, the next one is highlighted, later ones stay dark; the boss is a larger node at the end.
