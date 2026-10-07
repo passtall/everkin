@@ -33,10 +33,11 @@ Adopted 2026-10-06.
 
 ### 1.4 Saving
 
-- **Profiles and timing.** One profile per device, stored locally; cloud saves come later. The game saves automatically after every battle and campaign step, and after every action in a battle, so a battle closed by the device resumes where it was. No manual save slots.
+- **Profiles and timing.** One profile per device, stored locally. The game saves automatically after every battle and campaign step, and after every action in a battle, so a battle closed by the device resumes where it was. No manual save slots.
 - **Format.** JSON with a version number. Older saves are upgraded step by step when loaded.
 - **Damaged saves.** The game writes to a temporary file and then swaps it in, and keeps the previous save as a backup that loads automatically if the newest one is damaged.
 - **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change. Otherwise it is dropped, and a short note says so (changed 2026-10-07; it used to restart from its setup).
+- **Cloud saves (adopted 2026-10-07).** At release each store's own cloud save backs up the profile: Steam Cloud on Windows, Google Play saved games on Android, iCloud on iOS. Saves do not move between platform families; that comes with online accounts. If the cloud save and the device save differ, the game asks the player which to keep and shows each save's progress and date.
 
 ### 1.5 Story presentation
 
@@ -127,7 +128,6 @@ Adopted 2026-10-06.
 
 ## 4. Still open
 
-- Final commercial name (game_system.md §18).
-- Cloud saves, and when they come.
+- Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18).
 - Game price, coin packs and prices, store pages, and when a Steam page goes up.
 - Which background designs to make, and the sound effect list.

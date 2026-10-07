@@ -110,7 +110,7 @@ The harness plays battles automatically for balance testing and debugging. Adopt
 - **Party size.** Test battles are 6 versus 6 only for now.
 - **Formation.** Each side's starting formation is a random legal placement. It is recorded with the battle, so the statistics also show which rows work for which units.
 - **Search.** Each AI uses a minimax search over a fixed number of upcoming timeline turns, counted across both sides. Both AIs in a test battle use the same settings.
-- **Depth and difficulty.** Search depth comes from the AI's difficulty level: low difficulty searches shallow, and the highest level uses a high depth that still runs without problems. Test runs use the highest level. The depth for each level is set after measuring speed in the prototype (proposal: lowest 2, highest 8).
+- **Depth and difficulty.** Search depth comes from the AI's difficulty level: low difficulty searches shallow, and the highest level uses a high depth that still runs without problems. Test runs use the highest level. The depth for each level is set after measuring speed in the prototype (proposal: Easy 2, Hard 8; three levels, section 12.3).
 - **Chance in the search.** The search uses average values for damage rolls and probabilities. The real seeded roll is applied once the action is chosen.
 - **Evaluation.** At the end of its look-ahead the search scores a position as a weighted sum of each side's remaining HP share, units still standing, and Momentum. The weights live in a config file.
 - **Information.** The AI knows only what a player would see. Because stealth limits targeting, not information (section 10.1), that includes stealthed units, their HP and statuses. Opposing future skill choices are not known.
@@ -981,6 +981,7 @@ Boss concepts include pushing or pulling units, disrupting a formation, and mani
 - **Enemy side.** An enemy side has six original members by default. An encounter may use a different number, and the defeat rule then uses that side's own original members.
 - **Enemy behavior.** Enemies use the same search-based AI as AI-versus-AI testing (section 2.5). Difficulty changes how deep it searches or how often it picks a weaker action.
 - **Difficulty.** It is set through the enemy roster and formation. There are no hidden stat multipliers.
+- **Difficulty levels (adopted 2026-10-07).** The AI has three levels: **Easy, Normal and Hard**. A level sets only the AI's strength (search depth and how often it picks a weaker action). In free and random battles the player picks the level; a random battle's enemy team is drawn from the whole unlocked roster at every level. In the campaign each encounter's level is set by the designer and rises through the stages; the player cannot change it.
 - **Encounter exceptions (adopted 2026-10-06).** None for now. Encounters differ only in roster, formation and team size. Any other exception must be written into that encounter's definition and approved.
 
 ## 13. Card interface and combat presentation
@@ -1181,7 +1182,7 @@ Online PvP is planned with interface preparation now, but implementation require
 
 ## 18. Identity and reference boundaries
 
-Everkin remains a working title. A previous naming discussion raised potential existing-name conflicts; final commercial naming and clearance are unresolved. This document records that issue without treating the earlier legal commentary as clearance or a current legal assessment.
+**Everkin is the chosen name** (adopted 2026-10-07), subject to an availability check (trademarks, store listings, domains) before any store page goes up. A previous naming discussion raised potential existing-name conflicts; that check must settle them. This document records that issue without treating the earlier legal commentary as clearance or a current legal assessment.
 
 All artwork, character designs, UI, names, text, music, and branding must have an independent identity. References guide broad design goals rather than supplying assets or exact presentation.
 
@@ -1211,10 +1212,10 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Tiers, stat ranges, the attack library rule, class counts, no natural traits and text IDs are adopted (section 3.7). |
 | Recruitment | Guaranteed encounter-to-unit reward assignments, the exact tutorial creatures, individual coin prices, individual persistence. Tutorial growth (two Critters, then +1, +1, +2), coin sources, payouts, price guide and the roster split are adopted (section 2.2). One copy per creature, one fixed reward per encounter from the defeated team, rewards given once, the three-battle tutorial, post-story challenge encounters, coins, and fixed human recruits are adopted (sections 2.2 and 3.4). Other acquisition methods are not currently required. |
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
-| Encounters | Specific encounter rosters, boss stats, and the AI's difficulty settings. Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
+| Encounters | Specific encounter rosters, boss stats, and each encounter's AI level. Three difficulty levels are adopted (section 12.3). Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Campaign content (locations, encounters, boss rosters), later full campaign design, and final content. Stage size (about five battles plus a boss), fixed battle order, no team restrictions and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, left vertical timeline, and bottom skill bar are selected. Card styling is decided (full art with corner gems, rear-art backs, gold frame; ui_spec.md). |
-| Delivery | Technical validation, cloud saves, final name. Platforms, stores, business model, languages, accessibility, crash reports, save files and the technical foundation are adopted ([production.md](production.md)). The battle screen arrangement, interactions and layout sizes are adopted (section 13.3, ui_spec.md). |
+| Delivery | Technical validation and the name's availability check. Cloud saves and the name (Everkin) are adopted. Platforms, stores, business model, languages, accessibility, crash reports, save files and the technical foundation are adopted ([production.md](production.md)). The battle screen arrangement, interactions and layout sizes are adopted (section 13.3, ui_spec.md). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
 
