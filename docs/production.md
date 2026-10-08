@@ -132,4 +132,4 @@ Adopted 2026-10-06.
 
 - Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18).
 - Game price, real-money prices for the coin packs, store pages, and when a Steam page goes up.
-- Which background designs to make, and the sound effect list.
+- The sound effect list.
