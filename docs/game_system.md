@@ -1216,7 +1216,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters, boss stats, and each encounter's AI level. Three difficulty levels are adopted (section 12.3). Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Campaign content (locations, encounters, boss rosters), later full campaign design, and final content. Stage size (about five battles plus a boss), fixed battle order, no team restrictions and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
-| Presentation | Mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, left vertical timeline, and bottom skill bar are selected. Card styling is decided (full art with corner gems, rear-art backs, gold frame; ui_spec.md). |
+| Presentation | Mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, left vertical timeline, and bottom skill bar are selected. Card styling is decided (full art with corner gems, rear-art backs, home-biome frame; ui_spec.md). |
 | Delivery | Technical validation and the name's availability check. Cloud saves and the name (Everkin) are adopted. Platforms, stores, business model, languages, accessibility, crash reports, save files and the technical foundation are adopted ([production.md](production.md)). The battle screen arrangement, interactions and layout sizes are adopted (section 13.3, ui_spec.md). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
@@ -1259,7 +1259,7 @@ Final content lists must be complete; examples and partially filled entries do n
 
 Finalize the authoritative rules state, UI preview/execution relationship, event ordering, and build/export process for the selected platforms. Language, the rules-core split, content format and IDs, and random-number control are adopted (section 16.1).
 
-Save timing, format, versioning, corruption recovery, battle resume, supported devices and screen shapes, languages, accessibility and crash reporting are adopted in [production.md](production.md). Still to resolve: online responsibilities if relevant, performance targets, sound/music/VFX inventory, tutorials, settings, and missing-data/error behavior. Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
+Save timing, format, versioning, corruption recovery, battle resume, supported devices and screen shapes, languages, accessibility and crash reporting are adopted in [production.md](production.md). Performance targets, the sound and music list, tutorials, settings, and loading and error behavior are adopted there too. Still to resolve: online responsibilities if relevant, and the visual effects (VFX) list. Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
 
 ### 20.5 Worked checks
 
