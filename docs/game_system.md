@@ -132,7 +132,7 @@ The current intended battle size is **six active team members versus six**, plac
 
 Six-unit party readability must be tested in the actual prototype. If combat becomes crowded or difficult to parse, reducing the standard party size to four or five should be considered. This remains a prototype readability question, not a finalized reduction.
 
-Whether a player may deliberately begin with fewer than six members remains open, especially in relation to summons. Enemy party-size exceptions and boss composition have not been finalized.
+A player may fight with one to six members; teams with fewer than six show a warning icon where teams are picked (adopted 2026-10-08, ui_spec.md). Enemy party-size exceptions and boss composition have not been finalized.
 
 No class dictates a mandatory row. The system should support unusual but effective combinations, including defensive small creatures or an unconventional back-row guardian.
 
@@ -1085,7 +1085,7 @@ The art guide proposed two to five major color blocks with a selective accent, m
 
 ### 14.5 Biomes and environments
 
-Visually distinct, relatively isolated biomes were accepted in the original direction. Their role in the card game may include artwork settings, encounter backgrounds, or campaign identity; the delivery format remains open.
+Visually distinct, relatively isolated biomes were accepted in the original direction. Their role in the card game may include artwork settings, encounter backgrounds, or campaign identity. Cards use a soft background tinted by the creature's home biome (production.md §1.6).
 
 The art guide proposed Forest, Plains/Meadow, Coast/Shore, Swamp, Desert, Snow/Frostlands, Volcanic/Ashlands, Crystal/Mystic regions, Ancient Ruins, and Caves/Underground. Optional ideas included fairy groves, autumn woods, high mountains, luminous wetlands, and storm cliffs.
 
@@ -1136,7 +1136,7 @@ Chance-based mechanics still exist. Reproducibility would require controlled ran
 
 A reusable card component and shared content definitions were proposed for collection, team-building, inspection, and combat. Earlier sample folders, code, engine-version claims, and platform-export claims are not frozen technical requirements.
 
-Input abstraction and a reusable card scene were proposed to support desktop and touch controls without duplicating game logic. Windows, Linux/Steam Deck, Android, and iOS were specifically discussed; the final delivery plan remains open. The working approach assumes substantial AI-assisted development with the owner reviewing decisions and results.
+Input abstraction and a reusable card scene were proposed to support desktop and touch controls without duplicating game logic. Windows, Linux/Steam Deck, Android, and iOS were specifically discussed; the platforms are now decided in production.md §1.1. The working approach assumes substantial AI-assisted development with the owner reviewing decisions and results.
 
 ### 16.2 Asset workflow
 

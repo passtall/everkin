@@ -129,5 +129,5 @@ Adopted 2026-10-06.
 ## 4. Still open
 
 - Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18).
-- Game price, coin packs and prices, store pages, and when a Steam page goes up.
+- Game price, real-money prices for the coin packs, store pages, and when a Steam page goes up.
 - Which background designs to make, and the sound effect list.
