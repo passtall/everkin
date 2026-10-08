@@ -98,7 +98,9 @@ These are specification categories, not a mandated engine state-machine implemen
 - Provide **free respec outside battle** once point allocation is available. Reset/reallocation must respect the later-defined budget and prerequisites; exact controls and dependent-node handling still need specification.
 - **Local two-player** (game_system.md §2.4): each player picks a saved team built from the device's collection; both may use the same creatures. There is no secrecy: both teams are shown before the battle. Local two-player is a nice extra for offline players, not a competitive mode. During battle the board flips so the acting player's side is always at the bottom, with a clear cue when the side changes. Inspection pauses the animations as in single-player.
 - Prepare interfaces for future online PvP, but **do not implement the online mode or its connected flows/services until explicit owner greenlight**. Planning inspection and shared control boundaries is allowed; online implementation is gated.
-- First-time guidance: short tips the first time something new happens, with no guided step-by-step battle (game_system.md §2.2 tutorial). Error/empty/loading states for every included flow.
+- First-time guidance: short tips the first time something new happens, with no guided step-by-step battle (game_system.md §2.2 tutorial). **Tips (adopted 2026-10-08):** a small storybook note with an arrow pointing at the thing it explains. A tip appears the first time its mechanic actually happens in play (first status, first interception, first KO, and so on). Tapping anywhere closes it; each tip shows once, and Settings has Reset tips.
+- **Battle menu (adopted 2026-10-08):** opened from a button at the far end of the action bar (Menu on a controller, Esc when nothing is selected). It holds Resume, Settings, Exit to menu, and Surrender set apart at the bottom. While it is open the animation queue pauses, except online.
+- **Loading and errors (adopted 2026-10-08):** loading shows a plain spinner. Other error and empty states are specified with each flow.
 
 ## Visual acceptance still required
 

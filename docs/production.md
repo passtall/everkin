@@ -37,6 +37,7 @@ Adopted 2026-10-06.
 - **Format.** JSON with a version number. Older saves are upgraded step by step when loaded.
 - **Damaged saves.** The game writes to a temporary file and then swaps it in, and keeps the previous save as a backup that loads automatically if the newest one is damaged.
 - **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change. Otherwise it is dropped, and a short note says so (changed 2026-10-07; it used to restart from its setup).
+- **Backups (adopted 2026-10-08).** The device keeps the last three automatic save backups. If the save is damaged, the game loads the newest good backup and shows a short note.
 - **Cloud saves (adopted 2026-10-07).** At release each store's own cloud save backs up the profile: Steam Cloud on Windows, Google Play saved games on Android, iCloud on iOS. Saves do not move between platform families; that comes with online accounts. If the cloud save and the device save differ, the game asks the player which to keep and shows each save's progress and date.
 
 ### 1.5 Story presentation
