@@ -22,7 +22,7 @@ Adopted 2026-10-06.
 
 - **Price.** One-time purchase on every platform. On mobile this is a free download with the demo content and one purchase that unlocks the full game. No ads, ever. No booster packs, paid random draws, trading or duplicate conversion (game_system.md §2.2).
 - **Coins.** Coins are earned in play (game_system.md §2.2) and **can also be bought**. They unlock specific creatures, never random ones. **Coin packs** (adopted 2026-10-07): three packs of 500, 1,200 and 2,500 coins, kept generous compared with creature prices (game_system.md §2.2). Real-money prices are set at release.
-- **Cosmetic frames.** Earned by playing, through campaign milestones and achievements. Never sold.
+- **Cosmetic frames.** Earned by playing, through campaign milestones and achievements. Never sold. Every card has the gold frame by default; an earned frame can replace it on creatures the player chooses (confirmed 2026-10-08). Frames never mark tier or class.
 - **Demo.** A free demo with the tutorial and the first campaign stage. Progress carries over on purchase. On mobile the demo is the free download itself; on Steam it is a separate demo.
 
 ### 1.3 Languages, accessibility and data
@@ -54,8 +54,8 @@ Adopted 2026-10-06.
 - **Art style.** The current faceted creature art is the final style. It is cleaned up and made consistent, but **the original files are never changed**: cleanup works on copies.
 - **Art files.** Cleaned copies use one canvas of 1024 × 1536 (2:3) with a transparent background, and every creature stands on a shared ground line.
 - **Creature size.** Cards do not show creature size: every creature fills its frame, with no size scaling or size icon. Size contrast was a leftover from the 3D direction (game_system.md §14.3).
-- **Card backgrounds.** A soft background behind the creature, tinted by its home biome. A few background designs are made and reused.
-- **Battle backgrounds.** An illustrated, dimmed background per campaign stage or biome, from designed backgrounds.
+- **Card backgrounds.** A soft background behind the creature from its home biome: one card background design per biome (adopted 2026-10-08, biome list in game_system.md §14.5).
+- **Battle backgrounds.** An illustrated, dimmed background per biome. Campaign battles use their stage's biome; free and random battles use a random biome the player has reached in the campaign (adopted 2026-10-08).
 - **UI look.** Night fairytale (a daytime version was rejected): menus and screens use an illustrated fairytale background, and the UI colors, panels and buttons are styled to fit it (adopted 2026-10-06 from the mockup review).
 - **Idle motion.** None. Cards only react to hits and effects.
 - **Music.** Quiet ambient sound only; no melodic soundtrack.

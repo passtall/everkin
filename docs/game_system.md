@@ -1087,9 +1087,11 @@ The art guide proposed two to five major color blocks with a selective accent, m
 
 Visually distinct, relatively isolated biomes were accepted in the original direction. Their role in the card game may include artwork settings, encounter backgrounds, or campaign identity. Cards use a soft background tinted by the creature's home biome (production.md §1.6).
 
-The art guide proposed Forest, Plains/Meadow, Coast/Shore, Swamp, Desert, Snow/Frostlands, Volcanic/Ashlands, Crystal/Mystic regions, Ancient Ruins, and Caves/Underground. Optional ideas included fairy groves, autumn woods, high mountains, luminous wetlands, and storm cliffs.
+**Biome list (adopted 2026-10-08).** Each background is a biome. Chosen so far: **Pine and dry forest, Jungle, Wet and mixed forest, Desert, Mountain, Giant cathedral or castle (inside), Grassland and savannah, Arctic and iceberg.** Ten more were proposed for review (biome-decisions.md); the list grows as they are approved. Which biomes the four campaign stages use is decided with the campaign content.
 
-These are a proposed palette and setting library, not a confirmed launch-region list.
+**Home biomes (adopted 2026-10-08).** Every creature has one home biome from this list. Campaign creatures mostly appear in their home biome's stage.
+
+The earlier art guide (Forest, Plains/Meadow, Coast/Shore, Swamp, Desert, Snow/Frostlands, Volcanic/Ashlands, Crystal/Mystic regions, Ancient Ruins, Caves/Underground; optional fairy groves, autumn woods, high mountains, luminous wetlands, storm cliffs) is superseded by the list above.
 
 ### 14.6 UI and VFX style
 
