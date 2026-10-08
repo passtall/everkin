@@ -61,6 +61,13 @@ Adopted 2026-10-06.
 - **Idle motion.** None. Cards only react to hits and effects.
 - **Music.** Quiet ambient sound only; no melodic soundtrack.
 - **Sound effects.** One set per tag and effect (melee, projectile, magic, heal, status, KO). No creature cries.
+- **Sound list** (adopted 2026-10-08):
+  - *Interface:* confirm, cancel, invalid action, panel open and close, hover, tab switch, drag pickup and drop, card flip.
+  - *Coins:* a soft coin sound when coins are gained or spent.
+  - *Battle:* three variants of each battle sound, picked at random with a small random pitch change. A soft chime when one of the player's units gets its turn (no cue for enemy turns). Momentum sounds only when it crosses a big threshold or reaches the end of the bar. Statuses: one sound for a helpful status, one for a harmful status, one for a status ending. KO: a glassy crack, then a soft card-flip thud, matching the crack animation.
+  - *Result:* a short non-melodic sting (a swell or chime, about 2 seconds) for victory and one for defeat.
+  - *Ambient:* one loop per biome. Made only once the biome list is final. The campaign map plays the current stage's biome loop; the other menus play the loop of a random biome.
+  - *Format:* OGG Vorbis at 48 kHz, effects mono, ambient stereo, all levelled to the same loudness.
 - **Audio source.** AI-generated, with licensing checked for each tool used.
 - **Vibration.** Light vibration on hits and KOs on phones, with a setting to turn it off.
 - **Settings menu.** Music and sound volume, reduced motion, text size, vibration, language, crash reports, and key and controller bindings on Windows. There is no battle speed setting anywhere in the game (adopted 2026-10-08); only the development battle viewer has speed controls.
@@ -132,4 +139,3 @@ Adopted 2026-10-06.
 
 - Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18).
 - Game price, real-money prices for the coin packs, store pages, and when a Steam page goes up.
-- The sound effect list.
