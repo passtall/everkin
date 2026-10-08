@@ -1259,7 +1259,7 @@ Final content lists must be complete; examples and partially filled entries do n
 
 Finalize the authoritative rules state, UI preview/execution relationship, event ordering, and build/export process for the selected platforms. Language, the rules-core split, content format and IDs, and random-number control are adopted (section 16.1).
 
-Save timing, format, versioning, corruption recovery, battle resume, supported devices and screen shapes, languages, accessibility and crash reporting are adopted in [production.md](production.md). Performance targets, the sound and music list, tutorials, settings, and loading and error behavior are adopted there too. Still to resolve: online responsibilities if relevant, and the visual effects (VFX) list. Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
+Save timing, format, versioning, corruption recovery, battle resume, supported devices and screen shapes, languages, accessibility and crash reporting are adopted in [production.md](production.md). Performance targets, the sound and music list, tutorials, settings, and loading and error behavior are adopted there too. The visual effects rules are adopted there as well (2026-10-08). Still to resolve: online responsibilities if relevant. Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
 
 ### 20.5 Worked checks
 

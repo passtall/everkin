@@ -68,6 +68,19 @@ Adopted 2026-10-06.
   - *Result:* a short non-melodic sting (a swell or chime, about 2 seconds) for victory and one for defeat.
   - *Ambient:* one loop per biome. Made only once the biome list is final. The campaign map plays the current stage's biome loop; the other menus play the loop of a random biome.
   - *Format:* OGG Vorbis at 48 kHz, effects mono, ambient stereo, all levelled to the same loudness.
+- **Visual effects** (adopted 2026-10-08):
+  - *Style:* faceted shards and triangle sparks for physical hits; soft glow and light for magic and healing.
+  - *Length:* each skill gets the time it needs to read clearly, but never more than 3 seconds, and it must not feel slow. Skill effects visibly travel from attacker to target, or are otherwise shown in the way that suits the skill.
+  - *Making:* in the engine with particles and shaders; drawn sprites only where they are a real improvement.
+  - *Melee:* no card motion; a slash or impact on the target.
+  - *Projectile:* a visible shot travels from attacker to target along a short arc.
+  - *Direct:* by default a glow gathers on the caster, then the effect bursts on the target with nothing traveling between; each skill may show it differently where that suits it better.
+  - *Interception:* the defender's card flashes and slides briefly in front of the target as it takes the hit (an exception to cards staying in place).
+  - *Healing:* small motes rise from the bottom of the card and it glows softly once.
+  - *Statuses:* a short effect for each status (poison bubbles, flames, ice) before its icon appears. While it lasts, only the icon shows; the card stays clean.
+  - *Summons:* the card assembles from shards on its spot, with no line to the summoner.
+  - *Active unit:* a steady gold glow, no pulse.
+  - *Momentum:* the marker slides with a short spark trail, with a bigger flare at the thresholds.
 - **Audio source.** AI-generated, with licensing checked for each tool used.
 - **Vibration.** Light vibration on hits and KOs on phones, with a setting to turn it off.
 - **Settings menu.** Music and sound volume, reduced motion, text size, vibration, language, crash reports, and key and controller bindings on Windows. There is no battle speed setting anywhere in the game (adopted 2026-10-08); only the development battle viewer has speed controls.
