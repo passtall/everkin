@@ -16,7 +16,7 @@ Adopted 2026-10-06.
 - **Minimum devices.** Godot's own minimum OS versions. The game is tested on a mid-range phone from about 2020 and runs on phones and tablets.
 - **Screen shapes.** Everything from 4:3 tablets to 21:9 phones. The board stays 16:9 and extra space goes to margins. Phone notches and other unsafe areas are kept clear.
 - **Renderer.** Godot's Compatibility renderer (OpenGL) on every platform.
-- **Controllers.** Supported on Windows from the first Steam release.
+- **Controllers.** Supported on Windows from the first Steam release. The Windows release aims for Steam Deck Verified (ui_spec.md, Controls).
 
 ### 1.2 Business model
 
@@ -61,7 +61,7 @@ Adopted 2026-10-06.
 - **Sound effects.** One set per tag and effect (melee, projectile, magic, heal, status, KO). No creature cries.
 - **Audio source.** AI-generated, with licensing checked for each tool used.
 - **Vibration.** Light vibration on hits and KOs on phones, with a setting to turn it off.
-- **Settings menu.** Music and sound volume, reduced motion, text size, vibration, language, crash reports, and key and controller bindings on Windows. No battle speed setting in the menu; speed is chosen in battle.
+- **Settings menu.** Music and sound volume, reduced motion, text size, vibration, language, crash reports, and key and controller bindings on Windows. There is no battle speed setting anywhere in the game (adopted 2026-10-08); only the development battle viewer has speed controls.
 - **Performance.** No hard numbers: the game must feel smooth. As orientation, about 30 frames per second on the test phone and 60 on Windows, and the AI deciding within about 2 seconds.
 - **Download size.** The mobile download stays under 200 MB, with art compressed for phones.
 - **Art pipeline.** A script in the repository reads `images/kin` and writes the cleaned, ID-named 1024 × 1536 copies to a separate folder. It can be re-run at any time.
@@ -112,7 +112,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Thinking time.** Fixed depth only, no time cap. Difficulty levels are tuned so the hardest stays quick on a mid-range phone.
 - **Cards.** One reusable Card scene with display modes, used in every screen.
 - **Input.** Godot input actions: mouse, touch and keyboard map to the same commands (select, confirm, inspect, cancel).
-- **Animation.** Battle events play one after another from a queue, each with its own duration, with a speed setting (1x, 2x, instant).
+- **Animation.** Battle events play one after another from a queue, each with its own duration, always at one speed (the battle viewer can speed it up).
 - **Resolution.** The UI is designed for 1920 × 1080 and scaled down for phones.
 - **Creature art.** The game loads art by creature ID, with separate front and rear files (for example `fox_front` and `fox_rear`). The original files in `images/kin` are never changed; cleaned and renamed copies are produced from them (section 1.6).
 - **Text.** All UI and content text goes through translation keys from day one. English only at first.
