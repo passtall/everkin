@@ -1087,7 +1087,7 @@ The art guide proposed two to five major color blocks with a selective accent, m
 
 Visually distinct, relatively isolated biomes were accepted in the original direction. Their role in the card game may include artwork settings, encounter backgrounds, or campaign identity. Cards use a soft background tinted by the creature's home biome (production.md §1.6).
 
-**Biome list (adopted 2026-10-08).** Each background is a biome. Chosen so far: **Pine and dry forest, Jungle, Wet and mixed forest, Desert, Mountain, Giant cathedral or castle (inside), Grassland and savannah, Arctic and iceberg.** Ten more were proposed for review (biome-decisions.md); the list grows as they are approved. Which biomes the four campaign stages use is decided with the campaign content.
+**Biome list (adopted 2026-10-08).** Each background is a biome. Chosen so far: **Pine and dry forest, Jungle, Wet and mixed forest, Desert, Mountain, Giant cathedral or castle (inside), Grassland and savannah, Arctic and iceberg.** Also adopted: **Swamp and bog, Coast and tide pools, Volcanic ashlands, Crystal caverns, Mushroom grotto, Lagoon and reef, Overgrown ruins, Autumn woods, Storm cliffs, Moonlit flower meadow.** That makes **18 biomes, all ready at release.** Backgrounds stay dark enough that cards and UI stand out (night look; never too bright). Which biomes the four campaign stages use is decided with the campaign content.
 
 **Home biomes (adopted 2026-10-08).** Every creature has one home biome from this list. Campaign creatures mostly appear in their home biome's stage.
 
