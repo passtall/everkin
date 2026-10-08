@@ -22,7 +22,7 @@ Adopted 2026-10-06.
 
 - **Price.** One-time purchase on every platform. On mobile this is a free download with the demo content and one purchase that unlocks the full game. No ads, ever. No booster packs, paid random draws, trading or duplicate conversion (game_system.md §2.2).
 - **Coins.** Coins are earned in play (game_system.md §2.2) and **can also be bought**. They unlock specific creatures, never random ones. **Coin packs** (adopted 2026-10-07): three packs of 500, 1,200 and 2,500 coins, kept generous compared with creature prices (game_system.md §2.2). Real-money prices are set at release.
-- **Cosmetic frames.** Earned by playing, through campaign milestones and achievements. Never sold. Every card has the gold frame by default; an earned frame can replace it on creatures the player chooses (confirmed 2026-10-08). Frames never mark tier or class.
+- **Cosmetic frames.** Earned by playing, through campaign milestones and achievements. Never sold. Every card wears its home biome's frame by default (`art/frames/card/<biome_id>.png`, adopted 2026-10-08; this replaced the plain gold frame); an earned frame can replace it on creatures the player chooses (confirmed 2026-10-08). Frames never mark tier or class.
 - **Demo.** A free demo with the tutorial and the first campaign stage. Progress carries over on purchase. On mobile the demo is the free download itself; on Steam it is a separate demo.
 
 ### 1.3 Languages, accessibility and data

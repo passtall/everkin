@@ -7,3 +7,7 @@ Regenerate: `python3 tools/backgrounds/gen_backgrounds.py OUT_DIR [biome_id ...]
 ## Battle backgrounds
 
 `battle/<biome_id>.png`: photo-real night scenes, one per biome (2026-10-08). Source size 1672 × 941; crop to 16:9 and scale to 1920 × 1080 at build time.
+
+## Card frames
+
+`../frames/card/<biome_id>.png`: one frame per biome (2026-10-08), 1024 × 1536 PNG with real alpha. Every creature wears its home biome's frame by default. Approximate geometry in source pixels: stat-gem centres top left (133, 152), top right (891, 152), bottom left (120, 1336), bottom right (910, 1336); name plate about x 330–700, y 1300–1375; open window about x 165–860, y 223–1264.
