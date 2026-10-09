@@ -25,7 +25,13 @@ Adopted 2026-10-06.
 - **Cosmetic frames.** Earned by playing, through campaign milestones and achievements. Never sold. Every card wears its home biome's frame by default (`art/frames/card/<biome_id>.png`, adopted 2026-10-08; this replaced the plain gold frame); an earned frame can replace it on creatures the player chooses (confirmed 2026-10-08). Frames never mark tier or class. **Earned frames are postponed** (2026-10-09): for now cards wear only their biome frame. When earned frames come, each campaign stage boss gives one and a few harder achievements give one.
 - **Achievements** (adopted 2026-10-09). An in-game list, mirrored to the platform achievements (Steam, Google Play Games, Apple Game Center). **About 30** at release. Repetition goals stay moderate, nothing beyond about 100 wins. None are hidden. None need online play; every achievement can be earned offline. The actual list is written once the campaign and creatures are final.
 - **Demo.** A free demo with the tutorial and the first campaign stage. Progress carries over on purchase. On mobile the demo is the free download itself; on Steam it is a separate demo. The demo comes out **at release**, next to the full game (adopted 2026-10-08).
-- **Store pages** (adopted 2026-10-08). The Steam page goes up only **shortly before release**, after the name check. It leads with a **short gameplay trailer** of about 60 seconds made from real battle footage.
+- **Store pages** (adopted 2026-10-08). The Steam page goes up only **shortly before release**, after the name check. It leads with a **short gameplay trailer** of about 60 seconds made from real battle footage. Store text (adopted 2026-10-09):
+  - *Genre line:* "A turn-based tactical creature card battler."
+  - *Tagline:* "Gather your kin. Outthink the timeline."
+  - *Main Steam tags:* Turn-Based Tactics, Card Battler, Creature Collector. Avoid "Collectible Card Game", which suggests booster packs.
+  - *Description:* a short, warm storybook paragraph, then a feature list. It leads with the tactics (timeline, formation, interception).
+  - *Age rating target:* PEGI 7 / ESRB Everyone 10+, with mild fantasy violence and no blood. Effects stay within that.
+  - *Screenshots:* battles first (about five), then the team editor, the campaign map and the collection.
 
 ### 1.3 Languages, accessibility and data
 
