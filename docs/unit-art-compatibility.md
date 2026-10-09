@@ -1,5 +1,7 @@
 ﻿# Everkin unit art compatibility — 2026-10-02
 
+> **Superseded in part (2026-10-09):** rear art is scrapped. Each creature now has one image; the card front shows a portrait crop and the back the whole creature (production.md §2.1, Creature art). The front/rear findings below are historical.
+
 ## Result
 
 Split units 18–27 into separate front (`_f`) and rear (`_r`) PNGs. There are now 56 active images representing 28 complete pairs. Unit 13 is absent; existing IDs were preserved. The ten original combined files are retained in `images/kin/sources/`.

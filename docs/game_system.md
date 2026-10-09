@@ -192,7 +192,7 @@ The exact creature roster lives in [creatures.md](creatures.md): size tiers (cri
 - **Classes** are hand-assigned per creature to fit its concept: humans usually three, animals one or two.
 - **No natural traits** for now. A creature's identity comes from its stats, classes and attack.
 - **Humans** are generated once during content creation and stored as fixed recruits (section 3.4), each with a name, its own class combination and small stat differences within the medium tier.
-- **IDs** are stable text IDs (such as `fox` or `stone_turtle`). The game loads art by ID, with separate front and rear files, from cleaned copies; the original files are never changed (production.md §1.6).
+- **IDs** are stable text IDs (such as `fox` or `stone_turtle`). The game loads one image per creature by ID, from cleaned copies (the front shows a portrait crop, the back the whole creature); the original files are never changed (production.md §1.6).
 
 ## 4. Classes and skill-tree progression
 
@@ -998,7 +998,7 @@ The **front** contains:
 - Relevant combat stats, including Life (current and maximum HP), Speed, Power, and Defense.
 - Clear status and KO overlays on or around the border.
 
-On the battlefield a unit is shown as a **compact card**: front artwork, HP bar, statuses and KO. The full front appears on hover and in the inspection panel, which shows front and back side by side ([ui_spec.md](ui_spec.md)).
+On the battlefield a unit is shown as a **compact card**: portrait, HP bar, statuses and KO. The full front appears on hover and in the inspection panel, which shows front and back side by side ([ui_spec.md](ui_spec.md)).
 
 Cosmetic frames must never reduce gameplay readability. KO must be unmistakable, for example through desaturation or darkening in addition to an explicit KO indication.
 
@@ -1246,7 +1246,7 @@ In addition to section 19, resolve these edge cases:
 
 ### 20.3 Complete content definitions
 
-Each included creature needs a stable ID, name, front/rear artwork, framing, all four stats and growth rules, classes, its one type-specific attack, natural passives/immunities, and acquisition rules. Artwork filenames are not approved creature names or combat values.
+Each included creature needs a stable ID, name, one artwork image with its portrait crop, framing, all four stats and growth rules, classes, its one type-specific attack, natural passives/immunities, and acquisition rules. Artwork filenames are not approved creature names or combat values.
 
 Each class needs its complete skill-tree graph: node IDs, costs, ranks, prerequisites, branches, exclusivity, effects, and respec behavior. Define how multiple modifiers combine and how the final usable skill is displayed.
 
