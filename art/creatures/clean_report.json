@@ -1,0 +1,532 @@
+{
+ "spikeback": {
+  "source": "1_f.png",
+  "specks_removed": 47,
+  "subject": [
+   48,
+   230,
+   928,
+   1226
+  ]
+ },
+ "gazer_jelly": {
+  "source": "2_f.png",
+  "specks_removed": 30,
+  "subject": [
+   48,
+   209,
+   928,
+   1247
+  ]
+ },
+ "prism_snail": {
+  "source": "3_f.png",
+  "specks_removed": 43,
+  "subject": [
+   48,
+   246,
+   928,
+   1210
+  ]
+ },
+ "bone_idol": {
+  "source": "4_f.png",
+  "specks_removed": 32,
+  "subject": [
+   120,
+   48,
+   783,
+   1408
+  ]
+ },
+ "boulder_toad": {
+  "source": "5_f.png",
+  "specks_removed": 44,
+  "subject": [
+   48,
+   312,
+   928,
+   1144
+  ]
+ },
+ "thornfang": {
+  "source": "6_f.png",
+  "specks_removed": 71,
+  "subject": [
+   48,
+   154,
+   928,
+   1302
+  ]
+ },
+ "bloomspear": {
+  "source": "7_f.png",
+  "specks_removed": 169,
+  "subject": [
+   48,
+   153,
+   928,
+   1303
+  ]
+ },
+ "cinderhorn": {
+  "source": "8_f.png",
+  "specks_removed": 96,
+  "subject": [
+   48,
+   150,
+   928,
+   1306
+  ]
+ },
+ "reef_warden": {
+  "source": "9_f.png",
+  "specks_removed": 105,
+  "subject": [
+   48,
+   163,
+   928,
+   1293
+  ]
+ },
+ "magma_hog": {
+  "source": "10_f.png",
+  "specks_removed": 46,
+  "subject": [
+   48,
+   564,
+   928,
+   892
+  ]
+ },
+ "hornshell": {
+  "source": "11_f.png",
+  "specks_removed": 34,
+  "subject": [
+   48,
+   534,
+   928,
+   922
+  ]
+ },
+ "land_shark": {
+  "source": "12_f.png",
+  "specks_removed": 83,
+  "subject": [
+   48,
+   565,
+   928,
+   891
+  ]
+ },
+ "ember_snail": {
+  "source": "14_f.png",
+  "specks_removed": 26,
+  "subject": [
+   48,
+   559,
+   928,
+   897
+  ]
+ },
+ "rhino_beetle": {
+  "source": "15_f.png",
+  "specks_removed": 75,
+  "subject": [
+   48,
+   651,
+   928,
+   805
+  ]
+ },
+ "fin_stalker": {
+  "source": "16_f.png",
+  "specks_removed": 68,
+  "subject": [
+   48,
+   455,
+   928,
+   1001
+  ]
+ },
+ "shade_ray": {
+  "source": "17_f.png",
+  "specks_removed": 57,
+  "subject": [
+   48,
+   544,
+   928,
+   912
+  ]
+ },
+ "mossback": {
+  "source": "18_f.png",
+  "specks_removed": 15,
+  "subject": [
+   48,
+   780,
+   928,
+   676
+  ]
+ },
+ "leafwisp": {
+  "source": "19_f.png",
+  "specks_removed": 57,
+  "subject": [
+   48,
+   867,
+   928,
+   589
+  ]
+ },
+ "emberbulb": {
+  "source": "20_f.png",
+  "specks_removed": 26,
+  "subject": [
+   48,
+   775,
+   928,
+   681
+  ]
+ },
+ "stone_turtle": {
+  "source": "21_f.png",
+  "specks_removed": 34,
+  "subject": [
+   48,
+   861,
+   928,
+   595
+  ]
+ },
+ "plume_gazelle": {
+  "source": "22_f.png",
+  "specks_removed": 58,
+  "subject": [
+   48,
+   675,
+   928,
+   781
+  ]
+ },
+ "sailback": {
+  "source": "23_f.png",
+  "specks_removed": 19,
+  "subject": [
+   48,
+   856,
+   928,
+   600
+  ]
+ },
+ "sickle_mantis": {
+  "source": "24_f.png",
+  "specks_removed": 60,
+  "subject": [
+   48,
+   551,
+   928,
+   905
+  ]
+ },
+ "magma_crawler": {
+  "source": "25_f.png",
+  "specks_removed": 42,
+  "subject": [
+   48,
+   828,
+   928,
+   628
+  ]
+ },
+ "glade_stag": {
+  "source": "26_f.png",
+  "specks_removed": 72,
+  "subject": [
+   48,
+   382,
+   928,
+   1074
+  ]
+ },
+ "gloom_scorpion": {
+  "source": "27_f.png",
+  "specks_removed": 33,
+  "subject": [
+   48,
+   800,
+   928,
+   656
+  ]
+ },
+ "ember_shard": {
+  "source": "28_f.png",
+  "specks_removed": 70,
+  "subject": [
+   48,
+   64,
+   928,
+   1392
+  ]
+ },
+ "bloom_pod": {
+  "source": "29_f.png",
+  "specks_removed": 42,
+  "subject": [
+   48,
+   63,
+   928,
+   1393
+  ]
+ },
+ "woodpecker": {
+  "source": "30_f.png",
+  "specks_removed": 2,
+  "subject": [
+   120,
+   48,
+   784,
+   1408
+  ]
+ },
+ "bog_toad": {
+  "source": "31_f.png",
+  "specks_removed": 1,
+  "subject": [
+   48,
+   552,
+   928,
+   904
+  ]
+ },
+ "ash_moth": {
+  "source": "32_f.png",
+  "specks_removed": 10,
+  "subject": [
+   48,
+   120,
+   928,
+   1336
+  ]
+ },
+ "giant_mole": {
+  "source": "33_f.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   313,
+   928,
+   1143
+  ]
+ },
+ "mannequin": {
+  "source": "34_f.png",
+  "specks_removed": 6,
+  "subject": [
+   170,
+   48,
+   683,
+   1408
+  ]
+ },
+ "fox": {
+  "source": "35_f.png",
+  "specks_removed": 4,
+  "subject": [
+   48,
+   49,
+   928,
+   1407
+  ]
+ },
+ "hare": {
+  "source": "36_f.png",
+  "specks_removed": 5,
+  "subject": [
+   114,
+   48,
+   795,
+   1408
+  ]
+ },
+ "otter": {
+  "source": "37_f.png",
+  "specks_removed": 1,
+  "subject": [
+   48,
+   606,
+   928,
+   850
+  ]
+ },
+ "hedgehog": {
+  "source": "38_f.png",
+  "specks_removed": 5,
+  "subject": [
+   48,
+   403,
+   928,
+   1053
+  ]
+ },
+ "dormouse": {
+  "source": "39_f.png",
+  "specks_removed": 2,
+  "subject": [
+   48,
+   193,
+   928,
+   1263
+  ]
+ },
+ "brown_bear": {
+  "source": "40_f.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   383,
+   928,
+   1073
+  ]
+ },
+ "moose": {
+  "source": "41_f.png",
+  "specks_removed": 13,
+  "subject": [
+   48,
+   94,
+   928,
+   1362
+  ]
+ },
+ "bison": {
+  "source": "42_f.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   307,
+   928,
+   1149
+  ]
+ },
+ "rhino": {
+  "source": "43_f.png",
+  "specks_removed": 9,
+  "subject": [
+   48,
+   536,
+   928,
+   920
+  ]
+ },
+ "elephant": {
+  "source": "44_f.png",
+  "specks_removed": 5,
+  "subject": [
+   48,
+   299,
+   928,
+   1157
+  ]
+ },
+ "wolf": {
+  "source": "45_f.png",
+  "specks_removed": 9,
+  "subject": [
+   48,
+   139,
+   928,
+   1317
+  ]
+ },
+ "lynx": {
+  "source": "46_f.png",
+  "specks_removed": 18,
+  "subject": [
+   48,
+   48,
+   927,
+   1408
+  ]
+ },
+ "boar": {
+  "source": "47_f.png",
+  "specks_removed": 12,
+  "subject": [
+   48,
+   433,
+   928,
+   1023
+  ]
+ },
+ "badger": {
+  "source": "48_f.png",
+  "specks_removed": 6,
+  "subject": [
+   48,
+   558,
+   928,
+   898
+  ]
+ },
+ "wolverine": {
+  "source": "49_f.png",
+  "specks_removed": 6,
+  "subject": [
+   48,
+   642,
+   928,
+   814
+  ]
+ },
+ "tiger": {
+  "source": "50_f.png",
+  "specks_removed": 14,
+  "subject": [
+   48,
+   189,
+   928,
+   1267
+  ]
+ },
+ "zebra": {
+  "source": "51_f.png",
+  "specks_removed": 9,
+  "subject": [
+   77,
+   48,
+   870,
+   1408
+  ]
+ },
+ "kangaroo": {
+  "source": "52_f.png",
+  "specks_removed": 2,
+  "subject": [
+   71,
+   48,
+   882,
+   1408
+  ]
+ },
+ "anteater": {
+  "source": "53_f.png",
+  "specks_removed": 30,
+  "subject": [
+   48,
+   530,
+   928,
+   926
+  ]
+ },
+ "raccoon": {
+  "source": "54_f.png",
+  "specks_removed": 4,
+  "subject": [
+   48,
+   503,
+   928,
+   953
+  ]
+ }
+}

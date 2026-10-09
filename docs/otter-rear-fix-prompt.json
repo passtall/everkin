@@ -1,5 +1,0 @@
-{
-  "mode": "Built-in image_gen",
-  "prompt": "Image 1 is the EDIT TARGET: rear-view low-poly otter with a missing hind leg. Image 2 is the front-view anatomical reference of the same otter. Correct only the rear-view target: add the missing far-side HIND LEG and paw, anatomically attached to the far side of the rump, visible beneath the rear belly just inside the tail curve, separated clearly from the existing near hind leg. Exactly FOUR legs and FOUR visible paws: two hind legs under the rump on the left half of image, two forelegs under shoulders on the right half. Existing three legs remain; add only one missing leg. Preserve same chocolate-brown faceted body, cream underside, rounded ears, long curved tail, back-facing three-quarter angle, scale, composition, lighting and low-poly materials. Adjust tail minimally only if needed to reveal fourth paw. Full body, 1024x1536 portrait, genuine transparent alpha background, no floor, text or props.",
-  "output": "images/kin/37_r.png"
-}

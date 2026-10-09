@@ -38,7 +38,7 @@ Every attack respects interception (§8.2) and shifts Momentum normally (§6.7).
 
 ## Roster
 
-53 creatures, one per existing art pair in `images/kin/` (`<art>_f.png` front, `<art>_r.png` rear). Art numbers 13 and above 54 do not exist; 13 was deleted. IDs are stable text IDs (§3.7); the art files may later be renamed to match.
+53 creatures, one per art image in `images/kin/` (`<art>_f.png`; the rear images were deleted on 2026-10-09). Art numbers 13 and above 54 do not exist; 13 was deleted. IDs are stable text IDs (§3.7). The game uses the cleaned copies `art/creatures/<id>.png`, and their portrait crops are in `art/creatures/portraits.json`.
 
 | Art | ID | Name | Tier | HP | Speed | Power | Defense | Classes | Attack | Notes |
 |---:|---|---|---|---:|---:|---:|---:|---|---|---|
