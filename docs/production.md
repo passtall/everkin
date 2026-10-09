@@ -148,7 +148,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Input.** Godot input actions: mouse, touch and keyboard map to the same commands (select, confirm, inspect, cancel).
 - **Animation.** Battle events play one after another from a queue, each with its own duration, always at one speed (the battle viewer can speed it up).
 - **Resolution.** The UI is designed for 1920 × 1080 and scaled down for phones.
-- **Creature art.** The game loads **one image per creature**, found by its unit name in `docs/creature-classes.md` (for example `fox` → `feral_hunter_trickster_fox.png`); there is no rear art (adopted 2026-10-09). The card front shows a portrait crop of it, and the back shows the whole creature. Each creature has its own portrait crop rectangle (`art/creatures/portraits.json`), so the crop can be tuned per creature. The original files in `images/kin` are never changed; cleaned and renamed copies are produced from them (section 1.6).
+- **Creature art.** The game loads **one image per creature**, found by its unit name in `docs/creature-classes.md` (for example `fox` → `fox_feral_hunter_trickster.png`); there is no rear art (adopted 2026-10-09). The card front shows a portrait crop of it, and the back shows the whole creature. Each creature has its own portrait crop rectangle (`art/creatures/portraits.json`), so the crop can be tuned per creature. The original files in `images/kin` are never changed; cleaned and renamed copies are produced from them (section 1.6).
 - **Text.** All UI and content text goes through translation keys from day one. English only at first.
 - **Battle viewer controls.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup to start from.
 

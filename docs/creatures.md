@@ -42,7 +42,7 @@ Every attack respects interception (§8.2) and shifts Momentum normally (§6.7).
 
 ## Roster
 
-53 creatures, one per art image in `images/kin/` (`<art>_f.png`; the rear images were deleted on 2026-10-09). Art numbers 13 and above 54 do not exist; 13 was deleted. IDs are stable text IDs (§3.7). The game uses the cleaned copies in `art/creatures/`, named `{attackType}_{professions}_{unitName}.png` as listed in [creature-classes.md](creature-classes.md) (for example `feral_hunter_trickster_fox.png`), and their portrait crops are in `art/creatures/portraits.json`.
+53 creatures, one per art image in `images/kin/` (`<art>_f.png`; the rear images were deleted on 2026-10-09). Art numbers 13 and above 54 do not exist; 13 was deleted. IDs are stable text IDs (§3.7). The game uses the cleaned copies in `art/creatures/`, named `{unitName}_{attackType}_{professions}.png` as listed in [creature-classes.md](creature-classes.md) (for example `fox_feral_hunter_trickster.png`), and their portrait crops are in `art/creatures/portraits.json`.
 
 | Art | ID | Name | Tier | HP | Speed | Power | Defense | Classes | Attack | Notes |
 |---:|---|---|---|---:|---:|---:|---:|---|---|---|
