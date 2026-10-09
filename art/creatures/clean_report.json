@@ -1,515 +1,6 @@
 {
- "spikeback": {
-  "source": "1_f.png",
-  "specks_removed": 47,
-  "subject": [
-   48,
-   230,
-   928,
-   1226
-  ]
- },
- "gazer_jelly": {
-  "source": "2_f.png",
-  "specks_removed": 30,
-  "subject": [
-   48,
-   209,
-   928,
-   1247
-  ]
- },
- "prism_snail": {
-  "source": "3_f.png",
-  "specks_removed": 43,
-  "subject": [
-   48,
-   246,
-   928,
-   1210
-  ]
- },
- "bone_idol": {
-  "source": "4_f.png",
-  "specks_removed": 32,
-  "subject": [
-   120,
-   48,
-   783,
-   1408
-  ]
- },
- "boulder_toad": {
-  "source": "5_f.png",
-  "specks_removed": 44,
-  "subject": [
-   48,
-   312,
-   928,
-   1144
-  ]
- },
- "thornfang": {
-  "source": "6_f.png",
-  "specks_removed": 71,
-  "subject": [
-   48,
-   154,
-   928,
-   1302
-  ]
- },
- "bloomspear": {
-  "source": "7_f.png",
-  "specks_removed": 169,
-  "subject": [
-   48,
-   153,
-   928,
-   1303
-  ]
- },
- "cinderhorn": {
-  "source": "8_f.png",
-  "specks_removed": 96,
-  "subject": [
-   48,
-   150,
-   928,
-   1306
-  ]
- },
- "reef_warden": {
-  "source": "9_f.png",
-  "specks_removed": 105,
-  "subject": [
-   48,
-   163,
-   928,
-   1293
-  ]
- },
- "magma_hog": {
-  "source": "10_f.png",
-  "specks_removed": 46,
-  "subject": [
-   48,
-   564,
-   928,
-   892
-  ]
- },
- "hornshell": {
-  "source": "11_f.png",
-  "specks_removed": 34,
-  "subject": [
-   48,
-   534,
-   928,
-   922
-  ]
- },
- "land_shark": {
-  "source": "12_f.png",
-  "specks_removed": 83,
-  "subject": [
-   48,
-   565,
-   928,
-   891
-  ]
- },
- "ember_snail": {
-  "source": "14_f.png",
-  "specks_removed": 26,
-  "subject": [
-   48,
-   559,
-   928,
-   897
-  ]
- },
- "rhino_beetle": {
-  "source": "15_f.png",
-  "specks_removed": 75,
-  "subject": [
-   48,
-   651,
-   928,
-   805
-  ]
- },
- "fin_stalker": {
-  "source": "16_f.png",
-  "specks_removed": 68,
-  "subject": [
-   48,
-   455,
-   928,
-   1001
-  ]
- },
- "shade_ray": {
-  "source": "17_f.png",
-  "specks_removed": 57,
-  "subject": [
-   48,
-   544,
-   928,
-   912
-  ]
- },
- "mossback": {
-  "source": "18_f.png",
-  "specks_removed": 15,
-  "subject": [
-   48,
-   780,
-   928,
-   676
-  ]
- },
- "leafwisp": {
-  "source": "19_f.png",
-  "specks_removed": 57,
-  "subject": [
-   48,
-   867,
-   928,
-   589
-  ]
- },
- "emberbulb": {
-  "source": "20_f.png",
-  "specks_removed": 26,
-  "subject": [
-   48,
-   775,
-   928,
-   681
-  ]
- },
- "stone_turtle": {
-  "source": "21_f.png",
-  "specks_removed": 34,
-  "subject": [
-   48,
-   861,
-   928,
-   595
-  ]
- },
- "plume_gazelle": {
-  "source": "22_f.png",
-  "specks_removed": 58,
-  "subject": [
-   48,
-   675,
-   928,
-   781
-  ]
- },
- "sailback": {
-  "source": "23_f.png",
-  "specks_removed": 19,
-  "subject": [
-   48,
-   856,
-   928,
-   600
-  ]
- },
- "sickle_mantis": {
-  "source": "24_f.png",
-  "specks_removed": 60,
-  "subject": [
-   48,
-   551,
-   928,
-   905
-  ]
- },
- "magma_crawler": {
-  "source": "25_f.png",
-  "specks_removed": 42,
-  "subject": [
-   48,
-   828,
-   928,
-   628
-  ]
- },
- "glade_stag": {
-  "source": "26_f.png",
-  "specks_removed": 72,
-  "subject": [
-   48,
-   382,
-   928,
-   1074
-  ]
- },
- "gloom_scorpion": {
-  "source": "27_f.png",
-  "specks_removed": 33,
-  "subject": [
-   48,
-   800,
-   928,
-   656
-  ]
- },
- "ember_shard": {
-  "source": "28_f.png",
-  "specks_removed": 70,
-  "subject": [
-   48,
-   64,
-   928,
-   1392
-  ]
- },
- "bloom_pod": {
-  "source": "29_f.png",
-  "specks_removed": 42,
-  "subject": [
-   48,
-   63,
-   928,
-   1393
-  ]
- },
- "woodpecker": {
-  "source": "30_f.png",
-  "specks_removed": 2,
-  "subject": [
-   120,
-   48,
-   784,
-   1408
-  ]
- },
- "bog_toad": {
-  "source": "31_f.png",
-  "specks_removed": 1,
-  "subject": [
-   48,
-   552,
-   928,
-   904
-  ]
- },
- "ash_moth": {
-  "source": "32_f.png",
-  "specks_removed": 10,
-  "subject": [
-   48,
-   120,
-   928,
-   1336
-  ]
- },
- "giant_mole": {
-  "source": "33_f.png",
-  "specks_removed": 7,
-  "subject": [
-   48,
-   313,
-   928,
-   1143
-  ]
- },
- "mannequin": {
-  "source": "34_f.png",
-  "specks_removed": 6,
-  "subject": [
-   170,
-   48,
-   683,
-   1408
-  ]
- },
- "fox": {
-  "source": "35_f.png",
-  "specks_removed": 4,
-  "subject": [
-   48,
-   49,
-   928,
-   1407
-  ]
- },
- "hare": {
-  "source": "36_f.png",
-  "specks_removed": 5,
-  "subject": [
-   114,
-   48,
-   795,
-   1408
-  ]
- },
- "otter": {
-  "source": "37_f.png",
-  "specks_removed": 1,
-  "subject": [
-   48,
-   606,
-   928,
-   850
-  ]
- },
- "hedgehog": {
-  "source": "38_f.png",
-  "specks_removed": 5,
-  "subject": [
-   48,
-   403,
-   928,
-   1053
-  ]
- },
- "dormouse": {
-  "source": "39_f.png",
-  "specks_removed": 2,
-  "subject": [
-   48,
-   193,
-   928,
-   1263
-  ]
- },
- "brown_bear": {
-  "source": "40_f.png",
-  "specks_removed": 7,
-  "subject": [
-   48,
-   383,
-   928,
-   1073
-  ]
- },
- "moose": {
-  "source": "41_f.png",
-  "specks_removed": 13,
-  "subject": [
-   48,
-   94,
-   928,
-   1362
-  ]
- },
- "bison": {
-  "source": "42_f.png",
-  "specks_removed": 7,
-  "subject": [
-   48,
-   307,
-   928,
-   1149
-  ]
- },
- "rhino": {
-  "source": "43_f.png",
-  "specks_removed": 9,
-  "subject": [
-   48,
-   536,
-   928,
-   920
-  ]
- },
- "elephant": {
-  "source": "44_f.png",
-  "specks_removed": 5,
-  "subject": [
-   48,
-   299,
-   928,
-   1157
-  ]
- },
- "wolf": {
-  "source": "45_f.png",
-  "specks_removed": 9,
-  "subject": [
-   48,
-   139,
-   928,
-   1317
-  ]
- },
- "lynx": {
-  "source": "46_f.png",
-  "specks_removed": 18,
-  "subject": [
-   48,
-   48,
-   927,
-   1408
-  ]
- },
- "boar": {
-  "source": "47_f.png",
-  "specks_removed": 12,
-  "subject": [
-   48,
-   433,
-   928,
-   1023
-  ]
- },
- "badger": {
-  "source": "48_f.png",
-  "specks_removed": 6,
-  "subject": [
-   48,
-   558,
-   928,
-   898
-  ]
- },
- "wolverine": {
-  "source": "49_f.png",
-  "specks_removed": 6,
-  "subject": [
-   48,
-   642,
-   928,
-   814
-  ]
- },
- "tiger": {
-  "source": "50_f.png",
-  "specks_removed": 14,
-  "subject": [
-   48,
-   189,
-   928,
-   1267
-  ]
- },
- "zebra": {
-  "source": "51_f.png",
-  "specks_removed": 9,
-  "subject": [
-   77,
-   48,
-   870,
-   1408
-  ]
- },
- "kangaroo": {
-  "source": "52_f.png",
-  "specks_removed": 2,
-  "subject": [
-   71,
-   48,
-   882,
-   1408
-  ]
- },
  "anteater": {
+  "file": "feral_hunter_assassin_anteater.png",
   "source": "53_f.png",
   "specks_removed": 30,
   "subject": [
@@ -519,7 +10,415 @@
    926
   ]
  },
+ "ash-moth": {
+  "file": "aura_sorcerer_flying_ash-moth.png",
+  "source": "32_f.png",
+  "specks_removed": 10,
+  "subject": [
+   48,
+   120,
+   928,
+   1336
+  ]
+ },
+ "badger": {
+  "file": "feral_guardian_warrior_badger.png",
+  "source": "48_f.png",
+  "specks_removed": 6,
+  "subject": [
+   48,
+   558,
+   928,
+   898
+  ]
+ },
+ "bison": {
+  "file": "feral_guardian_warrior_bison.png",
+  "source": "42_f.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   307,
+   928,
+   1149
+  ]
+ },
+ "bloom-pod": {
+  "file": "breath_healer_alchemist_bloom-pod.png",
+  "source": "29_f.png",
+  "specks_removed": 42,
+  "subject": [
+   48,
+   63,
+   928,
+   1393
+  ]
+ },
+ "bloomspear": {
+  "file": "polearm_primalist_hunter_bloomspear.png",
+  "source": "7_f.png",
+  "specks_removed": 169,
+  "subject": [
+   48,
+   153,
+   928,
+   1303
+  ]
+ },
+ "boar": {
+  "file": "feral_warrior_boar.png",
+  "source": "47_f.png",
+  "specks_removed": 12,
+  "subject": [
+   48,
+   433,
+   928,
+   1023
+  ]
+ },
+ "bog-toad": {
+  "file": "breath_alchemist_healer_bog-toad.png",
+  "source": "31_f.png",
+  "specks_removed": 1,
+  "subject": [
+   48,
+   552,
+   928,
+   904
+  ]
+ },
+ "bone-idol": {
+  "file": "magic_black-mage_leader_bone-idol.png",
+  "source": "4_f.png",
+  "specks_removed": 32,
+  "subject": [
+   120,
+   48,
+   783,
+   1408
+  ]
+ },
+ "boulder-toad": {
+  "file": "blunt_guardian_warrior_boulder-toad.png",
+  "source": "5_f.png",
+  "specks_removed": 44,
+  "subject": [
+   48,
+   312,
+   928,
+   1144
+  ]
+ },
+ "brown-bear": {
+  "file": "feral_warrior_guardian_brown-bear.png",
+  "source": "40_f.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   383,
+   928,
+   1073
+  ]
+ },
+ "cinderhorn": {
+  "file": "bladed_warrior_leader_cinderhorn.png",
+  "source": "8_f.png",
+  "specks_removed": 96,
+  "subject": [
+   48,
+   150,
+   928,
+   1306
+  ]
+ },
+ "dormouse": {
+  "file": "feral_healer_trickster_dormouse.png",
+  "source": "39_f.png",
+  "specks_removed": 2,
+  "subject": [
+   48,
+   193,
+   928,
+   1263
+  ]
+ },
+ "elephant": {
+  "file": "feral_guardian_leader_elephant.png",
+  "source": "44_f.png",
+  "specks_removed": 5,
+  "subject": [
+   48,
+   299,
+   928,
+   1157
+  ]
+ },
+ "ember-shard": {
+  "file": "magic_sorcerer_ember-shard.png",
+  "source": "28_f.png",
+  "specks_removed": 70,
+  "subject": [
+   48,
+   64,
+   928,
+   1392
+  ]
+ },
+ "ember-snail": {
+  "file": "breath_sorcerer_guardian_ember-snail.png",
+  "source": "14_f.png",
+  "specks_removed": 26,
+  "subject": [
+   48,
+   559,
+   928,
+   897
+  ]
+ },
+ "emberbulb": {
+  "file": "magic_sorcerer_emberbulb.png",
+  "source": "20_f.png",
+  "specks_removed": 26,
+  "subject": [
+   48,
+   775,
+   928,
+   681
+  ]
+ },
+ "fin-stalker": {
+  "file": "feral_hunter_assassin_fin-stalker.png",
+  "source": "16_f.png",
+  "specks_removed": 68,
+  "subject": [
+   48,
+   455,
+   928,
+   1001
+  ]
+ },
+ "fox": {
+  "file": "feral_hunter_trickster_fox.png",
+  "source": "35_f.png",
+  "specks_removed": 4,
+  "subject": [
+   48,
+   49,
+   928,
+   1407
+  ]
+ },
+ "gazer-jelly": {
+  "file": "magic_sorcerer_black-mage_gazer-jelly.png",
+  "source": "2_f.png",
+  "specks_removed": 30,
+  "subject": [
+   48,
+   209,
+   928,
+   1247
+  ]
+ },
+ "giant-mole": {
+  "file": "feral_warrior_guardian_giant-mole.png",
+  "source": "33_f.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   313,
+   928,
+   1143
+  ]
+ },
+ "glade-stag": {
+  "file": "feral_primalist_healer_glade-stag.png",
+  "source": "26_f.png",
+  "specks_removed": 72,
+  "subject": [
+   48,
+   382,
+   928,
+   1074
+  ]
+ },
+ "gloom-scorpion": {
+  "file": "lashing_assassin_alchemist_gloom-scorpion.png",
+  "source": "27_f.png",
+  "specks_removed": 33,
+  "subject": [
+   48,
+   800,
+   928,
+   656
+  ]
+ },
+ "hare": {
+  "file": "feral_trickster_hare.png",
+  "source": "36_f.png",
+  "specks_removed": 5,
+  "subject": [
+   114,
+   48,
+   795,
+   1408
+  ]
+ },
+ "hedgehog": {
+  "file": "feral_guardian_hedgehog.png",
+  "source": "38_f.png",
+  "specks_removed": 5,
+  "subject": [
+   48,
+   403,
+   928,
+   1053
+  ]
+ },
+ "hornshell": {
+  "file": "feral_guardian_hornshell.png",
+  "source": "11_f.png",
+  "specks_removed": 34,
+  "subject": [
+   48,
+   534,
+   928,
+   922
+  ]
+ },
+ "kangaroo": {
+  "file": "unarmed_warrior_kangaroo.png",
+  "source": "52_f.png",
+  "specks_removed": 2,
+  "subject": [
+   71,
+   48,
+   882,
+   1408
+  ]
+ },
+ "land-shark": {
+  "file": "feral_warrior_hunter_land-shark.png",
+  "source": "12_f.png",
+  "specks_removed": 83,
+  "subject": [
+   48,
+   565,
+   928,
+   891
+  ]
+ },
+ "leafwisp": {
+  "file": "magic_healer_primalist_leafwisp.png",
+  "source": "19_f.png",
+  "specks_removed": 57,
+  "subject": [
+   48,
+   867,
+   928,
+   589
+  ]
+ },
+ "lynx": {
+  "file": "feral_hunter_assassin_lynx.png",
+  "source": "46_f.png",
+  "specks_removed": 18,
+  "subject": [
+   48,
+   48,
+   927,
+   1408
+  ]
+ },
+ "magma-crawler": {
+  "file": "breath_sorcerer_warrior_magma-crawler.png",
+  "source": "25_f.png",
+  "specks_removed": 42,
+  "subject": [
+   48,
+   828,
+   928,
+   628
+  ]
+ },
+ "magma-hog": {
+  "file": "feral_warrior_sorcerer_magma-hog.png",
+  "source": "10_f.png",
+  "specks_removed": 46,
+  "subject": [
+   48,
+   564,
+   928,
+   892
+  ]
+ },
+ "mannequin": {
+  "file": "unarmed_warrior_guardian_mannequin.png",
+  "source": "34_f.png",
+  "specks_removed": 6,
+  "subject": [
+   170,
+   48,
+   683,
+   1408
+  ]
+ },
+ "moose": {
+  "file": "feral_guardian_leader_moose.png",
+  "source": "41_f.png",
+  "specks_removed": 13,
+  "subject": [
+   48,
+   94,
+   928,
+   1362
+  ]
+ },
+ "mossback": {
+  "file": "feral_guardian_healer_mossback.png",
+  "source": "18_f.png",
+  "specks_removed": 15,
+  "subject": [
+   48,
+   780,
+   928,
+   676
+  ]
+ },
+ "otter": {
+  "file": "feral_healer_trickster_otter.png",
+  "source": "37_f.png",
+  "specks_removed": 1,
+  "subject": [
+   48,
+   606,
+   928,
+   850
+  ]
+ },
+ "plume-gazelle": {
+  "file": "feral_leader_hunter_plume-gazelle.png",
+  "source": "22_f.png",
+  "specks_removed": 58,
+  "subject": [
+   48,
+   675,
+   928,
+   781
+  ]
+ },
+ "prism-snail": {
+  "file": "magic_healer_sorcerer_prism-snail.png",
+  "source": "3_f.png",
+  "specks_removed": 43,
+  "subject": [
+   48,
+   246,
+   928,
+   1210
+  ]
+ },
  "raccoon": {
+  "file": "feral_trickster_hunter_raccoon.png",
   "source": "54_f.png",
   "specks_removed": 4,
   "subject": [
@@ -527,6 +426,2030 @@
    503,
    928,
    953
+  ]
+ },
+ "reef-warden": {
+  "file": "polearm_guardian_leader_reef-warden.png",
+  "source": "9_f.png",
+  "specks_removed": 105,
+  "subject": [
+   48,
+   163,
+   928,
+   1293
+  ]
+ },
+ "rhino": {
+  "file": "feral_warrior_rhino.png",
+  "source": "43_f.png",
+  "specks_removed": 9,
+  "subject": [
+   48,
+   536,
+   928,
+   920
+  ]
+ },
+ "rhino-beetle": {
+  "file": "feral_guardian_warrior_rhino-beetle.png",
+  "source": "15_f.png",
+  "specks_removed": 75,
+  "subject": [
+   48,
+   651,
+   928,
+   805
+  ]
+ },
+ "sailback": {
+  "file": "feral_sorcerer_warrior_sailback.png",
+  "source": "23_f.png",
+  "specks_removed": 19,
+  "subject": [
+   48,
+   856,
+   928,
+   600
+  ]
+ },
+ "shade-ray": {
+  "file": "lashing_assassin_flying_shade-ray.png",
+  "source": "17_f.png",
+  "specks_removed": 57,
+  "subject": [
+   48,
+   544,
+   928,
+   912
+  ]
+ },
+ "sickle-mantis": {
+  "file": "feral_assassin_warrior_sickle-mantis.png",
+  "source": "24_f.png",
+  "specks_removed": 60,
+  "subject": [
+   48,
+   551,
+   928,
+   905
+  ]
+ },
+ "spikeback": {
+  "file": "feral_warrior_guardian_spikeback.png",
+  "source": "1_f.png",
+  "specks_removed": 47,
+  "subject": [
+   48,
+   230,
+   928,
+   1226
+  ]
+ },
+ "stone-turtle": {
+  "file": "feral_guardian_bodyguard_stone-turtle.png",
+  "source": "21_f.png",
+  "specks_removed": 34,
+  "subject": [
+   48,
+   861,
+   928,
+   595
+  ]
+ },
+ "thornfang": {
+  "file": "feral_hunter_warrior_thornfang.png",
+  "source": "6_f.png",
+  "specks_removed": 71,
+  "subject": [
+   48,
+   154,
+   928,
+   1302
+  ]
+ },
+ "tiger": {
+  "file": "feral_warrior_hunter_tiger.png",
+  "source": "50_f.png",
+  "specks_removed": 14,
+  "subject": [
+   48,
+   189,
+   928,
+   1267
+  ]
+ },
+ "wolf": {
+  "file": "feral_hunter_leader_wolf.png",
+  "source": "45_f.png",
+  "specks_removed": 9,
+  "subject": [
+   48,
+   139,
+   928,
+   1317
+  ]
+ },
+ "wolverine": {
+  "file": "feral_warrior_wolverine.png",
+  "source": "49_f.png",
+  "specks_removed": 6,
+  "subject": [
+   48,
+   642,
+   928,
+   814
+  ]
+ },
+ "woodpecker": {
+  "file": "feral_hunter_flying_woodpecker.png",
+  "source": "30_f.png",
+  "specks_removed": 2,
+  "subject": [
+   120,
+   48,
+   784,
+   1408
+  ]
+ },
+ "zebra": {
+  "file": "feral_leader_zebra.png",
+  "source": "51_f.png",
+  "specks_removed": 9,
+  "subject": [
+   77,
+   48,
+   870,
+   1408
+  ]
+ },
+ "astromancer": {
+  "file": "magic_sorcerer_leader_astromancer.png",
+  "source": "astromancer.png",
+  "specks_removed": 36,
+  "subject": [
+   176,
+   48,
+   671,
+   1408
+  ]
+ },
+ "brawler": {
+  "file": "unarmed_warrior_brawler.png",
+  "source": "brawler.png",
+  "specks_removed": 5,
+  "subject": [
+   115,
+   48,
+   794,
+   1408
+  ]
+ },
+ "lantern-healer": {
+  "file": "magic_healer_alchemist_lantern-healer.png",
+  "source": "lantern-healer.png",
+  "specks_removed": 38,
+  "subject": [
+   48,
+   66,
+   928,
+   1390
+  ]
+ },
+ "shield-knight": {
+  "file": "blunt_guardian_bodyguard_shield-knight.png",
+  "source": "shield-knight.png",
+  "specks_removed": 19,
+  "subject": [
+   48,
+   197,
+   928,
+   1259
+  ]
+ },
+ "blade-dancer": {
+  "file": "bladed_bard_assassin_blade-dancer.png",
+  "source": "blade-dancer.png",
+  "specks_removed": 44,
+  "subject": [
+   55,
+   48,
+   914,
+   1408
+  ]
+ },
+ "earth-sage": {
+  "file": "magic_sorcerer_earth-sage.png",
+  "source": "earth-sage.png",
+  "specks_removed": 9,
+  "subject": [
+   117,
+   48,
+   789,
+   1408
+  ]
+ },
+ "dockhand": {
+  "file": "blunt_warrior_bodyguard_dockhand.png",
+  "source": "dockhand.png",
+  "specks_removed": 22,
+  "subject": [
+   55,
+   48,
+   913,
+   1408
+  ]
+ },
+ "banner-maiden": {
+  "file": "polearm_leader_warrior_banner-maiden.png",
+  "source": "banner-maiden.png",
+  "specks_removed": 39,
+  "subject": [
+   90,
+   48,
+   843,
+   1408
+  ]
+ },
+ "potion-brewer": {
+  "file": "thrown_alchemist_potion-brewer.png",
+  "source": "potion-brewer.png",
+  "specks_removed": 8,
+  "subject": [
+   48,
+   130,
+   928,
+   1326
+  ]
+ },
+ "crystal-sorceress": {
+  "file": "magic_sorcerer_crystal-sorceress.png",
+  "source": "crystal-sorceress.png",
+  "specks_removed": 12,
+  "subject": [
+   93,
+   48,
+   837,
+   1408
+  ]
+ },
+ "spear-guard": {
+  "file": "polearm_guardian_bodyguard_spear-guard.png",
+  "source": "spear-guard.png",
+  "specks_removed": 5,
+  "subject": [
+   148,
+   48,
+   727,
+   1408
+  ]
+ },
+ "duelist": {
+  "file": "bladed_warrior_trickster_duelist.png",
+  "source": "duelist.png",
+  "specks_removed": 10,
+  "subject": [
+   48,
+   113,
+   928,
+   1343
+  ]
+ },
+ "fire-mage": {
+  "file": "magic_sorcerer_fire-mage.png",
+  "source": "fire-mage.png",
+  "specks_removed": 17,
+  "subject": [
+   82,
+   48,
+   859,
+   1408
+  ]
+ },
+ "tribal-shaman": {
+  "file": "magic_primalist_summoner_tribal-shaman.png",
+  "source": "tribal-shaman.png",
+  "specks_removed": 21,
+  "subject": [
+   65,
+   48,
+   893,
+   1408
+  ]
+ },
+ "tinker": {
+  "file": "blunt_engineer_tinker.png",
+  "source": "tinker.png",
+  "specks_removed": 11,
+  "subject": [
+   53,
+   48,
+   917,
+   1408
+  ]
+ },
+ "hammer-knight": {
+  "file": "blunt_guardian_warrior_hammer-knight.png",
+  "source": "hammer-knight.png",
+  "specks_removed": 16,
+  "subject": [
+   48,
+   91,
+   928,
+   1365
+  ]
+ },
+ "moon-priestess": {
+  "file": "magic_healer_primalist_moon-priestess.png",
+  "source": "moon-priestess.png",
+  "specks_removed": 12,
+  "subject": [
+   82,
+   48,
+   860,
+   1408
+  ]
+ },
+ "pirate-captain": {
+  "file": "ranged_leader_trickster_pirate-captain.png",
+  "source": "pirate-captain.png",
+  "specks_removed": 12,
+  "subject": [
+   48,
+   198,
+   928,
+   1258
+  ]
+ },
+ "shadow-rogue": {
+  "file": "bladed_assassin_black-mage_shadow-rogue.png",
+  "source": "shadow-rogue.png",
+  "specks_removed": 3,
+  "subject": [
+   82,
+   48,
+   859,
+   1408
+  ]
+ },
+ "frost-mage": {
+  "file": "magic_sorcerer_frost-mage.png",
+  "source": "frost-mage.png",
+  "specks_removed": 21,
+  "subject": [
+   61,
+   48,
+   901,
+   1408
+  ]
+ },
+ "sun-dancer": {
+  "file": "polearm_bard_primalist_sun-dancer.png",
+  "source": "sun-dancer.png",
+  "specks_removed": 23,
+  "subject": [
+   73,
+   48,
+   878,
+   1408
+  ]
+ },
+ "harpooner": {
+  "file": "polearm_hunter_harpooner.png",
+  "source": "harpooner.png",
+  "specks_removed": 22,
+  "subject": [
+   48,
+   128,
+   928,
+   1328
+  ]
+ },
+ "moon-oracle": {
+  "file": "magic_sorcerer_healer_moon-oracle.png",
+  "source": "moon-oracle.png",
+  "specks_removed": 26,
+  "subject": [
+   95,
+   48,
+   833,
+   1408
+  ]
+ },
+ "blacksmith": {
+  "file": "blunt_engineer_warrior_blacksmith.png",
+  "source": "blacksmith.png",
+  "specks_removed": 17,
+  "subject": [
+   48,
+   143,
+   928,
+   1313
+  ]
+ },
+ "frost-archer": {
+  "file": "ranged_hunter_sorcerer_frost-archer.png",
+  "source": "frost-archer.png",
+  "specks_removed": 41,
+  "subject": [
+   83,
+   48,
+   858,
+   1408
+  ]
+ },
+ "artificer": {
+  "file": "magic_engineer_sorcerer_artificer.png",
+  "source": "artificer.png",
+  "specks_removed": 12,
+  "subject": [
+   131,
+   48,
+   762,
+   1408
+  ]
+ },
+ "fencer": {
+  "file": "bladed_warrior_assassin_fencer.png",
+  "source": "fencer.png",
+  "specks_removed": 19,
+  "subject": [
+   48,
+   252,
+   928,
+   1204
+  ]
+ },
+ "grove-shaman": {
+  "file": "magic_primalist_healer_grove-shaman.png",
+  "source": "grove-shaman.png",
+  "specks_removed": 16,
+  "subject": [
+   149,
+   48,
+   726,
+   1408
+  ]
+ },
+ "buccaneer": {
+  "file": "bladed_trickster_warrior_buccaneer.png",
+  "source": "buccaneer.png",
+  "specks_removed": 16,
+  "subject": [
+   48,
+   256,
+   928,
+   1200
+  ]
+ },
+ "nightblade": {
+  "file": "bladed_assassin_trickster_nightblade.png",
+  "source": "nightblade.png",
+  "specks_removed": 15,
+  "subject": [
+   57,
+   48,
+   910,
+   1408
+  ]
+ },
+ "sword-knight": {
+  "file": "bladed_warrior_guardian_sword-knight.png",
+  "source": "sword-knight.png",
+  "specks_removed": 43,
+  "subject": [
+   50,
+   48,
+   923,
+   1408
+  ]
+ },
+ "lantern-cleric": {
+  "file": "blunt_healer_primalist_lantern-cleric.png",
+  "source": "lantern-cleric.png",
+  "specks_removed": 46,
+  "subject": [
+   48,
+   62,
+   928,
+   1394
+  ]
+ },
+ "wizard": {
+  "file": "magic_sorcerer_wizard.png",
+  "source": "wizard.png",
+  "specks_removed": 13,
+  "subject": [
+   155,
+   48,
+   713,
+   1408
+  ]
+ },
+ "archer": {
+  "file": "ranged_hunter_archer.png",
+  "source": "archer.png",
+  "specks_removed": 22,
+  "subject": [
+   152,
+   48,
+   719,
+   1408
+  ]
+ },
+ "rogue": {
+  "file": "bladed_assassin_rogue.png",
+  "source": "rogue.png",
+  "specks_removed": 19,
+  "subject": [
+   48,
+   164,
+   928,
+   1292
+  ]
+ },
+ "monk": {
+  "file": "unarmed_warrior_monk.png",
+  "source": "monk.png",
+  "specks_removed": 28,
+  "subject": [
+   168,
+   48,
+   687,
+   1408
+  ]
+ },
+ "minstrel": {
+  "file": "magic_bard_minstrel.png",
+  "source": "minstrel.png",
+  "specks_removed": 7,
+  "subject": [
+   90,
+   48,
+   843,
+   1408
+  ]
+ },
+ "druid": {
+  "file": "magic_primalist_healer_druid.png",
+  "source": "druid.png",
+  "specks_removed": 44,
+  "subject": [
+   88,
+   48,
+   848,
+   1408
+  ]
+ },
+ "hex-witch": {
+  "file": "magic_black-mage_sorcerer_hex-witch.png",
+  "source": "hex-witch.png",
+  "specks_removed": 53,
+  "subject": [
+   71,
+   48,
+   881,
+   1408
+  ]
+ },
+ "barbarian": {
+  "file": "bladed_warrior_barbarian.png",
+  "source": "barbarian.png",
+  "specks_removed": 9,
+  "subject": [
+   48,
+   116,
+   928,
+   1340
+  ]
+ },
+ "paladin": {
+  "file": "bladed_primalist_guardian_paladin.png",
+  "source": "paladin.png",
+  "specks_removed": 11,
+  "subject": [
+   51,
+   48,
+   922,
+   1408
+  ]
+ },
+ "leaf-archer": {
+  "file": "ranged_hunter_primalist_leaf-archer.png",
+  "source": "leaf-archer.png",
+  "specks_removed": 44,
+  "subject": [
+   99,
+   48,
+   825,
+   1408
+  ]
+ },
+ "poisoner": {
+  "file": "thrown_alchemist_assassin_poisoner.png",
+  "source": "poisoner.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   94,
+   928,
+   1362
+  ]
+ },
+ "battle-cleric": {
+  "file": "blunt_healer_guardian_battle-cleric.png",
+  "source": "battle-cleric.png",
+  "specks_removed": 20,
+  "subject": [
+   48,
+   55,
+   928,
+   1401
+  ]
+ },
+ "shadow-monk": {
+  "file": "unarmed_assassin_warrior_shadow-monk.png",
+  "source": "shadow-monk.png",
+  "specks_removed": 13,
+  "subject": [
+   131,
+   48,
+   762,
+   1408
+  ]
+ },
+ "rapier-bard": {
+  "file": "bladed_bard_warrior_rapier-bard.png",
+  "source": "rapier-bard.png",
+  "specks_removed": 19,
+  "subject": [
+   48,
+   68,
+   928,
+   1388
+  ]
+ },
+ "totem-barbarian": {
+  "file": "bladed_warrior_primalist_totem-barbarian.png",
+  "source": "totem-barbarian.png",
+  "specks_removed": 201,
+  "subject": [
+   48,
+   161,
+   928,
+   1295
+  ]
+ },
+ "star-sage": {
+  "file": "magic_sorcerer_healer_star-sage.png",
+  "source": "star-sage.png",
+  "specks_removed": 57,
+  "subject": [
+   90,
+   48,
+   843,
+   1408
+  ]
+ },
+ "spellblade": {
+  "file": "bladed_sorcerer_warrior_spellblade.png",
+  "source": "spellblade.png",
+  "specks_removed": 28,
+  "subject": [
+   48,
+   67,
+   928,
+   1389
+  ]
+ },
+ "crossbow-ranger": {
+  "file": "ranged_hunter_engineer_crossbow-ranger.png",
+  "source": "crossbow-ranger.png",
+  "specks_removed": 43,
+  "subject": [
+   48,
+   48,
+   927,
+   1408
+  ]
+ },
+ "battle-mage": {
+  "file": "bladed_warrior_sorcerer_battle-mage.png",
+  "source": "battle-mage.png",
+  "specks_removed": 48,
+  "subject": [
+   60,
+   48,
+   903,
+   1408
+  ]
+ },
+ "potion-brawler": {
+  "file": "unarmed_warrior_alchemist_potion-brawler.png",
+  "source": "potion-brawler.png",
+  "specks_removed": 29,
+  "subject": [
+   152,
+   48,
+   719,
+   1408
+  ]
+ },
+ "crystal-barbarian": {
+  "file": "bladed_warrior_sorcerer_crystal-barbarian.png",
+  "source": "crystal-barbarian.png",
+  "specks_removed": 55,
+  "subject": [
+   48,
+   219,
+   928,
+   1237
+  ]
+ },
+ "arcane-duelist": {
+  "file": "bladed_warrior_sorcerer_arcane-duelist.png",
+  "source": "arcane-duelist.png",
+  "specks_removed": 61,
+  "subject": [
+   67,
+   48,
+   889,
+   1408
+  ]
+ },
+ "gear-archer": {
+  "file": "ranged_hunter_engineer_gear-archer.png",
+  "source": "gear-archer.png",
+  "specks_removed": 39,
+  "subject": [
+   108,
+   48,
+   808,
+   1408
+  ]
+ },
+ "moon-abbess": {
+  "file": "magic_healer_sorcerer_moon-abbess.png",
+  "source": "moon-abbess.png",
+  "specks_removed": 31,
+  "subject": [
+   137,
+   48,
+   750,
+   1408
+  ]
+ },
+ "dagger-bard": {
+  "file": "bladed_bard_trickster_dagger-bard.png",
+  "source": "dagger-bard.png",
+  "specks_removed": 37,
+  "subject": [
+   48,
+   53,
+   928,
+   1403
+  ]
+ },
+ "lantern-templar": {
+  "file": "blunt_guardian_healer_lantern-templar.png",
+  "source": "lantern-templar.png",
+  "specks_removed": 45,
+  "subject": [
+   65,
+   48,
+   893,
+   1408
+  ]
+ },
+ "rogue-alchemist": {
+  "file": "bladed_alchemist_assassin_rogue-alchemist.png",
+  "source": "rogue-alchemist.png",
+  "specks_removed": 12,
+  "subject": [
+   145,
+   48,
+   734,
+   1408
+  ]
+ },
+ "grove-ranger": {
+  "file": "ranged_hunter_primalist_grove-ranger.png",
+  "source": "grove-ranger.png",
+  "specks_removed": 105,
+  "subject": [
+   48,
+   96,
+   928,
+   1360
+  ]
+ },
+ "spell-knight": {
+  "file": "bladed_warrior_sorcerer_spell-knight.png",
+  "source": "spell-knight.png",
+  "specks_removed": 17,
+  "subject": [
+   54,
+   48,
+   916,
+   1408
+  ]
+ },
+ "censer-priestess": {
+  "file": "bladed_healer_assassin_censer-priestess.png",
+  "source": "censer-priestess.png",
+  "specks_removed": 20,
+  "subject": [
+   77,
+   48,
+   869,
+   1408
+  ]
+ },
+ "abbot": {
+  "file": "blunt_healer_primalist_abbot.png",
+  "source": "abbot.png",
+  "specks_removed": 16,
+  "subject": [
+   48,
+   49,
+   928,
+   1407
+  ]
+ },
+ "war-bard": {
+  "file": "blunt_bard_guardian_war-bard.png",
+  "source": "war-bard.png",
+  "specks_removed": 14,
+  "subject": [
+   53,
+   48,
+   917,
+   1408
+  ]
+ },
+ "necromancer": {
+  "file": "magic_black-mage_summoner_necromancer.png",
+  "source": "necromancer.png",
+  "specks_removed": 30,
+  "subject": [
+   118,
+   48,
+   788,
+   1408
+  ]
+ },
+ "frost-barbarian": {
+  "file": "bladed_warrior_sorcerer_frost-barbarian.png",
+  "source": "frost-barbarian.png",
+  "specks_removed": 27,
+  "subject": [
+   48,
+   104,
+   928,
+   1352
+  ]
+ },
+ "shield-alchemist": {
+  "file": "thrown_alchemist_guardian_shield-alchemist.png",
+  "source": "shield-alchemist.png",
+  "specks_removed": 2,
+  "subject": [
+   48,
+   133,
+   928,
+   1323
+  ]
+ },
+ "hexblade": {
+  "file": "bladed_assassin_black-mage_hexblade.png",
+  "source": "hexblade.png",
+  "specks_removed": 26,
+  "subject": [
+   56,
+   48,
+   912,
+   1408
+  ]
+ },
+ "feather-archer": {
+  "file": "ranged_hunter_primalist_feather-archer.png",
+  "source": "feather-archer.png",
+  "specks_removed": 42,
+  "subject": [
+   68,
+   48,
+   888,
+   1408
+  ]
+ },
+ "autumn-ranger": {
+  "file": "ranged_primalist_hunter_autumn-ranger.png",
+  "source": "autumn-ranger.png",
+  "specks_removed": 33,
+  "subject": [
+   103,
+   48,
+   817,
+   1408
+  ]
+ },
+ "spellsword": {
+  "file": "bladed_warrior_sorcerer_spellsword.png",
+  "source": "spellsword.png",
+  "specks_removed": 15,
+  "subject": [
+   66,
+   48,
+   891,
+   1408
+  ]
+ },
+ "lantern-scout": {
+  "file": "bladed_hunter_healer_lantern-scout.png",
+  "source": "lantern-scout.png",
+  "specks_removed": 3,
+  "subject": [
+   96,
+   48,
+   831,
+   1408
+  ]
+ },
+ "forest-archer": {
+  "file": "ranged_hunter_forest-archer.png",
+  "source": "forest-archer.png",
+  "specks_removed": 18,
+  "subject": [
+   143,
+   48,
+   738,
+   1408
+  ]
+ },
+ "storm-barbarian": {
+  "file": "bladed_warrior_sorcerer_storm-barbarian.png",
+  "source": "storm-barbarian.png",
+  "specks_removed": 28,
+  "subject": [
+   48,
+   91,
+   928,
+   1365
+  ]
+ },
+ "elder-priest": {
+  "file": "magic_healer_leader_elder-priest.png",
+  "source": "elder-priest.png",
+  "specks_removed": 18,
+  "subject": [
+   49,
+   48,
+   925,
+   1408
+  ]
+ },
+ "shield-bard": {
+  "file": "blunt_bard_guardian_shield-bard.png",
+  "source": "shield-bard.png",
+  "specks_removed": 16,
+  "subject": [
+   112,
+   48,
+   800,
+   1408
+  ]
+ },
+ "potion-thief": {
+  "file": "bladed_alchemist_trickster_potion-thief.png",
+  "source": "potion-thief.png",
+  "specks_removed": 5,
+  "subject": [
+   108,
+   48,
+   808,
+   1408
+  ]
+ },
+ "deathblade": {
+  "file": "bladed_black-mage_warrior_deathblade.png",
+  "source": "deathblade.png",
+  "specks_removed": 5,
+  "subject": [
+   55,
+   48,
+   913,
+   1408
+  ]
+ },
+ "sun-archer": {
+  "file": "ranged_hunter_healer_sun-archer.png",
+  "source": "sun-archer.png",
+  "specks_removed": 10,
+  "subject": [
+   68,
+   48,
+   887,
+   1408
+  ]
+ },
+ "sapling-druid": {
+  "file": "magic_primalist_healer_sapling-druid.png",
+  "source": "sapling-druid.png",
+  "specks_removed": 12,
+  "subject": [
+   159,
+   48,
+   705,
+   1408
+  ]
+ },
+ "arcane-knight": {
+  "file": "bladed_warrior_sorcerer_arcane-knight.png",
+  "source": "arcane-knight.png",
+  "specks_removed": 12,
+  "subject": [
+   65,
+   48,
+   894,
+   1408
+  ]
+ },
+ "lantern-crone": {
+  "file": "bladed_healer_trickster_lantern-crone.png",
+  "source": "lantern-crone.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   61,
+   928,
+   1395
+  ]
+ },
+ "forest-scout": {
+  "file": "ranged_hunter_primalist_forest-scout.png",
+  "source": "forest-scout.png",
+  "specks_removed": 23,
+  "subject": [
+   245,
+   48,
+   533,
+   1408
+  ]
+ },
+ "red-barbarian": {
+  "file": "bladed_warrior_sorcerer_red-barbarian.png",
+  "source": "red-barbarian.png",
+  "specks_removed": 32,
+  "subject": [
+   48,
+   162,
+   928,
+   1294
+  ]
+ },
+ "elder-pilgrim": {
+  "file": "magic_healer_primalist_elder-pilgrim.png",
+  "source": "elder-pilgrim.png",
+  "specks_removed": 9,
+  "subject": [
+   107,
+   48,
+   809,
+   1408
+  ]
+ },
+ "lute-guard": {
+  "file": "blunt_bard_bodyguard_lute-guard.png",
+  "source": "lute-guard.png",
+  "specks_removed": 7,
+  "subject": [
+   72,
+   48,
+   879,
+   1408
+  ]
+ },
+ "grave-knight": {
+  "file": "bladed_black-mage_summoner_grave-knight.png",
+  "source": "grave-knight.png",
+  "specks_removed": 12,
+  "subject": [
+   81,
+   48,
+   862,
+   1408
+  ]
+ },
+ "vial-rogue": {
+  "file": "bladed_alchemist_assassin_vial-rogue.png",
+  "source": "vial-rogue.png",
+  "specks_removed": 13,
+  "subject": [
+   233,
+   48,
+   558,
+   1408
+  ]
+ },
+ "crystal-druid": {
+  "file": "magic_primalist_sorcerer_crystal-druid.png",
+  "source": "crystal-druid.png",
+  "specks_removed": 14,
+  "subject": [
+   115,
+   48,
+   793,
+   1408
+  ]
+ },
+ "star-archer": {
+  "file": "ranged_sorcerer_hunter_star-archer.png",
+  "source": "star-archer.png",
+  "specks_removed": 62,
+  "subject": [
+   64,
+   48,
+   896,
+   1408
+  ]
+ },
+ "dwarf-smith": {
+  "file": "blunt_engineer_guardian_dwarf-smith.png",
+  "source": "dwarf-smith.png",
+  "specks_removed": 3,
+  "subject": [
+   48,
+   202,
+   928,
+   1254
+  ]
+ },
+ "elf-druid": {
+  "file": "ranged_primalist_hunter_elf-druid.png",
+  "source": "elf-druid.png",
+  "specks_removed": 31,
+  "subject": [
+   77,
+   48,
+   869,
+   1408
+  ]
+ },
+ "apprentice-mage": {
+  "file": "magic_sorcerer_alchemist_apprentice-mage.png",
+  "source": "apprentice-mage.png",
+  "specks_removed": 9,
+  "subject": [
+   48,
+   61,
+   928,
+   1395
+  ]
+ },
+ "orc-shaman": {
+  "file": "bladed_primalist_warrior_orc-shaman.png",
+  "source": "orc-shaman.png",
+  "specks_removed": 36,
+  "subject": [
+   48,
+   59,
+   928,
+   1397
+  ]
+ },
+ "halfling-bard": {
+  "file": "bladed_bard_trickster_halfling-bard.png",
+  "source": "halfling-bard.png",
+  "specks_removed": 9,
+  "subject": [
+   112,
+   48,
+   800,
+   1408
+  ]
+ },
+ "lizard-rogue": {
+  "file": "bladed_assassin_hunter_lizard-rogue.png",
+  "source": "lizard-rogue.png",
+  "specks_removed": 39,
+  "subject": [
+   53,
+   48,
+   917,
+   1408
+  ]
+ },
+ "gnome-artificer": {
+  "file": "magic_engineer_sorcerer_gnome-artificer.png",
+  "source": "gnome-artificer.png",
+  "specks_removed": 22,
+  "subject": [
+   48,
+   197,
+   928,
+   1259
+  ]
+ },
+ "cat-paladin": {
+  "file": "blunt_guardian_primalist_cat-paladin.png",
+  "source": "cat-paladin.png",
+  "specks_removed": 15,
+  "subject": [
+   50,
+   48,
+   923,
+   1408
+  ]
+ },
+ "centaur": {
+  "file": "polearm_hunter_warrior_centaur.png",
+  "source": "centaur.png",
+  "specks_removed": 21,
+  "subject": [
+   51,
+   48,
+   922,
+   1408
+  ]
+ },
+ "tortoise-sage": {
+  "file": "blunt_healer_primalist_tortoise-sage.png",
+  "source": "tortoise-sage.png",
+  "specks_removed": 15,
+  "subject": [
+   48,
+   100,
+   928,
+   1356
+  ]
+ },
+ "turtle-monk": {
+  "file": "blunt_guardian_healer_turtle-monk.png",
+  "source": "turtle-monk.png",
+  "specks_removed": 4,
+  "subject": [
+   48,
+   107,
+   928,
+   1349
+  ]
+ },
+ "beetle-knight": {
+  "file": "blunt_guardian_bodyguard_beetle-knight.png",
+  "source": "beetle-knight.png",
+  "specks_removed": 5,
+  "subject": [
+   48,
+   278,
+   928,
+   1178
+  ]
+ },
+ "frog-bard": {
+  "file": "bladed_bard_trickster_frog-bard.png",
+  "source": "frog-bard.png",
+  "specks_removed": 19,
+  "subject": [
+   48,
+   144,
+   928,
+   1312
+  ]
+ },
+ "owl-wizard": {
+  "file": "magic_sorcerer_flying_owl-wizard.png",
+  "source": "owl-wizard.png",
+  "specks_removed": 19,
+  "subject": [
+   48,
+   129,
+   928,
+   1327
+  ]
+ },
+ "salamander-duelist": {
+  "file": "bladed_assassin_warrior_salamander-duelist.png",
+  "source": "salamander-duelist.png",
+  "specks_removed": 19,
+  "subject": [
+   62,
+   48,
+   899,
+   1408
+  ]
+ },
+ "crab-alchemist": {
+  "file": "thrown_alchemist_crab-alchemist.png",
+  "source": "crab-alchemist.png",
+  "specks_removed": 15,
+  "subject": [
+   48,
+   353,
+   928,
+   1103
+  ]
+ },
+ "armadillo-knight": {
+  "file": "blunt_guardian_bodyguard_armadillo-knight.png",
+  "source": "armadillo-knight.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   268,
+   928,
+   1188
+  ]
+ },
+ "mushroom-druid": {
+  "file": "magic_primalist_healer_mushroom-druid.png",
+  "source": "mushroom-druid.png",
+  "specks_removed": 22,
+  "subject": [
+   48,
+   255,
+   928,
+   1201
+  ]
+ },
+ "bat-assassin": {
+  "file": "bladed_assassin_flying_bat-assassin.png",
+  "source": "bat-assassin.png",
+  "specks_removed": 8,
+  "subject": [
+   114,
+   48,
+   796,
+   1408
+  ]
+ },
+ "snail-cleric": {
+  "file": "magic_healer_guardian_snail-cleric.png",
+  "source": "snail-cleric.png",
+  "specks_removed": 30,
+  "subject": [
+   48,
+   308,
+   928,
+   1148
+  ]
+ },
+ "fox-bard": {
+  "file": "feral_bard_trickster_fox-bard.png",
+  "source": "fox-bard.png",
+  "specks_removed": 4,
+  "subject": [
+   48,
+   426,
+   928,
+   1030
+  ]
+ },
+ "lance-beetle": {
+  "file": "feral_warrior_guardian_lance-beetle.png",
+  "source": "lance-beetle.png",
+  "specks_removed": 8,
+  "subject": [
+   48,
+   170,
+   928,
+   1286
+  ]
+ },
+ "toadstool-toad": {
+  "file": "breath_alchemist_primalist_toadstool-toad.png",
+  "source": "toadstool-toad.png",
+  "specks_removed": 25,
+  "subject": [
+   48,
+   205,
+   928,
+   1251
+  ]
+ },
+ "wolf-ranger": {
+  "file": "feral_hunter_bodyguard_wolf-ranger.png",
+  "source": "wolf-ranger.png",
+  "specks_removed": 15,
+  "subject": [
+   48,
+   175,
+   928,
+   1281
+  ]
+ },
+ "croc-shaman": {
+  "file": "feral_primalist_warrior_croc-shaman.png",
+  "source": "croc-shaman.png",
+  "specks_removed": 20,
+  "subject": [
+   48,
+   354,
+   928,
+   1102
+  ]
+ },
+ "lantern-snail": {
+  "file": "magic_healer_primalist_lantern-snail.png",
+  "source": "lantern-snail.png",
+  "specks_removed": 12,
+  "subject": [
+   48,
+   452,
+   928,
+   1004
+  ]
+ },
+ "armadillo-squire": {
+  "file": "feral_guardian_bodyguard_armadillo-squire.png",
+  "source": "armadillo-squire.png",
+  "specks_removed": 6,
+  "subject": [
+   48,
+   551,
+   928,
+   905
+  ]
+ },
+ "crystal-spider": {
+  "file": "magic_sorcerer_trickster_crystal-spider.png",
+  "source": "crystal-spider.png",
+  "specks_removed": 15,
+  "subject": [
+   48,
+   300,
+   928,
+   1156
+  ]
+ },
+ "ember-newt": {
+  "file": "feral_trickster_assassin_ember-newt.png",
+  "source": "ember-newt.png",
+  "specks_removed": 3,
+  "subject": [
+   48,
+   507,
+   928,
+   949
+  ]
+ },
+ "sun-ram": {
+  "file": "feral_primalist_leader_sun-ram.png",
+  "source": "sun-ram.png",
+  "specks_removed": 23,
+  "subject": [
+   48,
+   109,
+   928,
+   1347
+  ]
+ },
+ "crystal-snail": {
+  "file": "magic_sorcerer_healer_crystal-snail.png",
+  "source": "crystal-snail.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   291,
+   928,
+   1165
+  ]
+ },
+ "jade-beetle": {
+  "file": "feral_guardian_warrior_jade-beetle.png",
+  "source": "jade-beetle.png",
+  "specks_removed": 14,
+  "subject": [
+   48,
+   360,
+   928,
+   1096
+  ]
+ },
+ "potion-octopus": {
+  "file": "thrown_alchemist_trickster_potion-octopus.png",
+  "source": "potion-octopus.png",
+  "specks_removed": 24,
+  "subject": [
+   48,
+   282,
+   928,
+   1174
+  ]
+ },
+ "jeweled-cobra": {
+  "file": "breath_alchemist_assassin_jeweled-cobra.png",
+  "source": "jeweled-cobra.png",
+  "specks_removed": 3,
+  "subject": [
+   53,
+   48,
+   917,
+   1408
+  ]
+ },
+ "crab-smith": {
+  "file": "blunt_engineer_guardian_crab-smith.png",
+  "source": "crab-smith.png",
+  "specks_removed": 29,
+  "subject": [
+   48,
+   275,
+   928,
+   1181
+  ]
+ },
+ "halo-jelly": {
+  "file": "aura_healer_primalist_halo-jelly.png",
+  "source": "halo-jelly.png",
+  "specks_removed": 43,
+  "subject": [
+   79,
+   48,
+   866,
+   1408
+  ]
+ },
+ "lute-caterpillar": {
+  "file": "magic_bard_healer_lute-caterpillar.png",
+  "source": "lute-caterpillar.png",
+  "specks_removed": 17,
+  "subject": [
+   48,
+   275,
+   928,
+   1181
+  ]
+ },
+ "sky-manta": {
+  "file": "magic_flying_sorcerer_sky-manta.png",
+  "source": "sky-manta.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   294,
+   928,
+   1162
+  ]
+ },
+ "crimson-scorpion": {
+  "file": "lashing_assassin_alchemist_crimson-scorpion.png",
+  "source": "crimson-scorpion.png",
+  "specks_removed": 50,
+  "subject": [
+   48,
+   266,
+   928,
+   1190
+  ]
+ },
+ "starfish-mage": {
+  "file": "magic_sorcerer_healer_starfish-mage.png",
+  "source": "starfish-mage.png",
+  "specks_removed": 8,
+  "subject": [
+   48,
+   342,
+   928,
+   1114
+  ]
+ },
+ "rock-squire": {
+  "file": "bladed_guardian_sorcerer_rock-squire.png",
+  "source": "rock-squire.png",
+  "specks_removed": 7,
+  "subject": [
+   48,
+   183,
+   928,
+   1273
+  ]
+ },
+ "duchess": {
+  "file": "bladed_leader_trickster_duchess.png",
+  "source": "duchess.png",
+  "specks_removed": 28,
+  "subject": [
+   143,
+   48,
+   738,
+   1408
+  ]
+ },
+ "bell-friar": {
+  "file": "blunt_healer_bard_bell-friar.png",
+  "source": "bell-friar.png",
+  "specks_removed": 4,
+  "subject": [
+   48,
+   70,
+   928,
+   1386
+  ]
+ },
+ "frost-lancer": {
+  "file": "polearm_sorcerer_warrior_frost-lancer.png",
+  "source": "frost-lancer.png",
+  "specks_removed": 39,
+  "subject": [
+   95,
+   48,
+   834,
+   1408
+  ]
+ },
+ "young-scout": {
+  "file": "ranged_hunter_trickster_young-scout.png",
+  "source": "young-scout.png",
+  "specks_removed": 6,
+  "subject": [
+   178,
+   48,
+   667,
+   1408
+  ]
+ },
+ "shield-matron": {
+  "file": "blunt_bodyguard_guardian_shield-matron.png",
+  "source": "shield-matron.png",
+  "specks_removed": 6,
+  "subject": [
+   48,
+   131,
+   928,
+   1325
+  ]
+ },
+ "wind-dancer": {
+  "file": "bladed_bard_assassin_wind-dancer.png",
+  "source": "wind-dancer.png",
+  "specks_removed": 40,
+  "subject": [
+   83,
+   48,
+   858,
+   1408
+  ]
+ },
+ "tide-mage": {
+  "file": "magic_sorcerer_leader_tide-mage.png",
+  "source": "tide-mage.png",
+  "specks_removed": 17,
+  "subject": [
+   48,
+   67,
+   928,
+   1389
+  ]
+ },
+ "mirror-queen": {
+  "file": "magic_sorcerer_trickster_mirror-queen.png",
+  "source": "mirror-queen.png",
+  "specks_removed": 11,
+  "subject": [
+   83,
+   48,
+   858,
+   1408
+  ]
+ },
+ "potion-monk": {
+  "file": "blunt_healer_alchemist_potion-monk.png",
+  "source": "potion-monk.png",
+  "specks_removed": 15,
+  "subject": [
+   114,
+   48,
+   795,
+   1408
+  ]
+ },
+ "pillbug": {
+  "file": "feral_guardian_bodyguard_pillbug.png",
+  "source": "pillbug.png",
+  "specks_removed": 15,
+  "subject": [
+   48,
+   713,
+   928,
+   743
+  ]
+ },
+ "nautilus": {
+  "file": "lashing_sorcerer_healer_nautilus.png",
+  "source": "nautilus.png",
+  "specks_removed": 19,
+  "subject": [
+   48,
+   332,
+   928,
+   1124
+  ]
+ },
+ "blood-centipede": {
+  "file": "feral_assassin_alchemist_blood-centipede.png",
+  "source": "blood-centipede.png",
+  "specks_removed": 55,
+  "subject": [
+   48,
+   50,
+   928,
+   1406
+  ]
+ },
+ "dream-jelly": {
+  "file": "aura_healer_sorcerer_dream-jelly.png",
+  "source": "dream-jelly.png",
+  "specks_removed": 17,
+  "subject": [
+   51,
+   48,
+   921,
+   1408
+  ]
+ },
+ "horn-crab": {
+  "file": "feral_guardian_warrior_horn-crab.png",
+  "source": "horn-crab.png",
+  "specks_removed": 15,
+  "subject": [
+   48,
+   416,
+   928,
+   1040
+  ]
+ },
+ "sea-slug": {
+  "file": "aura_alchemist_healer_sea-slug.png",
+  "source": "sea-slug.png",
+  "specks_removed": 3,
+  "subject": [
+   48,
+   589,
+   928,
+   867
+  ]
+ },
+ "glide-ray": {
+  "file": "feral_flying_hunter_glide-ray.png",
+  "source": "glide-ray.png",
+  "specks_removed": 1,
+  "subject": [
+   48,
+   506,
+   928,
+   950
+  ]
+ },
+ "masked-spider": {
+  "file": "feral_trickster_assassin_masked-spider.png",
+  "source": "masked-spider.png",
+  "specks_removed": 9,
+  "subject": [
+   48,
+   553,
+   928,
+   903
+  ]
+ },
+ "firefly": {
+  "file": "magic_flying_sorcerer_firefly.png",
+  "source": "firefly.png",
+  "specks_removed": 32,
+  "subject": [
+   48,
+   331,
+   928,
+   1125
+  ]
+ },
+ "drill-worm": {
+  "file": "feral_engineer_hunter_drill-worm.png",
+  "source": "drill-worm.png",
+  "specks_removed": 5,
+  "subject": [
+   48,
+   339,
+   928,
+   1117
+  ]
+ },
+ "hermit": {
+  "file": "polearm_primalist_healer_hermit.png",
+  "source": "hermit.png",
+  "specks_removed": 16,
+  "subject": [
+   254,
+   48,
+   515,
+   1408
+  ]
+ },
+ "brewmistress": {
+  "file": "blunt_alchemist_warrior_brewmistress.png",
+  "source": "brewmistress.png",
+  "specks_removed": 12,
+  "subject": [
+   48,
+   328,
+   928,
+   1128
+  ]
+ },
+ "sling-courier": {
+  "file": "ranged_trickster_hunter_sling-courier.png",
+  "source": "sling-courier.png",
+  "specks_removed": 2,
+  "subject": [
+   117,
+   48,
+   790,
+   1408
+  ]
+ },
+ "banner-knight": {
+  "file": "blunt_leader_guardian_banner-knight.png",
+  "source": "banner-knight.png",
+  "specks_removed": 9,
+  "subject": [
+   114,
+   48,
+   796,
+   1408
+  ]
+ },
+ "ice-wizard": {
+  "file": "magic_sorcerer_ice-wizard.png",
+  "source": "ice-wizard.png",
+  "specks_removed": 17,
+  "subject": [
+   91,
+   48,
+   841,
+   1408
+  ]
+ },
+ "spear-dancer": {
+  "file": "polearm_bard_warrior_spear-dancer.png",
+  "source": "spear-dancer.png",
+  "specks_removed": 24,
+  "subject": [
+   63,
+   48,
+   898,
+   1408
+  ]
+ },
+ "scholar": {
+  "file": "magic_sorcerer_scholar.png",
+  "source": "scholar.png",
+  "specks_removed": 20,
+  "subject": [
+   174,
+   48,
+   676,
+   1408
+  ]
+ },
+ "hedge-witch": {
+  "file": "magic_healer_alchemist_hedge-witch.png",
+  "source": "hedge-witch.png",
+  "specks_removed": 14,
+  "subject": [
+   48,
+   66,
+   928,
+   1390
+  ]
+ },
+ "sun-priestess": {
+  "file": "ranged_healer_primalist_sun-priestess.png",
+  "source": "sun-priestess.png",
+  "specks_removed": 43,
+  "subject": [
+   121,
+   48,
+   781,
+   1408
+  ]
+ },
+ "hammer-monk": {
+  "file": "blunt_warrior_guardian_hammer-monk.png",
+  "source": "hammer-monk.png",
+  "specks_removed": 3,
+  "subject": [
+   48,
+   121,
+   928,
+   1335
+  ]
+ },
+ "mechanic": {
+  "file": "blunt_engineer_mechanic.png",
+  "source": "mechanic.png",
+  "specks_removed": 25,
+  "subject": [
+   184,
+   48,
+   655,
+   1408
+  ]
+ },
+ "crystal-apprentice": {
+  "file": "magic_sorcerer_crystal-apprentice.png",
+  "source": "crystal-apprentice.png",
+  "specks_removed": 41,
+  "subject": [
+   111,
+   48,
+   802,
+   1408
+  ]
+ },
+ "wanderer": {
+  "file": "thrown_alchemist_hunter_wanderer.png",
+  "source": "wanderer.png",
+  "specks_removed": 7,
+  "subject": [
+   203,
+   48,
+   617,
+   1408
+  ]
+ },
+ "huntress": {
+  "file": "ranged_hunter_assassin_huntress.png",
+  "source": "huntress.png",
+  "specks_removed": 25,
+  "subject": [
+   67,
+   48,
+   890,
+   1408
+  ]
+ },
+ "sprout-druid": {
+  "file": "magic_primalist_healer_sprout-druid.png",
+  "source": "sprout-druid.png",
+  "specks_removed": 30,
+  "subject": [
+   48,
+   88,
+   928,
+   1368
+  ]
+ },
+ "flower-druid": {
+  "file": "magic_primalist_healer_flower-druid.png",
+  "source": "flower-druid.png",
+  "specks_removed": 52,
+  "subject": [
+   68,
+   48,
+   888,
+   1408
+  ]
+ },
+ "bowmaiden": {
+  "file": "ranged_hunter_bowmaiden.png",
+  "source": "bowmaiden.png",
+  "specks_removed": 21,
+  "subject": [
+   103,
+   48,
+   817,
+   1408
+  ]
+ },
+ "shield-maiden": {
+  "file": "bladed_guardian_primalist_shield-maiden.png",
+  "source": "shield-maiden.png",
+  "specks_removed": 17,
+  "subject": [
+   118,
+   48,
+   788,
+   1408
+  ]
+ },
+ "hook-rogue": {
+  "file": "thrown_engineer_trickster_hook-rogue.png",
+  "source": "hook-rogue.png",
+  "specks_removed": 11,
+  "subject": [
+   122,
+   48,
+   780,
+   1408
+  ]
+ },
+ "grey-wizard": {
+  "file": "magic_sorcerer_leader_grey-wizard.png",
+  "source": "grey-wizard.png",
+  "specks_removed": 9,
+  "subject": [
+   49,
+   48,
+   925,
+   1408
   ]
  }
 }
