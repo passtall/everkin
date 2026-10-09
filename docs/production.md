@@ -152,4 +152,4 @@ Adopted 2026-10-06.
 
 ## 4. Still open
 
-- Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18).
+- Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18). Deferred by the owner (2026-10-09). A first pass found no US trademark for games, but "Grow: Song of the Evertree" (2021) calls its villagers "the Everkin" and everkin.com belongs to a Shenzhen electronics maker.
