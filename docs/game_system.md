@@ -1181,7 +1181,7 @@ The current class roster is fixed at seven: Hunter, Elementalist, Healer, Warrio
 
 Complex terrain, large multi-slot units, emergent relationships and genetic variation remain deferred. Summons are in the first release and still need full specification (section 11). Bosses are normal-size units with higher stats (section 7.6). The story campaign and post-story content are required; their detailed content remains open.
 
-Online PvP is planned with interface preparation now, but implementation requires explicit owner greenlight. Its rules and responsibilities are adopted (section 2.4, production.md §2.1); the networking protocol is specified when it is greenlit. Cooperative play, rankings, trading, crafting, an equipment economy and achievements remain unspecified. The business model and saving are adopted in [production.md](production.md).
+Online PvP is planned with interface preparation now, but implementation requires explicit owner greenlight. Its rules and responsibilities are adopted (section 2.4, production.md §2.1); the networking protocol is specified when it is greenlit. Cooperative play, trading, crafting and an equipment economy remain unspecified. Achievement rules are adopted in [production.md](production.md) §1.2; online matchmaking uses a hidden rating (section 2.4). The business model and saving are adopted in [production.md](production.md).
 
 ## 18. Identity and reference boundaries
 
