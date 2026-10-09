@@ -1,7 +1,7 @@
 """Make cleaned creature art copies from images/kin (the originals are never changed).
 
 Reads the table in docs/creature-classes.md: for each row it cleans images/kin/<Source> and
-writes art/creatures/<Art file> ({attackType}_{professions}_{unitName}.png): 1024 x 1536 RGBA,
+writes art/creatures/<Art file> ({unitName}_{attackType}_{professions}.png): 1024 x 1536 RGBA,
 transparent background, stray specks removed, the creature scaled to fit the safe area and
 standing on the shared ground line. Art files no row names any more are deleted.
 
@@ -26,7 +26,7 @@ MIN_ISLAND = 400       # opaque islands smaller than this (in source pixels) are
 
 # Leftover background attached to the creature, erased by hand: box in output pixels,
 # only near-white pixels inside it are cleared.
-WHITE_SPOTS = {"sickle-mantis": (270, 1310, 320, 1375)}
+WHITE_SPOTS = {"mantis-sickle": (270, 1310, 320, 1375)}
 
 
 def art_rows():
