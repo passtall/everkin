@@ -22,7 +22,7 @@ STYLE (identical for every creature)
 POSE AND VIEW
 - A three-quarter front view, turned slightly to one side, from about chest height.
 - An alert, natural stance with believable anatomy, all limbs correctly attached and the joints bending the right way.
-- The head and face must be clearly visible, roughly in the upper half of the image and facing mostly toward the viewer, because the card front crops to a portrait of the head and upper body.
+- The head and face are clearly visible and facing mostly toward the viewer.
 - Nothing covers the face.
 - The creature carries no clothing, armor, saddle or equipment unless the description says so.
 
