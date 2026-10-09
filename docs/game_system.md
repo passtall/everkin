@@ -8,7 +8,7 @@
 
 **Project name:** Everkin is a working title.
 
-**Companion documents:** [UI specification](ui_spec.md) owns screens and interactions. [Classes and skills](classes_and_skills.md) owns the class and skill definitions. [Creatures](creatures.md) owns the creature roster, size tiers and the type-specific attack library. This document owns game rules, scope, and implementation requirements.
+**Companion documents:** [UI specification](ui_spec.md) owns screens and interactions. [Class system](class_system.md) owns the class definitions (Attack Types and Professions); [classes_and_skills.md](classes_and_skills.md) is superseded. [Creatures](creatures.md) owns the creature roster, size tiers and the type-specific attack library. This document owns game rules, scope, and implementation requirements.
 
 **Current work:** define the whole game before gameplay implementation. Classes and skills are designed one class at a time, with about ten questions per round, and the answers are applied directly to these documents. Keep unresolved choices explicit; no separate decision history is maintained.
 
@@ -188,13 +188,14 @@ The exact creature roster lives in [creatures.md](creatures.md): size tiers (cri
 - **Speed** follows the tier (critters 7–9, medium 4–7, large 1–4). A creature may break it with a stated reason.
 - **Power** runs from 1 to 10, with the reference human at 5.
 - **Natural Defense** is 0–40% in steps of 10. It is rare, and 0% is the default. Skills and statuses supply the rest, up to the 75% cap.
-- **Type-specific attack.** Each creature gets one attack from the shared library and cannot change its numbers.
-- **Classes** are hand-assigned per creature to fit its concept: humans usually three, animals one or two.
+- **Classes (2026-10-09).** Every creature has exactly 1 Attack Type and 1–2 Professions ([class_system.md](class_system.md)). This replaces the old type-specific attack library and the rule of one to three hand-assigned classes.
 - **No natural traits** for now. A creature's identity comes from its stats, classes and attack.
 - **Humans** are generated once during content creation and stored as fixed recruits (section 3.4), each with a name, its own class combination and small stat differences within the medium tier.
 - **IDs** are stable text IDs (such as `fox` or `stone_turtle`). The game loads one image per creature by ID, from cleaned copies (the front shows a portrait crop, the back the whole creature); the original files are never changed (production.md §1.6).
 
 ## 4. Classes and skill-tree progression
+
+> **Superseded (2026-10-09).** Classes are now defined in [class_system.md](class_system.md): 1 Attack Type (11 options) plus 1–2 Professions (16 options). Wherever this section says "class", "class tree" or "type-specific attack", it describes the old system. The progression rules (point budget, node types, costs, no mana or cooldowns, skill cards in §4.7) still stand, but how skills and trees attach to Attack Types and Professions is not decided yet (section 19).
 
 ### 4.1 Access and point budget
 
@@ -258,7 +259,7 @@ There is no global anti-spam rule. A skill's consequences and the resulting comb
 
 ### 4.5 Current class roster
 
-The classes in the current scope are **Hunter, Elementalist, Healer, Warrior, Guardian, Feral, and Leader**. Their skill sets and mechanical identities are being designed again from scratch, one class at a time in [classes_and_skills.md](classes_and_skills.md). Healer is first, then Leader. Do not add other classes without an explicit scope change.
+**Replaced 2026-10-09.** The class roster is [class_system.md](class_system.md) v1.1: 11 Attack Types (Unarmed, Bladed, Polearm, Ranged, Feral, Magic, Blunt, Breath, Thrown, Lashing, Aura) and 16 Professions (Hunter, Guardian, Alchemist, Healer, Sorcerer, Black Mage, Warrior, Bard, Assassin, Bodyguard, Leader, Trickster, Engineer, Summoner, Primalist, Flying). The old seven classes and their skills in classes_and_skills.md are invalid. Do not add other Attack Types or Professions without an explicit scope change.
 
 Class skills use the **same rules across creature types**. A class ability does not acquire a species-specific version merely because a turtle rather than a human uses it. Outcomes can still differ through the user's stats and explicitly defined build effects.
 
@@ -1175,7 +1176,7 @@ The order of work after the AI-versus-AI milestone is adopted in [production.md]
 
 Different discussions suggested around 10 recruits for an early slice or 15–20 for a combat prototype, and between 6–8, 8–12, or 10–12 initial trees. These are alternative scoping suggestions, not simultaneous targets.
 
-The current class roster is fixed at seven: Hunter, Elementalist, Healer, Warrior, Guardian, Feral, and Leader. Creature roster size, enemy count, and final content budget remain open.
+The class roster is 11 Attack Types and 16 Professions ([class_system.md](class_system.md)). Creature roster size, enemy count, and final content budget remain open.
 
 ### 17.3 Deferred or unselected systems
 
@@ -1211,8 +1212,8 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Statuses | Further candidates, added only when a skill needs them. The framework (clocks, ticking, reapplication, cleansing, source, limit, damage from statuses, chances, skipped turns, immunities) and Blind, Poison, Bleeding, Silenced, Burning, Chilled and Frozen are adopted (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
 | KO and revival | Per-skill revival HP and recovery cost, and what a draw means in each mode. Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
 | Summons | Per-summon status rules and individual summon content. Kinds, placement, cost, limits, Momentum and expiry are adopted (section 11). In the first release (section 20.1). Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
-| Builds | Class/skill designs and assignments, conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
-| Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Tiers, stat ranges, the attack library rule, class counts, no natural traits and text IDs are adopted (section 3.7). |
+| Builds | How skills, skill trees and basic attacks attach to Attack Types and Professions ([class_system.md](class_system.md), adopted 2026-10-09); all skill designs (the old ones are invalid); Attack Type and Profession assignments per creature; conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
+| Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Attack Type and Profession assignments for every creature. Tiers, stat ranges, no natural traits and text IDs are adopted (section 3.7); 1 Attack Type plus 1–2 Professions replaced the attack library rule and the old class counts. |
 | Recruitment | Guaranteed encounter-to-unit reward assignments, the exact tutorial creatures, individual coin prices, individual persistence. Tutorial growth (two Critters, then +1, +1, +2), coin sources, payouts, price guide and the roster split are adopted (section 2.2). One copy per creature, one fixed reward per encounter from the defeated team, rewards given once, the three-battle tutorial, post-story challenge encounters, coins, and fixed human recruits are adopted (sections 2.2 and 3.4). Other acquisition methods are not currently required. |
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters, boss stats, and each encounter's AI level. Three difficulty levels are adopted (section 12.3). Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
@@ -1248,7 +1249,7 @@ In addition to section 19, resolve these edge cases:
 
 Each included creature needs a stable ID, name, one artwork image with its portrait crop, framing, all four stats and growth rules, classes, its one type-specific attack, natural passives/immunities, and acquisition rules. Artwork filenames are not approved creature names or combat values.
 
-Each class needs its complete skill-tree graph: node IDs, costs, ranks, prerequisites, branches, exclusivity, effects, and respec behavior. Define how multiple modifiers combine and how the final usable skill is displayed.
+Each class needs its complete skill-tree graph (what a "class" tree is under the new Attack Types and Professions is still open, section 19): node IDs, costs, ranks, prerequisites, branches, exclusivity, effects, and respec behavior. Define how multiple modifiers combine and how the final usable skill is displayed.
 
 Each skill needs availability conditions, valid targets and range, area pattern, timing multiplier, Momentum/other costs and payment behavior, ordered effects, probabilities and formulas, reactions, KO/interruption/retargeting behavior, and presentation. Do not add a per-skill Momentum Gain field.
 

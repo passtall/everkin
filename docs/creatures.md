@@ -1,5 +1,7 @@
 # Everkin — Creatures
 
+> **Superseded (2026-10-09).** The **Classes** column and the **type-specific attack library** (and the Attack column and class/attack totals) are invalid. Classes now follow [class_system.md](class_system.md): each creature has 1 Attack Type and 1–2 Professions, which still have to be assigned. Tiers, stats, IDs and appearances are unaffected.
+
 **Status:** Draft roster proposed by Claude on 2026-10-05 from the existing art, at the owner's request. Every creature, number, class and attack below is Draft until the owner reviews it; the rules it follows are adopted in [game_system.md](game_system.md) §3.7.
 **Global rules:** Stats (§5.1), damage (§5.2), anchors (§5.5), timeline (§6.1), statuses (§10.5) and distance (§7.4) live in game_system.md. This document holds only the tiers, the attack library and the roster.
 
@@ -19,6 +21,8 @@ Each creature belongs to one tier and tweaks the tier's base block slightly. Sta
 - Trade-offs inside a tier: more HP or Defense usually comes with less Speed or Power.
 
 ## Type-specific attack library
+
+> **Superseded (2026-10-09).** Replaced by Attack Types in [class_system.md](class_system.md).
 
 Each creature has exactly one of these attacks (game_system.md §4.4). The numbers are fixed; a creature cannot tweak them. Damage at Power 3 / 5 / 7 is shown for comparison, rounded down with a minimum of 1 (§5.2).
 

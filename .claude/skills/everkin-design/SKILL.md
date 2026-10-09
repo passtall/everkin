@@ -1,6 +1,6 @@
 ---
 name: everkin-design
-description: Use for ANY Everkin game-design work — rules, classes, skills, statuses, damage and Momentum numbers, timeline, formation, UI behavior, balance, or edits to docs/game_system.md, docs/classes_and_skills.md and docs/ui_spec.md. Forces reading the design documents before answering or proposing anything.
+description: Use for ANY Everkin game-design work — rules, classes, skills, statuses, damage and Momentum numbers, timeline, formation, UI behavior, balance, or edits to docs/game_system.md, docs/class_system.md and docs/ui_spec.md. Forces reading the design documents before answering or proposing anything.
 ---
 
 # Everkin design reference check
@@ -13,7 +13,7 @@ The design documents are the source of truth. Never answer, propose or edit from
    - §2.5 AI-versus-AI test harness · §4 classes, tags and skill rules (§4.7) · §5 stats, damage formula, anchors · §6 timeline, auto events, Momentum (§6.7)
    - §7 formation and rows · §8 targeting, interception (§8.2), columns (§8.4) · §9 movement · §10 stealth, KO, statuses
    - §11 summons · §19 decisions still required · §20 details before implementation
-2. Read **docs/classes_and_skills.md** for any class or skill work, and **docs/creatures.md** for any creature, stat or type-specific attack work.
+2. Read **docs/class_system.md** for any class work: it is the source of truth (1 Attack Type plus 1–2 Professions per creature). **docs/classes_and_skills.md is superseded** and must not be used. Read **docs/creatures.md** for any creature or stat work (its classes and attack library are superseded too).
 3. Read **docs/ui_spec.md** for any UI, screen or interaction question.
 4. Read **docs/production.md** for platforms, release, business model, technology or saving. New decisions that are not game mechanics go there, not into game_system.md.
 5. Check §19 of game_system.md. If a rule is listed there as undecided, do not invent it: ask the owner.
@@ -23,7 +23,8 @@ The design documents are the source of truth. Never answer, propose or edit from
 | Content | Document |
 |---|---|
 | Game-wide rules (damage, Momentum, timeline, interception, tags, statuses, formation) | docs/game_system.md |
-| Class and skill definitions (one class at a time) | docs/classes_and_skills.md |
+| Class system: Attack Types and Professions | docs/class_system.md |
+| Old class and skill definitions (superseded 2026-10-09, history only) | docs/classes_and_skills.md |
 | Creature roster, size tiers, type-specific attack library | docs/creatures.md |
 | Screens, layouts, interactions | docs/ui_spec.md |
 | Non-mechanics decisions: platforms, release, business model, technology, saving, languages, accessibility | docs/production.md |

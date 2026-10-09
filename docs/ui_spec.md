@@ -126,4 +126,4 @@ Produce annotated layouts before declaring UI specification complete. Claude bui
 
 Complete these checks for mouse/touch and the final target screen sizes. Specify dense-state behavior for many statuses, long class/skill names, 7–9 skills and larger test sets, and the selected maximum unit count. These are verification requirements, not completed test results.
 
-The current class labels are Hunter, Elementalist, Healer, Warrior, Guardian, Feral, and Leader. Shared class skills use consistent descriptions across creatures; display the current stat-scaled values and explicit modifications where relevant. Each unit also displays its one type-specific attack.
+Class labels follow [class_system.md](class_system.md): one Attack Type and one or two Professions per creature (the old seven class labels are superseded). Shared class skills use consistent descriptions across creatures; display the current stat-scaled values and explicit modifications where relevant. Each unit also displays its one type-specific attack.

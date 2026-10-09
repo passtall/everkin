@@ -1,5 +1,7 @@
 # Everkin — Classes and Skills
 
+> **Superseded (2026-10-09).** Andreas replaced the class system. Every class and skill in this document is invalid, including the seven-class roster and all skills, nodes and target-side rules below. The source of truth is now [class_system.md](class_system.md): 1 Attack Type plus 1–2 Professions per creature. This file is kept only as history; do not design, test or implement from it.
+
 **Status:** Redesigned. **Healer** is decided by the owner. **Leader**: concept decided, skills Draft. **Hunter** and **Guardian**: restored from the owner-reviewed v1 and converted to the Delay scale. **Warrior, Feral, Elementalist**: Draft (proposed by Claude, not yet reviewed). Each class section states its own status.
 **Global rules:** All game-wide rules live in [game_system.md](game_system.md): skill card fields and tags (§4.7), damage (§5.2), timeline, Speed and Delay (§6.1), Momentum (§6.7), interception (§8.2), columns and shapes (§8.4). This document holds only class and skill definitions, never global rules.
 **Process:** One class at a time, with the owner, who decides everything. Order: Healer, Leader, Hunter, Guardian, Warrior, Feral, Elementalist.
