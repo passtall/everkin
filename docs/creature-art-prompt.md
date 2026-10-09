@@ -1,9 +1,9 @@
 # Creature art prompt (ChatGPT)
 
-The template for new creature art (2026-10-09). Paste it into ChatGPT image generation and replace the CREATURES section with the batch. Each creature gets one image. After adding the files to `images/kin/` as `<n>_f.png`, run `tools/art/clean_creatures.py` to make the cleaned copies and set a portrait crop in `art/creatures/portraits.json`.
+The template for new creature art (2026-10-09). Write the creature description first, in your own words, then paste this text after it. Each creature gets one image. After adding the files to `images/kin/` as `<n>_f.png`, run `tools/art/clean_creatures.py` to make the cleaned copies and set a portrait crop in `art/creatures/portraits.json`.
 
 ```
-Create creature art for "Everkin", a fantasy creature card game. Make ONE separate image per creature listed under CREATURES, in the listed order, and do not combine creatures into one image.
+Render the creature(s) described above as card art for "Everkin", a fantasy creature card game. Make ONE separate image per creature, and do not combine creatures into one image.
 
 FORMAT
 - PNG, 1024 × 1536 px portrait (2:3), with a fully transparent background (real alpha, not a checkerboard or white).
@@ -29,7 +29,4 @@ POSE AND VIEW
 TONE
 - Friendly but capable, suitable for ages 7 and up: no blood, wounds, gore or horror.
 
-CREATURES
-1. [name]: [description: body shape, size impression, colors, key features]
-2. ...
 ```
