@@ -1,6 +1,6 @@
 # Creature art prompt (ChatGPT)
 
-The template for new creature art (2026-10-09). Write the creature description first, in your own words, then paste this text after it. Each creature gets one image. After adding the files to `images/kin/` as `<n>_f.png`, run `tools/art/clean_creatures.py` to make the cleaned copies and set a portrait crop in `art/creatures/portraits.json`.
+The template for new creature art (2026-10-09). Write the creature description first, in your own words, then paste this text after it. Each creature gets one image. After adding the files to `images/kin/` as `<unitName>.png` and adding a row for each to `docs/creature-classes.md`, run `tools/art/clean_creatures.py` to make the cleaned copies and set a portrait crop in `art/creatures/portraits.json`.
 
 ```
 Render the creature(s) described above as card art for "Everkin", a fantasy creature card game. Make ONE separate image per creature, and do not combine creatures into one image.

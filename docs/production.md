@@ -98,7 +98,7 @@ Adopted 2026-10-06.
 - **Settings menu.** Music and sound volume, reduced motion, text size, vibration, language, crash reports, and key and controller bindings on Windows. There is no battle speed setting anywhere in the game (adopted 2026-10-08); only the development battle viewer has speed controls.
 - **Performance.** No hard numbers: the game must feel smooth. As orientation, about 30 frames per second on the test phone and 60 on Windows, and the AI deciding within about 2 seconds.
 - **Download size.** The mobile download stays under 200 MB, with art compressed for phones.
-- **Art pipeline.** `tools/art/clean_creatures.py` reads `images/kin` and writes the cleaned, ID-named 1024 × 1536 copies to `art/creatures/`, with portrait crops in `art/creatures/portraits.json` (done 2026-10-09). It can be re-run at any time.
+- **Art pipeline.** `tools/art/clean_creatures.py` reads `images/kin` and writes the cleaned 1024 × 1536 copies to `art/creatures/`, named by attack type, professions and unit name as listed in `docs/creature-classes.md` (renamed 2026-10-09), with portrait crops in `art/creatures/portraits.json` (done 2026-10-09). It can be re-run at any time.
 
 ### 1.7 Playtesting
 
@@ -148,7 +148,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Input.** Godot input actions: mouse, touch and keyboard map to the same commands (select, confirm, inspect, cancel).
 - **Animation.** Battle events play one after another from a queue, each with its own duration, always at one speed (the battle viewer can speed it up).
 - **Resolution.** The UI is designed for 1920 × 1080 and scaled down for phones.
-- **Creature art.** The game loads **one image per creature** by its ID (for example `fox`); there is no rear art (adopted 2026-10-09). The card front shows a portrait crop of it, and the back shows the whole creature. Each creature has its own portrait crop rectangle (`art/creatures/portraits.json`), so the crop can be tuned per creature. The original files in `images/kin` are never changed; cleaned and renamed copies are produced from them (section 1.6).
+- **Creature art.** The game loads **one image per creature**, found by its unit name in `docs/creature-classes.md` (for example `fox` → `feral_hunter_trickster_fox.png`); there is no rear art (adopted 2026-10-09). The card front shows a portrait crop of it, and the back shows the whole creature. Each creature has its own portrait crop rectangle (`art/creatures/portraits.json`), so the crop can be tuned per creature. The original files in `images/kin` are never changed; cleaned and renamed copies are produced from them (section 1.6).
 - **Text.** All UI and content text goes through translation keys from day one. English only at first.
 - **Battle viewer controls.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup to start from.
 

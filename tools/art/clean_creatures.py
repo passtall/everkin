@@ -1,12 +1,13 @@
 """Make cleaned creature art copies from images/kin (the originals are never changed).
 
-Reads images/kin/<n>_f.png, looks up the creature ID in docs/creatures.md and writes
-art/creatures/<id>.png: 1024 x 1536 RGBA, transparent background, stray specks removed,
-the creature scaled to fit the safe area and standing on the shared ground line.
+Reads the table in docs/creature-classes.md: for each row it cleans images/kin/<Source> and
+writes art/creatures/<Art file> ({attackType}_{professions}_{unitName}.png): 1024 x 1536 RGBA,
+transparent background, stray specks removed, the creature scaled to fit the safe area and
+standing on the shared ground line. Art files no row names any more are deleted.
 
 Usage: python3 tools/art/clean_creatures.py
 """
-import json, re, sys
+import json, sys
 from pathlib import Path
 
 import numpy as np
@@ -25,16 +26,17 @@ MIN_ISLAND = 400       # opaque islands smaller than this (in source pixels) are
 
 # Leftover background attached to the creature, erased by hand: box in output pixels,
 # only near-white pixels inside it are cleared.
-WHITE_SPOTS = {"sickle_mantis": (270, 1310, 320, 1375)}
+WHITE_SPOTS = {"sickle-mantis": (270, 1310, 320, 1375)}
 
 
-def creature_ids():
-    ids = {}
-    for line in (ROOT / "docs" / "creatures.md").read_text(encoding="utf-8").splitlines():
-        m = re.match(r"\|\s*(\d+)\s*\|\s*`([a-z0-9_]+)`\s*\|", line)
-        if m:
-            ids[int(m.group(1))] = m.group(2)
-    return ids
+def art_rows():
+    """(unit, art file, source file) for each row of the docs/creature-classes.md table."""
+    rows = []
+    for line in (ROOT / "docs" / "creature-classes.md").read_text(encoding="utf-8").splitlines():
+        cells = [c.strip().strip("`") for c in line.strip().strip("|").split("|")]
+        if len(cells) == 7 and cells[5].endswith(".png"):
+            rows.append((cells[0], cells[5], cells[6]))
+    return rows
 
 
 def clean(src):
@@ -62,25 +64,26 @@ def removed_specks(n, sizes):
 
 
 def main():
-    ids = creature_ids()
     OUT.mkdir(parents=True, exist_ok=True)
     report = {}
-    for src in sorted(SRC.glob("*_f.png"), key=lambda p: int(p.stem.split("_")[0])):
-        num = int(src.stem.split("_")[0])
-        cid = ids.get(num)
-        if not cid:
-            print(f"skip {src.name}: no ID in docs/creatures.md", file=sys.stderr)
+    for unit, art, source in art_rows():
+        src = SRC / source
+        if not src.exists():
+            print(f"skip {unit}: {src} not found", file=sys.stderr)
             continue
         img, specks, box = clean(src)
-        if cid in WHITE_SPOTS:
+        if unit in WHITE_SPOTS:
             a = np.array(img)
-            x0, y0, x1, y1 = WHITE_SPOTS[cid]
+            x0, y0, x1, y1 = WHITE_SPOTS[unit]
             region = a[y0:y1, x0:x1]
             region[(region[:, :, :3] > 200).all(axis=2)] = 0
             img = Image.fromarray(a)
-        img.save(OUT / f"{cid}.png", optimize=True)
-        report[cid] = {"source": src.name, "specks_removed": specks, "subject": box}
-        print(f"{src.name} -> {cid}.png  specks removed: {specks}")
+        img.save(OUT / art, optimize=True)
+        report[unit] = {"file": art, "source": source, "specks_removed": specks, "subject": box}
+        print(f"{source} -> {art}  specks removed: {specks}")
+    for stale in set(p.name for p in OUT.glob("*.png")) - {r["file"] for r in report.values()}:
+        (OUT / stale).unlink()
+        print(f"removed {stale}")
     (OUT / "clean_report.json").write_text(json.dumps(report, indent=1) + "\n")
 
 
