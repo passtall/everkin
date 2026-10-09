@@ -1,6 +1,6 @@
 ﻿# Everkin unit art compatibility — 2026-10-02
 
-> **Superseded in part (2026-10-09):** rear art is scrapped. Each creature now has one image; the card front shows a portrait crop and the back the whole creature (production.md §2.1, Creature art). The front/rear findings below are historical.
+> **Superseded in part (2026-10-09):** rear art is scrapped. Each creature now has one image; the card front shows a portrait crop and the back the whole creature (production.md §2.3, Creature art). The front/rear findings below are historical.
 
 ## Result
 
