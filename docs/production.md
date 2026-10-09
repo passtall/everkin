@@ -39,7 +39,7 @@ Adopted 2026-10-06.
 - **Damaged saves.** The game writes to a temporary file and then swaps it in, and keeps the previous save as a backup that loads automatically if the newest one is damaged.
 - **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change. Otherwise it is dropped, and a short note says so (changed 2026-10-07; it used to restart from its setup).
 - **Backups (adopted 2026-10-08).** The device keeps the last three automatic save backups. If the save is damaged, the game loads the newest good backup and shows a short note.
-- **Cloud saves (adopted 2026-10-07).** At release each store's own cloud save backs up the profile: Steam Cloud on Windows, Google Play saved games on Android, iCloud on iOS. Saves do not move between platform families; that comes with online accounts. If the cloud save and the device save differ, the game asks the player which to keep and shows each save's progress and date.
+- **Cloud saves (adopted 2026-10-07).** At release each store's own cloud save backs up the profile: Steam Cloud on Windows, Google Play saved games on Android, iCloud on iOS. Saves do not move between platform families, online play included (confirmed 2026-10-09). If the cloud save and the device save differ, the game asks the player which to keep and shows each save's progress and date.
 
 ### 1.5 Story presentation
 
@@ -109,7 +109,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Randomness.** One seeded random generator per battle, implemented in the core (never the platform's own random). The AI's search never draws from it.
 - **Tests.** Every worked check in game_system.md §20.5 becomes an automated test, plus unit tests per rule.
 - **Where tests and batches run.** Locally on the owner's PC. There is no GitHub CI, and batches are not run in Claude's sessions.
-- **Online backend.** Online play stays deferred (game_system.md §2.4). When it comes, its backend server will be a **Spring Boot (Java)** application.
+- **Online backend.** Online play stays deferred (game_system.md §2.4). When it comes, its backend server will be a **Spring Boot (Java)** application. Responsibilities (adopted 2026-10-09): the **server runs the rules core and decides every result**; clients only send their chosen actions and play the events the server returns. How the Java server hosts the C# rules core is decided when online play starts. Players sign in **automatically with their platform account** (Steam, Google Play, Apple) and there are no Everkin accounts. Play is **cross-platform** in one shared pool. Online rules are in game_system.md §2.4.
 
 ### 2.2 Rules core internals (adopted 2026-10-05)
 
@@ -118,7 +118,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Authority.** Only the core changes battle state. Godot sends chosen actions in and only reads state and events out.
 - **Previews.** The core answers preview queries (damage ranges, interception chances, timeline position, forced movement) with the same code that resolves actions, without changing state.
 - **Numbers.** The core uses integers only: percentages as whole numbers, coefficients in hundredths, explicit rounding down. No floating point in rules code.
-- **Online checking.** How the Spring Boot server checks battles is decided when online play starts; nothing in the core depends on it. The online transport is expected to use WebSockets.
+- **Online checking.** The server runs the core and decides every result (§2.1); nothing in the core depends on how it is hosted. The online transport is expected to use WebSockets.
 - **.NET version.** The newest long-term-support .NET that Godot 4.7 supports, shared by the core, the runner and the Godot project.
 - **Skill code.** One small C# class per skill, found by its skill ID. Shared behavior lives in reusable, specialized classes per tag or mechanic (for example interception, area shapes, forced movement), and skill classes delegate to them, so no rule is written twice.
 - **Broken content.** Content is validated at load. Any error stops the program with a clear message naming the file and ID.

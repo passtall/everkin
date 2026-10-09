@@ -97,6 +97,7 @@ Release order, stores, minimum devices, screen shapes and controller support are
 - **AI strength.** Each campaign and random-battle encounter sets its own AI level. Only free battles let the player choose it.
 - **Battle viewer:** only in development builds.
 - **Online PvP:** planned, but **do not implement it until the owner explicitly greenlights it**. Prepare code interfaces and architectural boundaries for future online play; the backend will be Spring Boot (Java) (section 16.1). This preparation is not authorization to implement networking, matchmaking, or online services.
+  - **Online rules (adopted 2026-10-09, for when online play is greenlit).** Players use only their **own collection**, as in single-player. Opponents are found by **quick match** against a similar player or in a **private match** with a friend code. Matchmaking uses a **hidden rating**; there is no visible ladder at first. Each player picks a saved team **before** being matched and sees the opponent's team only when the battle starts. Each turn has a **60-second timer**; when it runs out, the unit uses Skip Turn. A player who disconnects has **2 minutes** to reconnect and continue (their timer keeps running), then loses. An online win pays **15 coins** and a loss **5 coins**; a surrender counts as a loss. Players can send a few **fixed emotes** (Hello, Well played, Thanks), which the other side can mute; there is no text chat.
 
 **Balance testing method.** AI-versus-AI battles start from random units. Each AI picks its action on its turn with a minimax search. Every battle's setup and result are recorded (section 2.5), and statistics are kept on which units, classes and skills win or lose more often. Those statistics drive balance adjustments. Battles must therefore be deterministic given a seed, and the rules core must be able to run battles without any presentation.
 
@@ -442,7 +443,7 @@ The UI shows multiple upcoming turns and previews where the acting unit's next t
 
 - **Initial progress.** At battle start each unit's first Wait is `11 − Speed`, as if its previous skill had Delay 0. A Speed 10 unit acts at time 1 and a Speed 1 unit at time 10.
 - **Ties.** When turns arrive at the same time, the higher Speed acts first. If Speed is equal, a **seeded random roll** decides, so battles can be replayed from the seed.
-- **Time model.** Time advances only in jumps between events. Choosing an action and playing animations cost no time, and a turn costs time only when its skill resolves. A turn timer may be added later for online play only.
+- **Time model.** Time advances only in jumps between events. Choosing an action and playing animations cost no time, and a turn costs time only when its skill resolves. Only online play has a turn timer (60 seconds, section 2.4).
 - **Same-time order.** Status expiries resolve first, then auto and delayed events, then unit turns. This order is expected to be fine-tuned during testing.
 - **Haste and Slow.** A skill states a whole number of Speed steps (typically 2, never more than 3). Besides Speed, skills and effects may also give a unit's skills more or less Delay.
 - **Pull Forward and Push Back.** There is no global cap. Each skill states its number, checked against the damage anchor and playtesting.
@@ -1180,7 +1181,7 @@ The current class roster is fixed at seven: Hunter, Elementalist, Healer, Warrio
 
 Complex terrain, large multi-slot units, emergent relationships and genetic variation remain deferred. Summons are in the first release and still need full specification (section 11). Bosses are normal-size units with higher stats (section 7.6). The story campaign and post-story content are required; their detailed content remains open.
 
-Online PvP is planned with interface preparation now, but implementation requires explicit owner greenlight. Its detailed rules and networking specification remain open. Cooperative play, rankings, trading, crafting, an equipment economy and achievements remain unspecified. The business model and saving are adopted in [production.md](production.md).
+Online PvP is planned with interface preparation now, but implementation requires explicit owner greenlight. Its rules and responsibilities are adopted (section 2.4, production.md §2.1); the networking protocol is specified when it is greenlit. Cooperative play, rankings, trading, crafting, an equipment economy and achievements remain unspecified. The business model and saving are adopted in [production.md](production.md).
 
 ## 18. Identity and reference boundaries
 
@@ -1217,7 +1218,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Encounters | Specific encounter rosters, boss stats, and each encounter's AI level. Three difficulty levels are adopted (section 12.3). Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Campaign content (locations, encounters, boss rosters), later full campaign design, and final content. Stage size (about five battles plus a boss), fixed battle order, no team restrictions and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, left vertical timeline, and bottom skill bar are selected. Card styling is decided (full art with corner gems, rear-art backs, home-biome frame; ui_spec.md). |
-| Delivery | Technical validation and the name's availability check. Cloud saves and the name (Everkin) are adopted. Platforms, stores, business model, languages, accessibility, crash reports, save files and the technical foundation are adopted ([production.md](production.md)). The battle screen arrangement, interactions and layout sizes are adopted (section 13.3, ui_spec.md). |
+| Delivery | Technical validation and the name's availability check. Cloud saves and the name (Everkin) are adopted. Platforms, stores, business model, languages, accessibility, crash reports, save files, the technical foundation, prices, store pages and online responsibilities are adopted ([production.md](production.md)). The battle screen arrangement, interactions and layout sizes are adopted (section 13.3, ui_spec.md). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
 
@@ -1259,7 +1260,7 @@ Final content lists must be complete; examples and partially filled entries do n
 
 Finalize the authoritative rules state, UI preview/execution relationship, event ordering, and build/export process for the selected platforms. Language, the rules-core split, content format and IDs, and random-number control are adopted (section 16.1).
 
-Save timing, format, versioning, corruption recovery, battle resume, supported devices and screen shapes, languages, accessibility and crash reporting are adopted in [production.md](production.md). Performance targets, the sound and music list, tutorials, settings, and loading and error behavior are adopted there too. The visual effects rules are adopted there as well (2026-10-08). Still to resolve: online responsibilities if relevant. Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
+Save timing, format, versioning, corruption recovery, battle resume, supported devices and screen shapes, languages, accessibility and crash reporting are adopted in [production.md](production.md). Performance targets, the sound and music list, tutorials, settings, and loading and error behavior are adopted there too. The visual effects rules are adopted there as well (2026-10-08). Online responsibilities are adopted too (2026-10-09; production.md §2.1 and section 2.4). Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
 
 ### 20.5 Worked checks
 
