@@ -4,7 +4,23 @@ Attack type and professions for every creature that has art, following [class_sy
 
 The table also drives the art pipeline: `tools/art/clean_creatures.py` reads each row's **Source** in `images/kin/` and writes the cleaned copy to `art/creatures/` under the **Art file** name.
 
-**Art file names:** `{attackType}_{profession1}_{profession2}_{unitName}.png`, or `{attackType}_{profession}_{unitName}.png` for one profession. Everything is lowercase; underscores separate the parts, and hyphens join words inside a part (`black-mage`, `glade-stag`). For creatures with a creature ID in creatures.md, the unit name is that ID with hyphens. The other unit names were chosen from what the art shows; these creatures have no stats yet.
+**Art file names:** `{attackType}_{profession1}_{profession2}_{unitName}.png`, or `{attackType}_{profession}_{unitName}.png` for one profession. Everything is lowercase; underscores separate the parts, and hyphens join words inside a part (`black-mage`, `glade-stag`). For creatures with a creature ID in creatures.md, the unit name is that ID with hyphens. All other creatures have no stats yet and are named by the schema below (adopted 2026-10-09).
+
+## Unit name schema
+
+`{kind}-{archetype}[-{signature}][-{n}]`, so that similar designs get similar names and sort next to each other.
+
+| Part | What it says | Vocabulary |
+|---|---|---|
+| **kind** | What the creature is | `human`, `elf`, `dwarf`, `gnome`, `halfling`, `orc`, `centaur`, `lizardfolk`, `catfolk`, or the animal or plant (`fox`, `snail`, `frog`, `turtle`, `jelly`, `beetle`, `mushroom` …) |
+| **archetype** | The role the costume shows; left out for an animal without gear (`cobra`, `pillbug`) | `alchemist`, `archer`, `bard`, `barbarian`, `brawler`, `captain`, `cleric`, `dancer`, `druid`, `duelist`, `engineer`, `guard`, `healer`, `knight`, `mage`, `monk`, `necromancer`, `paladin`, `priest`, `ranger`, `rogue`, `scout`, `shaman`, `smith`, `spellblade`, `witch`, `wizard` |
+| **signature** | Optional: the one prop or element that sets the design apart | `banner`, `bell`, `censer`, `crystal`, `dagger`, `feather`, `fire`, `frost`, `gear`, `hammer`, `harpoon`, `hook`, `lantern`, `leaf`, `moon`, `pistol`, `potion`, `rapier`, `shadow`, `shield`, `skull`, `sling`, `spear`, `stone`, `sun`, `totem`, `water` |
+| **n** | Counter for near-identical designs | `2`, `3` … in the order the art was added; the first has none |
+
+1. Name what the art shows, never a made-up title.
+2. Pick each part from its list. A new word joins a list only when no existing word fits.
+3. Look-alikes share kind, archetype and signature and differ only in the counter.
+4. Look-alikes get the same attack type and professions unless the art clearly shows a different fighting style.
 
 | Unit | ID | Name | Attack type | Professions | Art file | Source |
 |---|---|---|---|---|---|---|
@@ -61,173 +77,173 @@ The table also drives the art pipeline: `tools/art/clean_creatures.py` reads eac
 | `wolverine` | `wolverine` | Wolverine | Feral | Warrior | `feral_warrior_wolverine.png` | `49_f.png` |
 | `woodpecker` | `woodpecker` | Giant Woodpecker | Feral | Hunter, Flying | `feral_hunter_flying_woodpecker.png` | `30_f.png` |
 | `zebra` | `zebra` | Zebra | Feral | Leader | `feral_leader_zebra.png` | `51_f.png` |
-| `astromancer` | — | Astromancer | Magic | Sorcerer, Leader | `magic_sorcerer_leader_astromancer.png` | `astromancer.png` |
-| `brawler` | — | Brawler | Unarmed | Warrior | `unarmed_warrior_brawler.png` | `brawler.png` |
-| `lantern-healer` | — | Lantern Healer | Magic | Healer, Alchemist | `magic_healer_alchemist_lantern-healer.png` | `lantern-healer.png` |
-| `shield-knight` | — | Shield Knight | Blunt | Guardian, Bodyguard | `blunt_guardian_bodyguard_shield-knight.png` | `shield-knight.png` |
-| `blade-dancer` | — | Blade Dancer | Bladed | Bard, Assassin | `bladed_bard_assassin_blade-dancer.png` | `blade-dancer.png` |
-| `earth-sage` | — | Earth Sage | Magic | Sorcerer | `magic_sorcerer_earth-sage.png` | `earth-sage.png` |
-| `dockhand` | — | Dockhand | Blunt | Warrior, Bodyguard | `blunt_warrior_bodyguard_dockhand.png` | `dockhand.png` |
-| `banner-maiden` | — | Banner Maiden | Polearm | Leader, Warrior | `polearm_leader_warrior_banner-maiden.png` | `banner-maiden.png` |
-| `potion-brewer` | — | Potion Brewer | Thrown | Alchemist | `thrown_alchemist_potion-brewer.png` | `potion-brewer.png` |
-| `crystal-sorceress` | — | Crystal Sorceress | Magic | Sorcerer | `magic_sorcerer_crystal-sorceress.png` | `crystal-sorceress.png` |
-| `spear-guard` | — | Spear Guard | Polearm | Guardian, Bodyguard | `polearm_guardian_bodyguard_spear-guard.png` | `spear-guard.png` |
-| `duelist` | — | Duelist | Bladed | Warrior, Trickster | `bladed_warrior_trickster_duelist.png` | `duelist.png` |
-| `fire-mage` | — | Fire Mage | Magic | Sorcerer | `magic_sorcerer_fire-mage.png` | `fire-mage.png` |
-| `tribal-shaman` | — | Tribal Shaman | Magic | Primalist, Summoner | `magic_primalist_summoner_tribal-shaman.png` | `tribal-shaman.png` |
-| `tinker` | — | Tinker | Blunt | Engineer | `blunt_engineer_tinker.png` | `tinker.png` |
-| `hammer-knight` | — | Hammer Knight | Blunt | Guardian, Warrior | `blunt_guardian_warrior_hammer-knight.png` | `hammer-knight.png` |
-| `moon-priestess` | — | Moon Priestess | Magic | Healer, Primalist | `magic_healer_primalist_moon-priestess.png` | `moon-priestess.png` |
-| `pirate-captain` | — | Pirate Captain | Ranged | Leader, Trickster | `ranged_leader_trickster_pirate-captain.png` | `pirate-captain.png` |
-| `shadow-rogue` | — | Shadow Rogue | Bladed | Assassin, Black Mage | `bladed_assassin_black-mage_shadow-rogue.png` | `shadow-rogue.png` |
-| `frost-mage` | — | Frost Mage | Magic | Sorcerer | `magic_sorcerer_frost-mage.png` | `frost-mage.png` |
-| `sun-dancer` | — | Sun Dancer | Polearm | Bard, Primalist | `polearm_bard_primalist_sun-dancer.png` | `sun-dancer.png` |
-| `harpooner` | — | Harpooner | Polearm | Hunter | `polearm_hunter_harpooner.png` | `harpooner.png` |
-| `moon-oracle` | — | Moon Oracle | Magic | Sorcerer, Healer | `magic_sorcerer_healer_moon-oracle.png` | `moon-oracle.png` |
-| `blacksmith` | — | Blacksmith | Blunt | Engineer, Warrior | `blunt_engineer_warrior_blacksmith.png` | `blacksmith.png` |
-| `frost-archer` | — | Frost Archer | Ranged | Hunter, Sorcerer | `ranged_hunter_sorcerer_frost-archer.png` | `frost-archer.png` |
-| `artificer` | — | Artificer | Magic | Engineer, Sorcerer | `magic_engineer_sorcerer_artificer.png` | `artificer.png` |
-| `fencer` | — | Fencer | Bladed | Warrior, Assassin | `bladed_warrior_assassin_fencer.png` | `fencer.png` |
-| `grove-shaman` | — | Grove Shaman | Magic | Primalist, Healer | `magic_primalist_healer_grove-shaman.png` | `grove-shaman.png` |
-| `buccaneer` | — | Buccaneer | Bladed | Trickster, Warrior | `bladed_trickster_warrior_buccaneer.png` | `buccaneer.png` |
-| `nightblade` | — | Nightblade | Bladed | Assassin, Trickster | `bladed_assassin_trickster_nightblade.png` | `nightblade.png` |
-| `sword-knight` | — | Sword Knight | Bladed | Warrior, Guardian | `bladed_warrior_guardian_sword-knight.png` | `sword-knight.png` |
-| `lantern-cleric` | — | Lantern Cleric | Blunt | Healer, Primalist | `blunt_healer_primalist_lantern-cleric.png` | `lantern-cleric.png` |
-| `wizard` | — | Wizard | Magic | Sorcerer | `magic_sorcerer_wizard.png` | `wizard.png` |
-| `archer` | — | Archer | Ranged | Hunter | `ranged_hunter_archer.png` | `archer.png` |
-| `rogue` | — | Rogue | Bladed | Assassin | `bladed_assassin_rogue.png` | `rogue.png` |
-| `monk` | — | Monk | Unarmed | Warrior | `unarmed_warrior_monk.png` | `monk.png` |
-| `minstrel` | — | Minstrel | Magic | Bard | `magic_bard_minstrel.png` | `minstrel.png` |
-| `druid` | — | Druid | Magic | Primalist, Healer | `magic_primalist_healer_druid.png` | `druid.png` |
-| `hex-witch` | — | Hex Witch | Magic | Black Mage, Sorcerer | `magic_black-mage_sorcerer_hex-witch.png` | `hex-witch.png` |
-| `barbarian` | — | Barbarian | Bladed | Warrior | `bladed_warrior_barbarian.png` | `barbarian.png` |
-| `paladin` | — | Paladin | Bladed | Primalist, Guardian | `bladed_primalist_guardian_paladin.png` | `paladin.png` |
-| `leaf-archer` | — | Leaf Archer | Ranged | Hunter, Primalist | `ranged_hunter_primalist_leaf-archer.png` | `leaf-archer.png` |
-| `poisoner` | — | Poisoner | Thrown | Alchemist, Assassin | `thrown_alchemist_assassin_poisoner.png` | `poisoner.png` |
-| `battle-cleric` | — | Battle Cleric | Blunt | Healer, Guardian | `blunt_healer_guardian_battle-cleric.png` | `battle-cleric.png` |
-| `shadow-monk` | — | Shadow Monk | Unarmed | Assassin, Warrior | `unarmed_assassin_warrior_shadow-monk.png` | `shadow-monk.png` |
-| `rapier-bard` | — | Rapier Bard | Bladed | Bard, Warrior | `bladed_bard_warrior_rapier-bard.png` | `rapier-bard.png` |
-| `totem-barbarian` | — | Totem Barbarian | Bladed | Warrior, Primalist | `bladed_warrior_primalist_totem-barbarian.png` | `totem-barbarian.png` |
-| `star-sage` | — | Star Sage | Magic | Sorcerer, Healer | `magic_sorcerer_healer_star-sage.png` | `star-sage.png` |
-| `spellblade` | — | Spellblade | Bladed | Sorcerer, Warrior | `bladed_sorcerer_warrior_spellblade.png` | `spellblade.png` |
-| `crossbow-ranger` | — | Crossbow Ranger | Ranged | Hunter, Engineer | `ranged_hunter_engineer_crossbow-ranger.png` | `crossbow-ranger.png` |
-| `battle-mage` | — | Battle Mage | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_battle-mage.png` | `battle-mage.png` |
-| `potion-brawler` | — | Potion Brawler | Unarmed | Warrior, Alchemist | `unarmed_warrior_alchemist_potion-brawler.png` | `potion-brawler.png` |
-| `crystal-barbarian` | — | Crystal Barbarian | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_crystal-barbarian.png` | `crystal-barbarian.png` |
-| `arcane-duelist` | — | Arcane Duelist | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_arcane-duelist.png` | `arcane-duelist.png` |
-| `gear-archer` | — | Gear Archer | Ranged | Hunter, Engineer | `ranged_hunter_engineer_gear-archer.png` | `gear-archer.png` |
-| `moon-abbess` | — | Moon Abbess | Magic | Healer, Sorcerer | `magic_healer_sorcerer_moon-abbess.png` | `moon-abbess.png` |
-| `dagger-bard` | — | Dagger Bard | Bladed | Bard, Trickster | `bladed_bard_trickster_dagger-bard.png` | `dagger-bard.png` |
-| `lantern-templar` | — | Lantern Templar | Blunt | Guardian, Healer | `blunt_guardian_healer_lantern-templar.png` | `lantern-templar.png` |
-| `rogue-alchemist` | — | Rogue Alchemist | Bladed | Alchemist, Assassin | `bladed_alchemist_assassin_rogue-alchemist.png` | `rogue-alchemist.png` |
-| `grove-ranger` | — | Grove Ranger | Ranged | Hunter, Primalist | `ranged_hunter_primalist_grove-ranger.png` | `grove-ranger.png` |
-| `spell-knight` | — | Spell Knight | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_spell-knight.png` | `spell-knight.png` |
-| `censer-priestess` | — | Censer Priestess | Bladed | Healer, Assassin | `bladed_healer_assassin_censer-priestess.png` | `censer-priestess.png` |
-| `abbot` | — | Abbot | Blunt | Healer, Primalist | `blunt_healer_primalist_abbot.png` | `abbot.png` |
-| `war-bard` | — | War Bard | Blunt | Bard, Guardian | `blunt_bard_guardian_war-bard.png` | `war-bard.png` |
-| `necromancer` | — | Necromancer | Magic | Black Mage, Summoner | `magic_black-mage_summoner_necromancer.png` | `necromancer.png` |
-| `frost-barbarian` | — | Frost Barbarian | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_frost-barbarian.png` | `frost-barbarian.png` |
-| `shield-alchemist` | — | Shield Alchemist | Thrown | Alchemist, Guardian | `thrown_alchemist_guardian_shield-alchemist.png` | `shield-alchemist.png` |
-| `hexblade` | — | Hexblade | Bladed | Assassin, Black Mage | `bladed_assassin_black-mage_hexblade.png` | `hexblade.png` |
-| `feather-archer` | — | Feather Archer | Ranged | Hunter, Primalist | `ranged_hunter_primalist_feather-archer.png` | `feather-archer.png` |
-| `autumn-ranger` | — | Autumn Ranger | Ranged | Primalist, Hunter | `ranged_primalist_hunter_autumn-ranger.png` | `autumn-ranger.png` |
-| `spellsword` | — | Spellsword | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_spellsword.png` | `spellsword.png` |
-| `lantern-scout` | — | Lantern Scout | Bladed | Hunter, Healer | `bladed_hunter_healer_lantern-scout.png` | `lantern-scout.png` |
-| `forest-archer` | — | Forest Archer | Ranged | Hunter | `ranged_hunter_forest-archer.png` | `forest-archer.png` |
-| `storm-barbarian` | — | Storm Barbarian | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_storm-barbarian.png` | `storm-barbarian.png` |
-| `elder-priest` | — | Elder Priest | Magic | Healer, Leader | `magic_healer_leader_elder-priest.png` | `elder-priest.png` |
-| `shield-bard` | — | Shield Bard | Blunt | Bard, Guardian | `blunt_bard_guardian_shield-bard.png` | `shield-bard.png` |
-| `potion-thief` | — | Potion Thief | Bladed | Alchemist, Trickster | `bladed_alchemist_trickster_potion-thief.png` | `potion-thief.png` |
-| `deathblade` | — | Deathblade | Bladed | Black Mage, Warrior | `bladed_black-mage_warrior_deathblade.png` | `deathblade.png` |
-| `sun-archer` | — | Sun Archer | Ranged | Hunter, Healer | `ranged_hunter_healer_sun-archer.png` | `sun-archer.png` |
-| `sapling-druid` | — | Sapling Druid | Magic | Primalist, Healer | `magic_primalist_healer_sapling-druid.png` | `sapling-druid.png` |
-| `arcane-knight` | — | Arcane Knight | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_arcane-knight.png` | `arcane-knight.png` |
-| `lantern-crone` | — | Lantern Crone | Bladed | Healer, Trickster | `bladed_healer_trickster_lantern-crone.png` | `lantern-crone.png` |
-| `forest-scout` | — | Forest Scout | Ranged | Hunter, Primalist | `ranged_hunter_primalist_forest-scout.png` | `forest-scout.png` |
-| `red-barbarian` | — | Red Barbarian | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_red-barbarian.png` | `red-barbarian.png` |
-| `elder-pilgrim` | — | Elder Pilgrim | Magic | Healer, Primalist | `magic_healer_primalist_elder-pilgrim.png` | `elder-pilgrim.png` |
-| `lute-guard` | — | Lute Guard | Blunt | Bard, Bodyguard | `blunt_bard_bodyguard_lute-guard.png` | `lute-guard.png` |
-| `grave-knight` | — | Grave Knight | Bladed | Black Mage, Summoner | `bladed_black-mage_summoner_grave-knight.png` | `grave-knight.png` |
-| `vial-rogue` | — | Vial Rogue | Bladed | Alchemist, Assassin | `bladed_alchemist_assassin_vial-rogue.png` | `vial-rogue.png` |
-| `crystal-druid` | — | Crystal Druid | Magic | Primalist, Sorcerer | `magic_primalist_sorcerer_crystal-druid.png` | `crystal-druid.png` |
-| `star-archer` | — | Star Archer | Ranged | Sorcerer, Hunter | `ranged_sorcerer_hunter_star-archer.png` | `star-archer.png` |
-| `dwarf-smith` | — | Dwarf Smith | Blunt | Engineer, Guardian | `blunt_engineer_guardian_dwarf-smith.png` | `dwarf-smith.png` |
-| `elf-druid` | — | Elf Druid | Ranged | Primalist, Hunter | `ranged_primalist_hunter_elf-druid.png` | `elf-druid.png` |
-| `apprentice-mage` | — | Apprentice Mage | Magic | Sorcerer, Alchemist | `magic_sorcerer_alchemist_apprentice-mage.png` | `apprentice-mage.png` |
-| `orc-shaman` | — | Orc Shaman | Bladed | Primalist, Warrior | `bladed_primalist_warrior_orc-shaman.png` | `orc-shaman.png` |
-| `halfling-bard` | — | Halfling Bard | Bladed | Bard, Trickster | `bladed_bard_trickster_halfling-bard.png` | `halfling-bard.png` |
-| `lizard-rogue` | — | Lizard Rogue | Bladed | Assassin, Hunter | `bladed_assassin_hunter_lizard-rogue.png` | `lizard-rogue.png` |
-| `gnome-artificer` | — | Gnome Artificer | Magic | Engineer, Sorcerer | `magic_engineer_sorcerer_gnome-artificer.png` | `gnome-artificer.png` |
-| `cat-paladin` | — | Cat Paladin | Blunt | Guardian, Primalist | `blunt_guardian_primalist_cat-paladin.png` | `cat-paladin.png` |
-| `centaur` | — | Centaur | Polearm | Hunter, Warrior | `polearm_hunter_warrior_centaur.png` | `centaur.png` |
-| `tortoise-sage` | — | Tortoise Sage | Blunt | Healer, Primalist | `blunt_healer_primalist_tortoise-sage.png` | `tortoise-sage.png` |
-| `turtle-monk` | — | Turtle Monk | Blunt | Guardian, Healer | `blunt_guardian_healer_turtle-monk.png` | `turtle-monk.png` |
-| `beetle-knight` | — | Beetle Knight | Blunt | Guardian, Bodyguard | `blunt_guardian_bodyguard_beetle-knight.png` | `beetle-knight.png` |
-| `frog-bard` | — | Frog Bard | Bladed | Bard, Trickster | `bladed_bard_trickster_frog-bard.png` | `frog-bard.png` |
-| `owl-wizard` | — | Owl Wizard | Magic | Sorcerer, Flying | `magic_sorcerer_flying_owl-wizard.png` | `owl-wizard.png` |
-| `salamander-duelist` | — | Salamander Duelist | Bladed | Assassin, Warrior | `bladed_assassin_warrior_salamander-duelist.png` | `salamander-duelist.png` |
-| `crab-alchemist` | — | Crab Alchemist | Thrown | Alchemist | `thrown_alchemist_crab-alchemist.png` | `crab-alchemist.png` |
+| `armadillo-knight-2` | — | Armadillo Knight 2 | Feral | Guardian, Bodyguard | `feral_guardian_bodyguard_armadillo-knight-2.png` | `armadillo-knight-2.png` |
 | `armadillo-knight` | — | Armadillo Knight | Blunt | Guardian, Bodyguard | `blunt_guardian_bodyguard_armadillo-knight.png` | `armadillo-knight.png` |
-| `mushroom-druid` | — | Mushroom Druid | Magic | Primalist, Healer | `magic_primalist_healer_mushroom-druid.png` | `mushroom-druid.png` |
-| `bat-assassin` | — | Bat Assassin | Bladed | Assassin, Flying | `bladed_assassin_flying_bat-assassin.png` | `bat-assassin.png` |
-| `snail-cleric` | — | Snail Cleric | Magic | Healer, Guardian | `magic_healer_guardian_snail-cleric.png` | `snail-cleric.png` |
-| `fox-bard` | — | Fox Bard | Feral | Bard, Trickster | `feral_bard_trickster_fox-bard.png` | `fox-bard.png` |
-| `lance-beetle` | — | Lance Beetle | Feral | Warrior, Guardian | `feral_warrior_guardian_lance-beetle.png` | `lance-beetle.png` |
-| `toadstool-toad` | — | Toadstool Toad | Breath | Alchemist, Primalist | `breath_alchemist_primalist_toadstool-toad.png` | `toadstool-toad.png` |
-| `wolf-ranger` | — | Wolf Ranger | Feral | Hunter, Bodyguard | `feral_hunter_bodyguard_wolf-ranger.png` | `wolf-ranger.png` |
-| `croc-shaman` | — | Croc Shaman | Feral | Primalist, Warrior | `feral_primalist_warrior_croc-shaman.png` | `croc-shaman.png` |
-| `lantern-snail` | — | Lantern Snail | Magic | Healer, Primalist | `magic_healer_primalist_lantern-snail.png` | `lantern-snail.png` |
-| `armadillo-squire` | — | Armadillo Squire | Feral | Guardian, Bodyguard | `feral_guardian_bodyguard_armadillo-squire.png` | `armadillo-squire.png` |
-| `crystal-spider` | — | Crystal Spider | Magic | Sorcerer, Trickster | `magic_sorcerer_trickster_crystal-spider.png` | `crystal-spider.png` |
-| `ember-newt` | — | Ember Newt | Feral | Trickster, Assassin | `feral_trickster_assassin_ember-newt.png` | `ember-newt.png` |
-| `sun-ram` | — | Sun Ram | Feral | Primalist, Leader | `feral_primalist_leader_sun-ram.png` | `sun-ram.png` |
-| `crystal-snail` | — | Crystal Snail | Magic | Sorcerer, Healer | `magic_sorcerer_healer_crystal-snail.png` | `crystal-snail.png` |
-| `jade-beetle` | — | Jade Beetle | Feral | Guardian, Warrior | `feral_guardian_warrior_jade-beetle.png` | `jade-beetle.png` |
-| `potion-octopus` | — | Potion Octopus | Thrown | Alchemist, Trickster | `thrown_alchemist_trickster_potion-octopus.png` | `potion-octopus.png` |
-| `jeweled-cobra` | — | Jeweled Cobra | Breath | Alchemist, Assassin | `breath_alchemist_assassin_jeweled-cobra.png` | `jeweled-cobra.png` |
+| `bat-rogue-shadow` | — | Bat Rogue Shadow | Bladed | Assassin, Flying | `bladed_assassin_flying_bat-rogue-shadow.png` | `bat-rogue-shadow.png` |
+| `beetle-2` | — | Beetle 2 | Feral | Guardian, Warrior | `feral_guardian_warrior_beetle-2.png` | `beetle-2.png` |
+| `beetle-knight-shield` | — | Beetle Knight Shield | Blunt | Guardian, Bodyguard | `blunt_guardian_bodyguard_beetle-knight-shield.png` | `beetle-knight-shield.png` |
+| `beetle` | — | Beetle | Feral | Guardian, Warrior | `feral_guardian_warrior_beetle.png` | `beetle.png` |
+| `caterpillar-bard` | — | Caterpillar Bard | Magic | Bard, Healer | `magic_bard_healer_caterpillar-bard.png` | `caterpillar-bard.png` |
+| `catfolk-paladin` | — | Catfolk Paladin | Blunt | Guardian, Primalist | `blunt_guardian_primalist_catfolk-paladin.png` | `catfolk-paladin.png` |
+| `centaur-ranger` | — | Centaur Ranger | Polearm | Hunter, Warrior | `polearm_hunter_warrior_centaur-ranger.png` | `centaur-ranger.png` |
+| `centipede` | — | Centipede | Feral | Assassin, Alchemist | `feral_assassin_alchemist_centipede.png` | `centipede.png` |
+| `cobra` | — | Cobra | Breath | Alchemist, Assassin | `breath_alchemist_assassin_cobra.png` | `cobra.png` |
+| `crab-alchemist` | — | Crab Alchemist | Thrown | Alchemist | `thrown_alchemist_crab-alchemist.png` | `crab-alchemist.png` |
 | `crab-smith` | — | Crab Smith | Blunt | Engineer, Guardian | `blunt_engineer_guardian_crab-smith.png` | `crab-smith.png` |
-| `halo-jelly` | — | Halo Jelly | Aura | Healer, Primalist | `aura_healer_primalist_halo-jelly.png` | `halo-jelly.png` |
-| `lute-caterpillar` | — | Lute Caterpillar | Magic | Bard, Healer | `magic_bard_healer_lute-caterpillar.png` | `lute-caterpillar.png` |
-| `sky-manta` | — | Sky Manta | Magic | Flying, Sorcerer | `magic_flying_sorcerer_sky-manta.png` | `sky-manta.png` |
-| `crimson-scorpion` | — | Crimson Scorpion | Lashing | Assassin, Alchemist | `lashing_assassin_alchemist_crimson-scorpion.png` | `crimson-scorpion.png` |
-| `starfish-mage` | — | Starfish Mage | Magic | Sorcerer, Healer | `magic_sorcerer_healer_starfish-mage.png` | `starfish-mage.png` |
-| `rock-squire` | — | Rock Squire | Bladed | Guardian, Sorcerer | `bladed_guardian_sorcerer_rock-squire.png` | `rock-squire.png` |
-| `duchess` | — | Duchess | Bladed | Leader, Trickster | `bladed_leader_trickster_duchess.png` | `duchess.png` |
-| `bell-friar` | — | Bell Friar | Blunt | Healer, Bard | `blunt_healer_bard_bell-friar.png` | `bell-friar.png` |
-| `frost-lancer` | — | Frost Lancer | Polearm | Sorcerer, Warrior | `polearm_sorcerer_warrior_frost-lancer.png` | `frost-lancer.png` |
-| `young-scout` | — | Young Scout | Ranged | Hunter, Trickster | `ranged_hunter_trickster_young-scout.png` | `young-scout.png` |
-| `shield-matron` | — | Shield Matron | Blunt | Bodyguard, Guardian | `blunt_bodyguard_guardian_shield-matron.png` | `shield-matron.png` |
-| `wind-dancer` | — | Wind Dancer | Bladed | Bard, Assassin | `bladed_bard_assassin_wind-dancer.png` | `wind-dancer.png` |
-| `tide-mage` | — | Tide Mage | Magic | Sorcerer, Leader | `magic_sorcerer_leader_tide-mage.png` | `tide-mage.png` |
-| `mirror-queen` | — | Mirror Queen | Magic | Sorcerer, Trickster | `magic_sorcerer_trickster_mirror-queen.png` | `mirror-queen.png` |
-| `potion-monk` | — | Potion Monk | Blunt | Healer, Alchemist | `blunt_healer_alchemist_potion-monk.png` | `potion-monk.png` |
-| `pillbug` | — | Pillbug | Feral | Guardian, Bodyguard | `feral_guardian_bodyguard_pillbug.png` | `pillbug.png` |
-| `nautilus` | — | Nautilus | Lashing | Sorcerer, Healer | `lashing_sorcerer_healer_nautilus.png` | `nautilus.png` |
-| `blood-centipede` | — | Blood Centipede | Feral | Assassin, Alchemist | `feral_assassin_alchemist_blood-centipede.png` | `blood-centipede.png` |
-| `dream-jelly` | — | Dream Jelly | Aura | Healer, Sorcerer | `aura_healer_sorcerer_dream-jelly.png` | `dream-jelly.png` |
-| `horn-crab` | — | Horn Crab | Feral | Guardian, Warrior | `feral_guardian_warrior_horn-crab.png` | `horn-crab.png` |
-| `sea-slug` | — | Sea Slug | Aura | Alchemist, Healer | `aura_alchemist_healer_sea-slug.png` | `sea-slug.png` |
-| `glide-ray` | — | Glide Ray | Feral | Flying, Hunter | `feral_flying_hunter_glide-ray.png` | `glide-ray.png` |
-| `masked-spider` | — | Masked Spider | Feral | Trickster, Assassin | `feral_trickster_assassin_masked-spider.png` | `masked-spider.png` |
+| `crocodile-shaman` | — | Crocodile Shaman | Feral | Primalist, Warrior | `feral_primalist_warrior_crocodile-shaman.png` | `crocodile-shaman.png` |
+| `dwarf-smith-shield` | — | Dwarf Smith Shield | Blunt | Engineer, Guardian | `blunt_engineer_guardian_dwarf-smith-shield.png` | `dwarf-smith-shield.png` |
+| `elf-archer-leaf` | — | Elf Archer Leaf | Ranged | Hunter, Primalist | `ranged_hunter_primalist_elf-archer-leaf.png` | `elf-archer-leaf.png` |
 | `firefly` | — | Firefly | Magic | Flying, Sorcerer | `magic_flying_sorcerer_firefly.png` | `firefly.png` |
-| `drill-worm` | — | Drill Worm | Feral | Engineer, Hunter | `feral_engineer_hunter_drill-worm.png` | `drill-worm.png` |
-| `hermit` | — | Hermit | Polearm | Primalist, Healer | `polearm_primalist_healer_hermit.png` | `hermit.png` |
-| `brewmistress` | — | Brewmistress | Blunt | Alchemist, Warrior | `blunt_alchemist_warrior_brewmistress.png` | `brewmistress.png` |
-| `sling-courier` | — | Sling Courier | Ranged | Trickster, Hunter | `ranged_trickster_hunter_sling-courier.png` | `sling-courier.png` |
-| `banner-knight` | — | Banner Knight | Blunt | Leader, Guardian | `blunt_leader_guardian_banner-knight.png` | `banner-knight.png` |
-| `ice-wizard` | — | Ice Wizard | Magic | Sorcerer | `magic_sorcerer_ice-wizard.png` | `ice-wizard.png` |
-| `spear-dancer` | — | Spear Dancer | Polearm | Bard, Warrior | `polearm_bard_warrior_spear-dancer.png` | `spear-dancer.png` |
-| `scholar` | — | Scholar | Magic | Sorcerer | `magic_sorcerer_scholar.png` | `scholar.png` |
-| `hedge-witch` | — | Hedge Witch | Magic | Healer, Alchemist | `magic_healer_alchemist_hedge-witch.png` | `hedge-witch.png` |
-| `sun-priestess` | — | Sun Priestess | Ranged | Healer, Primalist | `ranged_healer_primalist_sun-priestess.png` | `sun-priestess.png` |
-| `hammer-monk` | — | Hammer Monk | Blunt | Warrior, Guardian | `blunt_warrior_guardian_hammer-monk.png` | `hammer-monk.png` |
-| `mechanic` | — | Mechanic | Blunt | Engineer | `blunt_engineer_mechanic.png` | `mechanic.png` |
-| `crystal-apprentice` | — | Crystal Apprentice | Magic | Sorcerer | `magic_sorcerer_crystal-apprentice.png` | `crystal-apprentice.png` |
-| `wanderer` | — | Wanderer | Thrown | Alchemist, Hunter | `thrown_alchemist_hunter_wanderer.png` | `wanderer.png` |
-| `huntress` | — | Huntress | Ranged | Hunter, Assassin | `ranged_hunter_assassin_huntress.png` | `huntress.png` |
-| `sprout-druid` | — | Sprout Druid | Magic | Primalist, Healer | `magic_primalist_healer_sprout-druid.png` | `sprout-druid.png` |
-| `flower-druid` | — | Flower Druid | Magic | Primalist, Healer | `magic_primalist_healer_flower-druid.png` | `flower-druid.png` |
-| `bowmaiden` | — | Bowmaiden | Ranged | Hunter | `ranged_hunter_bowmaiden.png` | `bowmaiden.png` |
-| `shield-maiden` | — | Shield Maiden | Bladed | Guardian, Primalist | `bladed_guardian_primalist_shield-maiden.png` | `shield-maiden.png` |
-| `hook-rogue` | — | Hook Rogue | Thrown | Engineer, Trickster | `thrown_engineer_trickster_hook-rogue.png` | `hook-rogue.png` |
-| `grey-wizard` | — | Grey Wizard | Magic | Sorcerer, Leader | `magic_sorcerer_leader_grey-wizard.png` | `grey-wizard.png` |
+| `fox-bard` | — | Fox Bard | Feral | Bard, Trickster | `feral_bard_trickster_fox-bard.png` | `fox-bard.png` |
+| `frog-bard-dagger` | — | Frog Bard Dagger | Bladed | Bard, Trickster | `bladed_bard_trickster_frog-bard-dagger.png` | `frog-bard-dagger.png` |
+| `gnome-engineer-crystal` | — | Gnome Engineer Crystal | Magic | Engineer, Sorcerer | `magic_engineer_sorcerer_gnome-engineer-crystal.png` | `gnome-engineer-crystal.png` |
+| `halfling-alchemist` | — | Halfling Alchemist | Thrown | Alchemist | `thrown_alchemist_halfling-alchemist.png` | `halfling-alchemist.png` |
+| `halfling-bard-dagger` | — | Halfling Bard Dagger | Bladed | Bard, Trickster | `bladed_bard_trickster_halfling-bard-dagger.png` | `halfling-bard-dagger.png` |
+| `horseshoe-crab` | — | Horseshoe Crab | Feral | Guardian, Warrior | `feral_guardian_warrior_horseshoe-crab.png` | `horseshoe-crab.png` |
+| `human-alchemist-shield` | — | Human Alchemist Shield | Thrown | Alchemist, Guardian | `thrown_alchemist_guardian_human-alchemist-shield.png` | `human-alchemist-shield.png` |
+| `human-alchemist` | — | Human Alchemist | Thrown | Alchemist, Hunter | `thrown_alchemist_hunter_human-alchemist.png` | `human-alchemist.png` |
+| `human-archer-2` | — | Human Archer 2 | Ranged | Hunter | `ranged_hunter_human-archer-2.png` | `human-archer-2.png` |
+| `human-archer-3` | — | Human Archer 3 | Ranged | Hunter | `ranged_hunter_human-archer-3.png` | `human-archer-3.png` |
+| `human-archer-4` | — | Human Archer 4 | Ranged | Hunter | `ranged_hunter_human-archer-4.png` | `human-archer-4.png` |
+| `human-archer-5` | — | Human Archer 5 | Ranged | Hunter | `ranged_hunter_human-archer-5.png` | `human-archer-5.png` |
+| `human-archer-crystal` | — | Human Archer Crystal | Ranged | Sorcerer, Hunter | `ranged_sorcerer_hunter_human-archer-crystal.png` | `human-archer-crystal.png` |
+| `human-archer-feather` | — | Human Archer Feather | Ranged | Hunter, Primalist | `ranged_hunter_primalist_human-archer-feather.png` | `human-archer-feather.png` |
+| `human-archer-frost` | — | Human Archer Frost | Ranged | Hunter, Sorcerer | `ranged_hunter_sorcerer_human-archer-frost.png` | `human-archer-frost.png` |
+| `human-archer-gear-2` | — | Human Archer Gear 2 | Ranged | Hunter, Engineer | `ranged_hunter_engineer_human-archer-gear-2.png` | `human-archer-gear-2.png` |
+| `human-archer-gear` | — | Human Archer Gear | Ranged | Hunter, Engineer | `ranged_hunter_engineer_human-archer-gear.png` | `human-archer-gear.png` |
+| `human-archer-leaf-2` | — | Human Archer Leaf 2 | Ranged | Hunter, Primalist | `ranged_hunter_primalist_human-archer-leaf-2.png` | `human-archer-leaf-2.png` |
+| `human-archer-leaf-3` | — | Human Archer Leaf 3 | Ranged | Hunter, Primalist | `ranged_hunter_primalist_human-archer-leaf-3.png` | `human-archer-leaf-3.png` |
+| `human-archer-leaf` | — | Human Archer Leaf | Ranged | Hunter, Primalist | `ranged_hunter_primalist_human-archer-leaf.png` | `human-archer-leaf.png` |
+| `human-archer-sun` | — | Human Archer Sun | Ranged | Hunter, Healer | `ranged_hunter_healer_human-archer-sun.png` | `human-archer-sun.png` |
+| `human-archer` | — | Human Archer | Ranged | Hunter | `ranged_hunter_human-archer.png` | `human-archer.png` |
+| `human-barbarian-frost-2` | — | Human Barbarian Frost 2 | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_human-barbarian-frost-2.png` | `human-barbarian-frost-2.png` |
+| `human-barbarian-frost-3` | — | Human Barbarian Frost 3 | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_human-barbarian-frost-3.png` | `human-barbarian-frost-3.png` |
+| `human-barbarian-frost` | — | Human Barbarian Frost | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_human-barbarian-frost.png` | `human-barbarian-frost.png` |
+| `human-barbarian-totem-2` | — | Human Barbarian Totem 2 | Bladed | Warrior, Primalist | `bladed_warrior_primalist_human-barbarian-totem-2.png` | `human-barbarian-totem-2.png` |
+| `human-barbarian-totem` | — | Human Barbarian Totem | Bladed | Warrior, Primalist | `bladed_warrior_primalist_human-barbarian-totem.png` | `human-barbarian-totem.png` |
+| `human-barbarian` | — | Human Barbarian | Bladed | Warrior | `bladed_warrior_human-barbarian.png` | `human-barbarian.png` |
+| `human-bard-dagger` | — | Human Bard Dagger | Bladed | Bard, Trickster | `bladed_bard_trickster_human-bard-dagger.png` | `human-bard-dagger.png` |
+| `human-bard-rapier` | — | Human Bard Rapier | Bladed | Bard, Warrior | `bladed_bard_warrior_human-bard-rapier.png` | `human-bard-rapier.png` |
+| `human-bard-shield-2` | — | Human Bard Shield 2 | Blunt | Bard, Guardian | `blunt_bard_guardian_human-bard-shield-2.png` | `human-bard-shield-2.png` |
+| `human-bard-shield-3` | — | Human Bard Shield 3 | Blunt | Bard, Guardian | `blunt_bard_guardian_human-bard-shield-3.png` | `human-bard-shield-3.png` |
+| `human-bard-shield` | — | Human Bard Shield | Blunt | Bard, Guardian | `blunt_bard_guardian_human-bard-shield.png` | `human-bard-shield.png` |
+| `human-bard` | — | Human Bard | Magic | Bard | `magic_bard_human-bard.png` | `human-bard.png` |
+| `human-brawler-hook` | — | Human Brawler Hook | Blunt | Warrior, Bodyguard | `blunt_warrior_bodyguard_human-brawler-hook.png` | `human-brawler-hook.png` |
+| `human-brawler-potion` | — | Human Brawler Potion | Unarmed | Warrior, Alchemist | `unarmed_warrior_alchemist_human-brawler-potion.png` | `human-brawler-potion.png` |
+| `human-brawler` | — | Human Brawler | Unarmed | Warrior | `unarmed_warrior_human-brawler.png` | `human-brawler.png` |
+| `human-captain-banner` | — | Human Captain Banner | Polearm | Leader, Warrior | `polearm_leader_warrior_human-captain-banner.png` | `human-captain-banner.png` |
+| `human-captain-pistol-2` | — | Human Captain Pistol 2 | Ranged | Leader, Trickster | `ranged_leader_trickster_human-captain-pistol-2.png` | `human-captain-pistol-2.png` |
+| `human-captain-pistol` | — | Human Captain Pistol | Ranged | Leader, Trickster | `ranged_leader_trickster_human-captain-pistol.png` | `human-captain-pistol.png` |
+| `human-captain-rapier` | — | Human Captain Rapier | Bladed | Leader, Trickster | `bladed_leader_trickster_human-captain-rapier.png` | `human-captain-rapier.png` |
+| `human-cleric-lantern-2` | — | Human Cleric Lantern 2 | Blunt | Healer, Guardian | `blunt_healer_guardian_human-cleric-lantern-2.png` | `human-cleric-lantern-2.png` |
+| `human-cleric-lantern-3` | — | Human Cleric Lantern 3 | Blunt | Healer, Guardian | `blunt_healer_guardian_human-cleric-lantern-3.png` | `human-cleric-lantern-3.png` |
+| `human-cleric-lantern-4` | — | Human Cleric Lantern 4 | Blunt | Healer, Guardian | `blunt_healer_guardian_human-cleric-lantern-4.png` | `human-cleric-lantern-4.png` |
+| `human-cleric-lantern` | — | Human Cleric Lantern | Magic | Healer, Alchemist | `magic_healer_alchemist_human-cleric-lantern.png` | `human-cleric-lantern.png` |
+| `human-dancer-2` | — | Human Dancer 2 | Bladed | Bard, Assassin | `bladed_bard_assassin_human-dancer-2.png` | `human-dancer-2.png` |
+| `human-dancer-spear-2` | — | Human Dancer Spear 2 | Polearm | Bard, Warrior | `polearm_bard_warrior_human-dancer-spear-2.png` | `human-dancer-spear-2.png` |
+| `human-dancer-spear` | — | Human Dancer Spear | Polearm | Bard, Warrior | `polearm_bard_warrior_human-dancer-spear.png` | `human-dancer-spear.png` |
+| `human-dancer` | — | Human Dancer | Bladed | Bard, Assassin | `bladed_bard_assassin_human-dancer.png` | `human-dancer.png` |
+| `human-druid-2` | — | Human Druid 2 | Magic | Primalist, Healer | `magic_primalist_healer_human-druid-2.png` | `human-druid-2.png` |
+| `human-druid-crystal-2` | — | Human Druid Crystal 2 | Magic | Primalist, Healer | `magic_primalist_healer_human-druid-crystal-2.png` | `human-druid-crystal-2.png` |
+| `human-druid-crystal` | — | Human Druid Crystal | Magic | Primalist, Healer | `magic_primalist_healer_human-druid-crystal.png` | `human-druid-crystal.png` |
+| `human-druid-leaf` | — | Human Druid Leaf | Magic | Primalist, Healer | `magic_primalist_healer_human-druid-leaf.png` | `human-druid-leaf.png` |
+| `human-druid` | — | Human Druid | Magic | Primalist, Healer | `magic_primalist_healer_human-druid.png` | `human-druid.png` |
+| `human-duelist-rapier-2` | — | Human Duelist Rapier 2 | Bladed | Warrior, Trickster | `bladed_warrior_trickster_human-duelist-rapier-2.png` | `human-duelist-rapier-2.png` |
+| `human-duelist-rapier` | — | Human Duelist Rapier | Bladed | Warrior, Trickster | `bladed_warrior_trickster_human-duelist-rapier.png` | `human-duelist-rapier.png` |
+| `human-engineer-crystal` | — | Human Engineer Crystal | Magic | Engineer, Sorcerer | `magic_engineer_sorcerer_human-engineer-crystal.png` | `human-engineer-crystal.png` |
+| `human-engineer-hammer` | — | Human Engineer Hammer | Blunt | Engineer | `blunt_engineer_human-engineer-hammer.png` | `human-engineer-hammer.png` |
+| `human-engineer-hook` | — | Human Engineer Hook | Thrown | Engineer, Trickster | `thrown_engineer_trickster_human-engineer-hook.png` | `human-engineer-hook.png` |
+| `human-engineer` | — | Human Engineer | Blunt | Engineer | `blunt_engineer_human-engineer.png` | `human-engineer.png` |
+| `human-guard-frost` | — | Human Guard Frost | Polearm | Sorcerer, Warrior | `polearm_sorcerer_warrior_human-guard-frost.png` | `human-guard-frost.png` |
+| `human-guard-stone` | — | Human Guard Stone | Bladed | Guardian, Sorcerer | `bladed_guardian_sorcerer_human-guard-stone.png` | `human-guard-stone.png` |
+| `human-guard` | — | Human Guard | Polearm | Guardian, Bodyguard | `polearm_guardian_bodyguard_human-guard.png` | `human-guard.png` |
+| `human-knight-2` | — | Human Knight 2 | Bladed | Warrior, Guardian | `bladed_warrior_guardian_human-knight-2.png` | `human-knight-2.png` |
+| `human-knight-banner` | — | Human Knight Banner | Blunt | Leader, Guardian | `blunt_leader_guardian_human-knight-banner.png` | `human-knight-banner.png` |
+| `human-knight-hammer-2` | — | Human Knight Hammer 2 | Blunt | Guardian, Warrior | `blunt_guardian_warrior_human-knight-hammer-2.png` | `human-knight-hammer-2.png` |
+| `human-knight-hammer` | — | Human Knight Hammer | Blunt | Guardian, Warrior | `blunt_guardian_warrior_human-knight-hammer.png` | `human-knight-hammer.png` |
+| `human-knight-shield` | — | Human Knight Shield | Blunt | Guardian, Bodyguard | `blunt_guardian_bodyguard_human-knight-shield.png` | `human-knight-shield.png` |
+| `human-knight` | — | Human Knight | Bladed | Warrior, Guardian | `bladed_warrior_guardian_human-knight.png` | `human-knight.png` |
+| `human-mage-crystal-2` | — | Human Mage Crystal 2 | Magic | Sorcerer | `magic_sorcerer_human-mage-crystal-2.png` | `human-mage-crystal-2.png` |
+| `human-mage-crystal-3` | — | Human Mage Crystal 3 | Magic | Sorcerer | `magic_sorcerer_human-mage-crystal-3.png` | `human-mage-crystal-3.png` |
+| `human-mage-crystal` | — | Human Mage Crystal | Magic | Sorcerer | `magic_sorcerer_human-mage-crystal.png` | `human-mage-crystal.png` |
+| `human-mage-fire` | — | Human Mage Fire | Magic | Sorcerer | `magic_sorcerer_human-mage-fire.png` | `human-mage-fire.png` |
+| `human-mage-frost-2` | — | Human Mage Frost 2 | Magic | Sorcerer | `magic_sorcerer_human-mage-frost-2.png` | `human-mage-frost-2.png` |
+| `human-mage-frost-3` | — | Human Mage Frost 3 | Magic | Sorcerer | `magic_sorcerer_human-mage-frost-3.png` | `human-mage-frost-3.png` |
+| `human-mage-frost` | — | Human Mage Frost | Magic | Sorcerer | `magic_sorcerer_human-mage-frost.png` | `human-mage-frost.png` |
+| `human-mage-stone` | — | Human Mage Stone | Magic | Sorcerer | `magic_sorcerer_human-mage-stone.png` | `human-mage-stone.png` |
+| `human-mage-water` | — | Human Mage Water | Magic | Sorcerer, Leader | `magic_sorcerer_leader_human-mage-water.png` | `human-mage-water.png` |
+| `human-mage` | — | Human Mage | Magic | Sorcerer, Leader | `magic_sorcerer_leader_human-mage.png` | `human-mage.png` |
+| `human-monk-hammer` | — | Human Monk Hammer | Blunt | Warrior, Guardian | `blunt_warrior_guardian_human-monk-hammer.png` | `human-monk-hammer.png` |
+| `human-monk-potion` | — | Human Monk Potion | Blunt | Healer, Alchemist | `blunt_healer_alchemist_human-monk-potion.png` | `human-monk-potion.png` |
+| `human-monk-shadow` | — | Human Monk Shadow | Unarmed | Assassin, Warrior | `unarmed_assassin_warrior_human-monk-shadow.png` | `human-monk-shadow.png` |
+| `human-monk` | — | Human Monk | Unarmed | Warrior | `unarmed_warrior_human-monk.png` | `human-monk.png` |
+| `human-necromancer-skull-2` | — | Human Necromancer Skull 2 | Bladed | Black Mage, Warrior | `bladed_black-mage_warrior_human-necromancer-skull-2.png` | `human-necromancer-skull-2.png` |
+| `human-necromancer-skull-3` | — | Human Necromancer Skull 3 | Bladed | Black Mage, Warrior | `bladed_black-mage_warrior_human-necromancer-skull-3.png` | `human-necromancer-skull-3.png` |
+| `human-necromancer-skull` | — | Human Necromancer Skull | Magic | Black Mage, Summoner | `magic_black-mage_summoner_human-necromancer-skull.png` | `human-necromancer-skull.png` |
+| `human-paladin-crystal` | — | Human Paladin Crystal | Bladed | Primalist, Guardian | `bladed_primalist_guardian_human-paladin-crystal.png` | `human-paladin-crystal.png` |
+| `human-priest-2` | — | Human Priest 2 | Magic | Healer, Leader | `magic_healer_leader_human-priest-2.png` | `human-priest-2.png` |
+| `human-priest-bell` | — | Human Priest Bell | Blunt | Healer, Bard | `blunt_healer_bard_human-priest-bell.png` | `human-priest-bell.png` |
+| `human-priest-censer-2` | — | Human Priest Censer 2 | Blunt | Healer, Primalist | `blunt_healer_primalist_human-priest-censer-2.png` | `human-priest-censer-2.png` |
+| `human-priest-censer` | — | Human Priest Censer | Bladed | Healer, Assassin | `bladed_healer_assassin_human-priest-censer.png` | `human-priest-censer.png` |
+| `human-priest-moon-2` | — | Human Priest Moon 2 | Magic | Healer, Sorcerer | `magic_healer_sorcerer_human-priest-moon-2.png` | `human-priest-moon-2.png` |
+| `human-priest-moon-3` | — | Human Priest Moon 3 | Magic | Healer, Sorcerer | `magic_healer_sorcerer_human-priest-moon-3.png` | `human-priest-moon-3.png` |
+| `human-priest-moon-4` | — | Human Priest Moon 4 | Magic | Healer, Sorcerer | `magic_healer_sorcerer_human-priest-moon-4.png` | `human-priest-moon-4.png` |
+| `human-priest-moon` | — | Human Priest Moon | Magic | Healer, Sorcerer | `magic_healer_sorcerer_human-priest-moon.png` | `human-priest-moon.png` |
+| `human-priest-sun` | — | Human Priest Sun | Ranged | Healer, Primalist | `ranged_healer_primalist_human-priest-sun.png` | `human-priest-sun.png` |
+| `human-priest` | — | Human Priest | Magic | Healer, Leader | `magic_healer_leader_human-priest.png` | `human-priest.png` |
+| `human-ranger-harpoon` | — | Human Ranger Harpoon | Polearm | Hunter | `polearm_hunter_human-ranger-harpoon.png` | `human-ranger-harpoon.png` |
+| `human-rogue-potion-2` | — | Human Rogue Potion 2 | Bladed | Alchemist, Assassin | `bladed_alchemist_assassin_human-rogue-potion-2.png` | `human-rogue-potion-2.png` |
+| `human-rogue-potion-3` | — | Human Rogue Potion 3 | Bladed | Alchemist, Assassin | `bladed_alchemist_assassin_human-rogue-potion-3.png` | `human-rogue-potion-3.png` |
+| `human-rogue-potion-4` | — | Human Rogue Potion 4 | Bladed | Alchemist, Assassin | `bladed_alchemist_assassin_human-rogue-potion-4.png` | `human-rogue-potion-4.png` |
+| `human-rogue-potion` | — | Human Rogue Potion | Bladed | Alchemist, Assassin | `bladed_alchemist_assassin_human-rogue-potion.png` | `human-rogue-potion.png` |
+| `human-rogue-shadow-2` | — | Human Rogue Shadow 2 | Bladed | Assassin, Black Mage | `bladed_assassin_black-mage_human-rogue-shadow-2.png` | `human-rogue-shadow-2.png` |
+| `human-rogue-shadow-3` | — | Human Rogue Shadow 3 | Bladed | Assassin, Black Mage | `bladed_assassin_black-mage_human-rogue-shadow-3.png` | `human-rogue-shadow-3.png` |
+| `human-rogue-shadow` | — | Human Rogue Shadow | Bladed | Assassin, Black Mage | `bladed_assassin_black-mage_human-rogue-shadow.png` | `human-rogue-shadow.png` |
+| `human-rogue` | — | Human Rogue | Bladed | Assassin | `bladed_assassin_human-rogue.png` | `human-rogue.png` |
+| `human-scout-lantern-2` | — | Human Scout Lantern 2 | Bladed | Hunter, Healer | `bladed_hunter_healer_human-scout-lantern-2.png` | `human-scout-lantern-2.png` |
+| `human-scout-lantern` | — | Human Scout Lantern | Bladed | Hunter, Healer | `bladed_hunter_healer_human-scout-lantern.png` | `human-scout-lantern.png` |
+| `human-scout-sling` | — | Human Scout Sling | Ranged | Trickster, Hunter | `ranged_trickster_hunter_human-scout-sling.png` | `human-scout-sling.png` |
+| `human-scout` | — | Human Scout | Ranged | Hunter, Trickster | `ranged_hunter_trickster_human-scout.png` | `human-scout.png` |
+| `human-shaman-2` | — | Human Shaman 2 | Magic | Primalist, Summoner | `magic_primalist_summoner_human-shaman-2.png` | `human-shaman-2.png` |
+| `human-shaman-spear` | — | Human Shaman Spear | Polearm | Primalist, Healer | `polearm_primalist_healer_human-shaman-spear.png` | `human-shaman-spear.png` |
+| `human-shaman` | — | Human Shaman | Magic | Primalist, Summoner | `magic_primalist_summoner_human-shaman.png` | `human-shaman.png` |
+| `human-smith-potion` | — | Human Smith Potion | Blunt | Alchemist, Warrior | `blunt_alchemist_warrior_human-smith-potion.png` | `human-smith-potion.png` |
+| `human-smith` | — | Human Smith | Blunt | Engineer, Warrior | `blunt_engineer_warrior_human-smith.png` | `human-smith.png` |
+| `human-spellblade-2` | — | Human Spellblade 2 | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_human-spellblade-2.png` | `human-spellblade-2.png` |
+| `human-spellblade-3` | — | Human Spellblade 3 | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_human-spellblade-3.png` | `human-spellblade-3.png` |
+| `human-spellblade-4` | — | Human Spellblade 4 | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_human-spellblade-4.png` | `human-spellblade-4.png` |
+| `human-spellblade-5` | — | Human Spellblade 5 | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_human-spellblade-5.png` | `human-spellblade-5.png` |
+| `human-spellblade-6` | — | Human Spellblade 6 | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_human-spellblade-6.png` | `human-spellblade-6.png` |
+| `human-spellblade` | — | Human Spellblade | Bladed | Warrior, Sorcerer | `bladed_warrior_sorcerer_human-spellblade.png` | `human-spellblade.png` |
+| `human-witch-lantern` | — | Human Witch Lantern | Magic | Healer, Alchemist | `magic_healer_alchemist_human-witch-lantern.png` | `human-witch-lantern.png` |
+| `human-witch-shadow` | — | Human Witch Shadow | Magic | Black Mage, Sorcerer | `magic_black-mage_sorcerer_human-witch-shadow.png` | `human-witch-shadow.png` |
+| `human-wizard-2` | — | Human Wizard 2 | Magic | Sorcerer | `magic_sorcerer_human-wizard-2.png` | `human-wizard-2.png` |
+| `human-wizard-potion` | — | Human Wizard Potion | Magic | Sorcerer, Alchemist | `magic_sorcerer_alchemist_human-wizard-potion.png` | `human-wizard-potion.png` |
+| `human-wizard` | — | Human Wizard | Magic | Sorcerer | `magic_sorcerer_human-wizard.png` | `human-wizard.png` |
+| `jelly-healer-2` | — | Jelly Healer 2 | Aura | Healer, Primalist | `aura_healer_primalist_jelly-healer-2.png` | `jelly-healer-2.png` |
+| `jelly-healer` | — | Jelly Healer | Aura | Healer, Primalist | `aura_healer_primalist_jelly-healer.png` | `jelly-healer.png` |
+| `lizardfolk-rogue-fire` | — | Lizardfolk Rogue Fire | Bladed | Assassin, Hunter | `bladed_assassin_hunter_lizardfolk-rogue-fire.png` | `lizardfolk-rogue-fire.png` |
+| `lizardfolk-rogue` | — | Lizardfolk Rogue | Bladed | Assassin, Hunter | `bladed_assassin_hunter_lizardfolk-rogue.png` | `lizardfolk-rogue.png` |
+| `mushroom-druid` | — | Mushroom Druid | Magic | Primalist, Healer | `magic_primalist_healer_mushroom-druid.png` | `mushroom-druid.png` |
+| `nautilus` | — | Nautilus | Lashing | Sorcerer, Healer | `lashing_sorcerer_healer_nautilus.png` | `nautilus.png` |
+| `octopus-alchemist` | — | Octopus Alchemist | Thrown | Alchemist, Trickster | `thrown_alchemist_trickster_octopus-alchemist.png` | `octopus-alchemist.png` |
+| `orc-barbarian-totem` | — | Orc Barbarian Totem | Bladed | Warrior, Primalist | `bladed_warrior_primalist_orc-barbarian-totem.png` | `orc-barbarian-totem.png` |
+| `owl-wizard` | — | Owl Wizard | Magic | Sorcerer, Flying | `magic_sorcerer_flying_owl-wizard.png` | `owl-wizard.png` |
+| `pillbug` | — | Pillbug | Feral | Guardian, Bodyguard | `feral_guardian_bodyguard_pillbug.png` | `pillbug.png` |
+| `ram-paladin-sun` | — | Ram Paladin Sun | Feral | Primalist, Leader | `feral_primalist_leader_ram-paladin-sun.png` | `ram-paladin-sun.png` |
+| `ray-mage-crystal` | — | Ray Mage Crystal | Magic | Flying, Sorcerer | `magic_flying_sorcerer_ray-mage-crystal.png` | `ray-mage-crystal.png` |
+| `ray` | — | Ray | Feral | Flying, Hunter | `feral_flying_hunter_ray.png` | `ray.png` |
+| `salamander-rogue` | — | Salamander Rogue | Feral | Trickster, Assassin | `feral_trickster_assassin_salamander-rogue.png` | `salamander-rogue.png` |
+| `scorpion` | — | Scorpion | Lashing | Assassin, Alchemist | `lashing_assassin_alchemist_scorpion.png` | `scorpion.png` |
+| `sea-slug` | — | Sea Slug | Aura | Alchemist, Healer | `aura_alchemist_healer_sea-slug.png` | `sea-slug.png` |
+| `snail-cleric-crystal` | — | Snail Cleric Crystal | Magic | Sorcerer, Healer | `magic_sorcerer_healer_snail-cleric-crystal.png` | `snail-cleric-crystal.png` |
+| `snail-cleric-lantern-2` | — | Snail Cleric Lantern 2 | Magic | Healer, Primalist | `magic_healer_primalist_snail-cleric-lantern-2.png` | `snail-cleric-lantern-2.png` |
+| `snail-cleric-lantern` | — | Snail Cleric Lantern | Magic | Healer, Primalist | `magic_healer_primalist_snail-cleric-lantern.png` | `snail-cleric-lantern.png` |
+| `spider-mage-crystal` | — | Spider Mage Crystal | Magic | Sorcerer, Trickster | `magic_sorcerer_trickster_spider-mage-crystal.png` | `spider-mage-crystal.png` |
+| `spider-rogue` | — | Spider Rogue | Feral | Trickster, Assassin | `feral_trickster_assassin_spider-rogue.png` | `spider-rogue.png` |
+| `starfish-mage-crystal` | — | Starfish Mage Crystal | Magic | Sorcerer, Healer | `magic_sorcerer_healer_starfish-mage-crystal.png` | `starfish-mage-crystal.png` |
+| `toad-druid` | — | Toad Druid | Breath | Alchemist, Primalist | `breath_alchemist_primalist_toad-druid.png` | `toad-druid.png` |
+| `turtle-monk-2` | — | Turtle Monk 2 | Blunt | Healer, Guardian | `blunt_healer_guardian_turtle-monk-2.png` | `turtle-monk-2.png` |
+| `turtle-monk` | — | Turtle Monk | Blunt | Healer, Guardian | `blunt_healer_guardian_turtle-monk.png` | `turtle-monk.png` |
+| `wolf-ranger` | — | Wolf Ranger | Feral | Hunter, Bodyguard | `feral_hunter_bodyguard_wolf-ranger.png` | `wolf-ranger.png` |
+| `worm-engineer` | — | Worm Engineer | Feral | Engineer, Hunter | `feral_engineer_hunter_worm-engineer.png` | `worm-engineer.png` |
