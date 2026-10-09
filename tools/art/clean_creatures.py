@@ -66,10 +66,17 @@ def removed_specks(n, sizes):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     report = {}
-    for unit, art, source in art_rows():
+    old_report = OUT / "clean_report.json"
+    previous = json.loads(old_report.read_text()) if old_report.exists() else {}
+    rows = art_rows()
+    missing = []
+    for unit, art, source in rows:
         src = SRC / source
         if not src.exists():
             print(f"skip {unit}: {src} not found", file=sys.stderr)
+            missing.append(unit)
+            if unit in previous:
+                report[unit] = previous[unit]
             continue
         img, specks, box = clean(src)
         if unit in WHITE_SPOTS:
@@ -81,10 +88,13 @@ def main():
         img.save(OUT / art, optimize=True)
         report[unit] = {"file": art, "source": source, "specks_removed": specks, "subject": box}
         print(f"{source} -> {art}  specks removed: {specks}")
-    for stale in set(p.name for p in OUT.glob("*.png")) - {r["file"] for r in report.values()}:
+    # Prune only files no row names, so a missing source never deletes its existing art.
+    for stale in set(p.name for p in OUT.glob("*.png")) - {art for _, art, _ in rows}:
         (OUT / stale).unlink()
         print(f"removed {stale}")
     (OUT / "clean_report.json").write_text(json.dumps(report, indent=1) + "\n")
+    if missing:
+        sys.exit(f"{len(missing)} source file(s) missing: {', '.join(missing)}")
 
 
 if __name__ == "__main__":
