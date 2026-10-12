@@ -1,0 +1,162 @@
+[
+  {
+    "unit": "sealpress-summoner",
+    "attack": "magic",
+    "classes": [
+      "summoner",
+      "black-mage"
+    ],
+    "filename": "sealpress-summoner_magic_summoner_black-mage.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A tall dark plum living seal press. Solid rectangular housing torso contains a single violet recessed summoning seal; heavy press lever arches behind head. Stern face in upper housing, two shoulders welded to housing, two complete arms. Solid lower housing forms pelvis with two full stout legs."
+  },
+  {
+    "unit": "crucible-summoner",
+    "attack": "breath",
+    "classes": [
+      "summoner",
+      "alchemist"
+    ],
+    "filename": "crucible-summoner_breath_summoner_alchemist.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A broad charcoal living crucible, deep octagonal pot torso with stern amber eyes and a contained luminous molten core. Two heavy handle-shoulders connect complete arms. Thick integral stone pedestal splits into two fully attached strong legs. One pouring lip forms angular brow."
+  },
+  {
+    "unit": "spindle-summoner",
+    "attack": "lashing",
+    "classes": [
+      "summoner",
+      "bard"
+    ],
+    "filename": "spindle-summoner_lashing_summoner_bard.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A stern tall living textile spindle, plum tapered solid wooden body, broad ivory whorl disc as chest, one thick teal ribbon wound around body and extending from wrist. Full arms anchored to central spindle, solid lower shaft expands into pelvis and two complete long legs."
+  },
+  {
+    "unit": "retort-alchemist",
+    "attack": "breath",
+    "classes": [
+      "alchemist",
+      "black-mage"
+    ],
+    "filename": "retort-alchemist_breath_alchemist_black-mage.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A menacing squat opaque dark green alchemical retort, bulbous faceted vessel torso, amber slit eyes beneath thick rim, long curved spout integrated on upper back, two short full arms. Solid reinforced base with four fully connected articulated legs. No glass transparency or smoke."
+  },
+  {
+    "unit": "drum-summoner-war",
+    "attack": "aura",
+    "classes": [
+      "summoner",
+      "bard"
+    ],
+    "filename": "drum-summoner-war_aura_summoner_bard.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A heroic giant dark cobalt war drum, solid cylindrical drum torso with stern ivory eyes on front shell, two large mallet-shaped forearms connected by full upper arms at shoulders. Thick lower rim anchors a solid steel pelvis and two full sturdy legs. One broad geometric summoning mark inset into drumhead."
+  },
+  {
+    "unit": "turbine-skyguard",
+    "attack": "ranged",
+    "classes": [
+      "flying",
+      "engineer"
+    ],
+    "filename": "turbine-skyguard_ranged_flying_engineer.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A heroic living compact wind turbine, solid slate central fuselage with stern blue eyes, THREE large bronze blades physically mounted on one back hub like a rigid wing fan. Two short connected arms and two complete taloned legs attached to lower fuselage. All blades join same visible hub."
+  },
+  {
+    "unit": "beacon-summoner",
+    "attack": "magic",
+    "classes": [
+      "summoner",
+      "flying"
+    ],
+    "filename": "beacon-summoner_magic_summoner_flying.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A stern living cobalt navigation beacon, solid angular lantern housing torso containing one white geometric light core, narrow amber eyes below roof. Two broad metal wings visibly bolted to back housing, two complete short legs anchored to solid base, no arms. No external light beams."
+  },
+  {
+    "unit": "mortar-alchemist-bastion",
+    "attack": "thrown",
+    "classes": [
+      "alchemist",
+      "bodyguard"
+    ],
+    "filename": "mortar-alchemist-bastion_thrown_alchemist_bodyguard.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A heroic massive terracotta mortar bowl creature with stern green eyes, two full stone arms joined at thick side sockets, one oversized ivory pestle firmly gripped in right hand. Solid heavy bowl base forms pelvis, two complete thick legs with knees and feet. No floating ingredients."
+  },
+  {
+    "unit": "organ-summoner",
+    "attack": "breath",
+    "classes": [
+      "summoner",
+      "bard"
+    ],
+    "filename": "organ-summoner_breath_summoner_bard.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A heroic dark plum compact pipe organ creature, solid wooden cabinet torso with stern ivory eyes, THREE large pipes rising from back cabinet. Two complete hinged arms on cabinet sides. Cabinet bottom is a continuous heavy chassis with two full legs. One blue circular summoning seal inset on chest, no keys or tiny pipes."
+  },
+  {
+    "unit": "prism-hexer",
+    "attack": "magic",
+    "classes": [
+      "black-mage",
+      "flying"
+    ],
+    "filename": "prism-hexer_magic_black-mage_flying.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A menacing solid dark violet triangular prism creature, stern silver eyes on front face, two broad folded obsidian wings physically attached at rear spine, two complete short hooked legs rooted in prism bottom. One ivory ridge on front. Entire body opaque solid crystal, no floating shards."
+  },
+  {
+    "unit": "siphon-alchemist",
+    "attack": "lashing",
+    "classes": [
+      "alchemist",
+      "engineer"
+    ],
+    "filename": "siphon-alchemist_lashing_alchemist_engineer.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A heroic squat living copper siphon bottle, solid opaque teal pressure vessel body with stern amber eyes, thick pump lever on shoulder. One broad flexible metal hose arm fixed to side socket, other arm fully articulated with clamp hand. Two complete stout legs visibly fixed to solid bottle base."
+  },
+  {
+    "unit": "tapestry-summoner",
+    "attack": "aura",
+    "classes": [
+      "summoner",
+      "black-mage"
+    ],
+    "filename": "tapestry-summoner_aura_summoner_black-mage.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A tall menacing living rolled tapestry shrine, solid rectangular indigo panel torso bearing one large ivory geometric summoning seal, stern violet eyes in thick top beam. Two complete bronze arms attached to side beams. Side beams run continuously to solid lower crossbar pelvis supporting two full stone legs. No loose fabric or floating pieces."
+  },
+  {
+    "unit": "kettle-alchemist-siege",
+    "attack": "breath",
+    "classes": [
+      "alchemist",
+      "bard"
+    ],
+    "filename": "kettle-alchemist-siege_breath_alchemist_bard.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A powerful dark burgundy living industrial kettle, broad solid rivet-free pot body with stern gold slit eyes, short flared spout on chest, heavy angular lid, two complete steel arms attached to body. Solid undercarriage and four fully attached braced legs. One huge whistle on lid; no steam."
+  },
+  {
+    "unit": "sistrum-summoner",
+    "attack": "magic",
+    "classes": [
+      "summoner",
+      "bard"
+    ],
+    "filename": "sistrum-summoner_magic_summoner_bard.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A heroic living bronze sistrum instrument. Thick rounded rectangular upper frame holds only two broad horizontal metal bars; stern slate face sits in top beam. Two full arms attach to frame sides. Both side rails connect visibly to thick bottom beam, which joins solid central stem pelvis and two complete full legs. One blue seal inset at stem."
+  },
+  {
+    "unit": "ballast-bodyguard",
+    "attack": "blunt",
+    "classes": [
+      "bodyguard",
+      "flying"
+    ],
+    "filename": "ballast-bodyguard_blunt_bodyguard_flying.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A heroic living dark teal ship ballast weight, broad solid angular heavy body with stern ivory slit eyes, two huge swept steel wings securely joined to back, two complete strong arms at sides, two complete short legs physically attached underneath. Single bronze binding around body, powerful airborne pose."
+  },
+  {
+    "unit": "sundrum-hexer",
+    "attack": "aura",
+    "classes": [
+      "black-mage",
+      "alchemist"
+    ],
+    "filename": "sundrum-hexer_aura_black-mage_alchemist.png",
+    "prompt": "Use case: stylized-concept. ONE original Everkin living-object creature from TEXT ONLY. No existing art references or copies. MENACING or HEROIC, stern small intense eyes, mature angular face, no smile or cute proportions. Same polished chunky moderate-detail LOW-POLY fantasy game art: broad planar facets, matte muted color blocks, a few large functional details, no filigree or fine texture. CRITICAL STRUCTURE: physically coherent single connected body. Every limb has a continuous visible structural connection to the torso: shoulders-upper arms-elbows-forearms-hands; solid pelvis-hips-thighs-knees-shins-ankles-feet. Never missing thighs or pelvis, never a detached foot, never floating armor pieces. Solid supporting mass and clear unobscured connections. Broad three-quarter front view showing BOTH complete legs and attachment points. EXACTLY ONE CHARACTER. NO familiar, companion, miniature duplicate, orbiting object, detached part or summoned creature. Summoner identity comes from the integrated seal or vessel alone. 1024x1536 portrait PNG true transparent alpha. All parts within 70px clear margin, feet 80px above bottom. Soft upper-left light, no ground, shadows, haze, halo, glow cloud, scenery, text, watermark or gore. Subject: A menacing living ochre alchemical distillation drum, solid cylindrical torso with stern violet eyes under heavy lid, one large dark purple circular inset on chest, two complete heavy arms joined at shoulder sockets. Thick integral bottom housing makes pelvis with two full braced legs. One short bent exhaust pipe on back, no vapor."
+  }
+]

@@ -53,7 +53,7 @@ Style target: a stylized low-poly 3D game character, like a polished mobile-game
 ## Design rules (for every brief)
 
 - **Vary the body type.** Each brief names one: tiny, round, tall and lanky, wide and low, serpentine, many-limbed, floating, or hulking. Do not make every creature an upright, robed, staff-holding figure.
-- **Show the class in the body, not only the prop.** Healers are soft, round and warm-colored. Assassins are lean, low and angular with dark cool colors. Bards have a showy crest, tail or throat. Engineers have goggles, brass and bolts. Summoners have small helpers beside them. Black Mages use purple and bone tones with glowing eyes. Leaders are upright with a banner or horn. Hunters have long limbs or sharp eyes. Fliers have large readable wings. Guardians and Bodyguards are broad and plated.
+- **Show the class in the body, not only the prop.** Healers are soft, round and warm-colored. Assassins are lean, low and angular with dark cool colors. Bards have a showy crest, tail or throat. Engineers have goggles, brass and bolts. Summoners express their class through integrated summoning seals, vessels, resonators or ritual mechanisms; do not default to miniature copies or companion creatures. Black Mages use purple and bone tones with glowing eyes. Leaders are upright with a banner or horn. Hunters have long limbs or sharp eyes. Fliers have large readable wings. Guardians and Bodyguards are broad and plated.
 - **Mix the palette.** No two neighbours in a batch share a main color. Keep one accent color per creature.
 - **Humanoids are the exception (about 1 in 7).** Give them non-generic features (a race trait, an unusual hat, an animal-like feature).
 - **Props stay inside the canvas.** If a staff, banner or tail would break the 48 px margin, shorten or angle it.
@@ -181,3 +181,10 @@ Format: `unit name` – attack type – professions – brief. Body type is in b
 - Attack types: Unarmed 3, Bladed 4, Polearm 4, Ranged 6, Feral 2, Magic 10, Blunt 4, Breath 2, Thrown 4, Lashing 4, Aura 5 (Magic stays the most common, Feral is low on purpose because the existing art already has plenty).
 - Humanoids: 7 of 48 (`elf-healer-leaf`, `catfolk-spellblade-moon`, `gnome-alchemist-flask`, `lizardfolk-ninja-kunai`, `orc-summoner-skull`, `dwarf-captain-banner`, `lizardfolk-barbarian-axe`).
 - Names avoid collisions with existing files in `art/creatures/` (checked 2026-10-11).
+
+## Current living-object batch direction
+
+- Heroic or menacing expressions, moderate-detail chunky low-poly forms, and original text-only designs.
+- Every limb must connect continuously to the torso. Show a solid pelvis or supporting chassis, complete thighs and shins, and attached feet. Wings and props require visible structural attachments.
+- Exactly one creature per image unless explicitly requested otherwise. No miniature duplicates or automatic Summoner familiars.
+- Inspect all limb connections before accepting an image; regenerate structurally incomplete designs.
