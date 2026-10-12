@@ -1,0 +1,182 @@
+{
+  "mode": "built-in image_gen",
+  "theme": "Extravagant living inanimate objects; original text-only designs",
+  "creatures": [
+    {
+      "index": 1,
+      "unit": "orrery-sorcerer-orbit",
+      "attack": "magic",
+      "classes": [
+        "sorcerer",
+        "leader"
+      ],
+      "filename": "orrery-sorcerer-orbit_magic_sorcerer_leader.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: An extravagant living astronomical orrery, floating squat navy-blue celestial globe as its main body, two huge intelligent glossy eyes inset in globe. Three thick brass orbital hoops arch around body asymmetrically, carrying three solid small ivory moons attached to hoops. Three curved brass support feet curl below like a regal tripod. One saturated turquoise central crystal. Object anatomy, no animal or humanoid inside. Professions: sorcerer + leader. Primary attack: magic."
+    },
+    {
+      "index": 2,
+      "unit": "harpsichord-bard-keys",
+      "attack": "ranged",
+      "classes": [
+        "bard",
+        "engineer"
+      ],
+      "filename": "harpsichord-bard-keys_ranged_bard_engineer.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: An extravagant sentient miniature harpsichord, muted plum angular wooden body, grand lid raised like a sculptural crest, cream keyboard curved into a cheerful grin, two glossy eyes on its front panel. Four short carved cabriole legs in a jaunty stance; two short brass tuning arms. One saturated coral key accent. Broad simplified facets, no individual fine strings, no person. Professions: bard + engineer. Primary attack: ranged."
+    },
+    {
+      "index": 3,
+      "unit": "teapot-alchemist-volcano",
+      "attack": "breath",
+      "classes": [
+        "alchemist",
+        "sorcerer"
+      ],
+      "filename": "teapot-alchemist-volcano_breath_alchemist_sorcerer.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A living extravagant porcelain teapot with round pale mint body and glossy eyes on belly, oversized angular spout curled up as a trumpet and handle forming a sweeping spiral tail. Stacked faceted lid resembles a tiny dormant volcano with one bright orange crystal stopper. Four little stout ceramic feet and two short spoon-shaped arms. No liquid stream, no steam, no animal head. Professions: alchemist + sorcerer. Primary attack: breath."
+    },
+    {
+      "index": 4,
+      "unit": "hourglass-hexer-sand",
+      "attack": "aura",
+      "classes": [
+        "black-mage",
+        "trickster"
+      ],
+      "filename": "hourglass-hexer-sand_aura_black-mage_trickster.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A sentient asymmetric hourglass creature, two broad smoky-purple faceted glass chambers held in thick ivory frame; upper chamber tilted slightly, lower chamber a heavy round belly. Two big glossy eyes on upper chamber, golden sand forming an expressive swoop inside. Three short curved frame legs, two ribbon-like bronze handles. One saturated amber sand accent. No humanoid body. Professions: black-mage + trickster. Primary attack: aura."
+    },
+    {
+      "index": 5,
+      "unit": "umbrella-guardian-fan",
+      "attack": "blunt",
+      "classes": [
+        "guardian",
+        "flying"
+      ],
+      "filename": "umbrella-guardian-fan_blunt_guardian_flying.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: An extravagant living folded-and-partly-open parasol, dusty rose faceted canopy forming broad armored body, alternating ivory panels, two large glossy eyes on canopy front. Thick curved handle below forms one elegant curled foot; two short rib-like arms extend out with rounded protective ends. Compact scalloped canopy, turquoise jewel finial. No human or animal, full object creature. Professions: guardian + flying. Primary attack: blunt."
+    },
+    {
+      "index": 6,
+      "unit": "chandelier-summoner-candle",
+      "attack": "magic",
+      "classes": [
+        "summoner",
+        "bard"
+      ],
+      "filename": "chandelier-summoner-candle_magic_summoner_bard.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A floating extravagant living chandelier with muted cream central ceramic pear-shaped body bearing two huge friendly glossy eyes, five thick sweeping brass arms curling upward like a crown. Each arm ends in a chunky unlit wax candle; one tiny amber wax flame familiar sits on the central candle. One bright amber accent. No ceiling chain, room, flames, smoke or halo. Professions: summoner + bard. Primary attack: magic."
+    },
+    {
+      "index": 7,
+      "unit": "compass-hunter-needle",
+      "attack": "bladed",
+      "classes": [
+        "hunter",
+        "assassin"
+      ],
+      "filename": "compass-hunter-needle_bladed_hunter_assassin.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A living oversized pocket compass creature with a wide low matte sage casing, cream compass face with two glossy eyes, no letters or numbers. One broad silver compass needle protrudes forward as a short blade-like proboscis; four angular brass walking feet and an opened lid raised like a protective crest. One bright cyan center gem. No animal body. Professions: hunter + assassin. Primary attack: bladed."
+    },
+    {
+      "index": 8,
+      "unit": "sewingbox-engineer-ribbon",
+      "attack": "lashing",
+      "classes": [
+        "engineer",
+        "healer"
+      ],
+      "filename": "sewingbox-engineer-ribbon_lashing_engineer_healer.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A round extravagant living sewing box, warm apricot faceted wooden body with two glossy kind eyes, hinged shell lid open slightly like a broad bonnet. Four stout spool feet, two flexible cream measuring-ribbon arms with no markings, one arm curled protectively. One bright red pincushion crest with three blunt golden pins. No person, no text or sharp needles. Professions: engineer + healer. Primary attack: lashing."
+    },
+    {
+      "index": 9,
+      "unit": "bell-guardian-clapper",
+      "attack": "blunt",
+      "classes": [
+        "guardian",
+        "bard"
+      ],
+      "filename": "bell-guardian-clapper_blunt_guardian_bard.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A hulking sentient bronze temple bell with broad low flared body, large friendly eyes embedded on upper front, one huge ivory clapper visible beneath its lip. Two thick articulated bracket arms and two stout bell-metal feet, asymmetrical layered crest shaped from smaller bell rims. One saturated cobalt inlay. Monumental yet friendly object anatomy, no humanoid inside. Professions: guardian + bard. Primary attack: blunt."
+    },
+    {
+      "index": 10,
+      "unit": "book-summoner-fold",
+      "attack": "magic",
+      "classes": [
+        "summoner",
+        "primalist"
+      ],
+      "filename": "book-summoner-fold_magic_summoner_primalist.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: An extravagant living accordion-fold book, muted forest-green angular covers, thick cream pages fanning into a twisting upright body. Two big curious eyes on front cover, four little folded-page feet, one long folded-page arm. One tiny bright green origami sprout familiar perches in the open pages. No writing, glyphs, symbols or readable text, no animal body. Professions: summoner + primalist. Primary attack: magic."
+    },
+    {
+      "index": 11,
+      "unit": "candelabrum-warrior-wax",
+      "attack": "unarmed",
+      "classes": [
+        "warrior",
+        "black-mage"
+      ],
+      "filename": "candelabrum-warrior-wax_unarmed_warrior_black-mage.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A chunky extravagant living candelabrum creature with three thick muted lavender wax columns fused into broad torso; two huge glossy eyes on central candle, ivory wax drips form bold armor plates. Two heavy brass fist arms and short bent brass stand legs; asymmetric unlit wicks like hair tufts. One vivid violet gemstone in base. No flames, smoke, scary face or person. Professions: warrior + black-mage. Primary attack: unarmed."
+    },
+    {
+      "index": 12,
+      "unit": "conchphone-bard-horn",
+      "attack": "breath",
+      "classes": [
+        "bard",
+        "trickster"
+      ],
+      "filename": "conchphone-bard-horn_breath_bard_trickster.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A sentient extravagantly sculptural gramophone, dusty teal hexagonal wooden base body with glossy clever eyes and four curled brass feet. Enormous cream faceted spiral acoustic horn curls above it like a flamboyant crown and opens toward viewer; one small brass crank arm. One coral inner-horn accent, no record text, no animal head, no extra props. Professions: bard + trickster. Primary attack: breath."
+    },
+    {
+      "index": 13,
+      "unit": "chest-bodyguard-lock",
+      "attack": "feral",
+      "classes": [
+        "bodyguard",
+        "alchemist"
+      ],
+      "filename": "chest-bodyguard-lock_feral_bodyguard_alchemist.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A broad low living apothecary chest, muted burgundy wood with ivory reinforced corners, two kind glossy eyes in a large brass lock plate. Lid gapes slightly with smooth rounded ceramic bottle shapes visible inside, no teeth. Four chunky clawlike bracket legs and thick hinged side panels opened as protective shields. One bright green bottle inset. No monster hidden inside. Professions: bodyguard + alchemist. Primary attack: feral."
+    },
+    {
+      "index": 14,
+      "unit": "kite-primalist-tail",
+      "attack": "lashing",
+      "classes": [
+        "primalist",
+        "flying"
+      ],
+      "filename": "kite-primalist-tail_lashing_primalist_flying.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: An extravagant sentient geometric kite, broad pale ochre and cream folded diamond body with two big expressive eyes, layered smaller diamond fins creating a regal asymmetrical silhouette. Three thick curling ribbon tails tucked within the portrait, one vivid teal tassel accent. Body entirely crafted paper and broad bamboo ribs, no person or animal, floating without scene. Professions: primalist + flying. Primary attack: lashing."
+    },
+    {
+      "index": 15,
+      "unit": "lantern-healer-prism",
+      "attack": "aura",
+      "classes": [
+        "healer",
+        "sorcerer"
+      ],
+      "filename": "lantern-healer-prism_aura_healer_sorcerer.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A round living lantern with muted powder-blue angular frame, warm cream faceted glass belly and two large gentle glossy eyes in upper glass. Four short sturdy curled frame feet, two small hinged shutter arms opened like welcoming hands. Oversized handle arches over head as a sculptural crown, single saturated amber heart crystal inside. No external light rays, bloom or halo. Professions: healer + sorcerer. Primary attack: aura."
+    },
+    {
+      "index": 16,
+      "unit": "inkwell-trickster-quill",
+      "attack": "thrown",
+      "classes": [
+        "trickster",
+        "assassin"
+      ],
+      "filename": "inkwell-trickster-quill_thrown_trickster_assassin.png",
+      "prompt": "Use case: stylized-concept. Make ONE wholly ORIGINAL Everkin fantasy creature from this text alone, no existing art images as references or copies. Theme: extravagant extraordinary living INANIMATE OBJECT, the OBJECT ITSELF is the creature, unusual inventive silhouette rather than an animal carrying a prop. Polished chunky low-poly 3D collectible: broad visible angular polygon facets, simple matte muted material blocks, large glossy expressive eyes, friendly capable personality. Three-quarter front view, soft top-left light. PNG 1024x1536 portrait with real transparent alpha. Entire creature, appendages, ornaments and props inside 64px empty margin, lowest point about 80px above bottom. Scale to fit; never crop. Crisp silhouette, no background, gradient, scenery, ground, cast shadow, haze, halo, external glow, lettering, watermark, frame or photorealistic microtexture. One main creature, with only the specified tiny familiar if any. Subject: A wide low extravagant sentient inkwell, matte midnight-indigo faceted ceramic body and two large mischievous glossy eyes, ivory stopper tilted like a jaunty cap. Four short angular nib-shaped feet, two broad flexible dark ribbon arms curling inward. A single oversized cream quill anchored on back, one bright magenta ink bead held in an arm. No splatter, words, paper or humanoid. Professions: trickster + assassin. Primary attack: thrown."
+    }
+  ]
+}
