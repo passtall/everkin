@@ -1,7 +1,7 @@
 """Make cleaned creature art copies from images/kin (the originals are never changed).
 
 Reads the table in docs/creature-classes.md: for each row it cleans images/kin/<Source> and
-writes art/creatures/<Art file> (the reviewed fits_{species} or does-not-fit_{species} name): 1024 x 1536 RGBA,
+writes art/creatures/<Art file> (the species-{nn}.png name): 1024 x 1536 RGBA,
 transparent background, stray specks removed, the creature scaled to fit the safe area and
 standing on the shared ground line. Art files no row names any more are deleted.
 

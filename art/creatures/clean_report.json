@@ -11,7 +11,7 @@
   ]
  },
  "armadillo-knight": {
-  "file": "fits_armadillo-02.png",
+  "file": "armadillo-02.png",
   "source": "armadillo-knight.png",
   "specks_removed": 7,
   "subject": [
@@ -22,7 +22,7 @@
   ]
  },
  "armadillo-knight-2": {
-  "file": "fits_armadillo-01.png",
+  "file": "armadillo-01.png",
   "source": "armadillo-knight-2.png",
   "specks_removed": 6,
   "subject": [
@@ -44,7 +44,7 @@
   ]
  },
  "bat-rogue-shadow": {
-  "file": "fits_bat.png",
+  "file": "bat-02.png",
   "source": "bat-rogue-shadow.png",
   "specks_removed": 8,
   "subject": [
@@ -66,7 +66,7 @@
   ]
  },
  "beetle": {
-  "file": "fits_beetle-04.png",
+  "file": "beetle-03.png",
   "source": "beetle.png",
   "specks_removed": 8,
   "subject": [
@@ -77,7 +77,7 @@
   ]
  },
  "beetle-2": {
-  "file": "fits_beetle-01.png",
+  "file": "beetle-01.png",
   "source": "beetle-2.png",
   "specks_removed": 14,
   "subject": [
@@ -88,7 +88,7 @@
   ]
  },
  "beetle-knight-shield": {
-  "file": "fits_beetle-02.png",
+  "file": "beetle-02.png",
   "source": "beetle-knight-shield.png",
   "specks_removed": 5,
   "subject": [
@@ -121,7 +121,7 @@
   ]
  },
  "bloom-pod": {
-  "file": "does-not-fit_bloom-pod.png",
+  "file": "bloom-pod-01.png",
   "source": "29_f.png",
   "specks_removed": 42,
   "subject": [
@@ -132,7 +132,7 @@
   ]
  },
  "bloomspear": {
-  "file": "does-not-fit_bloomspear.png",
+  "file": "bloomspear-01.png",
   "source": "7_f.png",
   "specks_removed": 169,
   "subject": [
@@ -154,7 +154,7 @@
   ]
  },
  "boar-magma": {
-  "file": "does-not-fit_boar-01.png",
+  "file": "boar-01.png",
   "source": "10_f.png",
   "specks_removed": 46,
   "subject": [
@@ -165,7 +165,7 @@
   ]
  },
  "bone-idol": {
-  "file": "does-not-fit_bone-idol.png",
+  "file": "bone-idol-01.png",
   "source": "4_f.png",
   "specks_removed": 32,
   "subject": [
@@ -176,7 +176,7 @@
   ]
  },
  "caterpillar-bard": {
-  "file": "fits_caterpillar.png",
+  "file": "caterpillar-01.png",
   "source": "caterpillar-bard.png",
   "specks_removed": 17,
   "subject": [
@@ -209,7 +209,7 @@
   ]
  },
  "cinderhorn": {
-  "file": "does-not-fit_cinderhorn.png",
+  "file": "cinderhorn-02.png",
   "source": "8_f.png",
   "specks_removed": 96,
   "subject": [
@@ -220,7 +220,7 @@
   ]
  },
  "cobra": {
-  "file": "fits_cobra.png",
+  "file": "cobra-01.png",
   "source": "cobra.png",
   "specks_removed": 3,
   "subject": [
@@ -231,7 +231,7 @@
   ]
  },
  "crab-alchemist": {
-  "file": "fits_crab-01.png",
+  "file": "crab-01.png",
   "source": "crab-alchemist.png",
   "specks_removed": 15,
   "subject": [
@@ -253,7 +253,7 @@
   ]
  },
  "crab-smith": {
-  "file": "fits_crab-02.png",
+  "file": "crab-02.png",
   "source": "crab-smith.png",
   "specks_removed": 29,
   "subject": [
@@ -264,7 +264,7 @@
   ]
  },
  "crocodile-shaman": {
-  "file": "fits_crocodile.png",
+  "file": "crocodile-01.png",
   "source": "crocodile-shaman.png",
   "specks_removed": 20,
   "subject": [
@@ -275,7 +275,7 @@
   ]
  },
  "dormouse": {
-  "file": "fits_dormouse.png",
+  "file": "dormouse-02.png",
   "source": "39_f.png",
   "specks_removed": 2,
   "subject": [
@@ -297,7 +297,7 @@
   ]
  },
  "ember-shard": {
-  "file": "does-not-fit_ember-shard.png",
+  "file": "ember-shard-01.png",
   "source": "28_f.png",
   "specks_removed": 70,
   "subject": [
@@ -319,7 +319,7 @@
   ]
  },
  "firefly": {
-  "file": "fits_firefly.png",
+  "file": "firefly-02.png",
   "source": "firefly.png",
   "specks_removed": 32,
   "subject": [
@@ -341,7 +341,7 @@
   ]
  },
  "fox-bard": {
-  "file": "fits_fox-01.png",
+  "file": "fox-01.png",
   "source": "fox-bard.png",
   "specks_removed": 4,
   "subject": [
@@ -352,7 +352,7 @@
   ]
  },
  "frog-bard-dagger": {
-  "file": "fits_frog.png",
+  "file": "frog-01.png",
   "source": "frog-bard-dagger.png",
   "specks_removed": 19,
   "subject": [
@@ -374,7 +374,7 @@
   ]
  },
  "halfling-alchemist": {
-  "file": "fits_halfling.png",
+  "file": "halfling-01.png",
   "source": "halfling-alchemist.png",
   "specks_removed": 8,
   "subject": [
@@ -407,7 +407,7 @@
   ]
  },
  "human-alchemist": {
-  "file": "does-not-fit_human-02.png",
+  "file": "human-02.png",
   "source": "human-alchemist.png",
   "specks_removed": 7,
   "subject": [
@@ -418,7 +418,7 @@
   ]
  },
  "human-alchemist-shield": {
-  "file": "fits_human-01.png",
+  "file": "human-01.png",
   "source": "human-alchemist-shield.png",
   "specks_removed": 2,
   "subject": [
@@ -429,7 +429,7 @@
   ]
  },
  "human-archer": {
-  "file": "does-not-fit_human-07.png",
+  "file": "human-07.png",
   "source": "human-archer.png",
   "specks_removed": 23,
   "subject": [
@@ -440,7 +440,7 @@
   ]
  },
  "human-archer-crystal": {
-  "file": "does-not-fit_human-03.png",
+  "file": "human-03.png",
   "source": "human-archer-crystal.png",
   "specks_removed": 62,
   "subject": [
@@ -451,7 +451,7 @@
   ]
  },
  "human-archer-frost": {
-  "file": "does-not-fit_human-04.png",
+  "file": "human-04.png",
   "source": "human-archer-frost.png",
   "specks_removed": 41,
   "subject": [
@@ -462,7 +462,7 @@
   ]
  },
  "human-archer-gear": {
-  "file": "does-not-fit_human-05.png",
+  "file": "human-05.png",
   "source": "human-archer-gear.png",
   "specks_removed": 43,
   "subject": [
@@ -473,7 +473,7 @@
   ]
  },
  "human-archer-sun": {
-  "file": "does-not-fit_human-06.png",
+  "file": "human-06.png",
   "source": "human-archer-sun.png",
   "specks_removed": 10,
   "subject": [
@@ -484,7 +484,7 @@
   ]
  },
  "human-barbarian": {
-  "file": "does-not-fit_human-09.png",
+  "file": "human-09.png",
   "source": "human-barbarian.png",
   "specks_removed": 9,
   "subject": [
@@ -495,7 +495,7 @@
   ]
  },
  "human-barbarian-frost": {
-  "file": "does-not-fit_human-08.png",
+  "file": "human-08.png",
   "source": "human-barbarian-frost.png",
   "specks_removed": 28,
   "subject": [
@@ -506,7 +506,7 @@
   ]
  },
  "human-bard": {
-  "file": "does-not-fit_human-11.png",
+  "file": "human-11.png",
   "source": "human-bard.png",
   "specks_removed": 7,
   "subject": [
@@ -517,7 +517,7 @@
   ]
  },
  "human-bard-shield": {
-  "file": "does-not-fit_human-10.png",
+  "file": "human-10.png",
   "source": "human-bard-shield.png",
   "specks_removed": 16,
   "subject": [
@@ -528,7 +528,7 @@
   ]
  },
  "human-brawler-hook": {
-  "file": "fits_human-12.png",
+  "file": "human-12.png",
   "source": "human-brawler-hook.png",
   "specks_removed": 22,
   "subject": [
@@ -539,7 +539,7 @@
   ]
  },
  "human-captain-banner": {
-  "file": "does-not-fit_human-13.png",
+  "file": "human-13.png",
   "source": "human-captain-banner.png",
   "specks_removed": 39,
   "subject": [
@@ -550,7 +550,7 @@
   ]
  },
  "human-captain-pistol": {
-  "file": "does-not-fit_human-14.png",
+  "file": "human-14.png",
   "source": "human-captain-pistol.png",
   "specks_removed": 12,
   "subject": [
@@ -561,7 +561,7 @@
   ]
  },
  "human-captain-rapier": {
-  "file": "does-not-fit_human-15.png",
+  "file": "human-15.png",
   "source": "human-captain-rapier.png",
   "specks_removed": 28,
   "subject": [
@@ -572,7 +572,7 @@
   ]
  },
  "human-cleric-lantern": {
-  "file": "fits_human-16.png",
+  "file": "human-16.png",
   "source": "human-cleric-lantern.png",
   "specks_removed": 38,
   "subject": [
@@ -583,7 +583,7 @@
   ]
  },
  "human-dancer": {
-  "file": "does-not-fit_human-18.png",
+  "file": "human-18.png",
   "source": "human-dancer.png",
   "specks_removed": 44,
   "subject": [
@@ -594,7 +594,7 @@
   ]
  },
  "human-dancer-spear": {
-  "file": "does-not-fit_human-17.png",
+  "file": "human-17.png",
   "source": "human-dancer-spear.png",
   "specks_removed": 24,
   "subject": [
@@ -605,7 +605,7 @@
   ]
  },
  "human-druid": {
-  "file": "does-not-fit_human-20.png",
+  "file": "human-20.png",
   "source": "human-druid.png",
   "specks_removed": 12,
   "subject": [
@@ -616,7 +616,7 @@
   ]
  },
  "human-druid-leaf": {
-  "file": "does-not-fit_human-19.png",
+  "file": "human-19.png",
   "source": "human-druid-leaf.png",
   "specks_removed": 52,
   "subject": [
@@ -627,7 +627,7 @@
   ]
  },
  "human-duelist-rapier": {
-  "file": "does-not-fit_human-21.png",
+  "file": "human-21.png",
   "source": "human-duelist-rapier.png",
   "specks_removed": 10,
   "subject": [
@@ -638,7 +638,7 @@
   ]
  },
  "human-engineer-crystal": {
-  "file": "does-not-fit_human-22.png",
+  "file": "human-22.png",
   "source": "human-engineer-crystal.png",
   "specks_removed": 12,
   "subject": [
@@ -649,7 +649,7 @@
   ]
  },
  "human-engineer-hook": {
-  "file": "does-not-fit_human-23.png",
+  "file": "human-23.png",
   "source": "human-engineer-hook.png",
   "specks_removed": 11,
   "subject": [
@@ -660,7 +660,7 @@
   ]
  },
  "human-guard": {
-  "file": "does-not-fit_human-26.png",
+  "file": "human-26.png",
   "source": "human-guard.png",
   "specks_removed": 5,
   "subject": [
@@ -671,7 +671,7 @@
   ]
  },
  "human-guard-frost": {
-  "file": "does-not-fit_human-24.png",
+  "file": "human-24.png",
   "source": "human-guard-frost.png",
   "specks_removed": 39,
   "subject": [
@@ -682,7 +682,7 @@
   ]
  },
  "human-guard-stone": {
-  "file": "fits_human-25.png",
+  "file": "human-25.png",
   "source": "human-guard-stone.png",
   "specks_removed": 7,
   "subject": [
@@ -693,7 +693,7 @@
   ]
  },
  "human-knight": {
-  "file": "does-not-fit_human-31.png",
+  "file": "human-31.png",
   "source": "human-knight.png",
   "specks_removed": 43,
   "subject": [
@@ -704,7 +704,7 @@
   ]
  },
  "human-knight-2": {
-  "file": "does-not-fit_human-27.png",
+  "file": "human-27.png",
   "source": "human-knight-2.png",
   "specks_removed": 17,
   "subject": [
@@ -715,7 +715,7 @@
   ]
  },
  "human-knight-banner": {
-  "file": "does-not-fit_human-28.png",
+  "file": "human-28.png",
   "source": "human-knight-banner.png",
   "specks_removed": 9,
   "subject": [
@@ -726,7 +726,7 @@
   ]
  },
  "human-knight-hammer": {
-  "file": "fits_human-29.png",
+  "file": "human-29.png",
   "source": "human-knight-hammer.png",
   "specks_removed": 6,
   "subject": [
@@ -737,7 +737,7 @@
   ]
  },
  "human-knight-shield": {
-  "file": "does-not-fit_human-30.png",
+  "file": "human-30.png",
   "source": "human-knight-shield.png",
   "specks_removed": 19,
   "subject": [
@@ -748,7 +748,7 @@
   ]
  },
  "human-mage-crystal": {
-  "file": "does-not-fit_human-32.png",
+  "file": "human-32.png",
   "source": "human-mage-crystal.png",
   "specks_removed": 20,
   "subject": [
@@ -759,7 +759,7 @@
   ]
  },
  "human-mage-fire": {
-  "file": "does-not-fit_human-33.png",
+  "file": "human-33.png",
   "source": "human-mage-fire.png",
   "specks_removed": 17,
   "subject": [
@@ -770,7 +770,7 @@
   ]
  },
  "human-mage-frost": {
-  "file": "does-not-fit_human-34.png",
+  "file": "human-34.png",
   "source": "human-mage-frost.png",
   "specks_removed": 17,
   "subject": [
@@ -781,7 +781,7 @@
   ]
  },
  "human-mage-stone": {
-  "file": "does-not-fit_human-35.png",
+  "file": "human-35.png",
   "source": "human-mage-stone.png",
   "specks_removed": 9,
   "subject": [
@@ -792,7 +792,7 @@
   ]
  },
  "human-mage-water": {
-  "file": "fits_human-36.png",
+  "file": "human-36.png",
   "source": "human-mage-water.png",
   "specks_removed": 17,
   "subject": [
@@ -803,7 +803,7 @@
   ]
  },
  "human-monk-hammer": {
-  "file": "does-not-fit_human-37.png",
+  "file": "human-37.png",
   "source": "human-monk-hammer.png",
   "specks_removed": 3,
   "subject": [
@@ -814,7 +814,7 @@
   ]
  },
  "human-necromancer-skull": {
-  "file": "does-not-fit_human-38.png",
+  "file": "human-38.png",
   "source": "human-necromancer-skull.png",
   "specks_removed": 5,
   "subject": [
@@ -825,7 +825,7 @@
   ]
  },
  "human-priest": {
-  "file": "fits_human-42.png",
+  "file": "human-42.png",
   "source": "human-priest.png",
   "specks_removed": 18,
   "subject": [
@@ -836,7 +836,7 @@
   ]
  },
  "human-priest-bell": {
-  "file": "fits_human-39.png",
+  "file": "human-39.png",
   "source": "human-priest-bell.png",
   "specks_removed": 4,
   "subject": [
@@ -847,7 +847,7 @@
   ]
  },
  "human-priest-moon": {
-  "file": "does-not-fit_human-40.png",
+  "file": "human-40.png",
   "source": "human-priest-moon.png",
   "specks_removed": 12,
   "subject": [
@@ -858,7 +858,7 @@
   ]
  },
  "human-priest-sun": {
-  "file": "does-not-fit_human-41.png",
+  "file": "human-41.png",
   "source": "human-priest-sun.png",
   "specks_removed": 43,
   "subject": [
@@ -869,7 +869,7 @@
   ]
  },
  "human-rogue": {
-  "file": "does-not-fit_human-45.png",
+  "file": "human-45.png",
   "source": "human-rogue.png",
   "specks_removed": 19,
   "subject": [
@@ -880,7 +880,7 @@
   ]
  },
  "human-rogue-potion": {
-  "file": "does-not-fit_human-43.png",
+  "file": "human-43.png",
   "source": "human-rogue-potion.png",
   "specks_removed": 5,
   "subject": [
@@ -891,7 +891,7 @@
   ]
  },
  "human-rogue-shadow": {
-  "file": "does-not-fit_human-44.png",
+  "file": "human-44.png",
   "source": "human-rogue-shadow.png",
   "specks_removed": 15,
   "subject": [
@@ -902,7 +902,7 @@
   ]
  },
  "human-scout-lantern": {
-  "file": "does-not-fit_human-46.png",
+  "file": "human-46.png",
   "source": "human-scout-lantern.png",
   "specks_removed": 3,
   "subject": [
@@ -913,7 +913,7 @@
   ]
  },
  "human-shaman": {
-  "file": "does-not-fit_human-47.png",
+  "file": "human-47.png",
   "source": "human-shaman.png",
   "specks_removed": 21,
   "subject": [
@@ -924,7 +924,7 @@
   ]
  },
  "human-smith": {
-  "file": "does-not-fit_human-48.png",
+  "file": "human-48.png",
   "source": "human-smith.png",
   "specks_removed": 17,
   "subject": [
@@ -935,7 +935,7 @@
   ]
  },
  "human-spellblade": {
-  "file": "fits_human-51.png",
+  "file": "human-51.png",
   "source": "human-spellblade.png",
   "specks_removed": 17,
   "subject": [
@@ -946,7 +946,7 @@
   ]
  },
  "human-spellblade-2": {
-  "file": "does-not-fit_human-49.png",
+  "file": "human-49.png",
   "source": "human-spellblade-2.png",
   "specks_removed": 15,
   "subject": [
@@ -957,7 +957,7 @@
   ]
  },
  "human-spellblade-3": {
-  "file": "does-not-fit_human-50.png",
+  "file": "human-50.png",
   "source": "human-spellblade-3.png",
   "specks_removed": 12,
   "subject": [
@@ -968,7 +968,7 @@
   ]
  },
  "human-wizard": {
-  "file": "fits_human-52.png",
+  "file": "human-52.png",
   "source": "human-wizard.png",
   "specks_removed": 9,
   "subject": [
@@ -979,7 +979,7 @@
   ]
  },
  "jelly-gazer": {
-  "file": "does-not-fit_jellyfish-01.png",
+  "file": "jellyfish-01.png",
   "source": "2_f.png",
   "specks_removed": 30,
   "subject": [
@@ -990,7 +990,7 @@
   ]
  },
  "jelly-healer": {
-  "file": "fits_jellyfish-02.png",
+  "file": "jellyfish-02.png",
   "source": "jelly-healer.png",
   "specks_removed": 43,
   "subject": [
@@ -1023,7 +1023,7 @@
   ]
  },
  "lizardfolk-rogue-fire": {
-  "file": "does-not-fit_lizardfolk-01.png",
+  "file": "lizardfolk-01.png",
   "source": "lizardfolk-rogue-fire.png",
   "specks_removed": 19,
   "subject": [
@@ -1056,7 +1056,7 @@
   ]
  },
  "mannequin": {
-  "file": "does-not-fit_mannequin.png",
+  "file": "mannequin-01.png",
   "source": "34_f.png",
   "specks_removed": 6,
   "subject": [
@@ -1111,7 +1111,7 @@
   ]
  },
  "moth-ash": {
-  "file": "does-not-fit_moth.png",
+  "file": "moth-01.png",
   "source": "32_f.png",
   "specks_removed": 10,
   "subject": [
@@ -1122,7 +1122,7 @@
   ]
  },
  "mushroom-druid": {
-  "file": "fits_mushroom.png",
+  "file": "mushroom-01.png",
   "source": "mushroom-druid.png",
   "specks_removed": 22,
   "subject": [
@@ -1133,7 +1133,7 @@
   ]
  },
  "nautilus": {
-  "file": "fits_nautilus.png",
+  "file": "nautilus-01.png",
   "source": "nautilus.png",
   "specks_removed": 19,
   "subject": [
@@ -1144,7 +1144,7 @@
   ]
  },
  "octopus-alchemist": {
-  "file": "fits_octopus.png",
+  "file": "octopus-01.png",
   "source": "octopus-alchemist.png",
   "specks_removed": 24,
   "subject": [
@@ -1166,7 +1166,7 @@
   ]
  },
  "owl-wizard": {
-  "file": "fits_owl.png",
+  "file": "owl-01.png",
   "source": "owl-wizard.png",
   "specks_removed": 19,
   "subject": [
@@ -1199,7 +1199,7 @@
   ]
  },
  "ram-paladin-sun": {
-  "file": "fits_ram.png",
+  "file": "ram-01.png",
   "source": "ram-paladin-sun.png",
   "specks_removed": 23,
   "subject": [
@@ -1221,7 +1221,7 @@
   ]
  },
  "ray-mage-crystal": {
-  "file": "fits_ray-01.png",
+  "file": "ray-01.png",
   "source": "ray-mage-crystal.png",
   "specks_removed": 7,
   "subject": [
@@ -1243,7 +1243,7 @@
   ]
  },
  "reef-warden": {
-  "file": "does-not-fit_lizardfolk-02.png",
+  "file": "lizardfolk-02.png",
   "source": "9_f.png",
   "specks_removed": 105,
   "subject": [
@@ -1276,7 +1276,7 @@
   ]
  },
  "salamander-rogue": {
-  "file": "fits_salamander.png",
+  "file": "salamander-01.png",
   "source": "salamander-rogue.png",
   "specks_removed": 3,
   "subject": [
@@ -1287,7 +1287,7 @@
   ]
  },
  "scorpion": {
-  "file": "fits_scorpion-02.png",
+  "file": "scorpion-01.png",
   "source": "scorpion.png",
   "specks_removed": 50,
   "subject": [
@@ -1309,7 +1309,7 @@
   ]
  },
  "shark-fin-stalker": {
-  "file": "does-not-fit_shark-01.png",
+  "file": "shark-01.png",
   "source": "16_f.png",
   "specks_removed": 68,
   "subject": [
@@ -1320,7 +1320,7 @@
   ]
  },
  "shark-land": {
-  "file": "does-not-fit_shark-02.png",
+  "file": "shark-02.png",
   "source": "12_f.png",
   "specks_removed": 83,
   "subject": [
@@ -1331,7 +1331,7 @@
   ]
  },
  "slug-sea": {
-  "file": "fits_sea-slug.png",
+  "file": "sea-slug-01.png",
   "source": "slug-sea.png",
   "specks_removed": 3,
   "subject": [
@@ -1342,7 +1342,7 @@
   ]
  },
  "snail-cleric-crystal": {
-  "file": "fits_snail-01.png",
+  "file": "snail-01.png",
   "source": "snail-cleric-crystal.png",
   "specks_removed": 7,
   "subject": [
@@ -1353,7 +1353,7 @@
   ]
  },
  "snail-cleric-lantern": {
-  "file": "fits_snail-02.png",
+  "file": "snail-02.png",
   "source": "snail-cleric-lantern.png",
   "specks_removed": 12,
   "subject": [
@@ -1364,7 +1364,7 @@
   ]
  },
  "snail-ember": {
-  "file": "does-not-fit_snail-03.png",
+  "file": "snail-03.png",
   "source": "14_f.png",
   "specks_removed": 26,
   "subject": [
@@ -1375,7 +1375,7 @@
   ]
  },
  "snail-prism": {
-  "file": "fits_snail-04.png",
+  "file": "snail-04.png",
   "source": "3_f.png",
   "specks_removed": 43,
   "subject": [
@@ -1386,7 +1386,7 @@
   ]
  },
  "spider-mage-crystal": {
-  "file": "fits_spider-01.png",
+  "file": "spider-01.png",
   "source": "spider-mage-crystal.png",
   "specks_removed": 15,
   "subject": [
@@ -1397,7 +1397,7 @@
   ]
  },
  "spider-rogue": {
-  "file": "fits_spider-02.png",
+  "file": "spider-02.png",
   "source": "spider-rogue.png",
   "specks_removed": 9,
   "subject": [
@@ -1408,7 +1408,7 @@
   ]
  },
  "spikeback": {
-  "file": "does-not-fit_spikeback.png",
+  "file": "spikeback-01.png",
   "source": "1_f.png",
   "specks_removed": 47,
   "subject": [
@@ -1419,7 +1419,7 @@
   ]
  },
  "stag-glade": {
-  "file": "does-not-fit_deer.png",
+  "file": "deer-01.png",
   "source": "26_f.png",
   "specks_removed": 72,
   "subject": [
@@ -1430,7 +1430,7 @@
   ]
  },
  "starfish-mage-crystal": {
-  "file": "fits_starfish.png",
+  "file": "starfish-01.png",
   "source": "starfish-mage-crystal.png",
   "specks_removed": 8,
   "subject": [
@@ -1441,7 +1441,7 @@
   ]
  },
  "thornfang": {
-  "file": "does-not-fit_werewolf.png",
+  "file": "werewolf-01.png",
   "source": "6_f.png",
   "specks_removed": 71,
   "subject": [
@@ -1474,7 +1474,7 @@
   ]
  },
  "toad-boulder": {
-  "file": "does-not-fit_toad-02.png",
+  "file": "toad-01.png",
   "source": "5_f.png",
   "specks_removed": 44,
   "subject": [
@@ -1485,7 +1485,7 @@
   ]
  },
  "toad-druid": {
-  "file": "fits_toad-03.png",
+  "file": "toad-02.png",
   "source": "toad-druid.png",
   "specks_removed": 25,
   "subject": [
@@ -1496,7 +1496,7 @@
   ]
  },
  "turtle-hornshell": {
-  "file": "does-not-fit_turtle-01.png",
+  "file": "turtle-01.png",
   "source": "11_f.png",
   "specks_removed": 34,
   "subject": [
@@ -1507,7 +1507,7 @@
   ]
  },
  "turtle-monk": {
-  "file": "fits_turtle-02.png",
+  "file": "turtle-02.png",
   "source": "turtle-monk.png",
   "specks_removed": 4,
   "subject": [
@@ -1540,7 +1540,7 @@
   ]
  },
  "wolf-ranger": {
-  "file": "fits_wolf-01.png",
+  "file": "wolf-01.png",
   "source": "wolf-ranger.png",
   "specks_removed": 15,
   "subject": [

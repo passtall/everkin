@@ -15,7 +15,7 @@
         "alchemist",
         "bard"
       ],
-      "filename": "seal-bard-bottle_breath_alchemist_bard.png",
+      "filename": "seal-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A round pale seafoam seal musician balancing upright on its broad flippers, small tail curled forward, large smiling eyes. Carries one curved rack of three stout potion bottles across its belly, blowing across the open neck of the top bottle like a flute. One bright coral liquid accent. No instrument clutter. Profession pair: alchemist + bard. Primary attack: breath."
     },
     {
@@ -26,7 +26,7 @@
         "alchemist",
         "sorcerer"
       ],
-      "filename": "squid-alchemist-crystal_magic_alchemist_sorcerer.png",
+      "filename": "squid-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A small floating dusty-purple squid with a broad triangular mantle, two large expressive eyes and eight short clearly separated curling arms. Two arms cradle a single thick glass alembic with a faceted cyan crystal inside, two arms support its base; remaining arms curl neatly inward. Compact readable silhouette, one saturated cyan accent. Profession pair: alchemist + sorcerer. Primary attack: magic."
     },
     {
@@ -37,7 +37,7 @@
         "assassin",
         "bodyguard"
       ],
-      "filename": "rhinoceros-guard-shadow_bladed_assassin_bodyguard.png",
+      "filename": "rhinoceros-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A broad stocky charcoal-gray rhinoceros bodyguard with one short cream horn, small alert eyes and heavy shoulders, in a low stealthy crouch. Wears only a dark navy short hood lowered behind its head and one wide armored forearm bracer with a short retractable silver blade. One bright turquoise bracer inset. Protective and kind, not menacing. Profession pair: assassin + bodyguard. Primary attack: bladed."
     },
     {
@@ -48,7 +48,7 @@
         "assassin",
         "leader"
       ],
-      "filename": "kingfisher-captain-dagger_bladed_assassin_leader.png",
+      "filename": "kingfisher-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: An upright slim muted blue kingfisher with oversized orange beak, piercing friendly eyes, confident commanding posture and swept crest. One short silver dagger held downward in a wing-hand and a short burgundy command sash with one amber clasp. Folded wings, large head, compact bird legs, no banner or armor. Profession pair: assassin + leader. Primary attack: bladed."
     },
     {
@@ -59,7 +59,7 @@
         "assassin",
         "summoner"
       ],
-      "filename": "ferret-summoner-mask_magic_assassin_summoner.png",
+      "filename": "ferret-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A long lean pale taupe ferret with dark plum eye mask markings, crouched quietly with long tail curled at its side. Wears a small violet stone pendant; one tiny angular violet shadow-ferret familiar perches on its tail tip. Clear solid shapes, no smoke or glow, large clever eyes. No weapons. Profession pair: assassin + summoner. Primary attack: magic."
     },
     {
@@ -70,7 +70,7 @@
         "bard",
         "black-mage"
       ],
-      "filename": "toad-bard-bell_magic_bard_black-mage.png",
+      "filename": "toad-03.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A round dusty plum toad with huge cream throat pouch, expressive glossy eyes and a calm mischievous smile, seated on wide webbed feet. Holds one ivory-colored handbell with a violet gemstone clapper. A small dark bow-shaped collar, no robes or staff. Musical curse caster, cute rather than sinister. Profession pair: bard + black-mage. Primary attack: magic."
     },
     {
@@ -81,7 +81,7 @@
         "bard",
         "bodyguard"
       ],
-      "filename": "yak-bard-gong_blunt_bard_bodyguard.png",
+      "filename": "yak-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A massive squat warm brown yak with broad forehead, cream swept horns and large kind eyes, chunky hair represented as broad flat facets. A compact round bronze gong serves as its chest shield, with a single padded mallet held by one forehoof. One bright red cord. Protective musician with wide stance. Profession pair: bard + bodyguard. Primary attack: blunt."
     },
     {
@@ -92,7 +92,7 @@
         "bard",
         "hunter"
       ],
-      "filename": "roadrunner-hunter-whistle_ranged_bard_hunter.png",
+      "filename": "roadrunner-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A tall lanky warm sand-colored roadrunner with a showy dark crest, long tail held upward within frame, two strong bird legs and large alert eyes. A tiny carved whistle necklace and a short wooden sling held in one folded wing-hand, one vivid teal feather accent. Scout musician, no additional gear. Profession pair: bard + hunter. Primary attack: ranged."
     },
     {
@@ -103,7 +103,7 @@
         "bard",
         "summoner"
       ],
-      "filename": "chinchilla-summoner-ocarina_magic_bard_summoner.png",
+      "filename": "chinchilla-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A tiny round pearl-gray chinchilla with enormous ears, plump cheeks and glossy expressive eyes. Seated holding a single terracotta ocarina, one tiny coral-colored ceramic mouse familiar sits on its curled tail. Broad soft faceted forms, one bright coral accent. No clothing. Profession pair: bard + summoner. Primary attack: magic."
     },
     {
@@ -114,7 +114,7 @@
         "black-mage",
         "bodyguard"
       ],
-      "filename": "boar-guard-hex_aura_black-mage_bodyguard.png",
+      "filename": "boar-02.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A wide low muted aubergine boar with heavy protective shoulders, short ivory tusks, large gentle amber eyes. Broad bone-colored shoulder plates form a protective mantle; one saturated violet geometric charm hangs at its chest. Solid opaque shapes, no emitted aura or smoke. Four sturdy legs, confident guarding posture. Profession pair: black-mage + bodyguard. Primary attack: aura."
     },
     {
@@ -125,7 +125,7 @@
         "black-mage",
         "engineer"
       ],
-      "filename": "scarab-engineer-rune_ranged_black-mage_engineer.png",
+      "filename": "scarab-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A chunky dark indigo scarab beetle with six clearly attached legs, glossy expressive violet eyes and broad angular shell. A compact brass rune-powered launcher mounted centrally on its back, one violet crystal as power source, small brass hinge details. Cute cursed artificer, no skulls, no floating runes. Profession pair: black-mage + engineer. Primary attack: ranged."
     },
     {
@@ -136,7 +136,7 @@
         "black-mage",
         "hunter"
       ],
-      "filename": "mongoose-hunter-hex_ranged_black-mage_hunter.png",
+      "filename": "mongoose-02.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A slender muted rust mongoose with a long upright curling tail and large alert eyes, crouched on two rear paws. Holds a small dark wooden crossbow with a single amethyst crystal bolt, and wears a plain bone-colored neck charm. Strong clean silhouette, one saturated violet accent. Profession pair: black-mage + hunter. Primary attack: ranged."
     },
     {
@@ -147,7 +147,7 @@
         "bodyguard",
         "primalist"
       ],
-      "filename": "buffalo-guard-root_lashing_bodyguard_primalist.png",
+      "filename": "buffalo-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A broad low moss-gray water buffalo with wide curved cream horns and massive shoulders, four heavy legs and soft kind eyes. Thick root-like natural armor curves around its shoulders and a flexible leafy vine tail curls forward protectively. One vivid spring-green leaf cluster. No carried equipment. Profession pair: bodyguard + primalist. Primary attack: lashing."
     },
     {
@@ -158,7 +158,7 @@
         "bodyguard",
         "sorcerer"
       ],
-      "filename": "dugong-guard-crystal_aura_bodyguard_sorcerer.png",
+      "filename": "dugong-02.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A round floating pale dusty-blue dugong with a broad protective torso, two stout flippers spread like shields and a curled paddle tail, big gentle eyes. Smooth chunky faceted ice armor on foreflippers and one saturated sapphire chest crystal. No bubbles, water, haze, visible aura or equipment. Profession pair: bodyguard + sorcerer. Primary attack: aura."
     },
     {
@@ -169,7 +169,7 @@
         "engineer",
         "primalist"
       ],
-      "filename": "beetle-engineer-seed_ranged_engineer_primalist.png",
+      "filename": "beetle-04.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A squat muted copper beetle with six short legs, large expressive eyes, broad round shell and small leaf-shaped antennae. A compact wooden-and-brass seed launcher grows neatly from its back, with a single vivid green seed visible in the hopper; roots form its simple mounting brackets. Natural inventor, no other props. Profession pair: engineer + primalist. Primary attack: ranged."
     },
     {
@@ -180,7 +180,7 @@
         "flying",
         "summoner"
       ],
-      "filename": "bat-summoner-moon_magic_flying_summoner.png",
+      "filename": "bat-01.png",
       "prompt": "Use case: stylized-concept. NEW ORIGINAL Everkin creature, generated entirely from this text. Do not copy any existing artwork; no image references. Polished chunky low-poly 3D game collectible, broad flat angular facets, matte muted base colors, ONE saturated accent, oversized expressive glossy eyes, friendly capable face. No fine texture, fur strands, realistic scales, photorealism. Three-quarter front view at chest height, gentle top-left light. PNG 1024x1536 portrait, genuine transparent alpha background, crisp opaque creature silhouette. No background color, gradients, ground, cast shadow, haze, halo, bloom, text, watermark, frame, blood or gore. Whole body and all props and appendages must fit with at least 64px transparent space on every edge, lowest point 80px above bottom; scale down rather than crop. One main creature, plus ONLY the single small familiar where explicitly requested for Summoner. Only the described gear. Subject: A small floating cream bat with enormous ears, big warm eyes and two broad muted rose membrane wings lifted into a compact arch. Holds a small amber crescent charm between its feet; one tiny amber crystal bat familiar perches on the charm. Whole wings and familiar fit fully within frame, one bright amber accent, no glow. Profession pair: flying + summoner. Primary attack: magic."
     }
   ]
