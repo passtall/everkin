@@ -84,11 +84,8 @@ Classes describe broad archetypes rather than individual weapons or specialized 
 
 Andreas's goal: no creature gets access to skills that clearly do not fit its design. Decided in the skill-fit quiz:
 
-- **No subclasses.** There are no element tags for Elementalists, no assigned branches and no per-creature exclusion lists. Every Elementalist can learn skills of every element.
+- **No subclasses and no tags.** There are no element tags, no summon kinds, no assigned branches and no per-creature exclusion lists. Every Elementalist can learn skills of every element.
 - **Branches are organizational only.** A profession's skill tree may be grouped into branches (for example by the archetypes listed in section 3), but a creature can learn from all branches of its professions. Only skill points limit what it learns.
 - **No body traits.** Skills are not gated by hands, wings, voice or similar traits.
 - **Fit comes from care, not rules.** Avoid only what clearly clashes with a creature's art when assigning professions and designing skills. Everkin is a card game with light animation, so generous fits are fine: a living drawbridge can have a charge attack.
 - **A profession must be visible in the art (Andreas, 2026-10-14).** Its cue has to be shown, not implied by color or material. Sorcerers and Elementalists need a casting tool or clear spellcasting: a wand, staff, orb, tome, runes or a spell in hand. A fire-colored body alone is not an Elementalist; it suggests a fire basic attack (Breath, Aura or Magic with that element) instead.
-- **Element of the basic attack.** A Breath, Aura or Magic basic attack can carry one element (fire, frost, water, storm, earth). It sets the basic attack's elemental effects and its look.
-- **Summon kinds.** Each Summoner has one summon kind, or two when the art clearly shows both: beasts, undead, spirits, constructs or plants. It can only learn summoning skills of its kinds.
-- **Who fills the tags.** Claude drafts basic-attack elements and summon kinds from each creature's art; Andreas reviews them in the creature quiz.
