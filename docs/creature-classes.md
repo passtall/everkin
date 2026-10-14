@@ -1,6 +1,6 @@
 # Creature Classes
 
-Attack type and professions for every creature that has art, following [class_system.md](class_system.md) v1.2 (assessed 2026-10-09 from each creature's art and, for the first 54, its earlier classes in [creatures.md](creatures.md)). Each creature has one attack type and one or two professions. Professions have no order of importance. On 2026-10-14 Black Mage was removed: necromantic units became Summoners, the rest Sorcerers, and Sorcerers with fire, frost, water, storm, stone or crystal magic became Elementalists.
+Attack type and professions for every creature that has art, following [class_system.md](class_system.md) v1.3 (assessed 2026-10-09 from each creature's art and, for the first 54, its earlier classes in [creatures.md](creatures.md)). Each creature has one attack type and one or two professions. Professions have no order of importance. On 2026-10-14 Black Mage was removed: necromantic units became Summoners, the rest Sorcerers, and Sorcerers with fire, frost, water, storm, stone or crystal magic became Elementalists. Later that day professions and attack types were merged (class_system.md v1.3): Bodyguard into Guardian, Assassin and Trickster into Rogue, Alchemist and Engineer into Tinker, Thrown into Ranged, Unarmed and Feral into Brawl, and Lashing renamed Whip. 15 units that had both halves of a merged pair have one profession for now; Andreas will revisit them.
 
 Every creature with art in `art/creatures/` has a row. Rows marked **reviewed** in Card details were confirmed by Andreas in the [creature quiz](https://claude.ai/artifact/EbNvfcZZyU3CaBUq6QVvUW); **draft** rows carry the quiz's suggested defaults. Stats have no size tier any more (Andreas, 2026-10-09).
 
@@ -28,74 +28,74 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 
 | Unit | ID | Name | Attack type | Professions | Art file | Source |
 |---|---|---|---|---|---|---|
-| `abacus-strategist` | — | Tallymarch | Unarmed | Engineer, Leader | `abacus-01.png` | — |
-| `accordion-warlord` | — | Wheezewarden | Unarmed | Bard, Warrior | `accordion-01.png` | — |
-| `anchor-sentinel` | — | Barnacle Bulwark | Blunt | Bodyguard, Leader | `anchor-01.png` | — |
+| `abacus-strategist` | — | Tallymarch | Brawl | Tinker, Leader | `abacus-01.png` | — |
+| `accordion-warlord` | — | Wheezewarden | Brawl | Bard, Warrior | `accordion-01.png` | — |
+| `anchor-sentinel` | — | Barnacle Bulwark | Blunt | Guardian, Leader | `anchor-01.png` | — |
 | `ankylosaur-guardian-club` | — | Clubtail Grumbleback | Blunt | Guardian, Warrior | `ankylosaur-01.png` | — |
-| `ant-engineer-gear` | — | Cogmarch Ant | Ranged | Engineer | `ant-01.png` | — |
-| `armadillo-knight-2` | — | Armadillo Recruit | Blunt | Bodyguard | `armadillo-01.png` | `armadillo-knight-2.png` |
+| `ant-engineer-gear` | — | Cogmarch Ant | Ranged | Tinker | `ant-01.png` | — |
+| `armadillo-knight-2` | — | Armadillo Recruit | Blunt | Guardian | `armadillo-01.png` | `armadillo-knight-2.png` |
 | `armadillo-knight` | — | Armadillo Knight | Blunt | Guardian | `armadillo-02.png` | `armadillo-knight.png` |
 | `astrolabe-judge` | — | Starwright Judge | Aura | Sorcerer, Leader | `astrolabe-01.png` | — |
-| `aurochs-bodyguard-plate` | — | Ironhide Aurochs | Feral | Bodyguard | `aurochs-01.png` | — |
-| `axolotl-mage-water` | — | Ripplequill | Magic | Elementalist, Trickster | `axolotl-01.png` | — |
-| `ayeaye-hexer-candle` | — | Candlefinger | Magic | Sorcerer, Assassin | `ayeaye-01.png` | — |
+| `aurochs-bodyguard-plate` | — | Ironhide Aurochs | Brawl | Guardian | `aurochs-01.png` | — |
+| `axolotl-mage-water` | — | Ripplequill | Magic | Elementalist, Rogue | `axolotl-01.png` | — |
+| `ayeaye-hexer-candle` | — | Candlefinger | Magic | Sorcerer, Rogue | `ayeaye-01.png` | — |
 | `badger-summoner-drum` | — | Drumbadger | Blunt | Summoner, Warrior | `badger-01.png` | — |
-| `ballast-bodyguard` | — | Sandbag Sentinel | Blunt | Bodyguard, Flying | `ballast-01.png` | — |
+| `ballast-bodyguard` | — | Sandbag Sentinel | Blunt | Guardian, Flying | `ballast-01.png` | — |
 | `basilisk-sorcerer-gaze` | — | Stonegaze Basilisk | Aura | Sorcerer | `basilisk-01.png` | — |
 | `bassoon-hexer-requiem` | — | Dirgewind | Breath | Sorcerer, Bard | `bassoon-01.png` | — |
 | `bat-summoner-moon` | — | Moonwing | Magic | Flying, Summoner | `bat-01.png` | — |
-| `bat-rogue-shadow` | — | Bat Rogue | Bladed | Assassin, Flying | `bat-02.png` | `bat-rogue-shadow.png` |
+| `bat-rogue-shadow` | — | Bat Rogue | Bladed | Rogue, Flying | `bat-02.png` | `bat-rogue-shadow.png` |
 | `baton-marshal` | — | Marshal Tempo | Polearm | Leader, Summoner | `baton-01.png` | — |
 | `beacon-summoner` | — | Lighthouse Wakelamp | Aura | Summoner, Flying | `beacon-01.png` | — |
-| `beaver-healer-pump` | — | Pumpwhisker | Ranged | Engineer, Healer | `beaver-01.png` | — |
+| `beaver-healer-pump` | — | Pumpwhisker | Ranged | Tinker, Healer | `beaver-01.png` | — |
 | `bee-shaman-sun` | — | Sunhum | Magic | Primalist, Flying | `bee-01.png` | — |
-| `beetle-2` | — | Beetle Recruit | Feral | Guardian, Warrior | `beetle-01.png` | `beetle-2.png` |
+| `beetle-2` | — | Beetle Recruit | Brawl | Guardian, Warrior | `beetle-01.png` | `beetle-2.png` |
 | `beetle-knight-shield` | — | Beetle Guardian | Blunt | Guardian, Warrior | `beetle-02.png` | `beetle-knight-shield.png` |
-| `beetle-engineer-seed` | — | Seedshot Scarab | Ranged | Engineer, Primalist | `beetle-04.png` | — |
-| `behemoth-titan-iron` | — | Ironbound Behemoth | Blunt | Bodyguard, Guardian | `behemoth-01.png` | — |
+| `beetle-engineer-seed` | — | Seedshot Scarab | Ranged | Tinker, Primalist | `beetle-04.png` | — |
+| `behemoth-titan-iron` | — | Ironbound Behemoth | Blunt | Guardian | `behemoth-01.png` | — |
 | `bell-guardian-clapper` | — | Clapperward | Blunt | Bard, Summoner | `bell-01.png` | — |
-| `bellows-drake` | — | Puffing Forgedrake | Breath | Alchemist, Warrior | `bellows-01.png` | — |
-| `binturong-bard-vine` | — | Vinelilt | Lashing | Bard, Primalist | `binturong-01.png` | — |
+| `bellows-drake` | — | Puffing Forgedrake | Breath | Tinker, Warrior | `bellows-01.png` | — |
+| `binturong-bard-vine` | — | Vinelilt | Whip | Bard, Primalist | `binturong-01.png` | — |
 | `bloomspear` | `bloomspear` | Bloomspear | Polearm | Primalist | `bloomspear-01.png` | `7_f.png` |
-| `boar-magma` | `magma_hog` | Magma Hog | Feral | Warrior, Elementalist | `boar-01.png` | `10_f.png` |
-| `boar-guard-hex` | — | Hexbristle | Aura | Sorcerer, Bodyguard | `boar-02.png` | — |
-| `bombardierbeetle-alchemist-acid` | — | Acidpop | Thrown | Alchemist, Engineer | `bombardierbeetle-01.png` | — |
+| `boar-magma` | `magma_hog` | Magma Hog | Brawl | Warrior, Elementalist | `boar-01.png` | `10_f.png` |
+| `boar-guard-hex` | — | Hexbristle | Aura | Sorcerer, Guardian | `boar-02.png` | — |
+| `bombardierbeetle-alchemist-acid` | — | Acidpop | Ranged | Tinker | `bombardierbeetle-01.png` | — |
 | `book-summoner-fold` | — | Foldtome | Magic | Summoner, Primalist | `book-01.png` | — |
 | `brazier-summoner-coal` | — | Coalwraith Brazier | Magic | Summoner, Sorcerer | `brazier-01.png` | — |
-| `buffalo-guard-root` | — | Rootyoke Buffalo | Lashing | Bodyguard, Primalist | `buffalo-01.png` | — |
+| `buffalo-guard-root` | — | Rootyoke Buffalo | Whip | Guardian, Primalist | `buffalo-01.png` | — |
 | `bugle-skyrider` | — | Skybrass | Breath | Bard, Flying | `bugle-01.png` | — |
-| `candelabrum-warrior-wax` | — | Waxbrawler | Unarmed | Warrior, Sorcerer | `candelabrum-01.png` | — |
+| `candelabrum-warrior-wax` | — | Waxbrawler | Brawl | Warrior, Sorcerer | `candelabrum-01.png` | — |
 | `cannon-marauder` | — | Powderbelch | Ranged | Hunter, Warrior | `cannon-01.png` | — |
 | `capybara-guard-calm` | — | Calmwater Capybara | Aura | Healer, Summoner | `capybara-01.png` | — |
-| `caracal-hunter-spear` | — | Tuftspear | Polearm | Hunter, Assassin | `caracal-01.png` | — |
+| `caracal-hunter-spear` | — | Tuftspear | Polearm | Hunter, Rogue | `caracal-01.png` | — |
 | `carillon-summoner-chime` | — | Chimespire | Magic | Summoner, Bard | `carillon-01.png` | — |
 | `cassowary-captain-horn` | — | Crestcaller | Breath | Leader, Warrior | `cassowary-01.png` | — |
 | `caterpillar-bard` | — | Caterpillar Bard | Breath | Bard | `caterpillar-01.png` | `caterpillar-bard.png` |
 | `catfolk-spellblade-moon` | — | Moonclaw Spellblade | Bladed | Sorcerer, Warrior | `catfolk-01.png` | — |
-| `centipede-assassin-sickle` | — | Sicklecoil | Bladed | Assassin, Guardian | `centipede-01.png` | — |
+| `centipede-assassin-sickle` | — | Sicklecoil | Bladed | Rogue, Guardian | `centipede-01.png` | — |
 | `chalice-of-storms` | — | Stormgoblet | Magic | Elementalist, Flying | `chalice-01.png` | — |
-| `chameleon-trickster-tongue` | — | Shiftscale | Lashing | Trickster, Assassin | `chameleon-01.png` | — |
+| `chameleon-trickster-tongue` | — | Shiftscale | Whip | Rogue | `chameleon-01.png` | — |
 | `chandelier-summoner-candle` | — | Candlecrown | Magic | Summoner, Bard | `chandelier-01.png` | — |
-| `chest-bodyguard-lock` | — | Lockjaw Chest | Feral | Bodyguard, Alchemist | `chest-01.png` | — |
+| `chest-bodyguard-lock` | — | Lockjaw Chest | Brawl | Guardian, Tinker | `chest-01.png` | — |
 | `chinchilla-summoner-ocarina` | — | Ocarina Puff | Magic | Bard, Summoner | `chinchilla-01.png` | — |
 | `cicada-bard-chime` | — | Chimewing Cicada | Magic | Bard, Sorcerer | `cicada-01.png` | — |
 | `cinderhorn` | `cinderhorn` | Cinderhorn | Bladed | Warrior, Leader | `cinderhorn-01.png` | `8_f.png` |
-| `coati-trickster-dice` | — | Diceroll Coati | Thrown | Trickster, Bard | `coati-01.png` | — |
-| `cobra` | — | Hoodspitter | Breath | Alchemist, Assassin | `cobra-01.png` | `cobra.png` |
-| `compass-hunter-needle` | — | Northneedle | Bladed | Hunter, Assassin | `compass-02.png` | — |
-| `conchphone-bard-horn` | — | Conchhorn | Breath | Bard, Trickster | `conchphone-01.png` | — |
-| `corkscrew-stalker` | — | Twistcork | Bladed | Assassin, Trickster | `corkscrew-01.png` | — |
-| `crab-alchemist` | — | Crab Alchemist | Thrown | Alchemist | `crab-01.png` | `crab-alchemist.png` |
-| `crab-smith` | — | Crab Smith | Blunt | Engineer, Warrior | `crab-02.png` | `crab-smith.png` |
-| `crab-guard-decoy` | — | Decoy Crab | Blunt | Bodyguard, Trickster | `crab-03.png` | — |
-| `crane-hoist-titan` | — | Hoist Titan | Unarmed | Engineer, Guardian | `crane-01.png` | — |
+| `coati-trickster-dice` | — | Diceroll Coati | Ranged | Rogue, Bard | `coati-01.png` | — |
+| `cobra` | — | Hoodspitter | Breath | Tinker, Rogue | `cobra-01.png` | `cobra.png` |
+| `compass-hunter-needle` | — | Northneedle | Bladed | Hunter, Rogue | `compass-02.png` | — |
+| `conchphone-bard-horn` | — | Conchhorn | Breath | Bard, Rogue | `conchphone-01.png` | — |
+| `corkscrew-stalker` | — | Twistcork | Bladed | Rogue | `corkscrew-01.png` | — |
+| `crab-alchemist` | — | Crab Alchemist | Ranged | Tinker | `crab-01.png` | `crab-alchemist.png` |
+| `crab-smith` | — | Crab Smith | Blunt | Tinker, Warrior | `crab-02.png` | `crab-smith.png` |
+| `crab-guard-decoy` | — | Decoy Crab | Blunt | Guardian, Rogue | `crab-03.png` | — |
+| `crane-hoist-titan` | — | Hoist Titan | Brawl | Tinker, Guardian | `crane-01.png` | — |
 | `crane-summoner-feather` | — | Featherveil Crane | Magic | Summoner, Healer | `crane-02.png` | — |
-| `cricket-bard-fiddle` | — | Fiddlewhit | Magic | Bard, Trickster | `cricket-01.png` | — |
-| `crocodile-shaman` | — | Crocodile Shaman | Feral | Primalist, Warrior | `crocodile-01.png` | `crocodile-shaman.png` |
+| `cricket-bard-fiddle` | — | Fiddlewhit | Magic | Bard, Rogue | `cricket-01.png` | — |
+| `crocodile-shaman` | — | Crocodile Shaman | Brawl | Primalist, Warrior | `crocodile-01.png` | `crocodile-shaman.png` |
 | `crow-necromancer-skull` | — | Skullcaw | Magic | Summoner, Flying | `crow-01.png` | — |
-| `crucible-summoner` | — | Moltencup | Breath | Summoner, Alchemist | `crucible-01.png` | — |
-| `cuttlefish-assassin-needle` | — | Needleglow | Bladed | Assassin, Hunter | `cuttlefish-01.png` | — |
-| `stag-glade` | `glade_stag` | Glade Stag | Feral | Primalist, Healer | `deer-01.png` | `26_f.png` |
+| `crucible-summoner` | — | Moltencup | Breath | Summoner, Tinker | `crucible-01.png` | — |
+| `cuttlefish-assassin-needle` | — | Needleglow | Bladed | Rogue, Hunter | `cuttlefish-01.png` | — |
+| `stag-glade` | `glade_stag` | Glade Stag | Brawl | Primalist, Healer | `deer-01.png` | `26_f.png` |
 | `dormouse-summoner-bell` | — | Bellnap Dormouse | Magic | Summoner, Healer | `dormouse-01.png` | — |
 | `dragon-colossus-ember` | — | Emberwyrm Colossus | Breath | Warrior, Elementalist | `dragon-01.png` | — |
 | `dragon-elder-obsidian` | — | Obsidian Elder | Aura | Sorcerer, Leader | `dragon-02.png` | — |
@@ -103,75 +103,75 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `dragon-titan-glacier` | — | Glacier Titan | Magic | Elementalist, Guardian | `dragon-04.png` | — |
 | `dragonfly-scout-bow` | — | Reedarrow | Ranged | Flying, Hunter | `dragonfly-01.png` | — |
 | `drake-titan-crystal` | — | Crystalback Drake | Bladed | Guardian, Elementalist | `drake-01.png` | — |
-| `drawbridge-bodyguard-chain` | — | Chaingate | Blunt | Bodyguard, Engineer | `drawbridge-01.png` | — |
+| `drawbridge-bodyguard-chain` | — | Chaingate | Blunt | Guardian, Tinker | `drawbridge-01.png` | — |
 | `drum-summoner-war` | — | Wardrum | Aura | Summoner, Bard | `drum-01.png` | — |
-| `dugong-guard-crystal` | — | Crystalfin Dugong | Aura | Bodyguard, Elementalist | `dugong-02.png` | — |
-| `elephant-summoner-idol` | — | Idolbearer | Magic | Bodyguard, Summoner | `elephant-01.png` | — |
-| `ferret-summoner-mask` | — | Maskwhisk | Magic | Assassin, Summoner | `ferret-01.png` | — |
-| `fiddlercrab-trickster-coin` | — | Coinclaw | Blunt | Trickster, Engineer | `fiddlercrab-01.png` | — |
+| `dugong-guard-crystal` | — | Crystalfin Dugong | Aura | Guardian, Elementalist | `dugong-02.png` | — |
+| `elephant-summoner-idol` | — | Idolbearer | Magic | Guardian, Summoner | `elephant-01.png` | — |
+| `ferret-summoner-mask` | — | Maskwhisk | Magic | Rogue, Summoner | `ferret-01.png` | — |
+| `fiddlercrab-trickster-coin` | — | Coinclaw | Blunt | Rogue, Tinker | `fiddlercrab-01.png` | — |
 | `firefly-summoner-lantern` | — | Lanternwing | Aura | Flying, Summoner | `firefly-01.png` | — |
 | `firefly` | — | Firefly | Magic | Flying, Sorcerer | `firefly-02.png` | `firefly.png` |
-| `flyingfish-scout-dart` | — | Dartfin | Ranged | Flying, Trickster | `flyingfish-01.png` | — |
-| `fossa-hunter-harpoon` | — | Harpoon Fossa | Polearm | Hunter, Trickster | `fossa-01.png` | — |
-| `fox-bard` | — | Fox Bard | Feral | Bard, Trickster | `fox-01.png` | `fox-bard.png` |
+| `flyingfish-scout-dart` | — | Dartfin | Ranged | Flying, Rogue | `flyingfish-01.png` | — |
+| `fossa-hunter-harpoon` | — | Harpoon Fossa | Polearm | Hunter, Rogue | `fossa-01.png` | — |
+| `fox-bard` | — | Fox Bard | Brawl | Bard, Rogue | `fox-01.png` | `fox-bard.png` |
 | `frigatebird-bard-throat` | — | Throatdrum | Breath | Bard, Flying | `frigatebird-01.png` | — |
-| `frog-bard-dagger` | — | Frog Bard Dagger | Bladed | Bard, Trickster | `frog-01.png` | `frog-bard-dagger.png` |
-| `furnace-titan` | — | Furnace Titan | Breath | Warrior, Engineer | `furnace-01.png` | — |
+| `frog-bard-dagger` | — | Frog Bard Dagger | Bladed | Bard, Rogue | `frog-01.png` | `frog-bard-dagger.png` |
+| `furnace-titan` | — | Furnace Titan | Breath | Warrior, Tinker | `furnace-01.png` | — |
 | `gargoyle-sentinel-stone` | — | Stonewatch Gargoyle | Polearm | Guardian, Flying | `gargoyle-01.png` | — |
-| `gaur-bodyguard-armor` | — | Bolted Gaur | Feral | Bodyguard, Engineer | `gaur-01.png` | — |
-| `gecko-alchemist-resin` | — | Resinpaw | Thrown | Alchemist, Hunter | `gecko-01.png` | — |
+| `gaur-bodyguard-armor` | — | Bolted Gaur | Brawl | Guardian, Tinker | `gaur-01.png` | — |
+| `gecko-alchemist-resin` | — | Resinpaw | Ranged | Tinker, Hunter | `gecko-01.png` | — |
 | `gecko-summoner-prism` | — | Prismtoe | Magic | Summoner, Sorcerer | `gecko-02.png` | — |
-| `gnome-alchemist-flask` | — | Fizzwick Flaskbottom | Thrown | Alchemist, Engineer | `gnome-01.png` | — |
-| `goat-shaman-totem` | — | Totemhorn | Feral | Primalist, Warrior | `goat-01.png` | — |
+| `gnome-alchemist-flask` | — | Fizzwick Flaskbottom | Ranged | Tinker | `gnome-01.png` | — |
+| `goat-shaman-totem` | — | Totemhorn | Brawl | Primalist, Warrior | `goat-01.png` | — |
 | `goblet-paladin` | — | Grailward | Aura | Healer, Warrior | `goblet-01.png` | — |
-| `golem-colossus-furnace` | — | Furnaceheart Colossus | Blunt | Engineer, Warrior | `golem-01.png` | — |
-| `golem-engineer-gear` | — | Gearwright Golem | Aura | Engineer, Guardian | `golem-02.png` | — |
+| `golem-colossus-furnace` | — | Furnaceheart Colossus | Blunt | Tinker, Warrior | `golem-01.png` | — |
+| `golem-engineer-gear` | — | Gearwright Golem | Aura | Tinker, Guardian | `golem-02.png` | — |
 | `gong-hexer-dissonance` | — | Discord Gong | Aura | Sorcerer, Bard | `gong-01.png` | — |
-| `gorilla-bodyguard-fists` | — | Ironfist Silverback | Unarmed | Bodyguard, Warrior | `gorilla-01.png` | — |
+| `gorilla-bodyguard-fists` | — | Ironfist Silverback | Brawl | Guardian, Warrior | `gorilla-01.png` | — |
 | `griffin-knight-lance` | — | Lancewing Griffin | Polearm | Flying, Warrior | `griffin-01.png` | — |
-| `halfling-alchemist` | — | Halfling Alchemist | Thrown | Alchemist | `halfling-01.png` | `halfling-alchemist.png` |
-| `harpsichord-bard-keys` | — | Keyclatter | Ranged | Bard, Engineer | `harpsichord-01.png` | — |
-| `harpy-eagle-scout-claws` | — | Talonstrike | Unarmed | Flying, Assassin | `harpy-eagle-01.png` | — |
+| `halfling-alchemist` | — | Halfling Alchemist | Ranged | Tinker | `halfling-01.png` | `halfling-alchemist.png` |
+| `harpsichord-bard-keys` | — | Keyclatter | Ranged | Bard, Tinker | `harpsichord-01.png` | — |
+| `harpy-eagle-scout-claws` | — | Talonstrike | Brawl | Flying, Rogue | `harpy-eagle-01.png` | — |
 | `hawk-scout-bow` | — | Skybow Hawk | Ranged | Hunter, Flying | `hawk-01.png` | — |
 | `hermitcrab-sentinel-basalt` | — | Basaltshell | Aura | Guardian, Primalist | `hermitcrab-01.png` | — |
-| `heron-engineer-wing` | — | Wingwright Heron | Ranged | Engineer, Flying | `heron-01.png` | — |
-| `heron-hunter-harpoon` | — | Stillspear | Polearm | Hunter, Assassin | `heron-02.png` | — |
+| `heron-engineer-wing` | — | Wingwright Heron | Ranged | Tinker, Flying | `heron-01.png` | — |
+| `heron-hunter-harpoon` | — | Stillspear | Polearm | Hunter, Rogue | `heron-02.png` | — |
 | `hippo-healer-potion` | — | Tonic Hippo | Breath | Healer, Guardian | `hippo-01.png` | — |
 | `hornbill-bard-drum` | — | Drumbill | Blunt | Bard, Leader | `hornbill-01.png` | — |
-| `horseshoe-champion` | — | Lucky Ironshoe | Unarmed | Warrior, Leader | `horseshoe-01.png` | — |
-| `horseshoecrab-sentinel-bronze` | — | Bronzeback Sentinel | Blunt | Guardian, Engineer | `horseshoecrab-01.png` | — |
-| `hourglass-hexer-sand` | — | Sandhex Glass | Aura | Sorcerer, Trickster | `hourglass-01.png` | — |
+| `horseshoe-champion` | — | Lucky Ironshoe | Brawl | Warrior, Leader | `horseshoe-01.png` | — |
+| `horseshoecrab-sentinel-bronze` | — | Bronzeback Sentinel | Blunt | Guardian, Tinker | `horseshoecrab-01.png` | — |
+| `hourglass-hexer-sand` | — | Sandhex Glass | Aura | Sorcerer, Rogue | `hourglass-01.png` | — |
 | `howlermonkey-bard-roar` | — | Roarleaf | Breath | Bard, Leader | `howlermonkey-01.png` | — |
-| `human-alchemist-shield` | — | Gerald Hollins | Thrown | Alchemist, Guardian | `human-01.png` | `human-alchemist-shield.png` |
-| `human-alchemist` | — | Maggie Wren | Thrown | Alchemist, Hunter | `human-02.png` | `human-alchemist.png` |
+| `human-alchemist-shield` | — | Gerald Hollins | Ranged | Tinker, Guardian | `human-01.png` | `human-alchemist-shield.png` |
+| `human-alchemist` | — | Maggie Wren | Ranged | Tinker, Hunter | `human-02.png` | `human-alchemist.png` |
 | `human-archer-crystal` | — | Mira Castell | Ranged | Elementalist, Hunter | `human-03.png` | `human-archer-crystal.png` |
 | `human-archer-frost` | — | Sigrid Halvorsen | Ranged | Hunter, Elementalist | `human-04.png` | `human-archer-frost.png` |
-| `human-archer-gear` | — | Otto Brenner | Ranged | Hunter, Engineer | `human-05.png` | `human-archer-gear.png` |
+| `human-archer-gear` | — | Otto Brenner | Ranged | Hunter, Tinker | `human-05.png` | `human-archer-gear.png` |
 | `human-archer-sun` | — | Lucia Marin | Ranged | Hunter, Healer | `human-06.png` | `human-archer-sun.png` |
 | `human-archer` | — | Tom Reed | Ranged | Hunter | `human-07.png` | `human-archer.png` |
 | `human-barbarian-frost` | — | Ragnhild Eriksen | Bladed | Warrior, Elementalist | `human-08.png` | `human-barbarian-frost.png` |
 | `human-barbarian` | — | Gunnar Holt | Bladed | Warrior | `human-09.png` | `human-barbarian.png` |
 | `human-bard-shield` | — | Felix Lowell | Blunt | Bard, Guardian | `human-10.png` | `human-bard-shield.png` |
 | `human-bard` | — | Lorenzo Varga | Magic | Bard | `human-11.png` | `human-bard.png` |
-| `human-brawler-hook` | — | Jack Morrow | Blunt | Warrior, Bodyguard | `human-12.png` | `human-brawler-hook.png` |
+| `human-brawler-hook` | — | Jack Morrow | Blunt | Warrior, Guardian | `human-12.png` | `human-brawler-hook.png` |
 | `human-captain-banner` | — | Helena Strand | Polearm | Leader, Warrior | `human-13.png` | `human-captain-banner.png` |
-| `human-captain-pistol` | — | Carlos Fonseca | Ranged | Leader, Trickster | `human-14.png` | `human-captain-pistol.png` |
-| `human-captain-rapier` | — | Beatrix Alvarez | Bladed | Leader, Trickster | `human-15.png` | `human-captain-rapier.png` |
-| `human-cleric-lantern` | — | Agnes Brook | Magic | Healer, Alchemist | `human-16.png` | `human-cleric-lantern.png` |
+| `human-captain-pistol` | — | Carlos Fonseca | Ranged | Leader, Rogue | `human-14.png` | `human-captain-pistol.png` |
+| `human-captain-rapier` | — | Beatrix Alvarez | Bladed | Leader, Rogue | `human-15.png` | `human-captain-rapier.png` |
+| `human-cleric-lantern` | — | Agnes Brook | Magic | Healer, Tinker | `human-16.png` | `human-cleric-lantern.png` |
 | `human-dancer-spear` | — | Amara Okafor | Polearm | Bard, Warrior | `human-17.png` | `human-dancer-spear.png` |
-| `human-dancer` | — | Nadia Petrova | Bladed | Bard, Assassin | `human-18.png` | `human-dancer.png` |
+| `human-dancer` | — | Nadia Petrova | Bladed | Bard, Rogue | `human-18.png` | `human-dancer.png` |
 | `human-druid-leaf` | — | Fiona Ashby | Magic | Primalist, Healer | `human-19.png` | `human-druid-leaf.png` |
 | `human-druid` | — | Ivy Calloway | Magic | Primalist, Healer | `human-20.png` | `human-druid.png` |
-| `human-duelist-rapier` | — | Camille Moreau | Bladed | Warrior, Trickster | `human-21.png` | `human-duelist-rapier.png` |
-| `human-engineer-crystal` | — | Lukas Weiss | Magic | Engineer, Elementalist | `human-22.png` | `human-engineer-crystal.png` |
-| `human-engineer-hook` | — | Max Hooper | Thrown | Engineer, Trickster | `human-23.png` | `human-engineer-hook.png` |
+| `human-duelist-rapier` | — | Camille Moreau | Bladed | Warrior, Rogue | `human-21.png` | `human-duelist-rapier.png` |
+| `human-engineer-crystal` | — | Lukas Weiss | Magic | Tinker, Elementalist | `human-22.png` | `human-engineer-crystal.png` |
+| `human-engineer-hook` | — | Max Hooper | Ranged | Tinker, Rogue | `human-23.png` | `human-engineer-hook.png` |
 | `human-guard-frost` | — | Ingrid Lund | Polearm | Elementalist, Warrior | `human-24.png` | `human-guard-frost.png` |
 | `human-guard-stone` | — | Leo Stone | Bladed | Guardian, Elementalist | `human-25.png` | `human-guard-stone.png` |
-| `human-guard` | — | Peter Holm | Polearm | Guardian, Bodyguard | `human-26.png` | `human-guard.png` |
+| `human-guard` | — | Peter Holm | Polearm | Guardian | `human-26.png` | `human-guard.png` |
 | `human-knight-2` | — | Johanna Weber | Bladed | Warrior, Guardian | `human-27.png` | `human-knight-2.png` |
 | `human-knight-banner` | — | Albrecht Lang | Blunt | Leader, Guardian | `human-28.png` | `human-knight-banner.png` |
 | `human-knight-hammer` | — | Gregor Kohl | Blunt | Guardian, Warrior | `human-29.png` | `human-knight-hammer.png` |
-| `human-knight-shield` | — | Edwin Marsh | Blunt | Guardian, Bodyguard | `human-30.png` | `human-knight-shield.png` |
+| `human-knight-shield` | — | Edwin Marsh | Blunt | Guardian | `human-30.png` | `human-knight-shield.png` |
 | `human-knight` | — | William Hart | Bladed | Warrior, Guardian | `human-31.png` | `human-knight.png` |
 | `human-mage-crystal` | — | Kai Lindqvist | Magic | Elementalist | `human-32.png` | `human-mage-crystal.png` |
 | `human-mage-fire` | — | Carmen Costa | Magic | Elementalist | `human-33.png` | `human-mage-fire.png` |
@@ -184,193 +184,193 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `human-priest-moon` | — | Luna Ortiz | Magic | Healer, Sorcerer | `human-40.png` | `human-priest-moon.png` |
 | `human-priest-sun` | — | Aurelia Day | Ranged | Healer, Primalist | `human-41.png` | `human-priest-sun.png` |
 | `human-priest` | — | Thomas Abbott | Magic | Healer, Leader | `human-42.png` | `human-priest.png` |
-| `human-rogue-potion` | — | Paul Fischer | Bladed | Alchemist, Assassin | `human-43.png` | `human-rogue-potion.png` |
-| `human-rogue-shadow` | — | Nika Volkova | Bladed | Assassin, Sorcerer | `human-44.png` | `human-rogue-shadow.png` |
-| `human-rogue` | — | Daniel Hart | Bladed | Assassin | `human-45.png` | `human-rogue.png` |
+| `human-rogue-potion` | — | Paul Fischer | Bladed | Tinker, Rogue | `human-43.png` | `human-rogue-potion.png` |
+| `human-rogue-shadow` | — | Nika Volkova | Bladed | Rogue, Sorcerer | `human-44.png` | `human-rogue-shadow.png` |
+| `human-rogue` | — | Daniel Hart | Bladed | Rogue | `human-45.png` | `human-rogue.png` |
 | `human-scout-lantern` | — | Elsa Lindgren | Bladed | Hunter, Healer | `human-46.png` | `human-scout-lantern.png` |
 | `human-shaman` | — | Kofi Mensah | Magic | Primalist, Summoner | `human-47.png` | `human-shaman.png` |
-| `human-smith` | — | Hugo Schmidt | Blunt | Engineer, Warrior | `human-48.png` | `human-smith.png` |
+| `human-smith` | — | Hugo Schmidt | Blunt | Tinker, Warrior | `human-48.png` | `human-smith.png` |
 | `human-spellblade-2` | — | Laura Cole | Bladed | Warrior, Sorcerer | `human-49.png` | `human-spellblade-2.png` |
 | `human-spellblade` | — | Richard Novak | Bladed | Warrior, Sorcerer | `human-51.png` | `human-spellblade.png` |
 | `human-wizard` | — | Arthur Pembroke | Magic | Sorcerer | `human-52.png` | `human-wizard.png` |
-| `hummingbird-duelist-rapier` | — | Rapierbeak | Bladed | Flying, Trickster | `hummingbird-01.png` | — |
-| `hydra-colossus-trident` | — | Tridentmaw Hydra | Breath | Warrior, Alchemist | `hydra-01.png` | — |
-| `hyena-engineer-saw` | — | Sawgrin | Ranged | Engineer, Warrior | `hyena-01.png` | — |
+| `hummingbird-duelist-rapier` | — | Rapierbeak | Bladed | Flying, Rogue | `hummingbird-01.png` | — |
+| `hydra-colossus-trident` | — | Tridentmaw Hydra | Breath | Warrior, Tinker | `hydra-01.png` | — |
+| `hyena-engineer-saw` | — | Sawgrin | Ranged | Tinker, Warrior | `hyena-01.png` | — |
 | `ibex-captain-standard` | — | Standardhorn | Polearm | Leader, Guardian | `ibex-01.png` | — |
 | `incense-censor` | — | Smokeswing | Aura | Sorcerer, Healer | `incense-censor-01.png` | — |
-| `inkwell-trickster-quill` | — | Quillspatter | Thrown | Trickster, Assassin | `inkwell-01.png` | — |
-| `isopod-sentinel-iron` | — | Ironroll | Unarmed | Guardian, Engineer | `isopod-01.png` | — |
+| `inkwell-trickster-quill` | — | Quillspatter | Ranged | Rogue | `inkwell-01.png` | — |
+| `isopod-sentinel-iron` | — | Ironroll | Brawl | Guardian, Tinker | `isopod-01.png` | — |
 | `jackalope-hexer-curse` | — | Cursehorn | Magic | Sorcerer, Primalist | `jackalope-01.png` | — |
 | `jelly-mage-storm` | — | Stormbell Jelly | Aura | Elementalist, Flying | `jelly-01.png` | — |
 | `jelly-healer` | — | Mendbloom Jelly | Aura | Healer, Primalist | `jellyfish-02.png` | `jelly-healer.png` |
-| `jerboa-trickster-acorn` | — | Acornpop | Thrown | Trickster, Alchemist | `jerboa-01.png` | — |
+| `jerboa-trickster-acorn` | — | Acornpop | Ranged | Rogue, Tinker | `jerboa-01.png` | — |
 | `kestrel-hunter-lure` | — | Lurewing | Ranged | Hunter, Summoner | `kestrel-01.png` | — |
-| `kettle-alchemist-siege` | — | Siegekettle | Breath | Alchemist, Bard | `kettle-01.png` | — |
-| `kiln-behemoth` | — | Kiln Behemoth | Breath | Alchemist, Bodyguard | `kiln-01.png` | — |
-| `kingfisher-captain-dagger` | — | Captain Daggerbill | Bladed | Assassin, Leader | `kingfisher-01.png` | — |
+| `kettle-alchemist-siege` | — | Siegekettle | Breath | Tinker, Bard | `kettle-01.png` | — |
+| `kiln-behemoth` | — | Kiln Behemoth | Breath | Tinker, Guardian | `kiln-01.png` | — |
+| `kingfisher-captain-dagger` | — | Captain Daggerbill | Bladed | Rogue, Leader | `kingfisher-01.png` | — |
 | `kinkajou-summoner-idol` | — | Idolpaw | Magic | Summoner, Sorcerer | `kinkajou-01.png` | — |
-| `kite-primalist-tail` | — | Tailwind Kite | Lashing | Primalist, Flying | `kite-01.png` | — |
-| `komodo-warrior-cleaver` | — | Cleaver Komodo | Blunt | Warrior, Bodyguard | `komodo-01.png` | — |
-| `kraken-colossus-basalt` | — | Basalt Kraken | Unarmed | Guardian, Sorcerer | `kraken-01.png` | — |
+| `kite-primalist-tail` | — | Tailwind Kite | Whip | Primalist, Flying | `kite-01.png` | — |
+| `komodo-warrior-cleaver` | — | Cleaver Komodo | Blunt | Warrior, Guardian | `komodo-01.png` | — |
+| `kraken-colossus-basalt` | — | Basalt Kraken | Brawl | Guardian, Sorcerer | `kraken-01.png` | — |
 | `lantern-healer-prism` | — | Prismlamp | Aura | Healer, Sorcerer | `lantern-01.png` | — |
 | `reef-warden` | `reef_warden` | Reef Warden | Polearm | Guardian, Leader | `lizardfolk-02.png` | `9_f.png` |
 | `lizardfolk-barbarian-axe` | — | Axejaw Lizardfolk | Bladed | Warrior, Leader | `lizardfolk-03.png` | — |
-| `lizardfolk-ninja-kunai` | — | Kunai Lizardfolk | Thrown | Assassin, Hunter | `lizardfolk-04.png` | — |
-| `lobster-bard-castanet` | — | Castanet Lobster | Unarmed | Bard, Engineer | `lobster-01.png` | — |
-| `lobster-engineer-rivet` | — | Rivetclaw | Ranged | Engineer, Guardian | `lobster-02.png` | — |
-| `lockbox-dreadnought` | — | Lockbox Dreadnought | Feral | Bodyguard, Sorcerer | `lockbox-01.png` | — |
-| `loom-binder` | — | Threadbinder Loom | Lashing | Summoner, Engineer | `loom-01.png` | — |
+| `lizardfolk-ninja-kunai` | — | Kunai Lizardfolk | Ranged | Rogue, Hunter | `lizardfolk-04.png` | — |
+| `lobster-bard-castanet` | — | Castanet Lobster | Brawl | Bard, Tinker | `lobster-01.png` | — |
+| `lobster-engineer-rivet` | — | Rivetclaw | Ranged | Tinker, Guardian | `lobster-02.png` | — |
+| `lockbox-dreadnought` | — | Lockbox Dreadnought | Brawl | Guardian, Sorcerer | `lockbox-01.png` | — |
+| `loom-binder` | — | Threadbinder Loom | Whip | Summoner, Tinker | `loom-01.png` | — |
 | `lyrebird-bard-plume` | — | Plumesong | Breath | Bard, Flying | `lyrebird-01.png` | — |
-| `mammoth-titan-tundra` | — | Tundra Titan | Polearm | Leader, Bodyguard | `mammoth-01.png` | — |
+| `mammoth-titan-tundra` | — | Tundra Titan | Polearm | Leader, Guardian | `mammoth-01.png` | — |
 | `manatee-healer-shell` | — | Shellmend Manatee | Breath | Healer, Guardian | `manatee-01.png` | — |
-| `mandrake-primalist-root` | — | Screamroot | Lashing | Primalist, Guardian | `mandrake-01.png` | — |
-| `mandrill-brawler-gloves` | — | Glovegrin | Unarmed | Warrior, Trickster | `mandrill-01.png` | — |
-| `mannequin` | `mannequin` | Stitchfist Mannequin | Unarmed | Warrior, Guardian | `mannequin-01.png` | `34_f.png` |
-| `manticore-assassin-barb` | — | Barbtail Manticore | Lashing | Assassin, Flying | `manticore-01.png` | — |
-| `mantis-engineer-blade` | — | Bladewright Mantis | Bladed | Assassin, Engineer | `mantis-01.png` | — |
-| `marabou-healer-balm` | — | Balmbeak | Magic | Healer, Alchemist | `marabou-01.png` | — |
+| `mandrake-primalist-root` | — | Screamroot | Whip | Primalist, Guardian | `mandrake-01.png` | — |
+| `mandrill-brawler-gloves` | — | Glovegrin | Brawl | Warrior, Rogue | `mandrill-01.png` | — |
+| `mannequin` | `mannequin` | Stitchfist Mannequin | Brawl | Warrior, Guardian | `mannequin-01.png` | `34_f.png` |
+| `manticore-assassin-barb` | — | Barbtail Manticore | Whip | Rogue, Flying | `manticore-01.png` | — |
+| `mantis-engineer-blade` | — | Bladewright Mantis | Bladed | Rogue, Tinker | `mantis-01.png` | — |
+| `marabou-healer-balm` | — | Balmbeak | Magic | Healer, Tinker | `marabou-01.png` | — |
 | `maskrack-summoner-echo` | — | Echomask Rack | Aura | Summoner, Sorcerer | `maskrack-01.png` | — |
-| `mastiff-guard-shield` | — | Shieldjaw Mastiff | Feral | Bodyguard, Hunter | `mastiff-01.png` | — |
+| `mastiff-guard-shield` | — | Shieldjaw Mastiff | Brawl | Guardian, Hunter | `mastiff-01.png` | — |
 | `meerkat-captain-spyglass` | — | Spyglass Meerkat | Ranged | Leader, Hunter | `meerkat-01.png` | — |
 | `millstone-juggernaut` | — | Millstone Juggernaut | Blunt | Warrior, Guardian | `millstone-01.png` | — |
-| `mirror-revenant` | — | Mirror Revenant | Magic | Sorcerer, Trickster | `mirror-01.png` | — |
-| `mole-engineer-gear` | — | Gearclaw Mole | Blunt | Engineer, Hunter | `mole-01.png` | — |
-| `mole-engineer-hexhammer` | — | Hexhammer Mole | Blunt | Sorcerer, Engineer | `mole-02.png` | — |
-| `mongoose-assassin-sickle` | — | Sicklewhisk | Bladed | Assassin, Hunter | `mongoose-01.png` | — |
+| `mirror-revenant` | — | Mirror Revenant | Magic | Sorcerer, Rogue | `mirror-01.png` | — |
+| `mole-engineer-gear` | — | Gearclaw Mole | Blunt | Tinker, Hunter | `mole-01.png` | — |
+| `mole-engineer-hexhammer` | — | Hexhammer Mole | Blunt | Sorcerer, Tinker | `mole-02.png` | — |
+| `mongoose-assassin-sickle` | — | Sicklewhisk | Bladed | Rogue, Hunter | `mongoose-01.png` | — |
 | `mongoose-hunter-hex` | — | Hexdart Mongoose | Ranged | Sorcerer, Hunter | `mongoose-02.png` | — |
-| `monkey-trickster-sling` | — | Slingtail | Ranged | Trickster, Hunter | `monkey-01.png` | — |
-| `moray-trickster-hook` | — | Hookgrin Moray | Lashing | Trickster, Assassin | `moray-01.png` | — |
-| `mortar-alchemist-bastion` | — | Bastion Mortar | Thrown | Alchemist, Bodyguard | `mortar-01.png` | — |
+| `monkey-trickster-sling` | — | Slingtail | Ranged | Rogue, Hunter | `monkey-01.png` | — |
+| `moray-trickster-hook` | — | Hookgrin Moray | Whip | Rogue | `moray-01.png` | — |
+| `mortar-alchemist-bastion` | — | Bastion Mortar | Ranged | Tinker, Guardian | `mortar-01.png` | — |
 | `moth-cleric-lantern` | — | Lanternmoth | Magic | Healer, Flying | `moth-02.png` | — |
 | `mushroom-druid` | — | Sporedruid | Magic | Primalist, Healer | `mushroom-01.png` | `mushroom-druid.png` |
 | `mushroom-sentinel-shield` | — | Capshield | Aura | Guardian, Primalist | `mushroom-03.png` | — |
 | `musicbox-summoner-drum` | — | Windup Drummer | Magic | Summoner, Bard | `musicbox-01.png` | — |
-| `muskox-bodyguard-buckler` | — | Bucklerhorn | Blunt | Bodyguard, Warrior | `muskox-01.png` | — |
-| `nautilus` | — | Spiralmend | Lashing | Sorcerer, Healer | `nautilus-01.png` | `nautilus.png` |
+| `muskox-bodyguard-buckler` | — | Bucklerhorn | Blunt | Guardian, Warrior | `muskox-01.png` | — |
+| `nautilus` | — | Spiralmend | Whip | Sorcerer, Healer | `nautilus-01.png` | `nautilus.png` |
 | `nautilus-sorcerer-tide` | — | Tidecoil | Magic | Elementalist, Primalist | `nautilus-02.png` | — |
-| `newt-alchemist-coil` | — | Coilnewt | Lashing | Alchemist, Sorcerer | `newt-01.png` | — |
-| `nudibranch-alchemist-vial` | — | Vialfrill | Thrown | Alchemist, Primalist | `nudibranch-01.png` | — |
-| `octopus-alchemist` | — | Eightflask | Thrown | Alchemist, Trickster | `octopus-01.png` | `octopus-alchemist.png` |
-| `octopus-assassin-ink` | — | Inkveil | Lashing | Assassin, Trickster | `octopus-02.png` | — |
+| `newt-alchemist-coil` | — | Coilnewt | Whip | Tinker, Sorcerer | `newt-01.png` | — |
+| `nudibranch-alchemist-vial` | — | Vialfrill | Ranged | Tinker, Primalist | `nudibranch-01.png` | — |
+| `octopus-alchemist` | — | Eightflask | Ranged | Tinker, Rogue | `octopus-01.png` | `octopus-alchemist.png` |
+| `octopus-assassin-ink` | — | Inkveil | Whip | Rogue | `octopus-02.png` | — |
 | `okapi-primalist-vine` | — | Vinestripe | Aura | Primalist, Hunter | `okapi-01.png` | — |
 | `olm-summoner-shade` | — | Shadeolm | Magic | Summoner, Sorcerer | `olm-01.png` | — |
-| `opossum-summoner-dice` | — | Dicetail | Thrown | Summoner, Trickster | `opossum-01.png` | — |
+| `opossum-summoner-dice` | — | Dicetail | Ranged | Summoner, Rogue | `opossum-01.png` | — |
 | `orc-summoner-skull` | — | Grukk Skullcaller | Blunt | Summoner, Sorcerer | `orc-01.png` | — |
-| `orchidmantis-trickster-leaf` | — | Petalshade | Lashing | Primalist, Trickster | `orchidmantis-01.png` | — |
+| `orchidmantis-trickster-leaf` | — | Petalshade | Whip | Primalist, Rogue | `orchidmantis-01.png` | — |
 | `organ-summoner` | — | Pipe Organ Choir | Breath | Summoner, Bard | `organ-01.png` | — |
 | `orrery-sorcerer-orbit` | — | Orbitwright | Magic | Sorcerer, Leader | `orrery-01.png` | — |
-| `ossuary-summoner-cube` | — | Bonecube | Thrown | Summoner, Sorcerer | `ossuary-01.png` | — |
-| `otter-hunter-sling` | — | Slingwhisker | Ranged | Hunter, Trickster | `otter-01.png` | — |
+| `ossuary-summoner-cube` | — | Bonecube | Ranged | Summoner, Sorcerer | `ossuary-01.png` | — |
+| `otter-hunter-sling` | — | Slingwhisker | Ranged | Hunter, Rogue | `otter-01.png` | — |
 | `owl-wizard` | — | Hootmage | Magic | Sorcerer, Flying | `owl-01.png` | `owl-wizard.png` |
-| `panda-monk-fists` | — | Bamboo Monk | Unarmed | Warrior, Healer | `panda-01.png` | — |
-| `pangolin-guard-decoy` | — | Decoy Pangolin | Blunt | Guardian, Trickster | `pangolin-01.png` | — |
+| `panda-monk-fists` | — | Bamboo Monk | Brawl | Warrior, Healer | `panda-01.png` | — |
+| `pangolin-guard-decoy` | — | Decoy Pangolin | Blunt | Guardian, Rogue | `pangolin-01.png` | — |
 | `pangolin-sorcerer-thunder` | — | Thunderscale | Aura | Elementalist, Guardian | `pangolin-02.png` | — |
 | `panpipe-summoner-reed` | — | Reedcaller | Breath | Summoner, Bard | `panpipe-01.png` | — |
 | `peacock-bard-feather` | — | Plumecrown | Magic | Bard, Leader | `peacock-01.png` | — |
-| `peccary-warrior-wraps` | — | Wrapfist Peccary | Unarmed | Warrior, Bodyguard | `peccary-01.png` | — |
-| `pelican-guard-pouch` | — | Pouchguard | Thrown | Flying, Bodyguard | `pelican-01.png` | — |
+| `peccary-warrior-wraps` | — | Wrapfist Peccary | Brawl | Warrior, Guardian | `peccary-01.png` | — |
+| `pelican-guard-pouch` | — | Pouchguard | Ranged | Flying, Guardian | `pelican-01.png` | — |
 | `phoenix-titan-solar` | — | Solar Phoenix | Aura | Healer, Flying | `phoenix-01.png` | — |
 | `pika-summoner-horn` | — | Hornpip | Breath | Leader, Summoner | `pika-01.png` | — |
-| `platypus-alchemist-rune` | — | Runebill | Breath | Alchemist, Sorcerer | `platypus-01.png` | — |
+| `platypus-alchemist-rune` | — | Runebill | Breath | Tinker, Sorcerer | `platypus-01.png` | — |
 | `plough-ravager` | — | Furrow Ravager | Bladed | Warrior, Primalist | `plough-01.png` | — |
 | `pocketwatch-warden` | — | Tickwarden | Aura | Guardian, Sorcerer | `pocketwatch-01.png` | — |
-| `porcupine-alchemist-shield` | — | Quillflask | Thrown | Alchemist, Bodyguard | `porcupine-01.png` | — |
+| `porcupine-alchemist-shield` | — | Quillflask | Ranged | Tinker, Guardian | `porcupine-01.png` | — |
 | `portcullis-colossus` | — | Portcullis Colossus | Blunt | Guardian, Leader | `portcullis-01.png` | — |
-| `printingpress-summoner-type` | — | Typesetter | Thrown | Summoner, Engineer | `printingpress-01.png` | — |
+| `printingpress-summoner-type` | — | Typesetter | Ranged | Summoner, Tinker | `printingpress-01.png` | — |
 | `prism-hexer` | — | Shardhex | Magic | Sorcerer, Flying | `prism-01.png` | — |
-| `puffin-bodyguard-shield` | — | Shieldpuff | Blunt | Flying, Bodyguard | `puffin-01.png` | — |
+| `puffin-bodyguard-shield` | — | Shieldpuff | Blunt | Flying, Guardian | `puffin-01.png` | — |
 | `quern-oracle` | — | Grindstone Oracle | Magic | Primalist, Sorcerer | `quern-01.png` | — |
 | `quokka-summoner-pebble` | — | Pebblegrin | Magic | Summoner, Guardian | `quokka-01.png` | — |
-| `raccoon-alchemist-potion` | — | Potionpaw | Thrown | Alchemist, Trickster | `raccoon-01.png` | — |
-| `ram-paladin-sun` | — | Sunhorn Paladin | Feral | Primalist, Leader | `ram-01.png` | `ram-paladin-sun.png` |
-| `ram-bard-bellows` | — | Bellows Ram | Breath | Bard, Engineer | `ram-02.png` | — |
+| `raccoon-alchemist-potion` | — | Potionpaw | Ranged | Tinker, Rogue | `raccoon-01.png` | — |
+| `ram-paladin-sun` | — | Sunhorn Paladin | Brawl | Primalist, Leader | `ram-01.png` | `ram-paladin-sun.png` |
+| `ram-bard-bellows` | — | Bellows Ram | Breath | Bard, Tinker | `ram-02.png` | — |
 | `ray-mage-crystal` | — | Crystalray | Magic | Flying, Elementalist | `ray-01.png` | `ray-mage-crystal.png` |
 | `reliquary-summoner-seal` | — | Sealed Reliquary | Magic | Summoner, Sorcerer | `reliquary-01.png` | — |
-| `retort-alchemist` | — | Bubblehex Retort | Breath | Alchemist, Sorcerer | `retort-01.png` | — |
-| `rhinoceros-guard-shadow` | — | Shadowhorn | Bladed | Assassin, Bodyguard | `rhinoceros-01.png` | — |
+| `retort-alchemist` | — | Bubblehex Retort | Breath | Tinker, Sorcerer | `retort-01.png` | — |
+| `rhinoceros-guard-shadow` | — | Shadowhorn | Bladed | Rogue, Guardian | `rhinoceros-01.png` | — |
 | `roadrunner-hunter-whistle` | — | Whistledash | Ranged | Bard, Hunter | `roadrunner-01.png` | — |
-| `roc-colossus-thunder` | — | Thunder Roc | Feral | Flying, Hunter | `roc-01.png` | — |
+| `roc-colossus-thunder` | — | Thunder Roc | Brawl | Flying, Hunter | `roc-01.png` | — |
 | `rooster-captain-banner` | — | Banner Cock | Polearm | Leader, Warrior | `rooster-01.png` | — |
 | `sableantelope-captain-pennant` | — | Pennant Sable | Polearm | Leader, Warrior | `sableantelope-01.png` | — |
-| `safe-hexer-vault` | — | Vaulthex | Unarmed | Sorcerer, Bodyguard | `safe-01.png` | — |
+| `safe-hexer-vault` | — | Vaulthex | Brawl | Sorcerer, Guardian | `safe-01.png` | — |
 | `sail-hexer-night` | — | Nightsail | Magic | Sorcerer, Flying | `sail-01.png` | — |
-| `salamander-rogue` | — | Slinkember | Feral | Trickster, Assassin | `salamander-01.png` | `salamander-rogue.png` |
-| `salamander-summoner-flask` | — | Flaskember | Thrown | Alchemist, Summoner | `salamander-02.png` | — |
+| `salamander-rogue` | — | Slinkember | Brawl | Rogue | `salamander-01.png` | `salamander-rogue.png` |
+| `salamander-summoner-flask` | — | Flaskember | Ranged | Tinker, Summoner | `salamander-02.png` | — |
 | `sarcophagus-warden` | — | Tombwarden | Aura | Summoner, Guardian | `sarcophagus-01.png` | — |
-| `scarab-engineer-rune` | — | Runeshell Scarab | Ranged | Sorcerer, Engineer | `scarab-01.png` | — |
-| `scorpion` | — | Stingtail | Lashing | Assassin, Alchemist | `scorpion-01.png` | `scorpion.png` |
-| `scorpion-healer-ribbon` | — | Ribbonsting | Lashing | Assassin, Healer | `scorpion-02.png` | — |
-| `slug-sea` | — | Sea Slug | Aura | Alchemist, Healer | `sea-slug-01.png` | `slug-sea.png` |
+| `scarab-engineer-rune` | — | Runeshell Scarab | Ranged | Sorcerer, Tinker | `scarab-01.png` | — |
+| `scorpion` | — | Stingtail | Whip | Rogue, Tinker | `scorpion-01.png` | `scorpion.png` |
+| `scorpion-healer-ribbon` | — | Ribbonsting | Whip | Rogue, Healer | `scorpion-02.png` | — |
+| `slug-sea` | — | Sea Slug | Aura | Tinker, Healer | `sea-slug-01.png` | `slug-sea.png` |
 | `seahorse-sorcerer-frost` | — | Frostfin Seahorse | Magic | Elementalist, Flying | `seahorse-01.png` | — |
-| `seal-bard-bottle` | — | Bottlenose Bard | Breath | Alchemist, Bard | `seal-01.png` | — |
+| `seal-bard-bottle` | — | Bottlenose Bard | Breath | Tinker, Bard | `seal-01.png` | — |
 | `sealpress-summoner` | — | Waxseal Press | Magic | Summoner, Sorcerer | `sealpress-01.png` | — |
 | `secretarybird-hunter-javelin` | — | Javelin Stalker | Polearm | Hunter, Flying | `secretarybird-01.png` | — |
-| `serpent-titan-crown` | — | Crowned Serpent | Thrown | Alchemist, Leader | `serpent-01.png` | — |
-| `serval-hunter-crossbow` | — | Boltear | Ranged | Hunter, Trickster | `serval-01.png` | — |
-| `sewingbox-engineer-ribbon` | — | Stitchkit | Lashing | Engineer, Healer | `sewingbox-01.png` | — |
+| `serpent-titan-crown` | — | Crowned Serpent | Ranged | Tinker, Leader | `serpent-01.png` | — |
+| `serval-hunter-crossbow` | — | Boltear | Ranged | Hunter, Rogue | `serval-01.png` | — |
+| `sewingbox-engineer-ribbon` | — | Stitchkit | Whip | Tinker, Healer | `sewingbox-01.png` | — |
 | `sextant-admiral` | — | Admiral Starsight | Magic | Leader, Hunter | `sextant-01.png` | — |
-| `shark-land` | `land_shark` | Land Shark | Feral | Warrior, Hunter | `shark-02.png` | `12_f.png` |
+| `shark-land` | `land_shark` | Land Shark | Brawl | Warrior, Hunter | `shark-02.png` | `12_f.png` |
 | `shield-vanguard` | — | Vanguard Aegis | Blunt | Guardian, Warrior | `shield-01.png` | — |
 | `shoebill-captain-pike` | — | Pikebill | Polearm | Leader, Hunter | `shoebill-01.png` | — |
 | `shrew-summoner-totem` | — | Totemshrew | Magic | Summoner, Primalist | `shrew-01.png` | — |
-| `siphon-alchemist` | — | Siphonworm | Lashing | Alchemist, Engineer | `siphon-01.png` | — |
+| `siphon-alchemist` | — | Siphonworm | Whip | Tinker | `siphon-01.png` | — |
 | `sistrum-summoner` | — | Rattlechant | Magic | Summoner, Bard | `sistrum-01.png` | — |
-| `sledgehammer-colossus` | — | Sledge Colossus | Blunt | Bodyguard, Warrior | `sledgehammer-01.png` | — |
-| `sloth-guard-bark` | — | Barkhold Sloth | Feral | Bodyguard, Primalist | `sloth-01.png` | — |
+| `sledgehammer-colossus` | — | Sledge Colossus | Blunt | Guardian, Warrior | `sledgehammer-01.png` | — |
+| `sloth-guard-bark` | — | Barkhold Sloth | Brawl | Guardian, Primalist | `sloth-01.png` | — |
 | `snail-cleric-crystal` | — | Prism Snail | Magic | Elementalist, Healer | `snail-01.png` | `snail-cleric-crystal.png` |
-| `snail-bard-brewer` | — | Brewshell | Aura | Alchemist, Bard | `snail-05.png` | — |
-| `spider-mage-crystal` | — | Crystal Weaver | Magic | Elementalist, Trickster | `spider-01.png` | `spider-mage-crystal.png` |
-| `spider-rogue` | — | Skitterknife | Feral | Trickster, Assassin | `spider-02.png` | `spider-rogue.png` |
-| `spikeback` | `spikeback` | Spikeback | Feral | Warrior, Guardian | `spikeback-01.png` | `1_f.png` |
-| `spindle-summoner` | — | Spindlewhirl | Lashing | Summoner, Bard | `spindle-01.png` | — |
-| `squid-alchemist-crystal` | — | Crystalink Squid | Magic | Alchemist, Elementalist | `squid-01.png` | — |
+| `snail-bard-brewer` | — | Brewshell | Aura | Tinker, Bard | `snail-05.png` | — |
+| `spider-mage-crystal` | — | Crystal Weaver | Magic | Elementalist, Rogue | `spider-01.png` | `spider-mage-crystal.png` |
+| `spider-rogue` | — | Skitterknife | Brawl | Rogue | `spider-02.png` | `spider-rogue.png` |
+| `spikeback` | `spikeback` | Spikeback | Brawl | Warrior, Guardian | `spikeback-01.png` | `1_f.png` |
+| `spindle-summoner` | — | Spindlewhirl | Whip | Summoner, Bard | `spindle-01.png` | — |
+| `squid-alchemist-crystal` | — | Crystalink Squid | Magic | Tinker, Elementalist | `squid-01.png` | — |
 | `stag-hunter-shield` | — | Shieldhorn Stag | Polearm | Hunter, Guardian | `stag-01.png` | — |
 | `starfish-mage-crystal` | — | Starmend | Magic | Elementalist, Healer | `starfish-01.png` | `starfish-mage-crystal.png` |
 | `stingray-healer-coral` | — | Coralmend Ray | Breath | Healer, Primalist | `stingray-01.png` | — |
-| `stoat-healer-needle` | — | Needlewhisk | Bladed | Assassin, Healer | `stoat-01.png` | — |
+| `stoat-healer-needle` | — | Needlewhisk | Bladed | Rogue, Healer | `stoat-01.png` | — |
 | `sugarglider-scout-sail` | — | Sailglide | Ranged | Flying, Hunter | `sugarglider-01.png` | — |
 | `sundial-vanguard` | — | Noonward | Polearm | Leader, Sorcerer | `sundial-01.png` | — |
-| `sundrum-hexer` | — | Sunhex Drum | Aura | Sorcerer, Alchemist | `sundrum-01.png` | — |
-| `tanuki-trickster-leaf` | — | Leafshift Tanuki | Magic | Trickster, Alchemist | `tanuki-01.png` | — |
+| `sundrum-hexer` | — | Sunhex Drum | Aura | Sorcerer, Tinker | `sundrum-01.png` | — |
+| `tanuki-trickster-leaf` | — | Leafshift Tanuki | Magic | Rogue, Tinker | `tanuki-01.png` | — |
 | `tapestry-summoner` | — | Woven Host | Aura | Summoner, Sorcerer | `tapestry-01.png` | — |
 | `tapir-primalist-orchid` | — | Orchid Tapir | Aura | Primalist, Healer | `tapir-01.png` | — |
-| `tarsier-hexer-mask` | — | Maskeye | Magic | Sorcerer, Trickster | `tarsier-01.png` | — |
-| `teapot-alchemist-volcano` | — | Volcano Teapot | Breath | Alchemist, Elementalist | `teapot-01.png` | — |
-| `termite-engineer-drill` | — | Drillmite | Ranged | Engineer, Alchemist | `termite-01.png` | — |
-| `termite-summoner-clockwork` | — | Clockmite | Magic | Engineer, Summoner | `termite-02.png` | — |
-| `thorntreant-primalist-bramble` | — | Bramblestalker | Aura | Primalist, Assassin | `thorntreant-01.png` | — |
+| `tarsier-hexer-mask` | — | Maskeye | Magic | Sorcerer, Rogue | `tarsier-01.png` | — |
+| `teapot-alchemist-volcano` | — | Volcano Teapot | Breath | Tinker, Elementalist | `teapot-01.png` | — |
+| `termite-engineer-drill` | — | Drillmite | Ranged | Tinker | `termite-01.png` | — |
+| `termite-summoner-clockwork` | — | Clockmite | Magic | Tinker, Summoner | `termite-02.png` | — |
+| `thorntreant-primalist-bramble` | — | Bramblestalker | Aura | Primalist, Rogue | `thorntreant-01.png` | — |
 | `toad-boulder` | `boulder_toad` | Boulder Toad | Blunt | Guardian, Warrior | `toad-01.png` | `5_f.png` |
-| `toad-druid` | — | Druid Toad | Breath | Alchemist, Primalist | `toad-02.png` | `toad-druid.png` |
+| `toad-druid` | — | Druid Toad | Breath | Tinker, Primalist | `toad-02.png` | `toad-druid.png` |
 | `toad-bard-bell` | — | Belltoad | Magic | Bard, Sorcerer | `toad-03.png` | — |
 | `tortoise-colossus-mountain` | — | Mountainshell | Aura | Guardian, Primalist | `tortoise-01.png` | — |
 | `tortoise-sentinel-obsidian` | — | Obsidian Tortoise | Aura | Guardian, Sorcerer | `tortoise-02.png` | — |
-| `treant-druid-leaf` | — | Leafwarden | Lashing | Primalist, Guardian | `treant-01.png` | — |
-| `treant-titan-ancient` | — | Elderbough | Lashing | Primalist, Summoner | `treant-02.png` | — |
+| `treant-druid-leaf` | — | Leafwarden | Whip | Primalist, Guardian | `treant-01.png` | — |
+| `treant-titan-ancient` | — | Elderbough | Whip | Primalist, Summoner | `treant-02.png` | — |
 | `trowel-crusader` | — | Trowel Crusader | Bladed | Guardian, Primalist | `trowel-01.png` | — |
-| `tuningfork-champion` | — | Resonant Champion | Unarmed | Bard, Warrior | `tuningfork-01.png` | — |
-| `turbine-skyguard` | — | Skyturbine | Ranged | Flying, Engineer | `turbine-01.png` | — |
-| `turtle-hornshell` | `hornshell` | Hornshell | Feral | Guardian | `turtle-01.png` | `11_f.png` |
+| `tuningfork-champion` | — | Resonant Champion | Brawl | Bard, Warrior | `tuningfork-01.png` | — |
+| `turbine-skyguard` | — | Skyturbine | Ranged | Flying, Tinker | `turbine-01.png` | — |
+| `turtle-hornshell` | `hornshell` | Hornshell | Brawl | Guardian | `turtle-01.png` | `11_f.png` |
 | `turtle-monk` | — | Shellmonk | Blunt | Healer, Guardian | `turtle-02.png` | `turtle-monk.png` |
 | `turtle-bard-frost` | — | Frostshell Bard | Breath | Bard, Elementalist | `turtle-03.png` | — |
 | `umbrella-guardian-fan` | — | Fanbrella | Blunt | Guardian, Flying | `umbrella-01.png` | — |
-| `velvetworm-hexer-rune` | — | Runevelvet | Lashing | Sorcerer, Trickster | `velvetworm-01.png` | — |
-| `vinegaroon-alchemist-flask` | — | Vinegar Flask | Thrown | Alchemist, Assassin | `vinegaroon-01.png` | — |
-| `vise-enforcer` | — | Vise Enforcer | Unarmed | Bodyguard, Engineer | `vise-01.png` | — |
+| `velvetworm-hexer-rune` | — | Runevelvet | Whip | Sorcerer, Rogue | `velvetworm-01.png` | — |
+| `vinegaroon-alchemist-flask` | — | Vinegar Flask | Ranged | Tinker, Rogue | `vinegaroon-01.png` | — |
+| `vise-enforcer` | — | Vise Enforcer | Brawl | Guardian, Tinker | `vise-01.png` | — |
 | `vulture-healer-cinder` | — | Cinderbeak | Magic | Healer, Sorcerer | `vulture-01.png` | — |
 | `walrus-bard-horn` | — | Tuskhorn Walrus | Breath | Bard, Guardian | `walrus-01.png` | — |
-| `warthog-engineer-cannon` | — | Cannon Warthog | Ranged | Engineer, Bodyguard | `warthog-01.png` | — |
-| `wasp-alchemist-potion` | — | Stingflask | Thrown | Alchemist, Flying | `wasp-01.png` | — |
-| `weasel-rogue-dagger` | — | Daggerwhisk | Bladed | Assassin, Trickster | `weasel-01.png` | — |
+| `warthog-engineer-cannon` | — | Cannon Warthog | Ranged | Tinker, Guardian | `warthog-01.png` | — |
+| `wasp-alchemist-potion` | — | Stingflask | Ranged | Tinker, Flying | `wasp-01.png` | — |
+| `weasel-rogue-dagger` | — | Daggerwhisk | Bladed | Rogue | `weasel-01.png` | — |
 | `weathervane-summoner-arrow` | — | Gustarrow | Ranged | Summoner, Flying | `weathervane-01.png` | — |
 | `weaverbird-summoner-banner` | — | Bannerweave | Magic | Leader, Summoner | `weaverbird-01.png` | — |
-| `thornfang` | `thornfang` | Thornfang | Feral | Hunter, Warrior | `werewolf-01.png` | `6_f.png` |
-| `windsock-summoner-gale` | — | Galesock | Lashing | Summoner, Flying | `windsock-01.png` | — |
-| `wisp-hexer-shadow` | — | Shadowwisp | Magic | Sorcerer, Assassin | `wisp-01.png` | — |
-| `wolf-ranger` | — | Ranger Wolf | Feral | Hunter, Bodyguard | `wolf-01.png` | `wolf-ranger.png` |
+| `thornfang` | `thornfang` | Thornfang | Brawl | Hunter, Warrior | `werewolf-01.png` | `6_f.png` |
+| `windsock-summoner-gale` | — | Galesock | Whip | Summoner, Flying | `windsock-01.png` | — |
+| `wisp-hexer-shadow` | — | Shadowwisp | Magic | Sorcerer, Rogue | `wisp-01.png` | — |
+| `wolf-ranger` | — | Ranger Wolf | Brawl | Hunter, Guardian | `wolf-01.png` | `wolf-ranger.png` |
 | `wolverine-warrior-mace` | — | Macefang Wolverine | Blunt | Warrior, Guardian | `wolverine-01.png` | — |
-| `wombat-warrior-fists` | — | Fistburrow | Unarmed | Warrior, Engineer | `wombat-01.png` | — |
+| `wombat-warrior-fists` | — | Fistburrow | Brawl | Warrior, Tinker | `wombat-01.png` | — |
 | `wyvern-scout-obsidian` | — | Obsidian Wyvern | Bladed | Flying, Hunter | `wyvern-01.png` | — |
-| `yak-bard-gong` | — | Gongyak | Blunt | Bard, Bodyguard | `yak-01.png` | — |
+| `yak-bard-gong` | — | Gongyak | Blunt | Bard, Guardian | `yak-01.png` | — |
 
 ## Card details
 

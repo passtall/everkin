@@ -195,7 +195,7 @@ The exact creature roster lives in [creatures.md](creatures.md): size tiers (cri
 
 ## 4. Classes and skill-tree progression
 
-> **Superseded (2026-10-09).** Classes are now defined in [class_system.md](class_system.md): 1 Attack Type (11 options) plus 1–2 Professions (16 options). Wherever this section says "class", "class tree" or "type-specific attack", it describes the old system. The progression rules (point budget, node types, costs, no mana or cooldowns, skill cards in §4.7) still stand, but how skills and trees attach to Attack Types and Professions is not decided yet (section 19).
+> **Superseded (2026-10-09).** Classes are now defined in [class_system.md](class_system.md): 1 Attack Type (9 options) plus 1–2 Professions (13 options). Wherever this section says "class", "class tree" or "type-specific attack", it describes the old system. The progression rules (point budget, node types, costs, no mana or cooldowns, skill cards in §4.7) still stand, but how skills and trees attach to Attack Types and Professions is not decided yet (section 19).
 
 ### 4.1 Access and point budget
 
@@ -259,7 +259,7 @@ There is no global anti-spam rule. A skill's consequences and the resulting comb
 
 ### 4.5 Current class roster
 
-**Replaced 2026-10-09.** The class roster is [class_system.md](class_system.md) v1.2: 11 Attack Types (Unarmed, Bladed, Polearm, Ranged, Feral, Magic, Blunt, Breath, Thrown, Lashing, Aura) and 16 Professions (Hunter, Guardian, Alchemist, Healer, Sorcerer, Elementalist, Warrior, Bard, Assassin, Bodyguard, Leader, Trickster, Engineer, Summoner, Primalist, Flying). The old seven classes and their skills in classes_and_skills.md are invalid. Do not add other Attack Types or Professions without an explicit scope change. On 2026-10-14 Black Mage was replaced by Elementalist (class_system.md v1.2).
+**Replaced 2026-10-09.** The class roster is [class_system.md](class_system.md) v1.3: 9 Attack Types (Brawl, Bladed, Polearm, Ranged, Magic, Blunt, Breath, Whip, Aura) and 13 Professions (Hunter, Guardian, Healer, Sorcerer, Elementalist, Warrior, Bard, Leader, Rogue, Tinker, Summoner, Primalist, Flying). The old seven classes and their skills in classes_and_skills.md are invalid. Do not add other Attack Types or Professions without an explicit scope change. On 2026-10-14 Black Mage was replaced by Elementalist and several classes were merged (class_system.md v1.2 and v1.3).
 
 Class skills use the **same rules across creature types**. A class ability does not acquire a species-specific version merely because a turtle rather than a human uses it. Outcomes can still differ through the user's stats and explicitly defined build effects.
 
@@ -1176,7 +1176,7 @@ The order of work after the AI-versus-AI milestone is adopted in [production.md]
 
 Different discussions suggested around 10 recruits for an early slice or 15–20 for a combat prototype, and between 6–8, 8–12, or 10–12 initial trees. These are alternative scoping suggestions, not simultaneous targets.
 
-The class roster is 11 Attack Types and 16 Professions ([class_system.md](class_system.md)). Creature roster size, enemy count, and final content budget remain open.
+The class roster is 9 Attack Types and 13 Professions ([class_system.md](class_system.md)). Creature roster size, enemy count, and final content budget remain open.
 
 ### 17.3 Deferred or unselected systems
 

@@ -1,11 +1,13 @@
 # Everkin – Class System
 
 **Status:** Finalized  
-**Version:** 1.2
+**Version:** 1.3
 
 > Posted by Andreas on 2026-10-09 as the single source of truth for creature classes. It supersedes every earlier class and skill definition: the seven-class roster (Hunter, Elementalist, Healer, Warrior, Guardian, Feral, Leader), the skills in [classes_and_skills.md](classes_and_skills.md), the type-specific attack library and class assignments in [creatures.md](creatures.md), and the class rules in [game_system.md](game_system.md) §3.7 and §4. How skills, skill trees and basic attacks are built on top of this system is not decided yet (game_system.md §19).
 >
 > **v1.2 (2026-10-14):** Black Mage removed. Necromancy moved to Summoner, curses, hexes and life drain moved to Sorcerer, and elemental magic left Sorcerer for the new Elementalist profession. Still 16 Professions. Decided in the class rework quiz.
+>
+> **v1.3 (2026-10-14):** Merges decided in the class merge and names quizzes. Professions: Bodyguard merged into Guardian; Assassin and Trickster merged into Rogue; Alchemist and Engineer merged into Tinker; Bard, Leader and Primalist sharpened; Paladin moved to Healer. Attack Types: Thrown merged into Ranged; Unarmed and Feral merged into Brawl; Lashing renamed Whip. Now 9 Attack Types and 13 Professions.
 
 ## 1. Core Concept
 
@@ -22,20 +24,18 @@ Classes describe broad archetypes rather than individual weapons or specialized 
 
 ---
 
-## 2. Attack Types (11)
+## 2. Attack Types (9)
 
 | Attack Type | Description |
 |---|---|
-| **Unarmed** | Fists, kicks, martial arts, and other unarmed physical strikes |
+| **Brawl** | The body itself: fists, kicks, martial arts, claws, bites, horns, beaks and fangs |
 | **Bladed** | Swords, daggers, axes, scythes, and bladed weapons |
 | **Polearm** | Spears, lances, halberds, and other long-reach weapons |
-| **Ranged** | Bows, crossbows, slings, and projectile-launching weapons |
-| **Feral** | Natural weapons such as claws, bites, horns, beaks, and fangs |
+| **Ranged** | Bows, crossbows, slings, and other projectile weapons, and directly thrown objects such as knives, rocks, spears and explosives |
 | **Magic** | Spells, magical bolts, and supernatural projectiles |
 | **Blunt** | Hammers, clubs, maces, and other blunt weapons |
 | **Breath** | Fire breath, frost breath, poison spit, acid sprays, and similar emissions |
-| **Thrown** | Directly thrown objects such as knives, rocks, spears, and explosives |
-| **Lashing** | Whips, tentacles, tails, vines, and flexible appendages |
+| **Whip** | Whips, tentacles, tails, vines, and flexible appendages |
 | **Aura** | Continuous or pulsing damage fields surrounding the creature |
 
 ### Attack Type Rules
@@ -49,25 +49,22 @@ Classes describe broad archetypes rather than individual weapons or specialized 
 
 ---
 
-## 3. Professions (16)
+## 3. Professions (13)
 
 | Profession | Description and included archetypes |
 |---|---|
 | **Hunter** | Tracking, hunting, trapping, survival. Includes Ranger, Tracker, Trapper |
-| **Guardian** | Defensive abilities, endurance, area protection, battlefield control. Includes Defender, Tank, Sentinel |
-| **Alchemist** | Potions, chemicals, poisons, transformations, mixtures. Includes Herbalist, Poisoner |
-| **Healer** | Restoring health, cleansing conditions, regeneration. Includes Medic, Cleric |
+| **Guardian** | Defensive abilities, endurance, area protection, battlefield control, and protecting allies: intercepting attacks and taking damage for others. Includes Defender, Tank, Sentinel, Bodyguard |
+| **Healer** | Restoring health, cleansing conditions, regeneration, holy protection. Includes Medic, Cleric, Paladin |
 | **Sorcerer** | All non-elemental spells: arcane magic, enchantment, magical enhancement, and dark magic such as curses, hexes and life drain. Includes Enchanter, Warlock, Hexer |
 | **Elementalist** | Fire, frost, water, storm and earth magic; earth includes stone and crystal. Includes elemental weapons and armor |
 | **Warrior** | Offensive martial abilities, endurance, combat mastery. Includes Berserker, Duelist, Knight, Monk |
-| **Bard** | Inspiration, music, performance, morale and team enhancement. Includes Minstrel, Dancer |
-| **Assassin** | Stealth, precision, critical attacks, executing vulnerable targets. Includes Rogue, Ninja |
-| **Bodyguard** | Protecting specific allies, intercepting attacks, taking damage for others |
-| **Leader** | Commanding allies, tactical coordination, strengthening group performance. Includes Commander, Tactician |
-| **Trickster** | Deception, illusions, misdirection, sabotage and theft. Includes Illusionist, Thief |
-| **Engineer** | Machinery, gadgets, constructs, mechanical traps, technological equipment. Includes Artificer |
+| **Bard** | Buffing allies and weakening enemies through music, sound, dance and performance. Includes Minstrel, Dancer |
+| **Leader** | Commanding the flow of battle: the shared timeline and Momentum, who acts when, tactical coordination. Includes Commander, Tactician |
+| **Rogue** | Stealth, precision, critical attacks, executing vulnerable targets, deception, illusions, misdirection, sabotage and theft. Includes Assassin, Ninja, Trickster, Illusionist, Thief |
+| **Tinker** | Making things: potions, chemicals, poisons, mixtures, machinery, gadgets, constructs, mechanical traps. Includes Alchemist, Herbalist, Poisoner, Engineer, Artificer |
 | **Summoner** | Summoning and commanding additional creatures, spirits, entities, or constructs, including necromancy: raising the dead and bone constructs. Includes Beastmaster, Necromancer |
-| **Primalist** | Nature magic, spirits, sacred powers, rituals, protection and life-force manipulation. Includes Druid, Shaman, Paladin |
+| **Primalist** | Primal nature and the soul: plants, roots, beasts, shapeshifting, totems, nature spirits, rituals and life force. Spirits of the dead belong to Summoner. Includes Druid, Shaman |
 | **Flying** | Flight, aerial mobility, evasive maneuvers, dive attacks, and airborne combat advantages |
 
 ### Profession Rules
