@@ -1,13 +1,15 @@
 # Everkin – Class System
 
 **Status:** Finalized  
-**Version:** 1.3
+**Version:** 1.4
 
 > Posted by Andreas on 2026-10-09 as the single source of truth for creature classes. It supersedes every earlier class and skill definition: the seven-class roster (Hunter, Elementalist, Healer, Warrior, Guardian, Feral, Leader), the skills in [classes_and_skills.md](classes_and_skills.md), the type-specific attack library and class assignments in [creatures.md](creatures.md), and the class rules in [game_system.md](game_system.md) §3.7 and §4. How skills, skill trees and basic attacks are built on top of this system is not decided yet (game_system.md §19).
 >
 > **v1.2 (2026-10-14):** Black Mage removed. Necromancy moved to Summoner, curses, hexes and life drain moved to Sorcerer, and elemental magic left Sorcerer for the new Elementalist profession. Still 16 Professions. Decided in the class rework quiz.
 >
 > **v1.3 (2026-10-14):** Merges decided in the class merge and names quizzes. Professions: Bodyguard merged into Guardian; Assassin and Trickster merged into Rogue; Alchemist and Engineer merged into Tinker; Bard, Leader and Primalist sharpened; Paladin moved to Healer. Attack Types: Thrown merged into Ranged; Unarmed and Feral merged into Brawl; Lashing renamed Whip. Now 9 Attack Types and 13 Professions.
+>
+> **v1.4 (2026-10-14):** Skill-fit rules added (section 4).
 
 ## 1. Core Concept
 
@@ -75,3 +77,16 @@ Classes describe broad archetypes rather than individual weapons or specialized 
 - Two Professions combine their capabilities and can create unusual playstyles.
 - Professions are not restricted by Attack Type or physical appearance.
 - Flying describes aerial capabilities and movement rather than a primary attack method.
+
+---
+
+## 4. Skill Fit (adopted 2026-10-14)
+
+Andreas's goal: no creature gets access to skills that clearly do not fit its design. Decided in the skill-fit quiz:
+
+- **No subclasses.** There are no element tags for Elementalists, no assigned branches and no per-creature exclusion lists. Every Elementalist can learn skills of every element.
+- **Branches are organizational only.** A profession's skill tree may be grouped into branches (for example by the archetypes listed in section 3), but a creature can learn from all branches of its professions. Only skill points limit what it learns.
+- **No body traits.** Skills are not gated by hands, wings, voice or similar traits. Skill fit therefore has to come from the skills themselves: each skill must be described and animated so that it works on any creature that can have that profession.
+- **Element of the basic attack.** A Breath, Aura or Magic basic attack can carry one element (fire, frost, water, storm, earth). It sets the basic attack's elemental effects and its look.
+- **Summon kinds.** Each Summoner has one summon kind, or two when the art clearly shows both: beasts, undead, spirits, constructs or plants. It can only learn summoning skills of its kinds.
+- **Who fills the tags.** Claude drafts basic-attack elements and summon kinds from each creature's art; Andreas reviews them in the creature quiz.
