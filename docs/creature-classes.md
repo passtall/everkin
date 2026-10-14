@@ -28,32 +28,32 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 
 | Unit | ID | Name | Attack type | Professions | Art file | Source |
 |---|---|---|---|---|---|---|
-| `abacus-strategist` | — | Tallymarch | Ranged | Engineer, Leader | `abacus-01.png` | — |
-| `accordion-warlord` | — | Wheezewarden | Breath | Bard, Sorcerer | `accordion-01.png` | — |
-| `anchor-sentinel` | — | Barnacle Bulwark | Blunt | Guardian, Bodyguard | `anchor-01.png` | — |
+| `abacus-strategist` | — | Tallymarch | Unarmed | Engineer, Leader | `abacus-01.png` | — |
+| `accordion-warlord` | — | Wheezewarden | Unarmed | Bard, Warrior | `accordion-01.png` | — |
+| `anchor-sentinel` | — | Barnacle Bulwark | Blunt | Bodyguard, Leader | `anchor-01.png` | — |
 | `ankylosaur-guardian-club` | — | Clubtail Grumbleback | Blunt | Guardian, Warrior | `ankylosaur-01.png` | — |
-| `ant-engineer-gear` | — | Cogmarch Ant | Ranged | Engineer, Leader | `ant-01.png` | — |
+| `ant-engineer-gear` | — | Cogmarch Ant | Ranged | Engineer | `ant-01.png` | — |
 | `armadillo-knight-2` | — | Armadillo Recruit | Blunt | Bodyguard | `armadillo-01.png` | `armadillo-knight-2.png` |
 | `armadillo-knight` | — | Armadillo Knight | Blunt | Guardian | `armadillo-02.png` | `armadillo-knight.png` |
-| `astrolabe-judge` | — | Starwright Judge | Magic | Sorcerer, Leader | `astrolabe-01.png` | — |
-| `aurochs-bodyguard-plate` | — | Ironhide Aurochs | Feral | Bodyguard, Guardian | `aurochs-01.png` | — |
+| `astrolabe-judge` | — | Starwright Judge | Aura | Sorcerer, Leader | `astrolabe-01.png` | — |
+| `aurochs-bodyguard-plate` | — | Ironhide Aurochs | Feral | Bodyguard | `aurochs-01.png` | — |
 | `axolotl-mage-water` | — | Ripplequill | Magic | Elementalist, Trickster | `axolotl-01.png` | — |
 | `ayeaye-hexer-candle` | — | Candlefinger | Magic | Sorcerer, Assassin | `ayeaye-01.png` | — |
 | `badger-summoner-drum` | — | Drumbadger | Blunt | Summoner, Warrior | `badger-01.png` | — |
 | `ballast-bodyguard` | — | Sandbag Sentinel | Blunt | Bodyguard, Flying | `ballast-01.png` | — |
-| `basilisk-sorcerer-gaze` | — | Stonegaze Basilisk | Aura | Sorcerer, Guardian | `basilisk-01.png` | — |
+| `basilisk-sorcerer-gaze` | — | Stonegaze Basilisk | Aura | Sorcerer | `basilisk-01.png` | — |
 | `bassoon-hexer-requiem` | — | Dirgewind | Breath | Sorcerer, Bard | `bassoon-01.png` | — |
 | `bat-summoner-moon` | — | Moonwing | Magic | Flying, Summoner | `bat-01.png` | — |
 | `bat-rogue-shadow` | — | Bat Rogue | Bladed | Assassin, Flying | `bat-02.png` | `bat-rogue-shadow.png` |
-| `baton-marshal` | — | Marshal Tempo | Polearm | Bard, Leader | `baton-01.png` | — |
-| `beacon-summoner` | — | Lighthouse Wakelamp | Magic | Summoner, Flying | `beacon-01.png` | — |
+| `baton-marshal` | — | Marshal Tempo | Polearm | Leader, Summoner | `baton-01.png` | — |
+| `beacon-summoner` | — | Lighthouse Wakelamp | Aura | Summoner, Flying | `beacon-01.png` | — |
 | `beaver-healer-pump` | — | Pumpwhisker | Ranged | Engineer, Healer | `beaver-01.png` | — |
-| `bee-shaman-sun` | — | Sunhum | Aura | Primalist, Flying | `bee-01.png` | — |
+| `bee-shaman-sun` | — | Sunhum | Magic | Primalist, Flying | `bee-01.png` | — |
 | `beetle-2` | — | Beetle Recruit | Feral | Guardian, Warrior | `beetle-01.png` | `beetle-2.png` |
 | `beetle-knight-shield` | — | Beetle Guardian | Blunt | Guardian, Warrior | `beetle-02.png` | `beetle-knight-shield.png` |
 | `beetle-engineer-seed` | — | Seedshot Scarab | Ranged | Engineer, Primalist | `beetle-04.png` | — |
 | `behemoth-titan-iron` | — | Ironbound Behemoth | Blunt | Bodyguard, Guardian | `behemoth-01.png` | — |
-| `bell-guardian-clapper` | — | Clapperward | Blunt | Guardian, Bard | `bell-01.png` | — |
+| `bell-guardian-clapper` | — | Clapperward | Blunt | Bard, Summoner | `bell-01.png` | — |
 | `bellows-drake` | — | Puffing Forgedrake | Breath | Alchemist, Warrior | `bellows-01.png` | — |
 | `binturong-bard-vine` | — | Vinelilt | Lashing | Bard, Primalist | `binturong-01.png` | — |
 | `bloomspear` | `bloomspear` | Bloomspear | Polearm | Primalist | `bloomspear-01.png` | `7_f.png` |
@@ -66,7 +66,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `bugle-skyrider` | — | Skybrass | Breath | Bard, Flying | `bugle-01.png` | — |
 | `candelabrum-warrior-wax` | — | Waxbrawler | Unarmed | Warrior, Sorcerer | `candelabrum-01.png` | — |
 | `cannon-marauder` | — | Powderbelch | Ranged | Hunter, Warrior | `cannon-01.png` | — |
-| `capybara-guard-calm` | — | Calmwater Capybara | Aura | Bodyguard, Healer | `capybara-01.png` | — |
+| `capybara-guard-calm` | — | Calmwater Capybara | Aura | Healer, Summoner | `capybara-01.png` | — |
 | `caracal-hunter-spear` | — | Tuftspear | Polearm | Hunter, Assassin | `caracal-01.png` | — |
 | `carillon-summoner-chime` | — | Chimespire | Magic | Summoner, Bard | `carillon-01.png` | — |
 | `cassowary-captain-horn` | — | Crestcaller | Breath | Leader, Warrior | `cassowary-01.png` | — |
@@ -378,45 +378,45 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 
 | Art file | Name | Biome | HP | Speed | Power | Defense | Front frame | Rear frame | Status | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `abacus-01.png` | Tallymarch | Cathedral | 40 | 5 | 5 | 10% | 189,57,640,960 | 0,0,1024,1536 | draft |  |
-| `accordion-01.png` | Wheezewarden | Ruins | 40 | 5 | 5 | 0% | 224,145,640,960 | 0,0,1024,1536 | draft |  |
-| `anchor-01.png` | Barnacle Bulwark | Coast | 60 | 3 | 6 | 30% | 224,22,640,960 | 0,0,1024,1536 | draft |  |
-| `ankylosaur-01.png` | Clubtail Grumbleback | Mountain | 60 | 3 | 6 | 30% | 306,179,640,960 | 0,0,1024,1536 | draft |  |
-| `ant-01.png` | Cogmarch Ant | Jungle | 20 | 8 | 3 | 10% | 283,54,640,960 | 0,0,1024,1536 | draft |  |
+| `abacus-01.png` | Tallymarch | Cathedral | 40 | 5 | 5 | 0% | 189,57,745,1117 | 0,0,1024,1536 | reviewed |  |
+| `accordion-01.png` | Wheezewarden | Cathedral | 40 | 5 | 5 | 0% | 255,117,840,1260 | -6,-62,1095,1643 | reviewed |  |
+| `anchor-01.png` | Barnacle Bulwark | Coast | 60 | 3 | 6 | 0% | 150,-37,877,1316 | 0,0,1024,1536 | reviewed |  |
+| `ankylosaur-01.png` | Clubtail Grumbleback | Mountain | 60 | 3 | 6 | 20% | 75,324,640,960 | 0,0,1061,1592 | reviewed |  |
+| `ant-01.png` | Cogmarch Ant | Jungle | 20 | 8 | 3 | 0% | 160,54,794,1191 | 0,0,1024,1536 | reviewed |  |
 | `armadillo-01.png` | Armadillo Recruit | Desert | 40 | 6 | 5 | 10% | 38,507,640,960 | 28,70,977,1466 | reviewed | remove tier stat completely. we dont need it. you can keep it in the dialog so the dialog doesnt need rework, but we ignore it from now on |
 | `armadillo-02.png` | Armadillo Knight | Desert | 45 | 4 | 6 | 20% | 266,255,640,960 | 31,46,993,1490 | reviewed |  |
-| `astrolabe-01.png` | Starwright Judge | Cathedral | 40 | 5 | 5 | 10% | 194,0,640,960 | 0,0,1024,1536 | draft |  |
-| `aurochs-01.png` | Ironhide Aurochs | Savannah | 60 | 3 | 6 | 20% | 305,189,640,960 | 0,0,1024,1536 | draft |  |
-| `axolotl-01.png` | Ripplequill | Lagoon | 20 | 8 | 3 | 0% | 193,129,640,960 | 0,0,1024,1536 | draft |  |
-| `ayeaye-01.png` | Candlefinger | Jungle | 20 | 8 | 3 | 0% | 247,82,640,960 | 0,0,1024,1536 | draft |  |
-| `badger-01.png` | Drumbadger | Autumn woods | 40 | 5 | 5 | 10% | 151,120,640,960 | 0,0,1024,1536 | draft |  |
-| `ballast-01.png` | Sandbag Sentinel | Storm cliffs | 40 | 5 | 5 | 20% | 194,0,640,960 | 0,0,1024,1536 | draft |  |
-| `basilisk-01.png` | Stonegaze Basilisk | Desert | 60 | 3 | 6 | 10% | 182,105,640,960 | 0,0,1024,1536 | draft |  |
-| `bassoon-01.png` | Dirgewind | Ruins | 40 | 5 | 5 | 0% | 310,0,640,960 | 0,0,1024,1536 | draft |  |
-| `bat-01.png` | Moonwing | Crystal caverns | 20 | 8 | 3 | 0% | 267,146,640,960 | 0,0,1024,1536 | draft |  |
+| `astrolabe-01.png` | Starwright Judge | Cathedral | 40 | 5 | 5 | 10% | 93,-25,930,1395 | 0,0,1024,1536 | reviewed |  |
+| `aurochs-01.png` | Ironhide Aurochs | Savannah | 60 | 3 | 6 | 10% | 296,192,733,1100 | 9,-6,1089,1634 | reviewed |  |
+| `axolotl-01.png` | Ripplequill | Lagoon | 20 | 8 | 3 | 0% | 193,98,717,1076 | 0,0,1024,1536 | reviewed |  |
+| `ayeaye-01.png` | Candlefinger | Jungle | 20 | 8 | 3 | 0% | 272,144,640,960 | 0,0,1024,1536 | reviewed |  |
+| `badger-01.png` | Drumbadger | Autumn woods | 40 | 5 | 5 | 10% | 262,65,683,1025 | 0,0,1024,1536 | reviewed |  |
+| `ballast-01.png` | Sandbag Sentinel | Storm cliffs | 40 | 5 | 5 | 20% | 188,-9,760,1140 | 0,0,1024,1536 | reviewed |  |
+| `basilisk-01.png` | Stonegaze Basilisk | Desert | 60 | 3 | 6 | 10% | 345,111,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bassoon-01.png` | Dirgewind | Ruins | 40 | 5 | 5 | 0% | 310,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bat-01.png` | Moonwing | Crystal caverns | 20 | 8 | 3 | 0% | 326,131,640,960 | 0,0,1024,1536 | reviewed |  |
 | `bat-02.png` | Bat Rogue | Crystal caverns | 20 | 7 | 4 | 0% | 239,28,640,960 | 0,0,1024,1536 | reviewed |  |
-| `baton-01.png` | Marshal Tempo | Cathedral | 40 | 5 | 5 | 0% | 140,0,640,960 | 0,0,1024,1536 | draft |  |
-| `beacon-01.png` | Lighthouse Wakelamp | Coast | 60 | 3 | 6 | 20% | 217,0,640,960 | 0,0,1024,1536 | draft |  |
-| `beaver-01.png` | Pumpwhisker | Wet forest | 40 | 5 | 5 | 0% | 211,143,640,960 | 0,0,1024,1536 | draft |  |
-| `bee-01.png` | Sunhum | Flower meadow | 20 | 8 | 3 | 0% | 182,165,640,960 | 0,0,1024,1536 | draft |  |
+| `baton-01.png` | Marshal Tempo | Cathedral | 40 | 5 | 5 | 0% | 140,0,770,1154 | 0,0,1024,1536 | reviewed |  |
+| `beacon-01.png` | Lighthouse Wakelamp | Coast | 60 | 3 | 6 | 20% | 195,-22,779,1169 | 0,0,1024,1536 | reviewed |  |
+| `beaver-01.png` | Pumpwhisker | Wet forest | 40 | 5 | 5 | 0% | 310,124,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bee-01.png` | Sunhum | Flower meadow | 20 | 8 | 3 | 0% | 274,187,634,951 | 0,0,1024,1536 | reviewed |  |
 | `beetle-01.png` | Beetle Recruit | Jungle | 30 | 5 | 5 | 30% | 214,321,810,1215 | 45,67,979,1469 | reviewed |  |
 | `beetle-02.png` | Beetle Guardian | Jungle | 45 | 4 | 7 | 20% | 225,255,731,1097 | 28,42,996,1494 | reviewed |  |
-| `beetle-04.png` | Seedshot Scarab | Jungle | 20 | 8 | 3 | 20% | 215,178,640,960 | 0,0,1024,1536 | draft |  |
-| `behemoth-01.png` | Ironbound Behemoth | Mountain | 60 | 3 | 6 | 30% | 287,141,640,960 | 0,0,1024,1536 | draft |  |
-| `bell-01.png` | Clapperward | Cathedral | 60 | 3 | 6 | 30% | 145,96,640,960 | 0,0,1024,1536 | draft |  |
-| `bellows-01.png` | Puffing Forgedrake | Ashlands | 40 | 5 | 5 | 10% | 306,70,640,960 | 0,0,1024,1536 | draft |  |
-| `binturong-01.png` | Vinelilt | Jungle | 40 | 5 | 5 | 0% | 257,0,640,960 | 0,0,1024,1536 | draft |  |
+| `beetle-04.png` | Seedshot Scarab | Jungle | 20 | 8 | 3 | 20% | 348,197,640,960 | 0,0,1024,1536 | reviewed |  |
+| `behemoth-01.png` | Ironbound Behemoth | Mountain | 60 | 3 | 6 | 30% | 389,92,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bell-01.png` | Clapperward | Cathedral | 60 | 3 | 6 | 10% | 253,65,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bellows-01.png` | Puffing Forgedrake | Ashlands | 40 | 5 | 5 | 10% | 41,419,640,960 | 0,0,1024,1536 | reviewed |  |
+| `binturong-01.png` | Vinelilt | Jungle | 40 | 5 | 5 | 0% | 118,77,640,960 | 0,0,1024,1536 | reviewed |  |
 | `bloomspear-01.png` | Bloomspear | Flower meadow | 40 | 5 | 5 | 0% | 259,110,640,960 | 42,51,973,1460 | reviewed |  |
 | `boar-01.png` | Magma Hog | Ashlands | 60 | 4 | 6 | 0% | 35,550,640,960 | 0,0,1024,1536 | reviewed |  |
-| `boar-02.png` | Hexbristle | Autumn woods | 40 | 5 | 5 | 10% | 257,181,640,960 | 0,0,1024,1536 | draft |  |
-| `bombardierbeetle-01.png` | Acidpop | Desert | 20 | 8 | 3 | 20% | 164,166,640,960 | 0,0,1024,1536 | draft |  |
-| `book-01.png` | Foldtome | Ruins | 40 | 5 | 5 | 0% | 242,52,640,960 | 0,0,1024,1536 | draft |  |
-| `brazier-01.png` | Coalwraith Brazier | Ashlands | 40 | 5 | 5 | 20% | 121,104,640,960 | 0,0,1024,1536 | draft |  |
-| `buffalo-01.png` | Rootyoke Buffalo | Savannah | 60 | 3 | 6 | 10% | 312,260,640,960 | 0,0,1024,1536 | draft |  |
-| `bugle-01.png` | Skybrass | Storm cliffs | 20 | 8 | 3 | 0% | 193,8,640,960 | 0,0,1024,1536 | draft |  |
-| `candelabrum-01.png` | Waxbrawler | Cathedral | 40 | 5 | 5 | 10% | 212,60,640,960 | 0,0,1024,1536 | draft |  |
-| `cannon-01.png` | Powderbelch | Coast | 60 | 3 | 6 | 30% | 195,102,640,960 | 0,0,1024,1536 | draft |  |
-| `capybara-01.png` | Calmwater Capybara | Wet forest | 40 | 5 | 5 | 0% | 221,282,640,960 | 0,0,1024,1536 | draft |  |
+| `boar-02.png` | Hexbristle | Autumn woods | 40 | 5 | 5 | 10% | 433,181,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bombardierbeetle-01.png` | Acidpop | Desert | 20 | 8 | 3 | 20% | 65,120,640,960 | 0,0,1024,1536 | reviewed |  |
+| `book-01.png` | Foldtome | Ruins | 40 | 5 | 5 | 0% | 220,475,640,960 | 0,0,1024,1536 | reviewed |  |
+| `brazier-01.png` | Coalwraith Brazier | Ashlands | 40 | 5 | 5 | 20% | 203,1,740,1110 | 0,0,1024,1536 | reviewed |  |
+| `buffalo-01.png` | Rootyoke Buffalo | Savannah | 60 | 3 | 6 | 10% | 327,141,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bugle-01.png` | Skybrass | Storm cliffs | 20 | 8 | 3 | 0% | 377,201,640,960 | 0,0,1024,1536 | reviewed |  |
+| `candelabrum-01.png` | Waxbrawler | Cathedral | 40 | 5 | 5 | 10% | 212,60,640,960 | 0,0,1024,1536 | reviewed |  |
+| `cannon-01.png` | Powderbelch | Cathedral | 60 | 3 | 6 | 30% | 200,79,813,1220 | 0,0,1024,1536 | reviewed |  |
+| `capybara-01.png` | Calmwater Capybara | Jungle | 40 | 5 | 5 | 0% | 422,195,640,960 | 0,0,1024,1536 | reviewed |  |
 | `caracal-01.png` | Tuftspear | Savannah | 40 | 5 | 5 | 0% | 250,135,640,960 | 0,0,1024,1536 | draft |  |
 | `carillon-01.png` | Chimespire | Cathedral | 60 | 3 | 6 | 20% | 161,1,640,960 | 0,0,1024,1536 | draft |  |
 | `cassowary-01.png` | Crestcaller | Jungle | 40 | 5 | 5 | 0% | 384,0,640,960 | 0,0,1024,1536 | draft |  |
