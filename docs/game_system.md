@@ -259,7 +259,7 @@ There is no global anti-spam rule. A skill's consequences and the resulting comb
 
 ### 4.5 Current class roster
 
-**Replaced 2026-10-09.** The class roster is [class_system.md](class_system.md) v1.1: 11 Attack Types (Unarmed, Bladed, Polearm, Ranged, Feral, Magic, Blunt, Breath, Thrown, Lashing, Aura) and 16 Professions (Hunter, Guardian, Alchemist, Healer, Sorcerer, Black Mage, Warrior, Bard, Assassin, Bodyguard, Leader, Trickster, Engineer, Summoner, Primalist, Flying). The old seven classes and their skills in classes_and_skills.md are invalid. Do not add other Attack Types or Professions without an explicit scope change.
+**Replaced 2026-10-09.** The class roster is [class_system.md](class_system.md) v1.2: 11 Attack Types (Unarmed, Bladed, Polearm, Ranged, Feral, Magic, Blunt, Breath, Thrown, Lashing, Aura) and 16 Professions (Hunter, Guardian, Alchemist, Healer, Sorcerer, Elementalist, Warrior, Bard, Assassin, Bodyguard, Leader, Trickster, Engineer, Summoner, Primalist, Flying). The old seven classes and their skills in classes_and_skills.md are invalid. Do not add other Attack Types or Professions without an explicit scope change. On 2026-10-14 Black Mage was replaced by Elementalist (class_system.md v1.2).
 
 Class skills use the **same rules across creature types**. A class ability does not acquire a species-specific version merely because a turtle rather than a human uses it. Outcomes can still differ through the user's stats and explicitly defined build effects.
 

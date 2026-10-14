@@ -1,6 +1,6 @@
 # Creature profession-pair coverage
 
-Audited 2026-10-12. All 120 unordered pairs among the 16 professions have artwork. Reversed profession order counts as the same pair. This does not imply coverage of every attack-type combination.
+Audited 2026-10-12. **Outdated by the 2026-10-14 class rework** (class_system.md v1.2): Black Mage rows below no longer exist, and Elementalist has no art yet paired with Assassin, Sorcerer or Summoner in creature-classes.md. All 120 unordered pairs among the 16 professions have artwork. Reversed profession order counts as the same pair. This does not imply coverage of every attack-type combination.
 
 Sources: creature-classes.md rows with an existing cleaned image or source in images/kin, plus class-encoded PNG filenames in art/creatures-new. Art counts regardless of its style-fit label.
 

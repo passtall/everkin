@@ -1,9 +1,11 @@
 # Everkin – Class System
 
 **Status:** Finalized  
-**Version:** 1.1
+**Version:** 1.2
 
 > Posted by Andreas on 2026-10-09 as the single source of truth for creature classes. It supersedes every earlier class and skill definition: the seven-class roster (Hunter, Elementalist, Healer, Warrior, Guardian, Feral, Leader), the skills in [classes_and_skills.md](classes_and_skills.md), the type-specific attack library and class assignments in [creatures.md](creatures.md), and the class rules in [game_system.md](game_system.md) §3.7 and §4. How skills, skill trees and basic attacks are built on top of this system is not decided yet (game_system.md §19).
+>
+> **v1.2 (2026-10-14):** Black Mage removed. Necromancy moved to Summoner, curses, hexes and life drain moved to Sorcerer, and elemental magic left Sorcerer for the new Elementalist profession. Still 16 Professions. Decided in the class rework quiz.
 
 ## 1. Core Concept
 
@@ -55,8 +57,8 @@ Classes describe broad archetypes rather than individual weapons or specialized 
 | **Guardian** | Defensive abilities, endurance, area protection, battlefield control. Includes Defender, Tank, Sentinel |
 | **Alchemist** | Potions, chemicals, poisons, transformations, mixtures. Includes Herbalist, Poisoner |
 | **Healer** | Restoring health, cleansing conditions, regeneration. Includes Medic, Cleric |
-| **Sorcerer** | Arcane and elemental magic, magical enhancement. Includes Elementalist, Enchanter |
-| **Black Mage** | Dark magic, curses, necromancy, life drain. Includes Necromancer, Warlock, Hexer |
+| **Sorcerer** | All non-elemental spells: arcane magic, enchantment, magical enhancement, and dark magic such as curses, hexes and life drain. Includes Enchanter, Warlock, Hexer |
+| **Elementalist** | Fire, frost, water, storm and earth magic; earth includes stone and crystal. Includes elemental weapons and armor |
 | **Warrior** | Offensive martial abilities, endurance, combat mastery. Includes Berserker, Duelist, Knight, Monk |
 | **Bard** | Inspiration, music, performance, morale and team enhancement. Includes Minstrel, Dancer |
 | **Assassin** | Stealth, precision, critical attacks, executing vulnerable targets. Includes Rogue, Ninja |
@@ -64,7 +66,7 @@ Classes describe broad archetypes rather than individual weapons or specialized 
 | **Leader** | Commanding allies, tactical coordination, strengthening group performance. Includes Commander, Tactician |
 | **Trickster** | Deception, illusions, misdirection, sabotage and theft. Includes Illusionist, Thief |
 | **Engineer** | Machinery, gadgets, constructs, mechanical traps, technological equipment. Includes Artificer |
-| **Summoner** | Summoning and commanding additional creatures, spirits, entities, or constructs. Includes Beastmaster |
+| **Summoner** | Summoning and commanding additional creatures, spirits, entities, or constructs, including necromancy: raising the dead and bone constructs. Includes Beastmaster, Necromancer |
 | **Primalist** | Nature magic, spirits, sacred powers, rituals, protection and life-force manipulation. Includes Druid, Shaman, Paladin |
 | **Flying** | Flight, aerial mobility, evasive maneuvers, dive attacks, and airborne combat advantages |
 

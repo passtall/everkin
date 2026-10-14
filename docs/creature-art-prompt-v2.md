@@ -53,7 +53,7 @@ Style target: a stylized low-poly 3D game character, like a polished mobile-game
 ## Design rules (for every brief)
 
 - **Vary the body type.** Each brief names one: tiny, round, tall and lanky, wide and low, serpentine, many-limbed, floating, or hulking. Do not make every creature an upright, robed, staff-holding figure.
-- **Show the class in the body, not only the prop.** Healers are soft, round and warm-colored. Assassins are lean, low and angular with dark cool colors. Bards have a showy crest, tail or throat. Engineers have goggles, brass and bolts. Summoners express their class through integrated summoning seals, vessels, resonators or ritual mechanisms; do not default to miniature copies or companion creatures. Black Mages use purple and bone tones with glowing eyes. Leaders are upright with a banner or horn. Hunters have long limbs or sharp eyes. Fliers have large readable wings. Guardians and Bodyguards are broad and plated.
+- **Show the class in the body, not only the prop.** Healers are soft, round and warm-colored. Assassins are lean, low and angular with dark cool colors. Bards have a showy crest, tail or throat. Engineers have goggles, brass and bolts. Summoners express their class through integrated summoning seals, vessels, resonators or ritual mechanisms; do not default to miniature copies or companion creatures. Necromantic Summoners and dark Sorcerers use purple and bone tones with glowing eyes. Elementalists show their element in body color and effects. Leaders are upright with a banner or horn. Hunters have long limbs or sharp eyes. Fliers have large readable wings. Guardians and Bodyguards are broad and plated.
 - **Mix the palette.** No two neighbours in a batch share a main color. Keep one accent color per creature.
 - **Humanoids are the exception (about 1 in 7).** Give them non-generic features (a race trait, an unusual hat, an animal-like feature).
 - **Props stay inside the canvas.** If a staff, banner or tail would break the 48 px margin, shorten or angle it.
@@ -78,6 +78,8 @@ Format: `unit name` – attack type – professions – brief. Body type is in b
 | `catfolk-spellblade-moon` | Bladed | Sorcerer, Warrior | [humanoid, agile] A slender silver-gray catfolk in a short dark-blue coat, holding a curved sword with a glowing crescent-moon blade. Long ringed tail. |
 
 ### Black Mage
+
+Black Mage was removed on 2026-10-14; these briefs keep their original classes. Current classes are in [creature-classes.md](creature-classes.md).
 | Unit | Attack | Professions | Brief |
 |---|---|---|---|
 | `crow-necromancer-skull` | Magic | Black Mage, Flying | [medium, winged] A sleek black crow with a ragged violet cloak and a small bone-white skull charm on a chain, glowing purple eyes, wings half spread. |
