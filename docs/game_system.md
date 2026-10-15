@@ -1,8 +1,8 @@
 # Everkin — Game Design Document
 
-**Version:** 0.5 — Four global stats (one Power, one Defense) and the creature roster
+**Version:** 0.6 — Defense removed; the fourth stat is Cost, with a team budget
 
-**Updated:** 2026-10-05
+**Updated:** 2026-10-15
 
 **Format:** Digital tactical card game with creature collection and RPG character builds
 
@@ -68,7 +68,7 @@ Units unlock through **guaranteed encounter rewards** for now. Each won encounte
 
 **Start of play.** A new player begins with the **campaign tutorial**: three short battles. The player starts with **two Critter-tier creatures** and gains one after the first win, one after the second and two after the third, reaching six (adopted 2026-10-07). All other modes unlock once the tutorial is complete. Which creatures exactly is decided with the tutorial content.
 
-**Campaign rules (adopted 2026-10-06).** Losing a campaign battle has no penalty: the player can retry the encounter at once or change the team first. Campaign locations hold battles only for now; story events and other encounters come with the full campaign design. Encounters never restrict the player's team for now. The campaign cannot be restarted; finished encounters can be replayed instead.
+**Campaign rules (adopted 2026-10-06).** Losing a campaign battle has no penalty: the player can retry the encounter at once or change the team first. Campaign locations hold battles only for now; story events and other encounters come with the full campaign design. Encounters never restrict the player's team beyond the team budget (section 5.1, adopted 2026-10-15). The campaign cannot be restarted; finished encounters can be replayed instead.
 
 **Levels.** Every unit is level 20 in every mode until skill trees exist. Levelling is decided together with the trees (section 4.1).
 
@@ -107,7 +107,7 @@ The AI-versus-AI milestone comes first once gameplay implementation begins. The 
 
 The harness plays battles automatically for balance testing and debugging. Adopted rules:
 
-- **Teams.** Each side gets 6 random creatures from the roster ([creatures.md](creatures.md)), with no duplicates within a side. The same creature may appear on both sides. Units are level 20 with all their creature and class skills (section 17.1).
+- **Teams.** Each side gets 6 random creatures from the roster ([creatures.md](creatures.md)) whose total Cost fits the team budget (section 5.1), with no duplicates within a side. The same creature may appear on both sides. Units are level 20 with all their creature and class skills (section 17.1).
 - **Party size.** Test battles are 6 versus 6 only for now.
 - **Formation.** Each side's starting formation is a random legal placement. It is recorded with the battle, so the statistics also show which rows work for which units.
 - **Search.** Each AI uses a minimax search over a fixed number of upcoming timeline turns, counted across both sides. Both AIs in a test battle use the same settings.
@@ -187,7 +187,8 @@ The exact creature roster lives in [creatures.md](creatures.md): size tiers (cri
 - **HP** runs from 20 to 80 in steps of 5. The anchors in section 5.5 stay.
 - **Speed** follows the tier (critters 7–9, medium 4–7, large 1–4). A creature may break it with a stated reason.
 - **Power** runs from 1 to 10, with the reference human at 5.
-- **Natural Defense** is 0–40% in steps of 10. It is rare, and 0% is the default. Skills and statuses supply the rest, up to the 75% cap.
+- **Cost** runs from 1 to 10 (section 5.1). How each creature's Cost is set is decided separately.
+- **No Defense (2026-10-15).** The Defense stat was removed. Creatures that had natural Defense received +5 HP per 10% instead, within the 20–80 HP range.
 - **Classes (2026-10-09).** Every creature has exactly 1 Attack Type and 1–2 Professions ([class_system.md](class_system.md)). This replaces the old type-specific attack library and the rule of one to three hand-assigned classes.
 - **No natural traits** for now. A creature's identity comes from its stats, classes and attack.
 - **Humans** are generated once during content creation and stored as fixed recruits (section 3.4), each with a name, its own class combination and small stat differences within the medium tier.
@@ -287,7 +288,7 @@ Creature identity contributes one type-specific starting attack, such as Bite, S
 
 | Group | Tags | Rule |
 |---|---|---|
-| Damage type | `physical`, `magical` | What kind of skill it is, for rules that react to it (Shield Wall blocks `physical`, Silenced stops `magical`). Both scale with Power and are reduced by Defense (section 5.1). |
+| Damage type | `physical`, `magical` | What kind of skill it is, for rules that react to it (Shield Wall blocks `physical`, Silenced stops `magical`). Both scale with Power (section 5.1). |
 | Delivery | `projectile` | Travels the battlefield from the user to the target, so it passes the units in front of the target and can be intercepted by them. |
 | | `melee` | Needs reach to the target. Triggers effects that react to melee. Can be intercepted. |
 | | `direct` | Hits a **specific slot** (the position on the half-card grid, section 7.3, of the selected target), with nothing passing between. It hits whoever occupies that slot when it resolves, so a delayed `direct` effect hits whatever stands there later. **Ignores interception.** Still needs a legal target and reach when it is cast. |
@@ -304,7 +305,7 @@ Creature identity contributes one type-specific starting attack, such as Bite, S
 | | `timeline` | Moves turns or events on the timeline. |
 | | `delayed` | Puts an event on the timeline that resolves later. |
 | | `momentum` | Moves the Momentum meter directly. |
-| Element | `fire`, `frost`, `storm` | Properties other skills and statuses can react to (for example a `fire` hit breaking a freeze). They are not extra defense categories. |
+| Element | `fire`, `frost`, `storm` | Properties other skills and statuses can react to (for example a `fire` hit breaking a freeze). They are not resistance categories. |
 
 **Targeting tags decide what the UI lets the player select.** A skill selects a unit unless it has a tag for another target type. Only skills with `row` can select a row. Any future target type (a column, a slot) needs its own tag. Skills never silently gain other target types.
 
@@ -315,23 +316,25 @@ The tag list is a starting point. Exact shape definitions (for example which uni
 - **Every skill has its own role.** Two skills of one class must not do the same job.
 - **Realistic positioning.** A projectile must pass the units in front to reach those behind. A unit far from an ally cannot cover that ally. A skill that crosses distance must say how, for example a leap that moves the user (`move`) and then covers.
 - **No skill has a minimum distance** unless it would be physically unrealistic.
-- **Classes declare no defenses.** Defense comes from the creature type, skill tree choices, and explicit effects.
+- **Classes declare no protection.** Protection comes from skill tree choices and explicit effects (shields such as Ward, reductions such as Dampen).
 - **Every skill has a reach.** Cover, redirect, swap, push, and pull skills only work on units within their reach, and an attack can only be redirected to a unit that could legally be its target.
 - **Numbers stay low.** Players see whole numbers only.
 - **Only `melee` and `projectile` skills can be intercepted** (section 8.2). A skill without either tag, such as a `direct` skill, cannot be. A `melee` or `projectile` skill ignores interception only if it says so.
 
 ## 5. Unit statistics and damage
 
-### 5.1 The four global stats
+### 5.1 The four stats
 
 | Stat | Definition |
 |---|---|
 | HP | Maximum health; current HP is tracked during combat. |
 | Speed | 1–10, **10 is fastest**. Determines how quickly the unit completes its turn cycle (section 6.1). |
 | Power | 1–10. Scaling basis for all skill damage and healing, `physical` and `magical` alike. Each creature type defines its own value. |
-| Defense | 0–75%. Percentage reduction of all damage, `physical` and `magical` alike. |
+| Cost | 1–10. Team-building points (see Team budget below). Not used in combat. |
 
-Defense may be **0%**. There is no universal built-in defense allowance: defense comes from the creature type, skill tree, or explicit effects. Display it as the actual percentage reduction rather than an opaque rating. There is a single Power and a single Defense: the earlier split into Physical and Magic Power and Defense was removed on 2026-10-05 to keep the stat sheet small.
+**No Defense stat (adopted 2026-10-15).** The Defense stat (a 0–75% cut to all damage) was removed, together with Penetration, its cap and the Exposed / Armor Broken candidates. A unit's toughness is its HP. Protection comes only from explicit effects: shields (Ward) take damage first, and stated reductions (Dampen) apply after. There is a single Power: the earlier split into Physical and Magic Power was removed on 2026-10-05 to keep the stat sheet small.
+
+**Team budget (adopted 2026-10-15).** Each creature has a **Cost** from 1 to 10, so a team of only the biggest creatures is not free. A team holds **up to six creatures** and its total Cost must not exceed the **budget of 35** (a starting value, tuned after AI-versus-AI testing). The budget is the same in **every mode**, the campaign included. Enemy teams designed for campaign encounters are not bound by it. Randomly drawn teams (random battles, free battles with a random enemy, and AI-versus-AI tests) are drawn within it. How each creature's Cost is set is decided separately (section 19).
 
 Accuracy, evasion, critical chance, critical damage, mana, universal resistance, and healing power are **not additional global stats**. Skill-specific hit chances, defensive effects, or healing scaling may be defined without expanding the stat sheet. Mana and critical-hit systems remain excluded.
 
@@ -345,23 +348,22 @@ Illustrative definitions:
 - Heavy Slam: 150–190% of Power.
 - Arc Bolt: 90–120% of Power.
 
-These values demonstrate the selected model; they are not approved balance data. A skill may explicitly scale from HP, defense, or multiple stats, but that exception must be part of its definition.
+These values demonstrate the selected model; they are not approved balance data. A skill may explicitly scale from HP or multiple stats, but that exception must be part of its definition.
 
 **Adopted damage formula:** each creature type defines its own Power. A skill's damage is its hidden coefficient range multiplied by the user's Power, rolled uniformly, and the skill tree may change the formula. Players always see **whole numbers only**, shown for the actual user. Damage is **rounded down, with a minimum of 1**, unless a skill explicitly negates it. Numbers in the class documents assume a **reference human with Power 5**.
 
-**There is one damage category.** All damage interacts with the single Defense stat; the `physical` and `magical` tags only matter to rules that name them. Fire, frost, poison, bleeding, mental effects, and similar themes use properties or statuses rather than additional global resistance categories. Defense bypass is a property of a skill, not a third defense stat.
+**There is one damage category.** The `physical` and `magical` tags only matter to rules that name them. Fire, frost, poison, bleeding, mental effects, and similar themes use properties or statuses rather than global resistance categories.
 
 Damage is sampled **uniformly within the skill's damage range**. Each value is equally likely; the range itself defines the variance. Some skills may have a very wide range. There are **no separate critical hits or critical multipliers**; a high roll can provide the excitement of a critical hit without another system.
 
 **Adopted damage resolution order:**
 
 1. **Roll.** The displayed range already includes the attacker's modifiers (coefficient changes, bonus damage, conditions such as Ambush) and is rounded down. The roll is a uniform **whole number** in that range.
-2. **Shield.** A shield or similar absorb effect takes **raw** damage first. A shield has no defense of its own. Only the remainder continues.
-3. **Defense.** The remainder is reduced by the target's defense percentage, then rounded down once. If anything passes the shield, the result is at least 1.
-4. **Final reductions.** Other stated reductions (for example Dampen, which halves the damage, rounded down with a minimum of 1) apply **after** defense, on the final damage. Ward and Dampen can be on the same unit: Ward absorbs first, then defense, then Dampen.
-5. **HP.** The remaining damage is subtracted from HP.
+2. **Shield.** A shield or similar absorb effect takes the damage first. Only the remainder continues.
+3. **Reductions.** Stated reductions (for example Dampen, which halves the damage, rounded down with a minimum of 1) apply to the remainder. If anything passes the shield, the result is at least 1. Ward and Dampen can be on the same unit: Ward absorbs first, then Dampen.
+4. **HP.** The remaining damage is subtracted from HP.
 
-**Defense rules.** Defense runs from **0% to 75%**. Defense from several sources (creature, skill tree, statuses) **adds in percentage points**, up to the cap. Defense never goes below 0%: effects such as Exposed or Armor Broken only remove defense down to 0%. **Penetration** lowers the target's defense by a stated number of percentage points for that hit, down to 0%. A skill ignores defense only if it says so. **No skill does so currently**, and no tag exists for it. Fixed-damage skills (for example a counter dealing 2) are reduced by defense like any other hit, with the minimum of 1. The only fixed, unreducible damage is bump damage (section 9.5).
+**Fixed damage.** Fixed-damage skills (for example a counter dealing 2) go through shields and reductions like any other hit, with the minimum of 1. The only fixed, unreducible damage is bump damage (section 9.5).
 
 **Rolls across targets.** There is no global rule: each skill states whether its targets share one roll (an explosion rolls once) or roll independently (each hit of a meteor shower rolls separately).
 
@@ -373,7 +375,7 @@ Interception is defined in section 8.2. Target previews should show the resultin
 
 ### 5.3 Hit reliability
 
-An ordinary attack hits a valid target by default, subject to applicable defenses and explicit effects. Random hit chance is an explicit property of selected risky skills, not a universal accuracy/evasion roll. A status or skill may introduce an exception, such as blindness affecting attacks that require sight.
+An ordinary attack hits a valid target by default, subject to interception, shields and explicit effects. Random hit chance is an explicit property of selected risky skills, not a universal accuracy/evasion roll. A status or skill may introduce an exception, such as blindness affecting attacks that require sight.
 
 Status application is separate: a status-applying skill states its own status chance. Successful damage does not automatically guarantee a status unless that skill says so.
 
@@ -385,7 +387,7 @@ Healing scaling, damage-over-time calculation, status durations, stacking behavi
 
 ### 5.5 HP and damage anchors
 
-HP anchors: a critter (the lowest HP in the game, such as a fox) has **20**, a human **35–45**, and a giant stone turtle **60**. Damage anchor: a critter with 0% Defense dies to exactly **three Sniper Shots** from the reference human (Sniper Shot deals 7–9). Keep all numbers low.
+HP anchors: a critter (the lowest HP in the game, such as a fox) has **20**, a human **35–45**, and a giant stone turtle **80** (60 plus its former 40% Defense, converted on 2026-10-15). Damage anchor: a critter dies to exactly **three Sniper Shots** from the reference human (Sniper Shot deals 7–9). Keep all numbers low.
 
 ## 6. Turn timeline and action execution
 
@@ -524,7 +526,7 @@ Reactions are additional effects, not automatically normal turns. They change th
 
 - **Propagation.** Reactions can trigger further reactions by default. A reaction that causes a hit can trigger reactions to that hit. A reaction may state that it cannot.
 - **No chain limit for now.** There is no global chain limit, no self-recursion rule and no once-per-chain rule. An endless chain is a design bug that testing must find. The AI-versus-AI harness (section 2.4) must detect and report chains that do not terminate. The detection threshold is an implementation detail, not a game rule.
-- **Reaction hits.** A damaging reaction hits its target directly: it ignores interception, and defense applies as usual. A reaction has **its own tags** and does not inherit the tags of the skill or event that triggered it, or of the skill that created it. A reaction that should count as `melee` (for example the Spike and Parry counters) says so itself, so such counters can trigger melee-only reactions and can chain.
+- **Reaction hits.** A damaging reaction hits its target directly: it ignores interception, and shields and reductions apply as usual. A reaction has **its own tags** and does not inherit the tags of the skill or event that triggered it, or of the skill that created it. A reaction that should count as `melee` (for example the Spike and Parry counters) says so itself, so such counters can trigger melee-only reactions and can chain.
 - **Timing.** Reactions resolve after each event or simultaneous block, before the triggering skill's next event.
 - **KO'd owners.** A unit KO'd by the triggering event does not react, except through explicit "when KO'd" triggers.
 - **"Once per hit".** Reactions limited to once use hit events as the unit. A multi-hit skill can trigger such a reaction once per hit.
@@ -684,13 +686,13 @@ Normal cover depends on horizontal overlap between a forward unit and the unit b
 - A partial interception leaves a remaining attack or effect.
 - That remainder continues toward the original target.
 - Further eligible defenders may attempt to intercept it.
-- Partial interception does not remove a later defender's defense opportunity or the intended target's applicable defense.
+- Partial interception does not remove a later defender's defense opportunity or the intended target's shields and reductions.
 
 Sequential protection is intentional and must obey the reaction-chain safeguards in section 6.6.
 
 The project owner's examples establish two important skill concepts: **Sniper Shot** can bypass interception, while **Shield Wall** can allow three cooperating Front units to block 100% of physical attacks directed at rear rows. Their exact requirements, exceptions, and costs remain to be designed.
 
-Proposed interception effects include taking the attack, absorbing part of its damage, reducing its remaining strength, removing one effect, or stopping a projectile component. The attack types eligible for each defense, exact probabilities, processing order, and interaction with the four stats are open.
+Proposed interception effects include taking the attack, absorbing part of its damage, reducing its remaining strength, removing one effect, or stopping a projectile component. The attack types eligible for each defense, exact probabilities, processing order, and interaction with the stats are open.
 
 An area effect can be intercepted when it is `melee` or `projectile`, like any other skill.
 
@@ -775,7 +777,7 @@ Engagement and movement restriction were discussed as optional mechanics. There 
 - **Pulls.** Pulls such as Haul chain the same way: a pulled unit bumps units in front of it at 100% overlap and shoves them forward, with the same all-or-nothing rule and bump damage.
 
 - **Momentum.** Bump damage shifts the meter by 0, even though it counts as a hit, since it is not an attack.
-- **Defenses.** Bump damage is fixed at 1 and cannot be lowered by defenses, shields or any other effect.
+- **Protection.** Bump damage is fixed at 1 and cannot be lowered by shields, reductions or any other effect.
 
 All forced repositioning rules are now specified.
 
@@ -854,8 +856,8 @@ Each status has its own application chance, duration, triggering conditions, and
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
 - **Limit.** There is no limit on the number of statuses per unit. The UI handles overflow.
 - **Momentum.** Periodic ticks shift Momentum by 0 (section 6.7).
-- **Damage from statuses.** Poison, Burning and Bleeding damage is not a hit, but Defense reduces it like any damage (rounded down, minimum 1). Shields absorb Burning damage; they do not absorb Poison or Bleeding.
-- **Status chances.** A skill's stated status chance is the real chance. Defense does not lower it.
+- **Damage from statuses.** Poison, Burning and Bleeding damage is not a hit, but reductions such as Dampen apply to it like any damage (rounded down, minimum 1). Shields absorb Burning damage; they do not absorb Poison or Bleeding.
+- **Status chances.** A skill's stated status chance is the real chance. No stat lowers it.
 - **Reapplication with a different duration.** The new duration always replaces the old one, even if it is shorter.
 - **Skipped turns.** Durations counted in the unit's turns count every turn that arrives, including skipped ones (Skip Turn, Frozen).
 - **Immunities.** Only skills and statuses grant immunities (for example Purify's immunity until the unit's next turn). Creatures have no natural immunities for now (section 3.7). A summon's own definition may list immunities, since it comes from a skill (section 11.2).
@@ -875,9 +877,9 @@ Each status has its own application chance, duration, triggering conditions, and
 
 Blind and Silenced are adopted although no skill applies them yet. Any skill may apply any named status.
 
-The status design pool (Rooted, Disarmed, Stunned, Weakened, Exposed, Marked, Fear, Bound and others) remains below as candidates. None is added until a skill needs it.
+The status design pool (Rooted, Disarmed, Stunned, Weakened, Marked, Fear, Bound and others) remains below as candidates. None is added until a skill needs it.
 
-Additional welcomed design candidates (not decided) are Rooted/Immobilized, Disarmed, Stunned, Slowed/Hasted, Weakened, Enfeebled, Exposed/Armor Broken, Marked, Taunted/Provoked, Fear, Burning, Frozen, and Bound. Delayed/Accelerated can be one-off timeline changes rather than persistent statuses. These are a design pool, not finalized effects. A unit with no viable action because of statuses simply loses that turn.
+Additional welcomed design candidates (not decided) are Rooted/Immobilized, Disarmed, Stunned, Slowed/Hasted, Weakened, Enfeebled, Marked, Taunted/Provoked, Fear, Burning, Frozen, and Bound. Delayed/Accelerated can be one-off timeline changes rather than persistent statuses. These are a design pool, not finalized effects. A unit with no viable action because of statuses simply loses that turn.
 
 ## 11. Summoning
 
@@ -996,7 +998,7 @@ The **front** contains:
 
 - A customizable cosmetic frame and an image of the unit from the front.
 - The unit's name and the names of all its classes.
-- Relevant combat stats, including Life (current and maximum HP), Speed, Power, and Defense.
+- Relevant combat stats, including Life (current and maximum HP), Speed, Power, and Cost.
 - Clear status and KO overlays on or around the border.
 
 On the battlefield a unit is shown as a **compact card**: portrait, HP bar, statuses and KO. The full front appears on hover and in the inspection panel, which shows front and back side by side ([ui_spec.md](ui_spec.md)).
@@ -1013,7 +1015,7 @@ Party setup uses the same battlefield interface with the enemy side absent. The 
 
 Setup can provide more room for inspecting card fronts and backs, comparing builds, allocating skill-tree points, and other character-management systems if those features require it. Equipment inspection would apply only if such a system were later selected; it does not establish a general gear system. Combat prioritizes speed and readability, while setup supports deeper inspection and optimization.
 
-Teams are built in a **team editor**, in the manner of deck building: the player picks up to six creatures from the collection and their formation, and saves the team under a name. Several named teams can be saved, and the last used team is preselected. Each mode, including local two-player, starts from a saved team.
+Teams are built in a **team editor**, in the manner of deck building: the player picks up to six creatures from the collection, within the team budget of 35 Cost (section 5.1), and their formation, and saves the team under a name. Several named teams can be saved, and the last used team is preselected. Each mode, including local two-player, starts from a saved team.
 
 Creatures are added, moved and removed **by dragging only** (adopted 2026-10-06); filters, sorting and layout are in ui_spec.md.
 
@@ -1204,8 +1206,8 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Timeline | None open. Delay bounds (clamped to 1–10) are adopted and Turn Now was removed (section 6.1). Initial progress, ties, Haste/Slow, Reset, skipped turns and same-time order are adopted (section 6.1). Speed 1–10 (10 fastest), skill Delay 1–10 (1 quickest), and Wait = Delay + 11 − Speed are adopted (section 6.1). |
 | Momentum | None open. Non-damaging actions, payment timing, refunds and simultaneous shifts are adopted (section 6.7). Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
 | Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6–8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
-| Damage | Multiple shields on one unit (deferred to the skill revisit after AI-versus-AI testing). Healing scaling is adopted (section 5.2). Roll, shield, defense, final reduction order, defense bounds (0–75%, additive), penetration, and fixed damage are adopted (section 5.2). Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
-| Defense | Eligible attacks for other defenses and precise interaction with damage events. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, intercepted non-damaging effects, left-to-right defender order and the nearest-target tie rule are adopted (sections 8.2 and 8.5). |
+| Damage | Multiple shields on one unit (deferred to the skill revisit after AI-versus-AI testing). Healing scaling is adopted (section 5.2). Roll, shield, reduction order and fixed damage are adopted (section 5.2); Defense and penetration were removed on 2026-10-15. Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
+| Interception | Eligible attacks for other defenses and precise interaction with damage events. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, intercepted non-damaging effects, left-to-right defender order and the nearest-target tie rule are adopted (sections 8.2 and 8.5). |
 | Reactions | None open. Propagation, priority levels, tie-breaks, timing and KO'd owners are adopted (section 6.6). There is deliberately no chain limit or recursion safeguard for now: AI-versus-AI testing must detect endless chains. |
 | Range | Per-skill ranges. Opposing and same-side distance (both skip empty rows), unlimited "any visible", uncapped range bonuses and cast-time checks are adopted (section 7.4). Adjacency, which uses nominal rows, is adopted (section 8.4). |
 | Movement | None open. Move (any row, Delay 5, chosen gap, no swaps), movement inside skills and forced repositioning are adopted (sections 9.1 and 9.5). Skip Turn is always available (section 6.4). |
@@ -1214,10 +1216,11 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Summons | Per-summon status rules and individual summon content. Kinds, placement, cost, limits, Momentum and expiry are adopted (section 11). In the first release (section 20.1). Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
 | Builds | How skills, skill trees and basic attacks attach to Attack Types and Professions ([class_system.md](class_system.md), adopted 2026-10-09); all skill designs (the old ones are invalid); Attack Type and Profession assignments per creature; conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
 | Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Attack Type and Profession assignments for every creature. Tiers, stat ranges, no natural traits and text IDs are adopted (section 3.7); 1 Attack Type plus 1–2 Professions replaced the attack library rule and the old class counts. |
+| Team budget | How each creature's Cost (1–10) is set (to be decided in its own discussion), and tuning the budget of 35 after AI-versus-AI testing. Cost as the fourth stat, the budget, the six-creature limit, the budget in every mode and random teams drawn within it are adopted (section 5.1). |
 | Recruitment | Guaranteed encounter-to-unit reward assignments, the exact tutorial creatures, individual coin prices, individual persistence. Tutorial growth (two Critters, then +1, +1, +2), coin sources, payouts, price guide and the roster split are adopted (section 2.2). One copy per creature, one fixed reward per encounter from the defeated team, rewards given once, the three-battle tutorial, post-story challenge encounters, coins, and fixed human recruits are adopted (sections 2.2 and 3.4). Other acquisition methods are not currently required. |
 | Test harness | Search depth per difficulty level (after measuring speed) and the first evaluation weights. Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters, boss stats, and each encounter's AI level. Three difficulty levels are adopted (section 12.3). Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
-| Product structure | Campaign content (locations, encounters, boss rosters), later full campaign design, and final content. Stage size (about five battles plus a boss), fixed battle order, no team restrictions and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
+| Product structure | Campaign content (locations, encounters, boss rosters), later full campaign design, and final content. Stage size (about five battles plus a boss), fixed battle order, no team restrictions beyond the team budget and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
 | Presentation | Mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, left vertical timeline, and bottom skill bar are selected. Card styling is decided (full art with corner gems, rear-art backs, home-biome frame; ui_spec.md). |
 | Delivery | Technical validation and the name's availability check. Cloud saves and the name (Everkin) are adopted. Platforms, stores, business model, languages, accessibility, crash reports, save files, the technical foundation, prices, store pages and online responsibilities are adopted ([production.md](production.md)). The battle screen arrangement, interactions and layout sizes are adopted (section 13.3, ui_spec.md). |
 
@@ -1239,7 +1242,7 @@ In addition to section 19, resolve these edge cases:
 
 - Timeline: none open. Overshoot, when the next Wait starts, Speed and Delay bounds, the skipped-turn cost and the time model are adopted (section 6.1).
 - Momentum: all adopted (section 6.7).
-- Damage: multiple shields on one unit (deferred to the skill revisit). Healing scaling, sampling, rounding, defense bounds, penetration, shield order and shared versus independent rolls are adopted.
+- Damage: multiple shields on one unit (deferred to the skill revisit). Healing scaling, sampling, rounding, shield order and shared versus independent rolls are adopted.
 - Resolution: none open. The full order for using a skill and the rules for targets that change mid-skill are adopted (section 6.5). Reaction priorities, ties and the absence of a chain limit are adopted (section 6.6).
 - Statuses: none open beyond new candidates. Immunities, damage from statuses, clocks, tick timing, reapplication, cleansing, source removal and shared HP are adopted (sections 10.4 and 10.5).
 - Formation: none open. Spot-bound effects stay on their coordinate (section 7.3). Cover eligibility, defender order, Move, swaps and failed movement are adopted (sections 8.2 and 9.1).
@@ -1247,7 +1250,7 @@ In addition to section 19, resolve these edge cases:
 
 ### 20.3 Complete content definitions
 
-Each included creature needs a stable ID, name, one artwork image with its portrait crop, framing, all four stats and growth rules, classes, its one type-specific attack, natural passives/immunities, and acquisition rules. Artwork filenames are not approved creature names or combat values.
+Each included creature needs a stable ID, name, one artwork image with its portrait crop, framing, all four stats (including Cost) and growth rules, classes, its one type-specific attack, natural passives/immunities, and acquisition rules. Artwork filenames are not approved creature names or combat values.
 
 Each class needs its complete skill-tree graph (what a "class" tree is under the new Attack Types and Professions is still open, section 19): node IDs, costs, ranks, prerequisites, branches, exclusivity, effects, and respec behavior. Define how multiple modifiers combine and how the final usable skill is displayed.
 
@@ -1278,7 +1281,7 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | After 4 of those 11 units, Haste raises Speed by 2 | Remaining 7 becomes 5; completed progress is preserved. |
 | Speed 10 with Delay 1 versus Speed 1 with Delay 10 | Waits are 2 and 20: the fast unit acts about ten times per slow turn. |
 | Three-card row opposite a two-card row | Relevant overlaps are half or zero, matching section 7.3. |
-| A unit becomes KO | Statuses clear; ordered occupancy and row capacity remain; normal active defense stops. |
+| A unit becomes KO | Statuses clear; ordered occupancy and row capacity remain; it no longer intercepts. |
 | Partial interception with another eligible defender behind | The remainder may undergo further defense. |
 | A simultaneous effect block hits several units | Apply the block before resulting KO checks and reaction collection. |
 | Healing exceeds missing HP | HP stops at maximum without an automatic excess-healing benefit. |
@@ -1286,16 +1289,13 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | Start another battle | Every participating unit begins at full HP, the contested Momentum meter is neutral zero, and previous temporary combat states do not carry over. |
 | An interceptor takes a partial hit from 7 damage | It takes 3 and 4 continues down the chain. |
 | An interceptor takes a partial hit from 1 damage | It cannot be split; the interceptor takes 1. |
-| Defense reduces a hit to 0.6 damage | The hit deals 1 (rounded down, minimum 1). |
-| A 9-damage hit lands on a unit with 50% defense and no shield | 9 × 0.5 = 4.5, rounded down to 4. |
-| The same hit lands on a unit with a shield absorbing 8 and 50% defense | The shield takes 8 raw, the remaining 1 is reduced to 0.5 and becomes 1 (minimum 1). |
+| Dampen halves a 1-damage hit | The hit deals 1 (rounded down, minimum 1). |
+| A 9-damage hit lands on a unit with no shield | It deals 9. |
+| The same hit lands on a unit with a shield absorbing 8 | The shield takes 8 and the remaining 1 reaches HP. |
 | A 7-damage hit lands on a unit with a shield absorbing 8 | Nothing passes the shield, so no damage is dealt, and Momentum does not change. |
-| Two sources give 40% and 50% Defense | The total is 75%, the cap. |
-| Exposed is applied to a unit with 0% defense | Its defense stays at 0%. |
-| A skill with 30 points of penetration hits a unit with 20% defense | The unit's defense counts as 0% for that hit. |
-| A counter deals fixed 2 damage to a unit with 50% defense | It deals 1. |
-| A 9-damage hit lands on a unit with 50% defense and Dampen | 9 × 0.5 = 4.5 rounds to 4, then Dampen halves it to 2. |
-| A 9-damage hit lands on a unit with Ward (8), 50% defense and Dampen | Ward takes 8, the remaining 1 becomes 1 after defense, and Dampen leaves it at 1 (minimum 1). |
+| A counter deals fixed 2 damage to a unit with Dampen | It deals 1. |
+| A 9-damage hit lands on a unit with Dampen | 9 × 0.5 = 4.5, rounded down to 4. |
+| A 9-damage hit lands on a unit with Ward (8) and Dampen | Ward takes 8, and Dampen leaves the remaining 1 at 1 (minimum 1). |
 | A Spike trap's counter hits an attacker who has its own "when hit" counter | The attacker's counter triggers on that hit, since reactions can trigger reactions. |
 | A Warrior with Parry meleeing a Spike trap | The trap's Spike counter (melee) hits the Warrior, Parry counters it for 4 (melee) onto the trap, and, if the trap survives (a KO'd trap does not react), its Spike hits the Warrior again. Parry is spent after the first counter, so the chain ends there. |
 | A reaction is created by a `melee` skill but its own text does not say `melee` | Its hits are not `melee`. |
@@ -1316,8 +1316,8 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A Silence lands on an enemy | Momentum does not change. |
 | A projectile heal of 9 is partly intercepted | The interceptor is healed by 4 and the target by 5. |
 | A projectile status is partly intercepted | The interceptor gets the status; the target does not. |
-| A Burning tick hits a unit with 50% Defense and a Ward of 8 | The Ward absorbs the 2. |
-| A Poison tick hits a unit with 50% Defense and a Ward | It deals 1 (minimum 1); the Ward does not absorb it. |
+| A Burning tick hits a unit with a Ward of 8 | The Ward absorbs the 2. |
+| A Poison tick hits a unit with a Ward | It deals 1; the Ward does not absorb it. |
 | Burning with 3 turns left is reapplied by a skill giving 2 turns | It now has 2 turns left. |
 | A Blind unit chooses Skip Turn | That turn counts toward Blind's 2 turns. |
 | A Bleeding unit uses Move | It takes 2 Bleeding damage after moving. |
@@ -1377,7 +1377,7 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | Rapid Shots lands all three shots | Momentum shifts three times, once per shot. |
 | A Feral Frenzy action lands 3 of 4 hits | By default one shift of 1 toward the Feral's side, unless the skill says otherwise. |
 | Poison ticks | Momentum is unchanged. |
-| The reference human uses Sniper Shot (7–9) on a 0%-defense critter with 20 HP | The critter dies on the third hit and never on the second. |
+| The reference human uses Sniper Shot (7–9) on a critter with 20 HP | The critter dies on the third hit and never on the second. |
 
 Expand these examples when numerical and mode-specific rules are decided. They are expected behavior, not claims that tests have passed.
 

@@ -161,7 +161,7 @@ Effect: The Healer also gains the effect. Cost: Last Stand's Delay is +2 (8).
 
 ### TBD
 
-- Ward and Dampen can be on one unit: Ward absorbs raw damage first, then defense applies, then Dampen halves the result (game_system.md §5.2).
+- Ward and Dampen can be on one unit: Ward absorbs damage first, then Dampen halves the rest (Defense was removed on 2026-10-15) (game_system.md §5.2).
 - Exact node tree layout and costs (owner sorts manually at the end).
 
 ## 2. Leader
@@ -322,7 +322,7 @@ Effect: A second shot on the same target resolves as an auto event 3 time units 
 
 ### Branch B: Trapper
 
-Traps are **summons that act as regular units**. Placed **between units** in one of your rows (recentering it, counting toward its 6-unit cap). A trap can only be placed in a row where one of your units is **directly behind** it, and never in front of the Front row. It takes one slot, has HP (0% Defense), takes no turns, can be targeted, and **intercepts** like any unit for the 1–2 units directly behind it. No skill limits the number of traps: the side's cap of 18 units and its row capacity still apply (game_system.md §11.3). A KO'd trap is removed at once and frees its slot.
+Traps are **summons that act as regular units**. Placed **between units** in one of your rows (recentering it, counting toward its 6-unit cap). A trap can only be placed in a row where one of your units is **directly behind** it, and never in front of the Front row. It takes one slot, has HP, takes no turns, can be targeted, and **intercepts** like any unit for the 1–2 units directly behind it. No skill limits the number of traps: the side's cap of 18 units and its row capacity still apply (game_system.md §11.3). A KO'd trap is removed at once and frees its slot.
 
 ### Spike
 Class: Hunter · Tree slot: B1

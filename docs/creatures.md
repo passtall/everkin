@@ -7,18 +7,18 @@
 
 ## Size tiers
 
-Each creature belongs to one tier and tweaks the tier's base block slightly. Stats are HP, Speed, Power and Defense (game_system.md §5.1).
+Each creature belongs to one tier and tweaks the tier's base block slightly. Stats are HP, Speed, Power and Cost (game_system.md §5.1). Cost (1–10) is set separately and is not listed here yet.
 
-| Tier | Base block | HP band | Speed band | Power band | Defense |
-|---|---|---|---|---|---|
-| Critter | HP 20, Speed 8, Power 3, Defense 0% | 20–25 | 7–9 | 2–4 | 0% default |
-| Medium | HP 40, Speed 5, Power 5, Defense 0% | 30–45 | 4–7 | 4–6 | 0% default |
-| Large | HP 60, Speed 3, Power 6, Defense 0% | 50–70 | 1–4 | 5–7 | 0% default |
+| Tier | Base block | HP band | Speed band | Power band |
+|---|---|---|---|---|
+| Critter | HP 20, Speed 8, Power 3 | 20–25 | 7–9 | 2–4 |
+| Medium | HP 40, Speed 5, Power 5 | 30–45 | 4–7 | 4–6 |
+| Large | HP 60, Speed 3, Power 6 | 50–70 | 1–4 | 5–7 |
 
 - HP moves in steps of 5. HP 75–80 is left free for bigger creatures later.
-- Natural Defense is rare (0–40% in steps of 10) and only goes to creatures whose body is visibly armored: shells, plates, quills, crystal, a shield.
+- There is no Defense stat (removed 2026-10-15). Creatures whose body is visibly armored (shells, plates, quills, crystal, a shield) got +5 HP for every 10% Defense they had, so they may sit above their tier's HP band.
 - A creature that breaks its tier's Speed band says why in the roster notes.
-- Trade-offs inside a tier: more HP or Defense usually comes with less Speed or Power.
+- Trade-offs inside a tier: more HP usually comes with less Speed or Power.
 
 ## Type-specific attack library
 
@@ -44,61 +44,61 @@ Every attack respects interception (§8.2) and shifts Momentum normally (§6.7).
 
 53 creatures, one per art image in `images/kin/` (`<art>_f.png`; the rear images were deleted on 2026-10-09). Art numbers 13 and above 54 do not exist; 13 was deleted. IDs are stable text IDs (§3.7). The game uses the cleaned copies in `art/creatures/`, named `{unitName}_{attackType}_{professions}.png` as listed in [creature-classes.md](creature-classes.md) (for example `fits_fox-02.png`), and their portrait crops are in `art/creatures/portraits.json`.
 
-| Art | ID | Name | Tier | HP | Speed | Power | Defense | Classes | Attack | Notes |
-|---:|---|---|---|---:|---:|---:|---:|---|---|---|
-| 1 | `spikeback` | Spikeback | Large | 55 | 4 | 6 | 0% | Warrior, Feral | Crush |  |
-| 2 | `gazer_jelly` | Gazer Jelly | Medium | 30 | 6 | 6 | 0% | Elementalist | Glare |  |
-| 3 | `prism_snail` | Prism Snail | Medium | 35 | 4 | 5 | 0% | Healer, Elementalist | Glare |  |
-| 4 | `bone_idol` | Bone Idol | Medium | 30 | 5 | 5 | 0% | Leader, Healer | Glare |  |
-| 5 | `boulder_toad` | Boulder Toad | Large | 60 | 2 | 7 | 0% | Guardian, Warrior | Crush |  |
-| 6 | `thornfang` | Thornfang | Medium | 40 | 7 | 5 | 0% | Feral, Hunter | Claw |  |
-| 7 | `bloomspear` | Bloomspear | Medium | 40 | 5 | 5 | 0% | Healer, Hunter, Guardian | Thrust |  |
-| 8 | `cinderhorn` | Cinderhorn | Large | 65 | 3 | 7 | 0% | Warrior, Leader | Crush |  |
-| 9 | `reef_warden` | Reef Warden | Medium | 40 | 6 | 5 | 10% | Guardian, Hunter, Leader | Thrust | Defense from its shield. |
-| 10 | `magma_hog` | Magma Hog | Large | 60 | 4 | 6 | 0% | Warrior, Elementalist | Crush |  |
-| 11 | `hornshell` | Hornshell Tortoise | Large | 65 | 1 | 5 | 30% | Guardian | Crush | Defense from its shell. |
-| 12 | `land_shark` | Land Shark | Medium | 45 | 6 | 6 | 0% | Feral, Warrior | Bite |  |
-| 14 | `ember_snail` | Ember Snail | Medium | 40 | 3 | 5 | 20% | Elementalist, Guardian | Spit | Speed 3 is below the medium band: it is a snail. |
-| 15 | `rhino_beetle` | Rhino Beetle | Medium | 35 | 5 | 5 | 20% | Guardian, Warrior | Crush | Defense from its carapace. |
-| 16 | `fin_stalker` | Fin Stalker | Medium | 35 | 7 | 5 | 0% | Hunter, Feral | Bite | Kept distinct from the Land Shark: faster, lighter, a Hunter. |
-| 17 | `shade_ray` | Shade Ray | Medium | 30 | 8 | 5 | 0% | Feral, Elementalist | Sting | Speed 8 is above the medium band: it glides. |
-| 18 | `mossback` | Mossback | Medium | 45 | 4 | 4 | 20% | Guardian, Healer | Stomp | Defense from its plates. |
-| 19 | `leafwisp` | Leafwisp | Critter | 20 | 9 | 3 | 0% | Healer | Kick |  |
-| 20 | `emberbulb` | Emberbulb | Critter | 25 | 7 | 4 | 0% | Elementalist | Glare |  |
-| 21 | `stone_turtle` | Stone Turtle | Large | 60 | 1 | 5 | 40% | Guardian | Stomp | HP anchor (section 5.5). Defense from its stone shell. |
-| 22 | `plume_gazelle` | Plume Gazelle | Medium | 30 | 7 | 4 | 0% | Leader, Hunter | Kick |  |
-| 23 | `sailback` | Sailback | Medium | 40 | 5 | 5 | 0% | Feral, Elementalist | Bite |  |
-| 24 | `sickle_mantis` | Sickle Mantis | Medium | 35 | 6 | 6 | 0% | Feral, Warrior | Claw |  |
-| 25 | `magma_crawler` | Magma Crawler | Large | 55 | 3 | 6 | 0% | Elementalist, Warrior | Stomp |  |
-| 26 | `glade_stag` | Glade Stag | Medium | 40 | 6 | 5 | 0% | Healer, Leader | Kick |  |
-| 27 | `gloom_scorpion` | Gloom Scorpion | Medium | 35 | 5 | 5 | 0% | Hunter, Feral | Sting |  |
-| 28 | `ember_shard` | Ember Shard | Medium | 30 | 4 | 6 | 20% | Elementalist | Glare | Defense from its crystal body. |
-| 29 | `bloom_pod` | Bloom Pod | Medium | 35 | 4 | 4 | 0% | Healer, Hunter | Spit |  |
-| 30 | `woodpecker` | Giant Woodpecker | Medium | 30 | 7 | 5 | 0% | Hunter, Leader | Thrust |  |
-| 31 | `bog_toad` | Bog Toad | Medium | 45 | 4 | 5 | 0% | Healer, Elementalist | Spit |  |
-| 32 | `ash_moth` | Ash Moth | Critter | 20 | 9 | 3 | 0% | Elementalist, Feral | Sting |  |
-| 33 | `giant_mole` | Giant Mole | Medium | 45 | 4 | 5 | 0% | Warrior, Guardian | Claw |  |
-| 34 | `mannequin` | Mannequin | Medium | 40 | 5 | 5 | 0% | Warrior, Guardian, Leader | Kick | A construct with three classes, as a stand-in for a human-like generalist. |
-| 35 | `fox` | Fox | Critter | 20 | 8 | 3 | 0% | Feral, Hunter | Bite | HP anchor: the critter at 20 (section 5.5). |
-| 36 | `hare` | Hare | Critter | 20 | 9 | 2 | 0% | Feral, Leader | Kick |  |
-| 37 | `otter` | Otter | Critter | 25 | 8 | 3 | 0% | Healer | Bite |  |
-| 38 | `hedgehog` | Hedgehog | Critter | 25 | 7 | 3 | 20% | Guardian | Bite | Defense from its quills. |
-| 39 | `dormouse` | Dormouse | Critter | 20 | 9 | 2 | 0% | Healer, Leader | Claw |  |
-| 40 | `brown_bear` | Brown Bear | Large | 65 | 3 | 7 | 0% | Warrior, Guardian | Crush |  |
-| 41 | `moose` | Moose | Large | 60 | 3 | 6 | 0% | Guardian, Leader | Kick |  |
-| 42 | `bison` | Bison | Large | 70 | 2 | 6 | 0% | Warrior, Guardian | Stomp |  |
-| 43 | `rhino` | Rhino | Large | 65 | 2 | 7 | 20% | Warrior | Crush | Defense from its hide. |
-| 44 | `elephant` | Elephant | Large | 70 | 1 | 7 | 0% | Guardian, Leader | Stomp |  |
-| 45 | `wolf` | Wolf | Medium | 35 | 7 | 5 | 0% | Feral, Leader | Bite |  |
-| 46 | `lynx` | Lynx | Medium | 30 | 7 | 5 | 0% | Feral, Hunter | Claw |  |
-| 47 | `boar` | Boar | Medium | 40 | 5 | 5 | 0% | Warrior | Crush |  |
-| 48 | `badger` | Badger | Medium | 40 | 5 | 4 | 0% | Guardian, Feral | Claw |  |
-| 49 | `wolverine` | Wolverine | Medium | 35 | 6 | 6 | 0% | Feral, Warrior | Bite |  |
-| 50 | `tiger` | Tiger | Medium | 45 | 6 | 6 | 0% | Feral, Warrior | Claw |  |
-| 51 | `zebra` | Zebra | Medium | 40 | 6 | 4 | 0% | Leader, Hunter | Kick |  |
-| 52 | `kangaroo` | Kangaroo | Medium | 35 | 6 | 5 | 0% | Warrior, Leader | Kick |  |
-| 53 | `anteater` | Giant Anteater | Medium | 40 | 4 | 4 | 0% | Feral, Hunter | Claw |  |
-| 54 | `raccoon` | Raccoon | Critter | 25 | 7 | 3 | 0% | Hunter, Leader | Claw |  |
+| Art | ID | Name | Tier | HP | Speed | Power | Classes | Attack | Notes |
+|---:|---|---|---|---:|---:|---:|---|---|---|
+| 1 | `spikeback` | Spikeback | Large | 55 | 4 | 6 | Warrior, Feral | Crush |  |
+| 2 | `gazer_jelly` | Gazer Jelly | Medium | 30 | 6 | 6 | Elementalist | Glare |  |
+| 3 | `prism_snail` | Prism Snail | Medium | 35 | 4 | 5 | Healer, Elementalist | Glare |  |
+| 4 | `bone_idol` | Bone Idol | Medium | 30 | 5 | 5 | Leader, Healer | Glare |  |
+| 5 | `boulder_toad` | Boulder Toad | Large | 60 | 2 | 7 | Guardian, Warrior | Crush |  |
+| 6 | `thornfang` | Thornfang | Medium | 40 | 7 | 5 | Feral, Hunter | Claw |  |
+| 7 | `bloomspear` | Bloomspear | Medium | 40 | 5 | 5 | Healer, Hunter, Guardian | Thrust |  |
+| 8 | `cinderhorn` | Cinderhorn | Large | 65 | 3 | 7 | Warrior, Leader | Crush |  |
+| 9 | `reef_warden` | Reef Warden | Medium | 45 | 6 | 5 | Guardian, Hunter, Leader | Thrust | HP raised from Defense (10%) for its shield. |
+| 10 | `magma_hog` | Magma Hog | Large | 60 | 4 | 6 | Warrior, Elementalist | Crush |  |
+| 11 | `hornshell` | Hornshell Tortoise | Large | 80 | 1 | 5 | Guardian | Crush | HP raised from Defense (30%) for its shell. |
+| 12 | `land_shark` | Land Shark | Medium | 45 | 6 | 6 | Feral, Warrior | Bite |  |
+| 14 | `ember_snail` | Ember Snail | Medium | 50 | 3 | 5 | Elementalist, Guardian | Spit | Speed 3 is below the medium band: it is a snail. |
+| 15 | `rhino_beetle` | Rhino Beetle | Medium | 45 | 5 | 5 | Guardian, Warrior | Crush | HP raised from Defense (20%) for its carapace. |
+| 16 | `fin_stalker` | Fin Stalker | Medium | 35 | 7 | 5 | Hunter, Feral | Bite | Kept distinct from the Land Shark: faster, lighter, a Hunter. |
+| 17 | `shade_ray` | Shade Ray | Medium | 30 | 8 | 5 | Feral, Elementalist | Sting | Speed 8 is above the medium band: it glides. |
+| 18 | `mossback` | Mossback | Medium | 55 | 4 | 4 | Guardian, Healer | Stomp | HP raised from Defense (20%) for its plates. |
+| 19 | `leafwisp` | Leafwisp | Critter | 20 | 9 | 3 | Healer | Kick |  |
+| 20 | `emberbulb` | Emberbulb | Critter | 25 | 7 | 4 | Elementalist | Glare |  |
+| 21 | `stone_turtle` | Stone Turtle | Large | 80 | 1 | 5 | Guardian | Stomp | HP anchor (section 5.5). HP raised from Defense (40%) for its stone shell. |
+| 22 | `plume_gazelle` | Plume Gazelle | Medium | 30 | 7 | 4 | Leader, Hunter | Kick |  |
+| 23 | `sailback` | Sailback | Medium | 40 | 5 | 5 | Feral, Elementalist | Bite |  |
+| 24 | `sickle_mantis` | Sickle Mantis | Medium | 35 | 6 | 6 | Feral, Warrior | Claw |  |
+| 25 | `magma_crawler` | Magma Crawler | Large | 55 | 3 | 6 | Elementalist, Warrior | Stomp |  |
+| 26 | `glade_stag` | Glade Stag | Medium | 40 | 6 | 5 | Healer, Leader | Kick |  |
+| 27 | `gloom_scorpion` | Gloom Scorpion | Medium | 35 | 5 | 5 | Hunter, Feral | Sting |  |
+| 28 | `ember_shard` | Ember Shard | Medium | 40 | 4 | 6 | Elementalist | Glare | HP raised from Defense (20%) for its crystal body. |
+| 29 | `bloom_pod` | Bloom Pod | Medium | 35 | 4 | 4 | Healer, Hunter | Spit |  |
+| 30 | `woodpecker` | Giant Woodpecker | Medium | 30 | 7 | 5 | Hunter, Leader | Thrust |  |
+| 31 | `bog_toad` | Bog Toad | Medium | 45 | 4 | 5 | Healer, Elementalist | Spit |  |
+| 32 | `ash_moth` | Ash Moth | Critter | 20 | 9 | 3 | Elementalist, Feral | Sting |  |
+| 33 | `giant_mole` | Giant Mole | Medium | 45 | 4 | 5 | Warrior, Guardian | Claw |  |
+| 34 | `mannequin` | Mannequin | Medium | 40 | 5 | 5 | Warrior, Guardian, Leader | Kick | A construct with three classes, as a stand-in for a human-like generalist. |
+| 35 | `fox` | Fox | Critter | 20 | 8 | 3 | Feral, Hunter | Bite | HP anchor: the critter at 20 (section 5.5). |
+| 36 | `hare` | Hare | Critter | 20 | 9 | 2 | Feral, Leader | Kick |  |
+| 37 | `otter` | Otter | Critter | 25 | 8 | 3 | Healer | Bite |  |
+| 38 | `hedgehog` | Hedgehog | Critter | 35 | 7 | 3 | Guardian | Bite | HP raised from Defense (20%) for its quills. |
+| 39 | `dormouse` | Dormouse | Critter | 20 | 9 | 2 | Healer, Leader | Claw |  |
+| 40 | `brown_bear` | Brown Bear | Large | 65 | 3 | 7 | Warrior, Guardian | Crush |  |
+| 41 | `moose` | Moose | Large | 60 | 3 | 6 | Guardian, Leader | Kick |  |
+| 42 | `bison` | Bison | Large | 70 | 2 | 6 | Warrior, Guardian | Stomp |  |
+| 43 | `rhino` | Rhino | Large | 75 | 2 | 7 | Warrior | Crush | HP raised from Defense (20%) for its hide. |
+| 44 | `elephant` | Elephant | Large | 70 | 1 | 7 | Guardian, Leader | Stomp |  |
+| 45 | `wolf` | Wolf | Medium | 35 | 7 | 5 | Feral, Leader | Bite |  |
+| 46 | `lynx` | Lynx | Medium | 30 | 7 | 5 | Feral, Hunter | Claw |  |
+| 47 | `boar` | Boar | Medium | 40 | 5 | 5 | Warrior | Crush |  |
+| 48 | `badger` | Badger | Medium | 40 | 5 | 4 | Guardian, Feral | Claw |  |
+| 49 | `wolverine` | Wolverine | Medium | 35 | 6 | 6 | Feral, Warrior | Bite |  |
+| 50 | `tiger` | Tiger | Medium | 45 | 6 | 6 | Feral, Warrior | Claw |  |
+| 51 | `zebra` | Zebra | Medium | 40 | 6 | 4 | Leader, Hunter | Kick |  |
+| 52 | `kangaroo` | Kangaroo | Medium | 35 | 6 | 5 | Warrior, Leader | Kick |  |
+| 53 | `anteater` | Giant Anteater | Medium | 40 | 4 | 4 | Feral, Hunter | Claw |  |
+| 54 | `raccoon` | Raccoon | Critter | 25 | 7 | 3 | Hunter, Leader | Claw |  |
 
 ### Appearance
 
@@ -143,7 +143,7 @@ What each fantasy creature's art shows, so the names can be checked against the 
 - **Tiers:** 9 critters, 32 medium, 12 large.
 - **Classes:** Guardian 16, Warrior 17, Feral 17, Leader 15, Hunter 13, Elementalist 11, Healer 10. Every creature has one or two classes, except Bloomspear, Reef Warden and Mannequin, which have three.
 - **Attacks:** Crush 9, Claw 9, Bite 8, Kick 8, Glare 5, Stomp 5, Thrust 3, Spit 3, Sting 3.
-- **Natural Defense:** 9 creatures; everyone else has 0%.
+- **Former Defense:** 8 creatures had natural Defense; it was converted to HP on 2026-10-15.
 
 ## TBD
 
