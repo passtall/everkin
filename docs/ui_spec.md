@@ -88,6 +88,7 @@ These are specification categories, not a mandated engine state-machine implemen
   - **Local two-player.** Player 1 picks a saved team, then player 2; both teams are shown side by side, then Fight.
 - **Campaign map** (adopted 2026-10-06 from the mockup):
   - One illustrated screen per stage, with the encounters on a path in their fixed order and arrows to the other unlocked stages.
+  - **World map** (adopted 2026-10-16). A world map shows the campaign's chapters; its layout is designed with the campaign content. The castle (second-to-last chapter) is visible in the distance on the stage maps. Stages and encounters show their short names (game_system.md §15).
   - Won encounters are marked done, the next one is highlighted, later ones stay dark; the boss is a larger node at the end.
   - Selecting an encounter opens a panel with its reward creature, the **whole enemy team** (for the next encounter and won ones; locked ones show only the reward), the current saved team with a picker and an Edit team button, and Fight (Replay for won encounters, noting the reward was already received).
   - After the story, challenge encounters appear as extra nodes on the stage maps.
