@@ -34,7 +34,7 @@ def art_rows():
     rows = []
     for line in (ROOT / "docs" / "creature-classes.md").read_text(encoding="utf-8").splitlines():
         cells = [c.strip().strip("`") for c in line.strip().strip("|").split("|")]
-        if len(cells) == 7 and cells[5].endswith(".png"):
+        if len(cells) >= 7 and cells[5].endswith(".png"):
             rows.append((cells[0], cells[5], cells[6]))
     return rows
 

@@ -9,6 +9,7 @@ Cleaned copies of the originals in `images/kin/` (which are never changed), made
 - The creature is scaled as large as it fits inside a 48 px side margin and below y = 48, centered, with its lowest pixel on the **shared ground line at y = 1456**.
 - Stray specks (detached islands under 400 source pixels) are removed. A leftover white background spot on `mantis-sickle` is erased by hand in the script.
 - `portraits.json` holds, by creature ID, each creature's **portrait crop** for the card front: a 2:3 rectangle (`x`, `y`, `w`, `h` in these 1024 × 1536 pixels), mostly 640 × 960, placed around the head and upper body. The card back shows the whole image.
+- `framing.json` holds, by unit name, the **front** (card front portrait) and **rear** (card back) crops Andreas chose in the creature quiz (2026-10-09): 2:3 rectangles in these 1024 × 1536 pixels. For creatures with a creature ID the front crop is copied into `portraits.json` too.
 - `clean_report.json` records, by unit name, the art file, the source file, the specks removed and where the creature sits.
 
 ## Flagged
