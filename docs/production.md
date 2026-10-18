@@ -168,7 +168,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Database.** PostgreSQL.
 - **Hosting.** One rented server in Europe running both services in Docker containers; moved to bigger hosting only when needed.
 - **Restarts.** Each online battle's seed, teams and every action are stored as they happen. After a server restart, running battles are rebuilt by replaying them and continue where they were.
-- **Trust.** The server holds every profile (section 1.4), so it checks that a player owns every creature in their team and keeps the coin balance itself.
+- **Trust.** The server holds every profile (section 1.4), so it checks that a player owns every creature in their team and keeps the coin balance itself. A player caught cheating is **banned from online play**; offline play keeps working.
 - **Versions.** Only players on the same game version are matched. During a rollout the battle service runs the old and the new version side by side for about two weeks; after that the old version must update before playing online.
 - **Rating.** The hidden matchmaking rating uses Glicko-2.
 - **Battle records.** Finished online battles are kept for 30 days for bug hunting and cheat checks. Players do not see them.
@@ -184,6 +184,5 @@ Adopted 2026-10-06.
 
 ## 4. Still open
 
-- What happens to players caught cheating online (left unanswered 2026-10-18).
 
 - Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18). Deferred by the owner (2026-10-09). A first pass found no US trademark for games, but "Grow: Song of the Evertree" (2021) calls its villagers "the Everkin" and everkin.com belongs to a Shenzhen electronics maker.
