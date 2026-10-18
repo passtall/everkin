@@ -24,7 +24,7 @@ Adopted 2026-10-06.
 - **Coins.** Coins are earned in play (game_system.md §2.2) and **can also be bought**. They unlock specific creatures, never random ones. **Coin packs** (adopted 2026-10-07): three packs of 500, 1,200 and 2,500 coins, kept generous compared with creature prices (game_system.md §2.2). **Pack prices** (adopted 2026-10-08): **1.99, 3.99 and 6.99**. Coin packs are sold only after buying the full game, never in the demo.
 - **Cosmetic frames.** Earned by playing, through campaign milestones and achievements. Never sold. Every card wears its home biome's frame by default (`art/frames/card/<biome_id>.png`, adopted 2026-10-08; this replaced the plain gold frame); an earned frame can replace it on creatures the player chooses (confirmed 2026-10-08). Frames never mark tier or class. **Earned frames are postponed** (2026-10-09): for now cards wear only their biome frame. When earned frames come, each campaign stage boss gives one and a few harder achievements give one.
 - **Achievements** (adopted 2026-10-09). An in-game list, mirrored to the platform achievements (Steam, Google Play Games, Apple Game Center). **About 30** at release. Repetition goals stay moderate, nothing beyond about 100 wins. None are hidden. None need online play; every achievement can be earned offline. The actual list is written once the campaign and creatures are final.
-- **Demo.** A free demo with the tutorial and the first campaign stage. Progress carries over on purchase. On mobile the demo is the free download itself; on Steam it is a separate demo. The demo comes out **at release**, next to the full game (adopted 2026-10-08).
+- **Demo.** A free demo with the tutorial and the first campaign stage. Progress carries over on purchase. On mobile the demo is the free download itself; on Steam it is a separate demo. The demo comes out **at release**, next to the full game (adopted 2026-10-08). Online play is **full game only** (adopted 2026-10-18).
 - **Store pages** (adopted 2026-10-08). The Steam page goes up only **shortly before release**, after the name check. It leads with a **short gameplay trailer** of about 60 seconds made from real battle footage. Store text (adopted 2026-10-09):
   - *Genre line:* "A turn-based tactical creature card battler."
   - *Tagline:* "Gather your kin. Outthink the timeline."
@@ -42,6 +42,7 @@ Adopted 2026-10-06.
 ### 1.4 Saving
 
 - **Profiles and timing.** One profile per device, stored locally. The game saves automatically after every battle and campaign step, and after every action in a battle, so a battle closed by the device resumes where it was. No manual save slots.
+- **Profiles on the server (adopted 2026-10-18).** Every player's profile also lives on the online server, tied to their platform account, and the server is the authority for the collection, coins and purchases. The device keeps a copy so offline play works, and it syncs with the server when online. How offline progress is synced and checked, and what this means for store cloud saves, is still open (section 4).
 - **Format.** JSON with a version number. Older saves are upgraded step by step when loaded.
 - **Damaged saves.** The game writes to a temporary file and then swaps it in, and keeps the previous save as a backup that loads automatically if the newest one is damaged.
 - **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change. Otherwise it is dropped, and a short note says so (changed 2026-10-07; it used to restart from its setup).
@@ -122,7 +123,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Randomness.** One seeded random generator per battle, implemented in the core (never the platform's own random). The AI's search never draws from it.
 - **Tests.** Every worked check in game_system.md §20.5 becomes an automated test, plus unit tests per rule.
 - **Where tests and batches run.** Locally on the owner's PC. There is no GitHub CI, and batches are not run in Claude's sessions.
-- **Online backend.** Online play stays deferred (game_system.md §2.4). When it comes, its backend server will be a **Spring Boot (Java)** application. Responsibilities (adopted 2026-10-09): the **server runs the rules core and decides every result**; clients only send their chosen actions and play the events the server returns. How the Java server hosts the C# rules core is decided when online play starts. Players sign in **automatically with their platform account** (Steam, Google Play, Apple) and there are no Everkin accounts. Play is **cross-platform** in one shared pool. Online rules are in game_system.md §2.4.
+- **Online backend.** Online play stays deferred (game_system.md §2.4). When it comes, its backend server will be a **Spring Boot (Java)** application. Responsibilities (adopted 2026-10-09): the **server runs the rules core and decides every result**; clients only send their chosen actions and play the events the server returns. Together with a C# battle service that runs the rules core (section 2.4, adopted 2026-10-18). Players sign in **automatically with their platform account** (Steam, Google Play, Apple) and there are no Everkin accounts. Play is **cross-platform** in one shared pool. Online rules are in game_system.md §2.4.
 
 ### 2.2 Rules core internals (adopted 2026-10-05)
 
@@ -131,7 +132,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Authority.** Only the core changes battle state. Godot sends chosen actions in and only reads state and events out.
 - **Previews.** The core answers preview queries (damage ranges, interception chances, timeline position, forced movement) with the same code that resolves actions, without changing state.
 - **Numbers.** The core uses integers only: percentages as whole numbers, coefficients in hundredths, explicit rounding down. No floating point in rules code.
-- **Online checking.** The server runs the core and decides every result (§2.1); nothing in the core depends on how it is hosted. The online transport is expected to use WebSockets.
+- **Online checking.** The server runs the core and decides every result (§2.1); nothing in the core depends on how it is hosted. Battles run over SignalR, which uses WebSockets (section 2.4).
 - **.NET version.** The newest long-term-support .NET that Godot 4.7 supports, shared by the core, the runner and the Godot project.
 - **Skill code.** One small C# class per skill, found by its skill ID. Shared behavior lives in reusable, specialized classes per tag or mechanic (for example interception, area shapes, forced movement), and skill classes delegate to them, so no rule is written twice.
 - **Broken content.** Content is validated at load. Any error stops the program with a clear message naming the file and ID.
@@ -154,14 +155,29 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Text.** All UI and content text goes through translation keys from day one. English only at first.
 - **Battle viewer controls.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup to start from.
 
+### 2.4 Online backend (adopted 2026-10-18)
+
+- **Two services.** A **Spring Boot (Java)** server handles sign-in, profiles, collections, coins, purchases, matchmaking and ratings. A small **ASP.NET Core (C#) battle service** runs the rules core library directly and plays every online battle. Spring Boot hands both players a match ticket; the game then connects to the battle service for the battle and reports the result back to Spring Boot. The rules exist only once, in C#.
+- **Connections.** The game talks to Spring Boot over HTTPS. During a battle it holds a **SignalR** connection (WebSockets underneath) to the battle service, which handles reconnecting and the turn timer.
+- **Database.** PostgreSQL.
+- **Hosting.** One rented server in Europe running both services in Docker containers; moved to bigger hosting only when needed.
+- **Restarts.** Each online battle's seed, teams and every action are stored as they happen. After a server restart, running battles are rebuilt by replaying them and continue where they were.
+- **Trust.** The server holds every profile (section 1.4), so it checks that a player owns every creature in their team and keeps the coin balance itself.
+- **Versions.** Only players on the same game version are matched. During a rollout the battle service runs the old and the new version side by side for about two weeks; after that the old version must update before playing online.
+- **Rating.** The hidden matchmaking rating uses Glicko-2.
+- **Battle records.** Finished online battles are kept for 30 days for bug hunting and cheat checks. Players do not see them.
+- **Deleting data.** Settings has a "Delete my online data" button.
+
 ## 3. Roadmap
 
 Adopted 2026-10-06.
 
 - **Specification first.** The specification is finished completely before implementation starts. How progress is tracked is decided just before implementation.
-- **Order after the AI-versus-AI milestone.** Battle viewer on the real cards, then free battle against the AI, then the tutorial and stage 1, then local two-player, then the rest of the campaign, then post-story content, then release.
+- **Order after the AI-versus-AI milestone.** Battle viewer on the real cards, then free battle against the AI, then the tutorial and stage 1, then local two-player, then the rest of the campaign, then post-story content, then online play, then release. **Online play ships in the first release** (adopted 2026-10-18); its implementation still starts only on the owner's greenlight (game_system.md §2.4).
 - **Code changes.** Code goes straight to main, like the docs. There are no pull requests.
 
 ## 4. Still open
+
+- Server-held profiles (section 1.4): how offline progress syncs and is checked, whether a profile needs an internet connection the first time, what happens to store cloud saves, and what "Delete my online data" removes. Next online quiz.
 
 - Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18). Deferred by the owner (2026-10-09). A first pass found no US trademark for games, but "Grow: Song of the Evertree" (2021) calls its villagers "the Everkin" and everkin.com belongs to a Shenzhen electronics maker.
