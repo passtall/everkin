@@ -174,6 +174,22 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Battle records.** Finished online battles are kept for 30 days for bug hunting and cheat checks. Players do not see them.
 - **Deleting data.** Settings has a "Delete my online data" button.
 
+**Backend details (adopted 2026-10-18).**
+
+- **Versions and build.** The newest Java LTS and the newest Spring Boot release when work starts, built with Maven.
+- **Code location.** The same repository: the Spring server in `server/`, the C# battle service in `src/` next to the rules core.
+- **Spring style.** Spring MVC (ordinary blocking code) on virtual threads. Database access with Spring Data JPA (Hibernate); schema changes as versioned Flyway migrations.
+- **Content.** The Spring server reads the same JSON content files as the game (creature IDs, prices), bundled at build time.
+- **Sign-in sessions.** The game sends its platform proof (Steam, Google Play Games, Apple Game Center) once; Spring checks it with the platform and hands out its own short-lived access token plus a refresh token.
+- **Between the services.** Plain internal HTTP calls both ways. Spring gives each matched player a **signed match ticket**, and the battle service checks the signature with a shared key before letting them in.
+- **Matchmaking queue.** In memory inside Spring; after a restart, waiting players queue again.
+- **Profile sync.** The device sends what changed since its last sync (wins, new creatures); the server answers with the whole merged profile.
+- **Battle records.** In the same PostgreSQL, in the battle service's own schema.
+- **Deploying.** Docker Compose on the server behind Caddy (automatic HTTPS). A script on the owner's PC builds the images and deploys; there is still no GitHub CI.
+- **Staging.** A second setup on the same server with its own database; development builds of the game use it.
+- **Backups.** A nightly database dump copied off the server, kept 30 days.
+- **Tests and monitoring.** JUnit 5 with Testcontainers (a real PostgreSQL in tests). Health endpoints, an external uptime check that alerts the owner, and logs on the server.
+
 ## 3. Roadmap
 
 Adopted 2026-10-06.
