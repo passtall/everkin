@@ -42,12 +42,18 @@ Adopted 2026-10-06.
 ### 1.4 Saving
 
 - **Profiles and timing.** One profile per device, stored locally. The game saves automatically after every battle and campaign step, and after every action in a battle, so a battle closed by the device resumes where it was. No manual save slots.
-- **Profiles on the server (adopted 2026-10-18).** Every player's profile also lives on the online server, tied to their platform account, and the server is the authority for the collection, coins and purchases. The device keeps a copy so offline play works, and it syncs with the server when online. How offline progress is synced and checked, and what this means for store cloud saves, is still open (section 4).
+- **Profiles on the server (adopted 2026-10-18).** Every player's profile also lives on the online server, tied to their platform account, and the server is the authority for the collection, coins and purchases. The device keeps a copy so offline play works, and it syncs with the server when online. **Offline and sync (adopted 2026-10-18):**
+  - The game starts and plays offline, even on first launch; the server profile is created at the first connection.
+  - Campaign progress and creatures won offline are accepted when the device syncs. **Coins** exist only on the server: they are earned, spent and bought only while connected, so a random battle played offline pays nothing and coin creatures cannot be bought offline.
+  - When two devices on the same account differ, the server merges them: every creature from both and the furthest campaign progress. Coins never need merging.
+  - Coin pack purchases are checked by the server against the store receipt, and the server adds the coins.
+  - "Delete my online data" removes the server profile, rating and battle records. The device copy stays and becomes a fresh server profile if the player goes online again.
+  - If the online service ever shuts down, the game keeps working offline from the device copy with everything the player owns.
 - **Format.** JSON with a version number. Older saves are upgraded step by step when loaded.
 - **Damaged saves.** The game writes to a temporary file and then swaps it in, and keeps the previous save as a backup that loads automatically if the newest one is damaged.
 - **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change. Otherwise it is dropped, and a short note says so (changed 2026-10-07; it used to restart from its setup).
 - **Backups (adopted 2026-10-08).** The device keeps the last three automatic save backups. If the save is damaged, the game loads the newest good backup and shows a short note.
-- **Cloud saves (adopted 2026-10-07).** At release each store's own cloud save backs up the profile: Steam Cloud on Windows, Google Play saved games on Android, iCloud on iOS. Saves do not move between platform families, online play included (confirmed 2026-10-09). If the cloud save and the device save differ, the game asks the player which to keep and shows each save's progress and date.
+- **Cloud saves.** Store cloud saves (Steam Cloud, Google Play saved games, iCloud) are **not used**; the server profile is the backup (changed 2026-10-18, replacing the 2026-10-07 decision). Profiles still never move between platform families.
 
 ### 1.5 Story presentation
 
@@ -173,11 +179,11 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 Adopted 2026-10-06.
 
 - **Specification first.** The specification is finished completely before implementation starts. How progress is tracked is decided just before implementation.
-- **Order after the AI-versus-AI milestone.** Battle viewer on the real cards, then free battle against the AI, then the tutorial and stage 1, then local two-player, then the rest of the campaign, then post-story content, then online play, then release. **Online play ships in the first release** (adopted 2026-10-18); its implementation still starts only on the owner's greenlight (game_system.md §2.4).
+- **Order after the AI-versus-AI milestone.** Battle viewer on the real cards, then free battle against the AI, then the tutorial and stage 1, then local two-player, then the rest of the campaign, then post-story content, then online play, then release. **Online play ships in the first release** (adopted 2026-10-18); the owner greenlit it on 2026-10-18.
 - **Code changes.** Code goes straight to main, like the docs. There are no pull requests.
 
 ## 4. Still open
 
-- Server-held profiles (section 1.4): how offline progress syncs and is checked, whether a profile needs an internet connection the first time, what happens to store cloud saves, and what "Delete my online data" removes. Next online quiz.
+- What happens to players caught cheating online (left unanswered 2026-10-18).
 
 - Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18). Deferred by the owner (2026-10-09). A first pass found no US trademark for games, but "Grow: Song of the Evertree" (2021) calls its villagers "the Everkin" and everkin.com belongs to a Shenzhen electronics maker.
