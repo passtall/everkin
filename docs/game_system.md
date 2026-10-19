@@ -448,7 +448,7 @@ The UI shows multiple upcoming turns and previews where the acting unit's next t
 - **Initial progress.** At battle start each unit's first Wait is `11 − Speed`, as if its previous skill had Delay 0. A Speed 10 unit acts at time 1 and a Speed 1 unit at time 10.
 - **Ties.** When turns arrive at the same time, the higher Speed acts first. If Speed is equal, a **seeded random roll** decides, so battles can be replayed from the seed.
 - **Time model.** Time advances only in jumps between events. Choosing an action and playing animations cost no time, and a turn costs time only when its skill resolves. Only online play has a turn timer (60 seconds, section 2.4).
-- **Same-time order.** Status expiries resolve first, then auto and delayed events, then unit turns. This order is expected to be fine-tuned during testing.
+- **Same-time order.** Status and ground effect expiries resolve first, then auto and delayed events, then unit turns. This order is expected to be fine-tuned during testing.
 - **Haste and Slow.** A skill states a whole number of Speed steps (typically 2, never more than 3). Besides Speed, skills and effects may also give a unit's skills more or less Delay.
 - **Pull Forward and Push Back.** There is no global cap. Each skill states its number, checked against the damage anchor and playtesting.
 - **Reset.** Restores the full Wait of the unit's last skill, starting from now.
@@ -457,6 +457,7 @@ The UI shows multiple upcoming turns and previews where the acting unit's next t
 
 - **Delay bounds.** Effects that add or remove Delay never take a skill outside 1–10: after all modifiers, Delay is clamped to 1–10.
 - **Overshoot (adopted 2026-10-06).** If Pull Forward removes more time than remains, the turn arrives now and the extra is lost; it does not shorten a later Wait. Among turns due at the same time, the normal tie and same-time rules apply.
+- **Durations use the battle clock (adopted 2026-10-19, effect timing quiz).** Ground effects and statuses last a stated number of **time units** from the moment they are placed. Each skill states its own length; 20 time units is the reference for burning ground, ice, water and poison ground (about two turns of an average Speed 5, Delay 5 unit). The end of every effect is shown only as a marker on the timeline, not as a countdown on the spot.
 - **When the next Wait starts (adopted 2026-10-06).** The acting unit's next Wait is set when its skill is used, before the skill's effects. Pushes, pulls, Haste or Slow that reach the user during its own action (for example from a counter) apply on top of it.
 
 Stop was removed from the timeline effects: its role is covered by Push Back and by statuses that skip turns (Frozen). Turn Now (immediately completing a unit's Wait) was removed on 2026-10-05 because no skill uses it; Pull Forward covers the role.
@@ -851,8 +852,8 @@ Each status has its own application chance, duration, triggering conditions, and
 **Adopted status framework:**
 
 - **What a status is.** Any effect with a duration on a unit is a status: harmful effects, buffs, Orders, Ward, Dampen, marks and stealth. KO removes all of them. Purify and similar effects can remove any status from any unit, unless the status says it cannot be cleansed.
-- **Duration clocks.** A status lasts for the affected unit's own turns ("its next 3 turns") or until the caster's next turn (Orders, Ward). **Fixed time-unit durations are not a status clock.** An effect that should cost a number of time units uses the timeline instead, through Push Back, Pull Forward or Delay (section 6.1).
-- **Ticking.** There is no global tick timing. Each status states when it ticks. Poison ticks at the start of the affected unit's turn, as the class drafts define. When burning ground (section 12.2) deals its damage is still open. A tick that KOs the unit ends its turn.
+- **Duration clocks (changed 2026-10-19, effect timing quiz).** Every duration uses the battle clock: a status lasts a stated number of time units (section 6.1). Durations still written as "its next N turns" or "until the caster's next turn" are being converted; the conversion, and whether Orders and Ward keep "until the caster's next turn", is open.
+- **Ticking.** Ground effect damage accumulates for every time unit a unit stands on the effect, and everything accumulated is applied whenever any unit gets a turn (Andreas, 2026-10-19). How Poison and other ticking statuses fit this is open. A tick that KOs the unit ends its turn.
 - **Reapplication.** A unit has one instance per status type. Reapplying refreshes the duration. There is **no stacking**, and none is planned.
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
 - **Limit.** There is no limit on the number of statuses per unit. The UI handles overflow.
@@ -923,7 +924,7 @@ Summoning before battle is **not adopted**: summoning happens only through skill
 - **Placement.** By default the player chooses the insertion point within the rows the skill allows. A skill may fix the position.
 - **Control.** Summons that take turns act **autonomously**, following behavior defined in their own summoning skill. There is no global default behavior. Constructs such as traps take no turns.
 - **First turn.** A turn-taking summon first acts `11 − Speed` time units after it appears.
-- **Lifetime.** A summon lasts until it is KO'd or the battle ends. A skill may add a duration, counted in the summon's own turns or the summoner's turns, never in fixed time units.
+- **Lifetime.** A summon lasts until it is KO'd or the battle ends. A skill may add a duration, counted in the summon's own turns or the summoner's turns, never in fixed time units. (Whether this switches to time units like other durations, section 10.5, is open.)
 - **Summoner KO.** Summons persist when their summoner is KO'd, unless the skill says they disappear.
 - **KO'd summons.** A KO'd summon's body is **removed at once and frees its slot**. This is the first body-removal exception (section 10.3). Summons cannot be revived.
 - **Stats.** A summon's stats are fixed numbers in its skill (for example Spike's HP 6). They do not scale with the summoner.
@@ -963,15 +964,21 @@ These examples establish design space, not finalized numerical effects. Formatio
 
 Row effects such as burning ground, fog, or darkness, and slot effects such as traps, ice, or cover were welcomed as future tools.
 
-**Ground effects (adopted 2026-10-19, synergy quiz).** A ground effect sits on a spot and stays on its coordinate when rows recenter (section 7.3). It affects the unit standing there. Ground effects come from skills, so they are in the first release; they are not the terrain that section 20.1 leaves out. There are no tags: an effect reacts to the other effects named in its own text, and a skill that sets one off says so in its text (as Backdraft does). **When each effect deals its damage and how long effects last are open, for a separate discussion.**
+**Ground effects (adopted 2026-10-19, synergy quiz).** A ground effect sits on a spot and stays on its coordinate when rows recenter (section 7.3). It affects the unit standing there. Ground effects come from skills, so they are in the first release; they are not the terrain that section 20.1 leaves out. There are no tags: an effect reacts to the other effects named in its own text, and a skill that sets one off says so in its text (as Backdraft does). **Timing (adopted 2026-10-19, effect timing quiz):**
+
+- **Length.** An effect lasts a stated number of time units from when it is placed (section 6.1); each skill states its own, with 20 as the reference. Its end is a marker on the timeline.
+- **Damage over time.** A unit on a damaging effect accumulates its damage for every time unit it stands there. Whatever has accumulated is applied whenever any unit gets a turn, so a unit standing in fire for 20 time units is hurt for each of those 20 units. A unit pushed on or off mid-turn simply starts or stops accumulating then, since no time passes during a turn. The damage per time unit is open.
+- **Placing the same effect again** restarts its length from now.
+- **Combos** (ice from frost on water, water left by steam) start the full length of the new effect.
+- **The caster is KO:** its effects stay.
 
 | Effect | What it does | Combines with | Sources |
 |---|---|---|---|
-| **Burning ground** | 2 damage to the unit there (when is open). Replaces the Burning status. | Water stops it; ice makes steam; poison ground explodes | Elementalist; Tinker (Firebomb, Flame turret) |
+| **Burning ground** | Damage to the unit there for every time unit it stands there (rate open; was 2 per turn). Replaces the Burning status. | Water stops it; ice makes steam; poison ground explodes | Elementalist; Tinker (Firebomb, Flame turret) |
 | **Ice** | A unit pushed or pulled across ice slides one row further (bumps apply). | Fire makes steam | Elementalist; Primalist (Hoarfrost) |
 | **Water** | Harmless alone. | Lightning on a unit in water also hits the units on water spots touching it, for half. Frost turns it to ice and the unit there is Frozen. Fire set on water does not start, and the water stays. | Elementalist; Primalist (Rain dance) |
 | **Steam** | Fire meets ice: both end, the unit there is Confused for 1 turn, and water stays on the spot. | | Elementalist (Steam Burst) |
-| **Poison ground** | A unit there is Poisoned. One effect for gas, puddles and spores alike (Andreas, 2026-10-19). | Poison ground and fire placed on the same row at once: every poison spot explodes (damage open) | Tinker (Poison gas); Rogue (Poison vial); Primalist (Toxic bloom: when a unit moves onto it or is hit there, it and the units beside it are Poisoned) |
+| **Poison ground** | A unit there is Poisoned. One effect for gas, puddles and spores alike (Andreas, 2026-10-19). | Poison ground and fire placed on the same row at once: every poison spot explodes: each unit on one takes 6, and the spot becomes burning ground | Tinker (Poison gas); Rogue (Poison vial); Primalist (Toxic bloom: when a unit moves onto it or is hit there, it and the units beside it are Poisoned) |
 
 The lightning skills are Chain Lightning, Thunderbolt and Megavolt. Water spots touch when they are side by side in a row or overlap across neighbouring rows. Frozen, Confused and Blind are statuses (section 10.5). Which classes cause which effects, and the movement roles of Guardian, Warrior and Leader, are in [class_system.md](class_system.md) section 5. Tinker skill: Firebomb sets fire to a spot and the spots beside it; Flame turret is a construct that sets fire to one enemy spot in front of it each time the Tinker takes a turn.
 
