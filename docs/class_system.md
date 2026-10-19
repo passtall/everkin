@@ -1,7 +1,7 @@
 # Everkin – Class System
 
 **Status:** Finalized  
-**Version:** 1.4
+**Version:** 1.5
 
 > Posted by Andreas on 2026-10-09 as the single source of truth for creature classes. It supersedes every earlier class and skill definition: the seven-class roster (Hunter, Elementalist, Healer, Warrior, Guardian, Feral, Leader), the skills in [classes_and_skills.md](classes_and_skills.md), the type-specific attack library and class assignments in [creatures.md](creatures.md), and the class rules in [game_system.md](game_system.md) §3.7 and §4. How skills, skill trees and basic attacks are built on top of this system is not decided yet (game_system.md §19).
 >
@@ -10,6 +10,8 @@
 > **v1.3 (2026-10-14):** Merges decided in the class merge and names quizzes. Professions: Bodyguard merged into Guardian; Assassin and Trickster merged into Rogue; Alchemist and Engineer merged into Tinker; Bard, Leader and Primalist sharpened; Paladin moved to Healer. Attack Types: Thrown merged into Ranged; Unarmed and Feral merged into Brawl; Lashing renamed Whip. Now 9 Attack Types and 13 Professions.
 >
 > **v1.4 (2026-10-14):** Skill-fit rules added (section 4).
+>
+> **v1.5 (2026-10-19):** Bard removed (Andreas, in the synergy quiz). Every creature that had Bard has Leader instead; a creature that had both keeps only Leader. Whether Bard becomes a Leader branch name is open. Now 12 Professions. Movement roles added (section 5).
 
 ## 1. Core Concept
 
@@ -51,7 +53,7 @@ Classes describe broad archetypes rather than individual weapons or specialized 
 
 ---
 
-## 3. Professions (13)
+## 3. Professions (12)
 
 | Profession | Description and included archetypes |
 |---|---|
@@ -61,8 +63,7 @@ Classes describe broad archetypes rather than individual weapons or specialized 
 | **Sorcerer** | All non-elemental spells: arcane magic, enchantment, magical enhancement, and dark magic such as curses, hexes and life drain. Includes Enchanter, Warlock, Hexer |
 | **Elementalist** | Fire, frost, water, storm and earth magic; earth includes stone and crystal. Includes elemental weapons and armor |
 | **Warrior** | Offensive martial abilities, endurance, combat mastery. Includes Berserker, Duelist, Knight, Monk |
-| **Bard** | Buffing allies and weakening enemies through music, sound, dance and performance. Includes Minstrel, Dancer |
-| **Leader** | Commanding the flow of battle: the shared timeline and Momentum, who acts when, tactical coordination. Includes Commander, Tactician |
+| **Leader** | Commanding the flow of battle: the shared timeline and Momentum, who acts when, tactical coordination, and moving your own units around the field. Includes Commander, Tactician |
 | **Rogue** | Stealth, precision, critical attacks, executing vulnerable targets, deception, illusions, misdirection, sabotage and theft. Includes Assassin, Ninja, Trickster, Illusionist, Thief |
 | **Tinker** | Making things: potions, chemicals, poisons, mixtures, machinery, gadgets, constructs, mechanical traps. Includes Alchemist, Herbalist, Poisoner, Engineer, Artificer |
 | **Summoner** | Summoning and commanding additional creatures, spirits, entities, or constructs, including necromancy: raising the dead and bone constructs. Includes Beastmaster, Necromancer |
@@ -89,3 +90,21 @@ Andreas's goal: no creature gets access to skills that clearly do not fit its de
 - **No body traits.** Skills are not gated by hands, wings, voice or similar traits.
 - **Fit comes from care, not rules.** Avoid only what clearly clashes with a creature's art when assigning professions and designing skills. Everkin is a card game with light animation, so generous fits are fine: a living drawbridge can have a charge attack.
 - **A profession must be visible in the art (Andreas, 2026-10-14).** Its cue has to be shown, not implied by color or material. Sorcerers and Elementalists need a casting tool or clear spellcasting: a wand, staff, orb, tome, runes or a spell in hand. A fire-colored body alone is not an Elementalist; it suggests a fire basic attack (Breath, Aura or Magic with that element) instead.
+
+---
+
+## 5. Movement roles and battlefield effects (adopted 2026-10-19)
+
+Decided by Andreas in the synergy quiz, round 2. Ground effects sit on a spot, as burning ground does; statuses sit on a unit.
+
+- **Guardian** blocks movement. It gets no ground effects.
+- **Warrior** moves enemies: forced movement of enemy units.
+- **Leader** moves your own units: forced movement of friendly units.
+- **Hunter** has traps and marks an enemy; it needs no further effects.
+- **Healer** gets no ground effects.
+- **Elementalist** keeps burning ground, ice, water, Frozen and steam; their details are still being decided.
+- **Rogue** causes Blind (flash powder) and poison ground.
+- **Primalist** causes poison, ice and water effects.
+- **Tinker** causes fire and poison effects.
+- **Sorcerer** effects are still being designed.
+

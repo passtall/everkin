@@ -29,7 +29,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | Unit | ID | Name | Attack type | Professions | Art file | Source |
 |---|---|---|---|---|---|---|
 | `abacus-strategist` | — | Tallymarch | Brawl | Leader | `abacus-01.png` | — |
-| `accordion-warlord` | — | Wheezewarden | Brawl | Bard, Warrior | `accordion-01.png` | — |
+| `accordion-warlord` | — | Wheezewarden | Brawl | Leader, Warrior | `accordion-01.png` | — |
 | `anchor-sentinel` | — | Barnacle Bulwark | Blunt | Guardian | `anchor-01.png` | — |
 | `ankylosaur-guardian-club` | — | Clubtail Grumbleback | Blunt | Guardian, Warrior | `ankylosaur-01.png` | — |
 | `ant-engineer-gear` | — | Cogmarch Ant | Ranged | Tinker | `ant-01.png` | — |
@@ -39,13 +39,13 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `aurochs-bodyguard-plate` | — | Ironhide Aurochs | Brawl | Warrior | `aurochs-01.png` | — |
 | `axolotl-mage-water` | — | Ripplequill | Magic | Elementalist, Sorcerer | `axolotl-01.png` | — |
 | `ayeaye-hexer-candle` | — | Candlefinger | Magic | Sorcerer, Rogue | `ayeaye-01.png` | — |
-| `badger-summoner-drum` | — | Drumbadger | Blunt | Summoner, Bard | `badger-01.png` | — |
+| `badger-summoner-drum` | — | Drumbadger | Blunt | Summoner, Leader | `badger-01.png` | — |
 | `ballast-bodyguard` | — | Sandbag Sentinel | Blunt | Guardian, Flying | `ballast-01.png` | — |
 | `basilisk-sorcerer-gaze` | — | Stonegaze Basilisk | Aura | Warrior, Rogue | `basilisk-01.png` | — |
-| `bassoon-hexer-requiem` | — | Dirgewind | Breath | Bard | `bassoon-01.png` | — |
+| `bassoon-hexer-requiem` | — | Dirgewind | Breath | Leader | `bassoon-01.png` | — |
 | `bat-summoner-moon` | — | Moonwing | Magic | Flying, Summoner | `bat-01.png` | — |
 | `bat-rogue-shadow` | — | Bat Rogue | Bladed | Rogue, Flying | `bat-02.png` | `bat-rogue-shadow.png` |
-| `baton-marshal` | — | Marshal Tempo | Polearm | Leader, Bard | `baton-01.png` | — |
+| `baton-marshal` | — | Marshal Tempo | Polearm | Leader | `baton-01.png` | — |
 | `beacon-summoner` | — | Lighthouse Wakelamp | Aura | Flying, Summoner | `beacon-01.png` | — |
 | `beaver-healer-pump` | — | Pumpwhisker | Ranged | Tinker, Healer | `beaver-01.png` | — |
 | `bee-shaman-sun` | — | Sunhum | Magic | Primalist, Flying | `bee-01.png` | — |
@@ -53,9 +53,9 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `beetle-knight-shield` | — | Beetle Guardian | Blunt | Guardian, Warrior | `beetle-02.png` | `beetle-knight-shield.png` |
 | `beetle-engineer-seed` | — | Seedshot Scarab | Ranged | Tinker, Primalist | `beetle-04.png` | — |
 | `behemoth-titan-iron` | — | Ironbound Behemoth | Brawl | Guardian, Elementalist | `behemoth-01.png` | — |
-| `bell-guardian-clapper` | — | Clapperward | Blunt | Bard, Summoner | `bell-01.png` | — |
+| `bell-guardian-clapper` | — | Clapperward | Blunt | Leader, Summoner | `bell-01.png` | — |
 | `bellows-drake` | — | Puffing Forgedrake | Breath | Tinker, Warrior | `bellows-01.png` | — |
-| `binturong-bard-vine` | — | Vinelilt | Whip | Bard, Primalist | `binturong-01.png` | — |
+| `binturong-bard-vine` | — | Vinelilt | Whip | Leader, Primalist | `binturong-01.png` | — |
 | `bloomspear` | `bloomspear` | Bloomspear | Polearm | Primalist, Warrior | `bloomspear-01.png` | `7_f.png` |
 | `boar-magma` | `magma_hog` | Magma Hog | Brawl | Warrior | `boar-01.png` | `10_f.png` |
 | `boar-guard-hex` | — | Hexbristle | Brawl | Guardian, Sorcerer | `boar-02.png` | — |
@@ -63,34 +63,34 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `book-summoner-fold` | — | Foldtome | Magic | Summoner, Primalist | `book-01.png` | — |
 | `brazier-summoner-coal` | — | Coalwraith Brazier | Aura | Summoner, Elementalist | `brazier-01.png` | — |
 | `buffalo-guard-root` | — | Rootyoke Buffalo | Whip | Guardian, Primalist | `buffalo-01.png` | — |
-| `bugle-skyrider` | — | Skybrass | Breath | Bard, Flying | `bugle-01.png` | — |
+| `bugle-skyrider` | — | Skybrass | Breath | Leader, Flying | `bugle-01.png` | — |
 | `candelabrum-warrior-wax` | — | Waxbrawler | Brawl | Warrior, Sorcerer | `candelabrum-01.png` | — |
 | `cannon-marauder` | — | Powderbelch | Ranged | Warrior, Hunter | `cannon-01.png` | — |
 | `capybara-guard-calm` | — | Calmwater Capybara | Aura | Healer, Summoner | `capybara-01.png` | — |
 | `caracal-hunter-spear` | — | Tuftspear | Brawl | Sorcerer, Rogue | `caracal-01.png` | — |
-| `carillon-summoner-chime` | — | Chimespire | Brawl | Bard, Guardian | `carillon-01.png` | — |
+| `carillon-summoner-chime` | — | Chimespire | Brawl | Leader, Guardian | `carillon-01.png` | — |
 | `cassowary-captain-horn` | — | Crestcaller | Breath | Leader, Warrior | `cassowary-01.png` | — |
-| `caterpillar-bard` | — | Caterpillar Bard | Breath | Bard | `caterpillar-01.png` | `caterpillar-bard.png` |
+| `caterpillar-bard` | — | Caterpillar Bard | Breath | Leader | `caterpillar-01.png` | `caterpillar-bard.png` |
 | `catfolk-spellblade-moon` | — | Moonclaw Spellblade | Bladed | Warrior, Rogue | `catfolk-01.png` | — |
 | `centipede-assassin-sickle` | — | Sicklecoil | Bladed | Rogue, Warrior | `centipede-01.png` | — |
 | `chalice-of-storms` | — | Stormgoblet | Magic | Elementalist, Flying | `chalice-01.png` | — |
 | `chameleon-trickster-tongue` | — | Shiftscale | Whip | Rogue | `chameleon-01.png` | — |
 | `chandelier-summoner-candle` | — | Candlecrown | Magic | Summoner, Flying | `chandelier-01.png` | — |
 | `chest-bodyguard-lock` | — | Lockjaw Chest | Brawl | Guardian, Tinker | `chest-01.png` | — |
-| `chinchilla-summoner-ocarina` | — | Ocarina Puff | Magic | Bard, Summoner | `chinchilla-01.png` | — |
+| `chinchilla-summoner-ocarina` | — | Ocarina Puff | Magic | Leader, Summoner | `chinchilla-01.png` | — |
 | `cicada-bard-chime` | — | Chimewing Cicada | Magic | Sorcerer, Healer | `cicada-01.png` | — |
 | `cinderhorn` | `cinderhorn` | Cinderhorn | Bladed | Warrior | `cinderhorn-01.png` | `8_f.png` |
 | `coati-trickster-dice` | — | Diceroll Coati | Ranged | Rogue | `coati-01.png` | — |
 | `cobra` | — | Hoodspitter | Breath | Rogue | `cobra-01.png` | `cobra.png` |
 | `compass-hunter-needle` | — | Northneedle | Bladed | Hunter, Tinker | `compass-02.png` | — |
-| `conchphone-bard-horn` | — | Conchhorn | Breath | Bard | `conchphone-01.png` | — |
+| `conchphone-bard-horn` | — | Conchhorn | Breath | Leader | `conchphone-01.png` | — |
 | `corkscrew-stalker` | — | Twistcork | Bladed | Rogue | `corkscrew-01.png` | — |
 | `crab-alchemist` | — | Crab Alchemist | Ranged | Tinker | `crab-01.png` | `crab-alchemist.png` |
 | `crab-smith` | — | Crab Smith | Blunt | Tinker, Warrior | `crab-02.png` | `crab-smith.png` |
 | `crab-guard-decoy` | — | Decoy Crab | Brawl | Guardian | `crab-03.png` | — |
 | `crane-hoist-titan` | — | Hoist Titan | Brawl | Healer, Tinker | `crane-01.png` | — |
 | `crane-summoner-feather` | — | Featherveil Crane | Magic | Summoner, Elementalist | `crane-02.png` | — |
-| `cricket-bard-fiddle` | — | Fiddlewhit | Magic | Bard, Leader | `cricket-01.png` | — |
+| `cricket-bard-fiddle` | — | Fiddlewhit | Magic | Leader | `cricket-01.png` | — |
 | `crocodile-shaman` | — | Crocodile Shaman | Brawl | Primalist, Warrior | `crocodile-01.png` | `crocodile-shaman.png` |
 | `crow-necromancer-skull` | — | Skullcaw | Magic | Summoner, Flying | `crow-01.png` | — |
 | `crucible-summoner` | — | Moltencup | Aura | Guardian | `crucible-01.png` | — |
@@ -104,7 +104,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `dragonfly-scout-bow` | — | Reedarrow | Ranged | Flying, Hunter | `dragonfly-01.png` | — |
 | `drake-titan-crystal` | — | Crystalback Drake | Brawl | Elementalist, Sorcerer | `drake-01.png` | — |
 | `drawbridge-bodyguard-chain` | — | Chaingate | Brawl | Guardian | `drawbridge-01.png` | — |
-| `drum-summoner-war` | — | Wardrum | Aura | Bard, Warrior | `drum-01.png` | — |
+| `drum-summoner-war` | — | Wardrum | Aura | Leader, Warrior | `drum-01.png` | — |
 | `dugong-guard-crystal` | — | Crystalfin Dugong | Aura | Sorcerer, Elementalist | `dugong-02.png` | — |
 | `elephant-summoner-idol` | — | Idolbearer | Brawl | Summoner, Primalist | `elephant-01.png` | — |
 | `ferret-summoner-mask` | — | Maskwhisk | Brawl | Rogue, Summoner | `ferret-01.png` | — |
@@ -113,9 +113,9 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `firefly` | — | Firefly | Aura | Flying, Healer | `firefly-02.png` | `firefly.png` |
 | `flyingfish-scout-dart` | — | Dartfin | Ranged | Flying, Rogue | `flyingfish-01.png` | — |
 | `fossa-hunter-harpoon` | — | Harpoon Fossa | Polearm | Hunter, Rogue | `fossa-01.png` | — |
-| `fox-bard` | — | Fox Bard | Brawl | Bard, Rogue | `fox-01.png` | `fox-bard.png` |
-| `frigatebird-bard-throat` | — | Throatdrum | Breath | Bard, Flying | `frigatebird-01.png` | — |
-| `frog-bard-dagger` | — | Frog Bard Dagger | Bladed | Bard, Rogue | `frog-01.png` | `frog-bard-dagger.png` |
+| `fox-bard` | — | Fox Bard | Brawl | Leader, Rogue | `fox-01.png` | `fox-bard.png` |
+| `frigatebird-bard-throat` | — | Throatdrum | Breath | Leader, Flying | `frigatebird-01.png` | — |
+| `frog-bard-dagger` | — | Frog Bard Dagger | Bladed | Leader, Rogue | `frog-01.png` | `frog-bard-dagger.png` |
 | `furnace-titan` | — | Furnace Titan | Breath | Warrior, Guardian | `furnace-01.png` | — |
 | `gargoyle-sentinel-stone` | — | Stonewatch Gargoyle | Polearm | Flying, Hunter | `gargoyle-01.png` | — |
 | `gaur-bodyguard-armor` | — | Bolted Gaur | Brawl | Guardian, Warrior | `gaur-01.png` | — |
@@ -125,21 +125,21 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `goblet-paladin` | — | Grailward | Aura | Healer, Warrior | `goblet-01.png` | — |
 | `golem-colossus-furnace` | — | Furnaceheart Colossus | Brawl | Warrior, Guardian | `golem-01.png` | — |
 | `golem-engineer-gear` | — | Gearwright Golem | Brawl | Tinker, Guardian | `golem-02.png` | — |
-| `gong-hexer-dissonance` | — | Discord Gong | Aura | Bard, Summoner | `gong-01.png` | — |
+| `gong-hexer-dissonance` | — | Discord Gong | Aura | Leader, Summoner | `gong-01.png` | — |
 | `gorilla-bodyguard-fists` | — | Ironfist Silverback | Brawl | Guardian, Warrior | `gorilla-01.png` | — |
 | `griffin-knight-lance` | — | Lancewing Griffin | Polearm | Flying, Warrior | `griffin-01.png` | — |
-| `harpsichord-bard-keys` | — | Keyclatter | Aura | Bard | `harpsichord-01.png` | — |
+| `harpsichord-bard-keys` | — | Keyclatter | Aura | Leader | `harpsichord-01.png` | — |
 | `harpy-eagle-scout-claws` | — | Talonstrike | Brawl | Flying, Hunter | `harpy-eagle-01.png` | — |
 | `hawk-scout-bow` | — | Skybow Hawk | Ranged | Hunter, Flying | `hawk-01.png` | — |
 | `hermitcrab-sentinel-basalt` | — | Basaltshell | Brawl | Guardian | `hermitcrab-01.png` | — |
 | `heron-engineer-wing` | — | Wingwright Heron | Ranged | Tinker, Flying | `heron-01.png` | — |
 | `heron-hunter-harpoon` | — | Stillspear | Polearm | Flying, Warrior | `heron-02.png` | — |
 | `hippo-healer-potion` | — | Tonic Hippo | Breath | Healer, Tinker | `hippo-01.png` | — |
-| `hornbill-bard-drum` | — | Drumbill | Blunt | Bard, Flying | `hornbill-01.png` | — |
+| `hornbill-bard-drum` | — | Drumbill | Blunt | Leader, Flying | `hornbill-01.png` | — |
 | `horseshoe-champion` | — | Lucky Ironshoe | Brawl | Warrior, Guardian | `horseshoe-01.png` | — |
 | `horseshoecrab-sentinel-bronze` | — | Bronzeback Sentinel | Brawl | Guardian, Elementalist | `horseshoecrab-01.png` | — |
 | `hourglass-hexer-sand` | — | Sandhex Glass | Aura | Sorcerer, Leader | `hourglass-01.png` | — |
-| `howlermonkey-bard-roar` | — | Roarleaf | Breath | Bard, Leader | `howlermonkey-01.png` | — |
+| `howlermonkey-bard-roar` | — | Roarleaf | Breath | Leader | `howlermonkey-01.png` | — |
 | `human-alchemist-shield` | — | Gerald Hollins | Ranged | Tinker, Guardian | `human-01.png` | `human-alchemist-shield.png` |
 | `human-alchemist` | — | Maggie Wren | Ranged | Tinker, Rogue | `human-02.png` | `human-alchemist.png` |
 | `human-archer-crystal` | — | Mira Castell | Ranged | Hunter, Sorcerer | `human-03.png` | `human-archer-crystal.png` |
@@ -149,8 +149,8 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `human-archer` | — | Tom Reed | Ranged | Hunter, Primalist | `human-07.png` | `human-archer.png` |
 | `human-barbarian-frost` | — | Ragnhild Eriksen | Bladed | Warrior, Sorcerer | `human-08.png` | `human-barbarian-frost.png` |
 | `human-barbarian` | — | Gunnar Holt | Bladed | Warrior | `human-09.png` | `human-barbarian.png` |
-| `human-bard-shield` | — | Felix Lowell | Blunt | Bard, Warrior | `human-10.png` | `human-bard-shield.png` |
-| `human-bard` | — | Lorenzo Varga | Magic | Bard, Leader | `human-11.png` | `human-bard.png` |
+| `human-bard-shield` | — | Felix Lowell | Blunt | Leader, Warrior | `human-10.png` | `human-bard-shield.png` |
+| `human-bard` | — | Lorenzo Varga | Magic | Leader | `human-11.png` | `human-bard.png` |
 | `human-brawler-hook` | — | Jack Morrow | Blunt | Warrior, Hunter | `human-12.png` | `human-brawler-hook.png` |
 | `human-captain-banner` | — | Helena Strand | Polearm | Leader, Warrior | `human-13.png` | `human-captain-banner.png` |
 | `human-captain-pistol` | — | Carlos Fonseca | Ranged | Leader, Rogue | `human-14.png` | `human-captain-pistol.png` |
@@ -178,7 +178,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `human-mage-water` | — | Mateo Santos | Magic | Elementalist, Hunter | `human-36.png` | `human-mage-water.png` |
 | `human-monk-hammer` | — | Kenji Mori | Blunt | Warrior | `human-37.png` | `human-monk-hammer.png` |
 | `human-necromancer-skull` | — | Viktor Graves | Bladed | Summoner, Warrior | `human-38.png` | `human-necromancer-skull.png` |
-| `human-priest-bell` | — | Martin Becker | Blunt | Healer, Bard | `human-39.png` | `human-priest-bell.png` |
+| `human-priest-bell` | — | Martin Becker | Blunt | Healer, Leader | `human-39.png` | `human-priest-bell.png` |
 | `human-priest-moon` | — | Luna Ortiz | Magic | Healer, Sorcerer | `human-40.png` | `human-priest-moon.png` |
 | `human-priest-sun` | — | Aurelia Day | Ranged | Healer, Hunter | `human-41.png` | `human-priest-sun.png` |
 | `human-priest` | — | Thomas Abbott | Magic | Healer | `human-42.png` | `human-priest.png` |
@@ -214,11 +214,11 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `reef-warden` | `reef_warden` | Reef Warden | Polearm | Guardian, Warrior | `lizardfolk-02.png` | `9_f.png` |
 | `lizardfolk-barbarian-axe` | — | Axejaw Lizardfolk | Bladed | Warrior | `lizardfolk-03.png` | — |
 | `lizardfolk-ninja-kunai` | — | Kunai Lizardfolk | Ranged | Rogue | `lizardfolk-04.png` | — |
-| `lobster-bard-castanet` | — | Castanet Lobster | Brawl | Bard | `lobster-01.png` | — |
+| `lobster-bard-castanet` | — | Castanet Lobster | Brawl | Leader | `lobster-01.png` | — |
 | `lobster-engineer-rivet` | — | Rivetclaw | Ranged | Tinker | `lobster-02.png` | — |
 | `lockbox-dreadnought` | — | Lockbox Dreadnought | Brawl | Guardian | `lockbox-01.png` | — |
 | `loom-binder` | — | Threadbinder Loom | Whip | Tinker, Leader | `loom-01.png` | — |
-| `lyrebird-bard-plume` | — | Plumesong | Breath | Bard, Flying | `lyrebird-01.png` | — |
+| `lyrebird-bard-plume` | — | Plumesong | Breath | Leader, Flying | `lyrebird-01.png` | — |
 | `mammoth-titan-tundra` | — | Tundra Titan | Brawl | Guardian, Elementalist | `mammoth-01.png` | — |
 | `manatee-healer-shell` | — | Shellmend Manatee | Breath | Healer | `manatee-01.png` | — |
 | `mandrake-primalist-root` | — | Screamroot | Whip | Primalist, Summoner | `mandrake-01.png` | — |
@@ -249,7 +249,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `opossum-summoner-dice` | — | Dicetail | Ranged | Summoner, Leader | `opossum-01.png` | — |
 | `orc-summoner-skull` | — | Grukk Skullcaller | Blunt | Summoner, Primalist | `orc-01.png` | — |
 | `orchidmantis-trickster-leaf` | — | Petalshade | Whip | Primalist, Rogue | `orchidmantis-01.png` | — |
-| `organ-summoner` | — | Pipe Organ Choir | Breath | Bard, Guardian | `organ-01.png` | — |
+| `organ-summoner` | — | Pipe Organ Choir | Breath | Leader, Guardian | `organ-01.png` | — |
 | `orrery-sorcerer-orbit` | — | Orbitwright | Magic | Sorcerer, Leader | `orrery-01.png` | — |
 | `ossuary-summoner-cube` | — | Bonecube | Brawl | Summoner, Guardian | `ossuary-01.png` | — |
 | `otter-hunter-sling` | — | Slingwhisker | Ranged | Hunter, Rogue | `otter-01.png` | — |
@@ -257,8 +257,8 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `panda-monk-fists` | — | Bamboo Monk | Brawl | Warrior | `panda-01.png` | — |
 | `pangolin-guard-decoy` | — | Decoy Pangolin | Blunt | Guardian, Rogue | `pangolin-01.png` | — |
 | `pangolin-sorcerer-thunder` | — | Thunderscale | Aura | Guardian, Summoner | `pangolin-02.png` | — |
-| `panpipe-summoner-reed` | — | Reedcaller | Breath | Bard, Summoner | `panpipe-01.png` | — |
-| `peacock-bard-feather` | — | Plumecrown | Magic | Bard, Flying | `peacock-01.png` | — |
+| `panpipe-summoner-reed` | — | Reedcaller | Breath | Leader, Summoner | `panpipe-01.png` | — |
+| `peacock-bard-feather` | — | Plumecrown | Magic | Leader, Flying | `peacock-01.png` | — |
 | `phoenix-titan-solar` | — | Solar Phoenix | Aura | Healer, Elementalist | `phoenix-01.png` | — |
 | `pika-summoner-horn` | — | Hornpip | Breath | Leader, Summoner | `pika-01.png` | — |
 | `platypus-alchemist-rune` | — | Runebill | Breath | Tinker | `platypus-01.png` | — |
@@ -273,7 +273,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `quokka-summoner-pebble` | — | Pebblegrin | Magic | Summoner | `quokka-01.png` | — |
 | `raccoon-alchemist-potion` | — | Potionpaw | Ranged | Tinker, Rogue | `raccoon-01.png` | — |
 | `ram-paladin-sun` | — | Sunhorn Paladin | Brawl | Leader, Guardian | `ram-01.png` | `ram-paladin-sun.png` |
-| `ram-bard-bellows` | — | Bellows Ram | Breath | Bard, Tinker | `ram-02.png` | — |
+| `ram-bard-bellows` | — | Bellows Ram | Breath | Leader, Tinker | `ram-02.png` | — |
 | `reliquary-summoner-seal` | — | Sealed Reliquary | Magic | Summoner, Sorcerer | `reliquary-01.png` | — |
 | `retort-alchemist` | — | Bubblehex Retort | Breath | Tinker, Guardian | `retort-01.png` | — |
 | `rhinoceros-guard-shadow` | — | Shadowhorn | Bladed | Rogue, Warrior | `rhinoceros-01.png` | — |
@@ -289,7 +289,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `scarab-engineer-rune` | — | Runeshell Scarab | Ranged | Tinker, Hunter | `scarab-01.png` | — |
 | `scorpion` | — | Stingtail | Whip | Rogue, Hunter | `scorpion-01.png` | `scorpion.png` |
 | `scorpion-healer-ribbon` | — | Ribbonsting | Whip | Tinker, Hunter | `scorpion-02.png` | — |
-| `seal-bard-bottle` | — | Bottlenose Bard | Breath | Tinker, Bard | `seal-01.png` | — |
+| `seal-bard-bottle` | — | Bottlenose Bard | Breath | Tinker, Leader | `seal-01.png` | — |
 | `sealpress-summoner` | — | Waxseal Press | Magic | Summoner, Guardian | `sealpress-01.png` | — |
 | `secretarybird-hunter-javelin` | — | Javelin Stalker | Polearm | Flying, Hunter | `secretarybird-01.png` | — |
 | `serpent-titan-crown` | — | Crowned Serpent | Ranged | Rogue, Summoner | `serpent-01.png` | — |
@@ -300,13 +300,13 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `shoebill-captain-pike` | — | Pikebill | Polearm | Leader, Hunter | `shoebill-01.png` | — |
 | `shrew-summoner-totem` | — | Totemshrew | Magic | Summoner, Primalist | `shrew-01.png` | — |
 | `siphon-alchemist` | — | Siphonworm | Whip | Tinker, Guardian | `siphon-01.png` | — |
-| `sistrum-summoner` | — | Rattlechant | Aura | Bard, Sorcerer | `sistrum-01.png` | — |
+| `sistrum-summoner` | — | Rattlechant | Aura | Leader, Sorcerer | `sistrum-01.png` | — |
 | `sledgehammer-colossus` | — | Sledge Colossus | Blunt | Warrior, Guardian | `sledgehammer-01.png` | — |
 | `sloth-guard-bark` | — | Barkhold Sloth | Brawl | Primalist, Healer | `sloth-01.png` | — |
 | `snail-cleric-crystal` | — | Prism Snail | Magic | Elementalist, Healer | `snail-01.png` | `snail-cleric-crystal.png` |
-| `snail-bard-brewer` | — | Brewshell | Aura | Tinker, Bard | `snail-05.png` | — |
+| `snail-bard-brewer` | — | Brewshell | Aura | Tinker, Leader | `snail-05.png` | — |
 | `spikeback` | `spikeback` | Spikeback | Brawl | Warrior, Guardian | `spikeback-01.png` | `1_f.png` |
-| `spindle-summoner` | — | Spindlewhirl | Whip | Bard, Leader | `spindle-01.png` | — |
+| `spindle-summoner` | — | Spindlewhirl | Whip | Leader | `spindle-01.png` | — |
 | `stag-hunter-shield` | — | Shieldhorn Stag | Polearm | Hunter, Guardian | `stag-01.png` | — |
 | `stoat-healer-needle` | — | Needlewhisk | Bladed | Rogue, Hunter | `stoat-01.png` | — |
 | `sugarglider-scout-sail` | — | Sailglide | Ranged | Flying, Sorcerer | `sugarglider-01.png` | — |
@@ -320,13 +320,13 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `thorntreant-primalist-bramble` | — | Bramblestalker | Aura | Primalist, Rogue | `thorntreant-01.png` | — |
 | `toad-boulder` | `boulder_toad` | Boulder Toad | Blunt | Guardian, Warrior | `toad-01.png` | `5_f.png` |
 | `toad-druid` | — | Druid Toad | Breath | Primalist, Healer | `toad-02.png` | `toad-druid.png` |
-| `toad-bard-bell` | — | Belltoad | Magic | Bard, Summoner | `toad-03.png` | — |
+| `toad-bard-bell` | — | Belltoad | Magic | Leader, Summoner | `toad-03.png` | — |
 | `tortoise-colossus-mountain` | — | Mountainshell | Aura | Guardian, Primalist | `tortoise-01.png` | — |
 | `tortoise-sentinel-obsidian` | — | Obsidian Tortoise | Aura | Guardian, Summoner | `tortoise-02.png` | — |
 | `treant-druid-leaf` | — | Leafwarden | Whip | Primalist, Healer | `treant-01.png` | — |
 | `treant-titan-ancient` | — | Elderbough | Whip | Primalist, Healer | `treant-02.png` | — |
 | `trowel-crusader` | — | Trowel Crusader | Bladed | Guardian, Warrior | `trowel-01.png` | — |
-| `tuningfork-champion` | — | Resonant Champion | Brawl | Bard, Warrior | `tuningfork-01.png` | — |
+| `tuningfork-champion` | — | Resonant Champion | Brawl | Leader, Warrior | `tuningfork-01.png` | — |
 | `turbine-skyguard` | — | Skyturbine | Ranged | Flying, Warrior | `turbine-01.png` | — |
 | `turtle-monk` | — | Shellmonk | Blunt | Healer, Guardian | `turtle-02.png` | `turtle-monk.png` |
 | `turtle-bard-frost` | — | Frostshell Bard | Breath | Guardian, Sorcerer | `turtle-03.png` | — |
@@ -335,7 +335,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `vinegaroon-alchemist-flask` | — | Vinegar Flask | Ranged | Tinker, Hunter | `vinegaroon-01.png` | — |
 | `vise-enforcer` | — | Vise Enforcer | Brawl | Guardian, Tinker | `vise-01.png` | — |
 | `vulture-healer-cinder` | — | Cinderbeak | Aura | Flying, Elementalist | `vulture-01.png` | — |
-| `walrus-bard-horn` | — | Tuskhorn Walrus | Breath | Bard | `walrus-01.png` | — |
+| `walrus-bard-horn` | — | Tuskhorn Walrus | Breath | Leader | `walrus-01.png` | — |
 | `warthog-engineer-cannon` | — | Cannon Warthog | Ranged | Tinker | `warthog-01.png` | — |
 | `wasp-alchemist-potion` | — | Stingflask | Ranged | Tinker, Flying | `wasp-01.png` | — |
 | `weasel-rogue-dagger` | — | Daggerwhisk | Bladed | Rogue, Hunter | `weasel-01.png` | — |
@@ -346,7 +346,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `wolf-ranger` | — | Ranger Wolf | Brawl | Hunter, Leader | `wolf-01.png` | `wolf-ranger.png` |
 | `wolverine-warrior-mace` | — | Macefang Wolverine | Blunt | Warrior | `wolverine-01.png` | — |
 | `wyvern-scout-obsidian` | — | Obsidian Wyvern | Bladed | Flying, Sorcerer | `wyvern-01.png` | — |
-| `yak-bard-gong` | — | Gongyak | Blunt | Bard, Summoner | `yak-01.png` | — |
+| `yak-bard-gong` | — | Gongyak | Blunt | Leader, Summoner | `yak-01.png` | — |
 
 ## Card details
 

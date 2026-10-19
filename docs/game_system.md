@@ -1181,7 +1181,7 @@ The order of work after the AI-versus-AI milestone is adopted in [production.md]
 
 Different discussions suggested around 10 recruits for an early slice or 15–20 for a combat prototype, and between 6–8, 8–12, or 10–12 initial trees. These are alternative scoping suggestions, not simultaneous targets.
 
-The class roster is 9 Attack Types and 13 Professions ([class_system.md](class_system.md)). Creature roster size, enemy count, and final content budget remain open.
+The class roster is 9 Attack Types and 12 Professions ([class_system.md](class_system.md) v1.5; Bard removed 2026-10-19). Creature roster size, enemy count, and final content budget remain open.
 
 ### 17.3 Deferred or unselected systems
 
