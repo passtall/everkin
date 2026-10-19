@@ -190,6 +190,16 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 - **Backups.** A nightly database dump copied off the server, kept 30 days.
 - **Tests and monitoring.** JUnit 5 with Testcontainers (a real PostgreSQL in tests). Health endpoints, an external uptime check that alerts the owner, and logs on the server.
 
+**Backend operations (adopted 2026-10-19).**
+
+- **Hosting provider.** Hetzner.
+- **Secrets.** Database password, signing keys and platform API keys live in an env file on the server only, never in the repository; the owner's PC keeps an encrypted copy.
+- **API versions.** The game sends its version with every request; Spring keeps the old behaviour until that version is retired.
+- **Request limits.** A simple per-player limit in Spring, plus a per-address limit in Caddy.
+- **Server logs.** Kept 14 days.
+- **Privacy policy.** A short privacy policy page on the game's website, written before release.
+- **Budget.** Up to about 30 euros a month; the setup grows only when player numbers need it.
+
 ## 3. Roadmap
 
 Adopted 2026-10-06.
@@ -200,5 +210,7 @@ Adopted 2026-10-06.
 
 ## 4. Still open
 
+- The online server's address (domain). Deferred by the owner (2026-10-19); everkin.com is taken.
+- The exact message format between the game and the servers, written when online play is built.
 
 - Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18). Deferred by the owner (2026-10-09). A first pass found no US trademark for games, but "Grow: Song of the Evertree" (2021) calls its villagers "the Everkin" and everkin.com belongs to a Shenzhen electronics maker.
