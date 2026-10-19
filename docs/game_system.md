@@ -852,8 +852,8 @@ Each status has its own application chance, duration, triggering conditions, and
 **Adopted status framework:**
 
 - **What a status is.** Any effect with a duration on a unit is a status: harmful effects, buffs, Orders, Ward, Dampen, marks and stealth. KO removes all of them. Purify and similar effects can remove any status from any unit, unless the status says it cannot be cleansed.
-- **Duration clocks (changed 2026-10-19, effect timing quiz).** Every duration uses the battle clock: a status lasts a stated number of time units (section 6.1). Durations still written as "its next N turns" or "until the caster's next turn" are being converted; the conversion, and whether Orders and Ward keep "until the caster's next turn", is open.
-- **Ticking.** Ground effect damage accumulates for every time unit a unit stands on the effect, and everything accumulated is applied whenever any unit gets a turn (Andreas, 2026-10-19). How Poison and other ticking statuses fit this is open. A tick that KOs the unit ends its turn.
+- **Duration clocks (changed 2026-10-19, effect timing quiz).** Every duration uses the battle clock: a status lasts a stated number of time units (section 6.1). Conversion (round 2): one former turn is 10 time units ("its next 2 turns" becomes 20 time units); a skill may adjust. Kept as they are: effects that last until the caster's next turn (Orders, Ward, Braced, Shield Wall), because they end exactly when the caster can renew them; Frozen, which skips the unit's next turn; Provoked, which lasts until the unit has taken its next turn; and Bleeding, which counts the unit's skills.
+- **Ticking.** Ground effect damage accumulates for every time unit a unit stands on the effect, and everything accumulated is applied whenever any unit gets a turn (Andreas, 2026-10-19). Poison and healing over time work the same way: they build up per time unit and land whenever any unit gets a turn. Build-up counts fractions; whole points land and the remainder carries over to the next turn. Everything that has built up shows as one number on the unit. A tick that KOs the unit ends its turn.
 - **Reapplication.** A unit has one instance per status type. Reapplying refreshes the duration. There is **no stacking**, and none is planned.
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
 - **Limit.** There is no limit on the number of statuses per unit. The UI handles overflow.
@@ -861,19 +861,19 @@ Each status has its own application chance, duration, triggering conditions, and
 - **Damage from statuses.** Poison, Bleeding and burning ground damage is not a hit, but reductions such as Dampen apply to it like any damage (rounded down, minimum 1). Shields absorb burning ground damage; they do not absorb Poison or Bleeding.
 - **Status chances.** A skill's stated status chance is the real chance. No stat lowers it.
 - **Reapplication with a different duration.** The new duration always replaces the old one, even if it is shorter.
-- **Skipped turns.** Durations counted in the unit's turns count every turn that arrives, including skipped ones (Skip Turn, Frozen).
-- **Immunities.** Only skills and statuses grant immunities (for example Purify's immunity until the unit's next turn). Creatures have no natural immunities for now (section 3.7). A summon's own definition may list immunities, since it comes from a skill (section 11.2).
+- **Skipped turns.** Time-unit durations run on regardless of what the unit does. Bleeding counts only skills actually used.
+- **Immunities.** Only skills and statuses grant immunities (for example Purify's immunity for 10 time units). Creatures have no natural immunities for now (section 3.7). A summon's own definition may list immunities, since it comes from a skill (section 11.2).
 - **New statuses.** A status joins the table below only when a skill needs it.
 
 **The named statuses:**
 
 | Status | Effect | Duration |
 |---|---|---|
-| **Blind** | All the unit's attacks have a 50% chance to miss. Source: the Rogue's flash powder (2026-10-19). A miss shifts Momentum 1 against the unit's side, per section 6.7. | The unit's next 2 turns |
-| **Poison** | 1 damage at the start of each of the unit's turns. It does less damage per turn than burning ground (2) and lasts longer. | The unit's next 5 turns |
+| **Blind** | All the unit's attacks have a 50% chance to miss. Source: the Rogue's flash powder (2026-10-19). A miss shifts Momentum 1 against the unit's side, per section 6.7. | 20 time units |
+| **Poison** | 1 damage per 10 time units, built up and applied whenever any unit gets a turn (5 in total). Weaker than burning ground and longer. | 50 time units |
 | **Bleeding** | 2 damage after each `melee` or `move` skill the unit uses. | The unit's next 3 such skills |
-| **Silenced** | The unit cannot use `magical` skills. | The unit's next 2 turns |
-| **Chilled** (`frost`) | The unit's Speed is lowered by 2 (section 6.1). | The unit's next 2 turns |
+| **Silenced** | The unit cannot use `magical` skills. | 20 time units |
+| **Chilled** (`frost`) | The unit's Speed is lowered by 2 (section 6.1). | 20 time units |
 | **Frozen** (`frost`) | The unit's next turn is skipped, at the normal skipped-turn cost (section 6.4). It ends early when fire is set on the unit's spot (2026-10-19). | The unit's next turn |
 
 Silenced is adopted although no skill applies it yet. Any skill may apply any named status. **Burning is no longer a status (Andreas, 2026-10-18):** only the ground burns, never a unit; a unit takes damage from standing on burning ground (section 12.2).
@@ -924,7 +924,7 @@ Summoning before battle is **not adopted**: summoning happens only through skill
 - **Placement.** By default the player chooses the insertion point within the rows the skill allows. A skill may fix the position.
 - **Control.** Summons that take turns act **autonomously**, following behavior defined in their own summoning skill. There is no global default behavior. Constructs such as traps take no turns.
 - **First turn.** A turn-taking summon first acts `11 − Speed` time units after it appears.
-- **Lifetime.** A summon lasts until it is KO'd or the battle ends. A skill may add a duration, counted in the summon's own turns or the summoner's turns, never in fixed time units. (Whether this switches to time units like other durations, section 10.5, is open.)
+- **Lifetime.** A summon lasts until it is KO'd or the battle ends. A skill may add a duration in time units, like every other duration (section 10.5, 2026-10-19).
 - **Summoner KO.** Summons persist when their summoner is KO'd, unless the skill says they disappear.
 - **KO'd summons.** A KO'd summon's body is **removed at once and frees its slot**. This is the first body-removal exception (section 10.3). Summons cannot be revived.
 - **Stats.** A summon's stats are fixed numbers in its skill (for example Spike's HP 6). They do not scale with the summoner.
@@ -967,18 +967,18 @@ Row effects such as burning ground, fog, or darkness, and slot effects such as t
 **Ground effects (adopted 2026-10-19, synergy quiz).** A ground effect sits on a spot and stays on its coordinate when rows recenter (section 7.3). It affects the unit standing there. Ground effects come from skills, so they are in the first release; they are not the terrain that section 20.1 leaves out. There are no tags: an effect reacts to the other effects named in its own text, and a skill that sets one off says so in its text (as Backdraft does). **Timing (adopted 2026-10-19, effect timing quiz):**
 
 - **Length.** An effect lasts a stated number of time units from when it is placed (section 6.1); each skill states its own, with 20 as the reference. Its end is a marker on the timeline.
-- **Damage over time.** A unit on a damaging effect accumulates its damage for every time unit it stands there. Whatever has accumulated is applied whenever any unit gets a turn, so a unit standing in fire for 20 time units is hurt for each of those 20 units. A unit pushed on or off mid-turn simply starts or stops accumulating then, since no time passes during a turn. The damage per time unit is open.
+- **Damage over time.** A unit on a damaging effect accumulates its damage for every time unit it stands there. Whatever has accumulated is applied whenever any unit gets a turn, so a unit standing in fire for 20 time units is hurt for each of those 20 units. A unit pushed on or off mid-turn simply starts or stops accumulating then, since no time passes during a turn. Burning ground deals 1 per 2 time units (10 over 20 units).
 - **Placing the same effect again** restarts its length from now.
 - **Combos** (ice from frost on water, water left by steam) start the full length of the new effect.
 - **The caster is KO:** its effects stay.
 
 | Effect | What it does | Combines with | Sources |
 |---|---|---|---|
-| **Burning ground** | Damage to the unit there for every time unit it stands there (rate open; was 2 per turn). Replaces the Burning status. | Water stops it; ice makes steam; poison ground explodes | Elementalist; Tinker (Firebomb, Flame turret) |
+| **Burning ground** | Damage to the unit there for every time unit it stands there (1 per 2 time units). Replaces the Burning status. | Water stops it; ice makes steam; poison ground explodes | Elementalist; Tinker (Firebomb, Flame turret) |
 | **Ice** | A unit pushed or pulled across ice slides one row further (bumps apply). | Fire makes steam | Elementalist; Primalist (Hoarfrost) |
 | **Water** | Harmless alone. | Lightning on a unit in water also hits the units on water spots touching it, for half. Frost turns it to ice and the unit there is Frozen. Fire set on water does not start, and the water stays. | Elementalist; Primalist (Rain dance) |
 | **Steam** | Fire meets ice: both end, the unit there is Confused for 1 turn, and water stays on the spot. | | Elementalist (Steam Burst) |
-| **Poison ground** | A unit there is Poisoned. One effect for gas, puddles and spores alike (Andreas, 2026-10-19). | Poison ground and fire placed on the same row at once: every poison spot explodes: each unit on one takes 6, and the spot becomes burning ground | Tinker (Poison gas); Rogue (Poison vial); Primalist (Toxic bloom: when a unit moves onto it or is hit there, it and the units beside it are Poisoned) |
+| **Poison ground** | A unit that has stood there for 5 time units is Poisoned, and every further 5 units there restart its Poison length. One effect for gas, puddles and spores alike (Andreas, 2026-10-19). | Poison ground and fire placed on the same row at once: every poison spot explodes: each unit on one takes 6, and the spot becomes burning ground | Tinker (Poison gas); Rogue (Poison vial); Primalist (Toxic bloom: when a unit moves onto it or is hit there, it and the units beside it are Poisoned) |
 
 The lightning skills are Chain Lightning, Thunderbolt and Megavolt. Water spots touch when they are side by side in a row or overlap across neighbouring rows. Frozen, Confused and Blind are statuses (section 10.5). Which classes cause which effects, and the movement roles of Guardian, Warrior and Leader, are in [class_system.md](class_system.md) section 5. Tinker skill: Firebomb sets fire to a spot and the spots beside it; Flame turret is a construct that sets fire to one enemy spot in front of it each time the Tinker takes a turn.
 
@@ -1337,13 +1337,13 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A Silence lands on an enemy | Momentum does not change. |
 | A projectile heal of 9 is partly intercepted | The interceptor is healed by 4 and the target by 5. |
 | A projectile status is partly intercepted | The interceptor gets the status; the target does not. |
-| Burning ground damages a unit with a Ward of 8 | The Ward absorbs the 2. |
+| Burning ground damages a unit with a Ward of 8 | The Ward absorbs the damage. |
 | A Poison tick hits a unit with a Ward | It deals 1; the Ward does not absorb it. |
-| Poison with 3 turns left is reapplied by a skill giving 2 turns | It now has 2 turns left. |
-| A Blind unit chooses Skip Turn | That turn counts toward Blind's 2 turns. |
+| Poison with 30 time units left is reapplied by a skill giving 20 | It now has 20 left. |
+| A Blind unit chooses Skip Turn | Blind's 20 time units keep running. |
 | A Bleeding unit uses Move | It takes 2 Bleeding damage after moving. |
 | A reaction's hit is aimed at a unit with a defender in front of it | The defender does not intercept: reaction hits go directly to their target. |
-| A unit is Poisoned | It takes 1 damage at the start of each of its next 5 turns, 5 in total. |
+| A unit is Poisoned | It takes 1 damage per 10 time units for 50 units, 5 in total, landing whenever any unit gets a turn. |
 | A Frozen unit's turn arrives | The turn is skipped and Frozen ends. |
 | Fire is set on a Frozen unit's spot | Frozen ends early and the unit keeps its turn. |
 | Attacker in Front, enemy units only in Rear | Distance is 1 (both effective rows are 1). |

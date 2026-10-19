@@ -73,7 +73,7 @@ Hidden stats: Healing coefficient 3.6–4.4.
 Class: Healer · Tree slot: A2
 Delay: 4 · Momentum cost: 0
 Tags: `heal` `status` `direct` `single`
-Mechanic: The unit regains 3 HP at the start of each of its next 3 turns.
+Mechanic: The unit regains 1 HP per 3 time units for 27 time units (9 in total), built up and applied whenever any unit gets a turn (game_system.md §10.5).
 Reach: Range 2.
 Hidden stats: Healing coefficient 0.6 per tick.
 
@@ -96,7 +96,7 @@ Effect: Removes one status from the unit, chosen when Renew is cast. Cost: Renew
 Class: Healer · Tree slot: B1
 Delay: 4 · Momentum cost: 1
 Tags: `status` `direct` `single`
-Mechanic: Removes one chosen status from a unit. The unit cannot receive that status again until its next turn.
+Mechanic: Removes one chosen status from a unit. The unit cannot receive that status again for 10 time units.
 Reach: Range 2.
 Hidden stats: none.
 
@@ -643,14 +643,14 @@ Hidden stats: Coefficient 0.8–1.2 (bonus 1.4–1.8).
 Class: Feral · Tree slot: C2
 Delay: 4 · Momentum cost: 1
 Tags: `attack` `physical` `melee` `status` `single`
-Mechanic: Hits one unit for 2–4. The target's Speed is lowered by 2 for its next 2 turns. Respects interception.
+Mechanic: Hits one unit for 2–4. The target's Speed is lowered by 2 for 20 time units. Respects interception.
 Reach: Range 2.
 Hidden stats: Coefficient 0.4–0.8.
 
 ### Crippling Bite  [Modifier of Hamstring]
 Class: Feral · Tree slot: C3 · Prerequisite: Hamstring
 Trigger: Casting Hamstring.
-Effect: The Speed penalty lasts for the target's next 4 turns instead of 2. Cost: Hamstring's Momentum cost is +1 (2).
+Effect: The Speed penalty lasts 40 time units instead of 20. Cost: Hamstring's Momentum cost is +1 (2).
 
 ## 7. Elementalist
 
@@ -701,7 +701,7 @@ Hidden stats: Coefficient 1.0–1.4.
 Class: Elementalist · Tree slot: B2
 Delay: 6 · Momentum cost: 3
 Tags: `status` `direct` `frost` `single`
-Mechanic: The target becomes Frozen (its next turn is skipped; a `fire` hit ends it early).
+Mechanic: The target becomes Frozen (its next turn is skipped; fire set on its spot ends it early).
 Reach: Any visible unit.
 Hidden stats: none.
 
