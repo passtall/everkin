@@ -11,7 +11,7 @@
 >
 > **v1.4 (2026-10-14):** Skill-fit rules added (section 4).
 >
-> **v1.5 (2026-10-19):** Bard removed (Andreas, in the synergy quiz). Every creature that had Bard has Leader instead; a creature that had both keeps only Leader. Whether Bard becomes a Leader branch name is open. Now 12 Professions. Movement roles added (section 5).
+> **v1.5 (2026-10-19):** Bard removed (Andreas, in the synergy quiz). Every creature that had Bard has Leader instead; a creature that had both keeps only Leader. Bard becomes a branch name of Leader (round 3). Now 12 Professions. Movement roles added (section 5).
 
 ## 1. Core Concept
 
@@ -102,9 +102,11 @@ Decided by Andreas in the synergy quiz, round 2. Ground effects sit on a spot, a
 - **Leader** moves your own units: forced movement of friendly units.
 - **Hunter** has traps and marks an enemy; it needs no further effects.
 - **Healer** gets no ground effects.
-- **Elementalist** keeps burning ground, ice, water, Frozen and steam; their details are still being decided.
-- **Rogue** causes Blind (flash powder) and poison ground.
-- **Primalist** causes poison, ice and water effects.
-- **Tinker** causes fire and poison effects.
-- **Sorcerer** effects are still being designed.
+- **Elementalist** causes burning ground, ice, water, Frozen and steam (game_system section 12.2).
+- **Rogue** causes Blind (flash powder) and poison ground (Poison vial).
+- **Primalist** causes poison, ice and water effects: Toxic bloom, Rain dance, Hoarfrost.
+- **Tinker** causes fire and poison effects: Firebomb, Flame turret, Poison gas, and gas exploding when fire lands on the same row.
+- **Sorcerer** has none yet: none of the 15 suggestions were kept.
+- **Summoner** and **Flying** get no ground effects.
+- **Leader** has a **Bard** branch, for the former Bard creatures.
 

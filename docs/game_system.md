@@ -852,12 +852,12 @@ Each status has its own application chance, duration, triggering conditions, and
 
 - **What a status is.** Any effect with a duration on a unit is a status: harmful effects, buffs, Orders, Ward, Dampen, marks and stealth. KO removes all of them. Purify and similar effects can remove any status from any unit, unless the status says it cannot be cleansed.
 - **Duration clocks.** A status lasts for the affected unit's own turns ("its next 3 turns") or until the caster's next turn (Orders, Ward). **Fixed time-unit durations are not a status clock.** An effect that should cost a number of time units uses the timeline instead, through Push Back, Pull Forward or Delay (section 6.1).
-- **Ticking.** There is no global tick timing. Each status states when it ticks. Burning and Poison tick at the start of the affected unit's turn, as the class drafts define. A tick that KOs the unit ends its turn.
+- **Ticking.** There is no global tick timing. Each status states when it ticks. Poison ticks at the start of the affected unit's turn, as the class drafts define. When burning ground (section 12.2) deals its damage is still open. A tick that KOs the unit ends its turn.
 - **Reapplication.** A unit has one instance per status type. Reapplying refreshes the duration. There is **no stacking**, and none is planned.
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
 - **Limit.** There is no limit on the number of statuses per unit. The UI handles overflow.
 - **Momentum.** Periodic ticks shift Momentum by 0 (section 6.7).
-- **Damage from statuses.** Poison, Burning and Bleeding damage is not a hit, but reductions such as Dampen apply to it like any damage (rounded down, minimum 1). Shields absorb Burning damage; they do not absorb Poison or Bleeding.
+- **Damage from statuses.** Poison, Bleeding and burning ground damage is not a hit, but reductions such as Dampen apply to it like any damage (rounded down, minimum 1). Shields absorb burning ground damage; they do not absorb Poison or Bleeding.
 - **Status chances.** A skill's stated status chance is the real chance. No stat lowers it.
 - **Reapplication with a different duration.** The new duration always replaces the old one, even if it is shorter.
 - **Skipped turns.** Durations counted in the unit's turns count every turn that arrives, including skipped ones (Skip Turn, Frozen).
@@ -868,15 +868,14 @@ Each status has its own application chance, duration, triggering conditions, and
 
 | Status | Effect | Duration |
 |---|---|---|
-| **Blind** | All the unit's attacks have a 50% chance to miss. A miss shifts Momentum 1 against the unit's side, per section 6.7. | The unit's next 2 turns |
-| **Poison** | 1 damage at the start of each of the unit's turns. It does less damage per tick than Burning (2) and lasts longer. | The unit's next 5 turns |
+| **Blind** | All the unit's attacks have a 50% chance to miss. Source: the Rogue's flash powder (2026-10-19). A miss shifts Momentum 1 against the unit's side, per section 6.7. | The unit's next 2 turns |
+| **Poison** | 1 damage at the start of each of the unit's turns. It does less damage per turn than burning ground (2) and lasts longer. | The unit's next 5 turns |
 | **Bleeding** | 2 damage after each `melee` or `move` skill the unit uses. | The unit's next 3 such skills |
 | **Silenced** | The unit cannot use `magical` skills. | The unit's next 2 turns |
-| **Burning** (`fire`) | 2 damage at the start of each of the unit's turns. | The unit's next 3 turns |
 | **Chilled** (`frost`) | The unit's Speed is lowered by 2 (section 6.1). | The unit's next 2 turns |
-| **Frozen** (`frost`) | The unit's next turn is skipped, at the normal skipped-turn cost (section 6.4). It ends early if the unit is hit by a `fire` skill. | The unit's next turn |
+| **Frozen** (`frost`) | The unit's next turn is skipped, at the normal skipped-turn cost (section 6.4). It ends early when fire is set on the unit's spot (2026-10-19). | The unit's next turn |
 
-Blind and Silenced are adopted although no skill applies them yet. Any skill may apply any named status.
+Silenced is adopted although no skill applies it yet. Any skill may apply any named status. **Burning is no longer a status (Andreas, 2026-10-18):** only the ground burns, never a unit; a unit takes damage from standing on burning ground (section 12.2).
 
 The status design pool (Rooted, Disarmed, Stunned, Weakened, Marked, Fear, Bound and others) remains below as candidates. None is added until a skill needs it.
 
@@ -962,7 +961,20 @@ These examples establish design space, not finalized numerical effects. Formatio
 
 ### 12.2 Row and slot states
 
-Row effects such as burning ground, fog, or darkness, and slot effects such as traps, ice, or cover were welcomed as future tools. The initial implementation scope remains open.
+Row effects such as burning ground, fog, or darkness, and slot effects such as traps, ice, or cover were welcomed as future tools.
+
+**Ground effects (adopted 2026-10-19, synergy quiz).** A ground effect sits on a spot and stays on its coordinate when rows recenter (section 7.3). It affects the unit standing there. Ground effects come from skills, so they are in the first release; they are not the terrain that section 20.1 leaves out. There are no tags: an effect reacts to the other effects named in its own text, and a skill that sets one off says so in its text (as Backdraft does). **When each effect deals its damage and how long effects last are open, for a separate discussion.**
+
+| Effect | What it does | Combines with | Sources |
+|---|---|---|---|
+| **Burning ground** | 2 damage to the unit there (when is open). Replaces the Burning status. | Water stops it; ice makes steam; poison gas explodes | Elementalist; Tinker (Firebomb, Flame turret) |
+| **Ice** | A unit pushed or pulled across ice slides one row further (bumps apply). | Fire makes steam | Elementalist; Primalist (Hoarfrost) |
+| **Water** | Harmless alone. | Lightning on a unit in water also hits the units on water spots touching it, for half. Frost turns it to ice and the unit there is Frozen. Fire set on water does not start, and the water stays. | Elementalist; Primalist (Rain dance) |
+| **Steam** | Fire meets ice: both end, the unit there is Confused for 1 turn, and water stays on the spot. | | Elementalist (Steam Burst) |
+| **Poison gas** | A unit in the gas is Poisoned. | Poison gas and fire placed on the same row at once: every gas spot explodes (damage open) | Tinker |
+| **Poison ground** | A unit there is Poisoned. | | Rogue (Poison vial); Primalist (Toxic bloom: when a unit moves onto it or is hit there, it and the units beside it are Poisoned) |
+
+The lightning skills are Chain Lightning, Thunderbolt and Megavolt. Water spots touch when they are side by side in a row or overlap across neighbouring rows. Frozen, Confused and Blind are statuses (section 10.5). Which classes cause which effects, and the movement roles of Guardian, Warrior and Leader, are in [class_system.md](class_system.md) section 5. Tinker skill: Firebomb sets fire to a spot and the spots beside it; Flame turret is a construct that sets fire to one enemy spot in front of it each time the Tinker takes a turn.
 
 An effect may apply to a row without requiring general direct row targeting. Its placement and targeting rule must be defined by its source skill.
 
@@ -1319,15 +1331,15 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A Silence lands on an enemy | Momentum does not change. |
 | A projectile heal of 9 is partly intercepted | The interceptor is healed by 4 and the target by 5. |
 | A projectile status is partly intercepted | The interceptor gets the status; the target does not. |
-| A Burning tick hits a unit with a Ward of 8 | The Ward absorbs the 2. |
+| Burning ground damages a unit with a Ward of 8 | The Ward absorbs the 2. |
 | A Poison tick hits a unit with a Ward | It deals 1; the Ward does not absorb it. |
-| Burning with 3 turns left is reapplied by a skill giving 2 turns | It now has 2 turns left. |
+| Poison with 3 turns left is reapplied by a skill giving 2 turns | It now has 2 turns left. |
 | A Blind unit chooses Skip Turn | That turn counts toward Blind's 2 turns. |
 | A Bleeding unit uses Move | It takes 2 Bleeding damage after moving. |
 | A reaction's hit is aimed at a unit with a defender in front of it | The defender does not intercept: reaction hits go directly to their target. |
 | A unit is Poisoned | It takes 1 damage at the start of each of its next 5 turns, 5 in total. |
 | A Frozen unit's turn arrives | The turn is skipped and Frozen ends. |
-| A Frozen unit is hit by a `fire` skill | Frozen ends early and the unit keeps its turn. |
+| Fire is set on a Frozen unit's spot | Frozen ends early and the unit keeps its turn. |
 | Attacker in Front, enemy units only in Rear | Distance is 1 (both effective rows are 1). |
 | Attacker in Rear with its own Front and Middle empty, enemy fully occupied | The attacker counts as row 1, so the distance to the enemy Front is 1 and to the enemy Rear is 3. It still counts as Rear for row-dependent skills. |
 | The enemy Front contains only a stealthed unit | The row does not count for distance, so the enemy Middle counts as row 1. |
@@ -1342,12 +1354,12 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A trap is KO'd | It is removed at once and its slot is free. It cannot be revived. |
 | A Hunter is KO'd while its traps are on the board | The traps persist. |
 | A Speed 6 turn-taking summon appears at time 10 | It first acts at time 15 (11 − 6 = 5 time units later). |
-| Burning is applied twice | There is still one Burning instance, with its duration refreshed. |
+| Poison is applied twice | There is still one Poison instance, with its duration refreshed. |
 | A unit with Bleeding (3 skills left) uses a `melee` skill | It takes 2 damage after the skill, and 2 skills remain. |
 | A unit with Bleeding uses a `heal` skill | It takes no bleed damage. |
 | A Blind unit's attack misses | The miss shifts Momentum 1 against that unit's side. |
 | A Silenced unit has only `magical` skills and its creature attack is physical | It can still use the creature attack. |
-| The caster of Burning is KO'd | Burning keeps ticking. |
+| The caster of Poison is KO'd | Poison keeps ticking. |
 | A KO'd Elementalist had a Meteor on the timeline | The Meteor still lands (it persists). A KO'd Hunter's queued Rapid Shots are removed. |
 | Both sides' last original members are KO'd in one simultaneous block | The battle is a draw. |
 | A player's last original member is KO'd by a counter after the player's attack KO'd the enemy's last member | The battle is a draw, since victory is checked after reactions resolve. |
