@@ -967,12 +967,11 @@ Row effects such as burning ground, fog, or darkness, and slot effects such as t
 
 | Effect | What it does | Combines with | Sources |
 |---|---|---|---|
-| **Burning ground** | 2 damage to the unit there (when is open). Replaces the Burning status. | Water stops it; ice makes steam; poison gas explodes | Elementalist; Tinker (Firebomb, Flame turret) |
+| **Burning ground** | 2 damage to the unit there (when is open). Replaces the Burning status. | Water stops it; ice makes steam; poison ground explodes | Elementalist; Tinker (Firebomb, Flame turret) |
 | **Ice** | A unit pushed or pulled across ice slides one row further (bumps apply). | Fire makes steam | Elementalist; Primalist (Hoarfrost) |
 | **Water** | Harmless alone. | Lightning on a unit in water also hits the units on water spots touching it, for half. Frost turns it to ice and the unit there is Frozen. Fire set on water does not start, and the water stays. | Elementalist; Primalist (Rain dance) |
 | **Steam** | Fire meets ice: both end, the unit there is Confused for 1 turn, and water stays on the spot. | | Elementalist (Steam Burst) |
-| **Poison gas** | A unit in the gas is Poisoned. | Poison gas and fire placed on the same row at once: every gas spot explodes (damage open) | Tinker |
-| **Poison ground** | A unit there is Poisoned. | | Rogue (Poison vial); Primalist (Toxic bloom: when a unit moves onto it or is hit there, it and the units beside it are Poisoned) |
+| **Poison ground** | A unit there is Poisoned. One effect for gas, puddles and spores alike (Andreas, 2026-10-19). | Poison ground and fire placed on the same row at once: every poison spot explodes (damage open) | Tinker (Poison gas); Rogue (Poison vial); Primalist (Toxic bloom: when a unit moves onto it or is hit there, it and the units beside it are Poisoned) |
 
 The lightning skills are Chain Lightning, Thunderbolt and Megavolt. Water spots touch when they are side by side in a row or overlap across neighbouring rows. Frozen, Confused and Blind are statuses (section 10.5). Which classes cause which effects, and the movement roles of Guardian, Warrior and Leader, are in [class_system.md](class_system.md) section 5. Tinker skill: Firebomb sets fire to a spot and the spots beside it; Flame turret is a construct that sets fire to one enemy spot in front of it each time the Tinker takes a turn.
 

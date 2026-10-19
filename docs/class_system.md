@@ -105,7 +105,7 @@ Decided by Andreas in the synergy quiz, round 2. Ground effects sit on a spot, a
 - **Elementalist** causes burning ground, ice, water, Frozen and steam (game_system section 12.2).
 - **Rogue** causes Blind (flash powder) and poison ground (Poison vial).
 - **Primalist** causes poison, ice and water effects: Toxic bloom, Rain dance, Hoarfrost.
-- **Tinker** causes fire and poison effects: Firebomb, Flame turret, Poison gas, and gas exploding when fire lands on the same row.
+- **Tinker** causes fire and poison effects: Firebomb, Flame turret, poison ground (Poison gas), and poison ground exploding when fire lands on the same row.
 - **Sorcerer** has none yet: none of the 15 suggestions were kept.
 - **Summoner** and **Flying** get no ground effects.
 - **Leader** has a **Bard** branch, for the former Bard creatures.
