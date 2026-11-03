@@ -350,120 +350,120 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 
 ## Card details
 
-Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art's 1024 × 1536 pixels (2:3; they may reach past the art edges, so x and y can be negative). The front frame is the card front's portrait, the rear frame the card back. There is no Defense stat (removed 2026-10-15): creatures that had Defense got +5 HP per 10%, within HP 20–80. **Cost** (1–10) is team-building points; a team of up to six creatures must fit a budget of 35 (game_system.md §5.1).
+Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art's 1024 × 1536 pixels (2:3; they may reach past the art edges, so x and y can be negative). The front frame is the card front's portrait, the rear frame the card back. There is no Defense stat (removed 2026-10-15): creatures that had Defense got +5 HP per 10%, within HP 20–80. **Cost** (1–10) is team-building points; a team of up to six creatures must fit a budget of 35. Since 2026-11-03 Cost comes from each creature's power score (game_system.md §5.1).
 
 | Art file | Name | Biome | HP | Speed | Power | Cost | Front frame | Rear frame | Status | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `abacus-01.png` | Tallymarch | Cathedral | 40 | 5 | 5 | 5 | 279,-63,603,905 | 0,0,1024,1536 | reviewed |  |
+| `abacus-01.png` | Tallymarch | Cathedral | 40 | 5 | 5 | 4 | 279,-63,603,905 | 0,0,1024,1536 | reviewed |  |
 | `accordion-01.png` | Wheezewarden | Cathedral | 40 | 5 | 5 | 5 | 376,0,750,1125 | -6,-62,1095,1643 | reviewed |  |
-| `anchor-01.png` | Barnacle Bulwark | Coast | 65 | 3 | 6 | 8 | 252,-105,698,1047 | 0,0,1024,1536 | reviewed |  |
-| `ankylosaur-01.png` | Clubtail Grumbleback | Mountain | 70 | 3 | 6 | 9 | 75,324,640,960 | 0,0,1061,1592 | reviewed |  |
-| `ant-01.png` | Cogmarch Ant | Jungle | 20 | 8 | 3 | 2 | 206,57,634,951 | 0,0,1024,1536 | reviewed |  |
-| `armadillo-01.png` | Armadillo Recruit | Desert | 45 | 6 | 5 | 7 | 38,507,640,960 | 28,70,977,1466 | reviewed |  |
-| `armadillo-02.png` | Armadillo Knight | Desert | 50 | 4 | 6 | 7 | 266,255,640,960 | 31,46,993,1490 | reviewed |  |
+| `anchor-01.png` | Barnacle Bulwark | Coast | 65 | 3 | 6 | 7 | 252,-105,698,1047 | 0,0,1024,1536 | reviewed |  |
+| `ankylosaur-01.png` | Clubtail Grumbleback | Mountain | 70 | 3 | 6 | 8 | 75,324,640,960 | 0,0,1061,1592 | reviewed |  |
+| `ant-01.png` | Cogmarch Ant | Jungle | 20 | 8 | 3 | 1 | 206,57,634,951 | 0,0,1024,1536 | reviewed |  |
+| `armadillo-01.png` | Armadillo Recruit | Desert | 45 | 6 | 5 | 6 | 38,507,640,960 | 28,70,977,1466 | reviewed |  |
+| `armadillo-02.png` | Armadillo Knight | Desert | 50 | 4 | 6 | 6 | 266,255,640,960 | 31,46,993,1490 | reviewed |  |
 | `astrolabe-01.png` | Starwright Judge | Cathedral | 40 | 5 | 5 | 5 | 278,8,632,948 | 0,0,1024,1536 | reviewed |  |
-| `aurochs-01.png` | Ironhide Aurochs | Savannah | 65 | 3 | 6 | 8 | 296,192,733,1100 | 9,-6,1089,1634 | reviewed |  |
-| `axolotl-01.png` | Ripplequill | Lagoon | 20 | 8 | 3 | 2 | 193,98,717,1076 | 0,0,1024,1536 | reviewed |  |
-| `ayeaye-01.png` | Candlefinger | Jungle | 20 | 8 | 3 | 2 | 272,144,640,960 | 0,0,1024,1536 | reviewed |  |
-| `badger-01.png` | Drumbadger | Autumn woods | 45 | 5 | 5 | 6 | 262,65,683,1025 | 0,0,1024,1536 | reviewed |  |
+| `aurochs-01.png` | Ironhide Aurochs | Savannah | 65 | 3 | 6 | 7 | 296,192,733,1100 | 9,-6,1089,1634 | reviewed |  |
+| `axolotl-01.png` | Ripplequill | Lagoon | 20 | 8 | 3 | 3 | 193,98,717,1076 | 0,0,1024,1536 | reviewed |  |
+| `ayeaye-01.png` | Candlefinger | Jungle | 20 | 8 | 3 | 3 | 272,144,640,960 | 0,0,1024,1536 | reviewed |  |
+| `badger-01.png` | Drumbadger | Autumn woods | 45 | 5 | 5 | 5 | 262,65,683,1025 | 0,0,1024,1536 | reviewed |  |
 | `ballast-01.png` | Sandbag Sentinel | Storm cliffs | 50 | 5 | 5 | 7 | 188,-9,760,1140 | 0,0,1024,1536 | reviewed |  |
 | `basilisk-01.png` | Stonegaze Basilisk | Desert | 65 | 3 | 6 | 8 | 345,111,640,960 | 0,0,1024,1536 | reviewed |  |
 | `bassoon-01.png` | Dirgewind | Ruins | 40 | 5 | 5 | 5 | 310,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `bat-01.png` | Moonwing | Crystal caverns | 20 | 8 | 3 | 2 | 326,131,640,960 | 0,0,1024,1536 | reviewed |  |
-| `bat-02.png` | Bat Rogue | Crystal caverns | 20 | 7 | 4 | 2 | 239,28,640,960 | 0,0,1024,1536 | reviewed |  |
-| `baton-01.png` | Marshal Tempo | Cathedral | 40 | 5 | 5 | 5 | 140,0,770,1154 | 0,0,1024,1536 | reviewed |  |
+| `bat-01.png` | Moonwing | Crystal caverns | 20 | 8 | 3 | 4 | 326,131,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bat-02.png` | Bat Rogue | Crystal caverns | 20 | 7 | 4 | 4 | 239,28,640,960 | 0,0,1024,1536 | reviewed |  |
+| `baton-01.png` | Marshal Tempo | Cathedral | 40 | 5 | 5 | 4 | 140,0,770,1154 | 0,0,1024,1536 | reviewed |  |
 | `beacon-01.png` | Lighthouse Wakelamp | Coast | 70 | 3 | 6 | 9 | 195,-22,779,1169 | 0,0,1024,1536 | reviewed |  |
 | `beaver-01.png` | Pumpwhisker | Wet forest | 40 | 5 | 5 | 5 | 310,124,640,960 | 0,0,1024,1536 | reviewed |  |
-| `bee-01.png` | Sunhum | Flower meadow | 20 | 8 | 3 | 2 | 274,187,634,951 | 0,0,1024,1536 | reviewed |  |
+| `bee-01.png` | Sunhum | Flower meadow | 20 | 8 | 3 | 4 | 274,187,634,951 | 0,0,1024,1536 | reviewed |  |
 | `beetle-01.png` | Beetle Recruit | Jungle | 45 | 5 | 5 | 6 | 214,321,810,1215 | 45,67,979,1469 | reviewed |  |
 | `beetle-02.png` | Beetle Guardian | Jungle | 55 | 4 | 7 | 9 | 225,255,731,1097 | 28,42,996,1494 | reviewed |  |
 | `beetle-04.png` | Seedshot Scarab | Jungle | 30 | 8 | 3 | 4 | 348,197,640,960 | 0,0,1024,1536 | reviewed |  |
-| `behemoth-01.png` | Ironbound Behemoth | Mountain | 75 | 3 | 6 | 10 | 389,92,640,960 | 0,0,1024,1536 | reviewed |  |
-| `bell-01.png` | Clapperward | Cathedral | 65 | 3 | 6 | 8 | 253,65,640,960 | 0,0,1024,1536 | reviewed |  |
+| `behemoth-01.png` | Ironbound Behemoth | Mountain | 75 | 3 | 6 | 9 | 389,92,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bell-01.png` | Clapperward | Cathedral | 65 | 3 | 6 | 7 | 253,65,640,960 | 0,0,1024,1536 | reviewed |  |
 | `bellows-01.png` | Puffing Forgedrake | Ashlands | 45 | 5 | 5 | 6 | 41,419,640,960 | 0,0,1024,1536 | reviewed |  |
 | `binturong-01.png` | Vinelilt | Jungle | 40 | 5 | 5 | 5 | 118,77,640,960 | 0,0,1024,1536 | reviewed |  |
 | `bloomspear-01.png` | Bloomspear | Flower meadow | 40 | 5 | 5 | 5 | 259,110,640,960 | 42,51,973,1460 | reviewed |  |
-| `boar-01.png` | Magma Hog | Ashlands | 60 | 4 | 6 | 8 | 35,550,640,960 | -2,272,1024,1536 | reviewed |  |
+| `boar-01.png` | Magma Hog | Ashlands | 60 | 4 | 6 | 7 | 35,550,640,960 | -2,272,1024,1536 | reviewed |  |
 | `boar-02.png` | Hexbristle | Autumn woods | 45 | 5 | 5 | 6 | 433,181,640,960 | 0,0,1024,1536 | reviewed |  |
 | `bombardierbeetle-01.png` | Acidpop | Desert | 30 | 8 | 3 | 4 | 65,120,640,960 | 0,0,1024,1536 | reviewed |  |
-| `book-01.png` | Foldtome | Ruins | 40 | 5 | 5 | 5 | 220,475,640,960 | 0,0,1024,1536 | reviewed |  |
+| `book-01.png` | Foldtome | Ruins | 40 | 5 | 5 | 6 | 220,475,640,960 | 0,0,1024,1536 | reviewed |  |
 | `brazier-01.png` | Coalwraith Brazier | Ashlands | 50 | 5 | 5 | 7 | 203,1,740,1110 | 0,0,1024,1536 | reviewed |  |
 | `buffalo-01.png` | Rootyoke Buffalo | Savannah | 65 | 3 | 6 | 8 | 327,141,640,960 | 0,0,1024,1536 | reviewed |  |
-| `bugle-01.png` | Skybrass | Cathedral | 20 | 8 | 3 | 2 | 377,201,640,960 | 0,0,1024,1536 | reviewed |  |
-| `candelabrum-01.png` | Waxbrawler | Cathedral | 45 | 5 | 5 | 6 | 212,60,640,960 | 0,0,1024,1536 | reviewed |  |
+| `bugle-01.png` | Skybrass | Cathedral | 20 | 8 | 3 | 3 | 377,201,640,960 | 0,0,1024,1536 | reviewed |  |
+| `candelabrum-01.png` | Waxbrawler | Cathedral | 45 | 5 | 5 | 5 | 212,60,640,960 | 0,0,1024,1536 | reviewed |  |
 | `cannon-01.png` | Powderbelch | Cathedral | 75 | 3 | 6 | 10 | 466,72,592,888 | 0,0,1024,1536 | reviewed |  |
 | `capybara-01.png` | Calmwater Capybara | Jungle | 40 | 5 | 5 | 5 | 422,195,640,960 | 0,0,1024,1536 | reviewed |  |
 | `caracal-01.png` | Tuftspear | Savannah | 40 | 5 | 5 | 5 | 364,221,640,960 | 0,0,1024,1536 | reviewed |  |
-| `carillon-01.png` | Chimespire | Cathedral | 75 | 3 | 6 | 10 | 161,1,640,960 | 0,0,1024,1536 | reviewed |  |
+| `carillon-01.png` | Chimespire | Cathedral | 75 | 3 | 6 | 9 | 161,1,640,960 | 0,0,1024,1536 | reviewed |  |
 | `cassowary-01.png` | Crestcaller | Jungle | 40 | 5 | 5 | 5 | 384,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `caterpillar-01.png` | Caterpillar Bard | Mushroom grotto | 20 | 7 | 3 | 1 | 57,362,640,960 | 0,0,1024,1536 | reviewed |  |
 | `catfolk-01.png` | Moonclaw Spellblade | Desert | 40 | 5 | 5 | 5 | 281,44,640,960 | 0,0,1024,1536 | reviewed |  |
-| `centipede-01.png` | Sicklecoil | Jungle | 50 | 5 | 5 | 7 | 170,44,640,960 | 0,0,1024,1536 | reviewed |  |
+| `centipede-01.png` | Sicklecoil | Jungle | 50 | 5 | 5 | 6 | 170,44,640,960 | 0,0,1024,1536 | reviewed |  |
 | `chalice-01.png` | Stormgoblet | Storm cliffs | 30 | 8 | 3 | 4 | 202,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `chameleon-01.png` | Shiftscale | Jungle | 20 | 8 | 3 | 2 | 277,224,640,960 | 0,0,1024,1536 | reviewed |  |
-| `chandelier-01.png` | Candlecrown | Cathedral | 45 | 5 | 5 | 6 | 230,364,640,960 | 0,0,1024,1536 | reviewed |  |
-| `chest-01.png` | Lockjaw Chest | Ruins | 55 | 5 | 5 | 8 | 205,292,739,1109 | 0,0,1024,1536 | reviewed |  |
-| `chinchilla-01.png` | Ocarina Puff | Mountain | 20 | 8 | 3 | 2 | 105,245,640,960 | 0,0,1024,1536 | reviewed |  |
-| `cicada-01.png` | Chimewing Cicada | Savannah | 20 | 8 | 3 | 2 | 334,52,640,960 | 0,0,1024,1536 | reviewed |  |
-| `cinderhorn-01.png` | Cinderhorn | Ashlands | 45 | 5 | 6 | 7 | 272,32,640,960 | 0,0,1024,1536 | reviewed |  |
-| `coati-01.png` | Diceroll Coati | Jungle | 20 | 8 | 3 | 2 | 135,129,640,960 | 0,0,1024,1536 | reviewed |  |
+| `chameleon-01.png` | Shiftscale | Jungle | 20 | 8 | 3 | 1 | 277,224,640,960 | 0,0,1024,1536 | reviewed |  |
+| `chandelier-01.png` | Candlecrown | Cathedral | 45 | 5 | 5 | 7 | 230,364,640,960 | 0,0,1024,1536 | reviewed |  |
+| `chest-01.png` | Lockjaw Chest | Ruins | 55 | 5 | 5 | 7 | 205,292,739,1109 | 0,0,1024,1536 | reviewed |  |
+| `chinchilla-01.png` | Ocarina Puff | Mountain | 20 | 8 | 3 | 3 | 105,245,640,960 | 0,0,1024,1536 | reviewed |  |
+| `cicada-01.png` | Chimewing Cicada | Savannah | 20 | 8 | 3 | 3 | 334,52,640,960 | 0,0,1024,1536 | reviewed |  |
+| `cinderhorn-01.png` | Cinderhorn | Ashlands | 45 | 5 | 6 | 6 | 272,32,640,960 | 0,0,1024,1536 | reviewed |  |
+| `coati-01.png` | Diceroll Coati | Jungle | 20 | 8 | 3 | 1 | 135,129,640,960 | 0,0,1024,1536 | reviewed |  |
 | `cobra-01.png` | Hoodspitter | Desert | 40 | 5 | 5 | 5 | 330,-36,640,960 | 0,0,1024,1536 | reviewed |  |
 | `compass-02.png` | Northneedle | Storm cliffs | 30 | 8 | 3 | 4 | 189,317,640,960 | 0,0,1024,1536 | reviewed |  |
-| `conchphone-01.png` | Conchhorn | Coast | 45 | 5 | 5 | 6 | 159,538,640,960 | 0,0,1024,1536 | reviewed |  |
+| `conchphone-01.png` | Conchhorn | Coast | 45 | 5 | 5 | 5 | 159,538,640,960 | 0,0,1024,1536 | reviewed |  |
 | `corkscrew-01.png` | Twistcork | Ruins | 30 | 8 | 3 | 4 | 207,44,640,960 | 0,0,1024,1536 | reviewed |  |
-| `crab-01.png` | Crab Alchemist | Coast | 55 | 6 | 4 | 8 | 266,302,640,960 | 0,0,1024,1536 | reviewed |  |
-| `crab-02.png` | Crab Smith | Coast | 50 | 5 | 5 | 7 | 222,287,640,960 | 0,0,1024,1536 | reviewed |  |
-| `crab-03.png` | Decoy Crab | Coast | 50 | 5 | 5 | 7 | 297,318,640,960 | 0,0,1024,1536 | reviewed |  |
-| `crane-01.png` | Hoist Titan | Cathedral | 75 | 3 | 6 | 10 | 226,14,640,960 | 0,0,1024,1536 | reviewed |  |
-| `crane-02.png` | Featherveil Crane | Wet forest | 40 | 5 | 5 | 5 | 135,81,640,960 | 0,0,1024,1536 | reviewed |  |
+| `crab-01.png` | Crab Alchemist | Coast | 55 | 6 | 4 | 6 | 266,302,640,960 | 0,0,1024,1536 | reviewed |  |
+| `crab-02.png` | Crab Smith | Coast | 50 | 5 | 5 | 6 | 222,287,640,960 | 0,0,1024,1536 | reviewed |  |
+| `crab-03.png` | Decoy Crab | Coast | 50 | 5 | 5 | 6 | 297,318,640,960 | 0,0,1024,1536 | reviewed |  |
+| `crane-01.png` | Hoist Titan | Cathedral | 75 | 3 | 6 | 8 | 226,14,640,960 | 0,0,1024,1536 | reviewed |  |
+| `crane-02.png` | Featherveil Crane | Wet forest | 40 | 5 | 5 | 6 | 135,81,640,960 | 0,0,1024,1536 | reviewed |  |
 | `cricket-01.png` | Fiddlewhit | Flower meadow | 20 | 8 | 3 | 2 | 178,50,640,960 | 0,0,1024,1536 | reviewed |  |
-| `crocodile-01.png` | Crocodile Shaman | Swamp | 40 | 3 | 7 | 5 | 266,290,747,1121 | 0,0,1024,1536 | reviewed |  |
-| `crow-01.png` | Skullcaw | Ruins | 20 | 8 | 3 | 2 | 186,107,640,960 | 0,0,1024,1536 | reviewed |  |
-| `crucible-01.png` | Moltencup | Ashlands | 55 | 5 | 5 | 8 | 205,60,640,960 | 0,0,1024,1536 | reviewed |  |
-| `cuttlefish-01.png` | Needleglow | Lagoon | 20 | 8 | 3 | 2 | 190,214,640,960 | 0,0,1024,1536 | reviewed |  |
-| `deer-01.png` | Glade Stag | Wet forest | 40 | 6 | 5 | 6 | 256,288,640,960 | 0,0,1024,1536 | reviewed |  |
+| `crocodile-01.png` | Crocodile Shaman | Swamp | 40 | 3 | 7 | 6 | 266,290,747,1121 | 0,0,1024,1536 | reviewed |  |
+| `crow-01.png` | Skullcaw | Ruins | 20 | 8 | 3 | 4 | 186,107,640,960 | 0,0,1024,1536 | reviewed |  |
+| `crucible-01.png` | Moltencup | Ashlands | 55 | 5 | 5 | 7 | 205,60,640,960 | 0,0,1024,1536 | reviewed |  |
+| `cuttlefish-01.png` | Needleglow | Lagoon | 20 | 8 | 3 | 1 | 190,214,640,960 | 0,0,1024,1536 | reviewed |  |
+| `deer-01.png` | Glade Stag | Wet forest | 40 | 6 | 5 | 4 | 256,288,640,960 | 0,0,1024,1536 | reviewed |  |
 | `dormouse-01.png` | Bellnap Dormouse | Autumn woods | 20 | 8 | 3 | 2 | 203,191,640,960 | 0,0,1024,1536 | reviewed |  |
 | `dragon-01.png` | Emberwyrm Colossus | Ashlands | 70 | 3 | 6 | 9 | 191,68,640,960 | 0,0,1024,1536 | reviewed |  |
 | `dragon-02.png` | Obsidian Elder | Ashlands | 75 | 3 | 6 | 10 | 183,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `dragon-03.png` | Tempest Sovereign | Storm cliffs | 70 | 3 | 6 | 9 | 221,71,640,960 | 0,0,1024,1536 | reviewed |  |
 | `dragon-04.png` | Glacier Titan | Arctic | 75 | 3 | 6 | 10 | 300,15,640,960 | 0,0,1024,1536 | reviewed |  |
-| `dragonfly-01.png` | Reedarrow | Swamp | 20 | 8 | 3 | 2 | 342,151,640,960 | 0,0,1024,1536 | reviewed |  |
-| `drake-01.png` | Crystalback Drake | Crystal caverns | 75 | 3 | 6 | 10 | 382,52,640,960 | 0,0,1024,1536 | reviewed |  |
-| `drawbridge-01.png` | Chaingate | Cathedral | 75 | 3 | 6 | 10 | 173,52,640,960 | 0,0,1024,1536 | reviewed |  |
+| `dragonfly-01.png` | Reedarrow | Swamp | 20 | 8 | 3 | 3 | 342,151,640,960 | 0,0,1024,1536 | reviewed |  |
+| `drake-01.png` | Crystalback Drake | Crystal caverns | 75 | 3 | 6 | 8 | 382,52,640,960 | 0,0,1024,1536 | reviewed |  |
+| `drawbridge-01.png` | Chaingate | Cathedral | 75 | 3 | 6 | 8 | 173,52,640,960 | 0,0,1024,1536 | reviewed |  |
 | `drum-01.png` | Wardrum | Savannah | 50 | 5 | 5 | 7 | 158,87,640,960 | 0,0,1024,1536 | reviewed |  |
-| `dugong-02.png` | Crystalfin Dugong | Lagoon | 70 | 3 | 6 | 9 | 307,136,640,960 | 0,0,1024,1536 | reviewed |  |
-| `elephant-01.png` | Idolbearer | Savannah | 70 | 3 | 6 | 9 | 370,101,640,960 | 0,0,1024,1536 | reviewed |  |
+| `dugong-02.png` | Crystalfin Dugong | Lagoon | 70 | 3 | 6 | 8 | 307,136,640,960 | 0,0,1024,1536 | reviewed |  |
+| `elephant-01.png` | Idolbearer | Savannah | 70 | 3 | 6 | 8 | 370,101,640,960 | 0,0,1024,1536 | reviewed |  |
 | `ferret-01.png` | Maskwhisk | Ruins | 20 | 8 | 3 | 2 | 37,67,640,960 | 0,0,1024,1536 | reviewed |  |
 | `fiddlercrab-01.png` | Coinclaw | Coast | 30 | 8 | 3 | 4 | 296,236,640,960 | 0,0,1024,1536 | reviewed |  |
-| `firefly-01.png` | Lanternwing | Flower meadow | 20 | 8 | 3 | 2 | 84,128,640,960 | 0,0,1024,1536 | reviewed |  |
-| `firefly-02.png` | Firefly | Flower meadow | 20 | 8 | 3 | 2 | 339,425,640,960 | 0,0,1024,1536 | reviewed |  |
-| `flyingfish-01.png` | Dartfin | Lagoon | 20 | 8 | 3 | 2 | 388,153,640,960 | 0,0,1024,1536 | reviewed |  |
+| `firefly-01.png` | Lanternwing | Flower meadow | 20 | 8 | 3 | 3 | 84,128,640,960 | 0,0,1024,1536 | reviewed |  |
+| `firefly-02.png` | Firefly | Flower meadow | 20 | 8 | 3 | 3 | 339,425,640,960 | 0,0,1024,1536 | reviewed |  |
+| `flyingfish-01.png` | Dartfin | Lagoon | 20 | 8 | 3 | 3 | 388,153,640,960 | 0,0,1024,1536 | reviewed |  |
 | `fossa-01.png` | Harpoon Fossa | Jungle | 40 | 5 | 5 | 5 | 348,194,640,960 | 0,0,1024,1536 | reviewed |  |
 | `fox-01.png` | Fox Bard | Autumn woods | 20 | 8 | 3 | 2 | 55,415,640,960 | 0,0,1024,1536 | reviewed |  |
-| `frigatebird-01.png` | Throatdrum | Coast | 40 | 5 | 5 | 5 | 356,75,640,960 | 0,0,1024,1536 | reviewed |  |
+| `frigatebird-01.png` | Throatdrum | Coast | 40 | 5 | 5 | 6 | 356,75,640,960 | 0,0,1024,1536 | reviewed |  |
 | `frog-01.png` | Frog Bard Dagger | Swamp | 20 | 8 | 3 | 2 | 268,45,640,960 | 0,0,1024,1536 | reviewed |  |
 | `furnace-01.png` | Furnace Titan | Ashlands | 75 | 3 | 6 | 10 | 280,11,640,960 | 0,0,1024,1536 | reviewed |  |
-| `gargoyle-01.png` | Stonewatch Gargoyle | Cathedral | 55 | 5 | 5 | 8 | 220,155,640,960 | 0,0,1024,1536 | reviewed |  |
-| `gaur-01.png` | Bolted Gaur | Jungle | 70 | 3 | 6 | 9 | 346,226,640,960 | 0,0,1024,1536 | reviewed |  |
-| `gecko-01.png` | Resinpaw | Jungle | 20 | 8 | 3 | 2 | 291,119,640,960 | 0,0,1024,1536 | reviewed |  |
-| `gecko-02.png` | Prismtoe | Crystal caverns | 20 | 8 | 3 | 2 | 235,12,640,960 | 0,0,1024,1536 | reviewed |  |
+| `gargoyle-01.png` | Stonewatch Gargoyle | Cathedral | 55 | 5 | 5 | 7 | 220,155,640,960 | 0,0,1024,1536 | reviewed |  |
+| `gaur-01.png` | Bolted Gaur | Jungle | 70 | 3 | 6 | 8 | 346,226,640,960 | 0,0,1024,1536 | reviewed |  |
+| `gecko-01.png` | Resinpaw | Jungle | 20 | 8 | 3 | 3 | 291,119,640,960 | 0,0,1024,1536 | reviewed |  |
+| `gecko-02.png` | Prismtoe | Crystal caverns | 20 | 8 | 3 | 3 | 235,12,640,960 | 0,0,1024,1536 | reviewed |  |
 | `goat-01.png` | Totemhorn | Mountain | 40 | 5 | 5 | 5 | 190,46,640,960 | 0,0,1024,1536 | reviewed |  |
 | `goblet-01.png` | Grailward | Cathedral | 50 | 5 | 5 | 7 | 264,7,640,960 | 0,0,1024,1536 | reviewed |  |
-| `golem-01.png` | Furnaceheart Colossus | Ashlands | 75 | 3 | 6 | 10 | 266,35,640,960 | 0,0,1024,1536 | reviewed |  |
-| `golem-02.png` | Gearwright Golem | Ruins | 75 | 3 | 6 | 10 | 237,152,640,960 | 0,0,1024,1536 | reviewed |  |
+| `golem-01.png` | Furnaceheart Colossus | Ashlands | 75 | 3 | 6 | 9 | 266,35,640,960 | 0,0,1024,1536 | reviewed |  |
+| `golem-02.png` | Gearwright Golem | Ruins | 75 | 3 | 6 | 9 | 237,152,640,960 | 0,0,1024,1536 | reviewed |  |
 | `gong-01.png` | Discord Gong | Ruins | 50 | 5 | 5 | 7 | 233,46,640,960 | 0,0,1024,1536 | reviewed |  |
-| `gorilla-01.png` | Ironfist Silverback | Jungle | 60 | 3 | 6 | 7 | 242,57,640,960 | 0,0,1024,1536 | reviewed |  |
+| `gorilla-01.png` | Ironfist Silverback | Jungle | 60 | 3 | 6 | 8 | 242,57,640,960 | 0,0,1024,1536 | reviewed |  |
 | `griffin-01.png` | Lancewing Griffin | Mountain | 65 | 3 | 6 | 8 | 193,76,640,960 | 0,0,1024,1536 | reviewed |  |
-| `harpsichord-01.png` | Keyclatter | Cathedral | 65 | 3 | 6 | 8 | 181,256,640,960 | 0,0,1024,1536 | reviewed |  |
+| `harpsichord-01.png` | Keyclatter | Cathedral | 65 | 3 | 6 | 7 | 181,256,640,960 | 0,0,1024,1536 | reviewed |  |
 | `harpy-eagle-01.png` | Talonstrike | Jungle | 40 | 5 | 5 | 5 | 299,87,640,960 | 0,0,1024,1536 | reviewed |  |
-| `hawk-01.png` | Skybow Hawk | Mountain | 20 | 8 | 3 | 2 | 264,105,640,960 | 0,0,1024,1536 | reviewed |  |
-| `hermitcrab-01.png` | Basaltshell | Coast | 55 | 5 | 5 | 8 | 277,291,640,960 | 0,0,1024,1536 | reviewed |  |
-| `heron-01.png` | Wingwright Heron | Swamp | 40 | 5 | 5 | 5 | 288,7,640,960 | 0,0,1024,1536 | reviewed |  |
+| `hawk-01.png` | Skybow Hawk | Mountain | 20 | 8 | 3 | 3 | 264,105,640,960 | 0,0,1024,1536 | reviewed |  |
+| `hermitcrab-01.png` | Basaltshell | Coast | 55 | 5 | 5 | 6 | 277,291,640,960 | 0,0,1024,1536 | reviewed |  |
+| `heron-01.png` | Wingwright Heron | Swamp | 40 | 5 | 5 | 6 | 288,7,640,960 | 0,0,1024,1536 | reviewed |  |
 | `heron-02.png` | Stillspear | Swamp | 40 | 5 | 5 | 5 | 215,7,640,960 | 0,0,1024,1536 | reviewed |  |
-| `hippo-01.png` | Tonic Hippo | Swamp | 60 | 3 | 6 | 7 | 298,152,640,960 | 0,0,1024,1536 | reviewed |  |
+| `hippo-01.png` | Tonic Hippo | Swamp | 60 | 3 | 6 | 8 | 298,152,640,960 | 0,0,1024,1536 | reviewed |  |
 | `hornbill-01.png` | Drumbill | Jungle | 40 | 5 | 5 | 5 | 274,44,640,960 | 0,0,1024,1536 | reviewed |  |
-| `horseshoe-01.png` | Lucky Ironshoe | Savannah | 55 | 5 | 5 | 8 | 230,97,640,960 | 0,0,1024,1536 | reviewed |  |
-| `horseshoecrab-01.png` | Bronzeback Sentinel | Coast | 55 | 5 | 5 | 8 | 180,239,640,960 | 0,0,1024,1536 | reviewed |  |
+| `horseshoe-01.png` | Lucky Ironshoe | Savannah | 55 | 5 | 5 | 7 | 230,97,640,960 | 0,0,1024,1536 | reviewed |  |
+| `horseshoecrab-01.png` | Bronzeback Sentinel | Coast | 55 | 5 | 5 | 7 | 180,239,640,960 | 0,0,1024,1536 | reviewed |  |
 | `hourglass-01.png` | Sandhex Glass | Desert | 45 | 5 | 5 | 6 | 217,12,640,960 | 0,0,1024,1536 | reviewed |  |
 | `howlermonkey-01.png` | Roarleaf | Jungle | 40 | 5 | 5 | 5 | 325,83,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-01.png` | Gerald Hollins | Ruins | 50 | 5 | 5 | 7 | 192,101,640,960 | 0,0,1024,1536 | reviewed |  |
@@ -474,143 +474,143 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 | `human-06.png` | Lucia Marin | Savannah | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-07.png` | Tom Reed | Pine forest | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-08.png` | Ragnhild Eriksen | Arctic | 40 | 5 | 5 | 5 | 192,59,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-09.png` | Gunnar Holt | Mountain | 40 | 5 | 5 | 5 | 192,84,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-10.png` | Felix Lowell | Cathedral | 45 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-09.png` | Gunnar Holt | Mountain | 40 | 5 | 5 | 4 | 192,84,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-10.png` | Felix Lowell | Cathedral | 45 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-11.png` | Lorenzo Varga | Flower meadow | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-12.png` | Jack Morrow | Coast | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-13.png` | Helena Strand | Cathedral | 45 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-14.png` | Carlos Fonseca | Coast | 40 | 5 | 5 | 5 | 192,166,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-15.png` | Beatrix Alvarez | Coast | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-16.png` | Agnes Brook | Cathedral | 40 | 5 | 5 | 5 | 192,34,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-16.png` | Agnes Brook | Cathedral | 40 | 5 | 5 | 6 | 192,34,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-17.png` | Amara Okafor | Savannah | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-18.png` | Nadia Petrova | Desert | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-19.png` | Fiona Ashby | Wet forest | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-20.png` | Ivy Calloway | Pine forest | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-19.png` | Fiona Ashby | Wet forest | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-20.png` | Ivy Calloway | Pine forest | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-21.png` | Camille Moreau | Cathedral | 40 | 5 | 5 | 5 | 192,81,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-22.png` | Lukas Weiss | Crystal caverns | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-22.png` | Lukas Weiss | Crystal caverns | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-23.png` | Max Hooper | Ruins | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-24.png` | Ingrid Lund | Arctic | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-25.png` | Leo Stone | Mountain | 40 | 5 | 5 | 5 | 192,151,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-26.png` | Peter Holm | Cathedral | 50 | 5 | 5 | 7 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-27.png` | Johanna Weber | Cathedral | 50 | 5 | 5 | 7 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-28.png` | Albrecht Lang | Cathedral | 50 | 5 | 5 | 7 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-29.png` | Johanka Weber | Mountain | 55 | 5 | 5 | 8 | 192,99,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-30.png` | Edwin Marsh | Cathedral | 55 | 5 | 5 | 8 | 192,165,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-31.png` | William Hart | Cathedral | 55 | 5 | 5 | 8 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-32.png` | Kai Lindqvist | Crystal caverns | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-33.png` | Carmen Costa | Ashlands | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-34.png` | Astor Nilsen | Arctic | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-35.png` | Henrik Berg | Mountain | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-36.png` | Mateo Santos | Lagoon | 40 | 5 | 5 | 5 | 192,35,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-37.png` | Kenji Mori | Mountain | 40 | 5 | 7 | 5 | 192,89,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-29.png` | Johanka Weber | Mountain | 55 | 5 | 5 | 7 | 192,99,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-30.png` | Edwin Marsh | Cathedral | 55 | 5 | 5 | 6 | 192,165,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-31.png` | William Hart | Cathedral | 55 | 5 | 5 | 7 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-32.png` | Kai Lindqvist | Crystal caverns | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-33.png` | Carmen Costa | Ashlands | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-34.png` | Astor Nilsen | Arctic | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-35.png` | Henrik Berg | Mountain | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-36.png` | Mateo Santos | Lagoon | 40 | 5 | 5 | 6 | 192,35,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-37.png` | Kenji Mori | Mountain | 40 | 5 | 7 | 6 | 192,89,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-38.png` | Viktor Graves | Ruins | 40 | 5 | 5 | 5 | 214,7,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-39.png` | Martin Becker | Cathedral | 40 | 5 | 5 | 5 | 192,38,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-40.png` | Luna Ortiz | Flower meadow | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-40.png` | Luna Ortiz | Flower meadow | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-41.png` | Aurelia Day | Desert | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-42.png` | Thomas Abbott | Cathedral | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-43.png` | Paul Fischer | Swamp | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-44.png` | Nika Volkova | Ruins | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-45.png` | Daniel Hart | Ruins | 40 | 5 | 5 | 5 | 192,132,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-45.png` | Daniel Hart | Ruins | 40 | 5 | 5 | 4 | 192,132,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-46.png` | Elsa Lindgren | Pine forest | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-47.png` | Kofi Mensah | Jungle | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-47.png` | Kofi Mensah | Jungle | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-48.png` | Hugo Schmidt | Mountain | 40 | 5 | 5 | 5 | 192,111,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-49.png` | Laura Cole | Storm cliffs | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-51.png` | Richard Novak | Storm cliffs | 50 | 5 | 5 | 7 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-52.png` | Arthur Pembroke | Cathedral | 40 | 5 | 5 | 5 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-51.png` | Richard Novak | Storm cliffs | 50 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-52.png` | Arthur Pembroke | Cathedral | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `hummingbird-01.png` | Rapierbeak | Flower meadow | 20 | 8 | 3 | 2 | 206,170,640,960 | 0,0,1024,1536 | reviewed |  |
-| `hydra-01.png` | Tridentmaw Hydra | Swamp | 70 | 3 | 6 | 9 | 175,-67,729,1094 | 0,0,1024,1536 | reviewed |  |
+| `hydra-01.png` | Tridentmaw Hydra | Swamp | 70 | 3 | 6 | 8 | 175,-67,729,1094 | 0,0,1024,1536 | reviewed |  |
 | `hyena-01.png` | Sawgrin | Savannah | 40 | 5 | 5 | 5 | 332,102,640,960 | 0,0,1024,1536 | reviewed |  |
-| `ibex-01.png` | Standardhorn | Mountain | 40 | 5 | 5 | 5 | 219,38,640,960 | 0,0,1024,1536 | reviewed |  |
+| `ibex-01.png` | Standardhorn | Mountain | 40 | 5 | 5 | 4 | 219,38,640,960 | 0,0,1024,1536 | reviewed |  |
 | `incense-censor-01.png` | Smokeswing | Cathedral | 50 | 5 | 5 | 7 | 183,17,640,960 | 0,0,1024,1536 | reviewed |  |
-| `inkwell-01.png` | Quillspatter | Ruins | 25 | 8 | 3 | 3 | 190,410,640,960 | 0,0,1024,1536 | reviewed |  |
-| `isopod-01.png` | Ironroll | Mushroom grotto | 35 | 8 | 3 | 5 | 354,359,640,960 | 0,0,1024,1536 | reviewed |  |
+| `inkwell-01.png` | Quillspatter | Ruins | 25 | 8 | 3 | 4 | 190,410,640,960 | 0,0,1024,1536 | reviewed |  |
+| `isopod-01.png` | Ironroll | Mushroom grotto | 35 | 8 | 3 | 4 | 354,359,640,960 | 0,0,1024,1536 | reviewed |  |
 | `jackalope-01.png` | Cursehorn | Desert | 20 | 8 | 3 | 2 | 313,225,640,960 | 0,0,1024,1536 | reviewed |  |
-| `jelly-01.png` | Stormbell Jelly | Lagoon | 20 | 8 | 3 | 2 | 205,132,640,960 | 0,0,1024,1536 | reviewed |  |
-| `jellyfish-02.png` | Mendbloom Jelly | Lagoon | 20 | 8 | 3 | 2 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
-| `jerboa-01.png` | Acornpop | Desert | 20 | 8 | 3 | 2 | 361,51,640,960 | 0,0,1024,1536 | reviewed |  |
-| `kestrel-01.png` | Lurewing | Savannah | 20 | 8 | 3 | 2 | 171,63,640,960 | 0,0,1024,1536 | reviewed |  |
+| `jelly-01.png` | Stormbell Jelly | Lagoon | 20 | 8 | 3 | 3 | 205,132,640,960 | 0,0,1024,1536 | reviewed |  |
+| `jellyfish-02.png` | Mendbloom Jelly | Lagoon | 20 | 8 | 3 | 3 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
+| `jerboa-01.png` | Acornpop | Desert | 20 | 8 | 3 | 3 | 361,51,640,960 | 0,0,1024,1536 | reviewed |  |
+| `kestrel-01.png` | Lurewing | Savannah | 20 | 8 | 3 | 3 | 171,63,640,960 | 0,0,1024,1536 | reviewed |  |
 | `kettle-01.png` | Siegekettle | Ruins | 55 | 5 | 5 | 8 | 215,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `kiln-01.png` | Kiln Behemoth | Ashlands | 75 | 3 | 6 | 10 | 212,102,640,960 | 0,0,1024,1536 | reviewed |  |
+| `kiln-01.png` | Kiln Behemoth | Ashlands | 75 | 3 | 6 | 9 | 212,102,640,960 | 0,0,1024,1536 | reviewed |  |
 | `kingfisher-01.png` | Captain Daggerbill | Wet forest | 20 | 8 | 3 | 2 | 206,54,640,960 | 0,0,1024,1536 | reviewed |  |
 | `kinkajou-01.png` | Idolpaw | Jungle | 20 | 8 | 3 | 2 | 257,160,640,960 | 0,0,1024,1536 | reviewed |  |
 | `kite-01.png` | Tailwind Kite | Storm cliffs | 20 | 8 | 3 | 2 | 262,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `komodo-01.png` | Cleaver Komodo | Jungle | 45 | 5 | 5 | 6 | 269,54,640,960 | 0,0,1024,1536 | reviewed |  |
+| `komodo-01.png` | Cleaver Komodo | Jungle | 45 | 5 | 5 | 4 | 269,54,640,960 | 0,0,1024,1536 | reviewed |  |
 | `kraken-01.png` | Basalt Kraken | Lagoon | 70 | 3 | 6 | 9 | 164,73,640,960 | 0,0,1024,1536 | reviewed |  |
 | `lantern-01.png` | Prismlamp | Crystal caverns | 30 | 8 | 3 | 4 | 168,29,640,960 | 0,0,1024,1536 | reviewed |  |
 | `lizardfolk-02.png` | Reef Warden | Lagoon | 45 | 6 | 5 | 7 | 352,64,640,960 | 0,0,1024,1536 | reviewed |  |
-| `lizardfolk-03.png` | Axejaw Lizardfolk | Swamp | 40 | 5 | 5 | 5 | 140,22,640,960 | 0,0,1024,1536 | reviewed |  |
+| `lizardfolk-03.png` | Axejaw Lizardfolk | Swamp | 40 | 5 | 5 | 4 | 140,22,640,960 | 0,0,1024,1536 | reviewed |  |
 | `lizardfolk-04.png` | Kunai Lizardfolk | Swamp | 40 | 5 | 5 | 5 | 223,74,640,960 | 0,0,1024,1536 | reviewed |  |
-| `lobster-01.png` | Castanet Lobster | Coast | 50 | 5 | 5 | 7 | 202,138,640,960 | 0,0,1024,1536 | reviewed |  |
-| `lobster-02.png` | Rivetclaw | Coast | 50 | 5 | 5 | 7 | 144,105,640,960 | 0,0,1024,1536 | reviewed |  |
-| `lockbox-01.png` | Lockbox Dreadnought | Ruins | 75 | 3 | 6 | 10 | 260,120,640,960 | 0,0,1024,1536 | reviewed |  |
+| `lobster-01.png` | Castanet Lobster | Coast | 50 | 5 | 5 | 5 | 202,138,640,960 | 0,0,1024,1536 | reviewed |  |
+| `lobster-02.png` | Rivetclaw | Coast | 50 | 5 | 5 | 6 | 144,105,640,960 | 0,0,1024,1536 | reviewed |  |
+| `lockbox-01.png` | Lockbox Dreadnought | Ruins | 75 | 3 | 6 | 8 | 260,120,640,960 | 0,0,1024,1536 | reviewed |  |
 | `loom-01.png` | Threadbinder Loom | Ruins | 65 | 3 | 6 | 8 | 232,61,640,960 | 0,0,1024,1536 | reviewed |  |
-| `lyrebird-01.png` | Plumesong | Pine forest | 20 | 8 | 3 | 2 | 311,109,640,960 | 0,0,1024,1536 | reviewed |  |
+| `lyrebird-01.png` | Plumesong | Pine forest | 20 | 8 | 3 | 3 | 311,109,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mammoth-01.png` | Tundra Titan | Arctic | 65 | 3 | 6 | 8 | 244,97,640,960 | 0,0,1024,1536 | reviewed |  |
 | `manatee-01.png` | Shellmend Manatee | Lagoon | 60 | 3 | 6 | 7 | 278,103,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mandrake-01.png` | Screamroot | Swamp | 25 | 8 | 3 | 3 | 269,27,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mandrill-01.png` | Glovegrin | Jungle | 40 | 5 | 5 | 5 | 221,59,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mandrake-01.png` | Screamroot | Swamp | 25 | 8 | 3 | 4 | 269,27,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mandrill-01.png` | Glovegrin | Jungle | 40 | 5 | 5 | 4 | 221,59,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mannequin-01.png` | Stitchfist Mannequin | Ruins | 50 | 5 | 5 | 7 | 96,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `manticore-01.png` | Barbtail Manticore | Desert | 60 | 3 | 6 | 7 | 334,246,640,960 | 0,0,1024,1536 | reviewed |  |
+| `manticore-01.png` | Barbtail Manticore | Desert | 60 | 3 | 6 | 8 | 334,246,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mantis-01.png` | Bladewright Mantis | Jungle | 45 | 5 | 5 | 6 | 290,54,640,960 | 0,0,1024,1536 | reviewed |  |
 | `marabou-01.png` | Balmbeak | Savannah | 40 | 5 | 5 | 5 | 259,19,640,960 | 0,0,1024,1536 | reviewed |  |
 | `maskrack-01.png` | Echomask Rack | Ruins | 45 | 5 | 5 | 6 | 253,-31,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mastiff-01.png` | Shieldjaw Mastiff | Cathedral | 50 | 5 | 5 | 7 | 326,35,640,960 | 0,0,1024,1536 | reviewed |  |
-| `meerkat-01.png` | Spyglass Meerkat | Desert | 20 | 8 | 3 | 2 | 170,149,640,960 | 0,0,1024,1536 | reviewed |  |
-| `millstone-01.png` | Millstone Juggernaut | Savannah | 75 | 3 | 6 | 10 | 250,87,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mirror-01.png` | Mirror Revenant | Cathedral | 45 | 5 | 5 | 6 | 178,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mole-01.png` | Gearclaw Mole | Mushroom grotto | 20 | 8 | 3 | 2 | 330,126,640,960 | 0,0,1024,1536 | reviewed |  |
+| `meerkat-01.png` | Spyglass Meerkat | Desert | 20 | 8 | 3 | 3 | 170,149,640,960 | 0,0,1024,1536 | reviewed |  |
+| `millstone-01.png` | Millstone Juggernaut | Savannah | 75 | 3 | 6 | 9 | 250,87,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mirror-01.png` | Mirror Revenant | Cathedral | 45 | 5 | 5 | 7 | 178,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mole-01.png` | Gearclaw Mole | Mushroom grotto | 20 | 8 | 3 | 1 | 330,126,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mole-02.png` | Hexhammer Mole | Mushroom grotto | 20 | 8 | 3 | 2 | 258,222,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mongoose-01.png` | Sicklewhisk | Savannah | 20 | 8 | 3 | 2 | 343,113,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mongoose-02.png` | Hexdart Mongoose | Savannah | 20 | 8 | 3 | 2 | 250,109,640,960 | 0,0,1024,1536 | reviewed |  |
-| `monkey-01.png` | Slingtail | Jungle | 20 | 8 | 3 | 2 | 150,113,640,960 | 0,0,1024,1536 | reviewed |  |
-| `moray-01.png` | Hookgrin Moray | Lagoon | 40 | 5 | 5 | 5 | 375,51,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mortar-01.png` | Bastion Mortar | Ruins | 75 | 3 | 6 | 10 | 176,43,640,960 | 0,0,1024,1536 | reviewed |  |
-| `moth-02.png` | Lanternmoth | Mushroom grotto | 20 | 8 | 3 | 2 | 181,130,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mushroom-01.png` | Sporedruid | Mushroom grotto | 20 | 8 | 3 | 2 | 192,223,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mushroom-03.png` | Capshield | Mushroom grotto | 45 | 5 | 5 | 6 | 182,189,640,960 | 0,0,1024,1536 | reviewed |  |
-| `musicbox-01.png` | Windup Drummer | Ruins | 35 | 8 | 3 | 5 | 188,88,640,960 | 0,0,1024,1536 | reviewed |  |
-| `muskox-01.png` | Bucklerhorn | Arctic | 70 | 3 | 6 | 9 | 292,187,640,960 | 0,0,1024,1536 | reviewed |  |
-| `newt-01.png` | Coilnewt | Swamp | 20 | 8 | 3 | 2 | 392,265,640,960 | 0,0,1024,1536 | reviewed |  |
-| `olm-01.png` | Shadeolm | Crystal caverns | 20 | 8 | 3 | 2 | 194,45,640,960 | 0,0,1024,1536 | reviewed |  |
-| `opossum-01.png` | Dicetail | Autumn woods | 20 | 8 | 3 | 2 | 335,148,640,960 | 0,0,1024,1536 | reviewed |  |
-| `orc-01.png` | Grukk Skullcaller | Ruins | 45 | 5 | 5 | 6 | 224,20,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mongoose-02.png` | Hexdart Mongoose | Savannah | 20 | 8 | 3 | 1 | 250,109,640,960 | 0,0,1024,1536 | reviewed |  |
+| `monkey-01.png` | Slingtail | Jungle | 20 | 8 | 3 | 3 | 150,113,640,960 | 0,0,1024,1536 | reviewed |  |
+| `moray-01.png` | Hookgrin Moray | Lagoon | 40 | 5 | 5 | 4 | 375,51,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mortar-01.png` | Bastion Mortar | Ruins | 75 | 3 | 6 | 9 | 176,43,640,960 | 0,0,1024,1536 | reviewed |  |
+| `moth-02.png` | Lanternmoth | Mushroom grotto | 20 | 8 | 3 | 4 | 181,130,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mushroom-01.png` | Sporedruid | Mushroom grotto | 20 | 8 | 3 | 3 | 192,223,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mushroom-03.png` | Capshield | Mushroom grotto | 45 | 5 | 5 | 7 | 182,189,640,960 | 0,0,1024,1536 | reviewed |  |
+| `musicbox-01.png` | Windup Drummer | Ruins | 35 | 8 | 3 | 4 | 188,88,640,960 | 0,0,1024,1536 | reviewed |  |
+| `muskox-01.png` | Bucklerhorn | Arctic | 70 | 3 | 6 | 8 | 292,187,640,960 | 0,0,1024,1536 | reviewed |  |
+| `newt-01.png` | Coilnewt | Swamp | 20 | 8 | 3 | 1 | 392,265,640,960 | 0,0,1024,1536 | reviewed |  |
+| `olm-01.png` | Shadeolm | Crystal caverns | 20 | 8 | 3 | 3 | 194,45,640,960 | 0,0,1024,1536 | reviewed |  |
+| `opossum-01.png` | Dicetail | Autumn woods | 20 | 8 | 3 | 3 | 335,148,640,960 | 0,0,1024,1536 | reviewed |  |
+| `orc-01.png` | Grukk Skullcaller | Ruins | 45 | 5 | 5 | 5 | 224,20,640,960 | 0,0,1024,1536 | reviewed |  |
 | `orchidmantis-01.png` | Petalshade | Flower meadow | 20 | 8 | 3 | 2 | 240,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `organ-01.png` | Pipe Organ Choir | Cathedral | 75 | 3 | 6 | 10 | 181,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `orrery-01.png` | Orbitwright | Cathedral | 45 | 5 | 5 | 6 | 211,76,640,960 | 0,0,1024,1536 | reviewed |  |
-| `ossuary-01.png` | Bonecube | Ruins | 55 | 5 | 5 | 8 | 235,55,640,960 | 0,0,1024,1536 | reviewed |  |
-| `otter-01.png` | Slingwhisker | Wet forest | 20 | 8 | 3 | 2 | 268,142,640,960 | 0,0,1024,1536 | reviewed |  |
-| `owl-01.png` | Hootmage | Pine forest | 20 | 8 | 3 | 2 | 192,97,640,960 | 0,0,1024,1536 | reviewed |  |
-| `panda-01.png` | Bamboo Monk | Mountain | 60 | 3 | 6 | 7 | 181,48,640,960 | 0,0,1024,1536 | reviewed |  |
+| `ossuary-01.png` | Bonecube | Ruins | 55 | 5 | 5 | 7 | 235,55,640,960 | 0,0,1024,1536 | reviewed |  |
+| `otter-01.png` | Slingwhisker | Wet forest | 20 | 8 | 3 | 3 | 268,142,640,960 | 0,0,1024,1536 | reviewed |  |
+| `owl-01.png` | Hootmage | Pine forest | 20 | 8 | 3 | 4 | 192,97,640,960 | 0,0,1024,1536 | reviewed |  |
+| `panda-01.png` | Bamboo Monk | Mountain | 60 | 3 | 6 | 6 | 181,48,640,960 | 0,0,1024,1536 | reviewed |  |
 | `pangolin-01.png` | Decoy Pangolin | Savannah | 50 | 5 | 5 | 7 | 354,150,640,960 | 0,0,1024,1536 | reviewed |  |
 | `pangolin-02.png` | Thunderscale | Savannah | 50 | 5 | 5 | 7 | 372,184,640,960 | 0,0,1024,1536 | reviewed |  |
-| `panpipe-01.png` | Reedcaller | Flower meadow | 25 | 8 | 3 | 3 | 189,52,640,960 | 0,0,1024,1536 | reviewed |  |
-| `peacock-01.png` | Plumecrown | Flower meadow | 40 | 5 | 5 | 5 | 399,53,640,960 | 0,0,1024,1536 | reviewed |  |
-| `phoenix-01.png` | Solar Phoenix | Ashlands | 60 | 3 | 6 | 7 | 188,12,640,960 | 0,0,1024,1536 | reviewed |  |
-| `pika-01.png` | Hornpip | Mountain | 20 | 8 | 3 | 2 | 207,153,640,960 | 0,0,1024,1536 | reviewed |  |
-| `platypus-01.png` | Runebill | Wet forest | 20 | 8 | 3 | 2 | 335,207,640,960 | 0,0,1024,1536 | reviewed |  |
-| `plough-01.png` | Furrow Ravager | Savannah | 75 | 3 | 6 | 10 | 306,233,640,960 | 0,0,1024,1536 | reviewed |  |
-| `pocketwatch-01.png` | Tickwarden | Ruins | 35 | 8 | 3 | 5 | 246,37,711,1067 | 0,0,1024,1536 | reviewed |  |
-| `porcupine-01.png` | Quillflask | Autumn woods | 25 | 8 | 3 | 3 | 359,185,640,960 | 0,0,1024,1536 | reviewed |  |
-| `portcullis-01.png` | Portcullis Colossus | Cathedral | 75 | 3 | 6 | 10 | 263,-21,640,960 | 0,0,1024,1536 | reviewed |  |
+| `panpipe-01.png` | Reedcaller | Flower meadow | 25 | 8 | 3 | 4 | 189,52,640,960 | 0,0,1024,1536 | reviewed |  |
+| `peacock-01.png` | Plumecrown | Flower meadow | 40 | 5 | 5 | 6 | 399,53,640,960 | 0,0,1024,1536 | reviewed |  |
+| `phoenix-01.png` | Solar Phoenix | Ashlands | 60 | 3 | 6 | 8 | 188,12,640,960 | 0,0,1024,1536 | reviewed |  |
+| `pika-01.png` | Hornpip | Mountain | 20 | 8 | 3 | 3 | 207,153,640,960 | 0,0,1024,1536 | reviewed |  |
+| `platypus-01.png` | Runebill | Wet forest | 20 | 8 | 3 | 1 | 335,207,640,960 | 0,0,1024,1536 | reviewed |  |
+| `plough-01.png` | Furrow Ravager | Savannah | 75 | 3 | 6 | 9 | 306,233,640,960 | 0,0,1024,1536 | reviewed |  |
+| `pocketwatch-01.png` | Tickwarden | Ruins | 35 | 8 | 3 | 4 | 246,37,711,1067 | 0,0,1024,1536 | reviewed |  |
+| `porcupine-01.png` | Quillflask | Autumn woods | 25 | 8 | 3 | 4 | 359,185,640,960 | 0,0,1024,1536 | reviewed |  |
+| `portcullis-01.png` | Portcullis Colossus | Cathedral | 75 | 3 | 6 | 8 | 263,-21,640,960 | 0,0,1024,1536 | reviewed |  |
 | `printingpress-01.png` | Typesetter | Ruins | 75 | 3 | 6 | 10 | 229,61,640,960 | 0,0,1024,1536 | reviewed |  |
 | `prism-01.png` | Shardhex | Crystal caverns | 30 | 8 | 3 | 4 | 300,243,640,960 | 0,0,1024,1536 | reviewed |  |
-| `puffin-01.png` | Shieldpuff | Arctic | 20 | 8 | 3 | 2 | 337,221,640,960 | 0,0,1024,1536 | reviewed |  |
-| `quern-01.png` | Grindstone Oracle | Ruins | 55 | 5 | 5 | 8 | 218,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `puffin-01.png` | Shieldpuff | Arctic | 20 | 8 | 3 | 3 | 337,221,640,960 | 0,0,1024,1536 | reviewed |  |
+| `quern-01.png` | Grindstone Oracle | Ruins | 55 | 5 | 5 | 7 | 218,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `quokka-01.png` | Pebblegrin | Savannah | 20 | 8 | 3 | 2 | 119,132,640,960 | 0,0,1024,1536 | reviewed |  |
-| `raccoon-01.png` | Potionpaw | Autumn woods | 20 | 8 | 3 | 2 | 211,124,640,960 | 0,0,1024,1536 | reviewed |  |
+| `raccoon-01.png` | Potionpaw | Autumn woods | 20 | 8 | 3 | 3 | 211,124,640,960 | 0,0,1024,1536 | reviewed |  |
 | `ram-01.png` | Sunhorn Paladin | Mountain | 50 | 5 | 5 | 7 | 275,62,640,960 | 0,0,1024,1536 | reviewed |  |
 | `ram-02.png` | Bellows Ram | Mountain | 40 | 5 | 5 | 5 | 204,42,640,960 | 0,0,1024,1536 | reviewed |  |
 | `reliquary-01.png` | Sealed Reliquary | Cathedral | 55 | 5 | 5 | 8 | 191,-3,640,960 | 0,0,1024,1536 | reviewed |  |
 | `retort-01.png` | Bubblehex Retort | Ruins | 35 | 8 | 3 | 5 | 187,148,640,960 | 0,0,1024,1536 | reviewed |  |
-| `rhinoceros-01.png` | Shadowhorn | Savannah | 70 | 3 | 6 | 9 | 247,203,640,960 | 0,0,1024,1536 | reviewed |  |
-| `roadrunner-01.png` | Whistledash | Desert | 20 | 8 | 3 | 2 | 141,15,640,960 | 0,0,1024,1536 | reviewed |  |
+| `rhinoceros-01.png` | Shadowhorn | Savannah | 70 | 3 | 6 | 8 | 247,203,640,960 | 0,0,1024,1536 | reviewed |  |
+| `roadrunner-01.png` | Whistledash | Desert | 20 | 8 | 3 | 3 | 141,15,640,960 | 0,0,1024,1536 | reviewed |  |
 | `roc-01.png` | Thunder Roc | Storm cliffs | 60 | 3 | 6 | 7 | 278,95,640,960 | 0,0,1024,1536 | reviewed |  |
 | `rooster-01.png` | Banner Cock | Savannah | 20 | 8 | 3 | 2 | 133,52,640,960 | 0,0,1024,1536 | reviewed |  |
 | `sableantelope-01.png` | Pennant Sable | Savannah | 40 | 5 | 5 | 5 | 301,60,640,960 | 0,0,1024,1536 | reviewed |  |
-| `safe-01.png` | Vaulthex | Ruins | 75 | 3 | 6 | 10 | 258,58,640,960 | 0,0,1024,1536 | reviewed |  |
-| `sail-01.png` | Nightsail | Storm cliffs | 40 | 5 | 5 | 5 | 284,167,640,960 | 0,0,1024,1536 | reviewed |  |
-| `salamander-01.png` | Slinkember | Ashlands | 20 | 8 | 3 | 2 | 7,367,640,960 | 0,0,1024,1536 | reviewed |  |
-| `salamander-02.png` | Flaskember | Ashlands | 20 | 8 | 3 | 2 | 306,240,640,960 | 0,0,1024,1536 | reviewed |  |
+| `safe-01.png` | Vaulthex | Ruins | 75 | 3 | 6 | 8 | 258,58,640,960 | 0,0,1024,1536 | reviewed |  |
+| `sail-01.png` | Nightsail | Storm cliffs | 40 | 5 | 5 | 6 | 284,167,640,960 | 0,0,1024,1536 | reviewed |  |
+| `salamander-01.png` | Slinkember | Ashlands | 20 | 8 | 3 | 1 | 7,367,640,960 | 0,0,1024,1536 | reviewed |  |
+| `salamander-02.png` | Flaskember | Ashlands | 20 | 8 | 3 | 3 | 306,240,640,960 | 0,0,1024,1536 | reviewed |  |
 | `sarcophagus-01.png` | Tombwarden | Desert | 75 | 3 | 6 | 10 | 250,9,640,960 | 0,0,1024,1536 | reviewed |  |
 | `scarab-01.png` | Runeshell Scarab | Desert | 30 | 8 | 3 | 4 | 375,286,640,960 | 0,0,1024,1536 | reviewed |  |
 | `scorpion-01.png` | Stingtail | Desert | 45 | 5 | 5 | 6 | 124,428,640,960 | 0,0,1024,1536 | reviewed |  |
@@ -619,57 +619,57 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 | `sealpress-01.png` | Waxseal Press | Cathedral | 55 | 5 | 5 | 8 | 253,-6,640,960 | 0,0,1024,1536 | reviewed |  |
 | `secretarybird-01.png` | Javelin Stalker | Savannah | 40 | 5 | 5 | 5 | 313,7,640,960 | 0,0,1024,1536 | reviewed |  |
 | `serpent-01.png` | Crowned Serpent | Jungle | 65 | 3 | 6 | 8 | 286,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `serval-01.png` | Boltear | Savannah | 20 | 8 | 3 | 2 | 321,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `sewingbox-01.png` | Stitchkit | Ruins | 25 | 8 | 3 | 3 | 138,266,640,960 | 0,0,1024,1536 | reviewed |  |
-| `sextant-01.png` | Admiral Starsight | Coast | 55 | 5 | 5 | 8 | 228,-3,640,960 | 0,0,1024,1536 | reviewed |  |
-| `shield-01.png` | Vanguard Aegis | Cathedral | 55 | 5 | 5 | 8 | 175,52,640,960 | 0,0,1024,1536 | reviewed |  |
+| `serval-01.png` | Boltear | Savannah | 20 | 8 | 3 | 3 | 321,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `sewingbox-01.png` | Stitchkit | Ruins | 25 | 8 | 3 | 4 | 138,266,640,960 | 0,0,1024,1536 | reviewed |  |
+| `sextant-01.png` | Admiral Starsight | Coast | 55 | 5 | 5 | 7 | 228,-3,640,960 | 0,0,1024,1536 | reviewed |  |
+| `shield-01.png` | Vanguard Aegis | Cathedral | 55 | 5 | 5 | 7 | 175,52,640,960 | 0,0,1024,1536 | reviewed |  |
 | `shoebill-01.png` | Pikebill | Swamp | 40 | 5 | 5 | 5 | 216,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `shrew-01.png` | Totemshrew | Pine forest | 20 | 8 | 3 | 2 | 218,116,640,960 | 0,0,1024,1536 | reviewed |  |
-| `siphon-01.png` | Siphonworm | Ruins | 55 | 5 | 5 | 8 | 223,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `sistrum-01.png` | Rattlechant | Desert | 35 | 8 | 3 | 5 | 172,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `sledgehammer-01.png` | Sledge Colossus | Mountain | 75 | 3 | 6 | 10 | 217,33,640,960 | 0,0,1024,1536 | reviewed |  |
-| `sloth-01.png` | Barkhold Sloth | Jungle | 45 | 5 | 5 | 6 | 248,168,640,960 | 0,0,1024,1536 | reviewed |  |
-| `snail-01.png` | Prism Snail | Crystal caverns | 25 | 8 | 3 | 3 | 331,244,640,960 | 0,0,1024,1536 | reviewed |  |
-| `snail-05.png` | Brewshell | Mushroom grotto | 25 | 8 | 3 | 3 | 292,319,640,960 | 0,0,1024,1536 | reviewed |  |
+| `shrew-01.png` | Totemshrew | Pine forest | 20 | 8 | 3 | 3 | 218,116,640,960 | 0,0,1024,1536 | reviewed |  |
+| `siphon-01.png` | Siphonworm | Ruins | 55 | 5 | 5 | 7 | 223,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `sistrum-01.png` | Rattlechant | Desert | 35 | 8 | 3 | 4 | 172,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `sledgehammer-01.png` | Sledge Colossus | Mountain | 75 | 3 | 6 | 9 | 217,33,640,960 | 0,0,1024,1536 | reviewed |  |
+| `sloth-01.png` | Barkhold Sloth | Jungle | 45 | 5 | 5 | 5 | 248,168,640,960 | 0,0,1024,1536 | reviewed |  |
+| `snail-01.png` | Prism Snail | Crystal caverns | 25 | 8 | 3 | 4 | 331,244,640,960 | 0,0,1024,1536 | reviewed |  |
+| `snail-05.png` | Brewshell | Mushroom grotto | 25 | 8 | 3 | 4 | 292,319,640,960 | 0,0,1024,1536 | reviewed |  |
 | `spikeback-01.png` | Spikeback | Desert | 65 | 4 | 6 | 9 | 256,355,768,1152 | 0,0,1024,1536 | reviewed |  |
 | `spindle-01.png` | Spindlewhirl | Ruins | 25 | 8 | 3 | 3 | 246,-31,640,960 | 0,0,1024,1536 | reviewed |  |
-| `stag-01.png` | Shieldhorn Stag | Pine forest | 40 | 5 | 5 | 5 | 333,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `stag-01.png` | Shieldhorn Stag | Pine forest | 40 | 5 | 5 | 6 | 333,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `stoat-01.png` | Needlewhisk | Arctic | 20 | 8 | 3 | 2 | 380,230,640,960 | 0,0,1024,1536 | reviewed |  |
-| `sugarglider-01.png` | Sailglide | Jungle | 20 | 8 | 3 | 2 | 208,148,640,960 | 0,0,1024,1536 | reviewed |  |
-| `sundial-01.png` | Noonward | Ruins | 55 | 5 | 5 | 8 | 356,222,640,960 | 0,0,1024,1536 | reviewed |  |
+| `sugarglider-01.png` | Sailglide | Jungle | 20 | 8 | 3 | 3 | 208,148,640,960 | 0,0,1024,1536 | reviewed |  |
+| `sundial-01.png` | Noonward | Ruins | 55 | 5 | 5 | 7 | 356,222,640,960 | 0,0,1024,1536 | reviewed |  |
 | `sundrum-01.png` | Sunhex Drum | Desert | 55 | 5 | 5 | 8 | 182,-65,640,960 | 0,0,1024,1536 | reviewed |  |
 | `tapestry-01.png` | Woven Host | Cathedral | 55 | 5 | 5 | 8 | 279,-22,640,960 | 0,0,1024,1536 | reviewed |  |
 | `tarsier-01.png` | Maskeye | Jungle | 20 | 8 | 3 | 2 | 166,120,640,960 | 0,0,1024,1536 | reviewed |  |
 | `teapot-01.png` | Volcano Teapot | Ashlands | 30 | 8 | 3 | 4 | 198,123,640,960 | 0,0,1024,1536 | reviewed |  |
-| `termite-01.png` | Drillmite | Savannah | 25 | 8 | 3 | 3 | 333,212,640,960 | 0,0,1024,1536 | reviewed |  |
-| `termite-02.png` | Clockmite | Savannah | 25 | 8 | 3 | 3 | 288,107,640,960 | 0,0,1024,1536 | reviewed |  |
-| `thorntreant-01.png` | Bramblestalker | Wet forest | 70 | 3 | 6 | 9 | 237,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `termite-01.png` | Drillmite | Savannah | 25 | 8 | 3 | 4 | 333,212,640,960 | 0,0,1024,1536 | reviewed |  |
+| `termite-02.png` | Clockmite | Savannah | 25 | 8 | 3 | 4 | 288,107,640,960 | 0,0,1024,1536 | reviewed |  |
+| `thorntreant-01.png` | Bramblestalker | Wet forest | 70 | 3 | 6 | 8 | 237,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `toad-01.png` | Boulder Toad | Mountain | 70 | 2 | 7 | 9 | 256,304,640,960 | 0,0,1024,1536 | reviewed |  |
 | `toad-02.png` | Druid Toad | Swamp | 40 | 5 | 5 | 5 | 352,284,640,960 | 0,0,1024,1536 | reviewed |  |
-| `toad-03.png` | Belltoad | Swamp | 40 | 5 | 5 | 5 | 243,201,640,960 | 0,0,1024,1536 | reviewed |  |
+| `toad-03.png` | Belltoad | Swamp | 40 | 5 | 5 | 6 | 243,201,640,960 | 0,0,1024,1536 | reviewed |  |
 | `tortoise-01.png` | Mountainshell | Mountain | 75 | 3 | 6 | 10 | 337,85,640,960 | 0,0,1024,1536 | reviewed |  |
 | `tortoise-02.png` | Obsidian Tortoise | Ashlands | 75 | 3 | 6 | 10 | 353,293,640,960 | 0,0,1024,1536 | reviewed |  |
 | `treant-01.png` | Leafwarden | Wet forest | 65 | 3 | 6 | 8 | 230,35,640,960 | 0,0,1024,1536 | reviewed |  |
-| `treant-02.png` | Elderbough | Wet forest | 70 | 3 | 6 | 9 | 190,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `trowel-01.png` | Trowel Crusader | Ruins | 55 | 5 | 5 | 8 | 228,56,640,960 | 0,0,1024,1536 | reviewed |  |
-| `tuningfork-01.png` | Resonant Champion | Cathedral | 55 | 5 | 5 | 8 | 256,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `treant-02.png` | Elderbough | Wet forest | 70 | 3 | 6 | 8 | 190,0,640,960 | 0,0,1024,1536 | reviewed |  |
+| `trowel-01.png` | Trowel Crusader | Ruins | 55 | 5 | 5 | 7 | 228,56,640,960 | 0,0,1024,1536 | reviewed |  |
+| `tuningfork-01.png` | Resonant Champion | Cathedral | 55 | 5 | 5 | 7 | 256,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `turbine-01.png` | Skyturbine | Storm cliffs | 55 | 5 | 5 | 8 | 161,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `turtle-02.png` | Shellmonk | Coast | 50 | 5 | 5 | 7 | 192,75,640,960 | 0,0,1024,1536 | reviewed |  |
 | `turtle-03.png` | Frostshell Bard | Arctic | 50 | 5 | 5 | 7 | 384,244,640,960 | 0,0,1024,1536 | reviewed |  |
-| `umbrella-01.png` | Fanbrella | Storm cliffs | 25 | 8 | 3 | 3 | 217,5,640,960 | 0,0,1024,1536 | reviewed |  |
+| `umbrella-01.png` | Fanbrella | Storm cliffs | 25 | 8 | 3 | 4 | 217,5,640,960 | 0,0,1024,1536 | reviewed |  |
 | `velvetworm-01.png` | Runevelvet | Wet forest | 20 | 8 | 3 | 2 | 384,255,640,960 | 0,0,1024,1536 | reviewed |  |
-| `vinegaroon-01.png` | Vinegar Flask | Desert | 25 | 8 | 3 | 3 | 205,289,640,960 | 0,0,1024,1536 | reviewed |  |
-| `vise-01.png` | Vise Enforcer | Ruins | 55 | 5 | 5 | 8 | 250,185,640,960 | 0,0,1024,1536 | reviewed |  |
-| `vulture-01.png` | Cinderbeak | Desert | 40 | 5 | 5 | 5 | 173,46,640,960 | 0,0,1024,1536 | reviewed |  |
+| `vinegaroon-01.png` | Vinegar Flask | Desert | 25 | 8 | 3 | 4 | 205,289,640,960 | 0,0,1024,1536 | reviewed |  |
+| `vise-01.png` | Vise Enforcer | Ruins | 55 | 5 | 5 | 7 | 250,185,640,960 | 0,0,1024,1536 | reviewed |  |
+| `vulture-01.png` | Cinderbeak | Desert | 40 | 5 | 5 | 6 | 173,46,640,960 | 0,0,1024,1536 | reviewed |  |
 | `walrus-01.png` | Tuskhorn Walrus | Arctic | 60 | 3 | 6 | 7 | 176,136,640,960 | 0,0,1024,1536 | reviewed |  |
-| `warthog-01.png` | Cannon Warthog | Savannah | 45 | 5 | 5 | 6 | 314,46,640,960 | 0,0,1024,1536 | reviewed |  |
-| `wasp-01.png` | Stingflask | Flower meadow | 20 | 8 | 3 | 2 | 310,143,640,960 | 0,0,1024,1536 | reviewed |  |
+| `warthog-01.png` | Cannon Warthog | Savannah | 45 | 5 | 5 | 5 | 314,46,640,960 | 0,0,1024,1536 | reviewed |  |
+| `wasp-01.png` | Stingflask | Flower meadow | 20 | 8 | 3 | 3 | 310,143,640,960 | 0,0,1024,1536 | reviewed |  |
 | `weasel-01.png` | Daggerwhisk | Autumn woods | 20 | 8 | 3 | 2 | 351,162,640,960 | 0,0,1024,1536 | reviewed |  |
 | `weathervane-01.png` | Gustarrow | Storm cliffs | 55 | 5 | 5 | 8 | 288,37,640,960 | 0,0,1024,1536 | reviewed |  |
-| `weaverbird-01.png` | Bannerweave | Savannah | 20 | 8 | 3 | 2 | 155,76,640,960 | 0,0,1024,1536 | reviewed |  |
-| `werewolf-01.png` | Thornfang | Pine forest | 40 | 7 | 5 | 7 | 344,102,640,960 | 0,0,1024,1536 | reviewed |  |
-| `wisp-01.png` | Shadowwisp | Ruins | 20 | 8 | 3 | 2 | 289,78,640,960 | 0,0,1024,1536 | reviewed |  |
-| `wolf-01.png` | Ranger Wolf | Pine forest | 50 | 5 | 5 | 7 | 331,152,640,960 | 0,0,1024,1536 | reviewed |  |
-| `wolverine-01.png` | Macefang Wolverine | Arctic | 40 | 5 | 5 | 5 | 277,180,640,960 | 0,0,1024,1536 | reviewed |  |
+| `weaverbird-01.png` | Bannerweave | Savannah | 20 | 8 | 3 | 3 | 155,76,640,960 | 0,0,1024,1536 | reviewed |  |
+| `werewolf-01.png` | Thornfang | Pine forest | 40 | 7 | 5 | 6 | 344,102,640,960 | 0,0,1024,1536 | reviewed |  |
+| `wisp-01.png` | Shadowwisp | Ruins | 20 | 8 | 3 | 3 | 289,78,640,960 | 0,0,1024,1536 | reviewed |  |
+| `wolf-01.png` | Ranger Wolf | Pine forest | 50 | 5 | 5 | 6 | 331,152,640,960 | 0,0,1024,1536 | reviewed |  |
+| `wolverine-01.png` | Macefang Wolverine | Arctic | 40 | 5 | 5 | 4 | 277,180,640,960 | 0,0,1024,1536 | reviewed |  |
 | `wyvern-01.png` | Obsidian Wyvern | Ashlands | 65 | 3 | 6 | 8 | 357,150,640,960 | 0,0,1024,1536 | reviewed |  |
-| `yak-01.png` | Gongyak | Mountain | 65 | 3 | 6 | 8 | 244,79,800,1200 | 0,0,1024,1536 | reviewed |  |
+| `yak-01.png` | Gongyak | Mountain | 65 | 3 | 6 | 7 | 244,79,800,1200 | 0,0,1024,1536 | reviewed |  |
