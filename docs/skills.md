@@ -176,12 +176,11 @@ Branches: Tactician, Commander, Bard.
 | Bard | Solo Performer | K |  | The Leader's Bard passives are twice as strong, but they reach only the Leader's own row. |
 | Bard | Grand Chorus | K |  | The Leader's Bard passives reach every ally, but the Leader can use no active skills except its type-specific attack. |
 
-## Rogue (13)
+## Rogue (14)
 
 Branches: Thief, Assassin, Saboteur.
 
 - Thief is also about stealth.
-- Deathmark Bloom modifies Mark for Death, which is not an accepted skill yet.
 
 | Branch | Skill | Kind | D / M | Effect |
 |---|---|---|---|---|
@@ -193,7 +192,8 @@ Branches: Thief, Assassin, Saboteur.
 | Assassin | Backstab | A | 5 / 2 | Only from stealth: the target is Silenced and Bleeds, and the Rogue stays stealthed. |
 | Assassin | Contract | K |  | The Rogue deals double to Marked enemies and half to everyone else. |
 | Assassin | Poison Vial | A | 3 / 0 | Throw a vial: poison ground on one enemy spot for 20 time units. |
-| Assassin | Deathmark Bloom | Mod of Mark for Death |  | When the marked enemy is KO, the mark jumps to the nearest enemy. |
+| Assassin | Mark for Death | A | 2 / 0 | Mark an enemy for 20 time units. |
+| Assassin | Deathmark Bloom | P |  | When a Marked enemy is KO, its Mark jumps to the nearest enemy. |
 | Saboteur | Flash Powder | A | 3 / 0 | Every enemy in melee reach is Blind for 20 time units. |
 | Saboteur | Cut the Strings | A | 5 / 2 | Remove one auto event the enemy has on the timeline. |
 | Saboteur | Jam | A | 3 / 0 | An enemy's next skill has +3 Delay. |
