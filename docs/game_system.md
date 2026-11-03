@@ -875,12 +875,24 @@ Each status has its own application chance, duration, triggering conditions, and
 | **Silenced** | The unit cannot use `magical` skills. | 20 time units |
 | **Chilled** (`frost`) | The unit's Speed is lowered by 2 (section 6.1). | 20 time units |
 | **Frozen** (`frost`) | The unit's next turn is skipped, at the normal skipped-turn cost (section 6.4). It ends early when fire is set on the unit's spot (2026-10-19). | The unit's next turn |
+| **Stunned** | The unit takes no actions; the timeline keeps running. Any hit ends it early. A new Stun on a Stunned unit keeps whichever time is longer (an exception to the reapplication rule above). Added 2026-11-03. | As stated by the skill |
+| **Confused** | Each skill the unit uses, helpful ones included, has a 50% chance to target a random unit instead: any unit the skill could legally reach, on either side. Added 2026-11-03. | As stated by the skill |
+| **Immobilized** | The unit cannot Move and cannot be moved by any skill (replaces the Rooted and Held candidates). Added 2026-11-03. | As stated by the skill |
+| **Marked** | Enemy only. Any skill that refers to a Marked enemy works on every Marked enemy, whoever placed the Mark. Each marking skill states its duration and any limit, such as one Mark at a time. Decided 2026-11-01. | As stated by the skill |
 
 Silenced is adopted although no skill applies it yet. Any skill may apply any named status. **Burning is no longer a status (Andreas, 2026-10-18):** only the ground burns, never a unit; a unit takes damage from standing on burning ground (section 12.2).
 
-The status design pool (Rooted, Disarmed, Stunned, Weakened, Marked, Fear, Bound and others) remains below as candidates. None is added until a skill needs it.
+The status design pool (Disarmed, Weakened, Fear and others) remains below as candidates. None is added until a skill needs it.
 
-Additional welcomed design candidates (not decided) are Rooted/Immobilized, Disarmed, Stunned, Slowed/Hasted, Weakened, Enfeebled, Marked, Fear, Burning, Frozen, and Bound. Delayed/Accelerated can be one-off timeline changes rather than persistent statuses. These are a design pool, not finalized effects. A unit with no viable action because of statuses simply loses that turn.
+Additional welcomed design candidates (not decided) are Disarmed, Slowed/Hasted, Weakened, Enfeebled, Fear, and Bound. Stunned, Confused, Immobilized (was Rooted/Held) and Marked were adopted on 2026-11-03 (status quiz); Burning was dropped and Frozen adopted earlier. Delayed/Accelerated can be one-off timeline changes rather than persistent statuses. These are a design pool, not finalized effects. A unit with no viable action because of statuses simply loses that turn.
+
+### 10.6 Airborne (adopted 2026-11-03, status quiz)
+
+Some skills make a unit **airborne** for a stated time (for example the Flying profession's Take Off). Airborne is a state on the unit, removed by KO and by skills that make it land.
+
+- **Reach.** Melee attacks cannot reach an airborne unit. Ranged and Magic attacks, area effects and other airborne units can.
+- **Ground effects.** An airborne unit ignores every ground effect while it is airborne (section 12.2), including effects already on its spot.
+- **Own skills.** An airborne unit uses its skills as normal; a skill may still state its own limits.
 
 ## 11. Summoning
 
