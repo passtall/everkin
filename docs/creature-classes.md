@@ -74,7 +74,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `catfolk-spellblade-moon` | — | Moonclaw Spellblade | Bladed | Warrior, Rogue | `catfolk-01.png` | — |
 | `centipede-assassin-sickle` | — | Sicklecoil | Bladed | Rogue, Warrior | `centipede-01.png` | — |
 | `chalice-of-storms` | — | Stormgoblet | Magic | Elementalist, Flying | `chalice-01.png` | — |
-| `chameleon-trickster-tongue` | — | Shiftscale | Whip | Rogue | `chameleon-01.png` | — |
+| `chameleon-trickster-tongue` | — | Shiftscale | Whip | Rogue, Hunter | `chameleon-01.png` | — |
 | `chandelier-summoner-candle` | — | Candlecrown | Magic | Summoner, Flying | `chandelier-01.png` | — |
 | `chest-bodyguard-lock` | — | Lockjaw Chest | Brawl | Guardian, Tinker | `chest-01.png` | — |
 | `chinchilla-summoner-ocarina` | — | Ocarina Puff | Magic | Leader, Summoner | `chinchilla-01.png` | — |
@@ -84,7 +84,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `cobra` | — | Hoodspitter | Breath | Rogue | `cobra-01.png` | `cobra.png` |
 | `compass-hunter-needle` | — | Northneedle | Bladed | Hunter, Tinker | `compass-02.png` | — |
 | `conchphone-bard-horn` | — | Conchhorn | Breath | Leader | `conchphone-01.png` | — |
-| `corkscrew-stalker` | — | Twistcork | Bladed | Rogue | `corkscrew-01.png` | — |
+| `corkscrew-stalker` | — | Twistcork | Bladed | Rogue, Tinker | `corkscrew-01.png` | — |
 | `crab-alchemist` | — | Crab Alchemist | Ranged | Tinker | `crab-01.png` | `crab-alchemist.png` |
 | `crab-smith` | — | Crab Smith | Blunt | Tinker, Warrior | `crab-02.png` | `crab-smith.png` |
 | `crab-guard-decoy` | — | Decoy Crab | Brawl | Guardian | `crab-03.png` | — |
@@ -169,7 +169,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `human-knight-2` | — | Johanna Weber | Bladed | Warrior, Guardian | `human-27.png` | `human-knight-2.png` |
 | `human-knight-banner` | — | Albrecht Lang | Blunt | Leader, Guardian | `human-28.png` | `human-knight-banner.png` |
 | `human-knight-hammer` | — | Johanka Weber | Blunt | Guardian, Warrior | `human-29.png` | `human-knight-hammer.png` |
-| `human-knight-shield` | — | Edwin Marsh | Blunt | Guardian | `human-30.png` | `human-knight-shield.png` |
+| `human-knight-shield` | — | Edwin Marsh | Blunt | Guardian, Warrior | `human-30.png` | `human-knight-shield.png` |
 | `human-knight` | — | William Hart | Bladed | Warrior, Leader | `human-31.png` | `human-knight.png` |
 | `human-mage-crystal` | — | Kai Lindqvist | Magic | Elementalist, Sorcerer | `human-32.png` | `human-mage-crystal.png` |
 | `human-mage-fire` | — | Carmen Costa | Magic | Elementalist, Rogue | `human-33.png` | `human-mage-fire.png` |
@@ -237,7 +237,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `mongoose-assassin-sickle` | — | Sicklewhisk | Bladed | Rogue, Hunter | `mongoose-01.png` | — |
 | `mongoose-hunter-hex` | — | Hexdart Mongoose | Ranged | Hunter | `mongoose-02.png` | — |
 | `monkey-trickster-sling` | — | Slingtail | Ranged | Rogue, Hunter | `monkey-01.png` | — |
-| `moray-trickster-hook` | — | Hookgrin Moray | Whip | Rogue | `moray-01.png` | — |
+| `moray-trickster-hook` | — | Hookgrin Moray | Whip | Rogue, Hunter | `moray-01.png` | — |
 | `mortar-alchemist-bastion` | — | Bastion Mortar | Blunt | Warrior, Guardian | `mortar-01.png` | — |
 | `moth-cleric-lantern` | — | Lanternmoth | Magic | Healer, Flying | `moth-02.png` | — |
 | `mushroom-druid` | — | Sporedruid | Magic | Primalist, Healer | `mushroom-01.png` | `mushroom-druid.png` |
@@ -283,7 +283,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `sableantelope-captain-pennant` | — | Pennant Sable | Polearm | Leader, Warrior | `sableantelope-01.png` | — |
 | `safe-hexer-vault` | — | Vaulthex | Brawl | Guardian | `safe-01.png` | — |
 | `sail-hexer-night` | — | Nightsail | Aura | Flying, Rogue | `sail-01.png` | — |
-| `salamander-rogue` | — | Slinkember | Brawl | Rogue | `salamander-01.png` | `salamander-rogue.png` |
+| `salamander-rogue` | — | Slinkember | Brawl | Rogue, Hunter | `salamander-01.png` | `salamander-rogue.png` |
 | `salamander-summoner-flask` | — | Flaskember | Ranged | Tinker, Summoner | `salamander-02.png` | — |
 | `sarcophagus-warden` | — | Tombwarden | Aura | Summoner, Guardian | `sarcophagus-01.png` | — |
 | `scarab-engineer-rune` | — | Runeshell Scarab | Ranged | Tinker, Hunter | `scarab-01.png` | — |
@@ -315,7 +315,7 @@ Unit names follow the schema below. Creatures with a creature ID in creatures.md
 | `tapestry-summoner` | — | Woven Host | Aura | Summoner, Guardian | `tapestry-01.png` | — |
 | `tarsier-hexer-mask` | — | Maskeye | Brawl | Rogue, Sorcerer | `tarsier-01.png` | — |
 | `teapot-alchemist-volcano` | — | Volcano Teapot | Breath | Tinker, Elementalist | `teapot-01.png` | — |
-| `termite-engineer-drill` | — | Drillmite | Ranged | Tinker | `termite-01.png` | — |
+| `termite-engineer-drill` | — | Drillmite | Ranged | Tinker, Guardian | `termite-01.png` | — |
 | `termite-summoner-clockwork` | — | Clockmite | Ranged | Tinker, Summoner | `termite-02.png` | — |
 | `thorntreant-primalist-bramble` | — | Bramblestalker | Aura | Primalist, Rogue | `thorntreant-01.png` | — |
 | `toad-boulder` | `boulder_toad` | Boulder Toad | Blunt | Guardian, Warrior | `toad-01.png` | `5_f.png` |
@@ -400,7 +400,7 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 | `catfolk-01.png` | Moonclaw Spellblade | Desert | 40 | 5 | 5 | 5 | 281,44,640,960 | 0,0,1024,1536 | reviewed |  |
 | `centipede-01.png` | Sicklecoil | Jungle | 50 | 5 | 5 | 6 | 170,44,640,960 | 0,0,1024,1536 | reviewed |  |
 | `chalice-01.png` | Stormgoblet | Storm cliffs | 30 | 8 | 3 | 4 | 202,0,640,960 | 0,0,1024,1536 | reviewed |  |
-| `chameleon-01.png` | Shiftscale | Jungle | 20 | 8 | 3 | 1 | 277,224,640,960 | 0,0,1024,1536 | reviewed |  |
+| `chameleon-01.png` | Shiftscale | Jungle | 20 | 8 | 3 | 2 | 277,224,640,960 | 0,0,1024,1536 | reviewed |  |
 | `chandelier-01.png` | Candlecrown | Cathedral | 45 | 5 | 5 | 7 | 230,364,640,960 | 0,0,1024,1536 | reviewed |  |
 | `chest-01.png` | Lockjaw Chest | Ruins | 55 | 5 | 5 | 7 | 205,292,739,1109 | 0,0,1024,1536 | reviewed |  |
 | `chinchilla-01.png` | Ocarina Puff | Mountain | 20 | 8 | 3 | 3 | 105,245,640,960 | 0,0,1024,1536 | reviewed |  |
@@ -433,13 +433,13 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 | `drum-01.png` | Wardrum | Savannah | 50 | 5 | 5 | 7 | 158,87,640,960 | 0,0,1024,1536 | reviewed |  |
 | `dugong-02.png` | Crystalfin Dugong | Lagoon | 70 | 3 | 6 | 8 | 307,136,640,960 | 0,0,1024,1536 | reviewed |  |
 | `elephant-01.png` | Idolbearer | Savannah | 70 | 3 | 6 | 8 | 370,101,640,960 | 0,0,1024,1536 | reviewed |  |
-| `ferret-01.png` | Maskwhisk | Ruins | 20 | 8 | 3 | 2 | 37,67,640,960 | 0,0,1024,1536 | reviewed |  |
+| `ferret-01.png` | Maskwhisk | Ruins | 20 | 8 | 3 | 1 | 37,67,640,960 | 0,0,1024,1536 | reviewed |  |
 | `fiddlercrab-01.png` | Coinclaw | Coast | 30 | 8 | 3 | 4 | 296,236,640,960 | 0,0,1024,1536 | reviewed |  |
 | `firefly-01.png` | Lanternwing | Flower meadow | 20 | 8 | 3 | 3 | 84,128,640,960 | 0,0,1024,1536 | reviewed |  |
 | `firefly-02.png` | Firefly | Flower meadow | 20 | 8 | 3 | 3 | 339,425,640,960 | 0,0,1024,1536 | reviewed |  |
 | `flyingfish-01.png` | Dartfin | Lagoon | 20 | 8 | 3 | 3 | 388,153,640,960 | 0,0,1024,1536 | reviewed |  |
 | `fossa-01.png` | Harpoon Fossa | Jungle | 40 | 5 | 5 | 5 | 348,194,640,960 | 0,0,1024,1536 | reviewed |  |
-| `fox-01.png` | Fox Bard | Autumn woods | 20 | 8 | 3 | 2 | 55,415,640,960 | 0,0,1024,1536 | reviewed |  |
+| `fox-01.png` | Fox Bard | Autumn woods | 20 | 8 | 3 | 1 | 55,415,640,960 | 0,0,1024,1536 | reviewed |  |
 | `frigatebird-01.png` | Throatdrum | Coast | 40 | 5 | 5 | 6 | 356,75,640,960 | 0,0,1024,1536 | reviewed |  |
 | `frog-01.png` | Frog Bard Dagger | Swamp | 20 | 8 | 3 | 2 | 268,45,640,960 | 0,0,1024,1536 | reviewed |  |
 | `furnace-01.png` | Furnace Titan | Ashlands | 75 | 3 | 6 | 10 | 280,11,640,960 | 0,0,1024,1536 | reviewed |  |
@@ -495,7 +495,7 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 | `human-27.png` | Johanna Weber | Cathedral | 50 | 5 | 5 | 7 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-28.png` | Albrecht Lang | Cathedral | 50 | 5 | 5 | 7 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-29.png` | Johanka Weber | Mountain | 55 | 5 | 5 | 7 | 192,99,640,960 | 0,0,1024,1536 | reviewed |  |
-| `human-30.png` | Edwin Marsh | Cathedral | 55 | 5 | 5 | 6 | 192,165,640,960 | 0,0,1024,1536 | reviewed |  |
+| `human-30.png` | Edwin Marsh | Cathedral | 55 | 5 | 5 | 7 | 192,165,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-31.png` | William Hart | Cathedral | 55 | 5 | 5 | 7 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-32.png` | Kai Lindqvist | Crystal caverns | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
 | `human-33.png` | Carmen Costa | Ashlands | 40 | 5 | 5 | 6 | 192,16,640,960 | 0,0,1024,1536 | reviewed |  |
@@ -532,7 +532,7 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 | `kettle-01.png` | Siegekettle | Ruins | 55 | 5 | 5 | 8 | 215,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `kiln-01.png` | Kiln Behemoth | Ashlands | 75 | 3 | 6 | 9 | 212,102,640,960 | 0,0,1024,1536 | reviewed |  |
 | `kingfisher-01.png` | Captain Daggerbill | Wet forest | 20 | 8 | 3 | 2 | 206,54,640,960 | 0,0,1024,1536 | reviewed |  |
-| `kinkajou-01.png` | Idolpaw | Jungle | 20 | 8 | 3 | 2 | 257,160,640,960 | 0,0,1024,1536 | reviewed |  |
+| `kinkajou-01.png` | Idolpaw | Jungle | 20 | 8 | 3 | 1 | 257,160,640,960 | 0,0,1024,1536 | reviewed |  |
 | `kite-01.png` | Tailwind Kite | Storm cliffs | 20 | 8 | 3 | 2 | 262,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `komodo-01.png` | Cleaver Komodo | Jungle | 45 | 5 | 5 | 4 | 269,54,640,960 | 0,0,1024,1536 | reviewed |  |
 | `kraken-01.png` | Basalt Kraken | Lagoon | 70 | 3 | 6 | 9 | 164,73,640,960 | 0,0,1024,1536 | reviewed |  |
@@ -559,15 +559,15 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 | `millstone-01.png` | Millstone Juggernaut | Savannah | 75 | 3 | 6 | 9 | 250,87,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mirror-01.png` | Mirror Revenant | Cathedral | 45 | 5 | 5 | 7 | 178,0,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mole-01.png` | Gearclaw Mole | Mushroom grotto | 20 | 8 | 3 | 1 | 330,126,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mole-02.png` | Hexhammer Mole | Mushroom grotto | 20 | 8 | 3 | 2 | 258,222,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mole-02.png` | Hexhammer Mole | Mushroom grotto | 20 | 8 | 3 | 1 | 258,222,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mongoose-01.png` | Sicklewhisk | Savannah | 20 | 8 | 3 | 2 | 343,113,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mongoose-02.png` | Hexdart Mongoose | Savannah | 20 | 8 | 3 | 1 | 250,109,640,960 | 0,0,1024,1536 | reviewed |  |
 | `monkey-01.png` | Slingtail | Jungle | 20 | 8 | 3 | 3 | 150,113,640,960 | 0,0,1024,1536 | reviewed |  |
-| `moray-01.png` | Hookgrin Moray | Lagoon | 40 | 5 | 5 | 4 | 375,51,640,960 | 0,0,1024,1536 | reviewed |  |
+| `moray-01.png` | Hookgrin Moray | Lagoon | 40 | 5 | 5 | 5 | 375,51,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mortar-01.png` | Bastion Mortar | Ruins | 75 | 3 | 6 | 9 | 176,43,640,960 | 0,0,1024,1536 | reviewed |  |
 | `moth-02.png` | Lanternmoth | Mushroom grotto | 20 | 8 | 3 | 4 | 181,130,640,960 | 0,0,1024,1536 | reviewed |  |
 | `mushroom-01.png` | Sporedruid | Mushroom grotto | 20 | 8 | 3 | 3 | 192,223,640,960 | 0,0,1024,1536 | reviewed |  |
-| `mushroom-03.png` | Capshield | Mushroom grotto | 45 | 5 | 5 | 7 | 182,189,640,960 | 0,0,1024,1536 | reviewed |  |
+| `mushroom-03.png` | Capshield | Mushroom grotto | 45 | 5 | 5 | 6 | 182,189,640,960 | 0,0,1024,1536 | reviewed |  |
 | `musicbox-01.png` | Windup Drummer | Ruins | 35 | 8 | 3 | 4 | 188,88,640,960 | 0,0,1024,1536 | reviewed |  |
 | `muskox-01.png` | Bucklerhorn | Arctic | 70 | 3 | 6 | 8 | 292,187,640,960 | 0,0,1024,1536 | reviewed |  |
 | `newt-01.png` | Coilnewt | Swamp | 20 | 8 | 3 | 1 | 392,265,640,960 | 0,0,1024,1536 | reviewed |  |
@@ -601,7 +601,7 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 | `ram-01.png` | Sunhorn Paladin | Mountain | 50 | 5 | 5 | 7 | 275,62,640,960 | 0,0,1024,1536 | reviewed |  |
 | `ram-02.png` | Bellows Ram | Mountain | 40 | 5 | 5 | 5 | 204,42,640,960 | 0,0,1024,1536 | reviewed |  |
 | `reliquary-01.png` | Sealed Reliquary | Cathedral | 55 | 5 | 5 | 8 | 191,-3,640,960 | 0,0,1024,1536 | reviewed |  |
-| `retort-01.png` | Bubblehex Retort | Ruins | 35 | 8 | 3 | 5 | 187,148,640,960 | 0,0,1024,1536 | reviewed |  |
+| `retort-01.png` | Bubblehex Retort | Ruins | 35 | 8 | 3 | 4 | 187,148,640,960 | 0,0,1024,1536 | reviewed |  |
 | `rhinoceros-01.png` | Shadowhorn | Savannah | 70 | 3 | 6 | 8 | 247,203,640,960 | 0,0,1024,1536 | reviewed |  |
 | `roadrunner-01.png` | Whistledash | Desert | 20 | 8 | 3 | 3 | 141,15,640,960 | 0,0,1024,1536 | reviewed |  |
 | `roc-01.png` | Thunder Roc | Storm cliffs | 60 | 3 | 6 | 7 | 278,95,640,960 | 0,0,1024,1536 | reviewed |  |
@@ -639,7 +639,7 @@ Home biome, stats and card framing per creature. Frames are `x,y,w,h` in the art
 | `sundial-01.png` | Noonward | Ruins | 55 | 5 | 5 | 7 | 356,222,640,960 | 0,0,1024,1536 | reviewed |  |
 | `sundrum-01.png` | Sunhex Drum | Desert | 55 | 5 | 5 | 8 | 182,-65,640,960 | 0,0,1024,1536 | reviewed |  |
 | `tapestry-01.png` | Woven Host | Cathedral | 55 | 5 | 5 | 8 | 279,-22,640,960 | 0,0,1024,1536 | reviewed |  |
-| `tarsier-01.png` | Maskeye | Jungle | 20 | 8 | 3 | 2 | 166,120,640,960 | 0,0,1024,1536 | reviewed |  |
+| `tarsier-01.png` | Maskeye | Jungle | 20 | 8 | 3 | 1 | 166,120,640,960 | 0,0,1024,1536 | reviewed |  |
 | `teapot-01.png` | Volcano Teapot | Ashlands | 30 | 8 | 3 | 4 | 198,123,640,960 | 0,0,1024,1536 | reviewed |  |
 | `termite-01.png` | Drillmite | Savannah | 25 | 8 | 3 | 4 | 333,212,640,960 | 0,0,1024,1536 | reviewed |  |
 | `termite-02.png` | Clockmite | Savannah | 25 | 8 | 3 | 4 | 288,107,640,960 | 0,0,1024,1536 | reviewed |  |
