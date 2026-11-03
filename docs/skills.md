@@ -8,6 +8,22 @@
 
 Numbers are first drafts and are tuned in AI-versus-AI testing (§2.5).
 
+## Attack Type attacks (adopted 2026-11-03)
+
+Every creature starts with the one shared attack of its Attack Type ([class_system.md](class_system.md) §2, game_system §4.4). It costs no skill point.
+
+| Attack Type | Attack | D / M | Effect |
+|---|---|---|---|
+| Brawl | Brawl Strike | 3 / 0 | `melee` `physical`. Hit for 4–5. |
+| Bladed | Blade Strike | 3 / 0 | `melee` `physical`. Hit for 4–5; 30% chance to make the target Bleed. |
+| Polearm | Polearm Thrust | 3 / 0 | `melee` `physical`. Hit for 4–5, with one row more reach than other melee. |
+| Ranged | Shot | 3 / 0 | `projectile` `physical`. Hit any visible enemy for 3–4. |
+| Magic | Bolt | 4 / 0 | `direct` `magical`. Hit any visible enemy for 3–4; cannot be intercepted. |
+| Blunt | Heavy Blow | 4 / 0 | `melee` `physical`. Hit for 5–6; 30% chance to Stun the target for 5 time units. |
+| Breath | Breath | 4 / 0 | Hit the target for 3–4 and every unit next to it for 1–2. |
+| Whip | Lash | 3 / 0 | `melee` `physical`. Hit for 3–4, with one row more reach than other melee. |
+| Aura | Pulse | 4 / 0 | Every enemy in melee reach takes 2–3. |
+
 ## Hunter (20)
 
 Branches: Stalker, Tracker, Trapper, Predator.
