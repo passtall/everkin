@@ -70,7 +70,7 @@ Units unlock through **guaranteed encounter rewards** for now. Each won encounte
 
 **Campaign rules (adopted 2026-10-06).** Losing a campaign battle has no penalty: the player can retry the encounter at once or change the team first. Campaign locations hold battles only for now; story events and other encounters come with the full campaign design. Encounters never restrict the player's team beyond the team budget (section 5.1, adopted 2026-10-15). The campaign cannot be restarted; finished encounters can be replayed instead.
 
-**Levels.** Every unit is level 20 in every mode until skill trees exist. Levelling is decided together with the trees (section 4.1).
+**Levels.** There are no creature levels for now (Andreas, 2026-11-03): every unit has its full skill points from the start (section 4.1).
 
 After completing the story, at least one **random-battle mode** provides continued play. The player picks a difficulty and the enemy team is drawn at random. Random battles unlock no creatures; their wins pay coins while the game is connected (see below).
 
@@ -201,15 +201,19 @@ The exact creature roster lives in [creatures.md](creatures.md): size tiers (cri
 
 ### 4.1 Access and point budget
 
-Each creature can access **one to three classes**, each represented by its own skill tree. Humans are generally versatile and may have three; a wolf may have only one.
+Each creature has **one or two Professions** ([class_system.md](class_system.md)), each represented by its own skill tree.
 
 Every unit has a **single skill-point budget shared across its trees**. Access to additional trees provides more choices, not extra points.
 
-**Current working progression model:** units range from **level 1 to level 20**, with **20 skill points total at level 20**. A class tree contains **10–15 entries split into 3–4 branches**, mixing active skills, passives, and skill modifiers. Individual costs/ranks and prerequisites are deferred with tree design.
+**Adopted tree model (skill tree quiz, 2026-11-03).**
 
-The proposed award rule is one point per level gained, with two for the last level. To total 20 points, this corresponds to zero points at level 1, one for each level-up to levels 2–19, and two on reaching level 20. This arithmetic interpretation needs confirmation before normal progression is finalized. Experience requirements, stat growth, and the broader progression system remain deferred for later design.
+- **Budget.** Every unit has **10 skill points**, given right away. There are no levels for now; levelling may come back later.
+- **Cost.** Every node costs **1 point**: actives, passives, modifiers and keystones alike.
+- **Prerequisites.** A modifier needs its parent skill. A keystone needs **3 other nodes from the same branch**. Nothing else is locked: branches stay organizational (class_system §4).
+- **Keystones.** No limit per unit beyond the prerequisite and the budget.
+- **Tree size.** Each profession's tree is its skill list in [skills.md](skills.md), 13 to 20 nodes; trees are not trimmed to the old 10–15 plan.
 
-**Continuous testing:** every test unit starts at **level 20**, with the planned full budget of **20 skill points**. **Design classes and skills first; trees and point spending come later.** For now, each unit has **all skills available to its creature and assigned classes**, without tree purchases or a separate loadout selection. This does not grant skills from unrelated classes. Do not block initial testing on unfinished costs, ranks, prerequisites, or tree topology. Mutually exclusive or conflicting effects must be resolved in their skill definitions rather than assumed to stack.
+**Continuous testing:** test units may still get every skill of their professions, to test skills before builds.
 
 **Respec is free outside battle.** Players may reset and reassign skill points without a resource cost. Once trees exist, reallocation must obey their defined prerequisites and budget; exact dependency handling belongs to the later tree design.
 
@@ -243,7 +247,7 @@ Numerical values still define and balance real effects; the restriction is again
 
 ### 4.4 Skill availability in combat
 
-Each unit begins with **exactly one type-specific attack**, such as Bite, Sword Slash, Punch, or Arrow. Through its skill trees, a unit should gain **6–8 additional usable skills in total across its classes**, not 6–8 per class. **All unlocked skills are available in combat; there is no separate loadout or equipped-skill cap.**
+Each unit begins with **exactly one type-specific attack**: one shared attack per Attack Type, nine in total (Andreas, 2026-11-03), so every Bladed creature has the same Bladed attack. Through its skill trees, a unit should gain **6–8 additional usable skills in total across its classes**, not 6–8 per class. **All unlocked skills are available in combat; there is no separate loadout or equipped-skill cap.**
 
 The intended developed unit therefore has **7–9 usable skills including its type-specific attack**. This is a content-design target, not a hard cap. Initial testing still grants all available creature/class skills before trees exist, so temporary test units may exceed that target. Passives and modifiers are mixed into the trees but do not each require a separate action button.
 
@@ -256,6 +260,8 @@ There is **no separate Basic Attack system**. Bite, Claw, Shoot, and comparable 
 Skills may have specific requirements involving position, range, statuses, HP thresholds, allies, formation, free space, KO targets, or earlier actions. The UI must show the concrete reason whenever a skill is unavailable.
 
 There is no global anti-spam rule. A skill's consequences and the resulting combat state must make repetition an interesting choice. Skills may modify their own future behavior, become faster or slower, accumulate recoil, transform into another version, or consume a required state. These are individual skill definitions rather than a replacement universal cooldown system.
+
+**Node costs and prerequisites (adopted 2026-11-03):** see section 4.1: every node costs 1 point, a modifier needs its parent skill, a keystone needs 3 other nodes from its branch.
 
 **Design principle:** rules that do not require global consistency belong in the individual skill or effect definition. This includes effect order, costs, targeting exceptions, and behavior when the user or target becomes KO.
 
@@ -1257,7 +1263,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Statuses | Further candidates, added only when a skill needs them. The framework (clocks, ticking, reapplication, cleansing, source, limit, damage from statuses, chances, skipped turns, immunities) and Blind, Poison, Bleeding, Silenced, Burning, Chilled and Frozen are adopted (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
 | KO and revival | Per-skill revival HP and recovery cost, and what a draw means in each mode. Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
 | Summons | Per-summon status rules and individual summon content. Kinds, placement, cost, limits, Momentum and expiry are adopted (section 11). In the first release (section 20.1). Summon costs (set per skill). Autonomous behavior is defined per skill. Cap (18), placement, first turn, lifetime, summoner KO, KO'd bodies and stats are adopted (section 11.3). Extra capacity beyond the starting party is supported. |
-| Builds | How skills, skill trees and basic attacks attach to Attack Types and Professions ([class_system.md](class_system.md), adopted 2026-10-09); all skill designs (the old ones are invalid); Attack Type and Profession assignments per creature; conflicting modifiers; later tree organization, node costs/ranks, prerequisites, progression/stat growth, and confirmation of level-up awards. Initial level-20 units receive all creature/class skills. Mixed meaningful effects and free out-of-battle respec are selected; trees and spending come later. |
+| Builds | Attack Type and Profession assignments per creature (class assignment pass); the nine shared Attack Type attacks; conflicting modifiers. Skills are in [skills.md](skills.md); the tree model (10 points, 1 per node, modifier and keystone prerequisites, no levels for now) is adopted (section 4.1, 2026-11-03). Free out-of-battle respec is adopted. |
 | Creatures | Balance of the Draft roster in creatures.md (testing), the first human recruits, art framing and cleanup. Attack Type and Profession assignments for every creature. Tiers, stat ranges, no natural traits and text IDs are adopted (section 3.7); 1 Attack Type plus 1–2 Professions replaced the attack library rule and the old class counts. |
 | Team budget | How each creature's Cost (1–10) is set (to be decided in its own discussion), and tuning the budget of 35 after AI-versus-AI testing. Cost as the fourth stat, the budget, the six-creature limit, the budget in every mode and random teams drawn within it are adopted (section 5.1). |
 | Recruitment | Guaranteed encounter-to-unit reward assignments, the exact tutorial creatures, individual coin prices, individual persistence. Tutorial growth (two Critters, then +1, +1, +2), coin sources, payouts, price guide and the roster split are adopted (section 2.2). One copy per creature, one fixed reward per encounter from the defeated team, rewards given once, the three-battle tutorial, post-story challenge encounters, coins, and fixed human recruits are adopted (sections 2.2 and 3.4). Other acquisition methods are not currently required. |

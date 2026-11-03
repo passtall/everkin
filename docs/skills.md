@@ -4,6 +4,8 @@
 
 **Legend:** D = Delay (1 is quickest), M = Momentum cost. A = active, P = passive, Mod = modifier of the named skill, K = keystone. Durations are in time units (10 is about one former turn). Damage and healing numbers assume Power 5. Branches organize a profession's tree only; a creature can learn from every branch of its professions (class_system §4). There are no tags.
 
+**Trees:** each profession's list below is its skill tree. A unit has 10 skill points; every node costs 1; a modifier needs its parent skill and a keystone needs 3 other nodes from its branch (game_system §4.1).
+
 Numbers are first drafts and are tuned in AI-versus-AI testing (§2.5).
 
 ## Hunter (20)
