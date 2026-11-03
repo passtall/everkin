@@ -8,7 +8,7 @@
 
 **Project name:** Everkin is a working title.
 
-**Companion documents:** [UI specification](ui_spec.md) owns screens and interactions. [Class system](class_system.md) owns the class definitions (Attack Types and Professions); [classes_and_skills.md](classes_and_skills.md) is superseded. [Creatures](creatures.md) owns the creature roster, size tiers and the type-specific attack library. This document owns game rules, scope, and implementation requirements.
+**Companion documents:** [UI specification](ui_spec.md) owns screens and interactions. [Class system](class_system.md) owns the class definitions (Attack Types and Professions); [Skills](skills.md) owns every profession's skills (adopted 2026-11-03); [classes_and_skills.md](classes_and_skills.md) is superseded. [Creatures](creatures.md) owns the creature roster, size tiers and the type-specific attack library. This document owns game rules, scope, and implementation requirements.
 
 **Current work:** define the whole game before gameplay implementation. Classes and skills are designed one class at a time, with about ten questions per round, and the answers are applied directly to these documents. Keep unresolved choices explicit; no separate decision history is maintained.
 
@@ -896,7 +896,7 @@ Some skills make a unit **airborne** for a stated time (for example the Flying p
 
 ## 11. Summoning
 
-**Status: in the first-release scope. Kinds, placement, cost, limits, Momentum and status handling are adopted (2026-10-06); section 11.2's first list remains background.** Summons never count as original party members for avoiding defeat. The dedicated discussion explored a model but did not settle its global limits or approve every detail. The Hunter's traps (see [classes_and_skills.md](classes_and_skills.md)) are the first adopted summons: stationary constructs that take a slot, have HP, and can be targeted and intercept like any unit.
+**Status: in the first-release scope. Kinds, placement, cost, limits, Momentum and status handling are adopted (2026-10-06); section 11.2's first list remains background.** Summons never count as original party members for avoiding defeat. The dedicated discussion explored a model but did not settle its global limits or approve every detail. The Hunter's traps (see [skills.md](skills.md)) are the first adopted summons: stationary constructs that take a slot, have HP, and can be targeted and intercept like any unit.
 
 ### 11.1 Summon kinds (adopted 2026-10-06)
 
@@ -952,6 +952,16 @@ Multi-capacity summons remain deferred with other large units. The summon brains
 ### 11.4 Proposed summoner archetypes
 
 Minion Master uses several smaller allies; Binder focuses on one powerful summon; Engineer/Totemist uses constructs; Sacrificer converts existing resources or units into summons. These are possible tree families rather than four additional approved classes.
+
+### 11.5 Undead (adopted 2026-11-02)
+
+The Summoner's Necromancer branch raises the dead ([skills.md](skills.md), Summoner).
+
+- **Raising costs a body.** A raise targets a KO'd body from either side. The body card leaves its slot (freeing it), moves to a free slot on the Necromancer's side and becomes an **undead**: the creature's own art in an undead frame, its own basic attack, with stats set by the skill. With no free slot on the Necromancer's side, the raise cannot be used.
+- **Healing hurts.** Healing an undead deals that amount as damage instead. Otherwise an undead takes damage and is KO'd normally.
+- **Bodies stay.** A KO'd undead leaves its body on the Necromancer's side. The 12 units a battle starts with are never removed from the field.
+- **Resurrection restores.** A resurrection on an undead, alive or KO'd, restores the original creature. It returns to its owner's side, into the free slot nearest its old row, and is scheduled as a new action (section 10.3). With no free slot on the owner's side, it cannot be targeted.
+- **Defeat.** While raised, the original still counts as KO for its owner's defeat check.
 
 ## 12. Synergies, battlefield effects, and encounters
 
