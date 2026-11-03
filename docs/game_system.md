@@ -563,7 +563,7 @@ Further adopted rules:
 - **Multi-hit and area actions.** By default an action causes **one** shift: 1 toward its side if any hit lands, otherwise 1 against if it missed, and 0 if everything was intercepted. A skill may state otherwise.
 - **Auto events.** Each auto event is its own event on the timeline and shifts the meter when it resolves, like a separate action. Rapid Shots therefore shifts the meter for each of its three shots.
 
-- **Non-damaging actions.** A skill that deals no damage moves the meter by 0, even when it is harmful and lands (a Mark, Provoke, Silence, or a push without damage). Move and Skip Turn also move it by 0. Healing already moves it by 0.
+- **Non-damaging actions.** A skill that deals no damage moves the meter by 0, even when it is harmful and lands (a Mark, Silence, or a push without damage). Move and Skip Turn also move it by 0. Healing already moves it by 0.
 - **Paying a cost.** A Momentum cost is paid when the skill is used, before any of its effects. It is never refunded, even if the skill achieves nothing (every hit intercepted or absorbed, or a chance-based effect failing).
 - **Several shifts in one simultaneous block.** They are applied one by one in the block's event order, and the meter is clamped after each one.
 
@@ -880,7 +880,7 @@ Silenced is adopted although no skill applies it yet. Any skill may apply any na
 
 The status design pool (Rooted, Disarmed, Stunned, Weakened, Marked, Fear, Bound and others) remains below as candidates. None is added until a skill needs it.
 
-Additional welcomed design candidates (not decided) are Rooted/Immobilized, Disarmed, Stunned, Slowed/Hasted, Weakened, Enfeebled, Marked, Taunted/Provoked, Fear, Burning, Frozen, and Bound. Delayed/Accelerated can be one-off timeline changes rather than persistent statuses. These are a design pool, not finalized effects. A unit with no viable action because of statuses simply loses that turn.
+Additional welcomed design candidates (not decided) are Rooted/Immobilized, Disarmed, Stunned, Slowed/Hasted, Weakened, Enfeebled, Marked, Fear, Burning, Frozen, and Bound. Delayed/Accelerated can be one-off timeline changes rather than persistent statuses. These are a design pool, not finalized effects. A unit with no viable action because of statuses simply loses that turn.
 
 ## 11. Summoning
 
