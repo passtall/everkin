@@ -48,7 +48,7 @@ Branches: Stalker, Tracker, Trapper, Predator.
 | Trapper | Decoy | P |  | When a Marked enemy attacks the Hunter, the Hunter leaves a decoy (HP 10) in its place and appears one row behind. |
 | Trapper | Net Trap | A (trap card) | 5 / 1 | HP 4. A unit that hits it has +3 Delay on its next skill. |
 | Trapper | Rearm | A | 2 / 0 | One of your trap cards within distance 2 is healed to full HP. |
-| Trapper | Cage | A | 6 / 3 | An enemy in melee reach is Immobilized for 20 time units and cannot intercept. |
+| Trapper | Cage | A | 6 / 3 | An enemy in melee reach is Immobilized for 20 time units. |
 | Predator | Cut Off Retreat | A | 3 / 0 | A Marked enemy is Immobilized for 20 time units. |
 | Predator | Flush | A | 4 / 0 | Pull a Marked enemy into its own Front row (bumps apply). It loses stealth. |
 | Predator | Pack Strike | A | 5 / 3 | Every ally that hit a Marked enemy since the Hunter's last turn has its next turn pulled forward 3. |
