@@ -38,7 +38,7 @@ Branches: Stalker, Tracker, Trapper, Predator.
 | Stalker | Creep Closer | A | 2 / 0 | Only while stealthed: move to an adjacent row on your side without breaking stealth. |
 | Stalker | Patience | P |  | Skip Turn costs Delay 3 instead of 5 while the Hunter is stealthed. |
 | Stalker | Freeze in Place | P |  | When an area effect hits the stealthed Hunter, 50% chance to stay stealthed (it still takes the damage). |
-| Stalker | Lie in Wait | A | 2 / 0 | Only while stealthed: pick a unit in melee reach. The next time it uses a skill, the Hunter strikes it first for 3–4 (this breaks stealth). |
+| Stalker | Lie in Wait | A | 2 / 0 | Only while stealthed: pick a unit in melee reach. The next time it uses a skill, it is Stunned for 10 time units before that skill resolves (this breaks the Hunter's stealth). |
 | Stalker | Vanish | A | 4 / 3 | Gain stealth, even in the Front row. |
 | Tracker | Read Tracks | A | 2 / 0 | Pick a row. Every stealthed unit in it is revealed. |
 | Tracker | Scent | P |  | Marked enemies cannot gain stealth. |
