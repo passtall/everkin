@@ -91,7 +91,7 @@ Branches: Mender, Cleric, Lifebinder.
 | Lifebinder | Revive | A | 9 / 5 | Revive a KO unit at 25% of its max HP. |
 | Lifebinder | Life Link | A | 4 / 0 | Link two units for 10 time units: healing on one also heals the other for half. |
 | Lifebinder | Bound Resurrect | A | 8 / 4 | Revive a KO unit; it and the Healer share one HP pool (game_system §10.4). |
-| Lifebinder | Burnout Heal | A | 7 / 6 | Heal every unit around the Healer for a large amount; the Healer is KO (§10.4). |
+| Lifebinder | Burnout Heal | A | 7 / 6 | Heal every unit around the Healer for 6–8; the Healer is KO (§10.4). |
 | Lifebinder | Life for Life | A | 6 / 3 | The Healer gives up half its current HP to revive a KO unit with that much HP. |
 | Lifebinder | Bound Strength | Mod of Bound Resurrect |  | While the two units share their HP pool, both have 1 less Delay on every skill. |
 
