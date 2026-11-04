@@ -60,7 +60,7 @@ Adopted 2026-10-06.
 Adopted 2026-10-06.
 
 - **Format.** No story text for now. Campaign locations show their illustrations only; story scenes may come with the full campaign design.
-- **Player role.** Decided together with the story later (game_system.md §15); confirmed deferred on 2026-10-16.
+- **Player role.** None: there is no player character; the campaign follows the creatures, with no story text beyond chapter names (game_system.md §15, adopted 2026-11-04).
 - **Joining creatures** (adopted 2026-10-16). No reason is given for why a beaten creature joins the team.
 - **Names** (adopted 2026-10-16). Stages and encounters get short storybook names on the map; these are labels, not story text.
 
