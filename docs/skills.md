@@ -26,7 +26,7 @@ Every creature starts with the one shared attack of its Attack Type ([class_syst
 | Whip | Lash | 3 / 0 | `melee` `physical`. Hit for 3–4, with one row more reach than other melee. |
 | Aura | Pulse | 4 / 0 | `direct`. Every enemy in melee reach takes 2–3. |
 
-## Hunter (20)
+## Hunter (16)
 
 Branches: Stalker, Tracker, Trapper, Predator.
 
@@ -36,20 +36,16 @@ Branches: Stalker, Tracker, Trapper, Predator.
 |---|---|---|---|---|
 | Stalker | Stalk | A | 3 / 0 | The Hunter gains stealth. Needs the Hunter outside the Front row. |
 | Stalker | Creep Closer | A | 2 / 0 | Only while stealthed: move to an adjacent row on your side without breaking stealth. |
-| Stalker | Patience | P |  | Skip Turn costs Delay 3 instead of 5 while the Hunter is stealthed. |
 | Stalker | Freeze in Place | P |  | When an area effect hits the stealthed Hunter, 50% chance to stay stealthed (it still takes the damage). |
 | Stalker | Lie in Wait | A | 2 / 0 | Only while stealthed: pick a unit in melee reach. The next time it uses a skill, it is Stunned for 10 time units before that skill resolves (this breaks the Hunter's stealth). |
 | Stalker | Vanish | A | 4 / 3 | Gain stealth, even in the Front row. |
 | Tracker | Read Tracks | A | 2 / 0 | Pick a row. Every stealthed unit in it is revealed. |
 | Tracker | Scent | P |  | Marked enemies cannot gain stealth. |
 | Tracker | Scent of Blood | P |  | When an enemy's HP falls below 20%, it becomes Marked. |
-| Tracker | Pick the Quarry | A | 2 / 0 | Mark any visible unit (one Mark from this Hunter at a time; marking another moves it). |
+| Tracker | Target | A | 2 / 0 | Mark any visible unit (one Mark from this Hunter at a time; marking another moves it). |
 | Tracker | Sniff the Air | P |  | At battle start, the enemy with the highest Power becomes Marked. |
-| Tracker | Marked for the Hunt | P |  | Marks from this Hunter cannot be cleansed, and a revived Marked unit is still Marked. |
-| Tracker | Spoor of Many | Mod of Scent |  | Units adjacent to a Marked enemy cannot gain stealth either. |
 | Trapper | Decoy | P |  | When a Marked enemy attacks the Hunter, the Hunter leaves a decoy (HP 10) in its place and appears one row behind. |
 | Trapper | Net Trap | A (trap card) | 5 / 1 | HP 4. A unit that hits it has +3 Delay on its next skill. |
-| Trapper | Rearm | A | 2 / 0 | One of your trap cards within distance 2 is healed to full HP. |
 | Trapper | Cage | A | 6 / 3 | A unit in melee reach is Immobilized for 20 time units. |
 | Predator | Cut Off Retreat | A | 3 / 0 | A Marked unit is Immobilized for 20 time units. |
 | Predator | Flush | A | 4 / 0 | Pull a Marked unit into its own Front row (bumps apply). It loses stealth. |
