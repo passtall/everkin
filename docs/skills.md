@@ -20,11 +20,11 @@ Every creature starts with the one shared attack of its Attack Type ([class_syst
 | Bladed | Blade Strike | 3 / 0 | `melee` `physical`. Hit for 4–5; 30% chance to make the target Bleed. |
 | Polearm | Polearm Thrust | 3 / 0 | `melee` `physical`. Hit for 4–5, with one row more reach than other melee. |
 | Ranged | Shot | 3 / 0 | `projectile` `physical`. Hit any visible enemy for 3–4. |
-| Magic | Bolt | 4 / 0 | `direct` `magical`. Hit any visible enemy for 3–4; cannot be intercepted. |
+| Magic | Bolt | 4 / 0 | `projectile` `magical`. Hit any visible enemy for 3–4. |
 | Blunt | Heavy Blow | 4 / 0 | `melee` `physical`. Hit for 5–6; 30% chance to Stun the target for 5 time units. |
-| Breath | Breath | 4 / 0 | Hit the target for 3–4 and every unit next to it for 1–2. |
+| Breath | Breath | 4 / 0 | `direct`. Hit the target for 3–4 and every unit next to it for 1–2. |
 | Whip | Lash | 3 / 0 | `melee` `physical`. Hit for 3–4, with one row more reach than other melee. |
-| Aura | Pulse | 4 / 0 | Every enemy in melee reach takes 2–3. |
+| Aura | Pulse | 4 / 0 | `direct`. Every enemy in melee reach takes 2–3. |
 
 ## Hunter (20)
 
