@@ -619,6 +619,8 @@ There is no general facing, rotation, or rear-attack subsystem. A backstab or si
 
 ### 7.4 Nominal row versus effective distance
 
+**Skill ranges (adopted 2026-11-04).** Every skill states a delivery (`melee`, `projectile` or `direct`) and a range in skills.md. **Distance 1** is the minimum and reaches the enemy Front row. **Distance 2** reaches the enemy Middle row and any allied row. **Distance 3** reaches the enemy Rear row. Summons, constructs and totems with a range are placed within it.
+
 Rows retain their identity when empty. Units do not automatically move forward when allies fall.
 
 For range calculations, empty rows are skipped. A unit in Rear remains in Rear for row-dependent skills, even if it is now the nearest reachable opponent.
@@ -1277,7 +1279,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Damage | Multiple shields on one unit (deferred to the skill revisit after AI-versus-AI testing). Healing scaling is adopted (section 5.2). Roll, shield, reduction order and fixed damage are adopted (section 5.2); Defense and penetration were removed on 2026-10-15. Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
 | Interception | None open. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, intercepted non-damaging effects, left-to-right defender order, the nearest-target tie rule, who can intercept (not Stunned, Frozen or Immobilized; airborne units as normal; no Guardian bonus) and other defenses being defined per skill are adopted (section 8.2). |
 | Reactions | None open. Propagation, priority levels, tie-breaks, timing and KO'd owners are adopted (section 6.6). There is deliberately no chain limit or recursion safeguard for now: AI-versus-AI testing must detect endless chains. |
-| Range | Per-skill ranges. Opposing and same-side distance (both skip empty rows), unlimited "any visible", uncapped range bonuses and cast-time checks are adopted (section 7.4). Adjacency, which uses nominal rows, is adopted (section 8.4). |
+| Range | None open. Per-skill ranges and deliveries are set in skills.md (2026-11-04). Opposing and same-side distance (both skip empty rows), unlimited "any visible", uncapped range bonuses and cast-time checks are adopted (section 7.4). Adjacency, which uses nominal rows, is adopted (section 8.4). |
 | Movement | None open. Move (any row, Delay 5, chosen gap, no swaps), movement inside skills and forced repositioning are adopted (sections 9.1 and 9.5). Skip Turn is always available (section 6.4). |
 | Statuses | Further candidates, added only when a skill needs them. The framework (clocks, ticking, reapplication, cleansing, source, limit, damage from statuses, chances, skipped turns, immunities) and Blind, Poison, Bleeding, Silenced, Chilled, Frozen, Stunned, Confused, Immobilized and Marked are adopted (Burning was dropped) (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
 | KO and revival | Per-skill revival HP and recovery cost. What a draw means in each mode is adopted (section 12.3). Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
