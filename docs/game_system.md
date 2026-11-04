@@ -458,9 +458,8 @@ The UI shows multiple upcoming turns and previews where the acting unit's next t
 **Adopted timeline details:**
 
 - **Initial progress.** At battle start each unit's first Wait is `11 − Speed`, as if its previous skill had Delay 0. A Speed 10 unit acts at time 1 and a Speed 1 unit at time 10.
-- **Ties.** When turns arrive at the same time, the higher Speed acts first. If Speed is equal, a **seeded random roll** decides, so battles can be replayed from the seed.
+- **Ties (adopted 2026-11-04, replacing higher Speed first).** When unit turns or other timeline events fall into the same time unit, the one that joined that time unit **first stays first**. An entry that is moved by Pull Forward, Push Back, Haste or Slow joins its new time unit at the moment of the move, behind the entries already there. Entries created for the same time unit at the same moment (for example every unit's first turn at battle start, or several effects from one event) are ordered by a **seeded random roll**, each with equal chance, so battles can be replayed from the seed.
 - **Time model.** Time advances only in jumps between events. Choosing an action and playing animations cost no time, and a turn costs time only when its skill resolves. Only online play has a turn timer (60 seconds, section 2.4).
-- **Same-time order.** Status and ground effect expiries resolve first, then auto and delayed events, then unit turns. This order is expected to be fine-tuned during testing.
 - **Haste and Slow.** A skill states a whole number of Speed steps (typically 2, never more than 3). Besides Speed, skills and effects may also give a unit's skills more or less Delay.
 - **Pull Forward and Push Back.** There is no global cap. Each skill states its number, checked against the damage anchor and playtesting.
 - **Reset.** Restores the full Wait of the unit's last skill, starting from now.
@@ -468,7 +467,7 @@ The UI shows multiple upcoming turns and previews where the acting unit's next t
 - **Skipped turn.** A skipped turn costs as much as a Delay 5 skill: Wait = 5 + (11 − Speed).
 
 - **Delay bounds.** Effects that add or remove Delay never take a skill outside 1–10: after all modifiers, Delay is clamped to 1–10.
-- **Overshoot (adopted 2026-10-06).** If Pull Forward removes more time than remains, the turn arrives now and the extra is lost; it does not shorten a later Wait. Among turns due at the same time, the normal tie and same-time rules apply.
+- **Overshoot (adopted 2026-10-06).** If Pull Forward removes more time than remains, the turn arrives now and the extra is lost; it does not shorten a later Wait. Among turns due at the same time, the normal tie rule applies.
 - **Durations use the battle clock (adopted 2026-10-19, effect timing quiz).** Ground effects and statuses last a stated number of **time units** from the moment they are placed. Each skill states its own length; 20 time units is the reference for burning ground, ice, water and poison ground (about two turns of an average Speed 5, Delay 5 unit). The end of every effect is shown only as a marker on the timeline, not as a countdown on the spot.
 - **When the next Wait starts (adopted 2026-10-06).** The acting unit's next Wait is set when its skill is used, before the skill's effects. Pushes, pulls, Haste or Slow that reach the user during its own action (for example from a counter) apply on top of it.
 
@@ -507,7 +506,7 @@ No unit is ever forced to act or move: Skip Turn is always allowed. A turn is sk
 
 ### 6.5 Event resolution and KO checks
 
-Skills define a fixed order for their effects. **Random order when undefined (adopted 2026-11-04).** Whenever the rules or a skill leave the order of anything undefined (which unit, event or roll comes first), the order is random, each possibility with an equal chance, from the battle's seeded roll. Defined orders, such as the timeline tie rule (section 6.1), still apply first. **Check KO after each event.** Moving before damage and moving after damage may intentionally produce different outcomes; meaningful order must be visible in the skill description or preview.
+Skills define a fixed order for their effects. **Random order when undefined (adopted 2026-11-04).** Whenever the rules or a skill leave the order of anything undefined (which unit, event or roll comes first), the order is random, each possibility with an equal chance, from the battle's seeded roll. Defined orders, such as the timeline tie rule (section 6.1, first on the timeline stays first), still apply first. **Check KO after each event.** Moving before damage and moving after damage may intentionally produce different outcomes; meaningful order must be visible in the skill description or preview.
 
 A skill may declare a **simultaneous event block**. Apply the whole block together, check its resulting KO state, then collect and process the resulting reactions. Internal slot iteration must not change who receives effects intended to be simultaneous.
 
@@ -544,7 +543,7 @@ Reactions are additional effects, not automatically normal turns. They change th
 - **Timing.** Reactions resolve after each event or simultaneous block, before the triggering skill's next event.
 - **KO'd owners.** A unit KO'd by the triggering event does not react, except through explicit "when KO'd" triggers.
 - **"Once per hit".** Reactions limited to once use hit events as the unit. A multi-hit skill can trigger such a reaction once per hit.
-- **Priority.** Simultaneous reactions use three levels. **First:** effects that change or remove other effects (cleanse, reveal). **Normal:** damage, healing and statuses. **Last:** timeline changes (pulls and pushes). Reactions of the same level resolve by their owners' timeline order, with explicit skill exceptions allowed. If owners share a timeline position, the tie rule of section 6.1 applies: the higher Speed first, then the seeded roll.
+- **Priority.** Simultaneous reactions use three levels. **First:** effects that change or remove other effects (cleanse, reveal). **Normal:** damage, healing and statuses. **Last:** timeline changes (pulls and pushes). Reactions of the same level resolve by their owners' timeline order, with explicit skill exceptions allowed. If owners share a timeline position, the tie rule of section 6.1 applies: the one on the timeline first goes first, then the seeded roll.
 
 ### 6.7 Momentum and the battle clean slate
 
@@ -1275,7 +1274,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Area | Outstanding specification |
 |---|---|
 | Party | Prototype validation of six-versus-six readability, possible four- or five-unit standard, enemy exceptions. No combat reserve swapping. Each creature at most once per player team (enemies may repeat) is adopted (section 2.2). |
-| Timeline | None open. Delay bounds (clamped to 1–10) are adopted and Turn Now was removed (section 6.1). Initial progress, ties, Haste/Slow, Reset, skipped turns and same-time order are adopted (section 6.1). Speed 1–10 (10 fastest), skill Delay 1–10 (1 quickest), and Wait = Delay + 11 − Speed are adopted (section 6.1). |
+| Timeline | None open. Delay bounds (clamped to 1–10) are adopted and Turn Now was removed (section 6.1). Initial progress, ties (first on the timeline stays first, else random; 2026-11-04), Haste/Slow, Reset and skipped turns are adopted (section 6.1). Speed 1–10 (10 fastest), skill Delay 1–10 (1 quickest), and Wait = Delay + 11 − Speed are adopted (section 6.1). |
 | Momentum | None open. Non-damaging actions, payment timing, refunds and simultaneous shifts are adopted (section 6.7). Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
 | Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6–8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
 | Damage | Multiple shields on one unit (deferred to the skill revisit after AI-versus-AI testing). Healing scaling is adopted (section 5.2). Roll, shield, reduction order and fixed damage are adopted (section 5.2); Defense and penetration were removed on 2026-10-15. Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
