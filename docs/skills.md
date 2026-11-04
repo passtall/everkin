@@ -6,7 +6,7 @@
 
 **Trees:** each profession's list below is its skill tree. A unit has 10 skill points; every node costs 1; a modifier needs its parent skill and a keystone needs 3 other nodes from its branch (game_system §4.1).
 
-**Targets:** a targeted skill works on any unit in range, on either side; an area skill hits every unit in its area. "Own side only" marks the exceptions (game_system §8.1).
+**Targets:** a targeted skill works on any unit in range, on either side; an area skill hits every unit in its area. "Own side only" marks the exceptions. No skill targets an empty spot: ground effects go on a target unit's spot or on a row (game_system §8.1).
 
 Numbers are first drafts and are tuned in AI-versus-AI testing (§2.5).
 
@@ -128,21 +128,21 @@ Branches: Pyromancy, Stormcalling, Cryomancy.
 | Branch | Skill | Kind | D / M | Effect |
 |---|---|---|---|---|
 | Pyromancy | Row of Fire | A | 6 / 3 | Set fire to a whole row for 20 time units. |
-| Pyromancy | Kindle | A | 2 / 0 | Set fire to one spot. |
-| Pyromancy | Backdraft | A | 6 / 3 | A unit standing on burning ground: the fire on its spot spreads to every spot next to it. |
-| Pyromancy | Fire Lane | A | 5 / 2 | Set fire to one spot in every row of one side, all in the same column. |
+| Pyromancy | Kindle | A | 2 / 0 | Set fire to a unit's spot. |
+| Pyromancy | Backdraft | A | 4 / 2 | A unit standing on burning ground: the fire on its spot spreads to every spot next to it. |
+| Pyromancy | Fire Lane | A | 5 / 2 | Set fire to a unit's spot and to the spots in the same column in every other row of its side. |
 | Pyromancy | Scorch | Mod of Kindle |  | The fire from Kindle also spreads to the spots next to it. |
-| Pyromancy | Ignition Point | Mod of Backdraft |  | Backdraft leaves the fire burning. |
+| Pyromancy | Ignition Point | Mod of Backdraft |  | Backdraft refreshes the fire's duration to 20 time units. |
 | Stormcalling | Chain Lightning | A | 5 / 3 | Stuns a unit for 5 time units, then jumps to an adjacent unit and Stuns it, then once more. |
 | Stormcalling | Shock | A | 5 / 2 | Stuns any unit for 10 time units; it cannot be intercepted. |
 | Stormcalling | Arc | Mod of Chain Lightning |  | Chain Lightning jumps 2 more times. |
-| Stormcalling | Tempest | A | 8 / 5 | Push every unit on one side one row back (bumps apply). No extra hit. |
+| Stormcalling | Tempest | A | 8 / 5 | Push every unit in one row one row back (bumps apply). No extra hit. |
 | Stormcalling | Megavolt | A | 9 / 5 | Every unit in one row is Stunned for 5 time units; the Elementalist is Silenced for 10 time units. |
 | Cryomancy | Steam Burst | P |  | When fire is set on an iced spot, both end and the unit there is Confused for 10 time units. |
 | Cryomancy | Freeze | A | 7 / 3 | A unit is Frozen. |
 | Cryomancy | Glacier | A | 8 / 5 | Every unit in one row is Frozen. |
 | Cryomancy | Brittle | P |  | Frozen enemies take 50% more damage. |
-| Cryomancy | Frost Nova | A | 6 / 3 | Every unit in melee reach of the Elementalist is Frozen. |
+| Cryomancy | Frost Nova | A | 6 / 3 | Every enemy in melee reach of the Elementalist is Frozen. |
 | Cryomancy | Cold Heart | K |  | Frozen from the Elementalist lasts 1 more turn, but it can keep only one unit Frozen at a time. |
 
 ## Warrior (16)
@@ -152,7 +152,7 @@ Branches: Berserker, Champion, Whirlwind, Footwork.
 | Branch | Skill | Kind | D / M | Effect |
 |---|---|---|---|---|
 | Berserker | Reckless Swing | P |  | The Warrior's hits deal double damage, but the Warrior takes half of the damage it deals. |
-| Berserker | Unstoppable | P |  | Below a quarter of its HP, the Warrior cannot be moved or Frozen, and its turns cannot be pushed back. |
+| Berserker | Unstoppable | P |  | Below a quarter of its HP, the Warrior cannot be Immobilized or Frozen, and its turns cannot be pushed back. |
 | Berserker | Endure | P |  | Damage from statuses cannot drop the Warrior below 1 HP. |
 | Berserker | Last Stand | K |  | The Warrior cannot Move or be moved, but deals 50% more damage. |
 | Champion | Challenge | A | 2 / 0 | Mark a unit (one Mark from this Warrior at a time). |
@@ -176,15 +176,15 @@ Branches: Tactician, Commander, Bard.
 
 | Branch | Skill | Kind | D / M | Effect |
 |---|---|---|---|---|
-| Tactician | Swap Turns | A | 5 / 2 | Two units swap their places on the timeline. |
+| Tactician | Swap Turns | A | 5 / 2 | Own side only. Two allies swap their places on the timeline. |
 | Tactician | Press the Advantage | A | 4 / 2 | A unit's next skill costs no Momentum. |
 | Tactician | Inspiring Presence | P |  | When an ally next to the Leader KOs an enemy, Momentum moves 1 more toward your side. |
 | Tactician | All In | K |  | The Leader's Momentum costs are halved (rounded up), but Momentum gained from its hits is 0. |
-| Commander | Reposition | A | 2 / 0 | Move a unit one row, to any gap, at no cost to its timeline. |
-| Commander | Fall Back | A | 3 / 0 | Move every unit in one side's Front row one row back (bumps apply). |
-| Commander | Advance | A | 3 / 0 | Move every unit in one row one row forward (bumps apply). |
+| Commander | Reposition | A | 2 / 0 | Own side only. Move an ally one row, to any gap, at no cost to its timeline. |
+| Commander | Fall Back | A | 3 / 0 | Own side only. Move every ally in the Front row one row back (bumps apply). |
+| Commander | Advance | A | 3 / 0 | Own side only. Move every ally in one row one row forward (bumps apply). |
 | Commander | Switch Places | A | 3 / 0 | Own side only. Two allies swap places. |
-| Commander | Rotation | A | 5 / 2 | Every unit on one side moves one row back, and the Rear row moves to the Front. |
+| Commander | Rotation | A | 5 / 2 | Own side only. Every ally moves one row back, and the Rear row moves to the Front. |
 | Commander | Drill | P |  | An ally the Leader moves has its next turn pulled forward 3 time units. |
 | Bard | Song of Haste | P |  | Allies in the Leader's row have +1 Speed. |
 | Bard | War Drums | P |  | Allies next to the Leader cannot be Stunned or Frozen. |
@@ -207,7 +207,7 @@ Branches: Thief, Assassin, Saboteur.
 | Thief | Light Fingers | P |  | Whenever the Rogue hits an enemy that has a helpful status, it steals that status. |
 | Assassin | Backstab | A | 5 / 2 | Only from stealth: the target is Silenced and Bleeds, and the Rogue stays stealthed. |
 | Assassin | Contract | K |  | The Rogue deals double to Marked enemies and half to everyone else. |
-| Assassin | Poison Vial | A | 3 / 0 | Throw a vial: poison ground on one spot for 20 time units. |
+| Assassin | Poison Vial | A | 3 / 0 | Throw a vial: poison ground on a unit's spot for 20 time units. |
 | Assassin | Mark for Death | A | 2 / 0 | Mark a unit for 20 time units. |
 | Assassin | Deathmark Bloom | P |  | When a Marked enemy is KO, its Mark jumps to the nearest enemy. |
 | Saboteur | Flash Powder | A | 3 / 0 | Every unit in melee reach is Blind for 20 time units. |
@@ -225,13 +225,13 @@ Branches: Engineer, Chemist, Pyrotechnician.
 | Engineer | Barricade | A (construct) | 4 / 0 | Places a barricade (HP 10) on any free spot of your side. |
 | Engineer | Overclock | A | 3 / 0 | Every construct of the Tinker acts once more right now. |
 | Engineer | Repair | A | 3 / 0 | A construct heals 8. |
-| Chemist | Poison Gas | A | 4 / 0 | Poison ground on a spot and the spots beside it, for 20 time units. |
+| Chemist | Poison Gas | A | 4 / 0 | Poison ground on a unit's spot and the spots beside it, for 20 time units. |
 | Chemist | Gas Cloud | A | 6 / 3 | Poison ground on a whole row for 20 time units. |
 | Chemist | Healing Draught | A | 3 / 0 | Throw a potion: a unit heals 6–7. |
 | Chemist | Antidote | A | 2 / 0 | Remove Poison, Bleeding and Blind from a unit. |
 | Chemist | Plague Doctor | K |  | The Tinker's poison ground lasts twice as long, but the Tinker cannot heal. |
-| Pyrotechnician | Firebomb | A | 5 / 2 | Fire on a spot and the spots beside it, for 20 time units. |
-| Pyrotechnician | Flame Turret | A (construct) | 6 / 3 | Places a turret (HP 8). Each time the Tinker takes a turn, it sets fire to one enemy spot in front of it. |
+| Pyrotechnician | Firebomb | A | 5 / 2 | Fire on a unit's spot and the spots beside it, for 20 time units. |
+| Pyrotechnician | Flame Turret | A (construct) | 6 / 3 | Places a turret (HP 8). Each time the Tinker takes a turn, it sets fire to the spot of one enemy in front of it. |
 | Pyrotechnician | Flashbang | A | 4 / 0 | Every unit in one row is Blind for 10 time units. |
 | Pyrotechnician | Showman | K |  | The Tinker's Blind and Stunned last twice as long, but the Tinker's skills that deal damage have +2 Delay. |
 
@@ -274,7 +274,7 @@ Branches: Totemist, Ritualist, Spiritwalker.
 | Totemist | Totem of Return | A (construct) | 7 / 3 | Places a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks. |
 | Totemist | Great Totem | K |  | The Primalist keeps only 1 totem, but it has triple HP and also affects the rows next to it. |
 | Ritualist | Rain Dance | A | 6 / 3 | Water on every spot of one row (§12.2). |
-| Ritualist | Hoarfrost | A | 5 / 2 | Ice on one spot (§12.2). |
+| Ritualist | Hoarfrost | A | 5 / 2 | Ice on a unit's spot (§12.2). |
 | Ritualist | Totem Ritual | A | 5 / 2 | Every totem of the Primalist regains all its HP. |
 | Ritualist | Long Rain | Mod of Rain Dance |  | Rain Dance's water lasts 20 time units longer. |
 | Ritualist | Healing Rain | Mod of Rain Dance |  | Allies in the rain regain 4 HP. |
