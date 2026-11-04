@@ -70,7 +70,7 @@ Branches: Bulwark, Bodyguard, Keeper.
 | Keeper | Ward | A | 3 / 0 | A unit within distance 2 gains a Ward of 4 until the Guardian's next turn. |
 | Keeper | Lasting Ward | Mod of Ward |  | Ward lasts until it is broken, not until the Guardian's next turn. |
 | Keeper | Overcharged Ward | A | 5 / 3 | A unit gains a Ward of 8 that lasts only until that unit's next turn. |
-| Keeper | Shield Dome | A | 7 / 5 | Every unit on one side gains a Ward of 2 until the Guardian's next turn. |
+| Keeper | Shield Dome | A | 7 / 5 | Every ally gains a Ward of 2 until the Guardian's next turn. |
 | Keeper | Keeper of the Gate | K |  | Your barricades have double HP, but the Guardian itself cannot intercept. |
 
 ## Healer (15)
