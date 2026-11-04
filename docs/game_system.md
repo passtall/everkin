@@ -507,7 +507,7 @@ No unit is ever forced to act or move: Skip Turn is always allowed. A turn is sk
 
 ### 6.5 Event resolution and KO checks
 
-Skills define a fixed order for their effects. **Check KO after each event.** Moving before damage and moving after damage may intentionally produce different outcomes; meaningful order must be visible in the skill description or preview.
+Skills define a fixed order for their effects. **Random order when undefined (adopted 2026-11-04).** Whenever the rules or a skill leave the order of anything undefined (which unit, event or roll comes first), the order is random, each possibility with an equal chance, from the battle's seeded roll. Defined orders, such as the timeline tie rule (section 6.1), still apply first. **Check KO after each event.** Moving before damage and moving after damage may intentionally produce different outcomes; meaningful order must be visible in the skill description or preview.
 
 A skill may declare a **simultaneous event block**. Apply the whole block together, check its resulting KO state, then collect and process the resulting reactions. Internal slot iteration must not change who receives effects intended to be simultaneous.
 
@@ -696,7 +696,7 @@ Normal cover depends on horizontal overlap between a forward unit and the unit b
 
 **Which skills can be intercepted (adopted).** Only skills with the `melee` or `projectile` tag can be intercepted, whichever side uses them and whatever they do. A `projectile` heal can therefore be intercepted, while a `direct` heal cannot. A `melee` or `projectile` skill ignores interception only if it says so (for example Sniper Shot). **Intercepted effects that are not damage (adopted).** An interceptor receives the intercepted effect instead of the target. On a full interception it receives the whole effect. On a partial interception an amount that can be split, such as healing, is split like damage: the interceptor receives half, rounded down, and the rest continues. An effect that cannot be split, such as a status or a push, goes entirely to the interceptor, as on a full interception.
 
-**Defender order (adopted).** Defenders are tried from the nearest row toward the target. Within one row they are tried **from left to right**, as the player sees the board.
+**Defender order (adopted).** Defenders are tried from the nearest row toward the target. Within one row their order is **random**, each defender with an equal chance to try first (adopted 2026-11-04, replacing left to right; section 6.5 random-order rule).
 
 **Adopted chances.** A forward unit that is not the intended target (passively targeted) intercepts with a **50%** chance at **100% overlap** and a **25%** chance at **50% overlap**. When it intercepts, it takes the **full hit (50%)** or a **partial hit (50%)**. A partial hit splits the damage in half: the interceptor takes half **rounded down**, and the remainder continues down the interception chain. A hit of 1 cannot be split and goes entirely to the interceptor. An intercepted hit changes Momentum by 0. Individual skills, passives, statuses, and attack types may override or modify these standard rules. Summons and constructs that act as regular units can intercept like any unit.
 
@@ -1279,7 +1279,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Momentum | None open. Non-damaging actions, payment timing, refunds and simultaneous shifts are adopted (section 6.7). Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
 | Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6–8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
 | Damage | Multiple shields on one unit (deferred to the skill revisit after AI-versus-AI testing). Healing scaling is adopted (section 5.2). Roll, shield, reduction order and fixed damage are adopted (section 5.2); Defense and penetration were removed on 2026-10-15. Uniform rolls, no crits, and round-down with a minimum of 1 are fixed. |
-| Interception | None open. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, intercepted non-damaging effects, left-to-right defender order, the nearest-target tie rule, who can intercept (not Stunned, Frozen or Immobilized; airborne units as normal; no Guardian bonus) and other defenses being defined per skill are adopted (section 8.2). |
+| Interception | None open. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, intercepted non-damaging effects, random defender order within a row, the nearest-target tie rule, who can intercept (not Stunned, Frozen or Immobilized; airborne units as normal; no Guardian bonus) and other defenses being defined per skill are adopted (section 8.2). |
 | Reactions | None open. Propagation, priority levels, tie-breaks, timing and KO'd owners are adopted (section 6.6). There is deliberately no chain limit or recursion safeguard for now: AI-versus-AI testing must detect endless chains. |
 | Range | None open. Per-skill ranges and deliveries are set in skills.md (2026-11-04). Opposing and same-side distance (both skip empty rows), unlimited "any visible", uncapped range bonuses and cast-time checks are adopted (section 7.4). Adjacency, which uses nominal rows, is adopted (section 8.4). |
 | Movement | None open. Move (any row, Delay 5, chosen gap, no swaps), movement inside skills and forced repositioning are adopted (sections 9.1 and 9.5). Skip Turn is always available (section 6.4). |
@@ -1380,7 +1380,7 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A Warrior uses Charge from Middle while Front is full | Charge's move is blocked, every unit in the chain takes 1 bump damage, and the Warrior stays in Middle and still makes the hit if the target is in reach. |
 | A `direct` heal is aimed at a unit with an ally in front of it | It cannot be intercepted. |
 | A `projectile` heal is aimed at a unit with an ally in front of it | It can be intercepted. |
-| Two units in the row in front each half-cover the target | The left one, as the player sees it, rolls to intercept first. |
+| Two units in the row in front each half-cover the target | A random one of them, each with equal chance, rolls to intercept first. |
 | A skill hits the nearest enemy and two are equally near | The leftmost one is hit. |
 | A skill with Delay 9 gets +3 Delay from an effect | Its Delay is 10. |
 | A unit uses a Momentum 2 skill with its side at +2 and the first hit lands | The cost is paid first (meter 0), then the hit moves it to +1. |
