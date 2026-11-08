@@ -154,7 +154,7 @@ public static class Movement
                 var u = state.GetUnit(id);
                 if (u.IsKnockedOut) continue; // a body cannot be hurt
                 state.DealDamage(null, id, BumpDamage, DamageSource.Unreducible);
-                u.IsStealthed = false;        // bump damage is a hit
+                Stealth.Break(state, id, StealthCause.Hit); // bump damage is a hit
                 hit.Add(id);
             }
             return new ForcedMoveResult(ForcedMoveStatus.Blocked, Array.Empty<UnitMoved>(), hit);

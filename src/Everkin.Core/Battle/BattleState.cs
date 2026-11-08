@@ -47,6 +47,7 @@ public sealed class Unit
         Dampen = other.Dampen;
         InterceptionBlocked = other.InterceptionBlocked;
         IsImmobilized = other.IsImmobilized;
+        KoProcessed = other.KoProcessed;
     }
 
     /// <summary>Unique inside the battle, assigned in the order units were added.</summary>
@@ -92,6 +93,22 @@ public sealed class Unit
     /// clear it; the movement code only reads it.
     /// </summary>
     public bool IsImmobilized { get; set; }
+
+    /// <summary>True once the KO rules have run for this unit (statuses cleared, pending events removed). Reset by revival.</summary>
+    public bool KoProcessed { get; set; }
+
+    /// <summary>
+    /// Removes every status: KO removes all of them, helpful and harmful alike (section 10.3). Today these are Ward, Dampen,
+    /// stealth, Immobilized and the interception block; the status layer (M1.11) adds the others.
+    /// </summary>
+    public void ClearStatuses()
+    {
+        Ward = 0;
+        Dampen = false;
+        IsStealthed = false;
+        IsImmobilized = false;
+        InterceptionBlocked = false;
+    }
 
     public Unit Clone() => new(this);
 }

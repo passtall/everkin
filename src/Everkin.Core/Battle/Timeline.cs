@@ -242,12 +242,14 @@ public sealed class Timeline
 
     /// <summary>
     /// Removes everything a unit owns: its pending auto events and delayed events and, with <paramref name="includeTurn"/>,
-    /// its turn (section 10.4 pending events). A held-back turn is dropped with it.
+    /// its turn (section 10.3 pending events). A held-back turn is dropped with it. With <paramref name="keepEvents"/> only
+    /// the turn goes: a skill stated that its launched events persist.
     /// </summary>
-    public void RemoveOwnedBy(int unitId, bool includeTurn)
+    public void RemoveOwnedBy(int unitId, bool includeTurn, bool keepEvents = false)
     {
         _entries.RemoveAll(e => e.OwnerUnitId == unitId
-            && (e.Kind is TimelineKind.AutoEvent or TimelineKind.DelayedEvent || (includeTurn && e.Kind == TimelineKind.UnitTurn)));
+            && ((!keepEvents && e.Kind is TimelineKind.AutoEvent or TimelineKind.DelayedEvent)
+                || (includeTurn && e.Kind == TimelineKind.UnitTurn)));
         if (includeTurn) _deferredTurns.Remove(unitId);
         else if (!_entries.Any(e => e.Blocking && e.OwnerUnitId == unitId) && _deferredTurns.TryGetValue(unitId, out var wait))
         {

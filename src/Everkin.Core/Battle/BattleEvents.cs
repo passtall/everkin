@@ -39,3 +39,22 @@ public sealed record UnitsSwapped(int UnitA, int UnitB) : BattleEvent;
 
 /// <summary>A forced move was blocked: nothing moved, and each unit in the chain took 1 bump damage.</summary>
 public sealed record BumpBlocked(int MovedUnitId, IReadOnlyList<int> Chain) : BattleEvent;
+
+/// <summary>A unit reached 0 HP and the KO rules ran: statuses cleared, pending events removed, the body keeps its slot.</summary>
+public sealed record UnitKnockedOut(int UnitId) : BattleEvent;
+
+/// <summary>A KO unit was revived at its slot with the given HP and has a turn on the timeline again.</summary>
+public sealed record UnitRevived(int UnitId, int Hp) : BattleEvent;
+
+/// <summary>Why a unit's stealth changed.</summary>
+public enum StealthCause
+{
+    Gained,
+    Attacked,
+    Hit,
+    Revealed,
+    KnockedOut,
+}
+
+/// <summary>A unit gained or lost stealth.</summary>
+public sealed record StealthChanged(int UnitId, bool Stealthed, StealthCause Cause) : BattleEvent;
