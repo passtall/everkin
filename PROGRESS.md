@@ -2,19 +2,19 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, M0.3 nearly done (APK built; needs phone run).
+**Last updated:** 2026-11-08, M0.4 done.
 
 ## Current task
 
-**M0.3** Export test: Windows verified; Android APK builds with Gradle on net10.0; still to do: run it on the phone.
+None between tasks. Next is **M1.1**.
 
 ## Next step
 
-M0.3: owner connects the phone (USB debugging on, authorised); then `adb install -r build/android/Everkin.apk`, launch it, confirm the boot screen shows `Everkin boot OK / core: Everkin.Core`. Then tick M0.3 and do M0.4.
+M1.1 content pipeline: read production §2.1/§2.2 and the table formats in creature-classes.md, class_system.md, skills.md; design `tools/content/` and `content/*.json`.
 
 ## In flight
 
-Nothing uncommitted. Android APK is built in `build/android/` (git-ignored) but not yet run on a device.
+Nothing.
 
 ## Questions for the owner
 
@@ -27,6 +27,7 @@ None open. (Resolved: the .NET question below.)
 - Core and runner have TreatWarningsAsErrors; tests do not. `dotnet build` / `dotnet test` at the root work.
 - M0.3: export presets are in `export_presets.cfg` (Windows Desktop, Android). Export templates 4.7.2.stable.mono are in %APPDATA%\Godot\export_templates. Android SDK is at %LOCALAPPDATA%\Android\Sdk (platform 35, build-tools 35.0.1, NDK 28.1.13356709, licences accepted), JDK is Zulu 17; Godot editor settings already point to both.
 - Headless export: `Godot...console.exe --headless --path . --export-debug "Windows Desktop" build/windows/Everkin.exe --quit` (without `--quit` the process hangs after exporting). Output in `build/` (git-ignored). Windows build verified: boot scene prints core name and .NET 10.0.9.
+- M0.3 verified on a Samsung SM-S928B (Android, Adreno 750): boot scene shows core name and .NET 10.0.9. The phone screen must be unlocked for adb launches; `adb shell monkey -p com.everkin.game -c android.intent.category.LAUNCHER 1` starts the app, `adb logcat -d -s godot` shows its output. Use bash (not PowerShell) for `adb exec-out screencap -p > file.png`.
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -37,8 +38,8 @@ None open. (Resolved: the .NET question below.)
 
 - [x] M0.1 Solution and projects
 - [x] M0.2 Godot C# project referencing the core
-- [ ] M0.3 Android and Windows export test
-- [ ] M0.4 Build and test commands in CLAUDE.md
+- [x] M0.3 Android and Windows export test
+- [x] M0.4 Build and test commands in CLAUDE.md
 - [ ] M1.1 Content pipeline and validation
 - [ ] M1.2 Battle state, random generator, events
 - [ ] M1.3 Formation
@@ -104,3 +105,4 @@ None open. (Resolved: the .NET question below.)
 One line per finished task: date, task, commit.
 2026-11-08 M0.1 Solution and projects (see git log)
 2026-11-08 M0.2 Godot C# project (see git log)
+2026-11-08 M0.3 Export test, M0.4 Commands in CLAUDE.md (see git log)

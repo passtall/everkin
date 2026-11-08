@@ -47,9 +47,13 @@ Never use `docs/archive/` as a source; it is history only.
 
 ## Build and test
 
-Once the solution exists (milestone 1 of the plan), the commands go here:
+The solution is `Everkin.sln` (net10.0): `src/Everkin.Core`, `src/Everkin.Runner`, `src/Everkin.Core.Tests` and the Godot project `Everkin.csproj` at the root. Run everything from the repository root.
 
 - Build: `dotnet build`
 - Tests: `dotnet test`
-- Batch run: see the runner's `--help`
-- Godot: open the project at the root in the Godot 4.7 .NET editor; the renderer is Compatibility on every platform.
+- Batch run: `dotnet run --project src/Everkin.Runner -c Release -- --help` (the runner arrives in M2.2)
+- Godot editor: open the project at the root in Godot 4.7.2 .NET (`E:\Downloads\Neuer Ordner\Godot_v4.7.2-stable_mono_win64\Godot_v4.7.2-stable_mono_win64.exe`); the renderer is Compatibility on every platform.
+- Godot headless (use the `_console.exe`; always pass `--quit`, otherwise the process hangs):
+  - Import assets and build C#: `--headless --path . --build-solutions --quit`
+  - Windows export: `--headless --path . --export-debug "Windows Desktop" build/windows/Everkin.exe --quit`
+  - Android export: `--headless --path . --export-debug "Android" build/android/Everkin.apk --quit`, then `adb install -r build/android/Everkin.apk`. Android needs Gradle builds (`android/build/` from the export templates, git-ignored); see PROGRESS.md notes.
