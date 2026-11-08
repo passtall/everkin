@@ -297,6 +297,7 @@ public static class Statuses
     public static void HandleExpiry(BattleState state, TimelineEntry entry)
     {
         if (entry.Kind != TimelineKind.EffectEnd || entry.OwnerUnitId is not { } unitId || entry.Tag is not { } statusId) return;
+        if (statusId == Summons.ExpiryTag) { Summons.HandleExpiry(state, entry); return; }
         var unit = state.GetUnit(unitId);
         var instance = Get(unit, statusId);
         if (instance is null || instance.MarkerEntryId != entry.Id) return;

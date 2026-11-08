@@ -26,6 +26,14 @@ public static class Knockout
         state.Timeline.RemoveOwnedBy(unitId, includeTurn: true, keepEvents: keepPendingEvents);
 
         state.Emit(new UnitKnockedOut(unitId));
+
+        // A KO'd summon, construct or trap is removed at once and frees its slot; it cannot be revived (sections 10.3, 11.2).
+        if (unit.IsSummoned) Summons.Remove(state, unitId, RemovalCause.Ko);
+
+        // Summons persist when their summoner is KO'd, unless the skill says they disappear.
+        foreach (var other in state.Units.ToArray())
+            if (other.SummonerId == unitId && other.DisappearsWithSummoner && !other.IsRemoved)
+                Summons.Remove(state, other.Id, RemovalCause.SummonerGone);
         return true;
     }
 
@@ -55,6 +63,7 @@ public static class Knockout
     public static void Revive(BattleState state, int unitId, int hp, int delay)
     {
         var unit = state.GetUnit(unitId);
+        if (unit.IsRemoved) throw new InvalidOperationException($"Unit {unitId} was removed and cannot be revived.");
         if (!unit.IsKnockedOut) throw new InvalidOperationException($"Unit {unitId} is not KO.");
         if (!unit.KoProcessed) Resolve(state, unitId); // a body that was never processed is processed first
         unit.Hp = Math.Clamp(hp, 1, unit.MaxHp);

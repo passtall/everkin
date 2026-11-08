@@ -14,6 +14,22 @@ public static class SideExtensions
     public static Side Opposite(this Side side) => side == Side.A ? Side.B : Side.A;
 }
 
+/// <summary>What kind of unit it is (game_system.md section 11.1).</summary>
+public enum UnitKind
+{
+    /// <summary>A creature of a party (an original member). Its body stays when it is KO.</summary>
+    Creature,
+
+    /// <summary>A summoned full unit: takes turns. KO'd, it is removed at once and frees its slot.</summary>
+    Summon,
+
+    /// <summary>A summoned unit that expires after a time and disappears without counting as a KO.</summary>
+    Temporary,
+
+    /// <summary>A stationary construct, trap or totem: has HP, can be targeted and intercept, takes no turns of its own.</summary>
+    Construct,
+}
+
 /// <summary>
 /// A unit in a battle. Holds the four stats of game_system.md section 5.1 as they are now (Cost is not used in combat).
 /// Formation, timeline, statuses and Momentum are added by their own tasks.
@@ -26,6 +42,7 @@ public sealed class Unit
         Side = side;
         Name = name;
         CreatureId = creatureId;
+        OriginalSide = side;
         MaxHp = maxHp;
         Hp = maxHp;
         Speed = speed;
@@ -49,13 +66,51 @@ public sealed class Unit
         IsImmobilized = other.IsImmobilized;
         KoProcessed = other.KoProcessed;
         IsAirborne = other.IsAirborne;
+        OriginalSide = other.OriginalSide;
+        Kind = other.Kind;
+        SummonerId = other.SummonerId;
+        DisappearsWithSummoner = other.DisappearsWithSummoner;
+        IsRemoved = other.IsRemoved;
+        IsUndead = other.IsUndead;
+        OriginalRow = other.OriginalRow;
+        OriginalMaxHp = other.OriginalMaxHp;
+        OriginalSpeed = other.OriginalSpeed;
+        OriginalPower = other.OriginalPower;
         foreach (var kv in other._statusInstances) _statusInstances[kv.Key] = kv.Value.Clone();
     }
 
     /// <summary>Unique inside the battle, assigned in the order units were added.</summary>
     public int Id { get; }
 
-    public Side Side { get; }
+    /// <summary>The side the unit fights on now. An undead fights on its necromancer's side until it is restored.</summary>
+    public Side Side { get; internal set; }
+
+    /// <summary>The side the unit started on: its owner for the defeat check (an original raised as undead still counts as KO for it).</summary>
+    public Side OriginalSide { get; }
+
+    public UnitKind Kind { get; internal set; } = UnitKind.Creature;
+
+    /// <summary>The unit that summoned or raised it. A summon's damage and healing scale with this unit's Power (section 5.2).</summary>
+    public int? SummonerId { get; internal set; }
+
+    /// <summary>The summoning skill said it disappears when its summoner is KO (it persists otherwise).</summary>
+    public bool DisappearsWithSummoner { get; internal set; }
+
+    /// <summary>Off the board for good: a KO'd or expired summon. Its slot is free and it cannot be revived.</summary>
+    public bool IsRemoved { get; internal set; }
+
+    /// <summary>Raised by a necromancer (section 11.5). Healing it hurts it; a resurrection restores the original creature.</summary>
+    public bool IsUndead { get; internal set; }
+
+    /// <summary>The row the body had before it was raised, for the free slot nearest it on restoration.</summary>
+    public Row? OriginalRow { get; internal set; }
+
+    public int? OriginalMaxHp { get; internal set; }
+    public int? OriginalSpeed { get; internal set; }
+    public int? OriginalPower { get; internal set; }
+
+    /// <summary>A summon, construct or totem (not a creature of a party).</summary>
+    public bool IsSummoned => Kind != UnitKind.Creature;
     public string Name { get; }
 
     /// <summary>The roster creature's unit name, or null for units that do not come from the roster.</summary>
@@ -215,6 +270,24 @@ public sealed class BattleState
 
     public Unit GetUnit(int id) => _units[id];
 
+    /// <summary>Adds a unit with explicit stats at full HP (summons, constructs, tests). Placing it on the board is separate.</summary>
+    public Unit AddUnit(string name, Side side, int maxHp, int speed, int power, string? creatureId = null)
+    {
+        var unit = new Unit(_units.Count, side, name, creatureId, maxHp, speed, power);
+        _units.Add(unit);
+        return unit;
+    }
+
+    /// <summary>
+    /// The Power a unit's damage and healing scale with (section 5.2): a summon, construct or totem uses its summoner's
+    /// Power, everything else its own. HP and Speed of a summon stay fixed.
+    /// </summary>
+    public int PowerOf(int unitId)
+    {
+        var unit = GetUnit(unitId);
+        return unit.IsSummoned && unit.SummonerId is { } summoner ? GetUnit(summoner).Power : unit.Power;
+    }
+
     /// <summary>Adds a unit with the stats of a roster creature at full HP.</summary>
     public Unit AddUnit(CreatureDef creature, Side side)
     {
@@ -248,6 +321,12 @@ public sealed class BattleState
         var target = GetUnit(targetId);
         if (target.IsKnockedOut) throw new InvalidOperationException($"Unit {targetId} is KO and cannot be healed, only revived.");
         if (amount < 0) throw new ArgumentOutOfRangeException(nameof(amount));
+        if (target.IsUndead)
+        {
+            // Healing an undead deals that amount as damage instead (section 11.5).
+            if (amount > 0) DealDamage(sourceUnitId, targetId, amount);
+            return 0;
+        }
         var after = DamageMath.HealedHp(target.Hp, target.MaxHp, amount);
         var healed = after - target.Hp;
         target.Hp = after;

@@ -78,3 +78,28 @@ public enum StatusEndCause
 
 /// <summary>A status ended.</summary>
 public sealed record StatusEnded(int UnitId, string StatusId, StatusEndCause Cause) : BattleEvent;
+
+/// <summary>A summon, construct or totem appeared.</summary>
+public sealed record UnitSummoned(int UnitId, int SummonerId, UnitKind Kind, Position Position) : BattleEvent;
+
+/// <summary>Why a unit left the board for good.</summary>
+public enum RemovalCause
+{
+    /// <summary>KO'd: a KO'd summon or trap is removed at once.</summary>
+    Ko,
+
+    /// <summary>A temporary unit's time ran out. It is not a KO: no KO-triggered effects fire.</summary>
+    Expired,
+
+    /// <summary>Its summoner was KO'd and its skill says it disappears with it.</summary>
+    SummonerGone,
+}
+
+/// <summary>A unit left the board and its slot is free.</summary>
+public sealed record UnitRemoved(int UnitId, RemovalCause Cause, Position From) : BattleEvent;
+
+/// <summary>A necromancer raised a KO body as an undead on its own side.</summary>
+public sealed record UnitRaised(int UnitId, int NecromancerId, Position From, Position To, int Hp) : BattleEvent;
+
+/// <summary>A resurrection restored an undead to the original creature on its owner's side.</summary>
+public sealed record UndeadRestored(int UnitId, Position From, Position To, int Hp) : BattleEvent;
