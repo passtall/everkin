@@ -2,23 +2,23 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, M0.3 half done (Windows OK, Android blocked).
+**Last updated:** 2026-11-08, M0.3 nearly done (APK built; needs phone run).
 
 ## Current task
 
-**M0.3** Export test: Windows works, Android blocked (see Questions).
+**M0.3** Export test: Windows verified; Android APK builds with Gradle on net10.0; still to do: run it on the phone.
 
 ## Next step
 
-M0.3 Android: wait for the owner's answer on the .NET version question, then export `build/android/Everkin.apk` and install it on the phone (adb needs USB debugging on; `adb devices` was empty).
+M0.3: owner connects the phone (USB debugging on, authorised); then `adb install -r build/android/Everkin.apk`, launch it, confirm the boot screen shows `Everkin boot OK / core: Everkin.Core`. Then tick M0.3 and do M0.4.
 
 ## In flight
 
-Nothing uncommitted. Windows export verified; Android export refused by Godot (below).
+Nothing uncommitted. Android APK is built in `build/android/` (git-ignored) but not yet run on a device.
 
 ## Questions for the owner
 
-1. **M0.3 / production §2.1 (.NET version).** The Godot 4.7.2 Android export template (no Gradle) supports only `net9.0`; the project targets `net10.0` (newest LTS) and the export is refused. Options: (a) keep net10.0 and use Gradle builds for Android (needs the Android build template; unverified that it accepts net10.0); (b) move every project to net9.0 (not an LTS); (c) move to net8.0 (LTS, certainly supported). production §2.1 says "newest LTS that Godot 4.7 supports", which may need rewording depending on the answer.
+None open. (Resolved: the .NET question below.)
 
 ## Notes
 
@@ -28,6 +28,9 @@ Nothing uncommitted. Windows export verified; Android export refused by Godot (b
 - M0.3: export presets are in `export_presets.cfg` (Windows Desktop, Android). Export templates 4.7.2.stable.mono are in %APPDATA%\Godot\export_templates. Android SDK is at %LOCALAPPDATA%\Android\Sdk (platform 35, build-tools 35.0.1, NDK 28.1.13356709, licences accepted), JDK is Zulu 17; Godot editor settings already point to both.
 - Headless export: `Godot...console.exe --headless --path . --export-debug "Windows Desktop" build/windows/Everkin.exe --quit` (without `--quit` the process hangs after exporting). Output in `build/` (git-ignored). Windows build verified: boot scene prints core name and .NET 10.0.9.
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
+- **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
+- Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
+- Do not rewrite `export_presets.cfg` with PowerShell `Set-Content -Encoding utf8` (adds a BOM and Godot then sees no presets).
 - The renderer is already set to Compatibility in project.godot (done in the spec phase, 2026-11-08).
 
 ## Task list
