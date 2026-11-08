@@ -20,6 +20,21 @@ public static class StatusIds
     /// <summary>Lie in Wait: the next skill the unit uses is lost and it is Stunned (skills.md Hunter).</summary>
     public const string LieInWait = "lie_in_wait";
 
+    /// <summary>The Guardian's Charge: the ally it protects (Take a Charge). The status's source is the Guardian.</summary>
+    public const string Charge = "charge";
+
+    /// <summary>Leap to Defend: the Guardian takes the next attack aimed at this unit. The source is the Guardian.</summary>
+    public const string LeapCover = "leap_cover";
+
+    /// <summary>Distract: the unit's next attack must target the Guardian if it can. The source is the Guardian.</summary>
+    public const string Distracted = "distracted";
+
+    /// <summary>Pledge: area effects that would hit the Guardian's Charge hit the Guardian instead.</summary>
+    public const string Pledge = "pledge";
+
+    /// <summary>Shield Wall: the Guardian's row intercepts every melee or projectile attack aimed at units behind it.</summary>
+    public const string ShieldWall = "shield_wall";
+
     /// <summary>Its next skill has more Delay by the status's magnitude (Net Trap: +3).</summary>
     public const string NextSkillDelay = "next_skill_delay";
 
@@ -116,8 +131,9 @@ public static class StatusRules
     {
         StatusIds.Blind or StatusIds.Poison or StatusIds.Bleeding or StatusIds.Silenced or StatusIds.Chilled
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
-            or StatusIds.Marked or StatusIds.Slow or StatusIds.LieInWait or StatusIds.NextSkillDelay => Polarity.Harmful,
-        StatusIds.Ward or StatusIds.Dampen or StatusIds.Haste => Polarity.Helpful,
+            or StatusIds.Marked or StatusIds.Slow or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted => Polarity.Harmful,
+        StatusIds.Ward or StatusIds.Dampen or StatusIds.Haste or StatusIds.Charge or StatusIds.LeapCover or StatusIds.Pledge
+            or StatusIds.ShieldWall => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };
 

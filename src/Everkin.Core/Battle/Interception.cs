@@ -52,6 +52,10 @@ public static class Interception
     /// </summary>
     public static bool IsEligible(Unit unit) => !unit.IsKnockedOut && !unit.IsStealthed && !unit.InterceptionBlocked;
 
+    /// <summary>As the plain check, and not stopped by a passive that forbids intercepting (Keeper of the Gate).</summary>
+    public static bool IsEligible(BattleState state, Unit unit) =>
+        IsEligible(unit) && !state.InterceptionBlockers.Any(b => b(state, unit.Id));
+
     /// <summary>The chance to intercept for a given horizontal overlap: 50% at 100%, 25% at 50%, none otherwise.</summary>
     public static int ChanceFor(int overlapPercent) => overlapPercent >= 100 ? ChanceAtFullOverlap
         : overlapPercent >= 50 ? ChanceAtHalfOverlap
@@ -76,7 +80,7 @@ public static class Interception
     {
         var list = new List<int>();
         foreach (var id in state.Formation.Units(side, row))
-            if (IsEligible(state.GetUnit(id)) && ChanceFor(state.Formation.UnitOverlapPercent(id, targetId)) > 0)
+            if (IsEligible(state, state.GetUnit(id)) && ChanceFor(state.Formation.UnitOverlapPercent(id, targetId)) > 0)
                 list.Add(id);
         return list;
     }
@@ -94,6 +98,17 @@ public static class Interception
         var position = state.Formation.PositionOf(targetId);
         var shares = new List<InterceptedShare>();
         var remaining = amount;
+        var used = new HashSet<int>();
+
+        // A unit that always intercepts (Shield Wall, Living Wall) goes first, with a 100% chance; the hit is full or partial as usual.
+        foreach (var hook in state.GuaranteedInterceptors)
+        {
+            if (remaining <= 0) break;
+            if (hook(state, targetId) is not { } guard || guard == targetId || used.Contains(guard)) continue;
+            if (!IsEligible(state, state.GetUnit(guard))) continue;
+            used.Add(guard);
+            remaining = TakeShare(state, targetId, guard, remaining, splittable, shares);
+        }
 
         for (var r = 0; r < (int)position.Row && remaining > 0; r++)
         {
@@ -101,19 +116,30 @@ public static class Interception
             Shuffle(row, state.Random);
             foreach (var id in row)
             {
+                if (used.Contains(id)) continue;
                 var chance = ChanceFor(state.Formation.UnitOverlapPercent(id, targetId));
                 if (!state.Random.Chance(chance)) continue;
 
-                var canSplit = splittable && remaining >= 2;
-                var full = !canSplit || state.Random.Chance(FullHitChance);
-                var share = full ? remaining : remaining / 2;
-                shares.Add(new InterceptedShare(id, share, full));
-                state.Emit(new Intercepted(targetId, id, share, full));
-                remaining -= share;
+                remaining = TakeShare(state, targetId, id, remaining, splittable, shares);
                 if (remaining <= 0) break;
             }
         }
         return new InterceptionResult(shares, Math.Max(0, remaining));
+    }
+
+    /// <summary>
+    /// One interceptor steps in: it takes the whole remainder or, if it can be split, half of it (50% each, unless a passive such as
+    /// Full Cover says it always takes the whole hit). Returns what is left.
+    /// </summary>
+    private static int TakeShare(BattleState state, int targetId, int interceptorId, int remaining, bool splittable, List<InterceptedShare> shares)
+    {
+        var canSplit = splittable && remaining >= 2;
+        var whole = state.FullHitRules.Any(r => r(state, interceptorId));
+        var full = !canSplit || whole || state.Random.Chance(FullHitChance);
+        var share = full ? remaining : remaining / 2;
+        shares.Add(new InterceptedShare(interceptorId, share, full));
+        state.Emit(new Intercepted(targetId, interceptorId, share, full));
+        return remaining - share;
     }
 
     /// <summary>Random order with every order equally likely (section 6.5), from the battle's generator.</summary>

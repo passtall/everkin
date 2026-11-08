@@ -37,6 +37,10 @@ public static class Movement
     /// <summary>The Move action costs as much as a Delay 5 skill, the same as a skipped turn (section 9.1).</summary>
     public const int MoveDelay = Timeline.SkippedTurnDelay;
 
+    /// <summary>An effect caused by this side cannot push, pull or swap the unit (a passive such as Hold Position).</summary>
+    public static bool IsImmune(BattleState state, int unitId, Side? causedBy) =>
+        causedBy is { } side && state.ForcedMoveImmunities.Any(i => i(state, unitId, side));
+
     /// <summary>Whether a unit can move or be moved at all: KO bodies and Immobilized units cannot.</summary>
     public static bool IsMovable(Unit unit) => !unit.IsKnockedOut && !unit.IsImmobilized;
 
@@ -74,6 +78,7 @@ public static class Movement
         var from = state.Formation.Remove(unitId);
         state.Formation.Place(unitId, from.Side, row, gap);
         state.Emit(new UnitMoved(unitId, from, state.Formation.PositionOf(unitId), MoveCause.Voluntary));
+        foreach (var hook in state.AfterMoveHooks.ToArray()) hook(state, unitId);
     }
 
     // ------------------------------------------------------------------ forced movement
@@ -88,11 +93,11 @@ public static class Movement
     /// every unit pressed along and the blocker, takes bump damage of 1 (a hit: stealth ends). Bump damage does not move
     /// Momentum. A KO body or an Immobilized unit cannot be moved, so meeting one blocks the chain.
     /// </summary>
-    public static ForcedMoveResult ForceMove(BattleState state, int unitId, Row destination)
+    public static ForcedMoveResult ForceMove(BattleState state, int unitId, Row destination, Side? causedBy = null)
     {
         var f = state.Formation;
         var mover = state.GetUnit(unitId);
-        if (!IsMovable(mover)) return ForcedMoveResult.NotMovable;
+        if (!IsMovable(mover) || IsImmune(state, unitId, causedBy)) return ForcedMoveResult.NotMovable;
         var start = f.PositionOf(unitId);
         if (start.Row == destination) throw new ArgumentException("The unit is already in that row.", nameof(destination));
 
@@ -124,7 +129,7 @@ public static class Movement
             {
                 var occupant = list[at];
                 landings.Add((current, (Row)row, at));
-                if (!IsMovable(state.GetUnit(occupant))) { blockers = new List<int> { occupant }; break; }
+                if (!IsMovable(state.GetUnit(occupant)) || IsImmune(state, occupant, causedBy)) { blockers = new List<int> { occupant }; break; }
                 chain.Add(occupant);
                 current = occupant;
                 row += direction;
@@ -174,6 +179,8 @@ public static class Movement
 
         var moves = chain.Select(id => new UnitMoved(id, before[id], f.PositionOf(id), MoveCause.Forced)).ToList();
         foreach (var m in moves) state.Emit(m);
+        foreach (var m in moves)
+            foreach (var hook in state.AfterMoveHooks.ToArray()) hook(state, m.UnitId);
         return new ForcedMoveResult(ForcedMoveStatus.Moved, moves, Array.Empty<int>());
     }
 
@@ -183,10 +190,11 @@ public static class Movement
     /// Two units of one side exchange places (a skill such as Switch Places). A swap with a KO body or an Immobilized unit
     /// fails (section 9.5): nothing happens and false is returned.
     /// </summary>
-    public static bool Swap(BattleState state, int unitA, int unitB)
+    public static bool Swap(BattleState state, int unitA, int unitB, Side? causedBy = null)
     {
         if (unitA == unitB) return false;
         if (!IsMovable(state.GetUnit(unitA)) || !IsMovable(state.GetUnit(unitB))) return false;
+        if (IsImmune(state, unitA, causedBy) || IsImmune(state, unitB, causedBy)) return false;
         var a = state.Formation.PositionOf(unitA);
         var b = state.Formation.PositionOf(unitB);
         if (a.Side != b.Side) return false;

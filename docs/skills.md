@@ -61,16 +61,16 @@ Branches: Bulwark, Bodyguard, Keeper.
 
 | Branch | Skill | Kind | Needs | D / M | Delivery · Range | Effect |
 |---|---|---|---|---|---|---|
-| Bulwark | Shield Wall | A | Hold Position | 6 / 4 |  | Needs 3 or more of your units side by side in the Guardian's row. For 10 time units, attacks aimed at units behind the wall are always intercepted by the wall. |
+| Bulwark | Shield Wall | A | Hold Position | 6 / 4 |  | Needs 3 or more of your units side by side in the Guardian's row. For 10 time units, attacks aimed at units behind the wall are always intercepted by the wall: for a melee or projectile attack on a unit behind the wall, the nearest wall unit that overlaps it by at least 50% intercepts with 100% chance instead of the usual roll (the hit is still full or partial as usual); direct attacks pass (decided 2026-11-08). |
 | Bulwark | Hold Position | P | Leap to Defend |  |  | Enemy effects cannot push, pull or swap the Guardian. |
 | Bulwark | Full Cover | P | Leap to Defend |  |  | When the Guardian intercepts, it always takes the whole hit, never a partial one. |
-| Bulwark | Living Wall | K | Full Cover |  |  | The Guardian always intercepts for the units directly behind it, but it can never attack. |
-| Bulwark | Leap to Defend | A | — | 3 / 0 |  | Own side only. The Guardian moves next to an ally anywhere on your side (any gap) and takes the next attack on that ally instead of it. |
+| Bulwark | Living Wall | K | Full Cover |  |  | The Guardian always intercepts for the units directly behind it, but it can never attack. "Directly behind": the units in the row behind the Guardian that overlap it by at least 50%, covered as the Shield Wall covers them (decided 2026-11-08). |
+| Bulwark | Leap to Defend | A | — | 3 / 0 |  | Own side only. The Guardian moves next to an ally anywhere on your side (any gap) and takes the next attack on that ally instead of it. It lasts until the next attack of any kind aimed at that ally (melee, projectile or direct), which is aimed at the Guardian instead, once; it ends if the Guardian is KO'd (decided 2026-11-08). |
 | Bodyguard | Rescue | A | Follow the Charge | 5 / 2 | Direct · D2 | Own side only. Swap places with an ally within distance 2 that is below half HP. |
 | Bodyguard | Take a Charge | A | — | 2 / 0 | Direct · D3 | Own side only. An ally becomes the Guardian's Charge (one at a time; choosing another moves it). |
-| Bodyguard | Follow the Charge | P | Take a Charge |  |  | When the Charge moves or is moved, the Guardian may move with it to stay lined up in front of it. |
-| Bodyguard | Distract | A | Take a Charge | 2 / 0 |  | The enemy that last hit the Charge must target the Guardian with its next attack, if it can. |
-| Bodyguard | Pledge | A | Distract | 5 / 2 |  | For 10 time units, area effects that would hit the Charge hit the Guardian instead. |
+| Bodyguard | Follow the Charge | P | Take a Charge |  |  | When the Charge moves or is moved, the Guardian may move with it to stay lined up in front of it. The move is automatic and free (no Delay): right after the Charge moves, the Guardian moves into the row in front of the Charge, at the Charge's coordinate, if that move is legal and not blocked; there is no prompt during enemy turns (decided 2026-11-08). |
+| Bodyguard | Distract | A | Take a Charge | 2 / 0 |  | The enemy that last hit the Charge must target the Guardian with its next attack, if it can. For that enemy's next damaging skill that takes a target, the Guardian is the only legal target if it is a legal target of that skill; otherwise nothing changes. It ends after that attack, or if the Guardian is KO'd; no time limit (decided 2026-11-08). |
+| Bodyguard | Pledge | A | Distract | 5 / 2 |  | For 10 time units, area effects that would hit the Charge hit the Guardian instead: the Charge is left out of the area and the Guardian is hit in its place, once even if it is already in the area (decided 2026-11-08). |
 | Keeper | Ward | A | — | 3 / 0 | Direct · D2 | A unit within distance 2 gains a Ward of 4 until the Guardian's next turn. |
 | Keeper | Lasting Ward | Mod of Ward | Ward |  | As parent | Ward lasts until it is broken, not until the Guardian's next turn. |
 | Keeper | Overcharged Ward | A | Ward | 5 / 3 | Direct · D3 | A unit gains a Ward of 8 that lasts only until that unit's next turn. |

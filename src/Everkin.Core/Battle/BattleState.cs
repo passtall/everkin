@@ -75,6 +75,7 @@ public sealed class Unit
         OriginalRow = other.OriginalRow;
         OriginalMaxHp = other.OriginalMaxHp;
         LastActionIndex = other.LastActionIndex;
+        LastHitBy = other.LastHitBy;
         _knownSkills.AddRange(other._knownSkills);
         OriginalSpeed = other.OriginalSpeed;
         OriginalPower = other.OriginalPower;
@@ -116,6 +117,9 @@ public sealed class Unit
 
     /// <summary>The number of the unit's last action (skill, Move or Skip Turn), for rules that look at what happened since then.</summary>
     public int LastActionIndex { get; internal set; }
+
+    /// <summary>The unit that hit this unit most recently (Distract looks at who last hit the Charge).</summary>
+    public int? LastHitBy { get; internal set; }
 
     private readonly List<string> _knownSkills = new();
 
@@ -223,6 +227,13 @@ public sealed class BattleState
     private readonly List<StealthBlocker> _stealthBlockers = new();
     private readonly List<StealthBreakVeto> _stealthVetoes = new();
     private readonly List<PreHitHook> _preHitHooks = new();
+    private readonly List<InterceptionBlocker> _interceptionBlockers = new();
+    private readonly List<FullHitRule> _fullHitRules = new();
+    private readonly List<GuaranteedInterceptor> _guaranteedInterceptors = new();
+    private readonly List<ForcedMoveImmunity> _forcedMoveImmunities = new();
+    private readonly List<AreaRedirect> _areaRedirects = new();
+    private readonly List<AfterMove> _afterMoveHooks = new();
+    private readonly List<AttackBan> _attackBans = new();
     private readonly List<ReactionDef> _reactions = new();
     private readonly Dictionary<string, int> _reactionUses = new();
 
@@ -248,6 +259,13 @@ public sealed class BattleState
         _stealthBlockers.AddRange(other._stealthBlockers);
         _stealthVetoes.AddRange(other._stealthVetoes);
         _preHitHooks.AddRange(other._preHitHooks);
+        _interceptionBlockers.AddRange(other._interceptionBlockers);
+        _fullHitRules.AddRange(other._fullHitRules);
+        _guaranteedInterceptors.AddRange(other._guaranteedInterceptors);
+        _forcedMoveImmunities.AddRange(other._forcedMoveImmunities);
+        _areaRedirects.AddRange(other._areaRedirects);
+        _afterMoveHooks.AddRange(other._afterMoveHooks);
+        _attackBans.AddRange(other._attackBans);
         Outcome = other.Outcome;
         EndReason = other.EndReason;
         TurnsTaken = other.TurnsTaken;
@@ -298,6 +316,27 @@ public sealed class BattleState
     public IReadOnlyList<PreHitHook> PreHitHooks => _preHitHooks;
 
     public void AddPreHitHook(PreHitHook hook) => _preHitHooks.Add(hook);
+
+    public IReadOnlyList<InterceptionBlocker> InterceptionBlockers => _interceptionBlockers;
+    public void AddInterceptionBlocker(InterceptionBlocker hook) => _interceptionBlockers.Add(hook);
+
+    public IReadOnlyList<FullHitRule> FullHitRules => _fullHitRules;
+    public void AddFullHitRule(FullHitRule hook) => _fullHitRules.Add(hook);
+
+    public IReadOnlyList<GuaranteedInterceptor> GuaranteedInterceptors => _guaranteedInterceptors;
+    public void AddGuaranteedInterceptor(GuaranteedInterceptor hook) => _guaranteedInterceptors.Add(hook);
+
+    public IReadOnlyList<ForcedMoveImmunity> ForcedMoveImmunities => _forcedMoveImmunities;
+    public void AddForcedMoveImmunity(ForcedMoveImmunity hook) => _forcedMoveImmunities.Add(hook);
+
+    public IReadOnlyList<AreaRedirect> AreaRedirects => _areaRedirects;
+    public void AddAreaRedirect(AreaRedirect hook) => _areaRedirects.Add(hook);
+
+    public IReadOnlyList<AfterMove> AfterMoveHooks => _afterMoveHooks;
+    public void AddAfterMoveHook(AfterMove hook) => _afterMoveHooks.Add(hook);
+
+    public IReadOnlyList<AttackBan> AttackBans => _attackBans;
+    public void AddAttackBan(AttackBan hook) => _attackBans.Add(hook);
 
     /// <summary>Whether the battle is over and who won (section 12.3). Set by <see cref="BattleEnd"/>.</summary>
     public BattleOutcome Outcome { get; private set; }

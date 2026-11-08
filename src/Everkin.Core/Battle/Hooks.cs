@@ -14,3 +14,24 @@ public delegate bool StealthBreakVeto(BattleState state, int unitId, StealthCaus
 
 /// <summary>Called before an attack resolves against a target; returns another unit to aim it at, or null to leave it.</summary>
 public delegate int? PreHitHook(BattleState state, int attackerId, int targetId);
+
+/// <summary>True when the unit cannot intercept for others (Keeper of the Gate).</summary>
+public delegate bool InterceptionBlocker(BattleState state, int unitId);
+
+/// <summary>True when the interceptor always takes the whole hit, never a partial one (Full Cover).</summary>
+public delegate bool FullHitRule(BattleState state, int interceptorId);
+
+/// <summary>A unit that always intercepts for the target, with a 100% chance, before the usual roll (Shield Wall, Living Wall); or null.</summary>
+public delegate int? GuaranteedInterceptor(BattleState state, int targetId);
+
+/// <summary>True when an effect caused by the given side cannot push, pull or swap the unit (Hold Position).</summary>
+public delegate bool ForcedMoveImmunity(BattleState state, int unitId, Side causedBy);
+
+/// <summary>For an area effect that would hit the target: another unit that is hit in its place, or null (Pledge).</summary>
+public delegate int? AreaRedirect(BattleState state, int targetId);
+
+/// <summary>Called after a unit has moved, by its own Move or by forced movement (Follow the Charge).</summary>
+public delegate void AfterMove(BattleState state, int movedUnitId);
+
+/// <summary>True when the unit can never attack (Living Wall).</summary>
+public delegate bool AttackBan(BattleState state, int unitId);

@@ -33,6 +33,7 @@ public abstract class StrikeSkill : Skill
     protected StrikeSkill(AttackSkillDef def) : base(def.Id, def.Delay, def.Momentum) { }
 
     public sealed override TargetKind Target => TargetKind.Unit;
+    public sealed override bool IsAttack => true;
 
     /// <summary>The damage written for Power 5.</summary>
     protected abstract IntRange Damage { get; }
@@ -135,6 +136,7 @@ public sealed class Breath : Skill
     public override EffectTags Tags => EffectTags.Direct;
     public override Reach Reach => Reach.Distance(1);
     public override bool IsArea => true;
+    public override bool IsAttack => true;
 
     public override void Resolve(SkillContext context)
     {
@@ -154,6 +156,7 @@ public sealed class Pulse : Skill
     public override Delivery? Delivery => Battle.Delivery.Direct;
     public override EffectTags Tags => EffectTags.Direct;
     public override bool IsArea => true;
+    public override bool IsAttack => true;
 
     private static IReadOnlyList<int> EnemiesInReach(BattleState state, int userId)
     {

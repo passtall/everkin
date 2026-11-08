@@ -359,7 +359,7 @@ public sealed class Flush : ProfessionSkill
     public override void Resolve(SkillContext context)
     {
         var target = context.TargetId!.Value;
-        var result = Movement.ForceMove(context.State, target, Row.Front);
+        var result = Movement.ForceMove(context.State, target, Row.Front, context.UserSide);   // an effect of this side: Hold Position stops it
         Stealth.Break(context.State, target, StealthCause.Revealed);
         context.AfterForcedMove(result);
     }

@@ -22,6 +22,7 @@ public static class Actions
         if (!catalog.TryGet(use.SkillId, out var skill)) return $"unknown skill {use.SkillId}";
         if (!user.KnownSkills.Contains(use.SkillId)) return "the unit does not know this skill";
         if (skill.IsPassive) return "a passive is always on and is not used";
+        if (skill.IsAttack && state.AttackBans.Any(b => b(state, use.UserId))) return "this unit can never attack";
         if (skill.Magical && !Statuses.CanUseMagical(user)) return "Silenced: magical skills cannot be used";
         if (!state.Momentum.CanPay(user.Side, skill.MomentumCost)) return $"needs the side to be {skill.MomentumCost} ahead in Momentum";
         var own = skill.Unavailable(state, use.UserId);
@@ -37,12 +38,22 @@ public static class Actions
             case TargetKind.Placement:
                 if (use.Placement is not { } place) return "needs a place";
                 return skill.PlacementOptions(state, use.UserId).Contains(place) ? null : "not a legal place";
+            case TargetKind.UnitAndPlacement:
+            {
+                if (use.TargetUnitId is not { } who) return "needs a target";
+                if (who < 0 || who >= state.Units.Count) return "unknown target";
+                if (!Targeting.IsLegalTarget(state, use.UserId, who, skill.Reach, skill.Options with { Delivery = skill.Delivery })) return "not a legal target";
+                if (!skill.TargetFilter(state, use.UserId, who)) return "not a valid target for this skill";
+                if (use.Placement is not { } where) return "needs a place";
+                return skill.PlacementOptionsFor(state, use.UserId, who).Contains(where) ? null : "not a legal place";
+            }
             default:
                 if (use.TargetUnitId is not { } target) return "needs a target";
                 if (target < 0 || target >= state.Units.Count) return "unknown target";
                 var options = skill.Options with { Delivery = skill.Delivery };
                 if (!Targeting.IsLegalTarget(state, use.UserId, target, skill.Reach, options)) return "not a legal target";
-                return skill.TargetFilter(state, use.UserId, target) ? null : "not a valid target for this skill";
+                if (!skill.TargetFilter(state, use.UserId, target)) return "not a valid target for this skill";
+                return DistractedFrom(state, use.UserId, skill, target);
         }
     }
 
@@ -52,7 +63,20 @@ public static class Actions
         var skill = catalog.Get(skillId);
         if (skill.Target != TargetKind.Unit) return Array.Empty<int>();
         return Targeting.LegalTargets(state, userId, skill.Reach, skill.Options with { Delivery = skill.Delivery })
-            .Where(id => skill.TargetFilter(state, userId, id)).ToArray();
+            .Where(id => skill.TargetFilter(state, userId, id) && DistractedFrom(state, userId, skill, id) is null).ToArray();
+    }
+
+    /// <summary>
+    /// Distract: for the Distracted unit's next attack that takes a target, the Guardian is the only legal target if it is a legal
+    /// target of that skill; otherwise nothing changes. Returns the reason a target is refused, or null.
+    /// </summary>
+    private static string? DistractedFrom(BattleState state, int userId, Skill skill, int targetId)
+    {
+        if (!skill.IsAttack || Statuses.Get(state.GetUnit(userId), StatusIds.Distracted)?.SourceUnitId is not { } guardian) return null;
+        if (guardian == targetId || state.GetUnit(guardian).IsKnockedOut) return null;
+        var options = skill.Options with { Delivery = skill.Delivery };
+        return Targeting.IsLegalTarget(state, userId, guardian, skill.Reach, options) && skill.TargetFilter(state, userId, guardian)
+            ? "Distracted: must target the Guardian" : null;
     }
 
     /// <summary>
@@ -92,6 +116,8 @@ public static class Actions
         }
         else
         {
+            if (skill.IsAttack && Statuses.Has(user, StatusIds.Distracted))
+                Statuses.Remove(state, use.UserId, StatusIds.Distracted, StatusEndCause.Consumed);   // it counted: this was its next attack
             skill.Resolve(new SkillContext(state, skill, use.UserId, use, target));
             AfterSkill(state, use.UserId, skill.Tags.HasFlag(EffectTags.Melee), skill.Tags.HasFlag(EffectTags.Move));
         }

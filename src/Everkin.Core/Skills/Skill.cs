@@ -16,6 +16,9 @@ public enum TargetKind
 
     /// <summary>A free place on the board: a row and a gap (placing a trap, a summon, a construct).</summary>
     Placement,
+
+    /// <summary>A unit and a place next to it (Leap to Defend).</summary>
+    UnitAndPlacement,
 }
 
 /// <summary>A unit chose to use a skill, with its target if the skill needs one.</summary>
@@ -52,6 +55,9 @@ public abstract class Skill
     /// <summary>An area skill: its hits are area effects (Freeze in Place reacts to them).</summary>
     public virtual bool IsArea => false;
 
+    /// <summary>An attack: any skill that deals damage to a unit (game_system section 4.7). Living Wall bans it, Distract aims it.</summary>
+    public virtual bool IsAttack => false;
+
     /// <summary>`melee`, `projectile` or `direct`; null for skills that are none of these (self effects, placements).</summary>
     public virtual Delivery? Delivery => null;
 
@@ -78,6 +84,9 @@ public abstract class Skill
 
     /// <summary>The places a skill that places something may put it.</summary>
     public virtual IReadOnlyList<MoveOption> PlacementOptions(BattleState state, int userId) => Array.Empty<MoveOption>();
+
+    /// <summary>The places allowed next to a chosen unit, for a skill that takes a unit and a place.</summary>
+    public virtual IReadOnlyList<MoveOption> PlacementOptionsFor(BattleState state, int userId, int targetId) => Array.Empty<MoveOption>();
 
     /// <summary>
     /// Called once at battle start for every unit that knows the skill (section 6): a passive registers its reactions and
@@ -169,6 +178,20 @@ public sealed class SkillContext
             Stealth.Break(State, UserId, StealthCause.Attacked);   // attacking ends the user's stealth
         }
 
+        if (_skill.IsArea)
+        {
+            // An area effect that would hit a protected unit hits its protector instead, once (Pledge).
+            var redirected = new List<HitSpec>();
+            foreach (var spec in hits)
+            {
+                var to = spec.TargetId;
+                foreach (var hook in State.AreaRedirects)
+                    if (hook(State, to) is { } other) { to = other; break; }
+                if (redirected.All(r => r.TargetId != to)) redirected.Add(spec with { TargetId = to });
+            }
+            hits = redirected;
+        }
+
         foreach (var spec in hits)
         {
             if (State.GetUnit(spec.TargetId).IsKnockedOut) continue;   // an earlier part of the block took it out
@@ -232,6 +255,7 @@ public sealed class SkillContext
     {
         Stealth.Break(State, unitId, StealthCause.Hit, _skill.IsArea);
         Statuses.OnHit(State, unitId);
+        State.GetUnit(unitId).LastHitBy = UserId;
         if (Statuses.Has(State.GetUnit(unitId), StatusIds.Marked)) State.LogMarkedHit(UserId, unitId);
         triggers.Add(new Trigger(TriggerKind.WhenHit, unitId, UserId, tags));
     }
