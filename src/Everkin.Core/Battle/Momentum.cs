@@ -57,7 +57,7 @@ public sealed class Momentum
     /// A skill with Momentum cost N needs its side to be at least +N ahead (section 6.7). Costs run from 0 to 10.
     /// </summary>
     public bool CanPay(Side side, int cost) =>
-        cost is >= 0 and <= MaxCost && AdvantageOf(side) >= cost;
+        cost is >= 0 and <= MaxCost && (cost == 0 || AdvantageOf(side) >= cost);   // a free skill is always usable, even behind
 
     /// <summary>
     /// Pays a skill's cost: the meter moves N toward neutral from the side's lead. Paid before any effect and never

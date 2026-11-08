@@ -21,17 +21,29 @@ public static class Actions
         if (user.IsKnockedOut || !state.Formation.Contains(use.UserId)) return "the unit cannot act";
         if (!catalog.TryGet(use.SkillId, out var skill)) return $"unknown skill {use.SkillId}";
         if (!user.KnownSkills.Contains(use.SkillId)) return "the unit does not know this skill";
+        if (skill.IsPassive) return "a passive is always on and is not used";
         if (skill.Magical && !Statuses.CanUseMagical(user)) return "Silenced: magical skills cannot be used";
         if (!state.Momentum.CanPay(user.Side, skill.MomentumCost)) return $"needs the side to be {skill.MomentumCost} ahead in Momentum";
         var own = skill.Unavailable(state, use.UserId);
         if (own is not null) return own;
 
-        if (skill.Target == TargetKind.None)
-            return use.TargetUnitId is null ? null : "this skill takes no target";
-        if (use.TargetUnitId is not { } target) return "needs a target";
-        if (target < 0 || target >= state.Units.Count) return "unknown target";
-        var options = skill.Options with { Delivery = skill.Delivery };
-        return Targeting.IsLegalTarget(state, use.UserId, target, skill.Reach, options) ? null : "not a legal target";
+        switch (skill.Target)
+        {
+            case TargetKind.None:
+                return use.TargetUnitId is null && use.Row is null && use.Placement is null ? null : "this skill takes no target";
+            case TargetKind.Row:
+                if (use.Row is not { } row) return "needs a row";
+                return skill.LegalRows(state, use.UserId).Contains(row) ? null : "not a legal row";
+            case TargetKind.Placement:
+                if (use.Placement is not { } place) return "needs a place";
+                return skill.PlacementOptions(state, use.UserId).Contains(place) ? null : "not a legal place";
+            default:
+                if (use.TargetUnitId is not { } target) return "needs a target";
+                if (target < 0 || target >= state.Units.Count) return "unknown target";
+                var options = skill.Options with { Delivery = skill.Delivery };
+                if (!Targeting.IsLegalTarget(state, use.UserId, target, skill.Reach, options)) return "not a legal target";
+                return skill.TargetFilter(state, use.UserId, target) ? null : "not a valid target for this skill";
+        }
     }
 
     /// <summary>Every unit that is a legal target of the skill right now (empty for skills that take none).</summary>
@@ -39,7 +51,8 @@ public static class Actions
     {
         var skill = catalog.Get(skillId);
         if (skill.Target != TargetKind.Unit) return Array.Empty<int>();
-        return Targeting.LegalTargets(state, userId, skill.Reach, skill.Options with { Delivery = skill.Delivery });
+        return Targeting.LegalTargets(state, userId, skill.Reach, skill.Options with { Delivery = skill.Delivery })
+            .Where(id => skill.TargetFilter(state, userId, id)).ToArray();
     }
 
     /// <summary>
@@ -62,13 +75,27 @@ public static class Actions
             if (options.Count > 0) target = options[state.Random.NextInt(options.Count)];
         }
 
+        state.BeginAction();
         state.Emit(new SkillUsed(use.UserId, use.SkillId, target));
         if (skill.MomentumCost > 0) state.PayMomentum(user.Side, skill.MomentumCost);
-        ScheduleNextTurn(state, use.UserId, skill.Delay);
+        // Effects that add Delay to the next skill (Net Trap's +3) count once; Delay stays within 1 to 10 after all modifiers.
+        ScheduleNextTurn(state, use.UserId, skill.Delay + Statuses.ConsumeNextSkillDelay(state, use.UserId));
 
-        skill.Resolve(new SkillContext(state, skill, use.UserId, target));
-
-        AfterSkill(state, use.UserId, skill.Tags.HasFlag(EffectTags.Melee), skill.Tags.HasFlag(EffectTags.Move));
+        if (Statuses.Get(user, StatusIds.LieInWait) is { } lie)
+        {
+            // Lie in Wait: the Stun lands first and the skill is lost; its cost and Delay were paid (decided 2026-11-08).
+            Statuses.Remove(state, use.UserId, StatusIds.LieInWait, StatusEndCause.Consumed);
+            Statuses.Apply(state, new StatusApplication(use.UserId, StatusIds.Stunned, Duration: 10, SourceUnitId: lie.SourceUnitId));
+            if (lie.SourceUnitId is { } hunter) Stealth.Break(state, hunter, StealthCause.Attacked);
+            state.Emit(new SkillLost(use.UserId, use.SkillId));
+            Settle(state, lie.SourceUnitId);
+        }
+        else
+        {
+            skill.Resolve(new SkillContext(state, skill, use.UserId, use, target));
+            AfterSkill(state, use.UserId, skill.Tags.HasFlag(EffectTags.Melee), skill.Tags.HasFlag(EffectTags.Move));
+        }
+        user.LastActionIndex = state.ActionCounter;
         return state.DrainEvents();
     }
 
@@ -79,9 +106,11 @@ public static class Actions
     public static IReadOnlyList<BattleEvent> Move(BattleState state, int userId, Row row, int gap)
     {
         if (state.IsOver) throw new InvalidOperationException("The battle is over.");
+        state.BeginAction();
         Movement.Move(state, userId, row, gap);
         ScheduleNextTurn(state, userId, Movement.MoveDelay);
         AfterSkill(state, userId, melee: false, move: true);
+        state.GetUnit(userId).LastActionIndex = state.ActionCounter;
         return state.DrainEvents();
     }
 
@@ -89,7 +118,9 @@ public static class Actions
     public static IReadOnlyList<BattleEvent> SkipTurn(BattleState state, int userId)
     {
         if (state.IsOver) throw new InvalidOperationException("The battle is over.");
+        state.BeginAction();
         ScheduleNextTurn(state, userId, Timeline.SkippedTurnDelay);
+        state.GetUnit(userId).LastActionIndex = state.ActionCounter;
         return state.DrainEvents();
     }
 

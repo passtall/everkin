@@ -17,6 +17,12 @@ public static class StatusIds
     public const string Dampen = "dampen";
     public const string Airborne = "airborne";
 
+    /// <summary>Lie in Wait: the next skill the unit uses is lost and it is Stunned (skills.md Hunter).</summary>
+    public const string LieInWait = "lie_in_wait";
+
+    /// <summary>Its next skill has more Delay by the status's magnitude (Net Trap: +3).</summary>
+    public const string NextSkillDelay = "next_skill_delay";
+
     /// <summary>Haste: Speed raised by the status's magnitude in steps (section 6.1).</summary>
     public const string Haste = "haste";
 
@@ -110,7 +116,7 @@ public static class StatusRules
     {
         StatusIds.Blind or StatusIds.Poison or StatusIds.Bleeding or StatusIds.Silenced or StatusIds.Chilled
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
-            or StatusIds.Marked or StatusIds.Slow => Polarity.Harmful,
+            or StatusIds.Marked or StatusIds.Slow or StatusIds.LieInWait or StatusIds.NextSkillDelay => Polarity.Harmful,
         StatusIds.Ward or StatusIds.Dampen or StatusIds.Haste => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };
@@ -374,6 +380,19 @@ public static class Statuses
         bleeding.UsesLeft = (bleeding.UsesLeft ?? 1) - 1;
         if (bleeding.UsesLeft <= 0) Remove(state, unitId, StatusIds.Bleeding, StatusEndCause.Consumed);
         return true;
+    }
+
+    /// <summary>
+    /// A unit uses a skill: the extra Delay its next skill carries (Net Trap's +3) is added once and the status ends.
+    /// Returns the extra Delay, 0 if none.
+    /// </summary>
+    public static int ConsumeNextSkillDelay(BattleState state, int unitId)
+    {
+        var status = Get(state.GetUnit(unitId), StatusIds.NextSkillDelay);
+        if (status is null) return 0;
+        var extra = status.Magnitude;
+        Remove(state, unitId, StatusIds.NextSkillDelay, StatusEndCause.Consumed);
+        return extra;
     }
 
     /// <summary>A unit was hit: any hit ends Stunned early (section 10.5).</summary>

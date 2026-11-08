@@ -74,6 +74,7 @@ public sealed class Unit
         IsUndead = other.IsUndead;
         OriginalRow = other.OriginalRow;
         OriginalMaxHp = other.OriginalMaxHp;
+        LastActionIndex = other.LastActionIndex;
         _knownSkills.AddRange(other._knownSkills);
         OriginalSpeed = other.OriginalSpeed;
         OriginalPower = other.OriginalPower;
@@ -112,6 +113,9 @@ public sealed class Unit
 
     /// <summary>A summon, construct or totem (not a creature of a party).</summary>
     public bool IsSummoned => Kind != UnitKind.Creature;
+
+    /// <summary>The number of the unit's last action (skill, Move or Skip Turn), for rules that look at what happened since then.</summary>
+    public int LastActionIndex { get; internal set; }
 
     private readonly List<string> _knownSkills = new();
 
@@ -215,6 +219,10 @@ public sealed class BattleState
     private readonly Timeline _timeline;
     private readonly Momentum _momentum;
     private readonly GroundField _ground;
+    private readonly List<MarkedHit> _markedHits = new();
+    private readonly List<StealthBlocker> _stealthBlockers = new();
+    private readonly List<StealthBreakVeto> _stealthVetoes = new();
+    private readonly List<PreHitHook> _preHitHooks = new();
     private readonly List<ReactionDef> _reactions = new();
     private readonly Dictionary<string, int> _reactionUses = new();
 
@@ -235,6 +243,11 @@ public sealed class BattleState
         _timeline = other._timeline.Clone();
         _momentum = other._momentum.Clone();
         _ground = new GroundField(this, other._ground);
+        ActionCounter = other.ActionCounter;
+        _markedHits.AddRange(other._markedHits);
+        _stealthBlockers.AddRange(other._stealthBlockers);
+        _stealthVetoes.AddRange(other._stealthVetoes);
+        _preHitHooks.AddRange(other._preHitHooks);
         Outcome = other.Outcome;
         EndReason = other.EndReason;
         TurnsTaken = other.TurnsTaken;
@@ -259,6 +272,32 @@ public sealed class BattleState
 
     /// <summary>The contested Momentum meter. Change it through <see cref="PayMomentum"/> and <see cref="ShiftMomentum"/> so the change is reported.</summary>
     public Momentum Momentum => _momentum;
+
+    /// <summary>The number of actions taken so far in the battle. Every skill, Move and Skip Turn counts one.</summary>
+    public int ActionCounter { get; private set; }
+
+    /// <summary>Starts the next action and returns its number.</summary>
+    public int BeginAction() => ++ActionCounter;
+
+    /// <summary>Hits that landed on Marked units, for skills that look at what allies did since a unit's last action (Pack Strike).</summary>
+    public IReadOnlyList<MarkedHit> MarkedHits => _markedHits;
+
+    public void LogMarkedHit(int attackerId, int targetId) => _markedHits.Add(new MarkedHit(ActionCounter, attackerId, targetId));
+
+    /// <summary>Passives that stop a unit from gaining stealth (Scent). Installed at battle start.</summary>
+    public IReadOnlyList<StealthBlocker> StealthBlockers => _stealthBlockers;
+
+    public void AddStealthBlocker(StealthBlocker blocker) => _stealthBlockers.Add(blocker);
+
+    /// <summary>Passives that can stop a hit from breaking stealth (Freeze in Place).</summary>
+    public IReadOnlyList<StealthBreakVeto> StealthBreakVetoes => _stealthVetoes;
+
+    public void AddStealthBreakVeto(StealthBreakVeto veto) => _stealthVetoes.Add(veto);
+
+    /// <summary>Passives that act before an attack resolves and may aim it at another unit (Decoy).</summary>
+    public IReadOnlyList<PreHitHook> PreHitHooks => _preHitHooks;
+
+    public void AddPreHitHook(PreHitHook hook) => _preHitHooks.Add(hook);
 
     /// <summary>Whether the battle is over and who won (section 12.3). Set by <see cref="BattleEnd"/>.</summary>
     public BattleOutcome Outcome { get; private set; }

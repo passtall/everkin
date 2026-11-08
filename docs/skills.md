@@ -41,14 +41,14 @@ Branches: Stalker, Tracker, Trapper, Predator.
 | Stalker | Stalk | A | — | 3 / 0 |  | The Hunter gains stealth. Needs the Hunter outside the Front row. |
 | Stalker | Creep Closer | A | Stalk | 2 / 0 |  | Only while stealthed: move to an adjacent row on your side without breaking stealth. |
 | Stalker | Freeze in Place | P | Stalk |  |  | When an area effect hits the stealthed Hunter, 50% chance to stay stealthed (it still takes the damage). |
-| Stalker | Lie in Wait | A | Creep Closer | 2 / 0 | Melee · D1 | Only while stealthed: pick a unit in melee reach. The next time it uses a skill, it is Stunned for 10 time units before that skill resolves (this breaks the Hunter's stealth). |
+| Stalker | Lie in Wait | A | Creep Closer | 2 / 0 | Melee · D1 | Only while stealthed: pick a unit in melee reach. The next time it uses a skill, it is Stunned for 10 time units before that skill resolves (this breaks the Hunter's stealth). That skill is lost: its Momentum cost and Delay are still paid, the Stun lands first and the skill has no effect (decided 2026-11-08). |
 | Stalker | Vanish | A | Freeze in Place | 4 / 3 |  | Gain stealth, even in the Front row. |
 | Tracker | Read Tracks | A | Target | 2 / 0 | Direct · D3 | Pick a row. Every stealthed unit in it is revealed. |
 | Tracker | Scent | P | Read Tracks |  |  | Marked enemies cannot gain stealth. |
 | Tracker | Scent of Blood | P | Target |  |  | When an enemy's HP falls below 20%, it becomes Marked. |
 | Tracker | Target | A | — | 2 / 0 | Direct · D3 | Mark any visible unit (one Mark from this Hunter at a time; marking another moves it). |
 | Tracker | Sniff the Air | P | Scent of Blood |  |  | At battle start, the enemy with the highest Power becomes Marked. |
-| Trapper | Decoy | P | Net Trap |  |  | When a Marked enemy attacks the Hunter, the Hunter leaves a decoy (HP 10) in its place and appears one row behind. |
+| Trapper | Decoy | P | Net Trap |  |  | When a Marked enemy attacks the Hunter, the Hunter leaves a decoy (HP 10) in its place and appears one row behind. The decoy takes the hit: the Hunter swaps out before the attack resolves and the attack is aimed at the decoy (decided 2026-11-08). No decoy if the Hunter is in the Rear row or cannot move back. |
 | Trapper | Net Trap | A (trap card) | — | 5 / 1 |  | HP 4. A unit that hits it has +3 Delay on its next skill. |
 | Trapper | Cage | A | Net Trap | 6 / 3 | Melee · D1 | A unit in melee reach is Immobilized for 20 time units. |
 | Predator | Cut Off Retreat | A | — | 3 / 0 | Direct · D3 | A Marked unit is Immobilized for 20 time units. |

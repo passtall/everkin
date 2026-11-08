@@ -83,6 +83,17 @@ public class MomentumTests
     }
 
     [Fact]
+    public void AFreeSkillCanAlwaysBeUsedEvenWhenTheSideIsBehind()
+    {
+        var m = new Momentum();
+        m.Shift(Side.B, 6);                    // Side A is 6 behind
+        Assert.True(m.CanPay(Side.A, 0));
+        Assert.False(m.CanPay(Side.A, 1));
+        m.Pay(Side.A, 0);
+        Assert.Equal(-6, m.Value);
+    }
+
+    [Fact]
     public void CostsRunFromZeroToTen()
     {
         var m = new Momentum();

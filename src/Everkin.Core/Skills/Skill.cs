@@ -10,10 +10,17 @@ public enum TargetKind
 
     /// <summary>One unit.</summary>
     Unit,
+
+    /// <summary>One row of either side (Read Tracks, Creep Closer's destination row).</summary>
+    Row,
+
+    /// <summary>A free place on the board: a row and a gap (placing a trap, a summon, a construct).</summary>
+    Placement,
 }
 
 /// <summary>A unit chose to use a skill, with its target if the skill needs one.</summary>
-public sealed record SkillUse(int UserId, string SkillId, int? TargetUnitId = null);
+public sealed record SkillUse(
+    int UserId, string SkillId, int? TargetUnitId = null, RowTarget? Row = null, MoveOption? Placement = null);
 
 /// <summary>
 /// One skill: a small class found by its skill ID (production.md section 2.2). The numbers that belong to the skill's definition
@@ -39,6 +46,12 @@ public abstract class Skill
 
     public abstract TargetKind Target { get; }
 
+    /// <summary>A passive or keystone: always on, never used as an action. Its <see cref="Install"/> sets it up at battle start.</summary>
+    public virtual bool IsPassive => false;
+
+    /// <summary>An area skill: its hits are area effects (Freeze in Place reacts to them).</summary>
+    public virtual bool IsArea => false;
+
     /// <summary>`melee`, `projectile` or `direct`; null for skills that are none of these (self effects, placements).</summary>
     public virtual Delivery? Delivery => null;
 
@@ -57,6 +70,21 @@ public abstract class Skill
     /// <summary>Position or state requirements beyond the target: why the skill cannot be used now, or null. The UI shows the reason.</summary>
     public virtual string? Unavailable(BattleState state, int userId) => null;
 
+    /// <summary>Extra condition on the target beyond reach and legality (a skill that needs a Marked unit).</summary>
+    public virtual bool TargetFilter(BattleState state, int userId, int targetId) => true;
+
+    /// <summary>The rows a skill with a row target may pick now.</summary>
+    public virtual IReadOnlyList<RowTarget> LegalRows(BattleState state, int userId) => Array.Empty<RowTarget>();
+
+    /// <summary>The places a skill that places something may put it.</summary>
+    public virtual IReadOnlyList<MoveOption> PlacementOptions(BattleState state, int userId) => Array.Empty<MoveOption>();
+
+    /// <summary>
+    /// Called once at battle start for every unit that knows the skill (section 6): a passive registers its reactions and
+    /// hooks here, or does what it does "at battle start".
+    /// </summary>
+    public virtual void Install(BattleState state, int ownerId) { }
+
     /// <summary>The skill's effects, in the order its definition states. Everything goes through the context.</summary>
     public abstract void Resolve(SkillContext context);
 }
@@ -71,13 +99,21 @@ public sealed class SkillContext
     private readonly Skill _skill;
     private bool _attacked;
 
-    internal SkillContext(BattleState state, Skill skill, int userId, int? targetId)
+    internal SkillContext(BattleState state, Skill skill, int userId, SkillUse use, int? targetId)
     {
         State = state;
         _skill = skill;
         UserId = userId;
         TargetId = targetId;
+        Row = use.Row;
+        Placement = use.Placement;
     }
+
+    /// <summary>The chosen row, for a skill with a row target.</summary>
+    public RowTarget? Row { get; }
+
+    /// <summary>The chosen place, for a skill that places something.</summary>
+    public MoveOption? Placement { get; }
 
     public BattleState State { get; }
     public int UserId { get; }
@@ -145,6 +181,12 @@ public sealed class SkillContext
 
     private HitReport ApplyHit(HitSpec spec, List<Trigger> triggers)
     {
+        // Passives that act before an attack resolves may aim it at another unit (Decoy).
+        var aimed = spec.TargetId;
+        foreach (var hook in State.PreHitHooks)
+            if (hook(State, UserId, aimed) is { } other) { aimed = other; break; }
+        spec = spec with { TargetId = aimed };
+
         var target = State.GetUnit(spec.TargetId);
         var friendly = target.Side == UserSide;
         var rolled = DamageMath.Roll(State.Random, Scaled(spec.Range));
@@ -188,8 +230,9 @@ public sealed class SkillContext
 
     private void WasHit(int unitId, List<Trigger> triggers, EffectTags tags)
     {
-        Stealth.Break(State, unitId, StealthCause.Hit);
+        Stealth.Break(State, unitId, StealthCause.Hit, _skill.IsArea);
         Statuses.OnHit(State, unitId);
+        if (Statuses.Has(State.GetUnit(unitId), StatusIds.Marked)) State.LogMarkedHit(UserId, unitId);
         triggers.Add(new Trigger(TriggerKind.WhenHit, unitId, UserId, tags));
     }
 
@@ -223,4 +266,35 @@ public sealed class SkillContext
 
     /// <summary>The user's side and the other.</summary>
     public Side EnemySide => UserSide.Opposite();
+
+    /// <summary>
+    /// A non-damaging effect aimed at a unit (a status, a push). If the skill is `melee` or `projectile` it can be intercepted:
+    /// an effect that cannot be split goes entirely to the first interceptor (section 8.2). Returns the unit that received it.
+    /// The event then settles (KO check, reactions, victory); Momentum does not move for an action without a damaging hit.
+    /// </summary>
+    public int ApplyStatus(int targetId, StatusApplication template)
+    {
+        var receiver = targetId;
+        if (_skill.Delivery is { } d && Interception.CanBeIntercepted(d))
+        {
+            var r = Interception.Resolve(State, targetId, 1, splittable: false);
+            if (r.Intercepted) receiver = r.Shares[0].InterceptorId;
+        }
+        if (!State.GetUnit(receiver).IsKnockedOut)
+            Statuses.Apply(State, template with { UnitId = receiver, SourceUnitId = UserId });
+        EndOfEvent(Array.Empty<HitOutcome>(), Array.Empty<Trigger>(), shiftMomentum: false);
+        return receiver;
+    }
+
+    /// <summary>
+    /// Settles what a skill changed without hitting anyone (a move, a placement, a reveal): KO check, reactions to any KO and the victory check.
+    /// </summary>
+    public void Settle() => EndOfEvent(Array.Empty<HitOutcome>(), Array.Empty<Trigger>(), shiftMomentum: false);
+
+    /// <summary>Raises the "when hit" reactions for units that took bump damage in a blocked forced move, then settles.</summary>
+    public void AfterForcedMove(ForcedMoveResult result)
+    {
+        var triggers = result.BumpDamaged.Select(id => new Trigger(TriggerKind.WhenHit, id, null, EffectTags.None)).ToArray();
+        EndOfEvent(Array.Empty<HitOutcome>(), triggers, shiftMomentum: false);
+    }
 }

@@ -10,6 +10,9 @@ public abstract record BattleEvent;
 /// <summary>A unit used a skill (the first event of the action).</summary>
 public sealed record SkillUsed(int UserId, string SkillId, int? TargetUnitId) : BattleEvent;
 
+/// <summary>A skill was used but lost: its cost and Delay were paid and it had no effect (Lie in Wait).</summary>
+public sealed record SkillLost(int UserId, string SkillId) : BattleEvent;
+
 /// <summary>A unit's turn began (after the statuses and ground effects of the turn start were counted).</summary>
 public sealed record TurnStarted(int UnitId, int Time) : BattleEvent;
 

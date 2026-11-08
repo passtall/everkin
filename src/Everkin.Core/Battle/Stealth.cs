@@ -16,6 +16,7 @@ public static class Stealth
     {
         var unit = state.GetUnit(unitId);
         if (unit.IsKnockedOut || unit.IsStealthed || !state.Formation.Contains(unitId)) return false;
+        if (state.StealthBlockers.Any(b => b(state, unitId))) return false;   // Scent: Marked enemies cannot gain stealth
         var side = state.Formation.PositionOf(unitId).Side;
         return state.Formation.Units(side).Any(id =>
         {
@@ -40,10 +41,11 @@ public static class Stealth
     /// ticks are not hits. A reveal effect or a cleanse ends it too (<see cref="StealthCause.Revealed"/>). The caller decides
     /// which of these happened; <see cref="BattleState.DealDamage"/> does not touch stealth by itself.
     /// </summary>
-    public static bool Break(BattleState state, int unitId, StealthCause cause)
+    public static bool Break(BattleState state, int unitId, StealthCause cause, bool area = false)
     {
         var unit = state.GetUnit(unitId);
         if (!unit.IsStealthed) return false;
+        if (cause == StealthCause.Hit && state.StealthBreakVetoes.Any(v => v(state, unitId, cause, area))) return false;   // Freeze in Place
         unit.IsStealthed = false;
         state.Emit(new StealthChanged(unitId, false, cause));
         return true;

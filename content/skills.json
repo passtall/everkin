@@ -132,7 +132,7 @@
       "momentum": 0,
       "delivery": "melee",
       "range": "D1",
-      "effect": "Only while stealthed: pick a unit in melee reach. The next time it uses a skill, it is Stunned for 10 time units before that skill resolves (this breaks the Hunter's stealth)."
+      "effect": "Only while stealthed: pick a unit in melee reach. The next time it uses a skill, it is Stunned for 10 time units before that skill resolves (this breaks the Hunter's stealth). That skill is lost: its Momentum cost and Delay are still paid, the Stun lands first and the skill has no effect (decided 2026-11-08)."
     },
     {
       "id": "vanish",
@@ -237,7 +237,7 @@
       "momentum": null,
       "delivery": null,
       "range": null,
-      "effect": "When a Marked enemy attacks the Hunter, the Hunter leaves a decoy (HP 10) in its place and appears one row behind."
+      "effect": "When a Marked enemy attacks the Hunter, the Hunter leaves a decoy (HP 10) in its place and appears one row behind. The decoy takes the hit: the Hunter swaps out before the attack resolves and the attack is aimed at the decoy (decided 2026-11-08). No decoy if the Hunter is in the Rear row or cannot move back."
     },
     {
       "id": "net_trap",

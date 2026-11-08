@@ -21,7 +21,8 @@ public sealed class SkillCatalog
     public ContentSet Content { get; }
 
     /// <summary>The skills implemented so far: the nine Attack Type attacks, then the professions one by one.</summary>
-    public static SkillCatalog Create(ContentSet content) => new(content, AttackSkills.All(content));
+    public static SkillCatalog Create(ContentSet content) =>
+        new(content, AttackSkills.All(content).Concat(HunterSkills.All(content)));
 
     public bool Has(string skillId) => _skills.ContainsKey(skillId);
 
