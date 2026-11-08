@@ -32,4 +32,4 @@ CONTENT: the attached gold emblem, centered, about 70% of the icon, on a deep pl
 STYLE: the emblem stays exactly as attached; only the background is new. Must read clearly at 48 × 48 px.
 ```
 
-After generating: redraw the emblem and wordmark as SVG (`assets/brand/emblem.svg`, `assets/brand/wordmark.svg`) and replace the repo's default `icon.svg` with the emblem.
+Done: the PNGs in `assets/brand/` are final and large enough for every screen and store; there are no SVG redraws (decided 2026-11-08). The Godot project icon is `assets/brand/app-icon.png`.

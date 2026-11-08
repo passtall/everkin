@@ -27,8 +27,8 @@ The design documents are the source of truth. Never answer, propose or edit from
 | Attack Types and Professions | docs/class_system.md |
 | Every attack and profession skill, with Delay, Momentum, delivery and range | docs/skills.md |
 | Creature roster: classes, biome, stats, Cost, art file and crops | docs/creature-classes.md |
-| Stat tier rules of the first draft roster | docs/creatures.md |
-| Screens, layouts, interactions | docs/ui_spec.md |
+| Screens, layouts, interactions | docs/ui_spec.md (reviewed mockups in docs/mockups/, reference only) |
+| Implementation progress and open questions from coding | docs/implementation-plan.md (how to work: CLAUDE.md) |
 | Non-mechanics decisions: platforms, release, business model, technology, saving, online, languages, accessibility | docs/production.md |
 | Asset prompts and provenance | docs/assets/ (the files are in assets/, see assets/README.md) |
 

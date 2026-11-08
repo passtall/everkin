@@ -1,8 +1,8 @@
 # Everkin — Creatures
 
-> **Superseded (2026-10-09).** The **Classes** column and the **type-specific attack library** (and the Attack column and class/attack totals) are invalid. Classes now follow [class_system.md](class_system.md): each creature has 1 Attack Type and 1–2 Professions, which still have to be assigned. Tiers, stats, IDs and appearances are unaffected.
+> **Superseded (2026-10-09).** The **Classes** column and the **type-specific attack library** (and the Attack column and class/attack totals) are invalid. Classes now follow [class_system.md](../class_system.md): each creature has 1 Attack Type and 1–2 Professions, which still have to be assigned. Tiers, stats, IDs and appearances are unaffected.
 
-**Status:** Draft roster proposed by Claude on 2026-10-05 from the existing art, at the owner's request. Every creature, number, class and attack below is Draft until the owner reviews it; the rules it follows are adopted in [game_system.md](game_system.md) §3.7.
+**Status:** Draft roster proposed by Claude on 2026-10-05 from the existing art, at the owner's request. Every creature, number, class and attack below is Draft until the owner reviews it; the rules it follows are adopted in [game_system.md](../game_system.md) §3.7.
 **Global rules:** Stats (§5.1), damage (§5.2), anchors (§5.5), timeline (§6.1), statuses (§10.5) and distance (§7.4) live in game_system.md. This document holds only the tiers, the attack library and the roster.
 
 ## Size tiers
@@ -22,7 +22,7 @@ Each creature belongs to one tier and tweaks the tier's base block slightly. Sta
 
 ## Type-specific attack library
 
-> **Superseded (2026-10-09).** Replaced by Attack Types in [class_system.md](class_system.md).
+> **Superseded (2026-10-09).** Replaced by Attack Types in [class_system.md](../class_system.md).
 
 Each creature has exactly one of these attacks (game_system.md §4.4). The numbers are fixed; a creature cannot tweak them. Damage at Power 3 / 5 / 7 is shown for comparison, rounded down with a minimum of 1 (§5.2).
 
@@ -42,7 +42,7 @@ Every attack respects interception (§8.2) and shifts Momentum normally (§6.7).
 
 ## Roster
 
-53 creatures, one per art image in `source-art/creatures/` (`<art>_f.png`; the rear images were deleted on 2026-10-09). Art numbers 13 and above 54 do not exist; 13 was deleted. IDs are stable text IDs (§3.7). The game uses the cleaned copies in `assets/creatures/`, named by the Art file column of [creature-classes.md](creature-classes.md) (for example `fox-02.png`); their crops are in that file's Card details table. creature-classes.md is the current roster of all 319 creatures; the table below is the 2026-10-05 draft of the first 53.
+53 creatures, one per art image in `source-art/creatures/` (`<art>_f.png`; the rear images were deleted on 2026-10-09). Art numbers 13 and above 54 do not exist; 13 was deleted. IDs are stable text IDs (§3.7). The game uses the cleaned copies in `assets/creatures/`, named by the Art file column of [creature-classes.md](../creature-classes.md) (for example `fox-02.png`); their crops are in that file's Card details table. creature-classes.md is the current roster of all 319 creatures; the table below is the 2026-10-05 draft of the first 53.
 
 | Art | ID | Name | Tier | HP | Speed | Power | Classes | Attack | Notes |
 |---:|---|---|---|---:|---:|---:|---|---|---|
@@ -150,4 +150,4 @@ What each fantasy creature's art shows, so the names can be checked against the 
 - Owner review of every name, number, class and attack above.
 - Balance after the first AI-vs-AI runs (game_system.md §2.4).
 - Human recruits: none exist in the art yet. They follow §3.4 and §3.7 when added.
-- Art framing and cleanup before card layout ([unit-art-compatibility.md](archive/unit-art-compatibility.md)).
+- Art framing and cleanup before card layout ([unit-art-compatibility.md](unit-art-compatibility.md)).

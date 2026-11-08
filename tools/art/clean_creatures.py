@@ -1,6 +1,6 @@
 """Make cleaned creature art copies from source-art/creatures (the originals are never changed).
 
-Reads the table in docs/creature-classes.md: for each row it cleans source-assets/creatures/<Source> and
+Reads the table in docs/creature-classes.md: for each row it cleans source-art/creatures/<Source> and
 writes assets/creatures/<Art file> (the species-{nn}.png name): 1024 x 1536 RGBA,
 transparent background, stray specks removed, the creature scaled to fit the safe area and
 standing on the shared ground line. Art files no row names any more are deleted.
@@ -35,8 +35,8 @@ def art_rows():
     rows = []
     for line in (ROOT / "docs" / "creature-classes.md").read_text(encoding="utf-8").splitlines():
         cells = [c.strip().strip("`") for c in line.strip().strip("|").split("|")]
-        if len(cells) == 7 and cells[5].endswith(".png"):
-            rows.append((cells[0], cells[5], cells[6]))
+        if len(cells) == 6 and cells[4].endswith(".png"):
+            rows.append((cells[0], cells[4], cells[5]))
     return rows
 
 

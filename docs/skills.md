@@ -2,11 +2,11 @@
 
 **Status:** adopted 2026-11-03. Andreas chose every skill here in picker rounds, one profession at a time (2026-10-17 to 2026-11-03), followed by a review that removed plain attacks and flat bonuses. This document owns the skills of the 12 professions in [class_system.md](class_system.md); [classes_and_skills.md](archive/classes_and_skills.md) stays superseded. Global rules (statuses, Delay, Momentum, summons, ground effects) live in [game_system.md](game_system.md).
 
-**Legend:** D = Delay (1 is quickest), M = Momentum cost. A = active, P = passive, Mod = modifier of the named skill, K = keystone. Durations are in time units (10 is about one former turn). Damage and healing numbers assume Power 5. Branches organize a profession's tree only; a creature can learn from every branch of its professions (class_system §4). There are no tags.
+**Legend:** D = Delay (1 is quickest), M = Momentum cost. A = active, P = passive, Mod = modifier of the named skill, K = keystone. Durations are in time units (10 is about one former turn). Every damage, healing and shield number assumes Power 5 and is multiplied by the user's Power ÷ 5, rounded down, minimum 1 (game_system §5.2). Rule numbers such as bump, Bleeding, Poison and ground damage do not scale. Branches organize a profession's tree only; a creature can learn from every branch of its professions (class_system §4). Profession skills carry no tags; where a rule names one, it is derived from the Delivery column and the effect text (game_system §4.7).
 
 **Trees:** each profession's list below is its skill tree. A unit has 10 skill points; every node costs 1; a modifier needs its parent skill and a keystone needs 3 other nodes from its branch (game_system §4.1).
 
-**Delivery · Range:** `Melee`, `Projectile` (both can be intercepted) or `Direct` (cannot), then the range: D1 reaches the enemy Front row, D2 the enemy Middle row and any allied row, D3 the enemy Rear row. Blank = no target (self, passives, summons). Summons, constructs and totems with a range are placed within it.
+**Delivery · Range:** `Melee`, `Projectile` (both can be intercepted) or `Direct` (cannot), then the range: On the enemy side D1 reaches the Front row, D2 the Middle row and D3 the Rear row. On your own side D1 reaches the user and its adjacent units, D2 or more any ally (game_system §7.4). Blank = no target (self, passives, summons). Summons, constructs and totems with a range are placed within it.
 
 **Targets:** a targeted skill works on any unit in range, on either side; an area skill hits every unit in its area. "Own side only" marks the exceptions. No skill targets an empty spot: ground effects go on a target unit's spot or on a row (game_system §8.1).
 
@@ -90,9 +90,9 @@ Branches: Mender, Cleric, Lifebinder.
 | Cleric | Mass Dispel | A | 7 / 4 | Direct · D3 | Remove every helpful status from every unit in one row. |
 | Cleric | Steal Blessing | A | 4 / 2 | Direct · D3 | Move one helpful status from one unit onto another. |
 | Cleric | Turn Back | A | 3 / 0 | Direct · D3 | Move one harmful status from a unit onto the unit that applied it. |
-| Lifebinder | Revive | A | 9 / 5 | Direct · D3 | Revive a KO unit at 25% of its max HP. |
+| Lifebinder | Revive | A | 9 / 5 | Direct · D3 | Revive a KO unit at 25% of its max HP (rounded down, minimum 1). |
 | Lifebinder | Life Link | A | 4 / 0 | Direct · D3 | Link two units for 10 time units: healing on one also heals the other for half. |
-| Lifebinder | Bound Resurrect | A | 8 / 4 | Direct · D3 | Revive a KO unit; it and the Healer share one HP pool (game_system §10.4). |
+| Lifebinder | Bound Resurrect | A | 8 / 4 | Direct · D3 | Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Healer share one HP pool (game_system §10.4). |
 | Lifebinder | Burnout Heal | A | 7 / 6 | Direct · D1 | Heal every unit around the Healer for 6–8; the Healer is KO (§10.4). |
 | Lifebinder | Life for Life | A | 6 / 3 | Direct · D3 | The Healer gives up half its current HP to revive a KO unit with that much HP. |
 | Lifebinder | Bound Strength | Mod of Bound Resurrect |  | As parent | While the two units share their HP pool, both have 1 less Delay on every skill. |
@@ -105,14 +105,14 @@ Branches: Enchantment, Transmutation, Malediction.
 
 | Branch | Skill | Kind | D / M | Delivery · Range | Effect |
 |---|---|---|---|---|---|
-| Enchantment | Echo Enchant | A | 6 / 3 | Direct · D3 | A unit's next skill happens twice. |
+| Enchantment | Echo Enchant | A | 6 / 3 | Direct · D3 | A unit's next skill happens twice: the second use is free (no Delay, no Momentum) and hits the same target. |
 | Enchantment | Phase Weapon | A | 3 / 0 | Direct · D3 | A unit's next attack has unlimited range. |
 | Enchantment | Phasing Strike | Mod of Phase Weapon |  | As parent | The attack also cannot be intercepted. |
 | Enchantment | Piercing Enchant | A | 4 / 0 | Direct · D3 | A unit's next attack also hits the unit behind its target. |
 | Enchantment | Enchanted Soul | K |  |  | The Sorcerer's enchantments last until used, but only one can be active at a time. |
 | Transmutation | Petrify | A | 7 / 4 | Direct · D3 | A unit turns to stone: it is Stunned for 10 time units. |
 | Transmutation | Transmute | A | 4 / 0 | Direct · D3 | A unit's Power and Speed swap values for 20 time units. |
-| Transmutation | Stone Shell | A | 4 / 0 | Direct · D3 | A unit turns to stone for 10 time units: it cannot act and cannot be damaged. |
+| Transmutation | Stone Shell | A | 4 / 0 | Direct · D3 | A unit turns to stone for 10 time units: it cannot act and cannot be damaged. This is a status and can be cleansed. |
 | Transmutation | Lasting Transmute | Mod of Transmute |  | As parent | Transmute lasts 40 time units. |
 | Transmutation | Glass Body | A | 4 / 0 | Direct · D3 | The next hit on a unit deals double damage. |
 | Malediction | Curse of Stagnation | A | 5 / 2 | Direct · D3 | For 20 time units, statuses on a unit do not run down. |
@@ -153,7 +153,7 @@ Branches: Berserker, Champion, Whirlwind, Footwork.
 
 | Branch | Skill | Kind | D / M | Delivery · Range | Effect |
 |---|---|---|---|---|---|
-| Berserker | Reckless Swing | P |  |  | The Warrior's hits deal double damage, but the Warrior takes half of the damage it deals. |
+| Berserker | Reckless Swing | P |  |  | The Warrior's hits deal double damage, but the Warrior takes half of the damage it deals (rounded down). |
 | Berserker | Unstoppable | P |  |  | Below a quarter of its HP, the Warrior cannot be Immobilized or Frozen, and its turns cannot be pushed back. |
 | Berserker | Endure | P |  |  | Damage from statuses cannot drop the Warrior below 1 HP. |
 | Berserker | Last Stand | K |  |  | The Warrior cannot Move or be moved, but deals 50% more damage. |
@@ -168,7 +168,7 @@ Branches: Berserker, Champion, Whirlwind, Footwork.
 | Whirlwind | Battle Roar | A | 4 / 0 | Direct · D1 | Every unit in melee reach has its next turn pushed back 5 time units. |
 | Footwork | Sidestep | A | 2 / 0 |  | The next attack on the Warrior misses. |
 | Footwork | Counter Step | P |  |  | When an attack on the Warrior misses, its next turn is pulled forward 5 time units. |
-| Footwork | Hit and Run | A | 4 / 0 | Melee · D1 | Strike a unit in melee: its next action comes 3 time units later, then the Warrior moves one row back. |
+| Footwork | Hit and Run | A | 4 / 0 | Melee · D1 | Strike a unit in melee for 3–4: its next action comes 3 time units later, then the Warrior moves one row back. |
 
 ## Leader (15)
 
@@ -205,7 +205,7 @@ Branches: Thief, Assassin, Saboteur.
 | Thief | Hide | A | 3 / 0 |  | The Rogue gains stealth. Needs the Rogue outside the Front row. |
 | Thief | Melt Away | A | 4 / 2 |  | The Rogue gains stealth anywhere, even in the Front row. |
 | Thief | Sneak | P |  |  | While stealthed, the Rogue may move one row at the start of its turn, at no cost to its timeline and without losing stealth. |
-| Thief | Lift a Skill | A | 6 / 3 | Direct · D3 | Use a copy of the last skill the target used, with the Rogue's own Power. |
+| Thief | Lift a Skill | A | 6 / 3 | Direct · D3 | Use a copy of the last active skill the target used, with the Rogue's own Power. |
 | Thief | Light Fingers | P |  |  | Whenever the Rogue hits an enemy that has a helpful status, it steals that status. |
 | Assassin | Backstab | A | 5 / 2 | Melee · D1 | Only from stealth: the target is Silenced and Bleeds, and the Rogue stays stealthed. |
 | Assassin | Contract | K |  |  | The Rogue deals double to Marked enemies and half to everyone else. |
@@ -298,7 +298,7 @@ Branches: Mobility, Skywatch, Assault.
 | Mobility | Airlift | A | 3 / 0 | Direct · D3 | Own side only. Moves an ally to any free spot of your side. |
 | Mobility | Take Off | A | 3 / 0 |  | For 20 time units the unit is airborne (game_system §10.6): melee cannot reach it and it ignores ground effects; it uses its skills as normal. |
 | Mobility | High Altitude | Mod of Take Off |  | As parent | Take Off lasts 40 time units. |
-| Mobility | Sky Lord | K |  |  | The unit is always airborne, but has 30% less HP. |
+| Mobility | Sky Lord | K |  |  | The unit is always airborne, but has 30% less HP (rounded down). |
 | Skywatch | Scout Ahead | A | 2 / 0 |  | Reveals stealthed units in every row of one side for 10 time units. |
 | Skywatch | Spotter | A | 3 / 0 | Direct · D3 | A unit is Marked for 20 time units. |
 | Skywatch | Long Watch | P |  |  | Marks the unit places last 10 time units longer. |

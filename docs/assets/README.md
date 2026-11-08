@@ -14,4 +14,4 @@ How every generated asset in `assets/` was made, so it can be extended or remade
 | Sounds (36 effects, 2 stings, 18 ambient loops; 106 files) | [sounds.md](sounds.md) | synthesized by `tools/audio/build_audio.py`, not by an audio model: [sounds-notes.md](sounds-notes.md), [sounds-provenance.md](sounds-provenance.md), measurements in `tools/audio/report/` |
 | Biome backgrounds | `assets/backgrounds/README.md`; card backgrounds by `tools/backgrounds/gen_backgrounds.py` | — |
 
-Still missing: fonts (downloaded, not generated; the choice is open in the implementation dry run), and SVG redraws of the emblem and wordmark (brand.md).
+Nothing is missing. Fonts are Alegreya and Alegreya Sans, downloaded from Google Fonts into `assets/fonts/` (2026-11-08). The brand PNGs are final; there are no SVG redraws (2026-11-08).
