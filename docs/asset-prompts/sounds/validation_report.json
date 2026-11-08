@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "asset_count": 106,
+  "format": "OGG Vorbis",
+  "sample_rate": 48000,
+  "effects_mono": 88,
+  "ambient_stereo": 18,
+  "ambient_duration_seconds": 60,
+  "effects_lufs_range": [
+    -17.11,
+    -15.96
+  ],
+  "ambient_lufs_range": [
+    -23.0,
+    -22.99
+  ],
+  "max_true_peak_dbtp": -1.26,
+  "max_loop_join_vs_internal_p999": 0.794,
+  "checks": [
+    "Decoded codec/rate/channels",
+    "Exact requested sample counts",
+    "106 distinct file hashes",
+    "Peak ceiling",
+    "Loudness within 1.5 LU of target",
+    "Decoded loop join within normal waveform changes"
+  ],
+  "limitations": [
+    "Numerical QA only; no human listening review",
+    "Very short one-shots measured on repeated copies",
+    "Procedurally synthesized approximation of the supplied prompts"
+  ]
+}
