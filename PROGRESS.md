@@ -2,15 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, M1.7 done.
+**Last updated:** 2026-11-08, M1.8 done.
 
 ## Current task
 
-None between tasks. Next is **M1.8**.
+None between tasks. Next is **M1.9**.
 
 ## Next step
 
-M1.8 interception and area patterns: read game_system §8.2 (interception: who may intercept, chances 50% at 100% overlap / 25% at 50%, full or partial hit, chains, random order), §8.3 (preview), §8.4 (area patterns: column/row/circular/chain/all, the behind rule 100% / 50%) and the §20.5 interception and area checks. Build on Formation.Adjacent, Targeting and DamageMath; interception needs the interceptor's eligibility (not KO, not stealthed, not Frozen/Stunned/Immobilized: those statuses arrive in M1.11, so take an eligibility predicate).
+M1.9 movement: read game_system §9 (9.1 Move, 9.2 blocked movement, 9.3 position-dependent skills, 9.4 engagement, 9.5 forced repositioning, bump damage, chains) and the §20.5 movement checks (Move into a full row not offered, Hit and Run with a full row behind, Gust with an empty Middle, shoved back with a unit directly behind it). Build on Formation (Place/Remove need a move-with-insert API), Immobilized / KO bodies cannot be moved (M1.10/M1.11 flags: take them as unit properties or predicates).
 
 ## In flight
 
@@ -21,6 +21,7 @@ Nothing.
 1. **Stale text, no task blocked (game_system §2.5, line "Each unit gets a random legal build: its 10 skill points").** §4.1 says 8 skill points (changed 2026-11-08), and skills.md and the plan say 8. I use 8; please fix §2.5 (or tell me 10 is meant).
 2. **Timeline gaps, no task blocked (game_system §6.1).** I filled these with the most literal reading; tell me if any is wrong: (a) Haste or Slow that would take the remaining Wait below 0 makes the turn arrive now, like the Pull Forward overshoot rule; (b) Speed changes move the remaining Wait by the change in Speed as the formula sees it (clamped to 1-10), so Haste +2 at Speed 9 shortens it by 1; (c) Reset uses the Wait the entry was scheduled with and ignores later Haste or Slow; (d) an entry that is pulled or pushed but stays in the same time unit keeps its place in the tie order; (e) a new Wait (turn, auto event, delayed event, effect end) is at least 1.
 3. **Attack Type attack ranges, blocks M1.16 only (skills.md, nine attacks).** The table gives no range for Brawl Strike, Blade Strike, Heavy Blow and Breath; Shot and Bolt are "any visible enemy", Pulse is "every enemy in melee reach", and Polearm Thrust and Lash have "one row more reach than other melee". I need the numbers: is base melee reach D1 (Polearm and Whip D2), and what is Breath's range (it is `direct`)? Not needed before M1.16.
+4. **"Behind" in the behind rule, blocks M1.16 only (game_system §8.4, skills.md Piercing Enchant, Phasing / projectile at a stealthed target).** §8.4 says a skill that hits units behind its target hits those at 100% overlap automatically and those at 50% with a 50% chance, but not how many rows count: only the row directly behind, every row behind, or the next row that has anyone. skills.md says "the unit behind its target" (singular). `AreaPatterns.UnitsBehind` lists every row behind with its distance, so the skill can choose; tell me which rule is meant.
 
 ## Notes
 
@@ -37,6 +38,7 @@ Nothing.
 - M1.5: `Momentum` (on `BattleState.Momentum`; change it through `state.PayMomentum(side, cost)` / `state.ShiftMomentum(side, amount)`, which emit `MomentumChanged` only when the meter moves). The meter is stored from Side A's view (positive favors A); `AdvantageOf(side)` gives either view. `CanPay`/`Pay` (needs a lead of N, moves N toward neutral, never refunded), `Shift` clamps after each shift. `MomentumRules.HitShift(HitOutcome)` and `ActionShift(hits)` give the per-hit and per-action shift from the actor's view (Landed +1, Missed -1, rest 0; one shift per action: any Landed = +1, else any Missed = -1). The skill code (M1.7 onwards) must pay the cost first, then shift per event, using the hit outcomes it sees; skills or statuses that modify a shift (e.g. double for Marked) change the amount before calling `ShiftMomentum`.
 - M1.6: `Targeting` (static, read-only): `Reach` (max distance or `Reach.Unlimited`), `TargetOptions(Side, IncludeKnockedOut)`; `EffectiveRow`, `OpposingDistance` (attacker row + target row - 1 after skipping rows with no living unit; on the other side stealthed units and KO bodies do not make a row count), `InReach` (own side: D1 = user + adjacent, D2+ = any), `IsLegalTarget`, `LegalTargets` (own side first), `NearestEnemies`, `PickNearest` (ties by the battle's seeded roll; no roll for a single candidate). `Unit.IsKnockedOut` (HP 0) and `Unit.IsStealthed` (plain flag, M1.10 maintains it) were added for it. Not here: interception (M1.8), placement of summons (M1.13), confusion (M1.11).
 - M1.7: `DamageMath` (static, integers): `Scale(value, power)` = value x power / 5 rounded down, minimum 1; `ScaleRange`; `Roll(random, range)`; `Resolve(incoming, ward, dampen, source)` (Ward first, then Dampen halves rounded down, minimum 1 if anything passed the shield); `CombineWard`; `HealedHp`. `DamageSource`: Hit (shield + reductions, also burning ground and counters), Periodic (Poison, Bleeding: reductions only), Unreducible (bump). `BattleState.DealDamage(source, target, amount, source)`, `Heal`, `ApplyWard` mutate and emit `DamageDealt` / `Healed` / `WardChanged`; a KO unit cannot be damaged or healed (callers filter; revival is M1.10). `Unit.Ward` (int) and `Unit.Dampen` (bool) are plain values for now: M1.11 adds durations, expiry (timeline EffectEnd) and removal on KO. Not done here: the skill's Power scaling is applied by the caller (`ScaleRange` then `Roll`), Momentum shift from `DamageResult.FullyAbsorbed` / landed, KO check after damage (M1.10), the 'shared roll or independent rolls' choice (each skill).
+- M1.8: `Interception` (static): `CanBeIntercepted(delivery, ignores)` (only melee and projectile), `IsEligible(unit)` (not KO, not stealthed, not `Unit.InterceptionBlocked`, which the status rules M1.11 set for Stunned / Frozen / Immobilized), `ChanceFor(overlap)` (50 / 25), `Defenders`, `Resolve(state, target, amount, splittable)` -> `InterceptionResult(Shares, Remaining)`: rows nearest the line first, random order inside a row (Fisher-Yates from the battle generator), per defender one roll for the interception chance and, if it intercepts and the effect can be split (amount >= 2), one 50% roll for full or partial (half rounded down); emits `Intercepted`. The CALLER applies each share (damage to the interceptor through its own Ward / Dampen, a heal, a status) and then `Remaining` to the target. Not modelled yet: skill overrides (Shield Wall, Living Wall, Full Cover, Leap to Defend, Phasing Strike's ignore is just the flag), area skills that are melee or projectile (§8.2 says they can be intercepted; how it works per affected unit is not specified: ask when the first area skill in M1.16 needs it), Momentum from interception (0). `AreaPatterns`: `Circular` (target first), `Row`, `AllOf` (KO bodies never, stealthed included), `UnitsBehind`, `HitBehind` (100% auto, 50% with a 50% roll). `chain` and `column` are left to the skills.
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -56,7 +58,7 @@ Nothing.
 - [x] M1.5 Momentum
 - [x] M1.6 Ranges and targeting
 - [x] M1.7 Damage, healing, shields
-- [ ] M1.8 Interception and area patterns
+- [x] M1.8 Interception and area patterns
 - [ ] M1.9 Movement
 - [x] M1.10 Stealth, KO, revival
 - [x] M1.11 Statuses and airborne
@@ -122,3 +124,4 @@ One line per finished task: date, task, commit.
 2026-11-08 M1.5 Momentum (see git log)
 2026-11-08 M1.6 Ranges and targeting (see git log)
 2026-11-08 M1.7 Damage, healing and shields (see git log)
+2026-11-08 M1.8 Interception and area patterns (see git log)

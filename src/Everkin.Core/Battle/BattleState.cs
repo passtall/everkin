@@ -45,6 +45,7 @@ public sealed class Unit
         IsStealthed = other.IsStealthed;
         Ward = other.Ward;
         Dampen = other.Dampen;
+        InterceptionBlocked = other.InterceptionBlocked;
     }
 
     /// <summary>Unique inside the battle, assigned in the order units were added.</summary>
@@ -78,6 +79,12 @@ public sealed class Unit
 
     /// <summary>Dampen halves damage that gets through the shield (section 5.2). M1.11 adds its duration.</summary>
     public bool Dampen { get; set; }
+
+    /// <summary>
+    /// A status forbids intercepting: Stunned, Frozen or Immobilized (section 8.2). The status rules (M1.11) set and clear
+    /// it; the interception code only reads it.
+    /// </summary>
+    public bool InterceptionBlocked { get; set; }
 
     public Unit Clone() => new(this);
 }
