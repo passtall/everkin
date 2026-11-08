@@ -54,7 +54,7 @@
       "attackType": "breath",
       "delay": 4,
       "momentum": 0,
-      "effect": "`direct`. Hit the target for 3–4 and every unit next to it for 1–2."
+      "effect": "`direct`, Range D1. Hit the target for 3–4 and every unit next to it for 1–2."
     },
     {
       "id": "lash",

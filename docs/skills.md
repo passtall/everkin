@@ -24,9 +24,11 @@ Every creature starts with the one shared attack of its Attack Type ([class_syst
 | Ranged | Shot | 3 / 0 | `projectile` `physical`. Hit any visible enemy for 3–4. |
 | Magic | Bolt | 4 / 0 | `projectile` `magical`. Hit any visible enemy for 3–4. |
 | Blunt | Heavy Blow | 4 / 0 | `melee` `physical`. Hit for 5–6; 30% chance to Stun the target for 5 time units. |
-| Breath | Breath | 4 / 0 | `direct`. Hit the target for 3–4 and every unit next to it for 1–2. |
+| Breath | Breath | 4 / 0 | `direct`, Range D1. Hit the target for 3–4 and every unit next to it for 1–2. |
 | Whip | Lash | 3 / 0 | `melee` `physical`. Hit for 3–4, with one row more reach than other melee. |
 | Aura | Pulse | 4 / 0 | `direct`. Every enemy in melee reach takes 2–3. |
+
+**Reach of the attacks (adopted 2026-11-08, owner decision).** Plain melee attacks (Brawl Strike, Blade Strike, Heavy Blow) reach distance 1 (D1): the enemy Front row, empty rows skipped as in game_system §7.4. "One row more reach than other melee" means D2: Polearm Thrust and Lash reach distance 2. "Melee reach" (Pulse) is D1. Breath has Range D1. Shot and Bolt reach any visible enemy.
 
 ## Hunter (16)
 

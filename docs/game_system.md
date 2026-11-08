@@ -745,7 +745,7 @@ Area effects can affect stealthed units physically inside their area. Area effec
 
 **Adjacency (adopted).** For `circular`, `chain` and similar patterns, the units adjacent to a unit are its **left and right neighbors in the same row**, plus the units in the row **directly in front of and directly behind it with at least 50% horizontal overlap** (section 7.3). Adjacency is a physical relationship, so it uses the **nominal rows**: an empty row is not skipped, and units in Front and Rear are not adjacent when Middle is empty. Only range calculation ignores empty rows (section 7.4). Bumps and forced movement follow the same rule: a unit shoved from Front into an empty Middle lands there and bumps nothing.
 
-A skill that hits units **behind** its target hits those with **100% overlap** automatically and those with **50% overlap** with a **50%** chance. Stealthed enemies can always be hit by attacks that reach them without targeting them. If a skill's target is KO when it executes, the skill targets units behind that target. **Only resurrection skills can target KO bodies.**
+A skill that hits units **behind** its target hits them in the **next row behind the target's row that holds a unit that can be hit** (adopted 2026-11-08, owner decision): the nominal rows count, so an empty row is passed over, a row with only KO bodies counts as empty, and stealthed units count. In that one row, the units with **100% overlap** are hit automatically and those with **50% overlap** with a **50%** chance; the rule never reaches into the rows after it, and if no unit there overlaps the target, nothing is hit behind. Stealthed enemies can always be hit by attacks that reach them without targeting them. If a skill's target is KO when it executes, the skill targets units behind that target. **Only resurrection skills can target KO bodies.**
 
 ### 8.5 Closest-target ties
 
@@ -898,7 +898,7 @@ Each status has its own application chance, duration, triggering conditions, and
 | **Silenced** | The unit cannot use `magical` skills. | 20 time units |
 | **Chilled** (`frost`) | The unit's Speed is lowered by 2 (section 6.1). | 20 time units |
 | **Frozen** (`frost`) | The unit's next turn is skipped, at the normal skipped-turn cost (section 6.4). It cannot intercept while Frozen (2026-11-04). It ends early when fire is set on the unit's spot (2026-10-19). | The unit's next turn |
-| **Stunned** | The unit takes no actions and cannot intercept; the timeline keeps running. Any hit ends it early. A new Stun on a Stunned unit keeps whichever time is longer (an exception to the reapplication rule above). Added 2026-11-03. | As stated by the skill |
+| **Stunned** | The unit takes no actions and cannot intercept; the timeline keeps running. Each of its turns that arrives while it is Stunned is skipped, at the cost of a skipped turn (section 6.4; adopted 2026-11-08, owner decision). Any hit ends it early. A new Stun on a Stunned unit keeps whichever time is longer (an exception to the reapplication rule above). Added 2026-11-03. | As stated by the skill |
 | **Confused** | Each skill the unit uses, helpful ones included, has a 50% chance to target a random unit instead: any unit the skill could legally reach, on either side. Added 2026-11-03. | As stated by the skill |
 | **Immobilized** | The unit cannot Move and cannot be moved by any skill (replaces the Rooted and Held candidates). It cannot intercept (2026-11-04). Added 2026-11-03. | As stated by the skill |
 | **Marked** | Enemy only. Any skill that refers to a Marked enemy works on every Marked enemy, whoever placed the Mark. Each marking skill states its duration and any limit, such as one Mark at a time. Decided 2026-11-01. | As stated by the skill |
@@ -1464,6 +1464,10 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A Clay Golem's turn arrives with two enemies equally near | A seeded roll picks one, and the golem attacks it with Delay 3. |
 | A coin creature has Cost 6 | It costs 50 + 25 × 6 = 200 coins. |
 | Two equally near targets are tied in a battle replayed from its seed | The same one is picked again. |
+| A Stunned unit's turn arrives | The turn is skipped and costs 5 + (11 − Speed) time units; the Stun keeps running its own time. |
+| An attacker in the Front row, the enemy has units in Front and Middle | Brawl Strike (D1) reaches only the Front row; Polearm Thrust (D2) also reaches the Middle row. |
+| A skill hits the unit behind its target, the row directly behind is empty and the Rear row has a unit at 100% overlap | The Rear unit is the one behind: it is hit automatically. |
+| A skill hits behind its target, the next row has units but none overlaps the target | Nothing is hit behind. |
 
 Expand these examples when numerical and mode-specific rules are decided. They are expected behavior, not claims that tests have passed.
 

@@ -56,14 +56,67 @@ public class AreaPatternTests
     }
 
     [Fact]
-    public void UnitsBehindListsOverlapAndRowsBehind()
+    public void UnitsBehindAreOnlyThoseOfTheNextRowThatHasAUnit()
     {
         var s = new BattleState(1);
         var target = Place.Unit(s, Side.A, Row.Front);
         var m1 = Place.Unit(s, Side.A, Row.Middle);  // lone card: 100%
-        var r1 = Place.Unit(s, Side.A, Row.Rear);    // lone card: 100%, two rows behind
-        var behind = AreaPatterns.UnitsBehind(s, target);
-        Assert.Equal(new[] { new BehindUnit(m1, 100, 1), new BehindUnit(r1, 100, 2) }, behind);
+        Place.Unit(s, Side.A, Row.Rear);             // lone card: 100%, but the rule never reaches past the Middle row
+        Assert.Equal(new[] { new BehindUnit(m1, 100, 1) }, AreaPatterns.UnitsBehind(s, target));
+    }
+
+    [Fact]
+    public void AnEmptyRowBehindIsPassedOver()
+    {
+        // 20.5: the row directly behind is empty and the Rear row has a unit at 100% overlap: that unit is the one behind.
+        var s = new BattleState(1);
+        var target = Place.Unit(s, Side.A, Row.Front);
+        var rear = Place.Unit(s, Side.A, Row.Rear);
+        Assert.Equal(new[] { new BehindUnit(rear, 100, 2) }, AreaPatterns.UnitsBehind(s, target));
+    }
+
+    [Fact]
+    public void ARowWithOnlyKoBodiesCountsAsEmpty()
+    {
+        var s = new BattleState(1);
+        var target = Place.Unit(s, Side.A, Row.Front);
+        var body = Place.Unit(s, Side.A, Row.Middle);
+        var rear = Place.Unit(s, Side.A, Row.Rear);
+        s.GetUnit(body).Hp = 0;
+        Assert.Equal(new[] { new BehindUnit(rear, 100, 2) }, AreaPatterns.UnitsBehind(s, target));
+    }
+
+    [Fact]
+    public void IfNoUnitOfTheNextRowOverlapsTheTargetNothingIsHitBehind()
+    {
+        // 20.5: the next row has units but none overlaps the target: nothing is hit behind, and the Rear row is not tried.
+        var s = new BattleState(1);
+        var target = Place.Unit(s, Side.A, Row.Front);   // Front centers -2, 0, 2: the target is the left one (-2)
+        Place.Unit(s, Side.A, Row.Front);
+        Place.Unit(s, Side.A, Row.Front);
+        Place.Unit(s, Side.A, Row.Middle);               // one Middle card at 0: no overlap with -2
+        Place.Unit(s, Side.A, Row.Rear);                 // one Rear card at 0: would not overlap either
+        Assert.Empty(AreaPatterns.UnitsBehind(s, target));
+    }
+
+    [Fact]
+    public void TheNextRowCanHoldSeveralUnitsBehindAtHalfOverlap()
+    {
+        var s = new BattleState(1);
+        var target = Place.Unit(s, Side.A, Row.Front);   // center 0
+        var m1 = Place.Unit(s, Side.A, Row.Middle);      // centers -1 and 1: both overlap by 50%
+        var m2 = Place.Unit(s, Side.A, Row.Middle);
+        Assert.Equal(new[] { new BehindUnit(m1, 50, 1), new BehindUnit(m2, 50, 1) }, AreaPatterns.UnitsBehind(s, target));
+    }
+
+    [Fact]
+    public void StealthedUnitsCountAsBehind()
+    {
+        var s = new BattleState(1);
+        var target = Place.Unit(s, Side.A, Row.Front);
+        var hidden = Place.Unit(s, Side.A, Row.Middle);
+        s.GetUnit(hidden).IsStealthed = true;
+        Assert.Equal(new[] { new BehindUnit(hidden, 100, 1) }, AreaPatterns.UnitsBehind(s, target));
     }
 
     [Fact]

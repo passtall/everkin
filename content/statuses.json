@@ -46,7 +46,7 @@
       "id": "stunned",
       "name": "Stunned",
       "tag": null,
-      "effect": "The unit takes no actions and cannot intercept; the timeline keeps running. Any hit ends it early. A new Stun on a Stunned unit keeps whichever time is longer (an exception to the reapplication rule above). Added 2026-11-03.",
+      "effect": "The unit takes no actions and cannot intercept; the timeline keeps running. Each of its turns that arrives while it is Stunned is skipped, at the cost of a skipped turn (section 6.4; adopted 2026-11-08, owner decision). Any hit ends it early. A new Stun on a Stunned unit keeps whichever time is longer (an exception to the reapplication rule above). Added 2026-11-03.",
       "duration": "As stated by the skill"
     },
     {

@@ -136,8 +136,12 @@ public readonly record struct StatusApplication(
 
 /// <summary>What the start of a unit's turn did to it.</summary>
 /// <param name="FrozenTurnSkipped">Frozen was consumed: the turn is skipped, at the cost of a skipped turn.</param>
-/// <param name="Stunned">The unit is Stunned: it takes no actions (see the open question on what such a turn costs).</param>
-public readonly record struct TurnStartResult(bool FrozenTurnSkipped, bool Stunned);
+/// <param name="Stunned">The unit is Stunned: it takes no actions, and its turn is skipped at the cost of a skipped turn (section 10.5).</param>
+public readonly record struct TurnStartResult(bool FrozenTurnSkipped, bool Stunned)
+{
+    /// <summary>The turn does not happen: the driver schedules the next one with <see cref="Timeline.SkippedTurnWait"/>.</summary>
+    public bool TurnSkipped => FrozenTurnSkipped || Stunned;
+}
 
 /// <summary>
 /// The status framework (game_system.md section 10.5, 10.6): one instance per status type, durations in time units

@@ -149,7 +149,20 @@ public class StatusTests
     {
         var (s, a, _) = Duel();
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Stunned, Duration: 10));
-        Assert.True(Statuses.OnTurnStart(s, a).Stunned);
+        var r = Statuses.OnTurnStart(s, a);
+        Assert.True(r.Stunned);
+        Assert.True(r.TurnSkipped);                      // skipped at the cost of a skipped turn (decided 2026-11-08)
+        Assert.True(Statuses.Has(s.GetUnit(a), StatusIds.Stunned)); // the Stun keeps running its own time
+        Assert.Equal(11, Timeline.SkippedTurnWait(5));
+    }
+
+    [Fact]
+    public void AFrozenTurnIsSkippedToo()
+    {
+        var (s, a, _) = Duel();
+        Statuses.Apply(s, new StatusApplication(a, StatusIds.Frozen));
+        Assert.True(Statuses.OnTurnStart(s, a).TurnSkipped);
+        Assert.False(Statuses.OnTurnStart(s, a).TurnSkipped);
     }
 
     // ---- Frozen, Immobilized ----

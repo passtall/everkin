@@ -32,22 +32,27 @@ public static class AreaPatterns
         state.Formation.Units(side).Where(id => !state.GetUnit(id).IsKnockedOut).ToArray();
 
     /// <summary>
-    /// The units behind a target on its own side, row by row, nearest row first, with their overlap (100% or 50%). It uses
-    /// the nominal rows. Stealthed units are included; KO bodies are not. A skill that hits "the unit behind" decides how
-    /// many rows count; see <see cref="HitBehind"/> for the 100% / 50% rule.
+    /// The units behind a target (game_system.md section 8.4, owner decision 2026-11-08): those in the next row behind the
+    /// target's row that holds a unit that can be hit, with their overlap (100% or 50%). The nominal rows count, so an empty
+    /// row is passed over and so is a row with only KO bodies; stealthed units count. The rule never reaches into later
+    /// rows: if no unit of that row overlaps the target, the result is empty. See <see cref="HitBehind"/> for the 100% / 50% roll.
     /// </summary>
     public static IReadOnlyList<BehindUnit> UnitsBehind(BattleState state, int targetId)
     {
         var position = state.Formation.PositionOf(targetId);
-        var result = new List<BehindUnit>();
         for (var r = (int)position.Row + 1; r < Formation.RowCount; r++)
-            foreach (var id in state.Formation.Units(position.Side, (Row)r))
+        {
+            var living = state.Formation.Units(position.Side, (Row)r).Where(id => !state.GetUnit(id).IsKnockedOut).ToArray();
+            if (living.Length == 0) continue;
+            var result = new List<BehindUnit>();
+            foreach (var id in living)
             {
-                if (state.GetUnit(id).IsKnockedOut) continue;
                 var overlap = state.Formation.UnitOverlapPercent(id, targetId);
                 if (overlap >= 50) result.Add(new BehindUnit(id, overlap, r - (int)position.Row));
             }
-        return result;
+            return result;
+        }
+        return Array.Empty<BehindUnit>();
     }
 
     /// <summary>
