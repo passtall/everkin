@@ -72,12 +72,14 @@ public sealed class BattleState
     private readonly List<BattleEvent> _pendingEvents = new();
     private readonly Formation _formation;
     private readonly Timeline _timeline;
+    private readonly Momentum _momentum;
 
     public BattleState(ulong seed)
     {
         Random = new BattleRandom(seed);
         _formation = new Formation();
         _timeline = new Timeline();
+        _momentum = new Momentum();
         Emit(new BattleStarted(seed));
     }
 
@@ -86,6 +88,7 @@ public sealed class BattleState
         Random = other.Random.Clone();
         _formation = other._formation.Clone();
         _timeline = other._timeline.Clone();
+        _momentum = other._momentum.Clone();
         foreach (var u in other._units) _units.Add(u.Clone());
         // The copy starts with no pending events: they belong to the action that produced them.
     }
@@ -102,6 +105,25 @@ public sealed class BattleState
 
     /// <summary>The shared timeline: turns, auto events, delayed events and effect ends.</summary>
     public Timeline Timeline => _timeline;
+
+    /// <summary>The contested Momentum meter. Change it through <see cref="PayMomentum"/> and <see cref="ShiftMomentum"/> so the change is reported.</summary>
+    public Momentum Momentum => _momentum;
+
+    /// <summary>Pays a skill's Momentum cost for a side and reports it. Throws if the side is not far enough ahead.</summary>
+    public void PayMomentum(Side side, int cost)
+    {
+        var before = _momentum.Value;
+        _momentum.Pay(side, cost);
+        if (_momentum.Value != before) Emit(new MomentumChanged(MomentumCause.Cost, side, before, _momentum.Value));
+    }
+
+    /// <summary>Shifts the meter toward a side (negative: against it), clamped, and reports it if it moved.</summary>
+    public void ShiftMomentum(Side side, int amount)
+    {
+        var before = _momentum.Value;
+        _momentum.Shift(side, amount);
+        if (_momentum.Value != before) Emit(new MomentumChanged(MomentumCause.Shift, side, before, _momentum.Value));
+    }
 
     public Unit GetUnit(int id) => _units[id];
 
