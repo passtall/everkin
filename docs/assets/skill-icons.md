@@ -77,6 +77,6 @@ Main colors per profession keep a branch family readable: Hunter forest green, G
 | `flying-skywatch.png` | Flying · Skywatch | A keen eye inside a feather. |
 | `flying-assault.png` | Flying · Assault | A gust of wind swirls blowing sideways. |
 
-Save to `art/icons/skills/<file>`. The game maps each skill to `<profession>-<branch>.png` using skills.md.
+Save to `assets/icons/skills/<file>`. The game maps each skill to `<profession>-<branch>.png` using skills.md.
 
 **Unique icons later.** To give a skill its own icon, add a file named after its skill ID (the skill name in snake case, for example `shield_wall.png`) with the same style block; the game uses it instead of the branch icon when it exists.

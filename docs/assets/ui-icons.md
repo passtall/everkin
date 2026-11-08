@@ -68,4 +68,4 @@ These show on a spot, under the card. Make them as round badges too; the game al
 | `hud-emote.png` | A speech bubble | Cream symbol, plum fill |
 | `hud-offline.png` | A small broken link | Grey |
 
-Save to `art/icons/ui/<file>`.
+Save to `assets/icons/ui/<file>`.

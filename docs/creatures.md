@@ -42,7 +42,7 @@ Every attack respects interception (§8.2) and shifts Momentum normally (§6.7).
 
 ## Roster
 
-53 creatures, one per art image in `images/kin/` (`<art>_f.png`; the rear images were deleted on 2026-10-09). Art numbers 13 and above 54 do not exist; 13 was deleted. IDs are stable text IDs (§3.7). The game uses the cleaned copies in `art/creatures/`, named `{unitName}_{attackType}_{professions}.png` as listed in [creature-classes.md](creature-classes.md) (for example `fits_fox-02.png`), and their portrait crops are in `art/creatures/portraits.json`.
+53 creatures, one per art image in `source-art/creatures/` (`<art>_f.png`; the rear images were deleted on 2026-10-09). Art numbers 13 and above 54 do not exist; 13 was deleted. IDs are stable text IDs (§3.7). The game uses the cleaned copies in `assets/creatures/`, named by the Art file column of [creature-classes.md](creature-classes.md) (for example `fox-02.png`); their crops are in that file's Card details table. creature-classes.md is the current roster of all 319 creatures; the table below is the 2026-10-05 draft of the first 53.
 
 | Art | ID | Name | Tier | HP | Speed | Power | Classes | Attack | Notes |
 |---:|---|---|---|---:|---:|---:|---|---|---|
@@ -150,4 +150,4 @@ What each fantasy creature's art shows, so the names can be checked against the 
 - Owner review of every name, number, class and attack above.
 - Balance after the first AI-vs-AI runs (game_system.md §2.4).
 - Human recruits: none exist in the art yet. They follow §3.4 and §3.7 when added.
-- Art framing and cleanup before card layout ([unit-art-compatibility.md](unit-art-compatibility.md)).
+- Art framing and cleanup before card layout ([unit-art-compatibility.md](archive/unit-art-compatibility.md)).

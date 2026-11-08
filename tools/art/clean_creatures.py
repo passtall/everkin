@@ -1,7 +1,7 @@
-"""Make cleaned creature art copies from images/kin (the originals are never changed).
+"""Make cleaned creature art copies from source-art/creatures (the originals are never changed).
 
-Reads the table in docs/creature-classes.md: for each row it cleans images/kin/<Source> and
-writes art/creatures/<Art file> (the species-{nn}.png name): 1024 x 1536 RGBA,
+Reads the table in docs/creature-classes.md: for each row it cleans source-assets/creatures/<Source> and
+writes assets/creatures/<Art file> (the species-{nn}.png name): 1024 x 1536 RGBA,
 transparent background, stray specks removed, the creature scaled to fit the safe area and
 standing on the shared ground line. Art files no row names any more are deleted.
 
@@ -15,8 +15,9 @@ from PIL import Image
 from scipy import ndimage
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / "images" / "kin"
-OUT = ROOT / "art" / "creatures"
+SRC = ROOT / "source-art" / "creatures"
+OUT = ROOT / "assets" / "creatures"
+REPORT = ROOT / "tools" / "art" / "clean_report.json"
 
 W, H = 1024, 1536
 MARGIN_X = 48          # left and right margin
@@ -66,7 +67,7 @@ def removed_specks(n, sizes):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     report = {}
-    old_report = OUT / "clean_report.json"
+    old_report = REPORT
     previous = json.loads(old_report.read_text()) if old_report.exists() else {}
     rows = art_rows()
     missing = []
@@ -92,7 +93,7 @@ def main():
     for stale in set(p.name for p in OUT.glob("*.png")) - {art for _, art, _ in rows}:
         (OUT / stale).unlink()
         print(f"removed {stale}")
-    (OUT / "clean_report.json").write_text(json.dumps(report, indent=1) + "\n")
+    REPORT.write_text(json.dumps(report, indent=1) + "\n")
     if missing:
         sys.exit(f"{len(missing)} source file(s) missing: {', '.join(missing)}")
 

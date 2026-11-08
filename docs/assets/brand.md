@@ -2,7 +2,7 @@
 
 production.md §1.6: a hand-lettered gold storybook wordmark "Everkin" with a small emblem; the app and store icon is that emblem in gold on a plum night sky, readable at small sizes. Generated, then redrawn as a vector. Run the three prompts in order and attach the emblem result to the third.
 
-## 1. Emblem → `art/brand/emblem.png`
+## 1. Emblem → `assets/brand/emblem.png`
 
 ```
 Design a small emblem for "Everkin", a night fairytale card game where wild creatures and enchanted objects live side by side. The emblem: a round crest with a stylised tree whose roots and branches form a ring, a crescent moon tucked in the branches, and two tiny creature silhouettes (a fox and a little bird) among the roots. A castle tower is only hinted at in the distance between the branches.
@@ -11,7 +11,7 @@ FORMAT: PNG, 1024 × 1024 px, real transparent background. One emblem, centered,
 STYLE: antique gold metal with soft bevels, a subtle warm glow, and dark plum shadows in the recesses. Bold simple shapes that still read at 48 × 48 px; avoid fine filigree. Storybook and warm, slightly magical, suitable for ages 7 and up.
 ```
 
-## 2. Wordmark → `art/brand/wordmark.png`
+## 2. Wordmark → `assets/brand/wordmark.png`
 
 ```
 Hand-letter the word "Everkin" as a game logo wordmark. Spell it exactly E-v-e-r-k-i-n, one word, capital E only.
@@ -20,7 +20,7 @@ FORMAT: PNG, 2048 × 768 px, real transparent background. The word centered, fil
 STYLE: a warm storybook serif with gentle hand-drawn swashes on the E and the k, antique gold with a soft bevel and a thin dark plum outline so it reads on both light and dark night skies. A tiny crescent moon may dot the i. Readable at small sizes; no thin hairlines that disappear when shrunk. Fairytale, not horror, not medieval blackletter.
 ```
 
-## 3. App icon → `art/brand/app-icon.png`
+## 3. App icon → `assets/brand/app-icon.png`
 
 Attach the emblem from step 1.
 
@@ -32,4 +32,4 @@ CONTENT: the attached gold emblem, centered, about 70% of the icon, on a deep pl
 STYLE: the emblem stays exactly as attached; only the background is new. Must read clearly at 48 × 48 px.
 ```
 
-After generating: redraw the emblem and wordmark as SVG (`art/brand/emblem.svg`, `art/brand/wordmark.svg`) and replace the repo's default `icon.svg` with the emblem.
+After generating: redraw the emblem and wordmark as SVG (`assets/brand/emblem.svg`, `assets/brand/wordmark.svg`) and replace the repo's default `icon.svg` with the emblem.

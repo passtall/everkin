@@ -6,8 +6,9 @@ import soundfile as sf
 import pyloudnorm as pyln
 import imageio_ffmpeg
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT if ROOT.name == 'Everkin_Sound_Pack' else ROOT / 'Everkin_Sound_Pack'
+# Writes assets/audio/... in the repo; previews and measurements go to tools/audio/report/.
+OUT = Path(__file__).resolve().parents[2] / 'assets'
+REPORT = Path(__file__).resolve().parent / 'report'
 SR = 48000
 R = np.random.default_rng(8172026)
 meter = pyln.Meter(SR)
@@ -214,7 +215,7 @@ def ambience(name,d=60):
     return x
 
 def main():
-    OUT.mkdir(exist_ok=True)
+    OUT.mkdir(exist_ok=True); REPORT.mkdir(exist_ok=True)
     previews=[]
     for name,d in UI.items():
         y=save(f'audio/ui/{name}.ogg',effect(name,d),-16)
@@ -232,13 +233,13 @@ def main():
     for name,y in previews:
         cues.append({'time_s':round(cursor/SR,2),'sound':name})
         demo.extend((y,np.zeros(round(.45*SR)))); cursor+=len(y)+round(.45*SR)
-    sf.write(OUT/'preview_effects.wav',np.concatenate(demo),SR,subtype='PCM_16')
+    sf.write(REPORT/'preview_effects.wav',np.concatenate(demo),SR,subtype='PCM_16')
     a,_=sf.read(OUT/'audio/ambient/pine_forest.ogg')
     b,_=sf.read(OUT/'audio/ambient/crystal_caverns.ogg')
-    sf.write(OUT/'preview_ambient.wav',np.concatenate((a[:SR*8],np.zeros((SR,2)),b[:SR*8])),SR,subtype='PCM_16')
-    (OUT/'preview_cues.json').write_text(json.dumps(cues,indent=2))
-    (OUT/'manifest.json').write_text(json.dumps(records,indent=2))
-    with (OUT/'manifest.csv').open('w',newline='') as f:
+    sf.write(REPORT/'preview_ambient.wav',np.concatenate((a[:SR*8],np.zeros((SR,2)),b[:SR*8])),SR,subtype='PCM_16')
+    (REPORT/'preview_cues.json').write_text(json.dumps(cues,indent=2))
+    (REPORT/'manifest.json').write_text(json.dumps(records,indent=2))
+    with (REPORT/'manifest.csv').open('w',newline='') as f:
         keys=list(dict.fromkeys(k for r in records for k in r))
         writer=csv.DictWriter(f,fieldnames=keys); writer.writeheader(); writer.writerows(records)
     assert len(records)==106

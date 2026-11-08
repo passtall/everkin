@@ -1,6 +1,6 @@
 # Everkin — Profession Skills
 
-**Status:** adopted 2026-11-03. Andreas chose every skill here in picker rounds, one profession at a time (2026-10-17 to 2026-11-03), followed by a review that removed plain attacks and flat bonuses. This document owns the skills of the 12 professions in [class_system.md](class_system.md); [classes_and_skills.md](classes_and_skills.md) stays superseded. Global rules (statuses, Delay, Momentum, summons, ground effects) live in [game_system.md](game_system.md).
+**Status:** adopted 2026-11-03. Andreas chose every skill here in picker rounds, one profession at a time (2026-10-17 to 2026-11-03), followed by a review that removed plain attacks and flat bonuses. This document owns the skills of the 12 professions in [class_system.md](class_system.md); [classes_and_skills.md](archive/classes_and_skills.md) stays superseded. Global rules (statuses, Delay, Momentum, summons, ground effects) live in [game_system.md](game_system.md).
 
 **Legend:** D = Delay (1 is quickest), M = Momentum cost. A = active, P = passive, Mod = modifier of the named skill, K = keystone. Durations are in time units (10 is about one former turn). Damage and healing numbers assume Power 5. Branches organize a profession's tree only; a creature can learn from every branch of its professions (class_system §4). There are no tags.
 

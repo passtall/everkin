@@ -1,17 +1,17 @@
 # Creature art prompt v2 (more classes, more variety)
 
-Written 2026-10-11. The class names in the briefs below are from before the 2026-10-14 merges; current classes are in class_system.md v1.3. It replaces nothing: `creature-art-prompt.md` stays as the v1 template. v2 exists because the first 143 creatures lean heavily on Feral / Guardian / Warrior. This file has
+Written 2026-10-11. The class names in the briefs below are from before the 2026-10-14 merges; current classes are in class_system.md v1.3. The v1 template is in `docs/archive/creature-art-prompt-v1.md`. v2 exists because the first 143 creatures lean heavily on Feral / Guardian / Warrior. This file has
 
 1. a **style block** to paste after each creature brief (two variants: with reference images, or text only),
 2. **design rules** for variety and class readability,
 3. **48 ready-to-run creature briefs**, 3 per profession as the main class, spread over all 11 attack types.
 
-The 11 reference favorites are copied to `art/creatures-new/`. Put new results there too, named `{unitName}_{attackType}_{profession1}_{profession2}.png` (see the unit name schema in `creature-classes.md`). Add a row per creature to `creature-classes.md` before running `tools/art/clean_creatures.py`.
+The 11 reference favorites are copied to `source-art/creatures-new/`. Put new results there too, named `{unitName}_{attackType}_{profession1}_{profession2}.png` (see the unit name schema in `creature-classes.md`). Add a row per creature to `creature-classes.md` before running `tools/art/clean_creatures.py`.
 
 ## How to use
 
 1. Pick a brief from the table below and write it as one short paragraph (creature, body type, gear, glow, mood).
-2. Paste the style block after it. Use **Variant A** if you attach the reference images from `art/creatures-new/` (attach 3–4 per request, mixing sizes, not all 11), **Variant B** if you cannot attach any.
+2. Paste the style block after it. Use **Variant A** if you attach the reference images from `source-art/creatures-new/` (attach 3–4 per request, mixing sizes, not all 11), **Variant B** if you cannot attach any.
 3. One image per request, or several briefs in one request with "ONE separate image per creature".
 
 ## Style block, Variant A (references attached)
@@ -182,7 +182,7 @@ Black Mage was removed on 2026-10-14; these briefs keep their original classes. 
 - Main professions: 3 briefs for each of the 16 professions (48 total).
 - Attack types: Unarmed 3, Bladed 4, Polearm 4, Ranged 6, Feral 2, Magic 10, Blunt 4, Breath 2, Thrown 4, Lashing 4, Aura 5 (Magic stays the most common, Feral is low on purpose because the existing art already has plenty).
 - Humanoids: 7 of 48 (`elf-healer-leaf`, `catfolk-spellblade-moon`, `gnome-alchemist-flask`, `lizardfolk-ninja-kunai`, `orc-summoner-skull`, `dwarf-captain-banner`, `lizardfolk-barbarian-axe`).
-- Names avoid collisions with existing files in `art/creatures/` (checked 2026-10-11).
+- Names avoid collisions with existing files in `assets/creatures/` (checked 2026-10-11).
 
 ## Current living-object batch direction
 

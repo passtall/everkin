@@ -4,9 +4,9 @@
 
 ## How to use
 
-1. Attach 3–4 creature images from `art/creatures/` as style references (mix sizes; golems go well with `kiln-01.png`, `sarcophagus-01.png`, `organ-01.png`, `lantern-01.png`).
+1. Attach 3–4 creature images from `assets/creatures/` as style references (mix sizes; golems go well with `kiln-01.png`, `sarcophagus-01.png`, `organ-01.png`, `lantern-01.png`).
 2. Paste one brief, then the style block below. One image per request, or several briefs with "ONE separate image per brief".
-3. Save as `art/summons/<file>.png`. Clean them with the same rules as creatures (transparent, ground line at y 1456).
+3. Save as `assets/summons/<file>.png`. Clean them with the same rules as creatures (transparent, ground line at y 1456).
 
 ## Style block
 

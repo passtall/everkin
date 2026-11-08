@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate creature art from the briefs in docs/creature-art-prompt-v2.md with the OpenAI image API.
+"""Generate creature art from the briefs in docs/assets/creature-art-prompt.md with the OpenAI image API.
 
 Setup:  pip install openai   and   set OPENAI_API_KEY
 Usage:
@@ -9,7 +9,7 @@ Usage:
   python tools/art/generate_creatures.py --all --quality high
   python tools/art/generate_creatures.py --all --no-refs                     # text-only style (Variant B)
 
-Results go to art/creatures-new/ as {unit}_{attack}_{prof1}_{prof2}.png (existing files are skipped
+Results go to source-source-art/creatures-new/ as {unit}_{attack}_{prof1}_{prof2}.png (existing files are skipped
 unless --force). The API returns 1024x1536 PNGs with real alpha; run tools/art/clean_creatures.py
 afterwards (after adding rows to docs/creature-classes.md).
 """
@@ -22,8 +22,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-PROMPT_FILE = ROOT / "docs" / "creature-art-prompt-v2.md"
-OUT_DIR = ROOT / "art" / "creatures-new"
+PROMPT_FILE = ROOT / "docs" / "assets" / "creature-art-prompt.md"
+OUT_DIR = ROOT / "source-art" / "creatures-new"
 DEFAULT_MODEL = "gpt-image-2.5-sunburst"  # editing precision; "gpt-image-2.5-flare" is the fast one
 SIZE = "1024x1536"
 
@@ -59,7 +59,7 @@ def parse_prompt_file():
 
 
 def favorites():
-    """The 11 reference images copied into art/creatures-new/ (everything not made by this script)."""
+    """The 11 reference images copied into source-source-art/creatures-new/ (everything not made by this script)."""
     _, _, briefs = parse_prompt_file()
     generated = {b["file"] for b in briefs}
     return sorted(p for p in OUT_DIR.glob("*.png") if p.name not in generated)

@@ -8,7 +8,7 @@
 
 **Project name:** Everkin is a working title.
 
-**Companion documents:** [UI specification](ui_spec.md) owns screens and interactions. [Class system](class_system.md) owns the class definitions (Attack Types and Professions); [Skills](skills.md) owns every profession's skills (adopted 2026-11-03); [classes_and_skills.md](classes_and_skills.md) is superseded. [Creatures](creatures.md) owns the creature roster, size tiers and the type-specific attack library. This document owns game rules, scope, and implementation requirements.
+**Companion documents:** [UI specification](ui_spec.md) owns screens and interactions. [Class system](class_system.md) owns the class definitions (Attack Types and Professions); [Skills](skills.md) owns every profession's skills (adopted 2026-11-03); [classes_and_skills.md](archive/classes_and_skills.md) is superseded. [Creature classes](creature-classes.md) owns the creature roster (classes, biome, stats, Cost, art); [creatures.md](creatures.md) keeps the size tiers of the first draft. This document owns game rules, scope, and implementation requirements.
 
 **Current work:** define the whole game before gameplay implementation. Classes and skills are designed one class at a time, with about ten questions per round, and the answers are applied directly to these documents. Keep unresolved choices explicit; no separate decision history is maintained.
 
@@ -108,7 +108,7 @@ The AI-versus-AI milestone comes first once gameplay implementation begins. The 
 
 The harness plays battles automatically for balance testing and debugging. Adopted rules:
 
-- **Teams.** Each side gets 6 random creatures from the roster ([creatures.md](creatures.md)) whose total Cost fits the team budget (section 5.1), with no duplicates within a side. The same creature may appear on both sides. Units are level 20 with all their creature and class skills (section 17.1).
+- **Teams.** Each side gets 6 random creatures from the roster ([creature-classes.md](creature-classes.md)) whose total Cost fits the team budget (section 5.1), with no duplicates within a side. The same creature may appear on both sides. Units have all their creature and class skills (section 4.1, continuous testing).
 - **Party size.** Test battles are 6 versus 6 only for now.
 - **Formation.** Each side's starting formation is a random legal placement. It is recorded with the battle, so the statistics also show which rows work for which units.
 - **Search.** Each AI uses a minimax search over a fixed number of upcoming timeline turns, counted across both sides. Both AIs in a test battle use the same settings.
@@ -186,7 +186,7 @@ The current direction avoids a general gear system. Some humans and other creatu
 
 ### 3.7 Creature roster
 
-The exact creature roster lives in [creatures.md](creatures.md): size tiers (critter, medium, large) with base stat blocks, the shared library of type-specific attacks, and every creature's ID, art, stats, classes and attack. Adopted rules for creatures:
+The exact creature roster lives in [creature-classes.md](creature-classes.md): every creature's unit name, display name, Attack Type, Professions, home biome, stats, Cost, art file and card crops. [creatures.md](creatures.md) holds the size tiers of the first draft roster (its attack library is superseded). Adopted rules for creatures:
 
 - **Size tiers.** Each creature belongs to one tier and tweaks that tier's base stat block slightly.
 - **HP** runs from 20 to 80 in steps of 5. The anchors in section 5.5 stay.
@@ -201,7 +201,7 @@ The exact creature roster lives in [creatures.md](creatures.md): size tiers (cri
 
 ## 4. Classes and skill-tree progression
 
-> **Superseded (2026-10-09).** Classes are now defined in [class_system.md](class_system.md): 1 Attack Type (9 options) plus 1–2 Professions (13 options). Wherever this section says "class", "class tree" or "type-specific attack", it describes the old system. The progression rules (point budget, node types, costs, no mana or cooldowns, skill cards in §4.7) still stand, but how skills and trees attach to Attack Types and Professions is not decided yet (section 19).
+> **Superseded (2026-10-09).** Classes are now defined in [class_system.md](class_system.md): 1 Attack Type (9 options) plus 1–2 Professions (12 options). Each Profession's skill tree is its skill list in [skills.md](skills.md), and each Attack Type gives one shared attack (section 4.4). Wherever this section says "class" or "class tree", read Profession and its tree. The progression rules (point budget, node types, costs, no mana or cooldowns, skill cards in §4.7) still stand; the tree model is in section 4.1.
 
 ### 4.1 Access and point budget
 
@@ -271,7 +271,7 @@ There is no global anti-spam rule. A skill's consequences and the resulting comb
 
 ### 4.5 Current class roster
 
-**Replaced 2026-10-09.** The class roster is [class_system.md](class_system.md) v1.3: 9 Attack Types (Brawl, Bladed, Polearm, Ranged, Magic, Blunt, Breath, Whip, Aura) and 13 Professions (Hunter, Guardian, Healer, Sorcerer, Elementalist, Warrior, Bard, Leader, Rogue, Tinker, Summoner, Primalist, Flying). The old seven classes and their skills in classes_and_skills.md are invalid. Do not add other Attack Types or Professions without an explicit scope change. On 2026-10-14 Black Mage was replaced by Elementalist and several classes were merged (class_system.md v1.2 and v1.3).
+**Replaced 2026-10-09.** The class roster is [class_system.md](class_system.md) v1.5: 9 Attack Types (Brawl, Bladed, Polearm, Ranged, Magic, Blunt, Breath, Whip, Aura) and 12 Professions (Hunter, Guardian, Healer, Sorcerer, Elementalist, Warrior, Leader, Rogue, Tinker, Summoner, Primalist, Flying; Bard became a Leader branch on 2026-10-19). The old seven classes and their skills in archive/classes_and_skills.md are invalid. Do not add other Attack Types or Professions without an explicit scope change. On 2026-10-14 Black Mage was replaced by Elementalist and several classes were merged (class_system.md v1.2 and v1.3).
 
 Class skills use the **same rules across creature types**. A class ability does not acquire a species-specific version merely because a turtle rather than a human uses it. Outcomes can still differ through the user's stats and explicitly defined build effects.
 
@@ -605,7 +605,7 @@ Rows with card counts of the same odd-or-even parity can align directly. When on
 A derived coordinate model uses one half-card width as a unit. For a row of `n` cards and zero-based ordered index `i`:
 
 ```text
-Card center = 2 ? i - (n - 1)
+Card center = 2 × i - (n - 1)
 Card width = 2
 Overlap fraction = max(0, 1 - abs(centerA - centerB) / 2)
 ```
@@ -1066,7 +1066,7 @@ On the battlefield a unit is shown as a **compact card**: portrait, HP bar, stat
 
 Cosmetic frames must never reduce gameplay readability. KO must be unmistakable, for example through desaturation or darkening in addition to an explicit KO indication.
 
-The **back** uses the same selected cosmetic frame and shows the unit from behind, together with every skill it can currently use. Descriptions show the actual current versions, including all modifications and effects selected through skill trees.
+The **back** uses the same selected cosmetic frame and shows the whole creature (there is no rear art), together with every skill it can currently use. Descriptions show the actual current versions, including all modifications and effects selected through skill trees.
 
 The card back is primarily an **inspection interface**, not an action menu. With future online PvP in mind, players must be able to inspect opposing units and understand exactly which abilities they may use. This inspection requirement does not by itself commit to an online implementation.
 
@@ -1237,7 +1237,7 @@ The first playable should exercise:
 
 - A small selection of humans, animals, and fantasy creatures.
 - Six-member formation across three rows.
-- Direct testing of active skills, passives, and modifiers on level-20 units; tree organization and point allocation follow later.
+- Direct testing of active skills, passives, and modifiers on units that have all their skills; tree organization and point allocation follow later.
 - The four global stats and skill-specific damage scaling.
 - Visible turn order and a limited set of timing effects.
 - Movement, targeting, and a readable form of protection.
@@ -1292,7 +1292,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Test harness | Search depth per difficulty level (after measuring speed). The first scoring weights are adopted (2026-11-04). Team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
 | Encounters | Specific encounter rosters, boss stats, and each encounter's AI level. Three difficulty levels are adopted (section 12.3). Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
 | Product structure | Campaign content (locations, encounters, boss rosters, each chapter's conflict, which neighboring biomes chapters 1 and 2 use, chapter and encounter names). The setting (no player character, no story text, Everkin as the land's name) is adopted (section 15, 2026-11-04); later full campaign design, and final content. A world map, the castle as stage 3 and the dragons as stage 4 of the four stages, the chapter shapes, the world map and dragon rewards (section 15, 2026-11-04) and bosses as strengthened roster creatures are adopted (sections 7.6 and 15). Stage size (about five battles plus a boss), fixed battle order, no team restrictions beyond the team budget and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
-| Presentation | Mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, left vertical timeline, and bottom skill bar are selected. Card styling is decided (full art with corner gems, rear-art backs, home-biome frame; ui_spec.md). |
+| Presentation | Mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, left vertical timeline, and bottom skill bar are selected. Card styling is decided (full art with corner gems, backs showing the whole creature, home-biome frame; ui_spec.md). |
 | Delivery | Technical validation and the name's availability check. Server-held profiles (replacing store cloud saves) and the name (Everkin) are adopted. Platforms, stores, business model, languages, accessibility, crash reports, save files, the technical foundation, prices, store pages and online responsibilities are adopted ([production.md](production.md)). The battle screen arrangement, interactions and layout sizes are adopted (section 13.3, ui_spec.md). |
 
 These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
@@ -1305,7 +1305,7 @@ Required scope includes AI-versus-AI development testing, single-player AI battl
 
 For each required mode, define the full flow from launching the game through party setup, battle, results, and replay or progression. Specify AI behavior/difficulty and local handover rules. Define the online requirements and interface boundaries; online is built in its roadmap slot (production.md §3).
 
-Use illustrated locations and a four-stage line of fixed-order battles for current campaign testing, with guaranteed encounter unit rewards. Define the tutorial's creatures, specific rewards, coin sources and prices, and the completion flow; the tutorial, stage size, duplicates, loss consequences, replays, post-story challenge encounters, coins and saved teams are adopted (sections 2.2 and 13.2). Respec is free outside battle. Full campaign design and normal progression details remain for later; test units start at level 20, and skills precede trees and point allocation. Unselected systems should be explicitly excluded rather than left ambiguous.
+Use illustrated locations and a four-stage line of fixed-order battles for current campaign testing, with guaranteed encounter unit rewards. Define the tutorial's creatures, specific rewards, coin sources and prices, and the completion flow; the tutorial, stage size, duplicates, loss consequences, replays, post-story challenge encounters, coins and saved teams are adopted (sections 2.2 and 13.2). Respec is free outside battle. Full campaign design and normal progression details remain for later; test units have all their skills, and skills precede trees and point allocation. Unselected systems should be explicitly excluded rather than left ambiguous.
 
 ### 20.2 Exact combat details
 

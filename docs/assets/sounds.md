@@ -8,7 +8,7 @@ From production.md §1.6 (Sound list, adopted 2026-10-08): quiet, non-melodic, A
 Style: soft storybook fantasy game sound, gentle and clean, no music, no melody, no voices, no reverb tail longer than the stated length, no clipping. Suitable for ages 7 and up: impacts are cushioned, never gory.
 ```
 
-## Interface → `audio/ui/`
+## Interface → `assets/audio/ui/`
 
 | File | Length | Prompt |
 |---|---|---|
@@ -24,7 +24,7 @@ Style: soft storybook fantasy game sound, gentle and clean, no music, no melody,
 | `card_flip.ogg` | 0.3 s | A thick playing card flipping over with a soft snap. |
 | `coins.ogg` | 0.5 s | A few small gold coins clinking softly into a pouch. |
 
-## Battle → `audio/battle/` (3 variants each)
+## Battle → `assets/audio/battle/` (3 variants each)
 
 | File | Length | Prompt |
 |---|---|---|
@@ -54,14 +54,14 @@ Style: soft storybook fantasy game sound, gentle and clean, no music, no melody,
 | `ko_crack` | 0.4 s | A thin glassy crack spreading across a pane. |
 | `ko_thud` | 0.4 s | A soft card flip ending in a muffled thud on felt. |
 
-## Results → `audio/result/`
+## Results → `assets/audio/result/`
 
 | File | Length | Prompt |
 |---|---|---|
 | `victory.ogg` | 2 s | A warm non-melodic swell of soft chimes and glowing air rising to a gentle bright peak. |
 | `defeat.ogg` | 2 s | A soft low falling swell, a single muted chime fading into night air. Not sad horns, not dramatic. |
 
-## Biome ambient loops → `audio/ambient/` (stereo, 60–90 s, seamless loop)
+## Biome ambient loops → `assets/audio/ambient/` (stereo, 60–90 s, seamless loop)
 
 Prompt template: `A quiet night ambience loop of {scene}. Calm, sparse, no music, no voices, no sudden loud events. Seamless loop.`
 
