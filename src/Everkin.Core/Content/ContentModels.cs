@@ -59,6 +59,9 @@ public sealed class ContentSet
 
     public IReadOnlyDictionary<string, CreatureDef> CreaturesById { get; init; } = new Dictionary<string, CreatureDef>();
     public IReadOnlyDictionary<string, ProfessionSkillDef> SkillsById { get; init; } = new Dictionary<string, ProfessionSkillDef>();
+
+    /// <summary>Each creature's default skill build (game_system.md section 4.1), keyed by creature ID. Empty when the file was not given.</summary>
+    public IReadOnlyDictionary<string, IReadOnlyList<string>> DefaultBuilds { get; init; } = new Dictionary<string, IReadOnlyList<string>>();
 }
 
 /// <summary>Raised when content is broken. The message names the file and the ID (production.md section 2.2).</summary>

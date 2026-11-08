@@ -1,0 +1,3194 @@
+{
+  "builds": {
+    "abacus-strategist": [
+      "reposition",
+      "advance",
+      "switch_places",
+      "fall_back",
+      "rotation",
+      "song_of_haste",
+      "press_the_advantage",
+      "inspiring_presence"
+    ],
+    "accordion-warlord": [
+      "song_of_haste",
+      "rhythm",
+      "war_drums",
+      "battle_roar",
+      "sweeping_kick",
+      "reposition",
+      "challenge",
+      "drag_out"
+    ],
+    "anchor-sentinel": [
+      "leap_to_defend",
+      "full_cover",
+      "hold_position",
+      "take_a_charge",
+      "ward",
+      "living_wall",
+      "shield_wall",
+      "distract"
+    ],
+    "ankylosaur-guardian-club": [
+      "leap_to_defend",
+      "battle_roar",
+      "crowd_fighter",
+      "challenge",
+      "drag_out",
+      "take_a_charge",
+      "hold_position",
+      "isolate"
+    ],
+    "ant-engineer-gear": [
+      "flashbang",
+      "healing_draught",
+      "poison_gas",
+      "firebomb",
+      "flame_turret",
+      "gas_cloud",
+      "antidote",
+      "plague_doctor"
+    ],
+    "armadillo-knight": [
+      "ward",
+      "leap_to_defend",
+      "lasting_ward",
+      "hold_position",
+      "shield_wall",
+      "overcharged_ward",
+      "shield_dome",
+      "keeper_of_the_gate"
+    ],
+    "armadillo-knight-2": [
+      "take_a_charge",
+      "ward",
+      "distract",
+      "overcharged_ward",
+      "shield_dome",
+      "follow_the_charge",
+      "lasting_ward",
+      "leap_to_defend"
+    ],
+    "astrolabe-judge": [
+      "curse_of_weight",
+      "song_of_haste",
+      "curse_of_stagnation",
+      "phase_weapon",
+      "piercing_enchant",
+      "rhythm",
+      "echo_enchant",
+      "curse_of_betrayal"
+    ],
+    "aurochs-bodyguard-plate": [
+      "sidestep",
+      "hit_and_run",
+      "endure",
+      "counter_step",
+      "unstoppable",
+      "battle_roar",
+      "sweeping_kick",
+      "crowd_fighter"
+    ],
+    "axolotl-mage-water": [
+      "freeze",
+      "kindle",
+      "backdraft",
+      "scorch",
+      "phase_weapon",
+      "glass_body",
+      "phasing_strike",
+      "stone_shell"
+    ],
+    "ayeaye-hexer-candle": [
+      "curse_of_weight",
+      "curse_of_betrayal",
+      "hide",
+      "phase_weapon",
+      "witchs_patience",
+      "phasing_strike",
+      "jam",
+      "mark_for_death"
+    ],
+    "badger-summoner-drum": [
+      "clay_golem",
+      "reposition",
+      "fall_back",
+      "animate_blades",
+      "rotation",
+      "blade_storm",
+      "song_of_haste",
+      "advance"
+    ],
+    "ballast-bodyguard": [
+      "gust",
+      "take_off",
+      "take_a_charge",
+      "follow_the_charge",
+      "dust_up",
+      "ward",
+      "scout_ahead",
+      "distract"
+    ],
+    "basilisk-sorcerer-gaze": [
+      "sidestep",
+      "endure",
+      "battle_roar",
+      "challenge",
+      "jam",
+      "flash_powder",
+      "reckless_swing",
+      "hide"
+    ],
+    "bassoon-hexer-requiem": [
+      "press_the_advantage",
+      "song_of_haste",
+      "swap_turns",
+      "inspiring_presence",
+      "war_drums",
+      "solo_performer",
+      "reposition",
+      "fall_back"
+    ],
+    "bat-rogue-shadow": [
+      "scout_ahead",
+      "mark_for_death",
+      "backstab",
+      "gust",
+      "hide",
+      "sneak",
+      "dust_up",
+      "boundless_sky"
+    ],
+    "bat-summoner-moon": [
+      "raise_undead",
+      "clay_golem",
+      "mass_grave",
+      "scout_ahead",
+      "rune_golem",
+      "lich_form",
+      "gust",
+      "corpse_explosion"
+    ],
+    "baton-marshal": [
+      "press_the_advantage",
+      "swap_turns",
+      "inspiring_presence",
+      "all_in",
+      "song_of_haste",
+      "rhythm",
+      "reposition",
+      "war_drums"
+    ],
+    "beacon-summoner": [
+      "gust",
+      "raise_undead",
+      "animate_blades",
+      "scout_ahead",
+      "clay_golem",
+      "watchtower",
+      "take_off",
+      "clockwork_golem"
+    ],
+    "beaver-healer-pump": [
+      "life_link",
+      "revive",
+      "healing_draught",
+      "mend",
+      "absolve",
+      "barricade",
+      "overflowing_care",
+      "antidote"
+    ],
+    "bee-shaman-sun": [
+      "healing_totem",
+      "scout_ahead",
+      "gust",
+      "forced_step",
+      "spirit_link_totem",
+      "watchtower",
+      "great_totem",
+      "totem_of_return"
+    ],
+    "beetle-2": [
+      "challenge",
+      "sidestep",
+      "take_a_charge",
+      "counter_step",
+      "leap_to_defend",
+      "ward",
+      "single_combat",
+      "drag_out"
+    ],
+    "beetle-engineer-seed": [
+      "barricade",
+      "hoarfrost",
+      "totem_ritual",
+      "forced_step",
+      "healing_draught",
+      "healing_totem",
+      "totem_of_return",
+      "spirit_link_totem"
+    ],
+    "beetle-knight-shield": [
+      "take_a_charge",
+      "follow_the_charge",
+      "sidestep",
+      "counter_step",
+      "challenge",
+      "drag_out",
+      "battle_roar",
+      "hunt_down"
+    ],
+    "behemoth-titan-iron": [
+      "take_a_charge",
+      "leap_to_defend",
+      "follow_the_charge",
+      "distract",
+      "shock",
+      "chain_lightning",
+      "rescue",
+      "full_cover"
+    ],
+    "bell-guardian-clapper": [
+      "raise_undead",
+      "clay_golem",
+      "animate_blades",
+      "rune_golem",
+      "press_the_advantage",
+      "inspiring_presence",
+      "swap_turns",
+      "corpse_explosion"
+    ],
+    "bellows-drake": [
+      "challenge",
+      "endure",
+      "barricade",
+      "healing_draught",
+      "bolt_turret",
+      "repair",
+      "drag_out",
+      "single_combat"
+    ],
+    "binturong-bard-vine": [
+      "forced_step",
+      "healing_totem",
+      "totem_of_return",
+      "puppet_soul",
+      "linked_fates",
+      "hoarfrost",
+      "spirit_link_totem",
+      "press_the_advantage"
+    ],
+    "bloomspear": [
+      "endure",
+      "sidestep",
+      "reckless_swing",
+      "challenge",
+      "unstoppable",
+      "healing_totem",
+      "totem_of_return",
+      "drag_out"
+    ],
+    "boar-guard-hex": [
+      "leap_to_defend",
+      "phase_weapon",
+      "ward",
+      "hold_position",
+      "shield_wall",
+      "lasting_ward",
+      "take_a_charge",
+      "curse_of_weight"
+    ],
+    "boar-magma": [
+      "battle_roar",
+      "sidestep",
+      "endure",
+      "crowd_fighter",
+      "counter_step",
+      "sweeping_kick",
+      "unstoppable",
+      "challenge"
+    ],
+    "bombardierbeetle-alchemist-acid": [
+      "flashbang",
+      "jam",
+      "cut_the_strings",
+      "healing_draught",
+      "antidote",
+      "mark_for_death",
+      "flash_powder",
+      "poison_gas"
+    ],
+    "book-summoner-fold": [
+      "raise_undead",
+      "forced_step",
+      "corpse_explosion",
+      "healing_totem",
+      "desecrate",
+      "spirit_link_totem",
+      "clay_golem",
+      "plague_corpse"
+    ],
+    "brazier-summoner-coal": [
+      "clay_golem",
+      "kindle",
+      "backdraft",
+      "raise_undead",
+      "clockwork_golem",
+      "ignition_point",
+      "freeze",
+      "brittle"
+    ],
+    "buffalo-guard-root": [
+      "forced_step",
+      "healing_totem",
+      "linked_fates",
+      "take_a_charge",
+      "follow_the_charge",
+      "distract",
+      "hoarfrost",
+      "totem_ritual"
+    ],
+    "bugle-skyrider": [
+      "press_the_advantage",
+      "swap_turns",
+      "reposition",
+      "fall_back",
+      "song_of_haste",
+      "rotation",
+      "advance",
+      "take_off"
+    ],
+    "candelabrum-warrior-wax": [
+      "battle_roar",
+      "phase_weapon",
+      "crowd_fighter",
+      "piercing_enchant",
+      "challenge",
+      "drag_out",
+      "hunt_down",
+      "glass_body"
+    ],
+    "cannon-marauder": [
+      "stalk",
+      "creep_closer",
+      "cut_off_retreat",
+      "challenge",
+      "net_trap",
+      "lie_in_wait",
+      "flush",
+      "freeze_in_place"
+    ],
+    "capybara-guard-calm": [
+      "raise_undead",
+      "mass_grave",
+      "clay_golem",
+      "corpse_explosion",
+      "animate_blades",
+      "clockwork_golem",
+      "mend",
+      "rain_of_mending"
+    ],
+    "caracal-hunter-spear": [
+      "mark_for_death",
+      "glass_body",
+      "stone_shell",
+      "jam",
+      "poison_vial",
+      "petrify",
+      "hide",
+      "cut_the_strings"
+    ],
+    "carillon-summoner-chime": [
+      "leap_to_defend",
+      "song_of_haste",
+      "ward",
+      "press_the_advantage",
+      "lasting_ward",
+      "keeper_of_the_gate",
+      "inspiring_presence",
+      "all_in"
+    ],
+    "cassowary-captain-horn": [
+      "sidestep",
+      "hit_and_run",
+      "challenge",
+      "song_of_haste",
+      "battle_roar",
+      "drag_out",
+      "war_drums",
+      "rhythm"
+    ],
+    "caterpillar-bard": [
+      "song_of_haste",
+      "press_the_advantage",
+      "rhythm",
+      "reposition",
+      "swap_turns",
+      "switch_places",
+      "war_drums",
+      "grand_chorus"
+    ],
+    "catfolk-spellblade-moon": [
+      "jam",
+      "challenge",
+      "mark_for_death",
+      "hide",
+      "cut_the_strings",
+      "poison_vial",
+      "battle_roar",
+      "backstab"
+    ],
+    "centipede-assassin-sickle": [
+      "challenge",
+      "single_combat",
+      "mark_for_death",
+      "drag_out",
+      "isolate",
+      "endure",
+      "reckless_swing",
+      "execution"
+    ],
+    "chalice-of-storms": [
+      "kindle",
+      "scorch",
+      "backdraft",
+      "scout_ahead",
+      "watchtower",
+      "fire_lane",
+      "ignition_point",
+      "shock"
+    ],
+    "chameleon-trickster-tongue": [
+      "mark_for_death",
+      "poison_vial",
+      "stalk",
+      "jam",
+      "freeze_in_place",
+      "flash_powder",
+      "cut_off_retreat",
+      "pack_strike"
+    ],
+    "chandelier-summoner-candle": [
+      "clay_golem",
+      "raise_undead",
+      "clockwork_golem",
+      "take_off",
+      "golem_heart",
+      "animate_blades",
+      "animate_mirror",
+      "rune_golem"
+    ],
+    "chest-bodyguard-lock": [
+      "leap_to_defend",
+      "healing_draught",
+      "hold_position",
+      "full_cover",
+      "shield_wall",
+      "take_a_charge",
+      "poison_gas",
+      "antidote"
+    ],
+    "chinchilla-summoner-ocarina": [
+      "reposition",
+      "switch_places",
+      "raise_undead",
+      "song_of_haste",
+      "fall_back",
+      "press_the_advantage",
+      "mass_grave",
+      "rotation"
+    ],
+    "cicada-bard-chime": [
+      "glass_body",
+      "absolve",
+      "transmute",
+      "turn_back",
+      "phase_weapon",
+      "dispel",
+      "stone_shell",
+      "life_link"
+    ],
+    "cinderhorn": [
+      "battle_roar",
+      "sweeping_kick",
+      "sidestep",
+      "hit_and_run",
+      "endure",
+      "reckless_swing",
+      "crowd_fighter",
+      "counter_step"
+    ],
+    "coati-trickster-dice": [
+      "mark_for_death",
+      "poison_vial",
+      "jam",
+      "backstab",
+      "hide",
+      "sneak",
+      "flash_powder",
+      "melt_away"
+    ],
+    "cobra": [
+      "jam",
+      "flash_powder",
+      "hide",
+      "mark_for_death",
+      "poison_vial",
+      "sneak",
+      "melt_away",
+      "light_fingers"
+    ],
+    "compass-hunter-needle": [
+      "barricade",
+      "repair",
+      "flashbang",
+      "net_trap",
+      "cut_off_retreat",
+      "showman",
+      "decoy",
+      "healing_draught"
+    ],
+    "conchphone-bard-horn": [
+      "reposition",
+      "switch_places",
+      "advance",
+      "song_of_haste",
+      "fall_back",
+      "rhythm",
+      "war_drums",
+      "rotation"
+    ],
+    "corkscrew-stalker": [
+      "mark_for_death",
+      "barricade",
+      "repair",
+      "flashbang",
+      "jam",
+      "hide",
+      "poison_vial",
+      "flash_powder"
+    ],
+    "crab-alchemist": [
+      "barricade",
+      "healing_draught",
+      "poison_gas",
+      "flashbang",
+      "gas_cloud",
+      "antidote",
+      "showman",
+      "repair"
+    ],
+    "crab-guard-decoy": [
+      "leap_to_defend",
+      "full_cover",
+      "ward",
+      "overcharged_ward",
+      "take_a_charge",
+      "shield_dome",
+      "hold_position",
+      "distract"
+    ],
+    "crab-smith": [
+      "flashbang",
+      "challenge",
+      "endure",
+      "drag_out",
+      "single_combat",
+      "barricade",
+      "sidestep",
+      "showman"
+    ],
+    "crane-hoist-titan": [
+      "life_link",
+      "mend",
+      "flashbang",
+      "barricade",
+      "rain_of_mending",
+      "firebomb",
+      "bolt_turret",
+      "showman"
+    ],
+    "crane-summoner-feather": [
+      "shock",
+      "kindle",
+      "freeze",
+      "clay_golem",
+      "raise_undead",
+      "brittle",
+      "backdraft",
+      "scorch"
+    ],
+    "cricket-bard-fiddle": [
+      "press_the_advantage",
+      "reposition",
+      "song_of_haste",
+      "switch_places",
+      "inspiring_presence",
+      "fall_back",
+      "war_drums",
+      "advance"
+    ],
+    "crocodile-shaman": [
+      "challenge",
+      "hoarfrost",
+      "healing_totem",
+      "forced_step",
+      "battle_roar",
+      "sweeping_kick",
+      "crowd_fighter",
+      "linked_fates"
+    ],
+    "crow-necromancer-skull": [
+      "clay_golem",
+      "clockwork_golem",
+      "gust",
+      "raise_undead",
+      "corpse_explosion",
+      "take_off",
+      "airlift",
+      "desecrate"
+    ],
+    "crucible-summoner": [
+      "take_a_charge",
+      "follow_the_charge",
+      "distract",
+      "rescue",
+      "ward",
+      "pledge",
+      "overcharged_ward",
+      "lasting_ward"
+    ],
+    "cuttlefish-assassin-needle": [
+      "jam",
+      "mark_for_death",
+      "backstab",
+      "flash_powder",
+      "deathmark_bloom",
+      "contract",
+      "hide",
+      "cut_the_strings"
+    ],
+    "dormouse-summoner-bell": [
+      "clay_golem",
+      "rune_golem",
+      "raise_undead",
+      "clockwork_golem",
+      "mass_grave",
+      "animate_blades",
+      "corpse_explosion",
+      "lich_form"
+    ],
+    "dragon-colossus-ember": [
+      "scout_ahead",
+      "battle_roar",
+      "challenge",
+      "gust",
+      "single_combat",
+      "sweeping_kick",
+      "endure",
+      "drag_out"
+    ],
+    "dragon-elder-obsidian": [
+      "press_the_advantage",
+      "scout_ahead",
+      "watchtower",
+      "song_of_haste",
+      "take_off",
+      "inspiring_presence",
+      "airlift",
+      "spotter"
+    ],
+    "dragon-sovereign-tempest": [
+      "reposition",
+      "song_of_haste",
+      "fall_back",
+      "scout_ahead",
+      "spotter",
+      "press_the_advantage",
+      "switch_places",
+      "long_watch"
+    ],
+    "dragon-titan-glacier": [
+      "leap_to_defend",
+      "full_cover",
+      "ward",
+      "kindle",
+      "take_a_charge",
+      "scorch",
+      "follow_the_charge",
+      "overcharged_ward"
+    ],
+    "dragonfly-scout-bow": [
+      "net_trap",
+      "decoy",
+      "take_off",
+      "high_altitude",
+      "airlift",
+      "gust",
+      "cut_off_retreat",
+      "dust_up"
+    ],
+    "drake-titan-crystal": [
+      "shock",
+      "tempest",
+      "phase_weapon",
+      "chain_lightning",
+      "glass_body",
+      "freeze",
+      "frost_nova",
+      "curse_of_weight"
+    ],
+    "drawbridge-bodyguard-chain": [
+      "leap_to_defend",
+      "full_cover",
+      "hold_position",
+      "shield_wall",
+      "ward",
+      "overcharged_ward",
+      "shield_dome",
+      "lasting_ward"
+    ],
+    "drum-summoner-war": [
+      "press_the_advantage",
+      "song_of_haste",
+      "endure",
+      "rhythm",
+      "reposition",
+      "inspiring_presence",
+      "switch_places",
+      "all_in"
+    ],
+    "dugong-guard-crystal": [
+      "curse_of_weight",
+      "glass_body",
+      "freeze",
+      "steam_burst",
+      "kindle",
+      "backdraft",
+      "transmute",
+      "lasting_transmute"
+    ],
+    "elephant-summoner-idol": [
+      "forced_step",
+      "puppet_soul",
+      "animate_blades",
+      "raise_undead",
+      "animate_mirror",
+      "hoarfrost",
+      "mass_grave",
+      "rain_dance"
+    ],
+    "ferret-summoner-mask": [
+      "clay_golem",
+      "hide",
+      "melt_away",
+      "mark_for_death",
+      "backstab",
+      "deathmark_bloom",
+      "contract",
+      "rune_golem"
+    ],
+    "fiddlercrab-trickster-coin": [
+      "healing_draught",
+      "poison_gas",
+      "barricade",
+      "gas_cloud",
+      "bolt_turret",
+      "flashbang",
+      "firebomb",
+      "plague_doctor"
+    ],
+    "firefly": [
+      "take_off",
+      "absolve",
+      "gust",
+      "dispel",
+      "mend",
+      "life_link",
+      "rain_of_mending",
+      "overflowing_care"
+    ],
+    "firefly-summoner-lantern": [
+      "clay_golem",
+      "raise_undead",
+      "animate_blades",
+      "rune_golem",
+      "bell_golem",
+      "mass_grave",
+      "take_off",
+      "high_altitude"
+    ],
+    "flyingfish-scout-dart": [
+      "gust",
+      "scout_ahead",
+      "take_off",
+      "mark_for_death",
+      "airlift",
+      "high_altitude",
+      "dust_up",
+      "backstab"
+    ],
+    "fossa-hunter-harpoon": [
+      "net_trap",
+      "target",
+      "cage",
+      "mark_for_death",
+      "stalk",
+      "read_tracks",
+      "scent",
+      "poison_vial"
+    ],
+    "fox-bard": [
+      "hide",
+      "song_of_haste",
+      "melt_away",
+      "sneak",
+      "light_fingers",
+      "mark_for_death",
+      "reposition",
+      "poison_vial"
+    ],
+    "frigatebird-bard-throat": [
+      "take_off",
+      "press_the_advantage",
+      "reposition",
+      "gust",
+      "advance",
+      "swap_turns",
+      "scout_ahead",
+      "dust_up"
+    ],
+    "frog-bard-dagger": [
+      "song_of_haste",
+      "rhythm",
+      "jam",
+      "flash_powder",
+      "press_the_advantage",
+      "reposition",
+      "grand_chorus",
+      "advance"
+    ],
+    "furnace-titan": [
+      "challenge",
+      "sidestep",
+      "leap_to_defend",
+      "drag_out",
+      "hold_position",
+      "take_a_charge",
+      "single_combat",
+      "distract"
+    ],
+    "gargoyle-sentinel-stone": [
+      "cut_off_retreat",
+      "scout_ahead",
+      "take_off",
+      "flush",
+      "target",
+      "pack_strike",
+      "high_altitude",
+      "sky_lord"
+    ],
+    "gaur-bodyguard-armor": [
+      "leap_to_defend",
+      "ward",
+      "full_cover",
+      "challenge",
+      "drag_out",
+      "isolate",
+      "single_combat",
+      "lasting_ward"
+    ],
+    "gecko-alchemist-resin": [
+      "flashbang",
+      "firebomb",
+      "showman",
+      "healing_draught",
+      "jam",
+      "flame_turret",
+      "hide",
+      "antidote"
+    ],
+    "gecko-summoner-prism": [
+      "animate_blades",
+      "raise_undead",
+      "corpse_explosion",
+      "blade_storm",
+      "glass_body",
+      "transmute",
+      "clay_golem",
+      "stone_shell"
+    ],
+    "goat-shaman-totem": [
+      "healing_totem",
+      "life_link",
+      "bound_resurrect",
+      "forced_step",
+      "bound_strength",
+      "spirit_link_totem",
+      "hoarfrost",
+      "totem_ritual"
+    ],
+    "goblet-paladin": [
+      "challenge",
+      "sidestep",
+      "absolve",
+      "mend",
+      "overflowing_care",
+      "drag_out",
+      "battle_roar",
+      "hunt_down"
+    ],
+    "golem-colossus-furnace": [
+      "ward",
+      "take_a_charge",
+      "overcharged_ward",
+      "battle_roar",
+      "leap_to_defend",
+      "hold_position",
+      "endure",
+      "full_cover"
+    ],
+    "golem-engineer-gear": [
+      "take_a_charge",
+      "barricade",
+      "repair",
+      "flashbang",
+      "leap_to_defend",
+      "healing_draught",
+      "ward",
+      "firebomb"
+    ],
+    "gong-hexer-dissonance": [
+      "raise_undead",
+      "mass_grave",
+      "press_the_advantage",
+      "song_of_haste",
+      "swap_turns",
+      "rhythm",
+      "war_drums",
+      "animate_blades"
+    ],
+    "gorilla-bodyguard-fists": [
+      "endure",
+      "take_a_charge",
+      "sidestep",
+      "counter_step",
+      "challenge",
+      "single_combat",
+      "follow_the_charge",
+      "drag_out"
+    ],
+    "griffin-knight-lance": [
+      "challenge",
+      "scout_ahead",
+      "endure",
+      "gust",
+      "sidestep",
+      "single_combat",
+      "dust_up",
+      "battle_roar"
+    ],
+    "harpsichord-bard-keys": [
+      "song_of_haste",
+      "reposition",
+      "war_drums",
+      "fall_back",
+      "solo_performer",
+      "switch_places",
+      "press_the_advantage",
+      "drill"
+    ],
+    "harpy-eagle-scout-claws": [
+      "scout_ahead",
+      "stalk",
+      "net_trap",
+      "watchtower",
+      "target",
+      "take_off",
+      "cage",
+      "freeze_in_place"
+    ],
+    "hawk-scout-bow": [
+      "scout_ahead",
+      "gust",
+      "dust_up",
+      "take_off",
+      "net_trap",
+      "cut_off_retreat",
+      "cage",
+      "stalk"
+    ],
+    "hermitcrab-sentinel-basalt": [
+      "leap_to_defend",
+      "ward",
+      "overcharged_ward",
+      "hold_position",
+      "shield_dome",
+      "full_cover",
+      "living_wall",
+      "take_a_charge"
+    ],
+    "heron-engineer-wing": [
+      "flashbang",
+      "firebomb",
+      "flame_turret",
+      "gust",
+      "barricade",
+      "take_off",
+      "healing_draught",
+      "poison_gas"
+    ],
+    "heron-hunter-harpoon": [
+      "take_off",
+      "sidestep",
+      "airlift",
+      "challenge",
+      "high_altitude",
+      "scout_ahead",
+      "gust",
+      "spotter"
+    ],
+    "hippo-healer-potion": [
+      "life_link",
+      "flashbang",
+      "bound_resurrect",
+      "barricade",
+      "bolt_turret",
+      "overclock",
+      "bound_strength",
+      "firebomb"
+    ],
+    "hornbill-bard-drum": [
+      "gust",
+      "dust_up",
+      "song_of_haste",
+      "war_drums",
+      "rhythm",
+      "scout_ahead",
+      "take_off",
+      "press_the_advantage"
+    ],
+    "horseshoe-champion": [
+      "challenge",
+      "ward",
+      "single_combat",
+      "execution",
+      "sidestep",
+      "counter_step",
+      "take_a_charge",
+      "drag_out"
+    ],
+    "horseshoecrab-sentinel-bronze": [
+      "shock",
+      "leap_to_defend",
+      "ward",
+      "chain_lightning",
+      "overcharged_ward",
+      "lasting_ward",
+      "hold_position",
+      "full_cover"
+    ],
+    "hourglass-hexer-sand": [
+      "press_the_advantage",
+      "phase_weapon",
+      "inspiring_presence",
+      "glass_body",
+      "phasing_strike",
+      "curse_of_weight",
+      "reposition",
+      "curse_of_betrayal"
+    ],
+    "howlermonkey-bard-roar": [
+      "song_of_haste",
+      "war_drums",
+      "reposition",
+      "fall_back",
+      "press_the_advantage",
+      "inspiring_presence",
+      "rhythm",
+      "advance"
+    ],
+    "human-alchemist": [
+      "flashbang",
+      "jam",
+      "showman",
+      "firebomb",
+      "flame_turret",
+      "barricade",
+      "cut_the_strings",
+      "mark_for_death"
+    ],
+    "human-alchemist-shield": [
+      "take_a_charge",
+      "flashbang",
+      "leap_to_defend",
+      "ward",
+      "firebomb",
+      "healing_draught",
+      "overcharged_ward",
+      "distract"
+    ],
+    "human-archer": [
+      "forced_step",
+      "hoarfrost",
+      "totem_ritual",
+      "puppet_soul",
+      "healing_totem",
+      "net_trap",
+      "cage",
+      "spirit_link_totem"
+    ],
+    "human-archer-crystal": [
+      "stalk",
+      "cut_off_retreat",
+      "freeze_in_place",
+      "creep_closer",
+      "glass_body",
+      "stone_shell",
+      "phase_weapon",
+      "curse_of_weight"
+    ],
+    "human-archer-frost": [
+      "target",
+      "cut_off_retreat",
+      "shock",
+      "flush",
+      "stalk",
+      "chain_lightning",
+      "net_trap",
+      "arc"
+    ],
+    "human-archer-gear": [
+      "stalk",
+      "net_trap",
+      "healing_draught",
+      "antidote",
+      "target",
+      "freeze_in_place",
+      "decoy",
+      "scent_of_blood"
+    ],
+    "human-archer-sun": [
+      "life_link",
+      "net_trap",
+      "absolve",
+      "target",
+      "turn_back",
+      "scent_of_blood",
+      "cut_off_retreat",
+      "read_tracks"
+    ],
+    "human-barbarian": [
+      "challenge",
+      "sidestep",
+      "single_combat",
+      "drag_out",
+      "hunt_down",
+      "counter_step",
+      "execution",
+      "battle_roar"
+    ],
+    "human-barbarian-frost": [
+      "curse_of_weight",
+      "curse_of_stagnation",
+      "phase_weapon",
+      "curse_of_betrayal",
+      "piercing_enchant",
+      "battle_roar",
+      "sweeping_kick",
+      "glass_body"
+    ],
+    "human-bard": [
+      "reposition",
+      "switch_places",
+      "drill",
+      "fall_back",
+      "song_of_haste",
+      "rhythm",
+      "rotation",
+      "press_the_advantage"
+    ],
+    "human-bard-shield": [
+      "battle_roar",
+      "sweeping_kick",
+      "challenge",
+      "single_combat",
+      "endure",
+      "press_the_advantage",
+      "swap_turns",
+      "crowd_fighter"
+    ],
+    "human-brawler-hook": [
+      "cut_off_retreat",
+      "battle_roar",
+      "pack_strike",
+      "flush",
+      "endure",
+      "target",
+      "net_trap",
+      "cage"
+    ],
+    "human-captain-banner": [
+      "challenge",
+      "battle_roar",
+      "endure",
+      "drag_out",
+      "sidestep",
+      "isolate",
+      "unstoppable",
+      "last_stand"
+    ],
+    "human-captain-pistol": [
+      "mark_for_death",
+      "song_of_haste",
+      "press_the_advantage",
+      "war_drums",
+      "inspiring_presence",
+      "reposition",
+      "all_in",
+      "rhythm"
+    ],
+    "human-captain-rapier": [
+      "curse_of_weight",
+      "phase_weapon",
+      "piercing_enchant",
+      "hide",
+      "curse_of_betrayal",
+      "witchs_patience",
+      "echo_enchant",
+      "sneak"
+    ],
+    "human-cleric-lantern": [
+      "absolve",
+      "turn_back",
+      "dispel",
+      "flashbang",
+      "barricade",
+      "showman",
+      "bolt_turret",
+      "overclock"
+    ],
+    "human-dancer": [
+      "jam",
+      "flash_powder",
+      "cut_the_strings",
+      "mark_for_death",
+      "hide",
+      "backstab",
+      "net_trap",
+      "cage"
+    ],
+    "human-dancer-spear": [
+      "kindle",
+      "fire_lane",
+      "scorch",
+      "battle_roar",
+      "challenge",
+      "drag_out",
+      "endure",
+      "row_of_fire"
+    ],
+    "human-druid": [
+      "life_link",
+      "forced_step",
+      "puppet_soul",
+      "mend",
+      "revive",
+      "hoarfrost",
+      "overflowing_care",
+      "life_for_life"
+    ],
+    "human-druid-leaf": [
+      "mend",
+      "life_link",
+      "forced_step",
+      "overflowing_care",
+      "hoarfrost",
+      "bound_resurrect",
+      "puppet_soul",
+      "bound_strength"
+    ],
+    "human-duelist-rapier": [
+      "sidestep",
+      "challenge",
+      "battle_roar",
+      "counter_step",
+      "single_combat",
+      "endure",
+      "reckless_swing",
+      "unstoppable"
+    ],
+    "human-engineer-crystal": [
+      "flashbang",
+      "firebomb",
+      "barricade",
+      "repair",
+      "kindle",
+      "freeze",
+      "brittle",
+      "steam_burst"
+    ],
+    "human-engineer-hook": [
+      "hide",
+      "melt_away",
+      "mark_for_death",
+      "backstab",
+      "poison_vial",
+      "target",
+      "stalk",
+      "jam"
+    ],
+    "human-guard": [
+      "sidestep",
+      "challenge",
+      "leap_to_defend",
+      "hit_and_run",
+      "battle_roar",
+      "sweeping_kick",
+      "full_cover",
+      "endure"
+    ],
+    "human-guard-frost": [
+      "phase_weapon",
+      "glass_body",
+      "stone_shell",
+      "endure",
+      "transmute",
+      "piercing_enchant",
+      "unstoppable",
+      "reckless_swing"
+    ],
+    "human-guard-stone": [
+      "challenge",
+      "battle_roar",
+      "endure",
+      "shock",
+      "sweeping_kick",
+      "drag_out",
+      "tempest",
+      "kindle"
+    ],
+    "human-knight": [
+      "battle_roar",
+      "challenge",
+      "endure",
+      "crowd_fighter",
+      "single_combat",
+      "song_of_haste",
+      "sidestep",
+      "war_drums"
+    ],
+    "human-knight-2": [
+      "take_a_charge",
+      "sidestep",
+      "battle_roar",
+      "counter_step",
+      "endure",
+      "ward",
+      "sweeping_kick",
+      "hit_and_run"
+    ],
+    "human-knight-banner": [
+      "leap_to_defend",
+      "press_the_advantage",
+      "song_of_haste",
+      "take_a_charge",
+      "follow_the_charge",
+      "rhythm",
+      "full_cover",
+      "grand_chorus"
+    ],
+    "human-knight-hammer": [
+      "endure",
+      "leap_to_defend",
+      "battle_roar",
+      "crowd_fighter",
+      "unstoppable",
+      "full_cover",
+      "challenge",
+      "sweeping_kick"
+    ],
+    "human-knight-shield": [
+      "leap_to_defend",
+      "hold_position",
+      "full_cover",
+      "living_wall",
+      "endure",
+      "unstoppable",
+      "reckless_swing",
+      "ward"
+    ],
+    "human-mage-crystal": [
+      "phase_weapon",
+      "freeze",
+      "kindle",
+      "steam_burst",
+      "frost_nova",
+      "shock",
+      "curse_of_weight",
+      "phasing_strike"
+    ],
+    "human-mage-fire": [
+      "jam",
+      "flash_powder",
+      "kindle",
+      "shock",
+      "cut_the_strings",
+      "chain_lightning",
+      "mark_for_death",
+      "freeze"
+    ],
+    "human-mage-frost": [
+      "shock",
+      "kindle",
+      "curse_of_weight",
+      "glass_body",
+      "freeze",
+      "transmute",
+      "frost_nova",
+      "glacier"
+    ],
+    "human-mage-stone": [
+      "reposition",
+      "switch_places",
+      "fall_back",
+      "kindle",
+      "scorch",
+      "freeze",
+      "drill",
+      "rotation"
+    ],
+    "human-mage-water": [
+      "stalk",
+      "cut_off_retreat",
+      "net_trap",
+      "kindle",
+      "shock",
+      "chain_lightning",
+      "backdraft",
+      "cage"
+    ],
+    "human-monk-hammer": [
+      "endure",
+      "reckless_swing",
+      "unstoppable",
+      "challenge",
+      "battle_roar",
+      "single_combat",
+      "last_stand",
+      "sweeping_kick"
+    ],
+    "human-necromancer-skull": [
+      "challenge",
+      "endure",
+      "animate_blades",
+      "drag_out",
+      "hunt_down",
+      "isolate",
+      "unstoppable",
+      "animate_mirror"
+    ],
+    "human-priest": [
+      "life_link",
+      "mend",
+      "absolve",
+      "rain_of_mending",
+      "turn_back",
+      "revive",
+      "dispel",
+      "steal_blessing"
+    ],
+    "human-priest-bell": [
+      "life_link",
+      "bound_resurrect",
+      "bound_strength",
+      "press_the_advantage",
+      "revive",
+      "absolve",
+      "mend",
+      "rain_of_mending"
+    ],
+    "human-priest-moon": [
+      "phase_weapon",
+      "absolve",
+      "mend",
+      "rain_of_mending",
+      "dispel",
+      "curse_of_weight",
+      "mass_dispel",
+      "curse_of_betrayal"
+    ],
+    "human-priest-sun": [
+      "absolve",
+      "dispel",
+      "target",
+      "stalk",
+      "net_trap",
+      "scent_of_blood",
+      "cage",
+      "freeze_in_place"
+    ],
+    "human-rogue": [
+      "mark_for_death",
+      "backstab",
+      "poison_vial",
+      "deathmark_bloom",
+      "hide",
+      "sneak",
+      "light_fingers",
+      "jam"
+    ],
+    "human-rogue-potion": [
+      "flashbang",
+      "showman",
+      "hide",
+      "healing_draught",
+      "mark_for_death",
+      "poison_vial",
+      "melt_away",
+      "barricade"
+    ],
+    "human-rogue-shadow": [
+      "raise_undead",
+      "corpse_explosion",
+      "hide",
+      "sneak",
+      "light_fingers",
+      "plague_corpse",
+      "desecrate",
+      "lift_a_skill"
+    ],
+    "human-scout-lantern": [
+      "jam",
+      "raise_undead",
+      "mark_for_death",
+      "flash_powder",
+      "corpse_explosion",
+      "animate_blades",
+      "backstab",
+      "poison_vial"
+    ],
+    "human-shaman": [
+      "hoarfrost",
+      "rain_dance",
+      "reposition",
+      "advance",
+      "press_the_advantage",
+      "song_of_haste",
+      "healing_totem",
+      "rite_of_mists"
+    ],
+    "human-smith": [
+      "healing_draught",
+      "challenge",
+      "sidestep",
+      "battle_roar",
+      "antidote",
+      "single_combat",
+      "execution",
+      "sweeping_kick"
+    ],
+    "human-spellblade": [
+      "curse_of_weight",
+      "phase_weapon",
+      "endure",
+      "phasing_strike",
+      "glass_body",
+      "challenge",
+      "sidestep",
+      "hit_and_run"
+    ],
+    "human-spellblade-2": [
+      "glass_body",
+      "sidestep",
+      "challenge",
+      "battle_roar",
+      "transmute",
+      "sweeping_kick",
+      "stone_shell",
+      "phase_weapon"
+    ],
+    "human-wizard": [
+      "curse_of_weight",
+      "curse_of_betrayal",
+      "flashbang",
+      "phase_weapon",
+      "showman",
+      "curse_of_stagnation",
+      "lingering_malice",
+      "firebomb"
+    ],
+    "hummingbird-duelist-rapier": [
+      "scout_ahead",
+      "mark_for_death",
+      "gust",
+      "backstab",
+      "watchtower",
+      "poison_vial",
+      "hide",
+      "take_off"
+    ],
+    "hydra-colossus-trident": [
+      "raise_undead",
+      "desecrate",
+      "clay_golem",
+      "mass_grave",
+      "animate_blades",
+      "rune_golem",
+      "lich_form",
+      "clockwork_golem"
+    ],
+    "hyena-engineer-saw": [
+      "flashbang",
+      "healing_draught",
+      "net_trap",
+      "poison_gas",
+      "antidote",
+      "cut_off_retreat",
+      "stalk",
+      "gas_cloud"
+    ],
+    "ibex-captain-standard": [
+      "reposition",
+      "press_the_advantage",
+      "inspiring_presence",
+      "song_of_haste",
+      "fall_back",
+      "swap_turns",
+      "switch_places",
+      "rotation"
+    ],
+    "incense-censor": [
+      "mend",
+      "life_link",
+      "animate_blades",
+      "rain_of_mending",
+      "clay_golem",
+      "animate_mirror",
+      "absolve",
+      "revive"
+    ],
+    "inkwell-trickster-quill": [
+      "song_of_haste",
+      "hide",
+      "reposition",
+      "mark_for_death",
+      "rhythm",
+      "backstab",
+      "switch_places",
+      "melt_away"
+    ],
+    "isopod-sentinel-iron": [
+      "ward",
+      "overcharged_ward",
+      "take_a_charge",
+      "distract",
+      "pledge",
+      "lasting_ward",
+      "leap_to_defend",
+      "full_cover"
+    ],
+    "jackalope-hexer-curse": [
+      "jam",
+      "raise_undead",
+      "corpse_explosion",
+      "hide",
+      "cut_the_strings",
+      "mass_grave",
+      "disarm_trap",
+      "clay_golem"
+    ],
+    "jelly-healer": [
+      "gust",
+      "headwind",
+      "life_link",
+      "absolve",
+      "scout_ahead",
+      "dust_up",
+      "dispel",
+      "mass_dispel"
+    ],
+    "jelly-mage-storm": [
+      "kindle",
+      "scorch",
+      "scout_ahead",
+      "take_off",
+      "watchtower",
+      "airlift",
+      "spotter",
+      "shock"
+    ],
+    "jerboa-trickster-acorn": [
+      "healing_draught",
+      "barricade",
+      "bolt_turret",
+      "mark_for_death",
+      "hide",
+      "repair",
+      "jam",
+      "overclock"
+    ],
+    "kestrel-hunter-lure": [
+      "animate_blades",
+      "raise_undead",
+      "net_trap",
+      "mass_grave",
+      "lich_form",
+      "corpse_explosion",
+      "blade_storm",
+      "cut_off_retreat"
+    ],
+    "kettle-alchemist-siege": [
+      "battle_roar",
+      "endure",
+      "ward",
+      "unstoppable",
+      "sweeping_kick",
+      "last_stand",
+      "take_a_charge",
+      "reckless_swing"
+    ],
+    "kiln-behemoth": [
+      "leap_to_defend",
+      "hold_position",
+      "take_a_charge",
+      "distract",
+      "shield_wall",
+      "follow_the_charge",
+      "pledge",
+      "rescue"
+    ],
+    "kingfisher-captain-dagger": [
+      "scout_ahead",
+      "take_off",
+      "jam",
+      "gust",
+      "hide",
+      "cut_the_strings",
+      "disarm_trap",
+      "flash_powder"
+    ],
+    "kinkajou-summoner-idol": [
+      "hide",
+      "clay_golem",
+      "animate_blades",
+      "rune_golem",
+      "blade_storm",
+      "animate_mirror",
+      "raise_undead",
+      "melt_away"
+    ],
+    "kite-primalist-tail": [
+      "take_off",
+      "gust",
+      "scout_ahead",
+      "airlift",
+      "life_link",
+      "high_altitude",
+      "dust_up",
+      "headwind"
+    ],
+    "komodo-warrior-cleaver": [
+      "sidestep",
+      "hit_and_run",
+      "challenge",
+      "drag_out",
+      "endure",
+      "single_combat",
+      "hunt_down",
+      "unstoppable"
+    ],
+    "kraken-colossus-basalt": [
+      "clay_golem",
+      "leap_to_defend",
+      "full_cover",
+      "rune_golem",
+      "animate_blades",
+      "living_wall",
+      "ward",
+      "overcharged_ward"
+    ],
+    "lantern-healer-prism": [
+      "absolve",
+      "turn_back",
+      "mend",
+      "rain_of_mending",
+      "life_link",
+      "revive",
+      "dispel",
+      "bound_resurrect"
+    ],
+    "lizardfolk-barbarian-axe": [
+      "challenge",
+      "drag_out",
+      "hunt_down",
+      "endure",
+      "reckless_swing",
+      "battle_roar",
+      "sweeping_kick",
+      "unstoppable"
+    ],
+    "lizardfolk-ninja-kunai": [
+      "hide",
+      "mark_for_death",
+      "backstab",
+      "deathmark_bloom",
+      "contract",
+      "jam",
+      "melt_away",
+      "poison_vial"
+    ],
+    "lobster-bard-castanet": [
+      "song_of_haste",
+      "rhythm",
+      "grand_chorus",
+      "reposition",
+      "press_the_advantage",
+      "inspiring_presence",
+      "swap_turns",
+      "all_in"
+    ],
+    "lobster-engineer-rivet": [
+      "healing_draught",
+      "antidote",
+      "barricade",
+      "repair",
+      "flashbang",
+      "bolt_turret",
+      "poison_gas",
+      "firebomb"
+    ],
+    "lockbox-dreadnought": [
+      "leap_to_defend",
+      "hold_position",
+      "ward",
+      "overcharged_ward",
+      "shield_wall",
+      "full_cover",
+      "living_wall",
+      "lasting_ward"
+    ],
+    "loom-binder": [
+      "song_of_haste",
+      "flashbang",
+      "showman",
+      "firebomb",
+      "flame_turret",
+      "war_drums",
+      "healing_draught",
+      "solo_performer"
+    ],
+    "lyrebird-bard-plume": [
+      "gust",
+      "reposition",
+      "headwind",
+      "advance",
+      "dust_up",
+      "scout_ahead",
+      "press_the_advantage",
+      "inspiring_presence"
+    ],
+    "mammoth-titan-tundra": [
+      "leap_to_defend",
+      "ward",
+      "lasting_ward",
+      "hold_position",
+      "shield_wall",
+      "overcharged_ward",
+      "shock",
+      "chain_lightning"
+    ],
+    "manatee-healer-shell": [
+      "absolve",
+      "mend",
+      "dispel",
+      "steal_blessing",
+      "mass_dispel",
+      "rain_of_mending",
+      "overflowing_care",
+      "downpour"
+    ],
+    "mandrake-primalist-root": [
+      "healing_totem",
+      "spirit_link_totem",
+      "raise_undead",
+      "forced_step",
+      "animate_blades",
+      "linked_fates",
+      "blade_storm",
+      "mass_grave"
+    ],
+    "mandrill-brawler-gloves": [
+      "endure",
+      "unstoppable",
+      "battle_roar",
+      "sidestep",
+      "hit_and_run",
+      "crowd_fighter",
+      "counter_step",
+      "reckless_swing"
+    ],
+    "mannequin": [
+      "ward",
+      "leap_to_defend",
+      "battle_roar",
+      "hold_position",
+      "challenge",
+      "overcharged_ward",
+      "endure",
+      "full_cover"
+    ],
+    "manticore-assassin-barb": [
+      "scout_ahead",
+      "jam",
+      "cut_the_strings",
+      "spotter",
+      "flash_powder",
+      "disarm_trap",
+      "hide",
+      "sneak"
+    ],
+    "mantis-engineer-blade": [
+      "flashbang",
+      "barricade",
+      "jam",
+      "cut_the_strings",
+      "bolt_turret",
+      "hide",
+      "overclock",
+      "mark_for_death"
+    ],
+    "marabou-healer-balm": [
+      "hide",
+      "barricade",
+      "bolt_turret",
+      "repair",
+      "flashbang",
+      "jam",
+      "sneak",
+      "overclock"
+    ],
+    "maskrack-summoner-echo": [
+      "clay_golem",
+      "take_off",
+      "scout_ahead",
+      "rune_golem",
+      "raise_undead",
+      "watchtower",
+      "desecrate",
+      "corpse_explosion"
+    ],
+    "mastiff-guard-shield": [
+      "ward",
+      "target",
+      "lasting_ward",
+      "scent_of_blood",
+      "sniff_the_air",
+      "read_tracks",
+      "net_trap",
+      "cut_off_retreat"
+    ],
+    "meerkat-captain-spyglass": [
+      "target",
+      "net_trap",
+      "reposition",
+      "press_the_advantage",
+      "cut_off_retreat",
+      "song_of_haste",
+      "stalk",
+      "war_drums"
+    ],
+    "millstone-juggernaut": [
+      "endure",
+      "leap_to_defend",
+      "take_a_charge",
+      "follow_the_charge",
+      "distract",
+      "sidestep",
+      "ward",
+      "rescue"
+    ],
+    "mirror-revenant": [
+      "gust",
+      "take_off",
+      "headwind",
+      "glass_body",
+      "stone_shell",
+      "transmute",
+      "high_altitude",
+      "curse_of_weight"
+    ],
+    "mole-engineer-gear": [
+      "barricade",
+      "healing_draught",
+      "repair",
+      "antidote",
+      "bolt_turret",
+      "overclock",
+      "flashbang",
+      "showman"
+    ],
+    "mole-engineer-hexhammer": [
+      "phase_weapon",
+      "healing_draught",
+      "barricade",
+      "flashbang",
+      "firebomb",
+      "curse_of_weight",
+      "showman",
+      "curse_of_stagnation"
+    ],
+    "mongoose-assassin-sickle": [
+      "target",
+      "scent_of_blood",
+      "sniff_the_air",
+      "hide",
+      "jam",
+      "stalk",
+      "net_trap",
+      "creep_closer"
+    ],
+    "mongoose-hunter-hex": [
+      "cut_off_retreat",
+      "stalk",
+      "flush",
+      "net_trap",
+      "cage",
+      "freeze_in_place",
+      "pack_strike",
+      "vanish"
+    ],
+    "monkey-trickster-sling": [
+      "cut_off_retreat",
+      "hide",
+      "melt_away",
+      "sneak",
+      "pack_strike",
+      "stalk",
+      "flush",
+      "creep_closer"
+    ],
+    "moray-trickster-hook": [
+      "target",
+      "scent_of_blood",
+      "cut_off_retreat",
+      "sniff_the_air",
+      "pack_strike",
+      "stalk",
+      "read_tracks",
+      "flush"
+    ],
+    "mortar-alchemist-bastion": [
+      "battle_roar",
+      "take_a_charge",
+      "crowd_fighter",
+      "endure",
+      "unstoppable",
+      "follow_the_charge",
+      "sweeping_kick",
+      "ward"
+    ],
+    "moth-cleric-lantern": [
+      "scout_ahead",
+      "mend",
+      "take_off",
+      "gust",
+      "spotter",
+      "watchtower",
+      "airlift",
+      "overflowing_care"
+    ],
+    "mushroom-druid": [
+      "mend",
+      "life_link",
+      "rain_of_mending",
+      "absolve",
+      "healing_totem",
+      "revive",
+      "spirit_link_totem",
+      "hoarfrost"
+    ],
+    "mushroom-sentinel-shield": [
+      "ward",
+      "healing_totem",
+      "leap_to_defend",
+      "totem_of_return",
+      "full_cover",
+      "lasting_ward",
+      "keeper_of_the_gate",
+      "overcharged_ward"
+    ],
+    "musicbox-summoner-drum": [
+      "ward",
+      "raise_undead",
+      "overcharged_ward",
+      "leap_to_defend",
+      "desecrate",
+      "mass_grave",
+      "full_cover",
+      "living_wall"
+    ],
+    "muskox-bodyguard-buckler": [
+      "endure",
+      "sidestep",
+      "ward",
+      "hit_and_run",
+      "lasting_ward",
+      "take_a_charge",
+      "counter_step",
+      "keeper_of_the_gate"
+    ],
+    "newt-alchemist-coil": [
+      "healing_draught",
+      "antidote",
+      "poison_gas",
+      "flashbang",
+      "showman",
+      "gas_cloud",
+      "firebomb",
+      "barricade"
+    ],
+    "olm-summoner-shade": [
+      "phase_weapon",
+      "curse_of_weight",
+      "piercing_enchant",
+      "echo_enchant",
+      "raise_undead",
+      "glass_body",
+      "animate_blades",
+      "clay_golem"
+    ],
+    "opossum-summoner-dice": [
+      "reposition",
+      "switch_places",
+      "advance",
+      "drill",
+      "song_of_haste",
+      "raise_undead",
+      "desecrate",
+      "clay_golem"
+    ],
+    "orc-summoner-skull": [
+      "healing_totem",
+      "totem_of_return",
+      "forced_step",
+      "linked_fates",
+      "shared_fate",
+      "puppet_soul",
+      "raise_undead",
+      "spirit_link_totem"
+    ],
+    "orchidmantis-trickster-leaf": [
+      "mark_for_death",
+      "backstab",
+      "deathmark_bloom",
+      "hoarfrost",
+      "contract",
+      "hide",
+      "jam",
+      "flash_powder"
+    ],
+    "organ-summoner": [
+      "reposition",
+      "song_of_haste",
+      "press_the_advantage",
+      "ward",
+      "leap_to_defend",
+      "take_a_charge",
+      "war_drums",
+      "inspiring_presence"
+    ],
+    "orrery-sorcerer-orbit": [
+      "reposition",
+      "advance",
+      "switch_places",
+      "glass_body",
+      "transmute",
+      "lasting_transmute",
+      "press_the_advantage",
+      "phase_weapon"
+    ],
+    "ossuary-summoner-cube": [
+      "clay_golem",
+      "take_a_charge",
+      "distract",
+      "follow_the_charge",
+      "raise_undead",
+      "leap_to_defend",
+      "pledge",
+      "hold_position"
+    ],
+    "otter-hunter-sling": [
+      "hide",
+      "target",
+      "read_tracks",
+      "melt_away",
+      "scent_of_blood",
+      "mark_for_death",
+      "jam",
+      "backstab"
+    ],
+    "owl-wizard": [
+      "phase_weapon",
+      "take_off",
+      "scout_ahead",
+      "gust",
+      "dust_up",
+      "boundless_sky",
+      "phasing_strike",
+      "headwind"
+    ],
+    "panda-monk-fists": [
+      "sidestep",
+      "counter_step",
+      "endure",
+      "battle_roar",
+      "sweeping_kick",
+      "unstoppable",
+      "reckless_swing",
+      "challenge"
+    ],
+    "pangolin-guard-decoy": [
+      "ward",
+      "jam",
+      "take_a_charge",
+      "flash_powder",
+      "mark_for_death",
+      "poison_vial",
+      "overcharged_ward",
+      "distract"
+    ],
+    "pangolin-sorcerer-thunder": [
+      "leap_to_defend",
+      "animate_blades",
+      "animate_mirror",
+      "blade_storm",
+      "clay_golem",
+      "hold_position",
+      "shield_wall",
+      "clockwork_golem"
+    ],
+    "panpipe-summoner-reed": [
+      "raise_undead",
+      "desecrate",
+      "press_the_advantage",
+      "clay_golem",
+      "corpse_explosion",
+      "clockwork_golem",
+      "reposition",
+      "switch_places"
+    ],
+    "peacock-bard-feather": [
+      "song_of_haste",
+      "press_the_advantage",
+      "inspiring_presence",
+      "scout_ahead",
+      "war_drums",
+      "rhythm",
+      "reposition",
+      "fall_back"
+    ],
+    "phoenix-titan-solar": [
+      "mend",
+      "freeze",
+      "absolve",
+      "steam_burst",
+      "kindle",
+      "dispel",
+      "frost_nova",
+      "life_link"
+    ],
+    "pika-summoner-horn": [
+      "song_of_haste",
+      "rhythm",
+      "clay_golem",
+      "clockwork_golem",
+      "raise_undead",
+      "grand_chorus",
+      "animate_blades",
+      "golem_heart"
+    ],
+    "platypus-alchemist-rune": [
+      "barricade",
+      "bolt_turret",
+      "healing_draught",
+      "flashbang",
+      "repair",
+      "poison_gas",
+      "firebomb",
+      "flame_turret"
+    ],
+    "plough-ravager": [
+      "raise_undead",
+      "clay_golem",
+      "desecrate",
+      "mass_grave",
+      "endure",
+      "unstoppable",
+      "clockwork_golem",
+      "lich_form"
+    ],
+    "pocketwatch-warden": [
+      "press_the_advantage",
+      "reposition",
+      "advance",
+      "inspiring_presence",
+      "take_a_charge",
+      "leap_to_defend",
+      "hold_position",
+      "distract"
+    ],
+    "porcupine-alchemist-shield": [
+      "ward",
+      "overcharged_ward",
+      "barricade",
+      "shield_dome",
+      "lasting_ward",
+      "leap_to_defend",
+      "bolt_turret",
+      "full_cover"
+    ],
+    "portcullis-colossus": [
+      "ward",
+      "overcharged_ward",
+      "leap_to_defend",
+      "shield_dome",
+      "full_cover",
+      "living_wall",
+      "lasting_ward",
+      "hold_position"
+    ],
+    "printingpress-summoner-type": [
+      "animate_blades",
+      "flashbang",
+      "clay_golem",
+      "healing_draught",
+      "blade_storm",
+      "poison_gas",
+      "showman",
+      "rune_golem"
+    ],
+    "prism-hexer": [
+      "leap_to_defend",
+      "gust",
+      "hold_position",
+      "shield_wall",
+      "ward",
+      "full_cover",
+      "overcharged_ward",
+      "shield_dome"
+    ],
+    "puffin-bodyguard-shield": [
+      "scout_ahead",
+      "spotter",
+      "take_off",
+      "high_altitude",
+      "watchtower",
+      "long_watch",
+      "take_a_charge",
+      "distract"
+    ],
+    "quern-oracle": [
+      "hoarfrost",
+      "gust",
+      "take_off",
+      "scout_ahead",
+      "healing_totem",
+      "spirit_link_totem",
+      "rain_dance",
+      "great_totem"
+    ],
+    "quokka-summoner-pebble": [
+      "animate_blades",
+      "blade_storm",
+      "clay_golem",
+      "raise_undead",
+      "animate_mirror",
+      "portal",
+      "corpse_explosion",
+      "plague_corpse"
+    ],
+    "raccoon-alchemist-potion": [
+      "barricade",
+      "mark_for_death",
+      "healing_draught",
+      "backstab",
+      "repair",
+      "hide",
+      "melt_away",
+      "poison_vial"
+    ],
+    "ram-bard-bellows": [
+      "barricade",
+      "bolt_turret",
+      "repair",
+      "reposition",
+      "switch_places",
+      "advance",
+      "drill",
+      "fall_back"
+    ],
+    "ram-paladin-sun": [
+      "take_a_charge",
+      "distract",
+      "song_of_haste",
+      "rhythm",
+      "ward",
+      "lasting_ward",
+      "follow_the_charge",
+      "press_the_advantage"
+    ],
+    "reef-warden": [
+      "take_a_charge",
+      "ward",
+      "sidestep",
+      "hit_and_run",
+      "challenge",
+      "distract",
+      "pledge",
+      "leap_to_defend"
+    ],
+    "reliquary-summoner-seal": [
+      "curse_of_weight",
+      "curse_of_stagnation",
+      "curse_of_betrayal",
+      "animate_blades",
+      "witchs_patience",
+      "raise_undead",
+      "mass_grave",
+      "lich_form"
+    ],
+    "retort-alchemist": [
+      "leap_to_defend",
+      "barricade",
+      "hold_position",
+      "healing_draught",
+      "shield_wall",
+      "repair",
+      "full_cover",
+      "bolt_turret"
+    ],
+    "rhinoceros-guard-shadow": [
+      "battle_roar",
+      "sidestep",
+      "counter_step",
+      "challenge",
+      "sweeping_kick",
+      "hide",
+      "crowd_fighter",
+      "endure"
+    ],
+    "roadrunner-hunter-whistle": [
+      "target",
+      "scent_of_blood",
+      "take_off",
+      "high_altitude",
+      "stalk",
+      "sniff_the_air",
+      "sky_lord",
+      "read_tracks"
+    ],
+    "roc-colossus-thunder": [
+      "target",
+      "scent_of_blood",
+      "scout_ahead",
+      "watchtower",
+      "stalk",
+      "cut_off_retreat",
+      "read_tracks",
+      "spotter"
+    ],
+    "rooster-captain-banner": [
+      "challenge",
+      "single_combat",
+      "battle_roar",
+      "execution",
+      "press_the_advantage",
+      "crowd_fighter",
+      "endure",
+      "sweeping_kick"
+    ],
+    "sableantelope-captain-pennant": [
+      "endure",
+      "sidestep",
+      "reposition",
+      "unstoppable",
+      "advance",
+      "hit_and_run",
+      "challenge",
+      "press_the_advantage"
+    ],
+    "safe-hexer-vault": [
+      "leap_to_defend",
+      "take_a_charge",
+      "ward",
+      "lasting_ward",
+      "keeper_of_the_gate",
+      "distract",
+      "pledge",
+      "hold_position"
+    ],
+    "sail-hexer-night": [
+      "mark_for_death",
+      "gust",
+      "scout_ahead",
+      "backstab",
+      "hide",
+      "deathmark_bloom",
+      "melt_away",
+      "contract"
+    ],
+    "salamander-rogue": [
+      "net_trap",
+      "cut_off_retreat",
+      "jam",
+      "flush",
+      "cage",
+      "hide",
+      "target",
+      "melt_away"
+    ],
+    "salamander-summoner-flask": [
+      "barricade",
+      "bolt_turret",
+      "overclock",
+      "flashbang",
+      "showman",
+      "animate_blades",
+      "blade_storm",
+      "animate_mirror"
+    ],
+    "sarcophagus-warden": [
+      "animate_blades",
+      "blade_storm",
+      "ward",
+      "take_a_charge",
+      "follow_the_charge",
+      "overcharged_ward",
+      "distract",
+      "shield_dome"
+    ],
+    "scarab-engineer-rune": [
+      "barricade",
+      "bolt_turret",
+      "cut_off_retreat",
+      "repair",
+      "overclock",
+      "pack_strike",
+      "stalk",
+      "flush"
+    ],
+    "scorpion": [
+      "mark_for_death",
+      "jam",
+      "cut_the_strings",
+      "backstab",
+      "poison_vial",
+      "deathmark_bloom",
+      "flash_powder",
+      "stalk"
+    ],
+    "scorpion-healer-ribbon": [
+      "stalk",
+      "healing_draught",
+      "cut_off_retreat",
+      "net_trap",
+      "flashbang",
+      "freeze_in_place",
+      "showman",
+      "cage"
+    ],
+    "seal-bard-bottle": [
+      "healing_draught",
+      "reposition",
+      "antidote",
+      "fall_back",
+      "poison_gas",
+      "rotation",
+      "gas_cloud",
+      "song_of_haste"
+    ],
+    "sealpress-summoner": [
+      "animate_blades",
+      "blade_storm",
+      "ward",
+      "animate_mirror",
+      "clay_golem",
+      "lasting_ward",
+      "clockwork_golem",
+      "rune_golem"
+    ],
+    "secretarybird-hunter-javelin": [
+      "cut_off_retreat",
+      "gust",
+      "target",
+      "scent_of_blood",
+      "dust_up",
+      "scout_ahead",
+      "net_trap",
+      "decoy"
+    ],
+    "serpent-titan-crown": [
+      "raise_undead",
+      "jam",
+      "corpse_explosion",
+      "animate_blades",
+      "desecrate",
+      "blade_storm",
+      "animate_mirror",
+      "mark_for_death"
+    ],
+    "serval-hunter-crossbow": [
+      "jam",
+      "hide",
+      "net_trap",
+      "decoy",
+      "flash_powder",
+      "target",
+      "scent_of_blood",
+      "cut_the_strings"
+    ],
+    "sewingbox-engineer-ribbon": [
+      "mend",
+      "flashbang",
+      "healing_draught",
+      "overflowing_care",
+      "rain_of_mending",
+      "antidote",
+      "showman",
+      "poison_gas"
+    ],
+    "sextant-admiral": [
+      "cut_off_retreat",
+      "stalk",
+      "target",
+      "press_the_advantage",
+      "creep_closer",
+      "pack_strike",
+      "net_trap",
+      "swap_turns"
+    ],
+    "shield-vanguard": [
+      "leap_to_defend",
+      "challenge",
+      "battle_roar",
+      "single_combat",
+      "drag_out",
+      "sidestep",
+      "hold_position",
+      "full_cover"
+    ],
+    "shoebill-captain-pike": [
+      "net_trap",
+      "decoy",
+      "target",
+      "scent_of_blood",
+      "reposition",
+      "read_tracks",
+      "press_the_advantage",
+      "sniff_the_air"
+    ],
+    "shrew-summoner-totem": [
+      "hoarfrost",
+      "animate_blades",
+      "rain_dance",
+      "raise_undead",
+      "mass_grave",
+      "rite_of_mists",
+      "healing_rain",
+      "totem_ritual"
+    ],
+    "siphon-alchemist": [
+      "take_a_charge",
+      "flashbang",
+      "barricade",
+      "firebomb",
+      "flame_turret",
+      "distract",
+      "healing_draught",
+      "leap_to_defend"
+    ],
+    "sistrum-summoner": [
+      "glass_body",
+      "phase_weapon",
+      "curse_of_weight",
+      "reposition",
+      "stone_shell",
+      "press_the_advantage",
+      "curse_of_betrayal",
+      "petrify"
+    ],
+    "sledgehammer-colossus": [
+      "ward",
+      "endure",
+      "sidestep",
+      "take_a_charge",
+      "counter_step",
+      "hit_and_run",
+      "follow_the_charge",
+      "battle_roar"
+    ],
+    "sloth-guard-bark": [
+      "mend",
+      "rain_of_mending",
+      "healing_totem",
+      "overflowing_care",
+      "spirit_link_totem",
+      "totem_of_return",
+      "absolve",
+      "downpour"
+    ],
+    "snail-bard-brewer": [
+      "song_of_haste",
+      "war_drums",
+      "barricade",
+      "solo_performer",
+      "press_the_advantage",
+      "swap_turns",
+      "repair",
+      "flashbang"
+    ],
+    "snail-cleric-crystal": [
+      "life_link",
+      "kindle",
+      "fire_lane",
+      "row_of_fire",
+      "revive",
+      "freeze",
+      "life_for_life",
+      "bound_resurrect"
+    ],
+    "spikeback": [
+      "battle_roar",
+      "take_a_charge",
+      "ward",
+      "leap_to_defend",
+      "hold_position",
+      "overcharged_ward",
+      "full_cover",
+      "living_wall"
+    ],
+    "spindle-summoner": [
+      "song_of_haste",
+      "rhythm",
+      "press_the_advantage",
+      "war_drums",
+      "inspiring_presence",
+      "reposition",
+      "switch_places",
+      "grand_chorus"
+    ],
+    "stag-glade": [
+      "healing_totem",
+      "totem_of_return",
+      "hoarfrost",
+      "spirit_link_totem",
+      "rain_dance",
+      "forced_step",
+      "long_rain",
+      "great_totem"
+    ],
+    "stag-hunter-shield": [
+      "ward",
+      "overcharged_ward",
+      "net_trap",
+      "cage",
+      "take_a_charge",
+      "target",
+      "leap_to_defend",
+      "full_cover"
+    ],
+    "stoat-healer-needle": [
+      "cut_off_retreat",
+      "mark_for_death",
+      "backstab",
+      "poison_vial",
+      "jam",
+      "pack_strike",
+      "hide",
+      "melt_away"
+    ],
+    "sugarglider-scout-sail": [
+      "glass_body",
+      "gust",
+      "dust_up",
+      "curse_of_weight",
+      "scout_ahead",
+      "transmute",
+      "headwind",
+      "curse_of_stagnation"
+    ],
+    "sundial-vanguard": [
+      "ward",
+      "leap_to_defend",
+      "overcharged_ward",
+      "lasting_ward",
+      "take_a_charge",
+      "shield_dome",
+      "distract",
+      "keeper_of_the_gate"
+    ],
+    "sundrum-hexer": [
+      "leap_to_defend",
+      "healing_draught",
+      "full_cover",
+      "barricade",
+      "antidote",
+      "poison_gas",
+      "flashbang",
+      "ward"
+    ],
+    "tapestry-summoner": [
+      "raise_undead",
+      "take_a_charge",
+      "mass_grave",
+      "lich_form",
+      "leap_to_defend",
+      "ward",
+      "animate_blades",
+      "clay_golem"
+    ],
+    "tarsier-hexer-mask": [
+      "glass_body",
+      "jam",
+      "mark_for_death",
+      "cut_the_strings",
+      "stone_shell",
+      "curse_of_weight",
+      "disarm_trap",
+      "hide"
+    ],
+    "teapot-alchemist-volcano": [
+      "freeze",
+      "shock",
+      "kindle",
+      "brittle",
+      "tempest",
+      "flashbang",
+      "firebomb",
+      "scorch"
+    ],
+    "termite-engineer-drill": [
+      "barricade",
+      "take_a_charge",
+      "flashbang",
+      "repair",
+      "healing_draught",
+      "showman",
+      "follow_the_charge",
+      "antidote"
+    ],
+    "termite-summoner-clockwork": [
+      "raise_undead",
+      "corpse_explosion",
+      "desecrate",
+      "plague_corpse",
+      "clay_golem",
+      "mass_grave",
+      "flashbang",
+      "showman"
+    ],
+    "thornfang": [
+      "target",
+      "sidestep",
+      "cut_off_retreat",
+      "flush",
+      "counter_step",
+      "net_trap",
+      "battle_roar",
+      "stalk"
+    ],
+    "thorntreant-primalist-bramble": [
+      "hoarfrost",
+      "hide",
+      "healing_totem",
+      "melt_away",
+      "mark_for_death",
+      "spirit_link_totem",
+      "totem_ritual",
+      "sneak"
+    ],
+    "toad-bard-bell": [
+      "song_of_haste",
+      "war_drums",
+      "rhythm",
+      "press_the_advantage",
+      "grand_chorus",
+      "raise_undead",
+      "clay_golem",
+      "desecrate"
+    ],
+    "toad-boulder": [
+      "endure",
+      "sidestep",
+      "unstoppable",
+      "counter_step",
+      "leap_to_defend",
+      "hit_and_run",
+      "hold_position",
+      "battle_roar"
+    ],
+    "toad-druid": [
+      "mend",
+      "overflowing_care",
+      "absolve",
+      "life_link",
+      "turn_back",
+      "revive",
+      "hoarfrost",
+      "totem_ritual"
+    ],
+    "tortoise-colossus-mountain": [
+      "ward",
+      "leap_to_defend",
+      "overcharged_ward",
+      "hold_position",
+      "forced_step",
+      "puppet_soul",
+      "hoarfrost",
+      "full_cover"
+    ],
+    "tortoise-sentinel-obsidian": [
+      "ward",
+      "animate_blades",
+      "take_a_charge",
+      "lasting_ward",
+      "blade_storm",
+      "raise_undead",
+      "desecrate",
+      "mass_grave"
+    ],
+    "treant-druid-leaf": [
+      "healing_totem",
+      "hoarfrost",
+      "absolve",
+      "life_link",
+      "totem_of_return",
+      "totem_ritual",
+      "bound_resurrect",
+      "turn_back"
+    ],
+    "treant-titan-ancient": [
+      "hoarfrost",
+      "totem_ritual",
+      "healing_totem",
+      "mend",
+      "life_link",
+      "forced_step",
+      "linked_fates",
+      "spirit_link_totem"
+    ],
+    "trowel-crusader": [
+      "battle_roar",
+      "sweeping_kick",
+      "crowd_fighter",
+      "endure",
+      "reckless_swing",
+      "take_a_charge",
+      "distract",
+      "sidestep"
+    ],
+    "tuningfork-champion": [
+      "endure",
+      "unstoppable",
+      "challenge",
+      "battle_roar",
+      "single_combat",
+      "crowd_fighter",
+      "sweeping_kick",
+      "sidestep"
+    ],
+    "turbine-skyguard": [
+      "take_off",
+      "sidestep",
+      "counter_step",
+      "challenge",
+      "hit_and_run",
+      "battle_roar",
+      "airlift",
+      "endure"
+    ],
+    "turtle-bard-frost": [
+      "take_a_charge",
+      "phase_weapon",
+      "piercing_enchant",
+      "echo_enchant",
+      "ward",
+      "distract",
+      "curse_of_weight",
+      "overcharged_ward"
+    ],
+    "turtle-monk": [
+      "take_a_charge",
+      "ward",
+      "leap_to_defend",
+      "distract",
+      "mend",
+      "hold_position",
+      "rain_of_mending",
+      "follow_the_charge"
+    ],
+    "umbrella-guardian-fan": [
+      "freeze",
+      "kindle",
+      "scorch",
+      "brittle",
+      "shock",
+      "chain_lightning",
+      "frost_nova",
+      "take_off"
+    ],
+    "velvetworm-hexer-rune": [
+      "hide",
+      "melt_away",
+      "forced_step",
+      "puppet_soul",
+      "linked_fates",
+      "hoarfrost",
+      "jam",
+      "totem_ritual"
+    ],
+    "vinegaroon-alchemist-flask": [
+      "stalk",
+      "freeze_in_place",
+      "vanish",
+      "cut_off_retreat",
+      "flashbang",
+      "firebomb",
+      "healing_draught",
+      "creep_closer"
+    ],
+    "vise-enforcer": [
+      "ward",
+      "barricade",
+      "repair",
+      "healing_draught",
+      "antidote",
+      "bolt_turret",
+      "take_a_charge",
+      "lasting_ward"
+    ],
+    "vulture-healer-cinder": [
+      "freeze",
+      "frost_nova",
+      "kindle",
+      "fire_lane",
+      "glacier",
+      "brittle",
+      "row_of_fire",
+      "take_off"
+    ],
+    "walrus-bard-horn": [
+      "press_the_advantage",
+      "reposition",
+      "switch_places",
+      "advance",
+      "song_of_haste",
+      "inspiring_presence",
+      "rhythm",
+      "war_drums"
+    ],
+    "warthog-engineer-cannon": [
+      "healing_draught",
+      "flashbang",
+      "antidote",
+      "showman",
+      "firebomb",
+      "flame_turret",
+      "barricade",
+      "poison_gas"
+    ],
+    "wasp-alchemist-potion": [
+      "flashbang",
+      "healing_draught",
+      "scout_ahead",
+      "showman",
+      "take_off",
+      "barricade",
+      "bolt_turret",
+      "high_altitude"
+    ],
+    "weasel-rogue-dagger": [
+      "target",
+      "cut_off_retreat",
+      "scent_of_blood",
+      "mark_for_death",
+      "sniff_the_air",
+      "poison_vial",
+      "read_tracks",
+      "flush"
+    ],
+    "weathervane-summoner-arrow": [
+      "clay_golem",
+      "raise_undead",
+      "animate_blades",
+      "rune_golem",
+      "corpse_explosion",
+      "blade_storm",
+      "gust",
+      "take_off"
+    ],
+    "weaverbird-summoner-banner": [
+      "raise_undead",
+      "reposition",
+      "corpse_explosion",
+      "advance",
+      "fall_back",
+      "rotation",
+      "plague_corpse",
+      "song_of_haste"
+    ],
+    "wisp-hexer-shadow": [
+      "jam",
+      "glass_body",
+      "flash_powder",
+      "mark_for_death",
+      "phase_weapon",
+      "stone_shell",
+      "curse_of_weight",
+      "cut_the_strings"
+    ],
+    "wolf-ranger": [
+      "target",
+      "scent_of_blood",
+      "press_the_advantage",
+      "cut_off_retreat",
+      "sniff_the_air",
+      "read_tracks",
+      "flush",
+      "swap_turns"
+    ],
+    "wolverine-warrior-mace": [
+      "battle_roar",
+      "sidestep",
+      "counter_step",
+      "challenge",
+      "drag_out",
+      "sweeping_kick",
+      "single_combat",
+      "hit_and_run"
+    ],
+    "wyvern-scout-obsidian": [
+      "scout_ahead",
+      "gust",
+      "watchtower",
+      "curse_of_weight",
+      "curse_of_betrayal",
+      "glass_body",
+      "spotter",
+      "take_off"
+    ],
+    "yak-bard-gong": [
+      "raise_undead",
+      "clay_golem",
+      "song_of_haste",
+      "desecrate",
+      "war_drums",
+      "press_the_advantage",
+      "clockwork_golem",
+      "rune_golem"
+    ]
+  }
+}

@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Everkin.Core.Skills;
 
 namespace Everkin.Core.Content;
 
@@ -10,6 +11,7 @@ public static class ContentLoader
     public const string SkillsFile = "skills.json";
     public const string CreaturesFile = "creatures.json";
     public const string StatusesFile = "statuses.json";
+    public const string DefaultBuildsFile = "default_builds.json";
 
     private static readonly JsonSerializerOptions Options = new()
     {
@@ -17,13 +19,25 @@ public static class ContentLoader
         UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow,
     };
 
-    public static ContentSet LoadFromDirectory(string directory) => LoadFromJson(
-        File.ReadAllText(Path.Combine(directory, ClassesFile)),
-        File.ReadAllText(Path.Combine(directory, SkillsFile)),
-        File.ReadAllText(Path.Combine(directory, CreaturesFile)),
-        File.ReadAllText(Path.Combine(directory, StatusesFile)));
+    /// <summary>
+    /// Loads and validates the content files of a folder. The default builds are required unless
+    /// <paramref name="requireDefaultBuilds"/> is false (the tool that makes them has to load the rest first).
+    /// </summary>
+    public static ContentSet LoadFromDirectory(string directory, bool requireDefaultBuilds = true)
+    {
+        var buildsPath = Path.Combine(directory, DefaultBuildsFile);
+        string? builds = null;
+        if (File.Exists(buildsPath)) builds = File.ReadAllText(buildsPath);
+        else if (requireDefaultBuilds) throw new ContentException(DefaultBuildsFile, "(file)", "missing; run the runner command default-builds");
+        return LoadFromJson(
+            File.ReadAllText(Path.Combine(directory, ClassesFile)),
+            File.ReadAllText(Path.Combine(directory, SkillsFile)),
+            File.ReadAllText(Path.Combine(directory, CreaturesFile)),
+            File.ReadAllText(Path.Combine(directory, StatusesFile)),
+            builds);
+    }
 
-    public static ContentSet LoadFromJson(string classesJson, string skillsJson, string creaturesJson, string statusesJson)
+    public static ContentSet LoadFromJson(string classesJson, string skillsJson, string creaturesJson, string statusesJson, string? defaultBuildsJson = null)
     {
         var classes = Parse<ClassesDoc>(ClassesFile, classesJson);
         var skills = Parse<SkillsDoc>(SkillsFile, skillsJson);
@@ -40,6 +54,9 @@ public static class ContentLoader
             Statuses = statuses.Statuses,
         };
         Validate(set);
+        var defaultBuilds = defaultBuildsJson is null
+            ? new Dictionary<string, IReadOnlyList<string>>()
+            : ValidateDefaultBuilds(set, Parse<DefaultBuildsDoc>(DefaultBuildsFile, defaultBuildsJson));
         return new ContentSet
         {
             AttackTypes = set.AttackTypes,
@@ -48,6 +65,7 @@ public static class ContentLoader
             ProfessionSkills = set.ProfessionSkills,
             Creatures = set.Creatures,
             Statuses = set.Statuses,
+            DefaultBuilds = defaultBuilds,
             CreaturesById = set.Creatures.ToDictionary(c => c.Id),
             SkillsById = set.ProfessionSkills.ToDictionary(s => s.Id),
         };
@@ -137,6 +155,30 @@ public static class ContentLoader
         }
     }
 
+    private static Dictionary<string, IReadOnlyList<string>> ValidateDefaultBuilds(ContentSet set, DefaultBuildsDoc doc)
+    {
+        var trees = new SkillTrees(set);
+        var result = new Dictionary<string, IReadOnlyList<string>>();
+        foreach (var (id, skills) in doc.Builds)
+        {
+            if (!set.CreaturesByIdOrNull(id, out var creature))
+                throw new ContentException(DefaultBuildsFile, id, "not a creature");
+            var problem = SkillBuild.Validate(trees, creature.Professions, skills);
+            if (problem is not null) throw new ContentException(DefaultBuildsFile, id, problem);
+            result[id] = skills;
+        }
+        foreach (var c in set.Creatures)
+            if (!result.ContainsKey(c.Id))
+                throw new ContentException(DefaultBuildsFile, c.Id, "the creature has no default build");
+        return result;
+    }
+
+    private static bool CreaturesByIdOrNull(this ContentSet set, string id, out CreatureDef creature)
+    {
+        creature = set.Creatures.FirstOrDefault(c => c.Id == id)!;
+        return creature is not null;
+    }
+
     private static HashSet<string> Unique(string file, IEnumerable<string> ids)
     {
         var set = new HashSet<string>();
@@ -152,4 +194,6 @@ public static class ContentLoader
     private sealed record CreaturesDoc(IReadOnlyList<CreatureDef> Creatures);
 
     private sealed record StatusesDoc(IReadOnlyList<StatusDef> Statuses);
+
+    private sealed record DefaultBuildsDoc(Dictionary<string, string[]> Builds);
 }

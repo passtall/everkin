@@ -51,7 +51,7 @@ The solution is `Everkin.sln` (net10.0): `src/Everkin.Core`, `src/Everkin.Runner
 
 - Build: `dotnet build`
 - Tests: `dotnet test`
-- Batch run: `dotnet run --project src/Everkin.Runner -c Release -- --help` (the runner arrives in M2.2)
+- Runner: `dotnet run --project src/Everkin.Runner -c Release -- --help`. `default-builds` makes `content/default_builds.json` (keeps stored builds, adds missing creatures). The AI-versus-AI batch commands arrive in M2.2.
 - Godot editor: open the project at the root in Godot 4.7.2 .NET (`E:\Downloads\Neuer Ordner\Godot_v4.7.2-stable_mono_win64\Godot_v4.7.2-stable_mono_win64.exe`); the renderer is Compatibility on every platform.
 - Godot headless (use the `_console.exe`; always pass `--quit`, otherwise the process hangs):
   - Import assets and build C#: `--headless --path . --build-solutions --quit`
