@@ -145,6 +145,8 @@ public sealed class BattleState
     private readonly Formation _formation;
     private readonly Timeline _timeline;
     private readonly Momentum _momentum;
+    private readonly List<ReactionDef> _reactions = new();
+    private readonly Dictionary<string, int> _reactionUses = new();
 
     public BattleState(ulong seed)
     {
@@ -161,6 +163,8 @@ public sealed class BattleState
         _formation = other._formation.Clone();
         _timeline = other._timeline.Clone();
         _momentum = other._momentum.Clone();
+        _reactions.AddRange(other._reactions);
+        foreach (var kv in other._reactionUses) _reactionUses[kv.Key] = kv.Value;
         foreach (var u in other._units) _units.Add(u.Clone());
         // The copy starts with no pending events: they belong to the action that produced them.
     }
@@ -180,6 +184,18 @@ public sealed class BattleState
 
     /// <summary>The contested Momentum meter. Change it through <see cref="PayMomentum"/> and <see cref="ShiftMomentum"/> so the change is reported.</summary>
     public Momentum Momentum => _momentum;
+
+    /// <summary>The reactions the units have from their skills and passives (section 6.6), in the order they were given.</summary>
+    public IReadOnlyList<ReactionDef> Reactions => _reactions;
+
+    public void AddReaction(ReactionDef reaction) => _reactions.Add(reaction);
+
+    /// <summary>How many times a reaction has fired in this battle.</summary>
+    public int ReactionUses(ReactionDef reaction) => _reactionUses.GetValueOrDefault(UseKey(reaction));
+
+    internal void CountReactionUse(ReactionDef reaction) => _reactionUses[UseKey(reaction)] = ReactionUses(reaction) + 1;
+
+    private static string UseKey(ReactionDef reaction) => $"{reaction.OwnerUnitId}:{reaction.Id}";
 
     /// <summary>Pays a skill's Momentum cost for a side and reports it. Throws if the side is not far enough ahead.</summary>
     public void PayMomentum(Side side, int cost)
