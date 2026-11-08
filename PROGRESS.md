@@ -2,15 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, M1.6 done.
+**Last updated:** 2026-11-08, M1.7 done.
 
 ## Current task
 
-None between tasks. Next is **M1.7**.
+None between tasks. Next is **M1.8**.
 
 ## Next step
 
-M1.7 damage, healing and shields: read game_system §5.2 (rolls, Power scaling x Power / 5 rounded down, minimum 1, shield first, then Dampen, minimum 1 if anything passes the shield, one Ward per unit, replace rule) and the §20.5 damage checks (9 damage, Ward 8, Dampen, counter 2). Shields and Dampen are statuses (M1.11): keep their storage minimal now (a Ward value and a Dampen flag on the unit) and say so in Notes.
+M1.8 interception and area patterns: read game_system §8.2 (interception: who may intercept, chances 50% at 100% overlap / 25% at 50%, full or partial hit, chains, random order), §8.3 (preview), §8.4 (area patterns: column/row/circular/chain/all, the behind rule 100% / 50%) and the §20.5 interception and area checks. Build on Formation.Adjacent, Targeting and DamageMath; interception needs the interceptor's eligibility (not KO, not stealthed, not Frozen/Stunned/Immobilized: those statuses arrive in M1.11, so take an eligibility predicate).
 
 ## In flight
 
@@ -36,6 +36,7 @@ Nothing.
 - M1.4: `Timeline` (on `BattleState.Timeline`): `Wait(delay, speed)`, `InitialWait`, `SkippedTurnWait`; entries have `Due` and join `Order` (kinds UnitTurn, AutoEvent, DelayedEvent, EffectEnd; `Tag` says what they stand for); `Add`, `AddBatch`/`ScheduleInitialTurns` (ties among simultaneous new entries by the battle's seeded generator), `ScheduleTurn`, `Pop` (advances `Now`), `Remove`, `RemoveOwnedBy` (KO), `PullForward`, `PushBack`, `Reset`, `ChangeSpeed(unit, oldSpeed, newSpeed)`. Blocking auto events hold the owner's turn back until the last one is done (turn cost then starts). Not done yet: the battle driver that pops entries and runs them (comes with the skills, M1.12 onwards); events for timeline changes; the status layer that decides a unit's effective Speed. Call `ScheduleTurn` when a skill is used (before its effects), `ChangeSpeed` when effective Speed changes.
 - M1.5: `Momentum` (on `BattleState.Momentum`; change it through `state.PayMomentum(side, cost)` / `state.ShiftMomentum(side, amount)`, which emit `MomentumChanged` only when the meter moves). The meter is stored from Side A's view (positive favors A); `AdvantageOf(side)` gives either view. `CanPay`/`Pay` (needs a lead of N, moves N toward neutral, never refunded), `Shift` clamps after each shift. `MomentumRules.HitShift(HitOutcome)` and `ActionShift(hits)` give the per-hit and per-action shift from the actor's view (Landed +1, Missed -1, rest 0; one shift per action: any Landed = +1, else any Missed = -1). The skill code (M1.7 onwards) must pay the cost first, then shift per event, using the hit outcomes it sees; skills or statuses that modify a shift (e.g. double for Marked) change the amount before calling `ShiftMomentum`.
 - M1.6: `Targeting` (static, read-only): `Reach` (max distance or `Reach.Unlimited`), `TargetOptions(Side, IncludeKnockedOut)`; `EffectiveRow`, `OpposingDistance` (attacker row + target row - 1 after skipping rows with no living unit; on the other side stealthed units and KO bodies do not make a row count), `InReach` (own side: D1 = user + adjacent, D2+ = any), `IsLegalTarget`, `LegalTargets` (own side first), `NearestEnemies`, `PickNearest` (ties by the battle's seeded roll; no roll for a single candidate). `Unit.IsKnockedOut` (HP 0) and `Unit.IsStealthed` (plain flag, M1.10 maintains it) were added for it. Not here: interception (M1.8), placement of summons (M1.13), confusion (M1.11).
+- M1.7: `DamageMath` (static, integers): `Scale(value, power)` = value x power / 5 rounded down, minimum 1; `ScaleRange`; `Roll(random, range)`; `Resolve(incoming, ward, dampen, source)` (Ward first, then Dampen halves rounded down, minimum 1 if anything passed the shield); `CombineWard`; `HealedHp`. `DamageSource`: Hit (shield + reductions, also burning ground and counters), Periodic (Poison, Bleeding: reductions only), Unreducible (bump). `BattleState.DealDamage(source, target, amount, source)`, `Heal`, `ApplyWard` mutate and emit `DamageDealt` / `Healed` / `WardChanged`; a KO unit cannot be damaged or healed (callers filter; revival is M1.10). `Unit.Ward` (int) and `Unit.Dampen` (bool) are plain values for now: M1.11 adds durations, expiry (timeline EffectEnd) and removal on KO. Not done here: the skill's Power scaling is applied by the caller (`ScaleRange` then `Roll`), Momentum shift from `DamageResult.FullyAbsorbed` / landed, KO check after damage (M1.10), the 'shared roll or independent rolls' choice (each skill).
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -54,7 +55,7 @@ Nothing.
 - [x] M1.4 Timeline
 - [x] M1.5 Momentum
 - [x] M1.6 Ranges and targeting
-- [ ] M1.7 Damage, healing, shields
+- [x] M1.7 Damage, healing, shields
 - [ ] M1.8 Interception and area patterns
 - [ ] M1.9 Movement
 - [x] M1.10 Stealth, KO, revival
@@ -120,3 +121,4 @@ One line per finished task: date, task, commit.
 2026-11-08 M1.4 Timeline (see git log)
 2026-11-08 M1.5 Momentum (see git log)
 2026-11-08 M1.6 Ranges and targeting (see git log)
+2026-11-08 M1.7 Damage, healing and shields (see git log)

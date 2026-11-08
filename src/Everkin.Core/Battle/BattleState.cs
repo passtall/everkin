@@ -43,6 +43,8 @@ public sealed class Unit
         Speed = other.Speed;
         Power = other.Power;
         IsStealthed = other.IsStealthed;
+        Ward = other.Ward;
+        Dampen = other.Dampen;
     }
 
     /// <summary>Unique inside the battle, assigned in the order units were added.</summary>
@@ -67,6 +69,15 @@ public sealed class Unit
     /// cannot be targeted by the other side and does not make a row count for the other side's range.
     /// </summary>
     public bool IsStealthed { get; set; }
+
+    /// <summary>
+    /// What the unit's Ward still absorbs, 0 for none (section 5.2). The status layer (M1.11) will add its duration and
+    /// removal; the damage rules only read and spend this number.
+    /// </summary>
+    public int Ward { get; set; }
+
+    /// <summary>Dampen halves damage that gets through the shield (section 5.2). M1.11 adds its duration.</summary>
+    public bool Dampen { get; set; }
 
     public Unit Clone() => new(this);
 }
@@ -143,6 +154,46 @@ public sealed class BattleState
         var unit = new Unit(_units.Count, side, creature.Name, creature.Id, creature.Hp, creature.Speed, creature.Power);
         _units.Add(unit);
         return unit;
+    }
+
+    /// <summary>
+    /// Deals already-rolled, already-scaled damage to a unit: Ward first, then Dampen, then HP (section 5.2). The unit must
+    /// not be KO. Returns what happened, and reports it. Momentum, KO and reactions are the caller's next steps.
+    /// </summary>
+    public DamageResult DealDamage(int? sourceUnitId, int targetId, int amount, DamageSource source = DamageSource.Hit)
+    {
+        var target = GetUnit(targetId);
+        if (target.IsKnockedOut) throw new InvalidOperationException($"Unit {targetId} is KO and cannot take damage.");
+        var result = DamageMath.Resolve(amount, target.Ward, target.Dampen, source);
+        target.Ward = result.WardLeft;
+        target.Hp = Math.Max(0, target.Hp - result.HpLost);
+        Emit(new DamageDealt(sourceUnitId, targetId, source, result, target.Hp));
+        return result;
+    }
+
+    /// <summary>
+    /// Heals a unit, capped at maximum HP (no overheal, section 10.3). Returns the HP actually restored. The unit must not
+    /// be KO: only revival brings a KO unit back.
+    /// </summary>
+    public int Heal(int? sourceUnitId, int targetId, int amount)
+    {
+        var target = GetUnit(targetId);
+        if (target.IsKnockedOut) throw new InvalidOperationException($"Unit {targetId} is KO and cannot be healed, only revived.");
+        if (amount < 0) throw new ArgumentOutOfRangeException(nameof(amount));
+        var after = DamageMath.HealedHp(target.Hp, target.MaxHp, amount);
+        var healed = after - target.Hp;
+        target.Hp = after;
+        Emit(new Healed(sourceUnitId, targetId, healed, after));
+        return healed;
+    }
+
+    /// <summary>Gives a unit a Ward; a smaller new Ward does not replace a larger one that is left (section 5.2).</summary>
+    public void ApplyWard(int targetId, int amount)
+    {
+        var target = GetUnit(targetId);
+        var before = target.Ward;
+        target.Ward = DamageMath.CombineWard(before, amount);
+        if (target.Ward != before) Emit(new WardChanged(targetId, before, target.Ward));
     }
 
     /// <summary>Records an event. It is returned, in order, by the next <see cref="DrainEvents"/>.</summary>
