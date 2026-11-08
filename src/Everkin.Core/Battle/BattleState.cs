@@ -70,16 +70,19 @@ public sealed class BattleState
 {
     private readonly List<Unit> _units = new();
     private readonly List<BattleEvent> _pendingEvents = new();
+    private readonly Formation _formation;
 
     public BattleState(ulong seed)
     {
         Random = new BattleRandom(seed);
+        _formation = new Formation();
         Emit(new BattleStarted(seed));
     }
 
     private BattleState(BattleState other)
     {
         Random = other.Random.Clone();
+        _formation = other._formation.Clone();
         foreach (var u in other._units) _units.Add(u.Clone());
         // The copy starts with no pending events: they belong to the action that produced them.
     }
@@ -90,6 +93,9 @@ public sealed class BattleState
     public ulong Seed => Random.Seed;
 
     public IReadOnlyList<Unit> Units => _units;
+
+    /// <summary>Where every unit stands (rows, order, alignment, adjacency).</summary>
+    public Formation Formation => _formation;
 
     public Unit GetUnit(int id) => _units[id];
 

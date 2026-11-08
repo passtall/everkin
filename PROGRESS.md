@@ -2,15 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, M1.2 done.
+**Last updated:** 2026-11-08, M1.3 done.
 
 ## Current task
 
-None between tasks. Next is **M1.3**.
+None between tasks. Next is **M1.4**.
 
 ## Next step
 
-M1.3 formation: read game_system §7 (7.1 to 7.6) and §8.4 adjacency; rows Front/Middle/Rear per side, capacity 6 per row, ordered positions, alignment (centres 2i-(n-1)), adjacency. Add it to BattleState.
+M1.4 timeline: read game_system §6.1 to §6.5 (Wait = Delay + 11 - Speed, first Wait 11 - Speed, ties by arrival with seeded roll for simultaneous entries, Pull Forward / Push Back / Haste / Slow / Reset, auto and delayed events, skipped turn = Delay 5) and the §20.5 timeline checks.
 
 ## In flight
 
@@ -30,6 +30,7 @@ Nothing.
 - M0.3 verified on a Samsung SM-S928B (Android, Adreno 750): boot scene shows core name and .NET 10.0.9. The phone screen must be unlocked for adb launches; `adb shell monkey -p com.everkin.game -c android.intent.category.LAUNCHER 1` starts the app, `adb logcat -d -s godot` shows its output. Use bash (not PowerShell) for `adb exec-out screencap -p > file.png`.
 - M1.1: `python tools/content/build_content.py` regenerates `content/classes.json`, `skills.json`, `creatures.json` from the docs (`--check` compares without writing; the xunit test `JsonMatchesTheDocs` runs it, so python must be on PATH). After any change to creature-classes.md, class_system.md or skills.md, rerun it and commit the JSON. `Everkin.Core.Content.ContentLoader` loads and validates (file + ID in every error). Skill effect text stays prose in JSON: numbers inside effects are NOT parsed yet; each skill's numbers go into code or JSON when its skill class is written (M1.16). Delivery `inherit` = modifier ("As parent"), `none` = placement range only (summons, constructs, traps); `placement` is summon / construct / trap_card. Statuses, encounters and achievements are not content files yet (M1.11, M5.3, M7.2).
 - M1.2: `Everkin.Core.Battle`: `BattleRandom` (xoshiro256** seeded by SplitMix64, own code, sequence pinned by a test with values from an independent Python implementation: never change it, or old seeds stop replaying), `BattleState` (units, `Clone()`, event buffer `Emit`/`DrainEvents`; a clone starts with no pending events), `Unit` (id, side, name, creature id, HP, Speed, Power), `Side` A/B, `BattleEvent` base record (+ `BattleStarted`). Later tasks add formation, timeline, Momentum, statuses and the concrete events. Damage rolls will use `Random.NextRange(min, max)`.
+- M1.3: `Formation` (on `BattleState.Formation`): rows Front/Middle/Rear per `Side`, 6 per row, 18 per side, ordered left to right; `Place`/`Remove`/`PositionOf`/`Units`; `Center(count, index) = 2i-(n-1)`, `OverlapPercent` (100/50/0), `UnitOverlapPercent(a, b)`, `Adjacent(unit)` (left, right, then the same-side rows in front and behind at >= 50% overlap, nominal rows). It knows positions only: KO, stealth and visibility filtering belong to the rules that use it (a KO body still blocks its place, §7.5). Interpretation to confirm, no task blocked: adjacency stays within one side (a Front unit's "row in front" is not the enemy Front); §8.4 does not say so, but otherwise Breath on an enemy Front unit would splash your own Front row. Moves, swaps and bumps are M1.9; opposing distance is M1.6.
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -44,7 +45,7 @@ Nothing.
 - [x] M0.4 Build and test commands in CLAUDE.md
 - [x] M1.1 Content pipeline and validation
 - [x] M1.2 Battle state, random generator, events
-- [ ] M1.3 Formation
+- [x] M1.3 Formation
 - [ ] M1.4 Timeline
 - [ ] M1.5 Momentum
 - [ ] M1.6 Ranges and targeting
@@ -110,3 +111,4 @@ One line per finished task: date, task, commit.
 2026-11-08 M0.3 Export test, M0.4 Commands in CLAUDE.md (see git log)
 2026-11-08 M1.1 Content pipeline and validation (see git log)
 2026-11-08 M1.2 Battle state, random generator, events (see git log)
+2026-11-08 M1.3 Formation (see git log)
