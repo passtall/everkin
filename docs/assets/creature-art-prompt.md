@@ -79,7 +79,7 @@ Format: `unit name` – attack type – professions – brief. Body type is in b
 
 ### Black Mage
 
-Black Mage was removed on 2026-10-14; these briefs keep their original classes. Current classes are in [creature-classes.md](creature-classes.md).
+Black Mage was removed on 2026-10-14; these briefs keep their original classes. Current classes are in [creature-classes.md](../creature-classes.md).
 | Unit | Attack | Professions | Brief |
 |---|---|---|---|
 | `crow-necromancer-skull` | Magic | Black Mage, Flying | [medium, winged] A sleek black crow with a ragged violet cloak and a small bone-white skull charm on a chain, glowing purple eyes, wings half spread. |
