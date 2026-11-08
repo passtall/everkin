@@ -8,7 +8,8 @@ A turn-based tactical creature card battler for Windows, Android and iOS, built 
 |---|---|
 | `docs/` | The specification. Start with [game_system.md](docs/game_system.md) (rules, scope, open decisions in §19), then [class_system.md](docs/class_system.md), [skills.md](docs/skills.md), [creature-classes.md](docs/creature-classes.md) (the roster), [ui_spec.md](docs/ui_spec.md) and [production.md](docs/production.md) (platforms, technology, saving, online). |
 | `docs/campaign.md` | Campaign content: encounters, bosses, rewards, achievements. |
-| `docs/implementation-plan.md` | Milestones and progress of the implementation. |
+| `docs/implementation-plan.md` | The prompt for implementing sessions: milestones, tasks, how to resume. |
+| `PROGRESS.md` | Live implementation state: current task, next step, uncommitted work, questions. |
 | `docs/mockups/` | The reviewed HTML mockups of the battle screen, team editor and campaign map (ui_spec.md wins where they differ). |
 | `docs/assets/` | Prompts and provenance for every generated asset. |
 | `docs/archive/` | Superseded documents, history only. Never a source for rules. |

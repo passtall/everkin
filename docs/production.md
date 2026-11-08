@@ -206,7 +206,7 @@ Godot 4.7 with .NET is installed and the repository contains a Godot project. No
 Adopted 2026-10-06.
 
 - **Specification first.** The specification is finished completely before implementation starts.
-- **Progress (adopted 2026-11-08).** Implementation progress is tracked in [implementation-plan.md](implementation-plan.md): milestones with checkboxes, updated with every push. How an implementing session works is in [CLAUDE.md](../CLAUDE.md).
+- **Progress (adopted 2026-11-08).** The tasks are in [implementation-plan.md](implementation-plan.md), which is also the prompt for every implementing session; the live state is in [PROGRESS.md](../PROGRESS.md), updated after every step so a session can stop at any time and the next one continues. How an implementing session works is in [CLAUDE.md](../CLAUDE.md).
 - **Order after the AI-versus-AI milestone.** Battle viewer on the real cards, then free battle against the AI, then the tutorial and stage 1, then local two-player, then the rest of the campaign, then post-story content, then online play, then release. **Online play ships in the first release** (adopted 2026-10-18); the owner greenlit it on 2026-10-18.
 - **Code changes.** Code goes straight to main, like the docs. There are no pull requests.
 

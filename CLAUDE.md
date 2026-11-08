@@ -6,13 +6,14 @@ Everkin is a turn-based tactical creature card battler (Godot 4.7 .NET, C#). The
 
 - **Where.** Every implementation session runs on the owner's PC through Remote Control (production.md §2.1). Build, run tests and batches and use the Godot editor there. Nothing is built or run in cloud sessions, and there is no GitHub CI.
 - **Git.** Commit and push straight to `main`. No branches for features, no pull requests. Push small, working steps.
-- **Progress.** [docs/implementation-plan.md](docs/implementation-plan.md) is the plan. Tick its boxes in the same commit as the work, and add a line under "Notes" when you learn something the next session needs.
-- **Never invent a rule.** If the docs leave a rule open, contradict each other or do not cover a case, stop and ask the owner. Do not pick a "sensible default" in code. Write the question down in the plan's "Questions for the owner" list if the owner is not around, and work on something else.
+- **Plan and progress.** [docs/implementation-plan.md](docs/implementation-plan.md) is your prompt: the milestones, the tasks and how to start or resume a session. [PROGRESS.md](PROGRESS.md) is the live state: current task, next step, uncommitted work, questions, notes. Update PROGRESS.md after every meaningful step and commit it with the work, so a session that stops at any moment can be continued by the next one.
+- **Never invent a rule.** If the docs leave a rule open, contradict each other or do not cover a case, stop and ask the owner. Do not pick a "sensible default" in code. Write the question down in PROGRESS.md's "Questions for the owner" list if the owner is not around, and work on something else.
 - **The docs win.** When code and docs disagree, the docs are right unless the owner says otherwise; a rule change is written into the docs first (see the everkin-design skill), then coded.
 - **Original art is never changed.** `source-art/` is read-only. Asset scripts write to `assets/`.
 
 ## Reading order
 
+0. [docs/implementation-plan.md](docs/implementation-plan.md) and [PROGRESS.md](PROGRESS.md), every session, first.
 1. [README.md](README.md): repository layout.
 2. [docs/production.md](docs/production.md) §2 and §3: technology, code layout, tests, online backend, roadmap.
 3. [docs/game_system.md](docs/game_system.md): every rule. It is about 1500 lines; read the section you need. §2.5 is the AI-versus-AI harness, §19 lists what is still open, §20.5 lists the worked checks that become tests.
