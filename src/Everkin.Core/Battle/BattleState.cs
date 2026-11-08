@@ -42,6 +42,7 @@ public sealed class Unit
         Hp = other.Hp;
         Speed = other.Speed;
         Power = other.Power;
+        IsStealthed = other.IsStealthed;
     }
 
     /// <summary>Unique inside the battle, assigned in the order units were added.</summary>
@@ -57,6 +58,15 @@ public sealed class Unit
     public int Hp { get; set; }
     public int Speed { get; set; }
     public int Power { get; set; }
+
+    /// <summary>Knocked out: HP is 0 (game_system.md section 10.2). A KO body keeps its place in the row.</summary>
+    public bool IsKnockedOut => Hp <= 0;
+
+    /// <summary>
+    /// Stealthed (section 10.1). Set by the stealth rules (M1.10); the targeting code only reads it: a stealthed unit
+    /// cannot be targeted by the other side and does not make a row count for the other side's range.
+    /// </summary>
+    public bool IsStealthed { get; set; }
 
     public Unit Clone() => new(this);
 }

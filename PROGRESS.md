@@ -2,15 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, M1.5 done.
+**Last updated:** 2026-11-08, M1.6 done.
 
 ## Current task
 
-None between tasks. Next is **M1.6**.
+None between tasks. Next is **M1.7**.
 
 ## Next step
 
-M1.6 ranges and targeting: read game_system §7.4 (opposing distance = attacker row + target row - 1 after skipping empty rows; own side D1 = user and adjacent, D2+ = any ally), §8.1 (target legality, either-side rule, Own side only, empty rows), §8.5 (nearest ties by seeded roll) and the §20.5 range checks. Stealth and KO filtering (§10.1, §10.2) belong to M1.10: build the range code so it takes a predicate for which units count as visible and active.
+M1.7 damage, healing and shields: read game_system §5.2 (rolls, Power scaling x Power / 5 rounded down, minimum 1, shield first, then Dampen, minimum 1 if anything passes the shield, one Ward per unit, replace rule) and the §20.5 damage checks (9 damage, Ward 8, Dampen, counter 2). Shields and Dampen are statuses (M1.11): keep their storage minimal now (a Ward value and a Dampen flag on the unit) and say so in Notes.
 
 ## In flight
 
@@ -20,6 +20,7 @@ Nothing.
 
 1. **Stale text, no task blocked (game_system §2.5, line "Each unit gets a random legal build: its 10 skill points").** §4.1 says 8 skill points (changed 2026-11-08), and skills.md and the plan say 8. I use 8; please fix §2.5 (or tell me 10 is meant).
 2. **Timeline gaps, no task blocked (game_system §6.1).** I filled these with the most literal reading; tell me if any is wrong: (a) Haste or Slow that would take the remaining Wait below 0 makes the turn arrive now, like the Pull Forward overshoot rule; (b) Speed changes move the remaining Wait by the change in Speed as the formula sees it (clamped to 1-10), so Haste +2 at Speed 9 shortens it by 1; (c) Reset uses the Wait the entry was scheduled with and ignores later Haste or Slow; (d) an entry that is pulled or pushed but stays in the same time unit keeps its place in the tie order; (e) a new Wait (turn, auto event, delayed event, effect end) is at least 1.
+3. **Attack Type attack ranges, blocks M1.16 only (skills.md, nine attacks).** The table gives no range for Brawl Strike, Blade Strike, Heavy Blow and Breath; Shot and Bolt are "any visible enemy", Pulse is "every enemy in melee reach", and Polearm Thrust and Lash have "one row more reach than other melee". I need the numbers: is base melee reach D1 (Polearm and Whip D2), and what is Breath's range (it is `direct`)? Not needed before M1.16.
 
 ## Notes
 
@@ -34,6 +35,7 @@ Nothing.
 - M1.3: `Formation` (on `BattleState.Formation`): rows Front/Middle/Rear per `Side`, 6 per row, 18 per side, ordered left to right; `Place`/`Remove`/`PositionOf`/`Units`; `Center(count, index) = 2i-(n-1)`, `OverlapPercent` (100/50/0), `UnitOverlapPercent(a, b)`, `Adjacent(unit)` (left, right, then the same-side rows in front and behind at >= 50% overlap, nominal rows). It knows positions only: KO, stealth and visibility filtering belong to the rules that use it (a KO body still blocks its place, §7.5). Interpretation to confirm, no task blocked: adjacency stays within one side (a Front unit's "row in front" is not the enemy Front); §8.4 does not say so, but otherwise Breath on an enemy Front unit would splash your own Front row. Moves, swaps and bumps are M1.9; opposing distance is M1.6.
 - M1.4: `Timeline` (on `BattleState.Timeline`): `Wait(delay, speed)`, `InitialWait`, `SkippedTurnWait`; entries have `Due` and join `Order` (kinds UnitTurn, AutoEvent, DelayedEvent, EffectEnd; `Tag` says what they stand for); `Add`, `AddBatch`/`ScheduleInitialTurns` (ties among simultaneous new entries by the battle's seeded generator), `ScheduleTurn`, `Pop` (advances `Now`), `Remove`, `RemoveOwnedBy` (KO), `PullForward`, `PushBack`, `Reset`, `ChangeSpeed(unit, oldSpeed, newSpeed)`. Blocking auto events hold the owner's turn back until the last one is done (turn cost then starts). Not done yet: the battle driver that pops entries and runs them (comes with the skills, M1.12 onwards); events for timeline changes; the status layer that decides a unit's effective Speed. Call `ScheduleTurn` when a skill is used (before its effects), `ChangeSpeed` when effective Speed changes.
 - M1.5: `Momentum` (on `BattleState.Momentum`; change it through `state.PayMomentum(side, cost)` / `state.ShiftMomentum(side, amount)`, which emit `MomentumChanged` only when the meter moves). The meter is stored from Side A's view (positive favors A); `AdvantageOf(side)` gives either view. `CanPay`/`Pay` (needs a lead of N, moves N toward neutral, never refunded), `Shift` clamps after each shift. `MomentumRules.HitShift(HitOutcome)` and `ActionShift(hits)` give the per-hit and per-action shift from the actor's view (Landed +1, Missed -1, rest 0; one shift per action: any Landed = +1, else any Missed = -1). The skill code (M1.7 onwards) must pay the cost first, then shift per event, using the hit outcomes it sees; skills or statuses that modify a shift (e.g. double for Marked) change the amount before calling `ShiftMomentum`.
+- M1.6: `Targeting` (static, read-only): `Reach` (max distance or `Reach.Unlimited`), `TargetOptions(Side, IncludeKnockedOut)`; `EffectiveRow`, `OpposingDistance` (attacker row + target row - 1 after skipping rows with no living unit; on the other side stealthed units and KO bodies do not make a row count), `InReach` (own side: D1 = user + adjacent, D2+ = any), `IsLegalTarget`, `LegalTargets` (own side first), `NearestEnemies`, `PickNearest` (ties by the battle's seeded roll; no roll for a single candidate). `Unit.IsKnockedOut` (HP 0) and `Unit.IsStealthed` (plain flag, M1.10 maintains it) were added for it. Not here: interception (M1.8), placement of summons (M1.13), confusion (M1.11).
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -51,7 +53,7 @@ Nothing.
 - [x] M1.3 Formation
 - [x] M1.4 Timeline
 - [x] M1.5 Momentum
-- [ ] M1.6 Ranges and targeting
+- [x] M1.6 Ranges and targeting
 - [ ] M1.7 Damage, healing, shields
 - [ ] M1.8 Interception and area patterns
 - [ ] M1.9 Movement
@@ -117,3 +119,4 @@ One line per finished task: date, task, commit.
 2026-11-08 M1.3 Formation (see git log)
 2026-11-08 M1.4 Timeline (see git log)
 2026-11-08 M1.5 Momentum (see git log)
+2026-11-08 M1.6 Ranges and targeting (see git log)
