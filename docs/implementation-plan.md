@@ -23,7 +23,7 @@ Progress tracking for building Everkin (adopted 2026-11-08, production.md §3). 
 - [ ] Stealth, KO, revival, statuses (§10)
 - [ ] Summons and undead (§11)
 - [ ] Ground effects and battle end (§12)
-- [ ] Skill trees and builds: 10 points, prerequisites, random legal builds, default builds (§4.1)
+- [ ] Skill trees and builds: 8 points, one parent per node, random legal builds, default builds (§4.1)
 - [ ] Every skill in skills.md implemented
 - [ ] Every worked check in game_system §20.5 is a passing test
 - [ ] Preview queries (damage range, interception chance, timeline position, forced movement)

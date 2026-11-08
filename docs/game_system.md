@@ -211,15 +211,15 @@ Every unit has a **single skill-point budget shared across its trees**. Access t
 
 **Adopted tree model (skill tree quiz, 2026-11-03).**
 
-- **Budget.** Every unit has **10 skill points**, given right away. There are no levels for now; levelling may come back later.
+- **Budget.** Every unit has **8 skill points** (changed from 10 on 2026-11-08), given right away. There are no levels for now; levelling may come back later.
 - **Cost.** Every node costs **1 point**: actives, passives, modifiers and keystones alike.
-- **Prerequisites.** A modifier needs its parent skill. A creature may take every modifier of a skill; if two contradict, the modifier's text says which wins. Usually the stronger modifier requires the weaker one (2026-11-04). A keystone needs **3 other nodes from the same branch**. Nothing else is locked: branches stay organizational (class_system §4).
-- **Keystones.** No limit per unit beyond the prerequisite and the budget.
+- **Prerequisites (changed 2026-11-08, replacing the keystone's 3-node rule).** Each branch is a **real tree**: its root skills have no parent, and every other node has **exactly one parent** in the same branch and can be learned only once that parent is learned. One node can be the parent of several others, so the tree splits. A modifier's parent is its skill. A creature may take every modifier of a skill; if two contradict, the modifier's text says which wins. Each node's parent is the **Needs** column of skills.md. Branches still do not lock each other: a creature can learn in every branch of its professions (class_system §4).
+- **Keystones.** No limit per unit beyond their parent and the budget.
 - **Tree size.** Each profession's tree is its skill list in [skills.md](skills.md), 13 to 20 nodes; trees are not trimmed to the old 10–15 plan.
 
-**Builds for AI teams and new creatures (adopted 2026-11-08).** AI-versus-AI tests, random battles and encounters that state no build use a **random legal build**: 10 points assigned at random under the rules above. Each creature also has a **default build**, made once with the same generator and stored with its content; a newly unlocked creature arrives with it, and the player can respec freely.
+**Builds for AI teams and new creatures (adopted 2026-11-08).** AI-versus-AI tests, random battles and encounters that state no build use a **random legal build**: 8 points assigned at random under the rules above. Each creature also has a **default build**, made once with the same generator and stored with its content; a newly unlocked creature arrives with it, and the player can respec freely.
 
-**Respec is free outside battle.** Players may reset and reassign skill points without a resource cost. Once trees exist, reallocation must obey their defined prerequisites and budget; exact dependency handling belongs to the later tree design.
+**Respec is free outside battle.** Players may reset and reassign skill points without a resource cost. Unlearning a node also unlearns every node below it in its tree (2026-11-08). The tree editor is in ui_spec.md.
 
 ### 4.2 Specialization and hybrid builds
 
@@ -1292,7 +1292,7 @@ Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, T
 | Statuses | Further candidates, added only when a skill needs them. The framework (clocks, ticking, reapplication, cleansing, source, limit, damage from statuses, chances, skipped turns, immunities) and Blind, Poison, Bleeding, Silenced, Chilled, Frozen, Stunned, Confused, Immobilized and Marked are adopted (Burning was dropped) (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
 | KO and revival | Per-skill revival HP and recovery cost. What a draw means in each mode is adopted (section 12.3). Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
 | Summons | None open. Kinds, placement, cost, limits, Momentum, statuses, cap (18), first turn, lifetime, summoner KO, KO'd bodies, stats and behavior (2026-11-08) are adopted (section 11). Undead are adopted (section 11.5). |
-| Builds | None open. The tree model (10 points, 1 per node, modifier and keystone prerequisites, no levels), random legal builds for AI teams and default builds for new creatures (2026-11-08), modifier stacking and free respec are adopted (section 4.1). The tree editor screen is designed in a mockup (ui_spec.md). |
+| Builds | None open. The tree model (8 points, 1 per node, one parent per node, no levels; 2026-11-08), random legal builds for AI teams and default builds for new creatures (2026-11-08), modifier stacking and free respec are adopted (section 4.1). The tree editor screen is designed in a mockup (ui_spec.md). |
 | Creatures | Balance of the roster in creature-classes.md (testing). No size tiers, unit names as IDs (2026-11-08), stat ranges, no natural traits, the first human recruits and Attack Type and Profession assignments are adopted (sections 3.4 and 3.7). |
 | Team budget | Tuning Cost and the budget of 35 after AI-versus-AI testing. How Cost is set (from a power score, 2026-11-03), Cost as the fourth stat, the budget, the six-creature limit, the budget in every mode and random teams drawn within it are adopted (section 5.1). |
 | Recruitment | Guaranteed encounter-to-unit reward assignments, individual persistence. The six tutorial creatures (2026-11-04), tutorial growth (two cheap creatures, then +1, +1, +2), the automatic tutorial team, coin sources, payouts, prices from Cost (2026-11-08) and the roster split are adopted (section 2.2). One copy per creature, one fixed reward per encounter from the defeated team, rewards given once, the three-battle tutorial, post-story challenge encounters, coins, and fixed human recruits are adopted (sections 2.2 and 3.4). Other acquisition methods are not currently required. |

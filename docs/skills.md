@@ -4,7 +4,7 @@
 
 **Legend:** D = Delay (1 is quickest), M = Momentum cost. A = active, P = passive, Mod = modifier of the named skill, K = keystone. Durations are in time units (10 is about one former turn). Every damage, healing and shield number assumes Power 5 and is multiplied by the user's Power ÷ 5, rounded down, minimum 1 (game_system §5.2). Rule numbers such as bump, Bleeding, Poison and ground damage do not scale. Branches organize a profession's tree only; a creature can learn from every branch of its professions (class_system §4). Profession skills carry no tags; where a rule names one, it is derived from the Delivery column and the effect text (game_system §4.7).
 
-**Trees:** each profession's list below is its skill tree. A unit has 10 skill points; every node costs 1; a modifier needs its parent skill and a keystone needs 3 other nodes from its branch (game_system §4.1).
+**Trees:** each profession's list below is its skill tree. A unit has 8 skill points; every node costs 1. Each branch is a tree: a node needs its parent learned first, and a modifier's parent is its skill (game_system §4.1). The parents of the other nodes are being chosen (2026-11-08) and will go into a Needs column.
 
 **Delivery · Range:** `Melee`, `Projectile` (both can be intercepted) or `Direct` (cannot), then the range: On the enemy side D1 reaches the Front row, D2 the Middle row and D3 the Rear row. On your own side D1 reaches the user and its adjacent units, D2 or more any ally (game_system §7.4). Blank = no target (self, passives, summons). Summons, constructs and totems with a range are placed within it.
 
