@@ -71,11 +71,13 @@ public sealed class BattleState
     private readonly List<Unit> _units = new();
     private readonly List<BattleEvent> _pendingEvents = new();
     private readonly Formation _formation;
+    private readonly Timeline _timeline;
 
     public BattleState(ulong seed)
     {
         Random = new BattleRandom(seed);
         _formation = new Formation();
+        _timeline = new Timeline();
         Emit(new BattleStarted(seed));
     }
 
@@ -83,6 +85,7 @@ public sealed class BattleState
     {
         Random = other.Random.Clone();
         _formation = other._formation.Clone();
+        _timeline = other._timeline.Clone();
         foreach (var u in other._units) _units.Add(u.Clone());
         // The copy starts with no pending events: they belong to the action that produced them.
     }
@@ -96,6 +99,9 @@ public sealed class BattleState
 
     /// <summary>Where every unit stands (rows, order, alignment, adjacency).</summary>
     public Formation Formation => _formation;
+
+    /// <summary>The shared timeline: turns, auto events, delayed events and effect ends.</summary>
+    public Timeline Timeline => _timeline;
 
     public Unit GetUnit(int id) => _units[id];
 
