@@ -657,7 +657,7 @@
       "momentum": 2,
       "delivery": "direct",
       "range": "D3",
-      "effect": "Move one helpful status from one unit onto another."
+      "effect": "Move one helpful status from one unit onto another. The skill names both units (the one it is taken from and the one it goes to); if the first unit has several helpful statuses, the battle's seeded roll picks one, each with equal chance (decided 2026-11-08)."
     },
     {
       "id": "turn_back",
@@ -672,7 +672,7 @@
       "momentum": 0,
       "delivery": "direct",
       "range": "D3",
-      "effect": "Move one harmful status from a unit onto the unit that applied it."
+      "effect": "Move one harmful status from a unit onto the unit that applied it. If the unit has several harmful statuses whose applier is still standing, the battle's seeded roll picks one, each with equal chance (decided 2026-11-08)."
     },
     {
       "id": "revive",

@@ -38,6 +38,19 @@ public static class Actions
             case TargetKind.Placement:
                 if (use.Placement is not { } place) return "needs a place";
                 return skill.PlacementOptions(state, use.UserId).Contains(place) ? null : "not a legal place";
+            case TargetKind.TwoUnits:
+            {
+                if (use.TargetUnitId is not { } first || use.SecondTargetUnitId is not { } second) return "needs two targets";
+                if (first < 0 || first >= state.Units.Count || second < 0 || second >= state.Units.Count) return "unknown target";
+                if (first == second) return "needs two different units";
+                var opts = skill.Options with { Delivery = skill.Delivery };
+                foreach (var who in new[] { first, second })
+                {
+                    if (!Targeting.IsLegalTarget(state, use.UserId, who, skill.Reach, opts)) return "not a legal target";
+                    if (!skill.TargetFilter(state, use.UserId, who)) return "not a valid target for this skill";
+                }
+                return skill.PairFilter(state, use.UserId, first, second) ? null : "not a valid pair for this skill";
+            }
             case TargetKind.UnitAndPlacement:
             {
                 if (use.TargetUnitId is not { } who) return "needs a target";
@@ -103,7 +116,8 @@ public static class Actions
         state.Emit(new SkillUsed(use.UserId, use.SkillId, target));
         if (skill.MomentumCost > 0) state.PayMomentum(user.Side, skill.MomentumCost);
         // Effects that add Delay to the next skill (Net Trap's +3) count once; Delay stays within 1 to 10 after all modifiers.
-        ScheduleNextTurn(state, use.UserId, skill.Delay + Statuses.ConsumeNextSkillDelay(state, use.UserId));
+        var boundStrength = state.SharedPoolOf(use.UserId) is { BoundStrength: true } ? 1 : 0;   // Bound Strength: 1 less Delay while sharing HP
+        ScheduleNextTurn(state, use.UserId, skill.Delay + Statuses.ConsumeNextSkillDelay(state, use.UserId) - boundStrength);
 
         if (Statuses.Get(user, StatusIds.LieInWait) is { } lie)
         {

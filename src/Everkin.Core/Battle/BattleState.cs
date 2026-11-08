@@ -234,6 +234,7 @@ public sealed class BattleState
     private readonly List<AreaRedirect> _areaRedirects = new();
     private readonly List<AfterMove> _afterMoveHooks = new();
     private readonly List<AttackBan> _attackBans = new();
+    private readonly List<SharedHp> _sharedPools = new();
     private readonly List<ReactionDef> _reactions = new();
     private readonly Dictionary<string, int> _reactionUses = new();
 
@@ -266,6 +267,7 @@ public sealed class BattleState
         _areaRedirects.AddRange(other._areaRedirects);
         _afterMoveHooks.AddRange(other._afterMoveHooks);
         _attackBans.AddRange(other._attackBans);
+        _sharedPools.AddRange(other._sharedPools.Select(p => p.Clone()));
         Outcome = other.Outcome;
         EndReason = other.EndReason;
         TurnsTaken = other.TurnsTaken;
@@ -336,6 +338,34 @@ public sealed class BattleState
     public void AddAfterMoveHook(AfterMove hook) => _afterMoveHooks.Add(hook);
 
     public IReadOnlyList<AttackBan> AttackBans => _attackBans;
+
+    /// <summary>The shared HP pools of Bound Resurrect (game_system section 10.4).</summary>
+    public IReadOnlyList<SharedHp> SharedPools => _sharedPools;
+
+    public SharedHp? SharedPoolOf(int unitId) => _sharedPools.FirstOrDefault(p => p.UnitA == unitId || p.UnitB == unitId);
+
+    /// <summary>
+    /// Two units share one HP pool: its maximum is the sum of both maximum HP and it starts at the given value. Every hit on either
+    /// reduces the pool, healing either heals it, and at zero both are KO. Each unit's HP shows the pool, capped at its own maximum.
+    /// </summary>
+    public SharedHp AddSharedPool(int unitA, int unitB, int pool, bool boundStrength)
+    {
+        var max = GetUnit(unitA).MaxHp + GetUnit(unitB).MaxHp;
+        var p = new SharedHp(unitA, unitB, Math.Min(pool, max), max, boundStrength);
+        _sharedPools.Add(p);
+        SyncPool(p);
+        return p;
+    }
+
+    /// <summary>The link ends when either unit is KO: the pool goes away and each keeps the HP it shows.</summary>
+    public void EndSharedPool(int unitId) => _sharedPools.RemoveAll(p => p.UnitA == unitId || p.UnitB == unitId);
+
+    private void SyncPool(SharedHp pool)
+    {
+        foreach (var id in new[] { pool.UnitA, pool.UnitB })
+            GetUnit(id).Hp = pool.Pool <= 0 ? 0 : Math.Min(pool.Pool, GetUnit(id).MaxHp);
+        Emit(new SharedHpChanged(pool.UnitA, pool.UnitB, pool.Pool, pool.Max));
+    }
     public void AddAttackBan(AttackBan hook) => _attackBans.Add(hook);
 
     /// <summary>Whether the battle is over and who won (section 12.3). Set by <see cref="BattleEnd"/>.</summary>
@@ -426,6 +456,11 @@ public sealed class BattleState
         var result = DamageMath.Resolve(amount, target.Ward, target.Dampen, source);
         target.Ward = result.WardLeft;
         target.Hp = Math.Max(0, target.Hp - result.HpLost);
+        if (result.HpLost > 0 && SharedPoolOf(targetId) is { } pool)
+        {
+            pool.Pool = Math.Max(0, pool.Pool - result.HpLost);   // every hit on either reduces the pool
+            SyncPool(pool);
+        }
         Emit(new DamageDealt(sourceUnitId, targetId, source, result, target.Hp));
         if (result.AbsorbedByWard > 0 && target.Ward == 0) Statuses.Remove(this, targetId, StatusIds.Ward, StatusEndCause.Broken);
         return result;
@@ -435,7 +470,9 @@ public sealed class BattleState
     /// Heals a unit, capped at maximum HP (no overheal, section 10.3). Returns the HP actually restored. The unit must not
     /// be KO: only revival brings a KO unit back.
     /// </summary>
-    public int Heal(int? sourceUnitId, int targetId, int amount)
+    public int Heal(int? sourceUnitId, int targetId, int amount) => HealCore(sourceUnitId, targetId, amount, allowLink: true);
+
+    private int HealCore(int? sourceUnitId, int targetId, int amount, bool allowLink)
     {
         var target = GetUnit(targetId);
         if (target.IsKnockedOut) throw new InvalidOperationException($"Unit {targetId} is KO and cannot be healed, only revived.");
@@ -446,10 +483,28 @@ public sealed class BattleState
             if (amount > 0) DealDamage(sourceUnitId, targetId, amount);
             return 0;
         }
-        var after = DamageMath.HealedHp(target.Hp, target.MaxHp, amount);
-        var healed = after - target.Hp;
-        target.Hp = after;
-        Emit(new Healed(sourceUnitId, targetId, healed, after));
+        int healed;
+        if (SharedPoolOf(targetId) is { } pool)
+        {
+            var before = pool.Pool;
+            pool.Pool = Math.Min(pool.Max, pool.Pool + amount);   // healing either unit heals the pool
+            healed = pool.Pool - before;
+            SyncPool(pool);
+        }
+        else
+        {
+            var after = DamageMath.HealedHp(target.Hp, target.MaxHp, amount);
+            healed = after - target.Hp;
+            target.Hp = after;
+        }
+        Emit(new Healed(sourceUnitId, targetId, healed, target.Hp));
+
+        // Life Link: healing on one also heals the other for half (no further link from that second heal).
+        if (allowLink && healed > 0 && Statuses.Get(target, StatusIds.LifeLink) is { } link)
+        {
+            var partner = GetUnit(link.Magnitude);
+            if (!partner.IsKnockedOut && !partner.IsRemoved) HealCore(sourceUnitId, partner.Id, Math.Max(1, healed / 2), allowLink: false);
+        }
         return healed;
     }
 

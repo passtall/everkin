@@ -18,6 +18,7 @@ public static class Knockout
         var unit = state.GetUnit(unitId);
         if (!unit.IsKnockedOut || unit.KoProcessed) return false;
         unit.KoProcessed = true;
+        state.EndSharedPool(unitId);   // the link ends when either unit is KO
         state.Ground.Accrue();
 
         if (unit.IsStealthed) Stealth.Break(state, unitId, StealthCause.KnockedOut);

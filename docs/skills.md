@@ -90,8 +90,8 @@ Branches: Mender, Cleric, Lifebinder.
 | Cleric | Absolve | A | — | 4 / 0 | Direct · D3 | Remove every harmful status from one unit; its next turn is pushed back 2. |
 | Cleric | Dispel | A | Absolve | 3 / 0 | Direct · D3 | Remove every helpful status (Ward, Haste, stealth and others) from a unit within distance 3. |
 | Cleric | Mass Dispel | A | Dispel | 7 / 4 | Direct · D3 | Remove every helpful status from every unit in one row. |
-| Cleric | Steal Blessing | A | Dispel | 4 / 2 | Direct · D3 | Move one helpful status from one unit onto another. |
-| Cleric | Turn Back | A | Absolve | 3 / 0 | Direct · D3 | Move one harmful status from a unit onto the unit that applied it. |
+| Cleric | Steal Blessing | A | Dispel | 4 / 2 | Direct · D3 | Move one helpful status from one unit onto another. The skill names both units (the one it is taken from and the one it goes to); if the first unit has several helpful statuses, the battle's seeded roll picks one, each with equal chance (decided 2026-11-08). |
+| Cleric | Turn Back | A | Absolve | 3 / 0 | Direct · D3 | Move one harmful status from a unit onto the unit that applied it. If the unit has several harmful statuses whose applier is still standing, the battle's seeded roll picks one, each with equal chance (decided 2026-11-08). |
 | Lifebinder | Revive | A | Life Link | 9 / 5 | Direct · D3 | Revive a KO unit at 25% of its max HP (rounded down, minimum 1). |
 | Lifebinder | Life Link | A | — | 4 / 0 | Direct · D3 | Link two units for 10 time units: healing on one also heals the other for half. |
 | Lifebinder | Bound Resurrect | A | Life Link | 8 / 4 | Direct · D3 | Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Healer share one HP pool (game_system §10.4). |

@@ -20,6 +20,9 @@ public static class StatusIds
     /// <summary>Lie in Wait: the next skill the unit uses is lost and it is Stunned (skills.md Hunter).</summary>
     public const string LieInWait = "lie_in_wait";
 
+    /// <summary>Life Link: healing on this unit also heals the linked unit for half. The magnitude is the linked unit's ID.</summary>
+    public const string LifeLink = "life_link";
+
     /// <summary>The Guardian's Charge: the ally it protects (Take a Charge). The status's source is the Guardian.</summary>
     public const string Charge = "charge";
 
@@ -133,7 +136,7 @@ public static class StatusRules
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
             or StatusIds.Marked or StatusIds.Slow or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted => Polarity.Harmful,
         StatusIds.Ward or StatusIds.Dampen or StatusIds.Haste or StatusIds.Charge or StatusIds.LeapCover or StatusIds.Pledge
-            or StatusIds.ShieldWall => Polarity.Helpful,
+            or StatusIds.ShieldWall or StatusIds.LifeLink => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };
 
@@ -409,6 +412,24 @@ public static class Statuses
         var extra = status.Magnitude;
         Remove(state, unitId, StatusIds.NextSkillDelay, StatusEndCause.Consumed);
         return extra;
+    }
+
+    /// <summary>
+    /// Moves a status from one unit to another (Steal Blessing, Turn Back): it leaves the first unit and starts on the second with what
+    /// time, amount, source and count it had left. The second unit's reapplication rule applies (a smaller Ward does not replace a larger
+    /// one). Returns false if the second unit did not take it.
+    /// </summary>
+    public static bool Transfer(BattleState state, int fromId, int toId, string statusId)
+    {
+        var from = state.GetUnit(fromId);
+        var instance = Get(from, statusId);
+        var magnitude = statusId == StatusIds.Ward ? from.Ward : instance?.Magnitude ?? 0;
+        if (instance is null && !(statusId == StatusIds.Ward && from.Ward > 0)) return false;
+        int? remaining = instance?.EndsAt is { } end ? Math.Max(1, end - state.Timeline.Now) : null;
+        var application = new StatusApplication(toId, statusId, remaining, magnitude, instance?.SourceUnitId, instance?.EndsAtNextTurnOf, instance?.UsesLeft);
+        if (instance is not null) Remove(state, fromId, statusId, StatusEndCause.Cleansed);
+        else from.Ward = 0;
+        return Apply(state, application);
     }
 
     /// <summary>A unit was hit: any hit ends Stunned early (section 10.5).</summary>

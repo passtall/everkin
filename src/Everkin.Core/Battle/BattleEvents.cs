@@ -10,6 +10,9 @@ public abstract record BattleEvent;
 /// <summary>A unit used a skill (the first event of the action).</summary>
 public sealed record SkillUsed(int UserId, string SkillId, int? TargetUnitId) : BattleEvent;
 
+/// <summary>A shared HP pool changed (Bound Resurrect). Each unit's HP shows the pool, capped at its own maximum.</summary>
+public sealed record SharedHpChanged(int UnitA, int UnitB, int Pool, int Max) : BattleEvent;
+
 /// <summary>A skill was used but lost: its cost and Delay were paid and it had no effect (Lie in Wait).</summary>
 public sealed record SkillLost(int UserId, string SkillId) : BattleEvent;
 

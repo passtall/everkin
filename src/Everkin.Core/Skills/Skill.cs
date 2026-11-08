@@ -19,11 +19,15 @@ public enum TargetKind
 
     /// <summary>A unit and a place next to it (Leap to Defend).</summary>
     UnitAndPlacement,
+
+    /// <summary>Two different units (Life Link; Steal Blessing: the unit it is taken from, then the unit it goes to).</summary>
+    TwoUnits,
 }
 
 /// <summary>A unit chose to use a skill, with its target if the skill needs one.</summary>
 public sealed record SkillUse(
-    int UserId, string SkillId, int? TargetUnitId = null, RowTarget? Row = null, MoveOption? Placement = null);
+    int UserId, string SkillId, int? TargetUnitId = null, RowTarget? Row = null, MoveOption? Placement = null,
+    int? SecondTargetUnitId = null);
 
 /// <summary>
 /// One skill: a small class found by its skill ID (production.md section 2.2). The numbers that belong to the skill's definition
@@ -79,6 +83,9 @@ public abstract class Skill
     /// <summary>Extra condition on the target beyond reach and legality (a skill that needs a Marked unit).</summary>
     public virtual bool TargetFilter(BattleState state, int userId, int targetId) => true;
 
+    /// <summary>For a skill with two targets: whether this pair is allowed.</summary>
+    public virtual bool PairFilter(BattleState state, int userId, int firstId, int secondId) => true;
+
     /// <summary>The rows a skill with a row target may pick now.</summary>
     public virtual IReadOnlyList<RowTarget> LegalRows(BattleState state, int userId) => Array.Empty<RowTarget>();
 
@@ -116,7 +123,11 @@ public sealed class SkillContext
         TargetId = targetId;
         Row = use.Row;
         Placement = use.Placement;
+        SecondTargetId = use.SecondTargetUnitId;
     }
+
+    /// <summary>The second unit of a skill with two targets.</summary>
+    public int? SecondTargetId { get; }
 
     /// <summary>The chosen row, for a skill with a row target.</summary>
     public RowTarget? Row { get; }
@@ -290,6 +301,70 @@ public sealed class SkillContext
 
     /// <summary>The user's side and the other.</summary>
     public Side EnemySide => UserSide.Opposite();
+
+    /// <summary>What a heal did.</summary>
+    public sealed record HealReport(int TargetId, int Healed, IReadOnlyList<InterceptedShare> Interceptions, int Rolled);
+
+    /// <summary>One heal: roll it (scaled to the user's Power), let interception act if the skill is `melee` or `projectile`, heal. Then settle.</summary>
+    public HealReport Heal(int targetId, IntRange rangeAtPower5)
+    {
+        var report = HealOne(new HitSpec(targetId, rangeAtPower5));
+        Settle();
+        return report;
+    }
+
+    /// <summary>A simultaneous block of heals: each unit rolls its own; then one KO check (healing an undead hurts it).</summary>
+    public IReadOnlyList<HealReport> HealBlock(IReadOnlyList<HitSpec> heals)
+    {
+        var reports = new List<HealReport>();
+        foreach (var spec in heals)
+            if (!State.GetUnit(spec.TargetId).IsKnockedOut) reports.Add(HealOne(spec));
+        Settle();
+        return reports;
+    }
+
+    private HealReport HealOne(HitSpec spec)
+    {
+        var rolled = DamageMath.Roll(State.Random, Scaled(spec.Range));
+        var interception = _skill.Delivery is { } d && Interception.CanBeIntercepted(d)
+            ? Interception.Resolve(State, spec.TargetId, rolled)
+            : new InterceptionResult(Array.Empty<InterceptedShare>(), rolled);
+        foreach (var share in interception.Shares)
+            if (!State.GetUnit(share.InterceptorId).IsKnockedOut) HealUnit(share.InterceptorId, share.Amount);
+        var healed = interception.Remaining > 0 ? HealUnit(spec.TargetId, interception.Remaining) : 0;
+        return new HealReport(spec.TargetId, healed, interception.Shares, rolled);
+    }
+
+    /// <summary>
+    /// Heals one unit by an already rolled amount. Healing beyond the maximum goes to the unit's adjacent ally with the lowest HP when the user
+    /// knows Overflowing Care (ties: the seeded roll); that second heal does not overflow again. Healing an undead hurts it instead.
+    /// </summary>
+    public int HealUnit(int unitId, int amount)
+    {
+        var healed = State.Heal(UserId, unitId, amount);
+        var overflow = amount - healed;
+        if (overflow <= 0 || State.GetUnit(unitId).IsUndead || !User.KnownSkills.Contains("overflowing_care")) return healed;
+        var side = State.GetUnit(unitId).Side;
+        var candidates = State.Formation.Adjacent(unitId)
+            .Where(id => State.GetUnit(id).Side == side && !State.GetUnit(id).IsKnockedOut && !State.GetUnit(id).IsUndead).ToList();
+        if (candidates.Count == 0) return healed;
+        var lowest = candidates.Min(id => State.GetUnit(id).Hp);
+        var tied = candidates.Where(id => State.GetUnit(id).Hp == lowest).ToList();
+        var chosen = tied.Count == 1 ? tied[0] : tied[State.Random.NextInt(tied.Count)];
+        State.Heal(UserId, chosen, overflow);
+        return healed;
+    }
+
+    /// <summary>
+    /// Brings a KO body back (Revive, Life for Life) with the given HP, or, for an undead, restores the original creature. The body keeps
+    /// its slot; the revived unit is scheduled as though the revival had been its own action (the skill's Delay). Then settle.
+    /// </summary>
+    public void ReviveOrRestore(int targetId, int hp)
+    {
+        if (State.GetUnit(targetId).IsUndead) Necromancy.Restore(State, targetId, hp, _skill.Delay);
+        else Knockout.Revive(State, targetId, hp, _skill.Delay);
+        Settle();
+    }
 
     /// <summary>
     /// A non-damaging effect aimed at a unit (a status, a push). If the skill is `melee` or `projectile` it can be intercepted:

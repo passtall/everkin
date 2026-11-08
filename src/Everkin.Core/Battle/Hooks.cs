@@ -15,6 +15,32 @@ public delegate bool StealthBreakVeto(BattleState state, int unitId, StealthCaus
 /// <summary>Called before an attack resolves against a target; returns another unit to aim it at, or null to leave it.</summary>
 public delegate int? PreHitHook(BattleState state, int attackerId, int targetId);
 
+/// <summary>Two units that share one HP pool (Bound Resurrect, game_system section 10.4).</summary>
+public sealed class SharedHp
+{
+    public SharedHp(int unitA, int unitB, int pool, int max, bool boundStrength)
+    {
+        UnitA = unitA;
+        UnitB = unitB;
+        Pool = pool;
+        Max = max;
+        BoundStrength = boundStrength;
+    }
+
+    public int UnitA { get; }
+    public int UnitB { get; }
+
+    /// <summary>The pool's current HP; the maximum is the sum of both units' maximum HP.</summary>
+    public int Pool { get; internal set; }
+
+    public int Max { get; }
+
+    /// <summary>The Healer knew Bound Strength: while the two share their pool, both have 1 less Delay on every skill.</summary>
+    public bool BoundStrength { get; }
+
+    internal SharedHp Clone() => (SharedHp)MemberwiseClone();
+}
+
 /// <summary>True when the unit cannot intercept for others (Keeper of the Gate).</summary>
 public delegate bool InterceptionBlocker(BattleState state, int unitId);
 
