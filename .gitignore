@@ -6,3 +6,9 @@ __pycache__/
 # Generated previews and reports
 tools/icons/preview.jpg
 tools/audio/report/*.wav
+
+# .NET
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user

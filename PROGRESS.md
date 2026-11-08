@@ -2,15 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, before implementation started.
+**Last updated:** 2026-11-08, M0.1 done.
 
 ## Current task
 
-None yet. Start with **M0.1**.
+None between tasks. Next is **M0.2**.
 
 ## Next step
 
-Create `Everkin.sln` and the three projects in `src/` (M0.1).
+M0.2: create the Godot C# project file (root .csproj), reference `src/Everkin.Core`, exclude `src/**` and `tools/**`, open in Godot 4.7 .NET. Confirm which target framework Godot 4.7 supports (see Notes).
 
 ## In flight
 
@@ -22,11 +22,13 @@ None yet. (Add each open question with the task it blocks and the doc section it
 
 ## Notes
 
+- M0.1 uses net10.0 (newest LTS installed, SDK 10.0.301). Godot is not installed in this shell's PATH and its support for net10.0 is unverified; check in M0.2 and, if Godot 4.7 needs another version, change all projects together.
+- Core and runner have TreatWarningsAsErrors; tests do not. `dotnet build` / `dotnet test` at the root work.
 - The renderer is already set to Compatibility in project.godot (done in the spec phase, 2026-11-08).
 
 ## Task list
 
-- [ ] M0.1 Solution and projects
+- [x] M0.1 Solution and projects
 - [ ] M0.2 Godot C# project referencing the core
 - [ ] M0.3 Android and Windows export test
 - [ ] M0.4 Build and test commands in CLAUDE.md
@@ -93,3 +95,4 @@ None yet. (Add each open question with the task it blocks and the doc section it
 ## Session log
 
 One line per finished task: date, task, commit.
+2026-11-08 M0.1 Solution and projects (see git log)
