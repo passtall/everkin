@@ -12,3 +12,6 @@ tools/audio/report/*.wav
 [Oo]bj/
 .vs/
 *.user
+
+# Export output
+build/
