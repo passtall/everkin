@@ -1,0 +1,14 @@
+<Project Sdk="Godot.NET.Sdk/4.7.2">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Everkin</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="src/**" />
+    <Compile Remove="tools/**" />
+    <Compile Remove="server/**" />
+    <ProjectReference Include="src/Everkin.Core/Everkin.Core.csproj" />
+  </ItemGroup>
+</Project>

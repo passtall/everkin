@@ -2,15 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, M0.1 done.
+**Last updated:** 2026-11-08, M0.2 done.
 
 ## Current task
 
-None between tasks. Next is **M0.2**.
+None between tasks. Next is **M0.3**.
 
 ## Next step
 
-M0.2: create the Godot C# project file (root .csproj), reference `src/Everkin.Core`, exclude `src/**` and `tools/**`, open in Godot 4.7 .NET. Confirm which target framework Godot 4.7 supports (see Notes).
+M0.3: export test. Android needs the Android SDK/JDK and export templates; Windows needs export templates. Ask the owner for a phone or emulator.
 
 ## In flight
 
@@ -22,14 +22,15 @@ None yet. (Add each open question with the task it blocks and the doc section it
 
 ## Notes
 
-- M0.1 uses net10.0 (newest LTS installed, SDK 10.0.301). Godot is not installed in this shell's PATH and its support for net10.0 is unverified; check in M0.2 and, if Godot 4.7 needs another version, change all projects together.
+- M0.1 uses net10.0 (newest LTS installed, SDK 10.0.301). Verified in M0.2: Godot.NET.Sdk 4.7.2 builds the root project on net10.0 (the editor itself runs on net8 with rollForward).
+- Godot 4.7.2 mono is at `E:\Downloads\Neuer Ordner\Godot_v4.7.2-stable_mono_win64\` (use the `_console.exe` for headless: `--headless --path . --build-solutions --quit`). Running it once adds the NuGet fallback so plain `dotnet build` works at the root. `.import`/`.uid` files are committed (Godot convention).
 - Core and runner have TreatWarningsAsErrors; tests do not. `dotnet build` / `dotnet test` at the root work.
 - The renderer is already set to Compatibility in project.godot (done in the spec phase, 2026-11-08).
 
 ## Task list
 
 - [x] M0.1 Solution and projects
-- [ ] M0.2 Godot C# project referencing the core
+- [x] M0.2 Godot C# project referencing the core
 - [ ] M0.3 Android and Windows export test
 - [ ] M0.4 Build and test commands in CLAUDE.md
 - [ ] M1.1 Content pipeline and validation
@@ -96,3 +97,4 @@ None yet. (Add each open question with the task it blocks and the doc section it
 
 One line per finished task: date, task, commit.
 2026-11-08 M0.1 Solution and projects (see git log)
+2026-11-08 M0.2 Godot C# project (see git log)
