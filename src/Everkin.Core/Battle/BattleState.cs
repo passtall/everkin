@@ -74,6 +74,7 @@ public sealed class Unit
         IsUndead = other.IsUndead;
         OriginalRow = other.OriginalRow;
         OriginalMaxHp = other.OriginalMaxHp;
+        _knownSkills.AddRange(other._knownSkills);
         OriginalSpeed = other.OriginalSpeed;
         OriginalPower = other.OriginalPower;
         foreach (var kv in other._statusInstances) _statusInstances[kv.Key] = kv.Value.Clone();
@@ -111,6 +112,19 @@ public sealed class Unit
 
     /// <summary>A summon, construct or totem (not a creature of a party).</summary>
     public bool IsSummoned => Kind != UnitKind.Creature;
+
+    private readonly List<string> _knownSkills = new();
+
+    /// <summary>
+    /// The skills the unit can use besides Move and Skip Turn: its Attack Type attack and what it learned (section 4.4).
+    /// All unlocked skills are available in combat. Set up before the battle (a build, or by hand in tests).
+    /// </summary>
+    public IReadOnlyList<string> KnownSkills => _knownSkills;
+
+    public void LearnSkill(string skillId)
+    {
+        if (!_knownSkills.Contains(skillId)) _knownSkills.Add(skillId);
+    }
     public string Name { get; }
 
     /// <summary>The roster creature's unit name, or null for units that do not come from the roster.</summary>

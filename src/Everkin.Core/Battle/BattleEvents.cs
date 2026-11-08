@@ -7,6 +7,18 @@ namespace Everkin.Core.Battle;
 /// </summary>
 public abstract record BattleEvent;
 
+/// <summary>A unit used a skill (the first event of the action).</summary>
+public sealed record SkillUsed(int UserId, string SkillId, int? TargetUnitId) : BattleEvent;
+
+/// <summary>A unit's turn began (after the statuses and ground effects of the turn start were counted).</summary>
+public sealed record TurnStarted(int UnitId, int Time) : BattleEvent;
+
+/// <summary>A unit's turn was skipped (Frozen or Stunned) and it waits the cost of a skipped turn.</summary>
+public sealed record TurnSkipped(int UnitId) : BattleEvent;
+
+/// <summary>An attack missed (a Blind unit's 50% chance).</summary>
+public sealed record AttackMissed(int UserId, int TargetUnitId) : BattleEvent;
+
 /// <summary>The battle exists with this seed.</summary>
 public sealed record BattleStarted(ulong Seed) : BattleEvent;
 
