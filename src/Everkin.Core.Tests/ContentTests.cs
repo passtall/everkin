@@ -27,6 +27,7 @@ public class ContentTests
         Assert.Equal(9, set.AttackSkills.Count);
         Assert.Equal(179, set.ProfessionSkills.Count);
         Assert.Equal(319, set.Creatures.Count);
+        Assert.Equal(10, set.Statuses.Count);
         Assert.Equal("brawl", set.CreaturesById["abacus-strategist"].AttackType);
         Assert.Null(set.SkillsById["stalk"].Parent);
         Assert.Equal("stalk", set.SkillsById["creep_closer"].Parent);
@@ -60,7 +61,7 @@ public class ContentTests
     {
         var creatures = Read(ContentLoader.CreaturesFile).Replace("\"id\": \"accordion-warlord\"", "\"id\": \"abacus-strategist\"");
         var e = Assert.Throws<ContentException>(() =>
-            ContentLoader.LoadFromJson(Read(ContentLoader.ClassesFile), Read(ContentLoader.SkillsFile), creatures));
+            ContentLoader.LoadFromJson(Read(ContentLoader.ClassesFile), Read(ContentLoader.SkillsFile), creatures, Read(ContentLoader.StatusesFile)));
         Assert.Contains("creatures.json", e.Message);
         Assert.Contains("abacus-strategist", e.Message);
     }
@@ -71,7 +72,7 @@ public class ContentTests
         var creatures = Read(ContentLoader.CreaturesFile)
             .Replace("\"leader\"", "\"jester\"");
         var e = Assert.Throws<ContentException>(() =>
-            ContentLoader.LoadFromJson(Read(ContentLoader.ClassesFile), Read(ContentLoader.SkillsFile), creatures));
+            ContentLoader.LoadFromJson(Read(ContentLoader.ClassesFile), Read(ContentLoader.SkillsFile), creatures, Read(ContentLoader.StatusesFile)));
         Assert.Contains("creatures.json", e.Message);
         Assert.Contains("jester", e.Message);
     }
@@ -81,7 +82,7 @@ public class ContentTests
     {
         var skills = Read(ContentLoader.SkillsFile).Replace("\"parent\": \"stalk\"", "\"parent\": \"no_such_skill\"");
         var e = Assert.Throws<ContentException>(() =>
-            ContentLoader.LoadFromJson(Read(ContentLoader.ClassesFile), skills, Read(ContentLoader.CreaturesFile)));
+            ContentLoader.LoadFromJson(Read(ContentLoader.ClassesFile), skills, Read(ContentLoader.CreaturesFile), Read(ContentLoader.StatusesFile)));
         Assert.Contains("skills.json", e.Message);
         Assert.Contains("no_such_skill", e.Message);
     }
@@ -90,7 +91,20 @@ public class ContentTests
     public void MalformedJsonNamesTheFile()
     {
         var e = Assert.Throws<ContentException>(() =>
-            ContentLoader.LoadFromJson("{", Read(ContentLoader.SkillsFile), Read(ContentLoader.CreaturesFile)));
+            ContentLoader.LoadFromJson("{", Read(ContentLoader.SkillsFile), Read(ContentLoader.CreaturesFile), Read(ContentLoader.StatusesFile)));
         Assert.Contains("classes.json", e.Message);
+    }
+
+    [Fact]
+    public void EveryNamedStatusInTheDocsHasAnIdTheRulesCodeKnows()
+    {
+        var known = typeof(Everkin.Core.Battle.StatusIds)
+            .GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static)
+            .Select(f => (string)f.GetRawConstantValue()!)
+            .ToHashSet();
+        var set = ContentLoader.LoadFromDirectory(ContentDir);
+        Assert.All(set.Statuses, st => Assert.Contains(st.Id, known));
+        Assert.Equal("frost", set.Statuses.Single(st => st.Id == "chilled").Tag);
+        Assert.Equal("20 time units", set.Statuses.Single(st => st.Id == "blind").Duration);
     }
 }

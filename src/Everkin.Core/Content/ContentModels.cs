@@ -44,6 +44,9 @@ public sealed record CreatureDef(
     string Status,
     string Notes);
 
+/// <summary>One of the named statuses of game_system.md section 10.5. Its rules are code (<c>Statuses</c>); this is the text and tag.</summary>
+public sealed record StatusDef(string Id, string Name, string? Tag, string Effect, string Duration);
+
 /// <summary>Everything the rules core loads from content/*.json.</summary>
 public sealed class ContentSet
 {
@@ -52,6 +55,7 @@ public sealed class ContentSet
     public required IReadOnlyList<AttackSkillDef> AttackSkills { get; init; }
     public required IReadOnlyList<ProfessionSkillDef> ProfessionSkills { get; init; }
     public required IReadOnlyList<CreatureDef> Creatures { get; init; }
+    public required IReadOnlyList<StatusDef> Statuses { get; init; }
 
     public IReadOnlyDictionary<string, CreatureDef> CreaturesById { get; init; } = new Dictionary<string, CreatureDef>();
     public IReadOnlyDictionary<string, ProfessionSkillDef> SkillsById { get; init; } = new Dictionary<string, ProfessionSkillDef>();

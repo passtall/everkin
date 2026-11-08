@@ -48,6 +48,8 @@ public sealed class Unit
         InterceptionBlocked = other.InterceptionBlocked;
         IsImmobilized = other.IsImmobilized;
         KoProcessed = other.KoProcessed;
+        IsAirborne = other.IsAirborne;
+        foreach (var kv in other._statusInstances) _statusInstances[kv.Key] = kv.Value.Clone();
     }
 
     /// <summary>Unique inside the battle, assigned in the order units were added.</summary>
@@ -97,6 +99,22 @@ public sealed class Unit
     /// <summary>True once the KO rules have run for this unit (statuses cleared, pending events removed). Reset by revival.</summary>
     public bool KoProcessed { get; set; }
 
+    /// <summary>Airborne (section 10.6): melee cannot reach the unit and it ignores ground effects. Kept by the status rules.</summary>
+    public bool IsAirborne { get; set; }
+
+    private readonly Dictionary<string, StatusInstance> _statusInstances = new();
+
+    /// <summary>The statuses that run on the battle clock or count something, one instance per status type (section 10.5).</summary>
+    public IReadOnlyDictionary<string, StatusInstance> StatusInstances => _statusInstances;
+
+    internal Dictionary<string, StatusInstance> StatusStore => _statusInstances;
+
+    /// <summary>
+    /// Speed as the turn formula sees it before clamping to 1–10: the creature's Speed plus Haste, minus Slow and Chilled
+    /// (section 6.1). The timeline clamps it when it computes a Wait.
+    /// </summary>
+    public int EffectiveSpeed => Speed + _statusInstances.Values.Sum(StatusRules.SpeedModifier);
+
     /// <summary>
     /// Removes every status: KO removes all of them, helpful and harmful alike (section 10.3). Today these are Ward, Dampen,
     /// stealth, Immobilized and the interception block; the status layer (M1.11) adds the others.
@@ -108,6 +126,8 @@ public sealed class Unit
         IsStealthed = false;
         IsImmobilized = false;
         InterceptionBlocked = false;
+        IsAirborne = false;
+        _statusInstances.Clear();
     }
 
     public Unit Clone() => new(this);
@@ -199,6 +219,7 @@ public sealed class BattleState
         target.Ward = result.WardLeft;
         target.Hp = Math.Max(0, target.Hp - result.HpLost);
         Emit(new DamageDealt(sourceUnitId, targetId, source, result, target.Hp));
+        if (result.AbsorbedByWard > 0 && target.Ward == 0) Statuses.Remove(this, targetId, StatusIds.Ward, StatusEndCause.Broken);
         return result;
     }
 

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Generate content/*.json from the design documents (production.md 2.1, 2.2).
 
-Reads docs/creature-classes.md, docs/class_system.md and docs/skills.md, plus the
+Reads docs/creature-classes.md, docs/class_system.md, docs/skills.md and the named statuses table of
+docs/game_system.md section 10.5, plus the
 biome list from assets/backgrounds/battle/. Writes content/classes.json,
-content/creatures.json and content/skills.json.
+content/creatures.json, content/skills.json and content/statuses.json.
 
   python tools/content/build_content.py           write the files
   python tools/content/build_content.py --check   fail if the files differ from the docs
@@ -302,6 +303,32 @@ def parse_creatures(attack_types, professions, skills_by_profession):
     return creatures
 
 
+# --------------------------------------------------------------- statuses
+
+def parse_statuses():
+    """The named statuses table of game_system.md section 10.5 (Status | Effect | Duration)."""
+    f = "game_system.md"
+    statuses = []
+    for heading, _, header, rows in read_tables(DOCS / f):
+        if header != ["Status", "Effect", "Duration"]:
+            continue
+        for r in rows:
+            m = re.match(r"^\*\*(.+?)\*\*(?:\s*\(`(\w+)`\))?$", r["Status"])
+            if not m:
+                fail(f, r["Status"], "cannot read the status name")
+            name = m.group(1)
+            statuses.append({"id": slug(name), "name": name, "tag": m.group(2),
+                             "effect": r["Effect"], "duration": r["Duration"]})
+    if not statuses:
+        fail(f, "named statuses", "table not found")
+    seen = set()
+    for st in statuses:
+        if st["id"] in seen:
+            fail(f, st["id"], "duplicate status ID")
+        seen.add(st["id"])
+    return statuses
+
+
 # ------------------------------------------------------------------- main
 
 def build():
@@ -315,6 +342,7 @@ def build():
         "classes.json": {"attackTypes": attack_types, "professions": professions},
         "skills.json": {"attackSkills": attack_skills, "professionSkills": skills},
         "creatures.json": {"creatures": creatures},
+        "statuses.json": {"statuses": parse_statuses()},
     }
 
 

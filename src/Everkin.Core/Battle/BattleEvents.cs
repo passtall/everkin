@@ -58,3 +58,23 @@ public enum StealthCause
 
 /// <summary>A unit gained or lost stealth.</summary>
 public sealed record StealthChanged(int UnitId, bool Stealthed, StealthCause Cause) : BattleEvent;
+
+/// <summary>A status was applied or refreshed.</summary>
+/// <param name="Magnitude">Its size where it has one (Ward amount, Speed steps), else 0.</param>
+/// <param name="Duration">Time units it lasts, or null when it has no clock (until broken, until a turn, a count of skills).</param>
+public sealed record StatusApplied(int UnitId, string StatusId, int Magnitude, int? Duration, bool Refreshed) : BattleEvent;
+
+/// <summary>Why a status ended.</summary>
+public enum StatusEndCause
+{
+    Expired,
+    Cleansed,
+    Consumed,
+    Broken,
+    Hit,
+    Fire,
+    Landed,
+}
+
+/// <summary>A status ended.</summary>
+public sealed record StatusEnded(int UnitId, string StatusId, StatusEndCause Cause) : BattleEvent;

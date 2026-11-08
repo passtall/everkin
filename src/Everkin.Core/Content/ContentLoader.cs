@@ -9,6 +9,7 @@ public static class ContentLoader
     public const string ClassesFile = "classes.json";
     public const string SkillsFile = "skills.json";
     public const string CreaturesFile = "creatures.json";
+    public const string StatusesFile = "statuses.json";
 
     private static readonly JsonSerializerOptions Options = new()
     {
@@ -19,13 +20,15 @@ public static class ContentLoader
     public static ContentSet LoadFromDirectory(string directory) => LoadFromJson(
         File.ReadAllText(Path.Combine(directory, ClassesFile)),
         File.ReadAllText(Path.Combine(directory, SkillsFile)),
-        File.ReadAllText(Path.Combine(directory, CreaturesFile)));
+        File.ReadAllText(Path.Combine(directory, CreaturesFile)),
+        File.ReadAllText(Path.Combine(directory, StatusesFile)));
 
-    public static ContentSet LoadFromJson(string classesJson, string skillsJson, string creaturesJson)
+    public static ContentSet LoadFromJson(string classesJson, string skillsJson, string creaturesJson, string statusesJson)
     {
         var classes = Parse<ClassesDoc>(ClassesFile, classesJson);
         var skills = Parse<SkillsDoc>(SkillsFile, skillsJson);
         var creatures = Parse<CreaturesDoc>(CreaturesFile, creaturesJson);
+        var statuses = Parse<StatusesDoc>(StatusesFile, statusesJson);
 
         var set = new ContentSet
         {
@@ -34,6 +37,7 @@ public static class ContentLoader
             AttackSkills = skills.AttackSkills,
             ProfessionSkills = skills.ProfessionSkills,
             Creatures = creatures.Creatures,
+            Statuses = statuses.Statuses,
         };
         Validate(set);
         return new ContentSet
@@ -43,6 +47,7 @@ public static class ContentLoader
             AttackSkills = set.AttackSkills,
             ProfessionSkills = set.ProfessionSkills,
             Creatures = set.Creatures,
+            Statuses = set.Statuses,
             CreaturesById = set.Creatures.ToDictionary(c => c.Id),
             SkillsById = set.ProfessionSkills.ToDictionary(s => s.Id),
         };
@@ -112,6 +117,7 @@ public static class ContentLoader
             }
         }
 
+        Unique(StatusesFile, set.Statuses.Select(st => st.Id));
         Unique(CreaturesFile, set.Creatures.Select(c => c.Id));
         foreach (var c in set.Creatures)
         {
@@ -144,4 +150,6 @@ public static class ContentLoader
     private sealed record SkillsDoc(IReadOnlyList<AttackSkillDef> AttackSkills, IReadOnlyList<ProfessionSkillDef> ProfessionSkills);
 
     private sealed record CreaturesDoc(IReadOnlyList<CreatureDef> Creatures);
+
+    private sealed record StatusesDoc(IReadOnlyList<StatusDef> Statuses);
 }

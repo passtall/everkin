@@ -26,7 +26,8 @@ public enum TargetSide
 /// <summary>What a skill may target besides the defaults.</summary>
 /// <param name="Side">Which side is allowed. "Own side only" skills use <see cref="TargetSide.OwnSideOnly"/>.</param>
 /// <param name="IncludeKnockedOut">Only resurrection skills can target KO bodies (section 8.4).</param>
-public readonly record struct TargetOptions(TargetSide Side = TargetSide.Any, bool IncludeKnockedOut = false);
+/// <param name="Delivery">The skill's delivery, when known: melee attacks cannot reach an airborne unit (section 10.6).</param>
+public readonly record struct TargetOptions(TargetSide Side = TargetSide.Any, bool IncludeKnockedOut = false, Delivery? Delivery = null);
 
 /// <summary>
 /// Range and target legality (game_system.md sections 7.4, 8.1, 8.5). Everything here only reads the state; the only
@@ -101,6 +102,7 @@ public static class Targeting
         if (options.Side == TargetSide.EnemySideOnly && own) return false;
         if (target.IsKnockedOut && !options.IncludeKnockedOut) return false;
         if (!own && target.IsStealthed) return false;
+        if (options.Delivery == Everkin.Core.Battle.Delivery.Melee && target.IsAirborne && !state.GetUnit(userId).IsAirborne) return false;
         return InReach(state, userId, targetId, reach);
     }
 
