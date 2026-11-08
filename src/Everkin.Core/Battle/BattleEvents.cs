@@ -20,3 +20,22 @@ public sealed record Healed(int? SourceUnitId, int TargetUnitId, int Amount, int
 
 /// <summary>A unit gained a Ward (or kept its larger one).</summary>
 public sealed record WardChanged(int UnitId, int WardBefore, int WardAfter) : BattleEvent;
+
+/// <summary>Why a unit changed its place.</summary>
+public enum MoveCause
+{
+    /// <summary>The unit's own Move action.</summary>
+    Voluntary,
+
+    /// <summary>A push, pull, swap, a skill's own movement, or being bumped along a chain.</summary>
+    Forced,
+}
+
+/// <summary>A unit changed its place on the board.</summary>
+public sealed record UnitMoved(int UnitId, Position From, Position To, MoveCause Cause) : BattleEvent;
+
+/// <summary>Two units swapped places.</summary>
+public sealed record UnitsSwapped(int UnitA, int UnitB) : BattleEvent;
+
+/// <summary>A forced move was blocked: nothing moved, and each unit in the chain took 1 bump damage.</summary>
+public sealed record BumpBlocked(int MovedUnitId, IReadOnlyList<int> Chain) : BattleEvent;

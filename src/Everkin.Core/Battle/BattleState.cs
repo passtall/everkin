@@ -46,6 +46,7 @@ public sealed class Unit
         Ward = other.Ward;
         Dampen = other.Dampen;
         InterceptionBlocked = other.InterceptionBlocked;
+        IsImmobilized = other.IsImmobilized;
     }
 
     /// <summary>Unique inside the battle, assigned in the order units were added.</summary>
@@ -85,6 +86,12 @@ public sealed class Unit
     /// it; the interception code only reads it.
     /// </summary>
     public bool InterceptionBlocked { get; set; }
+
+    /// <summary>
+    /// Immobilized (section 10.5): the unit cannot Move and cannot be moved by any skill. The status rules (M1.11) set and
+    /// clear it; the movement code only reads it.
+    /// </summary>
+    public bool IsImmobilized { get; set; }
 
     public Unit Clone() => new(this);
 }

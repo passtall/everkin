@@ -95,6 +95,19 @@ public sealed class Formation
         list.Insert(at, unitId);
     }
 
+    /// <summary>
+    /// Two units on the same side exchange their places (row and order). Throws if either is not on the board or they are
+    /// on different sides.
+    /// </summary>
+    public void Swap(int unitA, int unitB)
+    {
+        var a = PositionOf(unitA);
+        var b = PositionOf(unitB);
+        if (a.Side != b.Side) throw new InvalidOperationException("Only units of one side can swap places.");
+        _rows[(int)a.Side, (int)a.Row][a.Index] = unitB;
+        _rows[(int)b.Side, (int)b.Row][b.Index] = unitA;
+    }
+
     /// <summary>Takes a unit off the board. The row closes up and recenters. Returns where it stood.</summary>
     public Position Remove(int unitId)
     {

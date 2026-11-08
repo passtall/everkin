@@ -2,15 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, M1.8 done.
+**Last updated:** 2026-11-08, M1.9 done.
 
 ## Current task
 
-None between tasks. Next is **M1.9**.
+None between tasks. Next is **M1.10**.
 
 ## Next step
 
-M1.9 movement: read game_system §9 (9.1 Move, 9.2 blocked movement, 9.3 position-dependent skills, 9.4 engagement, 9.5 forced repositioning, bump damage, chains) and the §20.5 movement checks (Move into a full row not offered, Hit and Run with a full row behind, Gust with an empty Middle, shoved back with a unit directly behind it). Build on Formation (Place/Remove need a move-with-insert API), Immobilized / KO bodies cannot be moved (M1.10/M1.11 flags: take them as unit properties or predicates).
+M1.10 stealth, KO, bodies, revival: read game_system §10.1 to §10.4 (stealth gain / break / reveal, KO removes all statuses, bodies keep their slot, pending events removed on KO, revival returns the unit to its slot and schedules it as its own action, no free turn) and the §20.5 stealth / KO rows. Build KO handling: a `KoCheck` after damage that clears statuses (Ward, Dampen, Immobilized, InterceptionBlocked, stealth), removes the unit's timeline entries (Timeline.RemoveOwnedBy), emits a KO event and keeps the formation slot; `Revive(unit, hp)`; stealth break on attack or hit; reveal.
 
 ## In flight
 
@@ -22,6 +22,7 @@ Nothing.
 2. **Timeline gaps, no task blocked (game_system §6.1).** I filled these with the most literal reading; tell me if any is wrong: (a) Haste or Slow that would take the remaining Wait below 0 makes the turn arrive now, like the Pull Forward overshoot rule; (b) Speed changes move the remaining Wait by the change in Speed as the formula sees it (clamped to 1-10), so Haste +2 at Speed 9 shortens it by 1; (c) Reset uses the Wait the entry was scheduled with and ignores later Haste or Slow; (d) an entry that is pulled or pushed but stays in the same time unit keeps its place in the tie order; (e) a new Wait (turn, auto event, delayed event, effect end) is at least 1.
 3. **Attack Type attack ranges, blocks M1.16 only (skills.md, nine attacks).** The table gives no range for Brawl Strike, Blade Strike, Heavy Blow and Breath; Shot and Bolt are "any visible enemy", Pulse is "every enemy in melee reach", and Polearm Thrust and Lash have "one row more reach than other melee". I need the numbers: is base melee reach D1 (Polearm and Whip D2), and what is Breath's range (it is `direct`)? Not needed before M1.16.
 4. **"Behind" in the behind rule, blocks M1.16 only (game_system §8.4, skills.md Piercing Enchant, Phasing / projectile at a stealthed target).** §8.4 says a skill that hits units behind its target hits those at 100% overlap automatically and those at 50% with a 50% chance, but not how many rows count: only the row directly behind, every row behind, or the next row that has anyone. skills.md says "the unit behind its target" (singular). `AreaPatterns.UnitsBehind` lists every row behind with its distance, so the skill can choose; tell me which rule is meant.
+5. **Movement edges, no task blocked (game_system §9.5).** Read literally and implemented; tell me if any is wrong: (a) a moved unit that overlaps one end unit of the destination row by 50% (no unit on the other side) is inserted at that end, like any 50% case; (b) a pull bumps along the direction of the pull (toward the Front), so a pulled unit landing on a Front unit at 100% overlap is blocked at the formation boundary and everyone in the chain takes 1; (c) a KO body in a chain blocks it but takes no bump damage (it has 0 HP); an Immobilized unit blocks it and does take the damage; (d) a forced move of several rows only runs the bump chain in the destination row and beyond, not in the rows it passes; (e) a unit that cannot be moved at all (KO body, Immobilized) is not a legal target: nothing happens and no damage is dealt.
 
 ## Notes
 
@@ -39,6 +40,7 @@ Nothing.
 - M1.6: `Targeting` (static, read-only): `Reach` (max distance or `Reach.Unlimited`), `TargetOptions(Side, IncludeKnockedOut)`; `EffectiveRow`, `OpposingDistance` (attacker row + target row - 1 after skipping rows with no living unit; on the other side stealthed units and KO bodies do not make a row count), `InReach` (own side: D1 = user + adjacent, D2+ = any), `IsLegalTarget`, `LegalTargets` (own side first), `NearestEnemies`, `PickNearest` (ties by the battle's seeded roll; no roll for a single candidate). `Unit.IsKnockedOut` (HP 0) and `Unit.IsStealthed` (plain flag, M1.10 maintains it) were added for it. Not here: interception (M1.8), placement of summons (M1.13), confusion (M1.11).
 - M1.7: `DamageMath` (static, integers): `Scale(value, power)` = value x power / 5 rounded down, minimum 1; `ScaleRange`; `Roll(random, range)`; `Resolve(incoming, ward, dampen, source)` (Ward first, then Dampen halves rounded down, minimum 1 if anything passed the shield); `CombineWard`; `HealedHp`. `DamageSource`: Hit (shield + reductions, also burning ground and counters), Periodic (Poison, Bleeding: reductions only), Unreducible (bump). `BattleState.DealDamage(source, target, amount, source)`, `Heal`, `ApplyWard` mutate and emit `DamageDealt` / `Healed` / `WardChanged`; a KO unit cannot be damaged or healed (callers filter; revival is M1.10). `Unit.Ward` (int) and `Unit.Dampen` (bool) are plain values for now: M1.11 adds durations, expiry (timeline EffectEnd) and removal on KO. Not done here: the skill's Power scaling is applied by the caller (`ScaleRange` then `Roll`), Momentum shift from `DamageResult.FullyAbsorbed` / landed, KO check after damage (M1.10), the 'shared roll or independent rolls' choice (each skill).
 - M1.8: `Interception` (static): `CanBeIntercepted(delivery, ignores)` (only melee and projectile), `IsEligible(unit)` (not KO, not stealthed, not `Unit.InterceptionBlocked`, which the status rules M1.11 set for Stunned / Frozen / Immobilized), `ChanceFor(overlap)` (50 / 25), `Defenders`, `Resolve(state, target, amount, splittable)` -> `InterceptionResult(Shares, Remaining)`: rows nearest the line first, random order inside a row (Fisher-Yates from the battle generator), per defender one roll for the interception chance and, if it intercepts and the effect can be split (amount >= 2), one 50% roll for full or partial (half rounded down); emits `Intercepted`. The CALLER applies each share (damage to the interceptor through its own Ward / Dampen, a heal, a status) and then `Remaining` to the target. Not modelled yet: skill overrides (Shield Wall, Living Wall, Full Cover, Leap to Defend, Phasing Strike's ignore is just the flag), area skills that are melee or projectile (§8.2 says they can be intercepted; how it works per affected unit is not specified: ask when the first area skill in M1.16 needs it), Momentum from interception (0). `AreaPatterns`: `Circular` (target first), `Row`, `AllOf` (KO bodies never, stealthed included), `UnitsBehind`, `HitBehind` (100% auto, 50% with a 50% roll). `chain` and `column` are left to the skills.
+- M1.9: `Movement` (static): `LegalMoves(state, unit)` (every gap of every other non-full row of the own side, empty for KO / Immobilized), `Move(state, unit, row, gap)` (Voluntary; Delay 5 = `Movement.MoveDelay`, the caller schedules the turn and counts the `move` tag for Bleeding), `ForceMove(state, unit, destinationRow)` (push = toward the Rear, pull = toward the Front; realistic landing by half-card coordinate; 100% overlap bumps the occupant onward in the same direction; 50% / none inserts or appends; a blocked chain moves nothing and deals `Movement.BumpDamage` = 1 as `DamageSource.Unreducible` to the moved unit, the pressed units and the blocker, ends their stealth, emits `BumpBlocked`; returns `ForcedMoveResult` with the moves or the damaged units so the caller can run 'when hit' reactions and KO checks), `Swap(state, a, b)` (same side, fails with bodies and Immobilized). `Unit.IsImmobilized` is a plain flag for M1.11 to maintain. Events: `UnitMoved` (Voluntary / Forced), `UnitsSwapped`, `BumpBlocked`. Forced-movement immunity (Hold Position) and 'when moved' reactions are skill / reaction work (M1.12, M1.16). Bump damage does not shift Momentum (the caller simply does not shift).
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -59,7 +61,7 @@ Nothing.
 - [x] M1.6 Ranges and targeting
 - [x] M1.7 Damage, healing, shields
 - [x] M1.8 Interception and area patterns
-- [ ] M1.9 Movement
+- [x] M1.9 Movement
 - [x] M1.10 Stealth, KO, revival
 - [x] M1.11 Statuses and airborne
 - [x] M1.12 Reactions
@@ -125,3 +127,4 @@ One line per finished task: date, task, commit.
 2026-11-08 M1.6 Ranges and targeting (see git log)
 2026-11-08 M1.7 Damage, healing and shields (see git log)
 2026-11-08 M1.8 Interception and area patterns (see git log)
+2026-11-08 M1.9 Movement (see git log)
