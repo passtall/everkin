@@ -1,6 +1,6 @@
 # Everkin — Campaign content
 
-**Status: draft by Claude, 2026-11-08 (implementation dry run b1 and b2).** Andreas skims and comments; nothing here is adopted until he says so. Rules this follows: game_system.md §2.2 (tutorial, rewards, challenge encounters, coins), §12.3 (difficulty levels, enemy sides, bosses as normal-size units), §15 (chapters, setting, dragons) and production.md §1.2 (achievements). The rules themselves stay in those documents; this file holds only content.
+**Status: adopted 2026-11-08.** Drafted by Claude (implementation dry run b1 and b2) and accepted by Andreas as written, including the proposals in the last section. Numbers (team Cost, boss stats, AI levels) are starting values for testing. Rules this follows: game_system.md §2.2 (tutorial, rewards, challenge encounters, coins), §12.3 (difficulty levels, enemy sides, bosses as normal-size units), §15 (chapters, setting, dragons) and production.md §1.2 (achievements). The rules themselves stay in those documents; this file holds only content.
 
 ## How the draft was built
 
@@ -136,7 +136,7 @@ About 30, all earnable offline, none hidden, no goal above 100 wins (production.
 
 When earned frames return (production.md §1.2, postponed), the harder ones (6, 7, 15, 17, 21) are the candidates to give one.
 
-## Questions for Andreas
+## Decisions taken with the draft (adopted 2026-11-08)
 
 1. **Ragnhild Eriksen.** Chapter 4 has four battles, and each gives its dragon, so there is no chapter 4 reward left for her. The draft makes her the reward of challenge C4 instead. The alternative is a fifth chapter 4 battle without a dragon, which breaks "one dragon per battle".
 2. **Chapter 4 length.** Four battles instead of "about five", because there are four dragons.
