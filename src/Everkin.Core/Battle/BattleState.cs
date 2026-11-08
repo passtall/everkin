@@ -200,6 +200,7 @@ public sealed class BattleState
     private readonly Formation _formation;
     private readonly Timeline _timeline;
     private readonly Momentum _momentum;
+    private readonly GroundField _ground;
     private readonly List<ReactionDef> _reactions = new();
     private readonly Dictionary<string, int> _reactionUses = new();
 
@@ -209,6 +210,7 @@ public sealed class BattleState
         _formation = new Formation();
         _timeline = new Timeline();
         _momentum = new Momentum();
+        _ground = new GroundField(this);
         Emit(new BattleStarted(seed));
     }
 
@@ -218,6 +220,10 @@ public sealed class BattleState
         _formation = other._formation.Clone();
         _timeline = other._timeline.Clone();
         _momentum = other._momentum.Clone();
+        _ground = new GroundField(this, other._ground);
+        Outcome = other.Outcome;
+        EndReason = other.EndReason;
+        TurnsTaken = other.TurnsTaken;
         _reactions.AddRange(other._reactions);
         foreach (var kv in other._reactionUses) _reactionUses[kv.Key] = kv.Value;
         foreach (var u in other._units) _units.Add(u.Clone());
@@ -239,6 +245,27 @@ public sealed class BattleState
 
     /// <summary>The contested Momentum meter. Change it through <see cref="PayMomentum"/> and <see cref="ShiftMomentum"/> so the change is reported.</summary>
     public Momentum Momentum => _momentum;
+
+    /// <summary>Whether the battle is over and who won (section 12.3). Set by <see cref="BattleEnd"/>.</summary>
+    public BattleOutcome Outcome { get; private set; }
+
+    public EndReason? EndReason { get; private set; }
+
+    public bool IsOver => Outcome != BattleOutcome.Ongoing;
+
+    /// <summary>How many unit turns have been taken (for the harness's cap). The battle driver counts them.</summary>
+    public int TurnsTaken { get; private set; }
+
+    public void CountTurn() => TurnsTaken++;
+
+    internal void SetOutcome(BattleOutcome outcome, EndReason reason)
+    {
+        Outcome = outcome;
+        EndReason = reason;
+    }
+
+    /// <summary>The ground effects: burning ground, ice, water and poison ground (section 12.2).</summary>
+    public GroundField Ground => _ground;
 
     /// <summary>The reactions the units have from their skills and passives (section 6.6), in the order they were given.</summary>
     public IReadOnlyList<ReactionDef> Reactions => _reactions;

@@ -70,6 +70,7 @@ public static class Movement
     {
         if (!LegalMoves(state, unitId).Contains(new MoveOption(row, gap)))
             throw new InvalidOperationException($"Unit {unitId} cannot move to {row} gap {gap}.");
+        state.Ground.Accrue();
         var from = state.Formation.Remove(unitId);
         state.Formation.Place(unitId, from.Side, row, gap);
         state.Emit(new UnitMoved(unitId, from, state.Formation.PositionOf(unitId), MoveCause.Voluntary));
@@ -95,9 +96,11 @@ public static class Movement
         var start = f.PositionOf(unitId);
         if (start.Row == destination) throw new ArgumentException("The unit is already in that row.", nameof(destination));
 
+        state.Ground.Accrue();
         var direction = destination > start.Row ? 1 : -1;
         var coordinate = f.CenterOf(start);
         var side = start.Side;
+        destination = state.Ground.SlideOnIce(side, destination, coordinate, direction); // ice: one row further
 
         // Plan the chain first; nothing changes until it is known to complete.
         var chain = new List<int> { unitId };                    // moved unit, then every bumped unit
@@ -187,6 +190,7 @@ public static class Movement
         var a = state.Formation.PositionOf(unitA);
         var b = state.Formation.PositionOf(unitB);
         if (a.Side != b.Side) return false;
+        state.Ground.Accrue();
         state.Formation.Swap(unitA, unitB);
         state.Emit(new UnitsSwapped(unitA, unitB));
         return true;

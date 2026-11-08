@@ -64,6 +64,7 @@ public static class Summons
         if (!PlacementOptions(state, spec.Side, new[] { row }).Contains(new MoveOption(row, gap)))
             throw new InvalidOperationException($"No room for a summon in {spec.Side} {row} at gap {gap}.");
 
+        state.Ground.Accrue();
         var power = state.GetUnit(spec.SummonerId).Power; // damage and healing use the summoner's Power through BattleState.PowerOf
         var unit = state.AddUnit(spec.Name, spec.Side, spec.MaxHp, spec.Speed, power, spec.DefinitionId);
         unit.Kind = spec.Kind;
@@ -95,6 +96,7 @@ public static class Summons
     {
         var unit = state.GetUnit(unitId);
         if (unit.IsRemoved || !state.Formation.Contains(unitId)) return;
+        state.Ground.Accrue();
         Statuses.ClearAll(state, unitId);
         unit.ClearStatuses();
         state.Timeline.RemoveOwnedBy(unitId, includeTurn: true);
@@ -147,6 +149,7 @@ public static class Necromancy
             throw new InvalidOperationException($"Body {bodyId} cannot be raised in {row} at gap {gap}.");
         var body = state.GetUnit(bodyId);
         var necroSide = state.Formation.PositionOf(necromancerId).Side;
+        state.Ground.Accrue();
 
         body.OriginalMaxHp ??= body.MaxHp;
         body.OriginalSpeed ??= body.Speed;
@@ -198,6 +201,7 @@ public static class Necromancy
         var place = RestorePlacement(state, undeadId, drawTie: true)
             ?? throw new InvalidOperationException($"Undead {undeadId} cannot be restored: no free slot on its owner's side.");
 
+        state.Ground.Accrue();
         Statuses.ClearAll(state, undeadId);
         unit.ClearStatuses();
         state.Timeline.RemoveOwnedBy(undeadId, includeTurn: true);

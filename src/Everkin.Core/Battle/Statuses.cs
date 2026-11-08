@@ -193,6 +193,7 @@ public static class Statuses
                 break;
         }
 
+        if (a.Id == StatusIds.Airborne) state.Ground.Accrue();
         var oldSpeed = unit.EffectiveSpeed;
         var refreshed = existing is not null || (a.Id == StatusIds.Ward && unit.Ward > 0);
         var buildup = existing?.BuildupHundredths ?? 0;
@@ -227,6 +228,7 @@ public static class Statuses
     {
         var unit = state.GetUnit(unitId);
         if (!unit.StatusStore.TryGetValue(statusId, out var instance)) return false;
+        if (statusId == StatusIds.Airborne) state.Ground.Accrue();
         var oldSpeed = unit.EffectiveSpeed;
         if (instance.MarkerEntryId is { } marker) state.Timeline.Remove(marker);
         unit.StatusStore.Remove(statusId);
@@ -296,6 +298,11 @@ public static class Statuses
     /// </summary>
     public static void HandleExpiry(BattleState state, TimelineEntry entry)
     {
+        if (entry.Kind == TimelineKind.EffectEnd && entry.Tag is { } groundTag && groundTag.StartsWith(GroundField.TagPrefix, StringComparison.Ordinal))
+        {
+            state.Ground.HandleExpiry(entry);
+            return;
+        }
         if (entry.Kind != TimelineKind.EffectEnd || entry.OwnerUnitId is not { } unitId || entry.Tag is not { } statusId) return;
         if (statusId == Summons.ExpiryTag) { Summons.HandleExpiry(state, entry); return; }
         var unit = state.GetUnit(unitId);

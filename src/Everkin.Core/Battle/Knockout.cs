@@ -18,6 +18,7 @@ public static class Knockout
         var unit = state.GetUnit(unitId);
         if (!unit.IsKnockedOut || unit.KoProcessed) return false;
         unit.KoProcessed = true;
+        state.Ground.Accrue();
 
         if (unit.IsStealthed) Stealth.Break(state, unitId, StealthCause.KnockedOut);
         Statuses.ClearAll(state, unitId);
@@ -66,6 +67,7 @@ public static class Knockout
         if (unit.IsRemoved) throw new InvalidOperationException($"Unit {unitId} was removed and cannot be revived.");
         if (!unit.IsKnockedOut) throw new InvalidOperationException($"Unit {unitId} is not KO.");
         if (!unit.KoProcessed) Resolve(state, unitId); // a body that was never processed is processed first
+        state.Ground.Accrue();
         unit.Hp = Math.Clamp(hp, 1, unit.MaxHp);
         unit.KoProcessed = false;
         state.Timeline.ScheduleTurn(unitId, delay, unit.EffectiveSpeed);
