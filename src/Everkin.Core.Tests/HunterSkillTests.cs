@@ -314,12 +314,12 @@ public class HunterSkillTests
         var h = World.Unit(s, Side.A, Row.Middle, "scent_of_blood");
         var ally = World.Unit(s, Side.A, Row.Front, "brawl_strike");
         var friend = World.Unit(s, Side.A, Row.Front);
+        var enemy = World.Unit(s, Side.B, Row.Front);
         BattleStart.Install(s, World.Catalog);
         s.GetUnit(friend).Hp = 9;
         Run(s, Use(ally, "brawl_strike", friend));
         Assert.False(Statuses.Has(s.GetUnit(friend), StatusIds.Marked));
         s.GetUnit(h).Hp = 0;
-        var enemy = World.Unit(s, Side.B, Row.Front);
         s.GetUnit(enemy).Hp = 9;
         s.Timeline.Remove(s.Timeline.TurnOf(ally)!.Id);
         Actions.Use(s, World.Catalog, new SkillUse(ally, "brawl_strike", enemy));
