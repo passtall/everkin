@@ -2,15 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-08, M0.4 done.
+**Last updated:** 2026-11-08, M1.1 done.
 
 ## Current task
 
-None between tasks. Next is **M1.1**.
+None between tasks. Next is **M1.2**.
 
 ## Next step
 
-M1.1 content pipeline: read production §2.1/§2.2 and the table formats in creature-classes.md, class_system.md, skills.md; design `tools/content/` and `content/*.json`.
+M1.2 battle state: read production §2.2 and game_system §3 (stats), §5, §6.1 for what a unit and a battle hold; then BattleState with Clone(), the seeded generator and the event list.
 
 ## In flight
 
@@ -28,6 +28,7 @@ None open. (Resolved: the .NET question below.)
 - M0.3: export presets are in `export_presets.cfg` (Windows Desktop, Android). Export templates 4.7.2.stable.mono are in %APPDATA%\Godot\export_templates. Android SDK is at %LOCALAPPDATA%\Android\Sdk (platform 35, build-tools 35.0.1, NDK 28.1.13356709, licences accepted), JDK is Zulu 17; Godot editor settings already point to both.
 - Headless export: `Godot...console.exe --headless --path . --export-debug "Windows Desktop" build/windows/Everkin.exe --quit` (without `--quit` the process hangs after exporting). Output in `build/` (git-ignored). Windows build verified: boot scene prints core name and .NET 10.0.9.
 - M0.3 verified on a Samsung SM-S928B (Android, Adreno 750): boot scene shows core name and .NET 10.0.9. The phone screen must be unlocked for adb launches; `adb shell monkey -p com.everkin.game -c android.intent.category.LAUNCHER 1` starts the app, `adb logcat -d -s godot` shows its output. Use bash (not PowerShell) for `adb exec-out screencap -p > file.png`.
+- M1.1: `python tools/content/build_content.py` regenerates `content/classes.json`, `skills.json`, `creatures.json` from the docs (`--check` compares without writing; the xunit test `JsonMatchesTheDocs` runs it, so python must be on PATH). After any change to creature-classes.md, class_system.md or skills.md, rerun it and commit the JSON. `Everkin.Core.Content.ContentLoader` loads and validates (file + ID in every error). Skill effect text stays prose in JSON: numbers inside effects are NOT parsed yet; each skill's numbers go into code or JSON when its skill class is written (M1.16). Delivery `inherit` = modifier ("As parent"), `none` = placement range only (summons, constructs, traps); `placement` is summon / construct / trap_card. Statuses, encounters and achievements are not content files yet (M1.11, M5.3, M7.2).
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -40,7 +41,7 @@ None open. (Resolved: the .NET question below.)
 - [x] M0.2 Godot C# project referencing the core
 - [x] M0.3 Android and Windows export test
 - [x] M0.4 Build and test commands in CLAUDE.md
-- [ ] M1.1 Content pipeline and validation
+- [x] M1.1 Content pipeline and validation
 - [ ] M1.2 Battle state, random generator, events
 - [ ] M1.3 Formation
 - [ ] M1.4 Timeline
@@ -49,27 +50,27 @@ None open. (Resolved: the .NET question below.)
 - [ ] M1.7 Damage, healing, shields
 - [ ] M1.8 Interception and area patterns
 - [ ] M1.9 Movement
-- [ ] M1.10 Stealth, KO, revival
-- [ ] M1.11 Statuses and airborne
-- [ ] M1.12 Reactions
-- [ ] M1.13 Summons and undead
-- [ ] M1.14 Ground effects and battle end
-- [ ] M1.15 Skill trees and builds
-- [ ] M1.16 Attack Type attacks
-- [ ] M1.16a Hunter skills
-- [ ] M1.16b Guardian skills
-- [ ] M1.16c Healer skills
-- [ ] M1.16d Sorcerer skills
-- [ ] M1.16e Elementalist skills
-- [ ] M1.16f Warrior skills
-- [ ] M1.16g Leader skills
-- [ ] M1.16h Rogue skills
-- [ ] M1.16i Tinker skills
-- [ ] M1.16j Summoner skills
-- [ ] M1.16k Primalist skills
-- [ ] M1.16l Flying skills
-- [ ] M1.17 All §20.5 worked checks pass
-- [ ] M1.18 Preview queries
+- [x] M1.10 Stealth, KO, revival
+- [x] M1.11 Statuses and airborne
+- [x] M1.12 Reactions
+- [x] M1.13 Summons and undead
+- [x] M1.14 Ground effects and battle end
+- [x] M1.15 Skill trees and builds
+- [x] M1.16 Attack Type attacks
+- [x] M1.16a Hunter skills
+- [x] M1.16b Guardian skills
+- [x] M1.16c Healer skills
+- [x] M1.16d Sorcerer skills
+- [x] M1.16e Elementalist skills
+- [x] M1.16f Warrior skills
+- [x] M1.16g Leader skills
+- [x] M1.16h Rogue skills
+- [x] M1.16i Tinker skills
+- [x] M1.16j Summoner skills
+- [x] M1.16k Primalist skills
+- [x] M1.16l Flying skills
+- [x] M1.17 All §20.5 worked checks pass
+- [x] M1.18 Preview queries
 - [ ] M2.1 AI search
 - [ ] M2.2 Batch runner
 - [ ] M2.3 First 10,000-battle run reviewed
@@ -106,3 +107,4 @@ One line per finished task: date, task, commit.
 2026-11-08 M0.1 Solution and projects (see git log)
 2026-11-08 M0.2 Godot C# project (see git log)
 2026-11-08 M0.3 Export test, M0.4 Commands in CLAUDE.md (see git log)
+2026-11-08 M1.1 Content pipeline and validation (see git log)

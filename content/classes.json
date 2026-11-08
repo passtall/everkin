@@ -1,0 +1,173 @@
+{
+  "attackTypes": [
+    {
+      "id": "brawl",
+      "name": "Brawl",
+      "description": "The body itself: fists, kicks, martial arts, claws, bites, horns, beaks and fangs"
+    },
+    {
+      "id": "bladed",
+      "name": "Bladed",
+      "description": "Swords, daggers, axes, scythes, and bladed weapons"
+    },
+    {
+      "id": "polearm",
+      "name": "Polearm",
+      "description": "Spears, lances, halberds, and other long-reach weapons"
+    },
+    {
+      "id": "ranged",
+      "name": "Ranged",
+      "description": "Bows, crossbows, slings, and other projectile weapons, and directly thrown objects such as knives, rocks, spears and explosives"
+    },
+    {
+      "id": "magic",
+      "name": "Magic",
+      "description": "Spells, magical bolts, and supernatural projectiles"
+    },
+    {
+      "id": "blunt",
+      "name": "Blunt",
+      "description": "Hammers, clubs, maces, and other blunt weapons"
+    },
+    {
+      "id": "breath",
+      "name": "Breath",
+      "description": "Fire breath, frost breath, poison spit, acid sprays, and similar emissions"
+    },
+    {
+      "id": "whip",
+      "name": "Whip",
+      "description": "Whips, tentacles, tails, vines, and flexible appendages"
+    },
+    {
+      "id": "aura",
+      "name": "Aura",
+      "description": "Continuous or pulsing damage fields surrounding the creature"
+    }
+  ],
+  "professions": [
+    {
+      "id": "hunter",
+      "name": "Hunter",
+      "description": "Tracking, hunting, trapping, survival. Includes Ranger, Tracker, Trapper",
+      "branches": [
+        "Stalker",
+        "Tracker",
+        "Trapper",
+        "Predator"
+      ]
+    },
+    {
+      "id": "guardian",
+      "name": "Guardian",
+      "description": "Defensive abilities, endurance, area protection, battlefield control, and protecting allies: intercepting attacks and taking damage for others. Includes Defender, Tank, Sentinel, Bodyguard",
+      "branches": [
+        "Bulwark",
+        "Bodyguard",
+        "Keeper"
+      ]
+    },
+    {
+      "id": "healer",
+      "name": "Healer",
+      "description": "Restoring health, cleansing conditions, regeneration, holy protection. Includes Medic, Cleric, Paladin",
+      "branches": [
+        "Mender",
+        "Cleric",
+        "Lifebinder"
+      ]
+    },
+    {
+      "id": "sorcerer",
+      "name": "Sorcerer",
+      "description": "All non-elemental spells: arcane magic, enchantment, magical enhancement, and dark magic such as curses, hexes and life drain. Includes Enchanter, Warlock, Hexer",
+      "branches": [
+        "Enchantment",
+        "Transmutation",
+        "Malediction"
+      ]
+    },
+    {
+      "id": "elementalist",
+      "name": "Elementalist",
+      "description": "Fire, frost, water, storm and earth magic; earth includes stone and crystal. Includes elemental weapons and armor",
+      "branches": [
+        "Pyromancy",
+        "Stormcalling",
+        "Cryomancy"
+      ]
+    },
+    {
+      "id": "warrior",
+      "name": "Warrior",
+      "description": "Offensive martial abilities, endurance, combat mastery. Includes Berserker, Duelist, Knight, Monk",
+      "branches": [
+        "Berserker",
+        "Champion",
+        "Whirlwind",
+        "Footwork"
+      ]
+    },
+    {
+      "id": "leader",
+      "name": "Leader",
+      "description": "Commanding the flow of battle: the shared timeline and Momentum, who acts when, tactical coordination, and moving your own units around the field. Includes Commander, Tactician",
+      "branches": [
+        "Tactician",
+        "Commander",
+        "Bard"
+      ]
+    },
+    {
+      "id": "rogue",
+      "name": "Rogue",
+      "description": "Stealth, precision, critical attacks, executing vulnerable targets, deception, illusions, misdirection, sabotage and theft. Includes Assassin, Ninja, Trickster, Illusionist, Thief",
+      "branches": [
+        "Thief",
+        "Assassin",
+        "Saboteur"
+      ]
+    },
+    {
+      "id": "tinker",
+      "name": "Tinker",
+      "description": "Making things: potions, chemicals, poisons, mixtures, machinery, gadgets, constructs, mechanical traps. Includes Alchemist, Herbalist, Poisoner, Engineer, Artificer",
+      "branches": [
+        "Engineer",
+        "Chemist",
+        "Pyrotechnician"
+      ]
+    },
+    {
+      "id": "summoner",
+      "name": "Summoner",
+      "description": "Summoning and commanding additional creatures, spirits, entities, or constructs, including necromancy: raising the dead and bone constructs. Includes Beastmaster, Necromancer",
+      "branches": [
+        "Necromancer",
+        "Golemancer",
+        "Conjurer"
+      ]
+    },
+    {
+      "id": "primalist",
+      "name": "Primalist",
+      "description": "Primal nature and the soul: plants, roots, beasts, shapeshifting, totems, nature spirits, rituals and life force. Spirits of the dead belong to Summoner. Includes Druid, Shaman",
+      "branches": [
+        "Totemist",
+        "Ritualist",
+        "Spiritwalker"
+      ]
+    },
+    {
+      "id": "flying",
+      "name": "Flying",
+      "description": "Flight, aerial mobility, evasive maneuvers, dive attacks, and airborne combat advantages",
+      "branches": [
+        "Mobility",
+        "Skywatch",
+        "Assault"
+      ]
+    }
+  ]
+}

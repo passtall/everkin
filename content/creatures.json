@@ -1,0 +1,9518 @@
+{
+  "creatures": [
+    {
+      "id": "abacus-strategist",
+      "name": "Tallymarch",
+      "attackType": "brawl",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "abacus-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        279,
+        -63,
+        603,
+        905
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "accordion-warlord",
+      "name": "Wheezewarden",
+      "attackType": "brawl",
+      "professions": [
+        "leader",
+        "warrior"
+      ],
+      "artFile": "accordion-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        376,
+        0,
+        750,
+        1125
+      ],
+      "rearFrame": [
+        -6,
+        -62,
+        1095,
+        1643
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "anchor-sentinel",
+      "name": "Barnacle Bulwark",
+      "attackType": "blunt",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "anchor-01.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        252,
+        -105,
+        698,
+        1047
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "ankylosaur-guardian-club",
+      "name": "Clubtail Grumbleback",
+      "attackType": "blunt",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "ankylosaur-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        75,
+        324,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1061,
+        1592
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "ant-engineer-gear",
+      "name": "Cogmarch Ant",
+      "attackType": "ranged",
+      "professions": [
+        "tinker"
+      ],
+      "artFile": "ant-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        206,
+        57,
+        634,
+        951
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "armadillo-knight",
+      "name": "Armadillo Knight",
+      "attackType": "blunt",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "armadillo-02.png",
+      "source": "armadillo-knight.png",
+      "biome": "desert",
+      "hp": 50,
+      "speed": 4,
+      "power": 6,
+      "cost": 6,
+      "frontFrame": [
+        266,
+        255,
+        640,
+        960
+      ],
+      "rearFrame": [
+        31,
+        46,
+        993,
+        1490
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "armadillo-knight-2",
+      "name": "Armadillo Recruit",
+      "attackType": "blunt",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "armadillo-01.png",
+      "source": "armadillo-knight-2.png",
+      "biome": "desert",
+      "hp": 45,
+      "speed": 6,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        38,
+        507,
+        640,
+        960
+      ],
+      "rearFrame": [
+        28,
+        70,
+        977,
+        1466
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "astrolabe-judge",
+      "name": "Starwright Judge",
+      "attackType": "aura",
+      "professions": [
+        "sorcerer",
+        "leader"
+      ],
+      "artFile": "astrolabe-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        278,
+        8,
+        632,
+        948
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "aurochs-bodyguard-plate",
+      "name": "Ironhide Aurochs",
+      "attackType": "brawl",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "aurochs-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        296,
+        192,
+        733,
+        1100
+      ],
+      "rearFrame": [
+        9,
+        -6,
+        1089,
+        1634
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "axolotl-mage-water",
+      "name": "Ripplequill",
+      "attackType": "magic",
+      "professions": [
+        "elementalist",
+        "sorcerer"
+      ],
+      "artFile": "axolotl-01.png",
+      "source": null,
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        193,
+        98,
+        717,
+        1076
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "ayeaye-hexer-candle",
+      "name": "Candlefinger",
+      "attackType": "magic",
+      "professions": [
+        "sorcerer",
+        "rogue"
+      ],
+      "artFile": "ayeaye-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        272,
+        144,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "badger-summoner-drum",
+      "name": "Drumbadger",
+      "attackType": "blunt",
+      "professions": [
+        "summoner",
+        "leader"
+      ],
+      "artFile": "badger-01.png",
+      "source": null,
+      "biome": "autumn_woods",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        262,
+        65,
+        683,
+        1025
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "ballast-bodyguard",
+      "name": "Sandbag Sentinel",
+      "attackType": "blunt",
+      "professions": [
+        "guardian",
+        "flying"
+      ],
+      "artFile": "ballast-01.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        188,
+        -9,
+        760,
+        1140
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "basilisk-sorcerer-gaze",
+      "name": "Stonegaze Basilisk",
+      "attackType": "aura",
+      "professions": [
+        "warrior",
+        "rogue"
+      ],
+      "artFile": "basilisk-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        345,
+        111,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "bassoon-hexer-requiem",
+      "name": "Dirgewind",
+      "attackType": "breath",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "bassoon-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        310,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "bat-rogue-shadow",
+      "name": "Bat Rogue",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "flying"
+      ],
+      "artFile": "bat-02.png",
+      "source": "bat-rogue-shadow.png",
+      "biome": "crystal_caverns",
+      "hp": 20,
+      "speed": 7,
+      "power": 4,
+      "cost": 4,
+      "frontFrame": [
+        239,
+        28,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "bat-summoner-moon",
+      "name": "Moonwing",
+      "attackType": "magic",
+      "professions": [
+        "flying",
+        "summoner"
+      ],
+      "artFile": "bat-01.png",
+      "source": null,
+      "biome": "crystal_caverns",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        326,
+        131,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "baton-marshal",
+      "name": "Marshal Tempo",
+      "attackType": "polearm",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "baton-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        140,
+        0,
+        770,
+        1154
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "beacon-summoner",
+      "name": "Lighthouse Wakelamp",
+      "attackType": "aura",
+      "professions": [
+        "flying",
+        "summoner"
+      ],
+      "artFile": "beacon-01.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        195,
+        -22,
+        779,
+        1169
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "beaver-healer-pump",
+      "name": "Pumpwhisker",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "healer"
+      ],
+      "artFile": "beaver-01.png",
+      "source": null,
+      "biome": "wet_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        310,
+        124,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "bee-shaman-sun",
+      "name": "Sunhum",
+      "attackType": "magic",
+      "professions": [
+        "primalist",
+        "flying"
+      ],
+      "artFile": "bee-01.png",
+      "source": null,
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        274,
+        187,
+        634,
+        951
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "beetle-2",
+      "name": "Beetle Recruit",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "beetle-01.png",
+      "source": "beetle-2.png",
+      "biome": "jungle",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        214,
+        321,
+        810,
+        1215
+      ],
+      "rearFrame": [
+        45,
+        67,
+        979,
+        1469
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "beetle-engineer-seed",
+      "name": "Seedshot Scarab",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "primalist"
+      ],
+      "artFile": "beetle-04.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        348,
+        197,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "beetle-knight-shield",
+      "name": "Beetle Guardian",
+      "attackType": "blunt",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "beetle-02.png",
+      "source": "beetle-knight-shield.png",
+      "biome": "jungle",
+      "hp": 55,
+      "speed": 4,
+      "power": 7,
+      "cost": 9,
+      "frontFrame": [
+        225,
+        255,
+        731,
+        1097
+      ],
+      "rearFrame": [
+        28,
+        42,
+        996,
+        1494
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "behemoth-titan-iron",
+      "name": "Ironbound Behemoth",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "elementalist"
+      ],
+      "artFile": "behemoth-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        389,
+        92,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "bell-guardian-clapper",
+      "name": "Clapperward",
+      "attackType": "blunt",
+      "professions": [
+        "leader",
+        "summoner"
+      ],
+      "artFile": "bell-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        253,
+        65,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "bellows-drake",
+      "name": "Puffing Forgedrake",
+      "attackType": "breath",
+      "professions": [
+        "tinker",
+        "warrior"
+      ],
+      "artFile": "bellows-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        41,
+        419,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "binturong-bard-vine",
+      "name": "Vinelilt",
+      "attackType": "whip",
+      "professions": [
+        "leader",
+        "primalist"
+      ],
+      "artFile": "binturong-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        118,
+        77,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "bloomspear",
+      "name": "Bloomspear",
+      "attackType": "polearm",
+      "professions": [
+        "primalist",
+        "warrior"
+      ],
+      "artFile": "bloomspear-01.png",
+      "source": "7_f.png",
+      "biome": "flower_meadow",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        259,
+        110,
+        640,
+        960
+      ],
+      "rearFrame": [
+        42,
+        51,
+        973,
+        1460
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "boar-guard-hex",
+      "name": "Hexbristle",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "sorcerer"
+      ],
+      "artFile": "boar-02.png",
+      "source": null,
+      "biome": "autumn_woods",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        433,
+        181,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "boar-magma",
+      "name": "Magma Hog",
+      "attackType": "brawl",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "boar-01.png",
+      "source": "10_f.png",
+      "biome": "ashlands",
+      "hp": 60,
+      "speed": 4,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        35,
+        550,
+        640,
+        960
+      ],
+      "rearFrame": [
+        -2,
+        272,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "bombardierbeetle-alchemist-acid",
+      "name": "Acidpop",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "rogue"
+      ],
+      "artFile": "bombardierbeetle-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        65,
+        120,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "book-summoner-fold",
+      "name": "Foldtome",
+      "attackType": "magic",
+      "professions": [
+        "summoner",
+        "primalist"
+      ],
+      "artFile": "book-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        220,
+        475,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "brazier-summoner-coal",
+      "name": "Coalwraith Brazier",
+      "attackType": "aura",
+      "professions": [
+        "summoner",
+        "elementalist"
+      ],
+      "artFile": "brazier-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        203,
+        1,
+        740,
+        1110
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "buffalo-guard-root",
+      "name": "Rootyoke Buffalo",
+      "attackType": "whip",
+      "professions": [
+        "guardian",
+        "primalist"
+      ],
+      "artFile": "buffalo-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        327,
+        141,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "bugle-skyrider",
+      "name": "Skybrass",
+      "attackType": "breath",
+      "professions": [
+        "leader",
+        "flying"
+      ],
+      "artFile": "bugle-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        377,
+        201,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "candelabrum-warrior-wax",
+      "name": "Waxbrawler",
+      "attackType": "brawl",
+      "professions": [
+        "warrior",
+        "sorcerer"
+      ],
+      "artFile": "candelabrum-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        212,
+        60,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "cannon-marauder",
+      "name": "Powderbelch",
+      "attackType": "ranged",
+      "professions": [
+        "warrior",
+        "hunter"
+      ],
+      "artFile": "cannon-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        466,
+        72,
+        592,
+        888
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "capybara-guard-calm",
+      "name": "Calmwater Capybara",
+      "attackType": "aura",
+      "professions": [
+        "healer",
+        "summoner"
+      ],
+      "artFile": "capybara-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        422,
+        195,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "caracal-hunter-spear",
+      "name": "Tuftspear",
+      "attackType": "brawl",
+      "professions": [
+        "sorcerer",
+        "rogue"
+      ],
+      "artFile": "caracal-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        364,
+        221,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "carillon-summoner-chime",
+      "name": "Chimespire",
+      "attackType": "brawl",
+      "professions": [
+        "leader",
+        "guardian"
+      ],
+      "artFile": "carillon-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        161,
+        1,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "cassowary-captain-horn",
+      "name": "Crestcaller",
+      "attackType": "breath",
+      "professions": [
+        "leader",
+        "warrior"
+      ],
+      "artFile": "cassowary-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        384,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "caterpillar-bard",
+      "name": "Caterpillar Bard",
+      "attackType": "breath",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "caterpillar-01.png",
+      "source": "caterpillar-bard.png",
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 7,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        57,
+        362,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "catfolk-spellblade-moon",
+      "name": "Moonclaw Spellblade",
+      "attackType": "bladed",
+      "professions": [
+        "warrior",
+        "rogue"
+      ],
+      "artFile": "catfolk-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        281,
+        44,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "centipede-assassin-sickle",
+      "name": "Sicklecoil",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "warrior"
+      ],
+      "artFile": "centipede-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        170,
+        44,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "chalice-of-storms",
+      "name": "Stormgoblet",
+      "attackType": "magic",
+      "professions": [
+        "elementalist",
+        "flying"
+      ],
+      "artFile": "chalice-01.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        202,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "chameleon-trickster-tongue",
+      "name": "Shiftscale",
+      "attackType": "whip",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "chameleon-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        277,
+        224,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "chandelier-summoner-candle",
+      "name": "Candlecrown",
+      "attackType": "magic",
+      "professions": [
+        "summoner",
+        "flying"
+      ],
+      "artFile": "chandelier-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        230,
+        364,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "chest-bodyguard-lock",
+      "name": "Lockjaw Chest",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "tinker"
+      ],
+      "artFile": "chest-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        205,
+        292,
+        739,
+        1109
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "chinchilla-summoner-ocarina",
+      "name": "Ocarina Puff",
+      "attackType": "magic",
+      "professions": [
+        "leader",
+        "summoner"
+      ],
+      "artFile": "chinchilla-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        105,
+        245,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "cicada-bard-chime",
+      "name": "Chimewing Cicada",
+      "attackType": "magic",
+      "professions": [
+        "sorcerer",
+        "healer"
+      ],
+      "artFile": "cicada-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        334,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "cinderhorn",
+      "name": "Cinderhorn",
+      "attackType": "bladed",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "cinderhorn-01.png",
+      "source": "8_f.png",
+      "biome": "ashlands",
+      "hp": 45,
+      "speed": 5,
+      "power": 6,
+      "cost": 6,
+      "frontFrame": [
+        272,
+        32,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "coati-trickster-dice",
+      "name": "Diceroll Coati",
+      "attackType": "ranged",
+      "professions": [
+        "rogue"
+      ],
+      "artFile": "coati-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        135,
+        129,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "cobra",
+      "name": "Hoodspitter",
+      "attackType": "breath",
+      "professions": [
+        "rogue"
+      ],
+      "artFile": "cobra-01.png",
+      "source": "cobra.png",
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        330,
+        -36,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "compass-hunter-needle",
+      "name": "Northneedle",
+      "attackType": "bladed",
+      "professions": [
+        "hunter",
+        "tinker"
+      ],
+      "artFile": "compass-02.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        189,
+        317,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "conchphone-bard-horn",
+      "name": "Conchhorn",
+      "attackType": "breath",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "conchphone-01.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        159,
+        538,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "corkscrew-stalker",
+      "name": "Twistcork",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "tinker"
+      ],
+      "artFile": "corkscrew-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        207,
+        44,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "crab-alchemist",
+      "name": "Crab Alchemist",
+      "attackType": "ranged",
+      "professions": [
+        "tinker"
+      ],
+      "artFile": "crab-01.png",
+      "source": "crab-alchemist.png",
+      "biome": "coast",
+      "hp": 55,
+      "speed": 6,
+      "power": 4,
+      "cost": 6,
+      "frontFrame": [
+        266,
+        302,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "crab-guard-decoy",
+      "name": "Decoy Crab",
+      "attackType": "brawl",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "crab-03.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        297,
+        318,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "crab-smith",
+      "name": "Crab Smith",
+      "attackType": "blunt",
+      "professions": [
+        "tinker",
+        "warrior"
+      ],
+      "artFile": "crab-02.png",
+      "source": "crab-smith.png",
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        222,
+        287,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "crane-hoist-titan",
+      "name": "Hoist Titan",
+      "attackType": "brawl",
+      "professions": [
+        "healer",
+        "tinker"
+      ],
+      "artFile": "crane-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        226,
+        14,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "crane-summoner-feather",
+      "name": "Featherveil Crane",
+      "attackType": "magic",
+      "professions": [
+        "summoner",
+        "elementalist"
+      ],
+      "artFile": "crane-02.png",
+      "source": null,
+      "biome": "wet_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        135,
+        81,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "cricket-bard-fiddle",
+      "name": "Fiddlewhit",
+      "attackType": "magic",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "cricket-01.png",
+      "source": null,
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        178,
+        50,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "crocodile-shaman",
+      "name": "Crocodile Shaman",
+      "attackType": "brawl",
+      "professions": [
+        "primalist",
+        "warrior"
+      ],
+      "artFile": "crocodile-01.png",
+      "source": "crocodile-shaman.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 3,
+      "power": 7,
+      "cost": 6,
+      "frontFrame": [
+        266,
+        290,
+        747,
+        1121
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "crow-necromancer-skull",
+      "name": "Skullcaw",
+      "attackType": "magic",
+      "professions": [
+        "summoner",
+        "flying"
+      ],
+      "artFile": "crow-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        186,
+        107,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "crucible-summoner",
+      "name": "Moltencup",
+      "attackType": "aura",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "crucible-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        205,
+        60,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "cuttlefish-assassin-needle",
+      "name": "Needleglow",
+      "attackType": "bladed",
+      "professions": [
+        "rogue"
+      ],
+      "artFile": "cuttlefish-01.png",
+      "source": null,
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        190,
+        214,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "dormouse-summoner-bell",
+      "name": "Bellnap Dormouse",
+      "attackType": "magic",
+      "professions": [
+        "summoner"
+      ],
+      "artFile": "dormouse-01.png",
+      "source": null,
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        203,
+        191,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "dragon-colossus-ember",
+      "name": "Emberwyrm Colossus",
+      "attackType": "breath",
+      "professions": [
+        "warrior",
+        "flying"
+      ],
+      "artFile": "dragon-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        191,
+        68,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "dragon-elder-obsidian",
+      "name": "Obsidian Elder",
+      "attackType": "aura",
+      "professions": [
+        "leader",
+        "flying"
+      ],
+      "artFile": "dragon-02.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        183,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "dragon-sovereign-tempest",
+      "name": "Tempest Sovereign",
+      "attackType": "breath",
+      "professions": [
+        "leader",
+        "flying"
+      ],
+      "artFile": "dragon-03.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        221,
+        71,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "dragon-titan-glacier",
+      "name": "Glacier Titan",
+      "attackType": "breath",
+      "professions": [
+        "elementalist",
+        "guardian"
+      ],
+      "artFile": "dragon-04.png",
+      "source": null,
+      "biome": "arctic",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        300,
+        15,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "dragonfly-scout-bow",
+      "name": "Reedarrow",
+      "attackType": "ranged",
+      "professions": [
+        "flying",
+        "hunter"
+      ],
+      "artFile": "dragonfly-01.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        342,
+        151,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "drake-titan-crystal",
+      "name": "Crystalback Drake",
+      "attackType": "brawl",
+      "professions": [
+        "elementalist",
+        "sorcerer"
+      ],
+      "artFile": "drake-01.png",
+      "source": null,
+      "biome": "crystal_caverns",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        382,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "drawbridge-bodyguard-chain",
+      "name": "Chaingate",
+      "attackType": "brawl",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "drawbridge-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        173,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "drum-summoner-war",
+      "name": "Wardrum",
+      "attackType": "aura",
+      "professions": [
+        "leader",
+        "warrior"
+      ],
+      "artFile": "drum-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        158,
+        87,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "dugong-guard-crystal",
+      "name": "Crystalfin Dugong",
+      "attackType": "aura",
+      "professions": [
+        "sorcerer",
+        "elementalist"
+      ],
+      "artFile": "dugong-02.png",
+      "source": null,
+      "biome": "lagoon",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        307,
+        136,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "elephant-summoner-idol",
+      "name": "Idolbearer",
+      "attackType": "brawl",
+      "professions": [
+        "summoner",
+        "primalist"
+      ],
+      "artFile": "elephant-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        370,
+        101,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "ferret-summoner-mask",
+      "name": "Maskwhisk",
+      "attackType": "brawl",
+      "professions": [
+        "rogue",
+        "summoner"
+      ],
+      "artFile": "ferret-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        37,
+        67,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "fiddlercrab-trickster-coin",
+      "name": "Coinclaw",
+      "attackType": "brawl",
+      "professions": [
+        "rogue",
+        "tinker"
+      ],
+      "artFile": "fiddlercrab-01.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        296,
+        236,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "firefly",
+      "name": "Firefly",
+      "attackType": "aura",
+      "professions": [
+        "flying",
+        "healer"
+      ],
+      "artFile": "firefly-02.png",
+      "source": "firefly.png",
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        339,
+        425,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "firefly-summoner-lantern",
+      "name": "Lanternwing",
+      "attackType": "aura",
+      "professions": [
+        "flying",
+        "summoner"
+      ],
+      "artFile": "firefly-01.png",
+      "source": null,
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        84,
+        128,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "flyingfish-scout-dart",
+      "name": "Dartfin",
+      "attackType": "ranged",
+      "professions": [
+        "flying",
+        "rogue"
+      ],
+      "artFile": "flyingfish-01.png",
+      "source": null,
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        388,
+        153,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "fossa-hunter-harpoon",
+      "name": "Harpoon Fossa",
+      "attackType": "polearm",
+      "professions": [
+        "hunter",
+        "rogue"
+      ],
+      "artFile": "fossa-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        348,
+        194,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "fox-bard",
+      "name": "Fox Bard",
+      "attackType": "brawl",
+      "professions": [
+        "leader",
+        "rogue"
+      ],
+      "artFile": "fox-01.png",
+      "source": "fox-bard.png",
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        55,
+        415,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "frigatebird-bard-throat",
+      "name": "Throatdrum",
+      "attackType": "breath",
+      "professions": [
+        "leader",
+        "flying"
+      ],
+      "artFile": "frigatebird-01.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        356,
+        75,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "frog-bard-dagger",
+      "name": "Frog Bard Dagger",
+      "attackType": "bladed",
+      "professions": [
+        "leader",
+        "rogue"
+      ],
+      "artFile": "frog-01.png",
+      "source": "frog-bard-dagger.png",
+      "biome": "swamp",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        268,
+        45,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "furnace-titan",
+      "name": "Furnace Titan",
+      "attackType": "breath",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "furnace-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        280,
+        11,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "gargoyle-sentinel-stone",
+      "name": "Stonewatch Gargoyle",
+      "attackType": "polearm",
+      "professions": [
+        "flying",
+        "hunter"
+      ],
+      "artFile": "gargoyle-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        220,
+        155,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "gaur-bodyguard-armor",
+      "name": "Bolted Gaur",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "gaur-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        346,
+        226,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "gecko-alchemist-resin",
+      "name": "Resinpaw",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "rogue"
+      ],
+      "artFile": "gecko-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        291,
+        119,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "gecko-summoner-prism",
+      "name": "Prismtoe",
+      "attackType": "magic",
+      "professions": [
+        "summoner",
+        "sorcerer"
+      ],
+      "artFile": "gecko-02.png",
+      "source": null,
+      "biome": "crystal_caverns",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        235,
+        12,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "goat-shaman-totem",
+      "name": "Totemhorn",
+      "attackType": "brawl",
+      "professions": [
+        "primalist",
+        "healer"
+      ],
+      "artFile": "goat-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        190,
+        46,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "goblet-paladin",
+      "name": "Grailward",
+      "attackType": "aura",
+      "professions": [
+        "healer",
+        "warrior"
+      ],
+      "artFile": "goblet-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        264,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "golem-colossus-furnace",
+      "name": "Furnaceheart Colossus",
+      "attackType": "brawl",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "golem-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        266,
+        35,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "golem-engineer-gear",
+      "name": "Gearwright Golem",
+      "attackType": "brawl",
+      "professions": [
+        "tinker",
+        "guardian"
+      ],
+      "artFile": "golem-02.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        237,
+        152,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "gong-hexer-dissonance",
+      "name": "Discord Gong",
+      "attackType": "aura",
+      "professions": [
+        "leader",
+        "summoner"
+      ],
+      "artFile": "gong-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        233,
+        46,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "gorilla-bodyguard-fists",
+      "name": "Ironfist Silverback",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "gorilla-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        242,
+        57,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "griffin-knight-lance",
+      "name": "Lancewing Griffin",
+      "attackType": "polearm",
+      "professions": [
+        "flying",
+        "warrior"
+      ],
+      "artFile": "griffin-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        193,
+        76,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "harpsichord-bard-keys",
+      "name": "Keyclatter",
+      "attackType": "aura",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "harpsichord-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        181,
+        256,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "harpy-eagle-scout-claws",
+      "name": "Talonstrike",
+      "attackType": "brawl",
+      "professions": [
+        "flying",
+        "hunter"
+      ],
+      "artFile": "harpy-eagle-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        299,
+        87,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "hawk-scout-bow",
+      "name": "Skybow Hawk",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "flying"
+      ],
+      "artFile": "hawk-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        264,
+        105,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "hermitcrab-sentinel-basalt",
+      "name": "Basaltshell",
+      "attackType": "brawl",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "hermitcrab-01.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        277,
+        291,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "heron-engineer-wing",
+      "name": "Wingwright Heron",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "flying"
+      ],
+      "artFile": "heron-01.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        288,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "heron-hunter-harpoon",
+      "name": "Stillspear",
+      "attackType": "polearm",
+      "professions": [
+        "flying",
+        "warrior"
+      ],
+      "artFile": "heron-02.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        215,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "hippo-healer-potion",
+      "name": "Tonic Hippo",
+      "attackType": "breath",
+      "professions": [
+        "healer",
+        "tinker"
+      ],
+      "artFile": "hippo-01.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        298,
+        152,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "hornbill-bard-drum",
+      "name": "Drumbill",
+      "attackType": "blunt",
+      "professions": [
+        "leader",
+        "flying"
+      ],
+      "artFile": "hornbill-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        274,
+        44,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "horseshoe-champion",
+      "name": "Lucky Ironshoe",
+      "attackType": "brawl",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "horseshoe-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        230,
+        97,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "horseshoecrab-sentinel-bronze",
+      "name": "Bronzeback Sentinel",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "elementalist"
+      ],
+      "artFile": "horseshoecrab-01.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        180,
+        239,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "hourglass-hexer-sand",
+      "name": "Sandhex Glass",
+      "attackType": "aura",
+      "professions": [
+        "sorcerer",
+        "leader"
+      ],
+      "artFile": "hourglass-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        217,
+        12,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "howlermonkey-bard-roar",
+      "name": "Roarleaf",
+      "attackType": "breath",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "howlermonkey-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        325,
+        83,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-alchemist",
+      "name": "Maggie Wren",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "rogue"
+      ],
+      "artFile": "human-02.png",
+      "source": "human-alchemist.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-alchemist-shield",
+      "name": "Gerald Hollins",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "guardian"
+      ],
+      "artFile": "human-01.png",
+      "source": "human-alchemist-shield.png",
+      "biome": "ruins",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        101,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-archer",
+      "name": "Tom Reed",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "primalist"
+      ],
+      "artFile": "human-07.png",
+      "source": "human-archer.png",
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-archer-crystal",
+      "name": "Mira Castell",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "sorcerer"
+      ],
+      "artFile": "human-03.png",
+      "source": "human-archer-crystal.png",
+      "biome": "crystal_caverns",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-archer-frost",
+      "name": "Sigrid Halvorsen",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "elementalist"
+      ],
+      "artFile": "human-04.png",
+      "source": "human-archer-frost.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-archer-gear",
+      "name": "Otto Brenner",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "tinker"
+      ],
+      "artFile": "human-05.png",
+      "source": "human-archer-gear.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-archer-sun",
+      "name": "Lucia Marin",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "healer"
+      ],
+      "artFile": "human-06.png",
+      "source": "human-archer-sun.png",
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-barbarian",
+      "name": "Gunnar Holt",
+      "attackType": "bladed",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "human-09.png",
+      "source": "human-barbarian.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        192,
+        84,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-barbarian-frost",
+      "name": "Ragnhild Eriksen",
+      "attackType": "bladed",
+      "professions": [
+        "warrior",
+        "sorcerer"
+      ],
+      "artFile": "human-08.png",
+      "source": "human-barbarian-frost.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        59,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-bard",
+      "name": "Lorenzo Varga",
+      "attackType": "magic",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "human-11.png",
+      "source": "human-bard.png",
+      "biome": "flower_meadow",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-bard-shield",
+      "name": "Felix Lowell",
+      "attackType": "blunt",
+      "professions": [
+        "leader",
+        "warrior"
+      ],
+      "artFile": "human-10.png",
+      "source": "human-bard-shield.png",
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-brawler-hook",
+      "name": "Jack Morrow",
+      "attackType": "blunt",
+      "professions": [
+        "warrior",
+        "hunter"
+      ],
+      "artFile": "human-12.png",
+      "source": "human-brawler-hook.png",
+      "biome": "coast",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-captain-banner",
+      "name": "Helena Strand",
+      "attackType": "polearm",
+      "professions": [
+        "leader",
+        "warrior"
+      ],
+      "artFile": "human-13.png",
+      "source": "human-captain-banner.png",
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-captain-pistol",
+      "name": "Carlos Fonseca",
+      "attackType": "ranged",
+      "professions": [
+        "leader",
+        "rogue"
+      ],
+      "artFile": "human-14.png",
+      "source": "human-captain-pistol.png",
+      "biome": "coast",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        166,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-captain-rapier",
+      "name": "Beatrix Alvarez",
+      "attackType": "bladed",
+      "professions": [
+        "sorcerer",
+        "rogue"
+      ],
+      "artFile": "human-15.png",
+      "source": "human-captain-rapier.png",
+      "biome": "coast",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-cleric-lantern",
+      "name": "Agnes Brook",
+      "attackType": "magic",
+      "professions": [
+        "healer",
+        "tinker"
+      ],
+      "artFile": "human-16.png",
+      "source": "human-cleric-lantern.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        34,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-dancer",
+      "name": "Nadia Petrova",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "human-18.png",
+      "source": "human-dancer.png",
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-dancer-spear",
+      "name": "Amara Okafor",
+      "attackType": "polearm",
+      "professions": [
+        "warrior",
+        "elementalist"
+      ],
+      "artFile": "human-17.png",
+      "source": "human-dancer-spear.png",
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-druid",
+      "name": "Ivy Calloway",
+      "attackType": "magic",
+      "professions": [
+        "primalist",
+        "healer"
+      ],
+      "artFile": "human-20.png",
+      "source": "human-druid.png",
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-druid-leaf",
+      "name": "Fiona Ashby",
+      "attackType": "magic",
+      "professions": [
+        "primalist",
+        "healer"
+      ],
+      "artFile": "human-19.png",
+      "source": "human-druid-leaf.png",
+      "biome": "wet_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-duelist-rapier",
+      "name": "Camille Moreau",
+      "attackType": "bladed",
+      "professions": [
+        "warrior",
+        "rogue"
+      ],
+      "artFile": "human-21.png",
+      "source": "human-duelist-rapier.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        81,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-engineer-crystal",
+      "name": "Lukas Weiss",
+      "attackType": "magic",
+      "professions": [
+        "tinker",
+        "elementalist"
+      ],
+      "artFile": "human-22.png",
+      "source": "human-engineer-crystal.png",
+      "biome": "crystal_caverns",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-engineer-hook",
+      "name": "Max Hooper",
+      "attackType": "ranged",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "human-23.png",
+      "source": "human-engineer-hook.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-guard",
+      "name": "Peter Holm",
+      "attackType": "polearm",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "human-26.png",
+      "source": "human-guard.png",
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-guard-frost",
+      "name": "Ingrid Lund",
+      "attackType": "polearm",
+      "professions": [
+        "warrior",
+        "sorcerer"
+      ],
+      "artFile": "human-24.png",
+      "source": "human-guard-frost.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-guard-stone",
+      "name": "Leo Stone",
+      "attackType": "bladed",
+      "professions": [
+        "elementalist",
+        "warrior"
+      ],
+      "artFile": "human-25.png",
+      "source": "human-guard-stone.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        151,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-knight",
+      "name": "William Hart",
+      "attackType": "bladed",
+      "professions": [
+        "warrior",
+        "leader"
+      ],
+      "artFile": "human-31.png",
+      "source": "human-knight.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-knight-2",
+      "name": "Johanna Weber",
+      "attackType": "bladed",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "human-27.png",
+      "source": "human-knight-2.png",
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-knight-banner",
+      "name": "Albrecht Lang",
+      "attackType": "blunt",
+      "professions": [
+        "leader",
+        "guardian"
+      ],
+      "artFile": "human-28.png",
+      "source": "human-knight-banner.png",
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-knight-hammer",
+      "name": "Johanka Weber",
+      "attackType": "blunt",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "human-29.png",
+      "source": "human-knight-hammer.png",
+      "biome": "mountain",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        99,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-knight-shield",
+      "name": "Edwin Marsh",
+      "attackType": "blunt",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "human-30.png",
+      "source": "human-knight-shield.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        165,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-mage-crystal",
+      "name": "Kai Lindqvist",
+      "attackType": "magic",
+      "professions": [
+        "elementalist",
+        "sorcerer"
+      ],
+      "artFile": "human-32.png",
+      "source": "human-mage-crystal.png",
+      "biome": "crystal_caverns",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-mage-fire",
+      "name": "Carmen Costa",
+      "attackType": "magic",
+      "professions": [
+        "elementalist",
+        "rogue"
+      ],
+      "artFile": "human-33.png",
+      "source": "human-mage-fire.png",
+      "biome": "ashlands",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-mage-frost",
+      "name": "Astor Nilsen",
+      "attackType": "magic",
+      "professions": [
+        "elementalist",
+        "sorcerer"
+      ],
+      "artFile": "human-34.png",
+      "source": "human-mage-frost.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-mage-stone",
+      "name": "Henrik Berg",
+      "attackType": "magic",
+      "professions": [
+        "elementalist",
+        "leader"
+      ],
+      "artFile": "human-35.png",
+      "source": "human-mage-stone.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-mage-water",
+      "name": "Mateo Santos",
+      "attackType": "magic",
+      "professions": [
+        "elementalist",
+        "hunter"
+      ],
+      "artFile": "human-36.png",
+      "source": "human-mage-water.png",
+      "biome": "lagoon",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        35,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-monk-hammer",
+      "name": "Kenji Mori",
+      "attackType": "blunt",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "human-37.png",
+      "source": "human-monk-hammer.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 7,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        89,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-necromancer-skull",
+      "name": "Viktor Graves",
+      "attackType": "bladed",
+      "professions": [
+        "summoner",
+        "warrior"
+      ],
+      "artFile": "human-38.png",
+      "source": "human-necromancer-skull.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        214,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-priest",
+      "name": "Thomas Abbott",
+      "attackType": "magic",
+      "professions": [
+        "healer"
+      ],
+      "artFile": "human-42.png",
+      "source": "human-priest.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-priest-bell",
+      "name": "Martin Becker",
+      "attackType": "blunt",
+      "professions": [
+        "healer",
+        "leader"
+      ],
+      "artFile": "human-39.png",
+      "source": "human-priest-bell.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        38,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-priest-moon",
+      "name": "Luna Ortiz",
+      "attackType": "magic",
+      "professions": [
+        "healer",
+        "sorcerer"
+      ],
+      "artFile": "human-40.png",
+      "source": "human-priest-moon.png",
+      "biome": "flower_meadow",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-priest-sun",
+      "name": "Aurelia Day",
+      "attackType": "ranged",
+      "professions": [
+        "healer",
+        "hunter"
+      ],
+      "artFile": "human-41.png",
+      "source": "human-priest-sun.png",
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-rogue",
+      "name": "Daniel Hart",
+      "attackType": "bladed",
+      "professions": [
+        "rogue"
+      ],
+      "artFile": "human-45.png",
+      "source": "human-rogue.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        192,
+        132,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-rogue-potion",
+      "name": "Paul Fischer",
+      "attackType": "bladed",
+      "professions": [
+        "tinker",
+        "rogue"
+      ],
+      "artFile": "human-43.png",
+      "source": "human-rogue-potion.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-rogue-shadow",
+      "name": "Nika Volkova",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "summoner"
+      ],
+      "artFile": "human-44.png",
+      "source": "human-rogue-shadow.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-scout-lantern",
+      "name": "Elsa Lindgren",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "summoner"
+      ],
+      "artFile": "human-46.png",
+      "source": "human-scout-lantern.png",
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-shaman",
+      "name": "Kofi Mensah",
+      "attackType": "magic",
+      "professions": [
+        "primalist",
+        "leader"
+      ],
+      "artFile": "human-47.png",
+      "source": "human-shaman.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-smith",
+      "name": "Hugo Schmidt",
+      "attackType": "blunt",
+      "professions": [
+        "tinker",
+        "warrior"
+      ],
+      "artFile": "human-48.png",
+      "source": "human-smith.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        111,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-spellblade",
+      "name": "Richard Novak",
+      "attackType": "bladed",
+      "professions": [
+        "warrior",
+        "sorcerer"
+      ],
+      "artFile": "human-51.png",
+      "source": "human-spellblade.png",
+      "biome": "storm_cliffs",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-spellblade-2",
+      "name": "Laura Cole",
+      "attackType": "bladed",
+      "professions": [
+        "warrior",
+        "sorcerer"
+      ],
+      "artFile": "human-49.png",
+      "source": "human-spellblade-2.png",
+      "biome": "storm_cliffs",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "human-wizard",
+      "name": "Arthur Pembroke",
+      "attackType": "magic",
+      "professions": [
+        "sorcerer",
+        "tinker"
+      ],
+      "artFile": "human-52.png",
+      "source": "human-wizard.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "hummingbird-duelist-rapier",
+      "name": "Rapierbeak",
+      "attackType": "bladed",
+      "professions": [
+        "flying",
+        "rogue"
+      ],
+      "artFile": "hummingbird-01.png",
+      "source": null,
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        206,
+        170,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "hydra-colossus-trident",
+      "name": "Tridentmaw Hydra",
+      "attackType": "breath",
+      "professions": [
+        "summoner"
+      ],
+      "artFile": "hydra-01.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        175,
+        -67,
+        729,
+        1094
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "hyena-engineer-saw",
+      "name": "Sawgrin",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "hunter"
+      ],
+      "artFile": "hyena-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        332,
+        102,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "ibex-captain-standard",
+      "name": "Standardhorn",
+      "attackType": "brawl",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "ibex-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        219,
+        38,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "incense-censor",
+      "name": "Smokeswing",
+      "attackType": "aura",
+      "professions": [
+        "healer",
+        "summoner"
+      ],
+      "artFile": "incense-censor-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        183,
+        17,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "inkwell-trickster-quill",
+      "name": "Quillspatter",
+      "attackType": "ranged",
+      "professions": [
+        "rogue",
+        "leader"
+      ],
+      "artFile": "inkwell-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        190,
+        410,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "isopod-sentinel-iron",
+      "name": "Ironroll",
+      "attackType": "brawl",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "isopod-01.png",
+      "source": null,
+      "biome": "mushroom_grotto",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        354,
+        359,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "jackalope-hexer-curse",
+      "name": "Cursehorn",
+      "attackType": "aura",
+      "professions": [
+        "summoner",
+        "rogue"
+      ],
+      "artFile": "jackalope-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        313,
+        225,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "jelly-healer",
+      "name": "Mendbloom Jelly",
+      "attackType": "aura",
+      "professions": [
+        "healer",
+        "flying"
+      ],
+      "artFile": "jellyfish-02.png",
+      "source": "jelly-healer.png",
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "jelly-mage-storm",
+      "name": "Stormbell Jelly",
+      "attackType": "aura",
+      "professions": [
+        "flying",
+        "elementalist"
+      ],
+      "artFile": "jelly-01.png",
+      "source": null,
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        205,
+        132,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "jerboa-trickster-acorn",
+      "name": "Acornpop",
+      "attackType": "ranged",
+      "professions": [
+        "rogue",
+        "tinker"
+      ],
+      "artFile": "jerboa-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        361,
+        51,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "kestrel-hunter-lure",
+      "name": "Lurewing",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "summoner"
+      ],
+      "artFile": "kestrel-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        171,
+        63,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "kettle-alchemist-siege",
+      "name": "Siegekettle",
+      "attackType": "breath",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "kettle-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        215,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "kiln-behemoth",
+      "name": "Kiln Behemoth",
+      "attackType": "breath",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "kiln-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        212,
+        102,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "kingfisher-captain-dagger",
+      "name": "Captain Daggerbill",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "flying"
+      ],
+      "artFile": "kingfisher-01.png",
+      "source": null,
+      "biome": "wet_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        206,
+        54,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "kinkajou-summoner-idol",
+      "name": "Idolpaw",
+      "attackType": "brawl",
+      "professions": [
+        "summoner",
+        "rogue"
+      ],
+      "artFile": "kinkajou-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        257,
+        160,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "kite-primalist-tail",
+      "name": "Tailwind Kite",
+      "attackType": "whip",
+      "professions": [
+        "flying",
+        "healer"
+      ],
+      "artFile": "kite-01.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        262,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "komodo-warrior-cleaver",
+      "name": "Cleaver Komodo",
+      "attackType": "blunt",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "komodo-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        269,
+        54,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "kraken-colossus-basalt",
+      "name": "Basalt Kraken",
+      "attackType": "whip",
+      "professions": [
+        "guardian",
+        "summoner"
+      ],
+      "artFile": "kraken-01.png",
+      "source": null,
+      "biome": "lagoon",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        164,
+        73,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "lantern-healer-prism",
+      "name": "Prismlamp",
+      "attackType": "aura",
+      "professions": [
+        "healer"
+      ],
+      "artFile": "lantern-01.png",
+      "source": null,
+      "biome": "crystal_caverns",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        168,
+        29,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "lizardfolk-barbarian-axe",
+      "name": "Axejaw Lizardfolk",
+      "attackType": "bladed",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "lizardfolk-03.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        140,
+        22,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "lizardfolk-ninja-kunai",
+      "name": "Kunai Lizardfolk",
+      "attackType": "ranged",
+      "professions": [
+        "rogue"
+      ],
+      "artFile": "lizardfolk-04.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        223,
+        74,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "lobster-bard-castanet",
+      "name": "Castanet Lobster",
+      "attackType": "brawl",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "lobster-01.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        202,
+        138,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "lobster-engineer-rivet",
+      "name": "Rivetclaw",
+      "attackType": "ranged",
+      "professions": [
+        "tinker"
+      ],
+      "artFile": "lobster-02.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        144,
+        105,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "lockbox-dreadnought",
+      "name": "Lockbox Dreadnought",
+      "attackType": "brawl",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "lockbox-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        260,
+        120,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "loom-binder",
+      "name": "Threadbinder Loom",
+      "attackType": "whip",
+      "professions": [
+        "tinker",
+        "leader"
+      ],
+      "artFile": "loom-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        232,
+        61,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "lyrebird-bard-plume",
+      "name": "Plumesong",
+      "attackType": "breath",
+      "professions": [
+        "leader",
+        "flying"
+      ],
+      "artFile": "lyrebird-01.png",
+      "source": null,
+      "biome": "pine_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        311,
+        109,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mammoth-titan-tundra",
+      "name": "Tundra Titan",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "elementalist"
+      ],
+      "artFile": "mammoth-01.png",
+      "source": null,
+      "biome": "arctic",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        244,
+        97,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "manatee-healer-shell",
+      "name": "Shellmend Manatee",
+      "attackType": "breath",
+      "professions": [
+        "healer"
+      ],
+      "artFile": "manatee-01.png",
+      "source": null,
+      "biome": "lagoon",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        278,
+        103,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mandrake-primalist-root",
+      "name": "Screamroot",
+      "attackType": "whip",
+      "professions": [
+        "primalist",
+        "summoner"
+      ],
+      "artFile": "mandrake-01.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        269,
+        27,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mandrill-brawler-gloves",
+      "name": "Glovegrin",
+      "attackType": "brawl",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "mandrill-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        221,
+        59,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mannequin",
+      "name": "Stitchfist Mannequin",
+      "attackType": "brawl",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "mannequin-01.png",
+      "source": "34_f.png",
+      "biome": "ruins",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        96,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "manticore-assassin-barb",
+      "name": "Barbtail Manticore",
+      "attackType": "whip",
+      "professions": [
+        "rogue",
+        "flying"
+      ],
+      "artFile": "manticore-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        334,
+        246,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mantis-engineer-blade",
+      "name": "Bladewright Mantis",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "tinker"
+      ],
+      "artFile": "mantis-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        290,
+        54,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "marabou-healer-balm",
+      "name": "Balmbeak",
+      "attackType": "brawl",
+      "professions": [
+        "tinker",
+        "rogue"
+      ],
+      "artFile": "marabou-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        259,
+        19,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "maskrack-summoner-echo",
+      "name": "Echomask Rack",
+      "attackType": "aura",
+      "professions": [
+        "summoner",
+        "flying"
+      ],
+      "artFile": "maskrack-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        253,
+        -31,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mastiff-guard-shield",
+      "name": "Shieldjaw Mastiff",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "hunter"
+      ],
+      "artFile": "mastiff-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        326,
+        35,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "meerkat-captain-spyglass",
+      "name": "Spyglass Meerkat",
+      "attackType": "ranged",
+      "professions": [
+        "leader",
+        "hunter"
+      ],
+      "artFile": "meerkat-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        170,
+        149,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "millstone-juggernaut",
+      "name": "Millstone Juggernaut",
+      "attackType": "blunt",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "millstone-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        250,
+        87,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mirror-revenant",
+      "name": "Mirror Revenant",
+      "attackType": "magic",
+      "professions": [
+        "sorcerer",
+        "flying"
+      ],
+      "artFile": "mirror-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        178,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mole-engineer-gear",
+      "name": "Gearclaw Mole",
+      "attackType": "blunt",
+      "professions": [
+        "tinker"
+      ],
+      "artFile": "mole-01.png",
+      "source": null,
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        330,
+        126,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mole-engineer-hexhammer",
+      "name": "Hexhammer Mole",
+      "attackType": "blunt",
+      "professions": [
+        "tinker",
+        "sorcerer"
+      ],
+      "artFile": "mole-02.png",
+      "source": null,
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        258,
+        222,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mongoose-assassin-sickle",
+      "name": "Sicklewhisk",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "mongoose-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        343,
+        113,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mongoose-hunter-hex",
+      "name": "Hexdart Mongoose",
+      "attackType": "ranged",
+      "professions": [
+        "hunter"
+      ],
+      "artFile": "mongoose-02.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        250,
+        109,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "monkey-trickster-sling",
+      "name": "Slingtail",
+      "attackType": "ranged",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "monkey-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        150,
+        113,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "moray-trickster-hook",
+      "name": "Hookgrin Moray",
+      "attackType": "whip",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "moray-01.png",
+      "source": null,
+      "biome": "lagoon",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        375,
+        51,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mortar-alchemist-bastion",
+      "name": "Bastion Mortar",
+      "attackType": "blunt",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "mortar-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        176,
+        43,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "moth-cleric-lantern",
+      "name": "Lanternmoth",
+      "attackType": "magic",
+      "professions": [
+        "healer",
+        "flying"
+      ],
+      "artFile": "moth-02.png",
+      "source": null,
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        181,
+        130,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mushroom-druid",
+      "name": "Sporedruid",
+      "attackType": "magic",
+      "professions": [
+        "primalist",
+        "healer"
+      ],
+      "artFile": "mushroom-01.png",
+      "source": "mushroom-druid.png",
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        192,
+        223,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "mushroom-sentinel-shield",
+      "name": "Capshield",
+      "attackType": "aura",
+      "professions": [
+        "guardian",
+        "primalist"
+      ],
+      "artFile": "mushroom-03.png",
+      "source": null,
+      "biome": "mushroom_grotto",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        182,
+        189,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "musicbox-summoner-drum",
+      "name": "Windup Drummer",
+      "attackType": "brawl",
+      "professions": [
+        "summoner",
+        "guardian"
+      ],
+      "artFile": "musicbox-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        188,
+        88,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "muskox-bodyguard-buckler",
+      "name": "Bucklerhorn",
+      "attackType": "blunt",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "muskox-01.png",
+      "source": null,
+      "biome": "arctic",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        292,
+        187,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "newt-alchemist-coil",
+      "name": "Coilnewt",
+      "attackType": "whip",
+      "professions": [
+        "tinker"
+      ],
+      "artFile": "newt-01.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        392,
+        265,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "olm-summoner-shade",
+      "name": "Shadeolm",
+      "attackType": "magic",
+      "professions": [
+        "summoner",
+        "sorcerer"
+      ],
+      "artFile": "olm-01.png",
+      "source": null,
+      "biome": "crystal_caverns",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        194,
+        45,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "opossum-summoner-dice",
+      "name": "Dicetail",
+      "attackType": "ranged",
+      "professions": [
+        "summoner",
+        "leader"
+      ],
+      "artFile": "opossum-01.png",
+      "source": null,
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        335,
+        148,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "orc-summoner-skull",
+      "name": "Grukk Skullcaller",
+      "attackType": "blunt",
+      "professions": [
+        "summoner",
+        "primalist"
+      ],
+      "artFile": "orc-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        224,
+        20,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "orchidmantis-trickster-leaf",
+      "name": "Petalshade",
+      "attackType": "whip",
+      "professions": [
+        "primalist",
+        "rogue"
+      ],
+      "artFile": "orchidmantis-01.png",
+      "source": null,
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        240,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "organ-summoner",
+      "name": "Pipe Organ Choir",
+      "attackType": "breath",
+      "professions": [
+        "leader",
+        "guardian"
+      ],
+      "artFile": "organ-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        181,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "orrery-sorcerer-orbit",
+      "name": "Orbitwright",
+      "attackType": "magic",
+      "professions": [
+        "sorcerer",
+        "leader"
+      ],
+      "artFile": "orrery-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        211,
+        76,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "ossuary-summoner-cube",
+      "name": "Bonecube",
+      "attackType": "brawl",
+      "professions": [
+        "summoner",
+        "guardian"
+      ],
+      "artFile": "ossuary-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        235,
+        55,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "otter-hunter-sling",
+      "name": "Slingwhisker",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "rogue"
+      ],
+      "artFile": "otter-01.png",
+      "source": null,
+      "biome": "wet_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        268,
+        142,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "owl-wizard",
+      "name": "Hootmage",
+      "attackType": "magic",
+      "professions": [
+        "sorcerer",
+        "flying"
+      ],
+      "artFile": "owl-01.png",
+      "source": "owl-wizard.png",
+      "biome": "pine_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        192,
+        97,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "panda-monk-fists",
+      "name": "Bamboo Monk",
+      "attackType": "brawl",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "panda-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 6,
+      "frontFrame": [
+        181,
+        48,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "pangolin-guard-decoy",
+      "name": "Decoy Pangolin",
+      "attackType": "blunt",
+      "professions": [
+        "guardian",
+        "rogue"
+      ],
+      "artFile": "pangolin-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        354,
+        150,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "pangolin-sorcerer-thunder",
+      "name": "Thunderscale",
+      "attackType": "aura",
+      "professions": [
+        "guardian",
+        "summoner"
+      ],
+      "artFile": "pangolin-02.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        372,
+        184,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "panpipe-summoner-reed",
+      "name": "Reedcaller",
+      "attackType": "breath",
+      "professions": [
+        "leader",
+        "summoner"
+      ],
+      "artFile": "panpipe-01.png",
+      "source": null,
+      "biome": "flower_meadow",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        189,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "peacock-bard-feather",
+      "name": "Plumecrown",
+      "attackType": "magic",
+      "professions": [
+        "leader",
+        "flying"
+      ],
+      "artFile": "peacock-01.png",
+      "source": null,
+      "biome": "flower_meadow",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        399,
+        53,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "phoenix-titan-solar",
+      "name": "Solar Phoenix",
+      "attackType": "aura",
+      "professions": [
+        "healer",
+        "elementalist"
+      ],
+      "artFile": "phoenix-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        188,
+        12,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "pika-summoner-horn",
+      "name": "Hornpip",
+      "attackType": "breath",
+      "professions": [
+        "leader",
+        "summoner"
+      ],
+      "artFile": "pika-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        207,
+        153,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "platypus-alchemist-rune",
+      "name": "Runebill",
+      "attackType": "breath",
+      "professions": [
+        "tinker"
+      ],
+      "artFile": "platypus-01.png",
+      "source": null,
+      "biome": "wet_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        335,
+        207,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "plough-ravager",
+      "name": "Furrow Ravager",
+      "attackType": "bladed",
+      "professions": [
+        "warrior",
+        "summoner"
+      ],
+      "artFile": "plough-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        306,
+        233,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "pocketwatch-warden",
+      "name": "Tickwarden",
+      "attackType": "aura",
+      "professions": [
+        "guardian",
+        "leader"
+      ],
+      "artFile": "pocketwatch-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        246,
+        37,
+        711,
+        1067
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "porcupine-alchemist-shield",
+      "name": "Quillflask",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "guardian"
+      ],
+      "artFile": "porcupine-01.png",
+      "source": null,
+      "biome": "autumn_woods",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        359,
+        185,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "portcullis-colossus",
+      "name": "Portcullis Colossus",
+      "attackType": "blunt",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "portcullis-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        263,
+        -21,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "printingpress-summoner-type",
+      "name": "Typesetter",
+      "attackType": "ranged",
+      "professions": [
+        "summoner",
+        "tinker"
+      ],
+      "artFile": "printingpress-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        229,
+        61,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "prism-hexer",
+      "name": "Shardhex",
+      "attackType": "magic",
+      "professions": [
+        "flying",
+        "guardian"
+      ],
+      "artFile": "prism-01.png",
+      "source": null,
+      "biome": "crystal_caverns",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        300,
+        243,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "puffin-bodyguard-shield",
+      "name": "Shieldpuff",
+      "attackType": "blunt",
+      "professions": [
+        "flying",
+        "guardian"
+      ],
+      "artFile": "puffin-01.png",
+      "source": null,
+      "biome": "arctic",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        337,
+        221,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "quern-oracle",
+      "name": "Grindstone Oracle",
+      "attackType": "blunt",
+      "professions": [
+        "primalist",
+        "flying"
+      ],
+      "artFile": "quern-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        218,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "quokka-summoner-pebble",
+      "name": "Pebblegrin",
+      "attackType": "magic",
+      "professions": [
+        "summoner"
+      ],
+      "artFile": "quokka-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        119,
+        132,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "raccoon-alchemist-potion",
+      "name": "Potionpaw",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "rogue"
+      ],
+      "artFile": "raccoon-01.png",
+      "source": null,
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        211,
+        124,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "ram-bard-bellows",
+      "name": "Bellows Ram",
+      "attackType": "breath",
+      "professions": [
+        "leader",
+        "tinker"
+      ],
+      "artFile": "ram-02.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        204,
+        42,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "ram-paladin-sun",
+      "name": "Sunhorn Paladin",
+      "attackType": "brawl",
+      "professions": [
+        "leader",
+        "guardian"
+      ],
+      "artFile": "ram-01.png",
+      "source": "ram-paladin-sun.png",
+      "biome": "mountain",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        275,
+        62,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "reef-warden",
+      "name": "Reef Warden",
+      "attackType": "polearm",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "lizardfolk-02.png",
+      "source": "9_f.png",
+      "biome": "lagoon",
+      "hp": 45,
+      "speed": 6,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        352,
+        64,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "reliquary-summoner-seal",
+      "name": "Sealed Reliquary",
+      "attackType": "magic",
+      "professions": [
+        "summoner",
+        "sorcerer"
+      ],
+      "artFile": "reliquary-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        191,
+        -3,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "retort-alchemist",
+      "name": "Bubblehex Retort",
+      "attackType": "breath",
+      "professions": [
+        "tinker",
+        "guardian"
+      ],
+      "artFile": "retort-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        187,
+        148,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "rhinoceros-guard-shadow",
+      "name": "Shadowhorn",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "warrior"
+      ],
+      "artFile": "rhinoceros-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        247,
+        203,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "roadrunner-hunter-whistle",
+      "name": "Whistledash",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "flying"
+      ],
+      "artFile": "roadrunner-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        141,
+        15,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "roc-colossus-thunder",
+      "name": "Thunder Roc",
+      "attackType": "brawl",
+      "professions": [
+        "hunter",
+        "flying"
+      ],
+      "artFile": "roc-01.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        278,
+        95,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "rooster-captain-banner",
+      "name": "Banner Cock",
+      "attackType": "polearm",
+      "professions": [
+        "leader",
+        "warrior"
+      ],
+      "artFile": "rooster-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        133,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sableantelope-captain-pennant",
+      "name": "Pennant Sable",
+      "attackType": "polearm",
+      "professions": [
+        "leader",
+        "warrior"
+      ],
+      "artFile": "sableantelope-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        301,
+        60,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "safe-hexer-vault",
+      "name": "Vaulthex",
+      "attackType": "brawl",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "safe-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        258,
+        58,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sail-hexer-night",
+      "name": "Nightsail",
+      "attackType": "aura",
+      "professions": [
+        "flying",
+        "rogue"
+      ],
+      "artFile": "sail-01.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        284,
+        167,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "salamander-rogue",
+      "name": "Slinkember",
+      "attackType": "brawl",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "salamander-01.png",
+      "source": "salamander-rogue.png",
+      "biome": "ashlands",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        7,
+        367,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "salamander-summoner-flask",
+      "name": "Flaskember",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "summoner"
+      ],
+      "artFile": "salamander-02.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        306,
+        240,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sarcophagus-warden",
+      "name": "Tombwarden",
+      "attackType": "aura",
+      "professions": [
+        "summoner",
+        "guardian"
+      ],
+      "artFile": "sarcophagus-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        250,
+        9,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "scarab-engineer-rune",
+      "name": "Runeshell Scarab",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "hunter"
+      ],
+      "artFile": "scarab-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        375,
+        286,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "scorpion",
+      "name": "Stingtail",
+      "attackType": "whip",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "scorpion-01.png",
+      "source": "scorpion.png",
+      "biome": "desert",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        124,
+        428,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "scorpion-healer-ribbon",
+      "name": "Ribbonsting",
+      "attackType": "whip",
+      "professions": [
+        "tinker",
+        "hunter"
+      ],
+      "artFile": "scorpion-02.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        336,
+        378,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "seal-bard-bottle",
+      "name": "Bottlenose Bard",
+      "attackType": "breath",
+      "professions": [
+        "tinker",
+        "leader"
+      ],
+      "artFile": "seal-01.png",
+      "source": null,
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        292,
+        148,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sealpress-summoner",
+      "name": "Waxseal Press",
+      "attackType": "magic",
+      "professions": [
+        "summoner",
+        "guardian"
+      ],
+      "artFile": "sealpress-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        253,
+        -6,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "secretarybird-hunter-javelin",
+      "name": "Javelin Stalker",
+      "attackType": "polearm",
+      "professions": [
+        "flying",
+        "hunter"
+      ],
+      "artFile": "secretarybird-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        313,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "serpent-titan-crown",
+      "name": "Crowned Serpent",
+      "attackType": "ranged",
+      "professions": [
+        "rogue",
+        "summoner"
+      ],
+      "artFile": "serpent-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        286,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "serval-hunter-crossbow",
+      "name": "Boltear",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "rogue"
+      ],
+      "artFile": "serval-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        321,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sewingbox-engineer-ribbon",
+      "name": "Stitchkit",
+      "attackType": "whip",
+      "professions": [
+        "tinker",
+        "healer"
+      ],
+      "artFile": "sewingbox-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        138,
+        266,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sextant-admiral",
+      "name": "Admiral Starsight",
+      "attackType": "ranged",
+      "professions": [
+        "hunter",
+        "leader"
+      ],
+      "artFile": "sextant-01.png",
+      "source": null,
+      "biome": "coast",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        228,
+        -3,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "shield-vanguard",
+      "name": "Vanguard Aegis",
+      "attackType": "blunt",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "shield-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        175,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "shoebill-captain-pike",
+      "name": "Pikebill",
+      "attackType": "polearm",
+      "professions": [
+        "leader",
+        "hunter"
+      ],
+      "artFile": "shoebill-01.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        216,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "shrew-summoner-totem",
+      "name": "Totemshrew",
+      "attackType": "magic",
+      "professions": [
+        "summoner",
+        "primalist"
+      ],
+      "artFile": "shrew-01.png",
+      "source": null,
+      "biome": "pine_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        218,
+        116,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "siphon-alchemist",
+      "name": "Siphonworm",
+      "attackType": "whip",
+      "professions": [
+        "tinker",
+        "guardian"
+      ],
+      "artFile": "siphon-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        223,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sistrum-summoner",
+      "name": "Rattlechant",
+      "attackType": "aura",
+      "professions": [
+        "leader",
+        "sorcerer"
+      ],
+      "artFile": "sistrum-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        172,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sledgehammer-colossus",
+      "name": "Sledge Colossus",
+      "attackType": "blunt",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "sledgehammer-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        217,
+        33,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sloth-guard-bark",
+      "name": "Barkhold Sloth",
+      "attackType": "brawl",
+      "professions": [
+        "primalist",
+        "healer"
+      ],
+      "artFile": "sloth-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        248,
+        168,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "snail-bard-brewer",
+      "name": "Brewshell",
+      "attackType": "aura",
+      "professions": [
+        "tinker",
+        "leader"
+      ],
+      "artFile": "snail-05.png",
+      "source": null,
+      "biome": "mushroom_grotto",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        292,
+        319,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "snail-cleric-crystal",
+      "name": "Prism Snail",
+      "attackType": "magic",
+      "professions": [
+        "elementalist",
+        "healer"
+      ],
+      "artFile": "snail-01.png",
+      "source": "snail-cleric-crystal.png",
+      "biome": "crystal_caverns",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        331,
+        244,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "spikeback",
+      "name": "Spikeback",
+      "attackType": "brawl",
+      "professions": [
+        "warrior",
+        "guardian"
+      ],
+      "artFile": "spikeback-01.png",
+      "source": "1_f.png",
+      "biome": "desert",
+      "hp": 65,
+      "speed": 4,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        256,
+        355,
+        768,
+        1152
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "spindle-summoner",
+      "name": "Spindlewhirl",
+      "attackType": "whip",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "spindle-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        246,
+        -31,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "stag-glade",
+      "name": "Glade Stag",
+      "attackType": "brawl",
+      "professions": [
+        "primalist"
+      ],
+      "artFile": "deer-01.png",
+      "source": "26_f.png",
+      "biome": "wet_forest",
+      "hp": 40,
+      "speed": 6,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        256,
+        288,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "stag-hunter-shield",
+      "name": "Shieldhorn Stag",
+      "attackType": "polearm",
+      "professions": [
+        "hunter",
+        "guardian"
+      ],
+      "artFile": "stag-01.png",
+      "source": null,
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        333,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "stoat-healer-needle",
+      "name": "Needlewhisk",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "stoat-01.png",
+      "source": null,
+      "biome": "arctic",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        380,
+        230,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sugarglider-scout-sail",
+      "name": "Sailglide",
+      "attackType": "ranged",
+      "professions": [
+        "flying",
+        "sorcerer"
+      ],
+      "artFile": "sugarglider-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        208,
+        148,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sundial-vanguard",
+      "name": "Noonward",
+      "attackType": "polearm",
+      "professions": [
+        "guardian"
+      ],
+      "artFile": "sundial-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        356,
+        222,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "sundrum-hexer",
+      "name": "Sunhex Drum",
+      "attackType": "aura",
+      "professions": [
+        "tinker",
+        "guardian"
+      ],
+      "artFile": "sundrum-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        182,
+        -65,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "tapestry-summoner",
+      "name": "Woven Host",
+      "attackType": "aura",
+      "professions": [
+        "summoner",
+        "guardian"
+      ],
+      "artFile": "tapestry-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        279,
+        -22,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "tarsier-hexer-mask",
+      "name": "Maskeye",
+      "attackType": "brawl",
+      "professions": [
+        "rogue",
+        "sorcerer"
+      ],
+      "artFile": "tarsier-01.png",
+      "source": null,
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        166,
+        120,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "teapot-alchemist-volcano",
+      "name": "Volcano Teapot",
+      "attackType": "breath",
+      "professions": [
+        "tinker",
+        "elementalist"
+      ],
+      "artFile": "teapot-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        198,
+        123,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "termite-engineer-drill",
+      "name": "Drillmite",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "guardian"
+      ],
+      "artFile": "termite-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        333,
+        212,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "termite-summoner-clockwork",
+      "name": "Clockmite",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "summoner"
+      ],
+      "artFile": "termite-02.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        288,
+        107,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "thornfang",
+      "name": "Thornfang",
+      "attackType": "brawl",
+      "professions": [
+        "hunter",
+        "warrior"
+      ],
+      "artFile": "werewolf-01.png",
+      "source": "6_f.png",
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 7,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        344,
+        102,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "thorntreant-primalist-bramble",
+      "name": "Bramblestalker",
+      "attackType": "aura",
+      "professions": [
+        "primalist",
+        "rogue"
+      ],
+      "artFile": "thorntreant-01.png",
+      "source": null,
+      "biome": "wet_forest",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        237,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "toad-bard-bell",
+      "name": "Belltoad",
+      "attackType": "magic",
+      "professions": [
+        "leader",
+        "summoner"
+      ],
+      "artFile": "toad-03.png",
+      "source": null,
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        243,
+        201,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "toad-boulder",
+      "name": "Boulder Toad",
+      "attackType": "blunt",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "toad-01.png",
+      "source": "5_f.png",
+      "biome": "mountain",
+      "hp": 70,
+      "speed": 2,
+      "power": 7,
+      "cost": 9,
+      "frontFrame": [
+        256,
+        304,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "toad-druid",
+      "name": "Druid Toad",
+      "attackType": "breath",
+      "professions": [
+        "primalist",
+        "healer"
+      ],
+      "artFile": "toad-02.png",
+      "source": "toad-druid.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        352,
+        284,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "tortoise-colossus-mountain",
+      "name": "Mountainshell",
+      "attackType": "aura",
+      "professions": [
+        "guardian",
+        "primalist"
+      ],
+      "artFile": "tortoise-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        337,
+        85,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "tortoise-sentinel-obsidian",
+      "name": "Obsidian Tortoise",
+      "attackType": "aura",
+      "professions": [
+        "guardian",
+        "summoner"
+      ],
+      "artFile": "tortoise-02.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        353,
+        293,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "treant-druid-leaf",
+      "name": "Leafwarden",
+      "attackType": "whip",
+      "professions": [
+        "primalist",
+        "healer"
+      ],
+      "artFile": "treant-01.png",
+      "source": null,
+      "biome": "wet_forest",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        230,
+        35,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "treant-titan-ancient",
+      "name": "Elderbough",
+      "attackType": "whip",
+      "professions": [
+        "primalist",
+        "healer"
+      ],
+      "artFile": "treant-02.png",
+      "source": null,
+      "biome": "wet_forest",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        190,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "trowel-crusader",
+      "name": "Trowel Crusader",
+      "attackType": "bladed",
+      "professions": [
+        "guardian",
+        "warrior"
+      ],
+      "artFile": "trowel-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        228,
+        56,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "tuningfork-champion",
+      "name": "Resonant Champion",
+      "attackType": "brawl",
+      "professions": [
+        "leader",
+        "warrior"
+      ],
+      "artFile": "tuningfork-01.png",
+      "source": null,
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        256,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "turbine-skyguard",
+      "name": "Skyturbine",
+      "attackType": "ranged",
+      "professions": [
+        "flying",
+        "warrior"
+      ],
+      "artFile": "turbine-01.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        161,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "turtle-bard-frost",
+      "name": "Frostshell Bard",
+      "attackType": "breath",
+      "professions": [
+        "guardian",
+        "sorcerer"
+      ],
+      "artFile": "turtle-03.png",
+      "source": null,
+      "biome": "arctic",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        384,
+        244,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "turtle-monk",
+      "name": "Shellmonk",
+      "attackType": "blunt",
+      "professions": [
+        "healer",
+        "guardian"
+      ],
+      "artFile": "turtle-02.png",
+      "source": "turtle-monk.png",
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        75,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "umbrella-guardian-fan",
+      "name": "Fanbrella",
+      "attackType": "blunt",
+      "professions": [
+        "flying",
+        "elementalist"
+      ],
+      "artFile": "umbrella-01.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        217,
+        5,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "velvetworm-hexer-rune",
+      "name": "Runevelvet",
+      "attackType": "whip",
+      "professions": [
+        "rogue",
+        "primalist"
+      ],
+      "artFile": "velvetworm-01.png",
+      "source": null,
+      "biome": "wet_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        384,
+        255,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "vinegaroon-alchemist-flask",
+      "name": "Vinegar Flask",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "hunter"
+      ],
+      "artFile": "vinegaroon-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        205,
+        289,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "vise-enforcer",
+      "name": "Vise Enforcer",
+      "attackType": "brawl",
+      "professions": [
+        "guardian",
+        "tinker"
+      ],
+      "artFile": "vise-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        250,
+        185,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "vulture-healer-cinder",
+      "name": "Cinderbeak",
+      "attackType": "aura",
+      "professions": [
+        "flying",
+        "elementalist"
+      ],
+      "artFile": "vulture-01.png",
+      "source": null,
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        173,
+        46,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "walrus-bard-horn",
+      "name": "Tuskhorn Walrus",
+      "attackType": "breath",
+      "professions": [
+        "leader"
+      ],
+      "artFile": "walrus-01.png",
+      "source": null,
+      "biome": "arctic",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        176,
+        136,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "warthog-engineer-cannon",
+      "name": "Cannon Warthog",
+      "attackType": "ranged",
+      "professions": [
+        "tinker"
+      ],
+      "artFile": "warthog-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        314,
+        46,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "wasp-alchemist-potion",
+      "name": "Stingflask",
+      "attackType": "ranged",
+      "professions": [
+        "tinker",
+        "flying"
+      ],
+      "artFile": "wasp-01.png",
+      "source": null,
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        310,
+        143,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "weasel-rogue-dagger",
+      "name": "Daggerwhisk",
+      "attackType": "bladed",
+      "professions": [
+        "rogue",
+        "hunter"
+      ],
+      "artFile": "weasel-01.png",
+      "source": null,
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        351,
+        162,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "weathervane-summoner-arrow",
+      "name": "Gustarrow",
+      "attackType": "ranged",
+      "professions": [
+        "summoner",
+        "flying"
+      ],
+      "artFile": "weathervane-01.png",
+      "source": null,
+      "biome": "storm_cliffs",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        288,
+        37,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "weaverbird-summoner-banner",
+      "name": "Bannerweave",
+      "attackType": "magic",
+      "professions": [
+        "leader",
+        "summoner"
+      ],
+      "artFile": "weaverbird-01.png",
+      "source": null,
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        155,
+        76,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "wisp-hexer-shadow",
+      "name": "Shadowwisp",
+      "attackType": "magic",
+      "professions": [
+        "sorcerer",
+        "rogue"
+      ],
+      "artFile": "wisp-01.png",
+      "source": null,
+      "biome": "ruins",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        289,
+        78,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "wolf-ranger",
+      "name": "Ranger Wolf",
+      "attackType": "brawl",
+      "professions": [
+        "hunter",
+        "leader"
+      ],
+      "artFile": "wolf-01.png",
+      "source": "wolf-ranger.png",
+      "biome": "pine_forest",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        331,
+        152,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "wolverine-warrior-mace",
+      "name": "Macefang Wolverine",
+      "attackType": "blunt",
+      "professions": [
+        "warrior"
+      ],
+      "artFile": "wolverine-01.png",
+      "source": null,
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        277,
+        180,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "wyvern-scout-obsidian",
+      "name": "Obsidian Wyvern",
+      "attackType": "bladed",
+      "professions": [
+        "flying",
+        "sorcerer"
+      ],
+      "artFile": "wyvern-01.png",
+      "source": null,
+      "biome": "ashlands",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        357,
+        150,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    },
+    {
+      "id": "yak-bard-gong",
+      "name": "Gongyak",
+      "attackType": "blunt",
+      "professions": [
+        "leader",
+        "summoner"
+      ],
+      "artFile": "yak-01.png",
+      "source": null,
+      "biome": "mountain",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        244,
+        79,
+        800,
+        1200
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "reviewed",
+      "notes": ""
+    }
+  ]
+}
