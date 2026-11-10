@@ -323,6 +323,14 @@ Branches: Necromancer, Golemancer, Conjurer.
 | Conjurer | Blade Storm | Mod of Animate Blades | Animate Blades |  | As parent | Animate Blades summons two sets of blades. |
 | Conjurer | Animate Mirror | A (summon) | Animate Blades | 6 / 3 | None · D1 | Summons a mirror (HP 8, Speed 5) that answers each hit on it with the attacker's own basic attack. Lasts 30 time units. |
 
+**Summoner rulings (owner decisions 2026-11-10).**
+
+- **Summon turns.** The core plays the turns of golems, blades and undead itself: on its turn the summon attacks the nearest legal enemy (ties by the seeded roll) with Delay 3 and the usual Momentum shifts. With no legal target it takes Skip Turn (the usual skipped-turn cost). Undead use their creature's Attack Type attack. The Bell Golem does not attack: on its turn each adjacent ally (same side, section 8.4 adjacency, the Summoner included) loses one harmful status chosen by the seeded roll, at Delay 3. Clay, Rune and Clockwork golems and the blades use hidden attack skills with the damage stated in the table; Rune Golem's hit Silences whoever took it for 10 time units; each time the Clockwork Golem acts its Summoner's next turn is pulled forward 2.
+- **Raise Undead** takes one KO body (either side) within distance 3 and a free slot on your side chosen by the player: HP 12, Power 4, the creature's Speed and Attack Type attack. **Mass Grave** raises one more body picked by the seeded roll among the remaining KO bodies of either side, into a random free slot (skipped when there is no body or room). **Portal** places every summon of the Summoner, raised undead included, on a random free slot of your side; the player then gives no place. **Lich Form:** healing hurts the Summoner like an undead (it is not otherwise undead), and the Summoner's undead have Power 6.
+- **Corpse Explosion** targets any KO body or an undead of the Summoner and deals 6 (scaled to Power) to every unit next to it (section 8.4 adjacency: same side as the exploding unit, so allies and enemies alike if they stand there). An exploding undead takes the 6 too. **Plague Corpse** Poisons every unit hit for 20 time units. **Desecrate** marks a KO body for 40 time units during which no resurrection (Revive, Bound Resurrect, Life for Life, restoring an undead) works on it; Raise Undead still can.
+- **Golem Heart:** summoning a golem removes the Summoner's earlier golem first; golems have double HP (Clay 50, Rune 36, Clockwork 32, Bell 36).
+- **Animate Blades** (HP 6, Speed 7, 30 time units, projectile 2–3 at any visible enemy); **Blade Storm** summons a second set in a free slot next to the Summoner (random when Portal). **Animate Mirror** takes no turns: whenever it is hit (also by the hit that KOs it) it uses the attacker's own Attack Type attack on the attacker, free, ignoring reach, with the Summoner's Power; what it raises does not trigger further reactions.
+
 ## Primalist (15)
 
 Branches: Totemist, Ritualist, Spiritwalker.

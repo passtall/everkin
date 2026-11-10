@@ -2,17 +2,17 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-10, M1.16i (Tinker) done and tested (668 tests green); next is M1.16j Summoner.
+**Last updated:** 2026-11-10, M1.16j (Summoner) done and tested (683 tests green); next is M1.16k Primalist.
 
 ## Current task
 
-**M1.16** Attack Type attacks and the Hunter, Guardian, Healer, Sorcerer, Elementalist, Warrior, Leader, Rogue (a to h) and Tinker (i) skills are done and tested (668 tests green). **Next: M1.16j Summoner.** Nothing is uncommitted after the Tinker commit.
+**M1.16** Attack Type attacks and the Hunter, Guardian, Healer, Sorcerer, Elementalist, Warrior, Leader, Rogue, Tinker (a to i) and Summoner (j) skills are done and tested (683 tests green). **Next: M1.16k Primalist.** Nothing is uncommitted after the Summoner commit.
 
 ## Next step
 
-M1.16j Summoner (15 skills, skills.md "Summoner" section; read it and game_system §11 first). Turn-taking summons act autonomously (attack the nearest legal enemy with Delay 3, Animate Blades shoot, Bell Golem cleanses an adjacent ally): `BattleDriver.NextTurn` returns every unit whose turn arrives, so the autonomous behaviour of summons must be added (a summon's turn must be played by the core or the driver, not offered to a player). Pattern: `src/Everkin.Core/Skills/TinkerSkills.cs` / `TinkerSkillTests.cs`. Update docs first for each owner decision (ask the owner about open readings with concrete options), run `dotnet test`, commit when green, push. Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
+M1.16k Primalist (15 skills, skills.md "Primalist" section; read it and game_system §10.6 airborne, §12.2 ground effects, shapeshifting rules first). Pattern: `src/Everkin.Core/Skills/SummonerSkills.cs` / `SummonerSkillTests.cs`. Update docs first for each owner decision (ask the owner about open readings with concrete options), run `dotnet test`, commit when green, push. Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
 
-After the Summoner: k Primalist (15), l Flying (13). Then M1.17 (every §20.5 worked check is a passing test: audit the table row by row against the tests), M1.18 (preview queries), then M2.
+After the Primalist: l Flying (13). Then M1.17 (every §20.5 worked check is a passing test: audit the table row by row against the tests), M1.18 (preview queries), then M2.
 
 ## In flight
 
@@ -69,6 +69,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - M1.16g framework additions (owner rulings 2026-11-10 in skills.md): `Actions.CostOf` (Press the Advantage = 0, `MomentumCostModifiers` for All In), `MomentumShiftModifiers` (All In), `RepeatDelayReductions` + `Unit.LastSkillId` (Rhythm; Move/Skip clear it), `BattleState.AddAuraSync` / `RunAuras` (called after every action and event; Song of Haste keeps the `song_haste` status in step with the formation), `FirstInstall(key)` for rules shared by several units (War Drums, Rhythm), `Timeline.SwapDue`, `SkillContext.PullGroupForward` and group moves that return the moved units (Drill), `Bard.Covers` (reach rules). Grand Chorus is checked in `Actions.WhyNot`. Reading to confirm: All In only zeroes Momentum GAINED; a miss still costs 1 (owner asked whether a miss should lose Momentum at all; §6.7 says it does).
 - M1.16h framework additions (owner rulings 2026-11-10 in skills.md): `Skill.CheckUse` (extra whole-use checks, used by Lift a Skill) and `SkillContext.Catalog`; `Unit.LastActiveSkillId` (not cleared by Move/Skip), `MarkedAtKo` (set before KO clears statuses), `SneakReady` (set by `BattleDriver.NextTurn`, cleared by every action) with `Actions.SneakOptions` / `SneakMove`; `BattleState.TargetHitHooks` (Light Fingers); Contract uses the damage bonus hook (minimum damage 1 after bonuses); Net Trap's reaction honours Disarm Trap (the trap is removed as `RemovalCause.Expired`). Readings to confirm: a Marked summon that is KO'd has left the board, so Deathmark Bloom cannot jump from it; Backstab is not an `IsAttack` skill (no damage) but is `melee` (an interceptor takes the Silence and Bleeding).
 - M1.16i framework additions (owner rulings 2026-11-10 in skills.md): `Turrets` (auto events `turret:<id>` owned by the Tinker; `AfterAction` is called at the end of `Actions.Use`, `Move` and `SkipTurn`, queues one shot per turret with `Timeline.AddNow` (due now, the only entry with no Wait) and resolves them in placement order; `BattleDriver.NextTurn` also resolves a popped AutoEvent through `Turrets.HandleAutoEvent`), `StatusApplicationModifiers` (Showman doubles Blind/Stunned it applies), `SkillDelayModifiers` (Showman +2 on `IsAttack` skills). Reading to confirm: a turret exists when the action that places it ends, so it shoots at once right after being placed.
+- M1.16j framework additions (owner rulings 2026-11-10 in skills.md): `BattleDriver.NextTurn(state, catalog)` plays the turns of units with `Unit.AutoSkillId` itself through `AutonomousTurns.Play` (nearest legal enemy, Skip Turn without one; the events stay in the state's buffer); hidden skills `clay_golem_strike`, `rune_golem_strike`, `clockwork_golem_strike`, `blade_shot`, `bell_golem_pulse` live in `SummonerSkills.All` but have no content row; `Skill.PlacesRandomly` (Portal: no place from the player); `Unit.HealingHurts` (undead or Lich Form), `NoReviveUntil` (Desecrate, checked in `HealerSkills.CanBeRevived`), `Answering` (Animate Mirror guard). **Bug fixed on the way:** the `Unit` clone constructor did not copy `LastSkillId`, `LastActiveSkillId`, `MarkedAtKo` and `SneakReady` (fields added in M1.16g/h); `BattleState.Clone()` now copies them. Reading to confirm: a raised undead's autonomous attack needs its creature to exist in the content (a unit without a creature ID has no behaviour); Plague Corpse's Poison lasts the 20 time units the skill states (the status table says 50).
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -106,7 +107,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - [x] M1.16g Leader skills
 - [x] M1.16h Rogue skills
 - [x] M1.16i Tinker skills
-- [ ] M1.16j Summoner skills
+- [x] M1.16j Summoner skills
 - [ ] M1.16k Primalist skills
 - [ ] M1.16l Flying skills
 - [ ] M1.17 All §20.5 worked checks pass
@@ -172,3 +173,4 @@ One line per finished task: date, task, commit.
 2026-11-10 M1.16g Leader skills (see git log)
 2026-11-10 M1.16h Rogue skills (see git log)
 2026-11-10 M1.16i Tinker skills (see git log)
+2026-11-10 M1.16j Summoner skills (see git log)

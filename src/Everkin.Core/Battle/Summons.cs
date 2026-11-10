@@ -210,6 +210,7 @@ public static class Necromancy
         state.Formation.Place(undeadId, unit.OriginalSide, place.Row, place.Index);
 
         unit.IsUndead = false;
+        unit.AutoSkillId = null;
         unit.SummonerId = null;
         unit.MaxHp = unit.OriginalMaxHp ?? unit.MaxHp;
         unit.Speed = unit.OriginalSpeed ?? unit.Speed;

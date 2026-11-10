@@ -42,6 +42,7 @@ public static class HealerSkills
     {
         var u = state.GetUnit(unitId);
         if (u.IsRemoved || !state.Formation.Contains(unitId)) return false;
+        if (u.NoReviveUntil is { } until && state.Timeline.Now < until) return false;       // Desecrate
         return u.IsUndead ? Necromancy.CanRestore(state, unitId) : u.IsKnockedOut;
     }
 

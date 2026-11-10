@@ -15,7 +15,7 @@ public static class BattleDriver
     /// The events of what happened on the way are in the state's event buffer (<see cref="BattleState.DrainEvents"/>).
     /// The caller then plays an action with <see cref="Actions"/>, whose scheduling gives the unit its next turn.
     /// </summary>
-    public static int? NextTurn(BattleState state)
+    public static int? NextTurn(BattleState state, Everkin.Core.Skills.SkillCatalog? catalog = null)
     {
         while (!state.IsOver)
         {
@@ -48,6 +48,11 @@ public static class BattleDriver
                     {
                         state.Emit(new TurnSkipped(unitId));
                         state.Timeline.ScheduleTurnWithWait(unitId, Timeline.SkippedTurnWait(unit.EffectiveSpeed));
+                        break;
+                    }
+                    if (catalog is not null && unit.AutoSkillId is not null)
+                    {
+                        Everkin.Core.Skills.AutonomousTurns.Play(state, catalog, unitId);      // summons and undead play themselves
                         break;
                     }
                     unit.SneakReady = true;

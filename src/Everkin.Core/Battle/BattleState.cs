@@ -79,6 +79,12 @@ public sealed class Unit
         _knownSkills.AddRange(other._knownSkills);
         OriginalSpeed = other.OriginalSpeed;
         OriginalPower = other.OriginalPower;
+        LastSkillId = other.LastSkillId;
+        LastActiveSkillId = other.LastActiveSkillId;
+        MarkedAtKo = other.MarkedAtKo;
+        SneakReady = other.SneakReady;
+        AutoSkillId = other.AutoSkillId;
+        NoReviveUntil = other.NoReviveUntil;
         foreach (var kv in other._statusInstances) _statusInstances[kv.Key] = kv.Value.Clone();
     }
 
@@ -154,6 +160,18 @@ public sealed class Unit
 
     /// <summary>The turn has just started and the unit has not acted yet: Sneak's extra move is allowed.</summary>
     public bool SneakReady { get; set; }
+
+    /// <summary>The Animate Mirror is answering a hit right now (guards against two mirrors answering each other forever).</summary>
+    public bool Answering { get; set; }
+
+    /// <summary>The hidden skill an autonomous summon or undead uses on each of its turns (the core plays it), or null for units a player or AI controls.</summary>
+    public string? AutoSkillId { get; set; }
+
+    /// <summary>Desecrate: no resurrection works on this body before this battle time.</summary>
+    public int? NoReviveUntil { get; set; }
+
+    /// <summary>Healing hurts this unit: an undead, or a Summoner with Lich Form.</summary>
+    public bool HealingHurts => IsUndead || _knownSkills.Contains("lich_form");
 
     /// <summary>Knocked out: HP is 0 (game_system.md section 10.2). A KO body keeps its place in the row.</summary>
     public bool IsKnockedOut => Hp <= 0;
@@ -636,7 +654,7 @@ public sealed class BattleState
             HealCore(sourceUnitId, recipient, amount, allowLink: false);
             return 0;
         }
-        if (target.IsUndead)
+        if (target.HealingHurts)
         {
             // Healing an undead deals that amount as damage instead (section 11.5).
             if (amount > 0) DealDamage(sourceUnitId, targetId, amount);

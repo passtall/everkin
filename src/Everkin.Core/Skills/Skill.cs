@@ -83,6 +83,9 @@ public abstract class Skill
     /// <summary>Extra condition on the target beyond reach and legality (a skill that needs a Marked unit).</summary>
     public virtual bool TargetFilter(BattleState state, int userId, int targetId) => true;
 
+    /// <summary>The skill puts its summon on a random free spot and takes no place from the player (Portal).</summary>
+    public virtual bool PlacesRandomly(BattleState state, int userId) => false;
+
     /// <summary>Extra checks on the whole use, after the target checks (Lift a Skill: the copied skill and its target). Null if fine.</summary>
     public virtual string? CheckUse(BattleState state, SkillCatalog catalog, SkillUse use) => null;
 

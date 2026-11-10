@@ -42,6 +42,7 @@ public static class Actions
                 if (use.Row is not { } row) return "needs a row";
                 return skill.LegalRows(state, use.UserId).Contains(row) ? null : "not a legal row";
             case TargetKind.Placement:
+                if (skill.PlacesRandomly(state, use.UserId)) return skill.PlacementOptions(state, use.UserId).Count > 0 ? null : "no free place";
                 if (use.Placement is not { } place) return "needs a place";
                 return skill.PlacementOptions(state, use.UserId).Contains(place) ? null : "not a legal place";
             case TargetKind.TwoUnits:
@@ -63,6 +64,7 @@ public static class Actions
                 if (who < 0 || who >= state.Units.Count) return "unknown target";
                 if (!Targeting.IsLegalTarget(state, use.UserId, who, ReachOf(state, use.UserId, skill), skill.Options with { Delivery = skill.Delivery })) return "not a legal target";
                 if (!skill.TargetFilter(state, use.UserId, who)) return "not a valid target for this skill";
+                if (skill.PlacesRandomly(state, use.UserId)) return skill.PlacementOptionsFor(state, use.UserId, who).Count > 0 ? null : "no free place";
                 if (use.Placement is not { } where) return "needs a place";
                 return skill.PlacementOptionsFor(state, use.UserId, who).Contains(where) ? null : "not a legal place";
             }
