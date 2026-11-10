@@ -1,6 +1,6 @@
 # Spec: battle UI, left/right board, round portraits, visible ground effects
 
-**Status:** FINAL 2026-11-10. The owner's request (section 0) and his quiz answers (https://claude.ai/artifact/EcyT2Qns9duAcZpDbMmmJq) are in. The adopted rules are also written into [docs/ui_spec.md](docs/ui_spec.md) (Battle screen), which wins if the two ever differ. This file is the work order: what changes and where.
+**Status:** FINAL 2026-11-10. The owner's request (section 0) and the quiz answers (rounds 1 to 4) (https://claude.ai/artifact/EcyT2Qns9duAcZpDbMmmJq) are in. The adopted rules are also written into [docs/ui_spec.md](docs/ui_spec.md) (Battle screen), which wins if the two ever differ. This file is the work order: what changes and where.
 
 ## 0. Owner's request (2026-11-10)
 
@@ -27,14 +27,15 @@ No rule changes. Rows, coordinates, distances, adjacency, interception and groun
 
 ## 2. Round battle portraits
 
-- **Look.** A round portrait of the **whole creature**, three-quarter view facing right, in the same pose and expression as its card, on a **plain disc** (P3: dark plum; a lighter plum when the creature's edge is too dark for it, measured once from the art when it is cleaned and stored with the portrait), inside **one shared dark gold ring**. **Undead** use the undead ring with their creature's portrait; **summons** have their own portraits in a **silver summon ring** (P2). There are no marker badges. Hovering a summon highlights its summoner.
+- **Look.** A round portrait of the **whole creature**, three-quarter view facing right, in the same pose and expression as its card, on a **plain disc** (P3: dark plum; a lighter plum when the creature's edge is too dark for it, measured once from the art when it is cleaned and stored with the portrait), inside **one shared dark gold ring**. **Undead** use the undead ring with their creature's portrait; **summons** have their own portraits in a **silver summon ring** (P2); a raised undead, though a summon, gets the undead ring (X2). There are no marker badges. Hovering a summon highlights its summoner.
 - **On the portrait: HP only** (A10, P4). A small round **HP badge** at the bottom of the ring with the current HP number (at least 22 px at base). No HP arc or bar. No Power, Speed or Cost, **no status icons**, no side colour (side = position and facing). Statuses and changed values are seen on the full card in the inspection panel (L3, A9, A10).
 - **Stealth** (S1): semi-transparent with a faint shimmer; it turns solid again with a short flash when stealth breaks.
 - **Airborne** (S2): the portrait floats a little higher and gently bobs, with a soft updraft (faint rising air wisps) under it; ground effects under it stay visible.
 - **Target highlights** (S3): a glow on the ring in today's colours: gold legal, white selected, light hover; illegal targets are dimmed.
-- **Hover** shows name and classes as before; right-click, long-press or I opens the inspection panel with the full cards.
+- **Hover and details** (X1): hovering adds no tooltip (while aiming it drives the target preview, as now). Name, classes and every detail stay on the full card front and back in the inspection panel, as now; right-click, long-press or I opens it.
 - **KO** (L4): the portrait cracks (the same thin light crack line), shakes once, turns grey with its ring dimmed and sinks slightly; it stays as a body. No flip, since a portrait has no back. Revive restores colour and removes the crack.
 - **Hit:** the portrait shakes briefly, as cards did.
+- **File size** (X3): portraits are 1024 × 1024 on every platform for now; all images are scaled for phones before release (M10.3).
 - **Art:** prompts, geometry and file layout in [docs/assets/battle-portraits.md](docs/assets/battle-portraits.md): 319 creature portraits and 14 summon portraits (1024 × 1024, creature inside a centred 860 px circle), `portrait-ring.png`, `portrait-ring-undead.png` and `portrait-ring-summon.png`. **The portraits come first** (W2: no stand-in): the new board is built once the art exists. **Who makes them** (W1): the implementing session, on the owner's PC, extends `tools/art/generate_creatures.py` for portraits and rings (it needs the image API key there, as for the card art), makes 4 test portraits of different shapes for the owner to check, then the batch, and shows the owner a contact sheet before cleaning.
 - **Active unit** (P1): a steady gold glow behind the disc and the portrait shown 10% larger; legal targets glow on the ring, so both can show at once.
 - **Inspection** (P5): the full card pair grows out of the portrait toward the screen centre.
