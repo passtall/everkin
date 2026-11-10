@@ -6,7 +6,7 @@ Everything the game loads. Godot sees this folder as `res://assets/`. Originals 
 |---|---|---|
 | `creatures/` | One image per creature, named by the Art file column of `docs/creature-classes.md`. Crops are in that file's Card details table. See its README. | 1024 × 1536 RGBA PNG, ground line y 1456 |
 | `summons/` | 14 summon, construct, totem and trap cards (skills.md): `clay-golem`, `rune-golem`, `clockwork-golem`, `bell-golem`, `animated-blades`, `animated-mirror`, `bolt-turret`, `flame-turret`, `barricade`, `healing-totem`, `spirit-link-totem`, `totem-of-return`, `net-trap`, `hunter-decoy`. Undead reuse the creature's art. | 1024 × 1536 RGBA PNG, ground line y 1456 |
-| `frames/` | Card frames: one per biome (`<biome_id>.png`) plus `undead.png`. Geometry in `backgrounds/README.md`. Battle portrait rings `portrait-ring.png` and `portrait-ring-undead.png` (not made yet; geometry in docs/assets/battle-portraits.md). | 1024 × 1536 RGBA PNG; rings 1024 × 1024 RGBA PNG |
+| `frames/` | Card frames: one per biome (`<biome_id>.png`) plus `undead.png`. Geometry in `backgrounds/README.md`. Battle portrait rings `portrait-ring.png`, `portrait-ring-undead.png` and `portrait-ring-summon.png` (not made yet; geometry in docs/assets/battle-portraits.md). | 1024 × 1536 RGBA PNG; rings 1024 × 1024 RGBA PNG |
 | `portraits/` | Round battle portraits facing right (not made yet, 2026-11-10): `<art file>.png` per creature, `summons/<id>.png`. Prompt and geometry: docs/assets/battle-portraits.md. | 1024 × 1024 RGBA PNG, creature inside a centred 860 px circle |
 | `backgrounds/card/` | One card background per biome. | 1024 × 1536 WebP |
 | `backgrounds/battle/` | One photo-real night battle background per biome. | 1672 × 941 PNG, scaled up to 1920 × 1080 on import |

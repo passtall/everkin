@@ -2,7 +2,7 @@
 
 Written 2026-11-10 from the owner's answers on the battle UI quiz (https://claude.ai/artifact/EcyT2Qns9duAcZpDbMmmJq; log `battle-ui-decisions-2.md` in the project files). Where the portraits are used: [ui_spec.md](../ui_spec.md), Battle screen, Battle portraits; the change spec is [spec.md](../../spec.md).
 
-Every creature (319 in `assets/creatures/`) and every summon card (14 in `assets/summons/`) gets one round battle portrait, facing **right**. The enemy side shows the same image mirrored, so there is no left-facing version. Undead reuse their creature's portrait inside the undead ring. The card art is not changed; portraits are new, separate files.
+Every creature (319 in `assets/creatures/`) and every summon card (14 in `assets/summons/`) gets one round battle portrait, facing **right**. The enemy side shows the same image mirrored, so there is no left-facing version. Undead reuse their creature's portrait inside the undead ring; summons sit in a silver summon ring. The card art is not changed; portraits are new, separate files.
 
 ## What gets made
 
@@ -12,8 +12,9 @@ Every creature (319 in `assets/creatures/`) and every summon card (14 in `assets
 | Summon portrait | 14 | `assets/summons/<id>.png` attached | `source-art/portraits/summons/<id>.png`, `assets/portraits/summons/<id>.png` |
 | Ring | 1 | — | `assets/frames/portrait-ring.png` |
 | Undead ring | 1 | `assets/frames/undead.png` attached as style reference | `assets/frames/portrait-ring-undead.png` |
+| Summon ring | 1 | `assets/frames/portrait-ring.png` attached | `assets/frames/portrait-ring-summon.png` |
 
-Run one request per image. Test with three or four creatures of different shapes (a tall one, a wide one, a tiny one, a flier) before the batch. `tools/art/generate_creatures.py` can be extended for this (reference image = the card art, size 1024 × 1024).
+Run one request per image. Test with three or four creatures of different shapes (a tall one, a wide one, a tiny one, a flier) before the batch. An implementing session on the owner's PC extends `tools/art/generate_creatures.py` for this (reference image = the card art, size 1024 × 1024; needs the image API key there), makes 4 test portraits for the owner to check, then runs the batch and shows a contact sheet before cleaning (owner, 2026-11-10). The new board is built only once the portraits exist; there is no stand-in.
 
 ## Geometry (shared by portraits and rings)
 
@@ -61,8 +62,7 @@ FORMAT
 
 LAYOUT
 - A perfect circle centred in the image. Outer diameter about 1000 px; the band is about 70 px wide, so the open window is a clean circle about 860 px across with nothing reaching into it.
-- A thin, dark, recessed groove runs all the way around the face of the band, centred on it, about 18 px wide. Keep it plain and dark: the game draws a coloured health bar inside it.
-- At the bottom centre, one round empty gem socket about 200 px across overlaps the band. It is a ring with a dark, flat, empty centre, because the game prints a number there.
+- At the bottom centre, one small round empty gem socket about 200 px across overlaps the band (the HP badge). It is a ring with a dark, flat, empty centre, because the game prints a number there.
 
 STYLE
 - The same dark antique gold as the attached card frames, polished premium fantasy look, softly lit from the top, with a subtle inner bevel. No biome motif: one plain shared ring with only a little simple ornament on the band.
@@ -70,10 +70,12 @@ STYLE
 - Bold, simple shapes that read at 130 px across. No fine filigree, noise or thin scratchy detail. Dark rather than bright.
 ```
 
+**Summon ring** (`portrait-ring-summon.png`): attach `portrait-ring.png` and ask for exactly the same ring (same shape, socket and ornament) in cool polished silver instead of gold, with a faint pale-blue shimmer, so a summon reads at a glance next to the gold rings.
+
 **Undead ring** (`portrait-ring-undead.png`): attach `assets/frames/undead.png` instead and use the same prompt with the STYLE block's first two lines replaced by: "Instead of warm antique gold, the metal is tarnished, cold pewter-grey gold, matching the attached undead card frame, with a faint sickly green glow in the cracks and the socket rim. A few small carved bones on the band and a little skull at the top centre; eerie but storybook gentle, no gore."
 
 ## Cleaning and checks
 
 - Clean like the card art (`tools/art/clean_creatures.py` as a model): real alpha, no fringe, the creature's extent inside the 860 px circle, centred. Do not apply the card's ground line; portraits are centred.
 - Check every portrait against its card at 130 px: same creature, faces right, profession prop still visible.
-- **Disc colour.** The game draws a plain dark plum disc (the UI's panel colour) behind each portrait. A creature that is too dark to stand out on it gets a lighter plain disc colour of its own; the list goes in `assets/portraits/README.md` with the cleaning step (owner's note: plain colour with good contrast).
+- **Disc colour.** The game draws a plain dark plum disc (the UI's panel colour) behind each portrait. The cleaning step measures each portrait's edge brightness once and marks those too dark for it; they get a lighter plum disc. The result is stored with the portraits (for example `assets/portraits/discs.json`), not chosen by hand.

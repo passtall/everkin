@@ -17,6 +17,8 @@ No rule changes. Rows, coordinates, distances, adjacency, interception and groun
 - **Facing.** Player portraits face right; enemy portraits are the same image mirrored, facing left.
 - **Portrait size** (L2). All portraits on the board share one size: the largest that lets the fullest column fit the board height with 10 px gaps, capped at about **200 px** (both-sides view) and **300 px** (one-side view) at the 1920 × 1080 base. Six in a column give about 136 px (above the 110 px touch minimum). When the fullest column changes, all portraits resize smoothly (instantly with reduced motion).
 - **View switcher.** Unchanged in function: the view button top right switches between both sides and one side; the automatic choice below about 7 inches and the remembered manual choice stay. In the one-side view the side button shows a **left/right arrow**, and the flyover scrolls **horizontally** across the battle line (a cut with reduced motion). A skill that targets the enemy still switches over by itself and back after the action.
+- **Lines** (B1): faint vertical lines of light between the columns (rows) of each side, and a slightly thicker one down the battle line.
+- **Battle start** (B3): your team slides in from the left edge, the enemy from the right.
 - **Momentum meter** (L1): unchanged, a vertical bar at the right edge, about 70% of the board height, player's end at the bottom.
 - **Timeline** stays a vertical list on the left; its entries, the battle log lines and the target preview use the round portrait (L6).
 - **Team editor** (L5): unchanged, rows of cards.
@@ -25,15 +27,17 @@ No rule changes. Rows, coordinates, distances, adjacency, interception and groun
 
 ## 2. Round battle portraits
 
-- **Look.** A round portrait of the **whole creature**, three-quarter view facing right, in the same pose and expression as its card, on a **plain disc** that contrasts with it (dark plum by default; a lighter colour for creatures too dark for it), inside **one shared dark gold ring**. Undead use the undead ring with their creature's portrait. Summons have their own portraits and keep the summon marker; hovering a summon highlights its summoner.
-- **On the portrait: HP only.** An HP arc in the ring's groove and the HP number in the ring's bottom socket (at least 22 px at base). No Power, Speed or Cost, **no status icons**, no side colour (side = position and facing). Statuses and changed values are seen on the full card in the inspection panel (L3, A9, A10).
+- **Look.** A round portrait of the **whole creature**, three-quarter view facing right, in the same pose and expression as its card, on a **plain disc** (P3: dark plum; a lighter plum when the creature's edge is too dark for it, measured once from the art when it is cleaned and stored with the portrait), inside **one shared dark gold ring**. **Undead** use the undead ring with their creature's portrait; **summons** have their own portraits in a **silver summon ring** (P2). There are no marker badges. Hovering a summon highlights its summoner.
+- **On the portrait: HP only** (A10, P4). A small round **HP badge** at the bottom of the ring with the current HP number (at least 22 px at base). No HP arc or bar. No Power, Speed or Cost, **no status icons**, no side colour (side = position and facing). Statuses and changed values are seen on the full card in the inspection panel (L3, A9, A10).
 - **Stealth** (S1): semi-transparent with a faint shimmer; it turns solid again with a short flash when stealth breaks.
 - **Airborne** (S2): the portrait floats a little higher and gently bobs, with a soft updraft (faint rising air wisps) under it; ground effects under it stay visible.
 - **Target highlights** (S3): a glow on the ring in today's colours: gold legal, white selected, light hover; illegal targets are dimmed.
 - **Hover** shows name and classes as before; right-click, long-press or I opens the inspection panel with the full cards.
 - **KO** (L4): the portrait cracks (the same thin light crack line), shakes once, turns grey with its ring dimmed and sinks slightly; it stays as a body. No flip, since a portrait has no back. Revive restores colour and removes the crack.
 - **Hit:** the portrait shakes briefly, as cards did.
-- **Art:** prompts, geometry and file layout in [docs/assets/battle-portraits.md](docs/assets/battle-portraits.md): 319 creature portraits and 14 summon portraits (1024 × 1024, creature inside a centred 860 px circle), `portrait-ring.png` and `portrait-ring-undead.png`. Until the art exists, the game may show the card art masked into the circle as a stand-in (mirrored where the card faces left), so the layout work does not wait for art.
+- **Art:** prompts, geometry and file layout in [docs/assets/battle-portraits.md](docs/assets/battle-portraits.md): 319 creature portraits and 14 summon portraits (1024 × 1024, creature inside a centred 860 px circle), `portrait-ring.png`, `portrait-ring-undead.png` and `portrait-ring-summon.png`. **The portraits come first** (W2: no stand-in): the new board is built once the art exists. **Who makes them** (W1): the implementing session, on the owner's PC, extends `tools/art/generate_creatures.py` for portraits and rings (it needs the image API key there, as for the card art), makes 4 test portraits of different shapes for the owner to check, then the batch, and shows the owner a contact sheet before cleaning.
+- **Active unit** (P1): a steady gold glow behind the disc and the portrait shown 10% larger; legal targets glow on the ring, so both can show at once.
+- **Inspection** (P5): the full card pair grows out of the portrait toward the screen centre.
 
 ## 3. Ground effects as visual effects
 
@@ -44,6 +48,7 @@ No rule changes. Rows, coordinates, distances, adjacency, interception and groun
 - **Drawing** (G1, G3). Godot shaders (`ShaderMaterial`) for the surfaces plus a few `CPUParticles2D` (Compatibility renderer) that rise in front of the portrait's lower edge. No new art.
 - **Looks** (G13), tuned during implementation: burning ground a flickering orange pool with rising embers; ice pale cracked frost with a moving glint; water a dark blue pool with slow ripples; steam white mist puffs rising; poison ground a green pool with bubbles and drifting spores.
 - **Placing** (G7): the pool spreads out from where the skill lands, about 0.4 s. **Ending:** it fades out (short).
+- **Two effects on one spot** (B2), which the rules allow (e.g. poison ground on ice or water): both pools are drawn on top of each other, half transparent, with both sets of particles.
 - **Combos** (G8) have their own short transitions: water freezes over into ice; steam bursts up and leaves water; poison flashes on explosion, then fire spreads.
 - **Damage** (G9): only the normal floating number.
 - **Not shown** (G4, G5, G6, G11): no effect icon, no hover or tap information, no fading as the time runs out, no aiming preview. The timeline's end marker shows when an effect ends.
@@ -54,10 +59,11 @@ No rule changes. Rows, coordinates, distances, adjacency, interception and groun
 | Area | Change |
 |---|---|
 | scripts/App/BattleBoard.cs | `RowY` becomes a column X; coordinates map to Y; portrait sizing per section 1; one-side view and flyover horizontal; side button arrows left/right; gap markers and previews in the new mapping; new ground layer driven by `GroundEffectPlaced` and the effects' end and combo events (add core events if any are missing) |
-| scripts/App/CardView.cs (or a new PortraitView) | Round portrait: disc, masked art, mirroring, ring, HP arc and number, summon marker, KO crack and grey, highlights for legal / selected / hover / illegal targets on the ring |
+| scripts/App/CardView.cs (or a new PortraitView) | Round portrait: disc, masked art, mirroring, ring (normal / undead / summon), HP badge, KO crack and grey, stealth, airborne, active-unit glow, target highlights on the ring |
 | Timeline, battle log, target preview | Use the portrait |
 | PlayScreen / local two-player (M6.1) | Acting side on the left |
-| assets/ | `portraits/`, the two rings, shaders and particle materials for ground effects; stand-in until the art exists |
+| assets/ | `portraits/`, the three rings, shaders and particle materials for ground effects |
+| docs/implementation-plan.md | New task **M5.5** (W3), done before M6.1: portraits and rings first, then the board |
 | docs | Done: ui_spec.md, assets/README.md, docs/assets/README.md, docs/assets/battle-portraits.md, docs/mockups/README.md |
 
 ## 5. Checks

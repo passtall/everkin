@@ -6,13 +6,13 @@ The implementation state, kept current by every Claude Code session ([docs/imple
 
 ## Current task
 
-**M5 is done** (M5.1 profile and saving, M5.2 world and chapter maps, M5.3 encounters, rewards and tutorial, M5.4 chapter 1). The campaign is playable from the tutorial to the Chapter 1 boss and on to chapters 2 to 4 and the challenge encounters, because all encounters come from `docs/campaign.md`. The owner asked to continue until the end of M5; the next milestone is **M6.1 local two-player**. M2.3 (the 10,000-battle run) is still running; see Next step 1.
+**M5 is done** (M5.1 profile and saving, M5.2 world and chapter maps, M5.3 encounters, rewards and tutorial, M5.4 chapter 1). The campaign is playable from the tutorial to the Chapter 1 boss and on to chapters 2 to 4 and the challenge encounters, because all encounters come from `docs/campaign.md`. The owner asked to continue until the end of M5; the next task is **M5.5 battle UI left/right** (added by the owner 2026-11-10, spec.md), then M6.1 local two-player. M2.3 (the 10,000-battle run) is still running; see Next step 1.
 
 ## Next step
 
 1. **M2.3, the owner reviews the first run** (unchanged): see the earlier text in this list: run `runs/20261110-190808-harness`, started 2026-11-10 19:08, about 12 hours; resume with `dotnet src/Everkin.Runner/bin/Release/net10.0/Everkin.Runner.dll run --resume 20261110-190808-harness --level harness --battles 10000`, or `report --run <id>` for what exists. Summarize `report.md` and ask the owner to review it. Ask question 16 first (the run level).
 2. **Play-test chapter 1 with the owner** (nobody has played the campaign by hand yet; I checked the screens by screenshots and played battles with the AI standing in for the player). The AI-played tutorial and 1-1 battles were lost, because the AI is weak on a 2 to 6 creature team and the enemy side spams constructs (see question 17). If tutorial and chapter 1 are too hard for a person, the numbers to tune are the team formations and `ai_settings.json` (`summonPercent` of Easy was lowered from 50 to 20 on 2026-11-10 for this; the adopted 50 still stands for Normal and Hard).
-3. **M6.1 local two-player** (game_system §2.4): hot-seat battles with the board rotated 180 degrees for player 2; player 1 picks a saved team, then player 2; both teams side by side, then Fight. The battle screen is `PlayScreen` (player side A vs AI): a second human needs a `Bottom` side switch in `BattleBoard` (`Setup(state, bottom)` exists) and a controller for side B that reuses `AskPlayer`.
+3. **M5.5 battle UI left/right** (owner 2026-11-10, before M6.1): read spec.md and docs/assets/battle-portraits.md. Portraits and rings first (generate, owner checks 4 tests and a contact sheet), then the board. **M6.1 local two-player** (game_system §2.4) follows: hot-seat battles with the board flipped so the acting player's side is on the left; player 1 picks a saved team, then player 2; both teams side by side, then Fight. The battle screen is `PlayScreen` (player side A vs AI): a second human needs a `Bottom` side switch in `BattleBoard` (`Setup(state, bottom)` exists) and a controller for side B that reuses `AskPlayer`.
 
 ## In flight
 
@@ -139,6 +139,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - [x] M5.2 World and chapter maps
 - [x] M5.3 Encounters, rewards, tutorial
 - [x] M5.4 Chapter 1
+- [ ] M5.5 Battle UI left/right, round portraits, visible ground effects
 - [ ] M6.1 Local two-player
 - [ ] M7.1 Chapters 2 to 4
 - [ ] M7.2 Achievements

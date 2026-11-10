@@ -111,9 +111,11 @@ Each task names the doc sections it implements. Read those sections before codin
 - **M5.3** Encounters and rewards from campaign.md as content; tutorial with the automatic tutorial team (game_system §2.2, campaign.md).
 - **M5.4** Chapter 1 playable start to boss.
 
+- **M5.5** Battle UI left/right with round portraits and visible ground effects ([spec.md](../spec.md), ui_spec battle screen). First the art: extend `tools/art/generate_creatures.py` for the portraits and three rings (docs/assets/battle-portraits.md), 4 test portraits for the owner, the batch, a contact sheet for the owner, cleaning; then the board, portraits, ground layer, timeline, log and preview.
+
 ### M6 Local two-player
 
-- **M6.1** Hot-seat battles with the board rotated 180° for player 2 (game_system §2.4 and the 2P rules).
+- **M6.1** Hot-seat battles with the board flipped so the acting player's side is on the left (game_system §2.4 and the 2P rules).
 
 ### M7 Rest of the campaign
 
