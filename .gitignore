@@ -18,3 +18,5 @@ build/
 
 # AI-versus-AI runs (large; the report summary goes into PROGRESS.md)
 runs/
+run-m23.log
+shots/
