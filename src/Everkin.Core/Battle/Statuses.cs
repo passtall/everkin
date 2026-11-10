@@ -80,6 +80,9 @@ public static class StatusIds
     /// <summary>Single Combat: the unit and its duel partner (the magnitude is the partner's ID) can be targeted only by each other.</summary>
     public const string Duel = "duel";
 
+    /// <summary>Linked Fates / Shared Fate: when this unit loses HP, the unit whose ID is the magnitude loses half as much.</summary>
+    public const string FateLink = "fate_link";
+
     /// <summary>Press the Advantage: the unit's next skill costs no Momentum.</summary>
     public const string FreeMomentum = "free_momentum";
 

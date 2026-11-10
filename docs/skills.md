@@ -356,6 +356,13 @@ Branches: Totemist, Ritualist, Spiritwalker.
 | Spiritwalker | Linked Fates | A | Forced Step | 5 / 2 | Direct · D3 | Soul swap. For 20 time units, one unit also takes half of all damage another unit takes. |
 | Spiritwalker | Shared Fate | A | Linked Fates | 6 / 3 | Direct · D3 | Soul swap. For 20 time units, two units each also take half of the damage the other takes. |
 
+**Primalist rulings (owner decisions 2026-11-10).**
+
+- **Totems** are constructs placed in a free gap next to the Primalist (as turrets). **Healing Totem:** every 10 time units after it appears (a repeating auto event owned by the totem, so it goes on if the Primalist is KO'd) each living ally of the totem in its row, the totem included, is healed 2 (scaled to the Primalist's Power). **Spirit Link Totem:** when an ally in its row is damaged (any damage), the total is split evenly among the living allies in the row other than the totem, rounded down for the others, the remainder staying with the hurt unit; each share meets that unit's Ward and Dampen but is not a new hit. **Totem of Return:** the first time an ally in its row would drop to 0 HP it keeps 1 HP instead and the totem breaks (it is removed, not KO'd). **Great Totem:** the Primalist keeps one totem (a new one replaces the old), totem HP is tripled, and "its row" also covers the rows directly in front of and behind it. **Totem Ritual** refills every totem of the Primalist.
+- **Rain Dance** puts water for 20 time units (40 with Long Rain) on the spot of every unit in the chosen row of either side. **Healing Rain** heals once, when Rain Dance is cast: every ally of the Primalist standing on a spot that has water is healed 4. **Hoarfrost** puts ice for 20 time units on a unit's spot. **Rite of Mists:** for 20 time units, `projectile` hits (turret and blade shots included) from units standing on a water spot deal half damage (rounded down, minimum 1); using it again restarts the 20.
+- **Forced Step** moves any unit to a free gap of your choice in another row of its own side (a forced move: Immobilized units and Hold Position stop it). **Puppet Soul:** you pick a unit and one unit next to it (section 8.4 adjacency); the first unit hits the second with its own Attack Type attack, free, ignoring reach, with its own Power. **Life Swap:** two living units each get the other's share of maximum HP (HP × own maximum ÷ other maximum, rounded down, at least 1).
+- **Linked Fates / Shared Fate:** whenever the source (both units, for Shared Fate) loses HP to any damage, the other loses half of that loss, rounded down, as unreducible damage that is not a hit (no Momentum, no reactions) and never causes another echo. A KO'd unit ends the link.
+
 ## Flying (13)
 
 Branches: Mobility, Skywatch, Assault.

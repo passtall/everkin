@@ -112,3 +112,9 @@ public delegate StatusApplication StatusApplicationModifier(BattleState state, S
 
 /// <summary>Extra Delay for the skills a unit uses (Showman: +2 on skills that deal damage). Returns the extra Delay.</summary>
 public delegate int SkillDelayModifier(BattleState state, int userId, bool isAttack);
+
+/// <summary>The other units that share the damage a unit takes (Spirit Link Totem). Empty for none.</summary>
+public delegate IReadOnlyList<int> DamageSharing(BattleState state, int targetId);
+
+/// <summary>A unit that would drop to 0 HP is saved by a totem (Totem of Return): returns the totem that breaks, or null.</summary>
+public delegate int? LethalGuard(BattleState state, int targetId);

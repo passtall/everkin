@@ -266,6 +266,11 @@ public sealed class SkillContext
         var bonus = State.DamageBonuses.Sum(h => h(State, UserId, spec.TargetId));
         if (bonus != 0) rolled = Math.Max(1, rolled * (100 + bonus) / 100);                  // Reckless Swing, Last Stand: the bonuses add up
 
+        // Rite of Mists: projectile hits from units standing on water deal half damage.
+        if (_skill.Delivery == Battle.Delivery.Projectile && State.MistsUntil is { } mists && State.Timeline.Now < mists
+            && State.Ground.Has(State.Ground.SpotOf(UserId), GroundKind.Water) && State.Ground.Affected(State.Ground.SpotOf(UserId)).Contains(UserId))
+            rolled = Math.Max(1, rolled / 2);
+
         // Sidestep: the next attack on the unit misses and the status is spent.
         if (_skill.IsAttack && Statuses.Has(target, StatusIds.Sidestep))
         {

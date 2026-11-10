@@ -269,6 +269,8 @@ public sealed class BattleState
     private readonly List<AttackBan> _attackBans = new();
     private readonly List<StatusRemovedHook> _statusRemovedHooks = new();
     private readonly List<DamageModifier> _damageModifiers = new();
+    private readonly List<DamageSharing> _damageSharings = new();
+    private readonly List<LethalGuard> _lethalGuards = new();
     private readonly List<StatusApplicationModifier> _statusApplicationModifiers = new();
     private readonly List<SkillDelayModifier> _skillDelayModifiers = new();
     private readonly List<TargetHitHook> _targetHitHooks = new();
@@ -321,6 +323,9 @@ public sealed class BattleState
         _attackBans.AddRange(other._attackBans);
         _statusRemovedHooks.AddRange(other._statusRemovedHooks);
         _damageModifiers.AddRange(other._damageModifiers);
+        _damageSharings.AddRange(other._damageSharings);
+        _lethalGuards.AddRange(other._lethalGuards);
+        MistsUntil = other.MistsUntil;
         _statusApplicationModifiers.AddRange(other._statusApplicationModifiers);
         _skillDelayModifiers.AddRange(other._skillDelayModifiers);
         _targetHitHooks.AddRange(other._targetHitHooks);
@@ -451,6 +456,15 @@ public sealed class BattleState
 
     public IReadOnlyList<SkillDelayModifier> SkillDelayModifiers => _skillDelayModifiers;
     public void AddSkillDelayModifier(SkillDelayModifier hook) => _skillDelayModifiers.Add(hook);
+
+    public IReadOnlyList<DamageSharing> DamageSharings => _damageSharings;
+    public void AddDamageSharing(DamageSharing hook) => _damageSharings.Add(hook);
+
+    public IReadOnlyList<LethalGuard> LethalGuards => _lethalGuards;
+    public void AddLethalGuard(LethalGuard hook) => _lethalGuards.Add(hook);
+
+    /// <summary>Rite of Mists: until this battle time, projectile hits from units standing on water deal half damage.</summary>
+    public int? MistsUntil { get; set; }
 
     // Leader hooks (docs/skills.md Leader rulings)
     public IReadOnlyList<MomentumShiftModifier> MomentumShiftModifiers => _momentumShiftModifiers;
@@ -598,7 +612,14 @@ public sealed class BattleState
     /// Deals already-rolled, already-scaled damage to a unit: Ward first, then Dampen, then HP (section 5.2). The unit must
     /// not be KO. Returns what happened, and reports it. Momentum, KO and reactions are the caller's next steps.
     /// </summary>
-    public DamageResult DealDamage(int? sourceUnitId, int targetId, int amount, DamageSource source = DamageSource.Hit)
+    public DamageResult DealDamage(int? sourceUnitId, int targetId, int amount, DamageSource source = DamageSource.Hit) =>
+        DealDamageCore(sourceUnitId, targetId, amount, source, secondary: false);
+
+    /// <summary>
+    /// The damage rules. A <paramref name="secondary"/> blow is a share or an echo of damage already being dealt (Spirit Link, Linked
+    /// Fates): it meets the target's shields and floors but is not changed again, shared again or echoed again.
+    /// </summary>
+    private DamageResult DealDamageCore(int? sourceUnitId, int targetId, int amount, DamageSource source, bool secondary)
     {
         var target = GetUnit(targetId);
         if (target.IsKnockedOut) throw new InvalidOperationException($"Unit {targetId} is KO and cannot take damage.");
@@ -609,14 +630,30 @@ public sealed class BattleState
             Emit(new DamageDealt(sourceUnitId, targetId, source, none, target.Hp));
             return none;
         }
-        if (source == DamageSource.Hit && Statuses.Has(target, StatusIds.GlassBody))
+        if (!secondary && source == DamageSource.Hit && Statuses.Has(target, StatusIds.GlassBody))
         {
             // Glass Body: the next hit on the unit deals double damage, then the status is used up.
             amount *= 2;
             Statuses.Remove(this, targetId, StatusIds.GlassBody, StatusEndCause.Consumed);
         }
-        if (source == DamageSource.Hit)
+        if (!secondary && source == DamageSource.Hit)
             foreach (var modifier in _damageModifiers) amount = modifier(this, sourceUnitId, targetId, amount);
+        if (!secondary && _damageSharings.Count > 0)
+        {
+            // Spirit Link Totem: the damage is split evenly among the allies in the row; the hurt unit keeps the remainder.
+            foreach (var sharing in _damageSharings)
+            {
+                var others = sharing(this, targetId).Where(id => id != targetId && !GetUnit(id).IsKnockedOut).ToList();
+                if (others.Count == 0) continue;
+                var share = amount / (others.Count + 1);
+                if (share > 0)
+                {
+                    foreach (var other in others) DealDamageCore(sourceUnitId, other, share, source, secondary: true);
+                    amount -= share * others.Count;
+                }
+                break;
+            }
+        }
         var result = DamageMath.Resolve(amount, target.Ward, target.Dampen, source);
         if (source == DamageSource.Periodic && _damageFloors.Count > 0)
         {
@@ -624,6 +661,17 @@ public sealed class BattleState
             var floor = _damageFloors.Max(h => h(this, targetId));
             if (floor > 0 && target.Hp - result.HpLost < floor)
                 result = new DamageResult(result.Incoming, result.AbsorbedByWard, Math.Max(0, target.Hp - floor), result.WardLeft);
+        }
+        if (result.HpLost >= target.Hp && _lethalGuards.Count > 0)
+        {
+            // Totem of Return: the first ally that would be KO keeps 1 HP and the totem breaks.
+            foreach (var guard in _lethalGuards)
+                if (guard(this, targetId) is { } totem)
+                {
+                    result = new DamageResult(result.Incoming, result.AbsorbedByWard, Math.Max(0, target.Hp - 1), result.WardLeft);
+                    Summons.Remove(this, totem, RemovalCause.Expired);
+                    break;
+                }
         }
         target.Ward = result.WardLeft;
         target.Hp = Math.Max(0, target.Hp - result.HpLost);
@@ -634,6 +682,13 @@ public sealed class BattleState
         }
         Emit(new DamageDealt(sourceUnitId, targetId, source, result, target.Hp));
         if (result.AbsorbedByWard > 0 && target.Ward == 0) Statuses.Remove(this, targetId, StatusIds.Ward, StatusEndCause.Broken);
+
+        // Linked Fates / Shared Fate: the linked unit loses half of the HP this unit lost, unreducibly, and that never echoes again.
+        if (!secondary && result.HpLost >= 2 && Statuses.Get(target, StatusIds.FateLink) is { } link)
+        {
+            var other = GetUnit(link.Magnitude);
+            if (!other.IsKnockedOut && !other.IsRemoved) DealDamageCore(sourceUnitId, other.Id, result.HpLost / 2, DamageSource.Unreducible, secondary: true);
+        }
         return result;
     }
 

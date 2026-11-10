@@ -97,6 +97,9 @@ public enum StatusEndCause
 /// <summary>A status ended.</summary>
 public sealed record StatusEnded(int UnitId, string StatusId, StatusEndCause Cause) : BattleEvent;
 
+/// <summary>Life Swap: two units exchanged their share of maximum HP.</summary>
+public sealed record HpSwapped(int UnitA, int UnitB, int HpA, int HpB) : BattleEvent;
+
 /// <summary>A summon, construct or totem appeared.</summary>
 public sealed record UnitSummoned(int UnitId, int SummonerId, UnitKind Kind, Position Position) : BattleEvent;
 

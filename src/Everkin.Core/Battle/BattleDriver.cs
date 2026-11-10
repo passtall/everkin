@@ -59,7 +59,7 @@ public static class BattleDriver
                     return unitId;
 
                 case TimelineKind.AutoEvent:
-                    Everkin.Core.Skills.Turrets.HandleAutoEvent(state, entry);
+                    Everkin.Core.Skills.Totems.HandleAutoEvent(state, entry);
                     break;
 
                 default:
