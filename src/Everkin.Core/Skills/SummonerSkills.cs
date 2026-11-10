@@ -337,13 +337,27 @@ public abstract class GolemSkill : SummonSkill
         _auto = auto;
     }
 
+    /// <summary>With Golem Heart the earlier golem leaves first, so the places are those of the board without it.</summary>
+    public override IReadOnlyList<MoveOption> PlacementOptions(BattleState state, int userId)
+    {
+        if (!state.GetUnit(userId).KnownSkills.Contains("golem_heart") || !state.Units.Any(u => u.SummonerId == userId && SummonerSkills.IsGolem(u) && !u.IsRemoved))
+            return base.PlacementOptions(state, userId);
+        var without = state.Clone();
+        RemoveGolems(without, userId);
+        return SummonerSkills.SummonPlaces(without, userId);
+    }
+
+    private static void RemoveGolems(BattleState state, int summoner)
+    {
+        foreach (var old in state.Units.Where(u => u.SummonerId == summoner && SummonerSkills.IsGolem(u) && !u.IsRemoved).ToArray())
+            Summons.Remove(state, old.Id, RemovalCause.Expired);
+    }
+
     public override void Resolve(SkillContext context)
     {
         var state = context.State;
         var heart = context.User.KnownSkills.Contains("golem_heart");
-        if (heart)
-            foreach (var old in state.Units.Where(u => u.SummonerId == context.UserId && SummonerSkills.IsGolem(u) && !u.IsRemoved).ToArray())
-                Summons.Remove(state, old.Id, RemovalCause.Expired);
+        if (heart) RemoveGolems(state, context.UserId);
         var place = ChoosePlace(context);
         var id = Summon(context, place, _name, heart ? _hp * 2 : _hp, _speed, _definition, takesTurns: true, lifetime: null);
         Autonomous(context, id, _auto);

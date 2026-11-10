@@ -1,0 +1,20 @@
+{
+  "levels": {
+    "easy": {
+      "depth": 2, "candidates": 8, "pickTop": 3, "pickPercent": 35, "deeperMoveAndSkip": false,
+      "momentumPoint": 200, "statusValue": 60, "summonPercent": 50
+    },
+    "normal": {
+      "depth": 4, "candidates": 8, "pickTop": 2, "pickPercent": 10, "deeperMoveAndSkip": false,
+      "momentumPoint": 200, "statusValue": 60, "summonPercent": 50
+    },
+    "harness": {
+      "depth": 2, "candidates": 6, "rootCandidates": 10, "maxPlacements": 4, "maxPairs": 20, "pickTop": 1, "pickPercent": 0, "deeperMoveAndSkip": false,
+      "momentumPoint": 200, "statusValue": 60, "summonPercent": 50
+    },
+    "hard": {
+      "depth": 6, "candidates": 8, "pickTop": 1, "pickPercent": 0, "deeperMoveAndSkip": false,
+      "momentumPoint": 200, "statusValue": 60, "summonPercent": 50
+    }
+  }
+}

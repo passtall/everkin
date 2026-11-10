@@ -15,3 +15,6 @@ tools/audio/report/*.wav
 
 # Export output
 build/
+
+# AI-versus-AI runs (large; the report summary goes into PROGRESS.md)
+runs/

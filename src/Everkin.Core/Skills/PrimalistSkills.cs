@@ -114,10 +114,19 @@ public abstract class TotemSkill : PrimalistSkill
     }
 
     public sealed override TargetKind Target => TargetKind.Placement;
-    public override IReadOnlyList<MoveOption> PlacementOptions(BattleState state, int userId) => TinkerSkills.TurretPlaces(state, userId);
 
     public override string? Unavailable(BattleState state, int userId) =>
         PlacementOptions(state, userId).Count == 0 ? "no free place next to the Primalist (or the side is at its cap)" : null;
+
+    public override IReadOnlyList<MoveOption> PlacementOptions(BattleState state, int userId)
+    {
+        // With Great Totem the earlier totem leaves first, so the places are those of the board without it.
+        if (!state.GetUnit(userId).KnownSkills.Contains("great_totem") || !PrimalistSkills.TotemsOf(state, userId).Any())
+            return TinkerSkills.TurretPlaces(state, userId);
+        var without = state.Clone();
+        foreach (var old in PrimalistSkills.TotemsOf(without, userId).ToArray()) Summons.Remove(without, old.Id, RemovalCause.Expired);
+        return TinkerSkills.TurretPlaces(without, userId);
+    }
 
     public override void Resolve(SkillContext context)
     {

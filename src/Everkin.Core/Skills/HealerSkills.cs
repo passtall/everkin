@@ -195,8 +195,9 @@ public sealed class StealBlessing : HealerSkill
     {
         var from = context.TargetId!.Value;
         var to = context.SecondTargetId!.Value;
-        var status = HealerSkills.Pick(context.State, HealerSkills.HelpfulStatuses(context.State.GetUnit(from)));
-        Statuses.Transfer(context.State, from, to, status);
+        var helpful = HealerSkills.HelpfulStatuses(context.State.GetUnit(from));
+        // Paying for the skill may have used up the very status it was aimed at (Press the Advantage on the user itself): nothing to move then.
+        if (helpful.Count > 0) Statuses.Transfer(context.State, from, to, HealerSkills.Pick(context.State, helpful));
         context.Settle();
     }
 }
@@ -224,8 +225,13 @@ public sealed class TurnBack : HealerSkill
     public override void Resolve(SkillContext context)
     {
         var from = context.TargetId!.Value;
-        var chosen = HealerSkills.Pick(context.State, Returnable(context.State, from));
-        Statuses.Transfer(context.State, from, chosen.SourceUnitId!.Value, chosen.Id, context.UserId);
+        var options = Returnable(context.State, from);
+        // Using the skill may have used up the status it was aimed at (a Delay status on the user is spent by this very skill): nothing to return then.
+        if (options.Count > 0)
+        {
+            var chosen = HealerSkills.Pick(context.State, options);
+            Statuses.Transfer(context.State, from, chosen.SourceUnitId!.Value, chosen.Id, context.UserId);
+        }
         context.Settle();
     }
 }

@@ -119,9 +119,9 @@ public static class Actions
     /// Bleeding for a `melee` or `move` skill. A Confused unit's skill has a 50% chance to take a random legal target instead.
     /// Throws if the use is not allowed (see <see cref="WhyNot"/>).
     /// </summary>
-    public static IReadOnlyList<BattleEvent> Use(BattleState state, SkillCatalog catalog, SkillUse use)
+    public static IReadOnlyList<BattleEvent> Use(BattleState state, SkillCatalog catalog, SkillUse use, bool validated = false)
     {
-        var why = WhyNot(state, catalog, use);
+        var why = validated ? null : WhyNot(state, catalog, use);   // the AI search has just checked the move it plays
         if (why is not null) throw new InvalidOperationException($"Cannot use {use.SkillId}: {why}.");
         var skill = catalog.Get(use.SkillId);
         var user = state.GetUnit(use.UserId);
@@ -193,10 +193,12 @@ public static class Actions
     private static bool CanEcho(BattleState state, Skill skill, SkillUse use, int? target)
     {
         if (state.IsOver || state.GetUnit(use.UserId).IsKnockedOut) return false;
+        if (skill.Unavailable(state, use.UserId) is not null) return false;      // a second Hide has nothing to do
         return skill.Target switch
         {
             TargetKind.None => true,
-            TargetKind.Unit => target is { } t && !state.GetUnit(t).IsKnockedOut && !state.GetUnit(t).IsRemoved && state.Formation.Contains(t),
+            TargetKind.Unit => target is { } t && !state.GetUnit(t).IsRemoved && state.Formation.Contains(t)
+                && (state.GetUnit(t).IsKnockedOut ? skill.Options.IncludeKnockedOut : true) && skill.TargetFilter(state, use.UserId, t),
             TargetKind.Row => use.Row is { } row && skill.LegalRows(state, use.UserId).Contains(row),
             _ => false,
         };

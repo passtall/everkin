@@ -207,7 +207,8 @@ public static class Necromancy
         state.Timeline.RemoveOwnedBy(undeadId, includeTurn: true);
         var from = state.Formation.Remove(undeadId);
         unit.Side = unit.OriginalSide;
-        state.Formation.Place(undeadId, unit.OriginalSide, place.Row, place.Index);
+        // The undead may have stood in that very row: the end of the row is counted after it has left.
+        state.Formation.Place(undeadId, unit.OriginalSide, place.Row, Math.Min(place.Index, state.Formation.Count(unit.OriginalSide, place.Row)));
 
         unit.IsUndead = false;
         unit.AutoSkillId = null;

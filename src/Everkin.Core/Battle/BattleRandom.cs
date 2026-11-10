@@ -17,6 +17,9 @@ public sealed class BattleRandom
 
         /// <summary>Every roll is its highest possible value and every chance fails: the high end of a preview.</summary>
         Highest,
+
+        /// <summary>Every roll is the middle of its range and a chance succeeds when it is 50% or more: the "average values" the AI search uses (game_system section 2.5).</summary>
+        Average,
     }
 
     /// <summary>Preview queries set this on a clone; battles never do. It does not change the sequence of <see cref="RollMode.Normal"/>.</summary>
@@ -69,6 +72,7 @@ public sealed class BattleRandom
         if (maxExclusive <= 0) throw new ArgumentOutOfRangeException(nameof(maxExclusive));
         if (Mode == RollMode.Lowest) return 0;
         if (Mode == RollMode.Highest) return maxExclusive - 1;
+        if (Mode == RollMode.Average) return (maxExclusive - 1) / 2;
         var n = (ulong)maxExclusive;
         var threshold = (0UL - n) % n;
         ulong r;
@@ -88,6 +92,7 @@ public sealed class BattleRandom
     {
         if (percent <= 0) return false;
         if (percent >= 100) return true;
+        if (Mode == RollMode.Average) return percent >= 50;
         if (Mode != RollMode.Normal) return false;
         return NextInt(100) < percent;
     }
