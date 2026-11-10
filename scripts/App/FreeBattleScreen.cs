@@ -64,7 +64,7 @@ public partial class FreeBattleScreen : Control, IBackNavigable
         back.Pressed += () => _main.Show("menu");
         box.AddChild(back);
 
-        var center = new CenterContainer();
+        var center = new CenterContainer { MouseFilter = MouseFilterEnum.Ignore };
         center.AddChild(Ui.Panel(box));
         AddChild(center);
         Ui.Fill(center);

@@ -22,6 +22,7 @@ public partial class Main : Control
     private string? _shot;
     private double _shotAt = 1.5;
     private double _time;
+    private Vector2? _click;
 
     public override void _Ready()
     {
@@ -30,6 +31,7 @@ public partial class Main : Control
         var args = OS.GetCmdlineUserArgs().Select(a => a.TrimStart('-')).ToArray();
         string? Arg(string name) => args.FirstOrDefault(a => a.StartsWith(name + "="))?.Substring(name.Length + 1);
         _shot = Arg("shot");
+        if (Arg("click") is { } click && click.Split(',') is { Length: 2 } xy && float.TryParse(xy[0], out var cx) && float.TryParse(xy[1], out var cy)) _click = new Vector2(cx, cy);
         if (double.TryParse(Arg("wait"), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var wait)) _shotAt = wait;
         var screen = Arg("screen") ?? "menu";
         Show(screen, args);
@@ -48,8 +50,15 @@ public partial class Main : Control
 
     public override void _Process(double delta)
     {
-        if (_shot == null) return;
         _time += delta;
+        if (_click is { } at && _time > 1.0)
+        {
+            // --click=x,y presses the left mouse button there once (to check what a click reaches without a person).
+            _click = null;
+            foreach (var pressed in new[] { true, false })
+                Input.ParseInputEvent(new InputEventMouseButton { Position = at, GlobalPosition = at, ButtonIndex = MouseButton.Left, Pressed = pressed });
+        }
+        if (_shot == null) return;
         if (_time < _shotAt) return;
         var image = GetViewport().GetTexture().GetImage();
         image.SavePng(_shot);

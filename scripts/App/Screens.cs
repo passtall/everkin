@@ -96,7 +96,11 @@ public partial class MenuScreen : Control
         if (Profile.LoadNote != null) box.AddChild(Ui.Label(Profile.LoadNote, 18, Ui.Bad, align: HorizontalAlignment.Center));
         Item("Battle viewer (AI vs AI)", "viewer");
         Item("Cards", "cards");
-        var center = new CenterContainer();
+        var exit = Ui.Button("Exit game", 28);
+        exit.CustomMinimumSize = new Vector2(420, 64);
+        exit.Pressed += () => GetTree().Quit();
+        box.AddChild(exit);
+        var center = new CenterContainer { MouseFilter = MouseFilterEnum.Ignore };
         center.AddChild(Ui.Panel(box));
         AddChild(center);
         Ui.Fill(center);

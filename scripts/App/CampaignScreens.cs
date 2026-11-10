@@ -65,7 +65,7 @@ public partial class WorldMapScreen : Control, IBackNavigable
             box.AddChild(go);
             row.AddChild(Ui.Panel(box));
         }
-        var center = new CenterContainer();
+        var center = new CenterContainer { MouseFilter = MouseFilterEnum.Ignore };
         center.AddChild(row);
         AddChild(center);
         Ui.Fill(center);
