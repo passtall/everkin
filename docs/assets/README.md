@@ -7,7 +7,7 @@ How every generated asset in `assets/` was made, so it can be extended or remade
 | Creature art | [creature-art-prompt.md](creature-art-prompt.md); script `tools/art/generate_creatures.py` | originals in `source-art/creatures/`, cleaned by `tools/art/clean_creatures.py` |
 | Card frames (18 biomes) | [frames.md](frames.md) | — |
 | Undead card frame | [undead-frame.md](undead-frame.md) | — |
-| Battle portraits (319 creatures, 14 summons) and their three rings | [battle-portraits.md](battle-portraits.md) | not made yet (2026-11-10) |
+| Battle portraits (319 creatures, 14 summons) and their three rings | overview [battle-portraits.md](battle-portraits.md); prompts [portrait-creatures.md](portrait-creatures.md), [portrait-summons.md](portrait-summons.md), [portrait-ring.md](portrait-ring.md), [portrait-ring-summon.md](portrait-ring-summon.md), [portrait-ring-undead.md](portrait-ring-undead.md) | not made yet (2026-11-10) |
 | Summon and construct cards (14) | [summons.md](summons.md) | [summons-prompts-used.md](summons-prompts-used.md), [summons-notes.md](summons-notes.md) |
 | Skill icons (49) | [skill-icons.md](skill-icons.md) | [skill-icons-prompts-used.json](skill-icons-prompts-used.json), [skill-icons-notes.md](skill-icons-notes.md); contact sheet: `python3 tools/icons/make_preview.py` |
 | Status, ground, marker and HUD icons (32) | [ui-icons.md](ui-icons.md) | — |
