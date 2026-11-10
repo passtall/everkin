@@ -265,6 +265,7 @@ public static class Statuses
     {
         var unit = state.GetUnit(a.UnitId);
         if (unit.IsKnockedOut) throw new InvalidOperationException($"Unit {a.UnitId} is KO and cannot gain statuses.");
+        foreach (var modifier in state.StatusApplicationModifiers) a = modifier(state, a);
         var existing = Get(unit, a.Id);
         var timeline = state.Timeline;
         if (state.StatusImmunities.Any(h => h(state, a.UnitId, a.Id))) return false;   // Unstoppable

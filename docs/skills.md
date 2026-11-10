@@ -290,6 +290,14 @@ Branches: Engineer, Chemist, Pyrotechnician.
 | Pyrotechnician | Flashbang | A | — | 4 / 0 | Direct · D2 | Every unit in one row is Blind for 10 time units. |
 | Pyrotechnician | Showman | K | Flashbang |  |  | The Tinker's Blind and Stunned last twice as long, but the Tinker's skills that deal damage have +2 Delay. |
 
+**Tinker rulings (owner decisions 2026-11-10).**
+
+- **Turret shots.** Each time the Tinker takes an action (a skill, Move or Skip Turn; a skipped turn does not count), every turret of the Tinker queues one auto event owned by the Tinker, due now, and the shots resolve right after the action in the order the turrets were placed. Each shot shifts Momentum like a separate action. A KO'd Tinker loses its queued shots; the turrets stay. **Overclock** fires every turret of the Tinker once now, as its own events.
+- **Turret targets.** The shot picks, when it resolves, the nearest legal enemy from the turret's own position (ties by the seeded roll, stealthed units are not legal) and uses the Tinker's Power; with no legal enemy the shot is lost. The Bolt Turret's shot is a projectile hit and can be intercepted. The Flame Turret puts 20 time units of fire on that enemy's spot.
+- **Placement.** Turrets (HP 8) go into a free gap next to the Tinker, as the summons rule says. The Barricade (HP 10) goes into any gap of any row of your side that has room. If any living unit of your side knows Keeper of the Gate when a barricade is placed, its HP is 20. Repair heals 8 (scaled to Power) on any construct, of either side.
+- **Plague Doctor:** the Tinker cannot use Healing Draught or Repair; Antidote stays allowed. Its poison ground lasts 40 time units.
+- **Showman:** Blind and Stunned that the Tinker's skills apply last twice as long; the Tinker's skills that deal damage to a unit (its Attack Type attack) have +2 Delay, clamped to 10.
+
 ## Summoner (15)
 
 Branches: Necromancer, Golemancer, Conjurer.

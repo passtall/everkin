@@ -251,6 +251,8 @@ public sealed class BattleState
     private readonly List<AttackBan> _attackBans = new();
     private readonly List<StatusRemovedHook> _statusRemovedHooks = new();
     private readonly List<DamageModifier> _damageModifiers = new();
+    private readonly List<StatusApplicationModifier> _statusApplicationModifiers = new();
+    private readonly List<SkillDelayModifier> _skillDelayModifiers = new();
     private readonly List<TargetHitHook> _targetHitHooks = new();
     private readonly List<MomentumShiftModifier> _momentumShiftModifiers = new();
     private readonly List<MomentumCostModifier> _momentumCostModifiers = new();
@@ -301,6 +303,8 @@ public sealed class BattleState
         _attackBans.AddRange(other._attackBans);
         _statusRemovedHooks.AddRange(other._statusRemovedHooks);
         _damageModifiers.AddRange(other._damageModifiers);
+        _statusApplicationModifiers.AddRange(other._statusApplicationModifiers);
+        _skillDelayModifiers.AddRange(other._skillDelayModifiers);
         _targetHitHooks.AddRange(other._targetHitHooks);
         _momentumShiftModifiers.AddRange(other._momentumShiftModifiers);
         _momentumCostModifiers.AddRange(other._momentumCostModifiers);
@@ -423,6 +427,12 @@ public sealed class BattleState
 
     public IReadOnlyList<TargetHitHook> TargetHitHooks => _targetHitHooks;
     public void AddTargetHitHook(TargetHitHook hook) => _targetHitHooks.Add(hook);
+
+    public IReadOnlyList<StatusApplicationModifier> StatusApplicationModifiers => _statusApplicationModifiers;
+    public void AddStatusApplicationModifier(StatusApplicationModifier hook) => _statusApplicationModifiers.Add(hook);
+
+    public IReadOnlyList<SkillDelayModifier> SkillDelayModifiers => _skillDelayModifiers;
+    public void AddSkillDelayModifier(SkillDelayModifier hook) => _skillDelayModifiers.Add(hook);
 
     // Leader hooks (docs/skills.md Leader rulings)
     public IReadOnlyList<MomentumShiftModifier> MomentumShiftModifiers => _momentumShiftModifiers;

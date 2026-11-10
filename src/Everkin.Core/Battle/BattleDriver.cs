@@ -53,8 +53,12 @@ public static class BattleDriver
                     unit.SneakReady = true;
                     return unitId;
 
+                case TimelineKind.AutoEvent:
+                    Everkin.Core.Skills.Turrets.HandleAutoEvent(state, entry);
+                    break;
+
                 default:
-                    // Auto events and delayed events are resolved by the skills that create them (later M1.16 tasks).
+                    // Delayed events and delayed events are resolved by the skills that create them (later M1.16 tasks).
                     break;
             }
         }

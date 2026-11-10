@@ -2,17 +2,17 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-10, M1.16h (Rogue) done and tested (655 tests green); next is M1.16i Tinker.
+**Last updated:** 2026-11-10, M1.16i (Tinker) done and tested (668 tests green); next is M1.16j Summoner.
 
 ## Current task
 
-**M1.16** Attack Type attacks and the Hunter (a), Guardian (b), Healer (c), Sorcerer (d), Elementalist (e), Warrior (f), Leader (g) and Rogue (h) skills are done and tested (655 tests green). **Next: M1.16i Tinker.** Nothing is uncommitted after the Rogue commit.
+**M1.16** Attack Type attacks and the Hunter, Guardian, Healer, Sorcerer, Elementalist, Warrior, Leader, Rogue (a to h) and Tinker (i) skills are done and tested (668 tests green). **Next: M1.16j Summoner.** Nothing is uncommitted after the Tinker commit.
 
 ## Next step
 
-M1.16i Tinker (13 skills, skills.md "Tinker" section; read it, game_system §11 constructs/turrets and §6.2 auto events first). Turrets are constructs with auto events: `BattleDriver.NextTurn` still ignores AutoEvent / DelayedEvent entries, so this task must add their handling (Cut the Strings, written in M1.16h, already removes a unit's next AutoEvent entry). Barricade doubles HP with Keeper of the Gate (Guardian). Pattern: `src/Everkin.Core/Skills/RogueSkills.cs` / `RogueSkillTests.cs`. Update docs first for each owner decision (ask the owner about open readings with concrete options), run `dotnet test`, commit when green, push. Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
+M1.16j Summoner (15 skills, skills.md "Summoner" section; read it and game_system §11 first). Turn-taking summons act autonomously (attack the nearest legal enemy with Delay 3, Animate Blades shoot, Bell Golem cleanses an adjacent ally): `BattleDriver.NextTurn` returns every unit whose turn arrives, so the autonomous behaviour of summons must be added (a summon's turn must be played by the core or the driver, not offered to a player). Pattern: `src/Everkin.Core/Skills/TinkerSkills.cs` / `TinkerSkillTests.cs`. Update docs first for each owner decision (ask the owner about open readings with concrete options), run `dotnet test`, commit when green, push. Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
 
-After the Tinker: j Summoner (15), k Primalist (15), l Flying (13). Then M1.17 (every §20.5 worked check is a passing test: audit the table row by row against the tests), M1.18 (preview queries), then M2.
+After the Summoner: k Primalist (15), l Flying (13). Then M1.17 (every §20.5 worked check is a passing test: audit the table row by row against the tests), M1.18 (preview queries), then M2.
 
 ## In flight
 
@@ -68,6 +68,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - M1.16f framework additions (owner rulings 2026-11-10 in skills.md): hook lists on `BattleState` (`DamageBonuses` percent bonuses that add up, `PostHitHooks` with the HP lost (recoil), `AttackMissHooks`, `DamageFloors` for Periodic damage (Endure), `StatusImmunities`, `TurnPushImmunities` + `BattleState.PushTurnBack` (all skills that push a turn must use it), `MoveBans`, `TargetRestrictions` (checked in `Targeting.IsLegalTarget`), `AttackExpanders` (Crowd Fighter)); `SkillContext.Execute`, `PushGroupBack` (group forced move with kept coordinates; Tempest uses it), `InterceptEffect` (a melee/projectile non-damaging effect goes to the first interceptor); `AfterForcedMove` now also raises `WhenMoved` triggers for every moved unit; statuses sidestep and duel. Open readings (none block a task): (a) Hunt Down reacts to forced movement only; (b) Last Stand's immunity applies to any side, so Hit and Run's own move is skipped; (c) a pulled unit that lands at 100% overlap on a Front unit is blocked at the formation boundary (bump damage), so Drag Out needs a 50% landing (two Front units, or the unit offset) to pull into the Front row.
 - M1.16g framework additions (owner rulings 2026-11-10 in skills.md): `Actions.CostOf` (Press the Advantage = 0, `MomentumCostModifiers` for All In), `MomentumShiftModifiers` (All In), `RepeatDelayReductions` + `Unit.LastSkillId` (Rhythm; Move/Skip clear it), `BattleState.AddAuraSync` / `RunAuras` (called after every action and event; Song of Haste keeps the `song_haste` status in step with the formation), `FirstInstall(key)` for rules shared by several units (War Drums, Rhythm), `Timeline.SwapDue`, `SkillContext.PullGroupForward` and group moves that return the moved units (Drill), `Bard.Covers` (reach rules). Grand Chorus is checked in `Actions.WhyNot`. Reading to confirm: All In only zeroes Momentum GAINED; a miss still costs 1 (owner asked whether a miss should lose Momentum at all; §6.7 says it does).
 - M1.16h framework additions (owner rulings 2026-11-10 in skills.md): `Skill.CheckUse` (extra whole-use checks, used by Lift a Skill) and `SkillContext.Catalog`; `Unit.LastActiveSkillId` (not cleared by Move/Skip), `MarkedAtKo` (set before KO clears statuses), `SneakReady` (set by `BattleDriver.NextTurn`, cleared by every action) with `Actions.SneakOptions` / `SneakMove`; `BattleState.TargetHitHooks` (Light Fingers); Contract uses the damage bonus hook (minimum damage 1 after bonuses); Net Trap's reaction honours Disarm Trap (the trap is removed as `RemovalCause.Expired`). Readings to confirm: a Marked summon that is KO'd has left the board, so Deathmark Bloom cannot jump from it; Backstab is not an `IsAttack` skill (no damage) but is `melee` (an interceptor takes the Silence and Bleeding).
+- M1.16i framework additions (owner rulings 2026-11-10 in skills.md): `Turrets` (auto events `turret:<id>` owned by the Tinker; `AfterAction` is called at the end of `Actions.Use`, `Move` and `SkipTurn`, queues one shot per turret with `Timeline.AddNow` (due now, the only entry with no Wait) and resolves them in placement order; `BattleDriver.NextTurn` also resolves a popped AutoEvent through `Turrets.HandleAutoEvent`), `StatusApplicationModifiers` (Showman doubles Blind/Stunned it applies), `SkillDelayModifiers` (Showman +2 on `IsAttack` skills). Reading to confirm: a turret exists when the action that places it ends, so it shoots at once right after being placed.
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -104,7 +105,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - [x] M1.16f Warrior skills
 - [x] M1.16g Leader skills
 - [x] M1.16h Rogue skills
-- [ ] M1.16i Tinker skills
+- [x] M1.16i Tinker skills
 - [ ] M1.16j Summoner skills
 - [ ] M1.16k Primalist skills
 - [ ] M1.16l Flying skills
@@ -170,3 +171,4 @@ One line per finished task: date, task, commit.
 2026-11-10 M1.16f Warrior skills (see git log)
 2026-11-10 M1.16g Leader skills (see git log)
 2026-11-10 M1.16h Rogue skills (see git log)
+2026-11-10 M1.16i Tinker skills (see git log)

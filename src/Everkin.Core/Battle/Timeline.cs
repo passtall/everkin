@@ -160,6 +160,17 @@ public sealed class Timeline
     }
 
     /// <summary>
+    /// Puts an auto event on the timeline due in the current time unit, behind the entries already there (turret shots that resolve
+    /// right after the Tinker's action). The only entry that may have no Wait.
+    /// </summary>
+    public TimelineEntry AddNow(int ownerUnitId, string tag)
+    {
+        var entry = new TimelineEntry(_nextId++, TimelineKind.AutoEvent, Now, _nextOrder++, ownerUnitId, tag, false, 0);
+        _entries.Add(entry);
+        return entry;
+    }
+
+    /// <summary>
     /// Puts several entries on the timeline at the same moment. Entries that fall into the same time unit are ordered by
     /// the seeded generator, every order equally likely (section 6.1: for example every unit's first turn at battle start).
     /// Returns the new entries in the order given.

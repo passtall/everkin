@@ -106,3 +106,9 @@ public delegate int RepeatDelayReduction(BattleState state, int userId, string s
 
 /// <summary>Called when a hit reaches its target itself (landed or fully absorbed, not taken by an interceptor): Light Fingers.</summary>
 public delegate void TargetHitHook(BattleState state, int attackerId, int targetId);
+
+/// <summary>Changes a status before it is applied (Showman: Blind and Stunned from the Tinker last twice as long).</summary>
+public delegate StatusApplication StatusApplicationModifier(BattleState state, StatusApplication application);
+
+/// <summary>Extra Delay for the skills a unit uses (Showman: +2 on skills that deal damage). Returns the extra Delay.</summary>
+public delegate int SkillDelayModifier(BattleState state, int userId, bool isAttack);
