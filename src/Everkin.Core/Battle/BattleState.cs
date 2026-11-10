@@ -238,6 +238,7 @@ public sealed class BattleState
     private readonly List<AfterMove> _afterMoveHooks = new();
     private readonly List<AttackBan> _attackBans = new();
     private readonly List<StatusRemovedHook> _statusRemovedHooks = new();
+    private readonly List<DamageModifier> _damageModifiers = new();
     private readonly List<SharedHp> _sharedPools = new();
     private readonly List<ReactionDef> _reactions = new();
     private readonly Dictionary<string, int> _reactionUses = new();
@@ -272,6 +273,7 @@ public sealed class BattleState
         _afterMoveHooks.AddRange(other._afterMoveHooks);
         _attackBans.AddRange(other._attackBans);
         _statusRemovedHooks.AddRange(other._statusRemovedHooks);
+        _damageModifiers.AddRange(other._damageModifiers);
         _sharedPools.AddRange(other._sharedPools.Select(p => p.Clone()));
         Outcome = other.Outcome;
         EndReason = other.EndReason;
@@ -377,6 +379,9 @@ public sealed class BattleState
     public IReadOnlyList<StatusRemovedHook> StatusRemovedHooks => _statusRemovedHooks;
     public void AddStatusRemovedHook(StatusRemovedHook hook) => _statusRemovedHooks.Add(hook);
 
+    /// <summary>Changes the damage of hits before shields (Brittle).</summary>
+    public void AddDamageModifier(DamageModifier hook) => _damageModifiers.Add(hook);
+
     /// <summary>Whether the battle is over and who won (section 12.3). Set by <see cref="BattleEnd"/>.</summary>
     public BattleOutcome Outcome { get; private set; }
 
@@ -475,6 +480,8 @@ public sealed class BattleState
             amount *= 2;
             Statuses.Remove(this, targetId, StatusIds.GlassBody, StatusEndCause.Consumed);
         }
+        if (source == DamageSource.Hit)
+            foreach (var modifier in _damageModifiers) amount = modifier(this, sourceUnitId, targetId, amount);
         var result = DamageMath.Resolve(amount, target.Ward, target.Dampen, source);
         target.Ward = result.WardLeft;
         target.Hp = Math.Max(0, target.Hp - result.HpLost);

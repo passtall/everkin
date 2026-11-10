@@ -64,3 +64,6 @@ public delegate bool AttackBan(BattleState state, int unitId);
 
 /// <summary>A status was cleansed off a unit by another unit's skill (Lingering Malice).</summary>
 public delegate void StatusRemovedHook(BattleState state, int unitId, StatusInstance status, int byUnitId);
+
+/// <summary>Changes the damage a hit would do to a target before shields (Brittle). Returns the new amount.</summary>
+public delegate int DamageModifier(BattleState state, int? sourceUnitId, int targetId, int amount);

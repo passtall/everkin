@@ -156,6 +156,15 @@ Branches: Pyromancy, Stormcalling, Cryomancy.
 | Cryomancy | Frost Nova | A | Freeze | 6 / 3 | Direct · D1 | Every enemy in melee reach of the Elementalist is Frozen. |
 | Cryomancy | Cold Heart | K | Brittle |  |  | Frozen from the Elementalist lasts 1 more turn, but it can keep only one unit Frozen at a time. |
 
+**Elementalist rulings (owner decisions 2026-11-10).**
+
+- **Spots.** A spot is a coordinate in a row (game_system §12.2). "The spots next to" a spot are the spots one card width to the left and right in the same row (coordinate ±2), inside the row's width (coordinates −5 to 5). "A whole row" (Row of Fire) is one fire on the spot of every unit standing in that row; empty gaps get nothing. Fire Lane's column is the same coordinate in the other two rows of the unit's side. Fire from these skills burns 20 time units (the reference length).
+- **Backdraft** needs the unit to stand on burning ground. The fire spreads to the spots next to it and burns there for as long as the source fire has left (Ignition Point first sets the source fire to 20, so all burn 20). A neighbour spot that already burns is left as it is.
+- **Chain Lightning** jumps to a random adjacent living unit (adjacency as in §8.4) that this chain has not Stunned yet; the chain ends early when none is left. Each unit is a separate Stun of 5 time units. Arc adds 2 jumps. Every lightning Stun on a unit standing in water also Stuns the units on the water spots touching it for half the time, rounded down (§12.2).
+- **Rows.** Tempest, Glacier and Megavolt pick any row of either side that has a living unit within the skill's reach. Tempest pushes each unit of the row one row back (units in the Rear row stay) and deals no damage. The row moves together: each unit lands at the coordinate it had before the push (bumps as usual), so units side by side stay side by side. Frost Nova freezes every enemy within distance 1 of the Elementalist.
+- **Cold Heart:** Frozen applied by the Elementalist skips the unit's next 2 turns. Freezing another unit thaws the Elementalist's earlier Frozen unit; when one skill freezes several units, the seeded roll keeps one.
+- **Brittle:** a Frozen enemy of the Elementalist takes 50% more damage from hits (the hit's damage × 3 ÷ 2, rounded down, before Ward and Dampen).
+
 ## Warrior (16)
 
 Branches: Berserker, Champion, Whirlwind, Footwork.

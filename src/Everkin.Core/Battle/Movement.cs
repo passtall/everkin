@@ -96,7 +96,7 @@ public static class Movement
     /// every unit pressed along and the blocker, takes bump damage of 1 (a hit: stealth ends). Bump damage does not move
     /// Momentum. A KO body or an Immobilized unit cannot be moved, so meeting one blocks the chain.
     /// </summary>
-    public static ForcedMoveResult ForceMove(BattleState state, int unitId, Row destination, Side? causedBy = null)
+    public static ForcedMoveResult ForceMove(BattleState state, int unitId, Row destination, Side? causedBy = null, int? landingCoordinate = null)
     {
         var f = state.Formation;
         var mover = state.GetUnit(unitId);
@@ -106,7 +106,7 @@ public static class Movement
 
         state.Ground.Accrue();
         var direction = destination > start.Row ? 1 : -1;
-        var coordinate = f.CenterOf(start);
+        var coordinate = landingCoordinate ?? f.CenterOf(start);                         // a group move (Tempest) passes the coordinate the unit had before the group moved
         var side = start.Side;
         destination = state.Ground.SlideOnIce(side, destination, coordinate, direction); // ice: one row further
 

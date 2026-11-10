@@ -459,7 +459,10 @@ public static class Statuses
                 Remove(state, other.Id, instance.Id, StatusEndCause.Expired);
 
         var unit = state.GetUnit(unitId);
-        var frozen = Remove(state, unitId, StatusIds.Frozen, StatusEndCause.Consumed);
+        var frozenStatus = Get(unit, StatusIds.Frozen);
+        var frozen = frozenStatus is not null;
+        if (frozenStatus is { UsesLeft: > 1 }) frozenStatus.UsesLeft--;        // Cold Heart: Frozen skips more than one turn
+        else Remove(state, unitId, StatusIds.Frozen, StatusEndCause.Consumed);
         return new TurnStartResult(frozen, Has(unit, StatusIds.Stunned) || Has(unit, StatusIds.StoneShell));
     }
 
