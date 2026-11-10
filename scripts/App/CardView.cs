@@ -101,12 +101,15 @@ public partial class CardView : Control
         QueueRedraw();
     }
 
+    /// <summary>The click counts when the button is released (cards that can also be dragged), not when it is pressed.</summary>
+    public bool ClickOnRelease { get; set; }
+
     public override void _GuiInput(InputEvent e)
     {
-        if (e is InputEventMouseButton { Pressed: true } mb)
+        if (e is InputEventMouseButton mb)
         {
-            if (mb.ButtonIndex == MouseButton.Left) Clicked?.Invoke(this);
-            else if (mb.ButtonIndex == MouseButton.Right) RightClicked?.Invoke(this);
+            if (mb.ButtonIndex == MouseButton.Left && mb.Pressed != ClickOnRelease) Clicked?.Invoke(this);
+            else if (mb.ButtonIndex == MouseButton.Right && mb.Pressed) RightClicked?.Invoke(this);
         }
     }
 

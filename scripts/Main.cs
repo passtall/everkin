@@ -39,6 +39,28 @@ public partial class Main : Control
         GetTree().Quit();
     }
 
+    /// <summary>The setup of the last battle the player started (Retry plays it again).</summary>
+    public Everkin.Core.Setup.BattleSpec? LastSpec { get; set; }
+
+    public string LastLevel { get; set; } = "normal";
+
+    /// <summary>Starts a battle against the AI for the player (side A) and remembers its setup.</summary>
+    public void StartBattle(Everkin.Core.Setup.BattleSpec spec, string level)
+    {
+        LastSpec = spec;
+        LastLevel = level;
+        Open(new PlayScreen(this, spec, level));
+    }
+
+    /// <summary>Replaces the current screen with one that has been made already.</summary>
+    public void Open(Control screen)
+    {
+        _screen?.QueueFree();
+        _screen = screen;
+        AddChild(_screen);
+        Ui.Fill(_screen);
+    }
+
     /// <summary>Replaces the current screen.</summary>
     public void Show(string name, string[]? args = null)
     {

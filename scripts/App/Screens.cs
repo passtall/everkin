@@ -13,6 +13,25 @@ public static class Screens
         switch (name)
         {
             case "cards": return new CardsDemo();
+            case "play-again" when main.LastSpec != null:
+                return new PlayScreen(main, main.LastSpec, main.LastLevel);
+            case "play":
+            {
+                var spec = Everkin.Core.Setup.BattleSetup.RandomSpec(Game.Content, Game.Trees, ulong.TryParse(Arg("seed"), out var s) ? s : 7);
+                main.LastSpec = spec;
+                main.LastLevel = Arg("level") ?? "easy";
+                return new PlayScreen(main, spec, main.LastLevel) { SelfTest = args.Contains("selftest"), Instant = args.Contains("instant"), AutoSurrender = args.Contains("surrender") };
+            }
+            case "free": return new FreeBattleScreen(main);
+            case "teams":
+                if (args.Contains("demo"))
+                {
+                    var t = Everkin.Core.Setup.BattleSetup.RandomTeam(Game.Content, Game.Trees, new Everkin.Core.Battle.BattleRandom(11));
+                    Profile.CurrentTeam.Units = t.Units.Select(u => new TeamUnit { Creature = u.CreatureId, Row = u.Row.ToString() }).ToList();
+                }
+                return new TeamEditor(main);
+            case "skills":
+                return new SkillTreeEditor(main, Arg("creature") ?? Game.Content.Creatures[0].Id, () => main.Show("teams"));
             case "viewer":
                 return new ViewerScreen(Arg("level") ?? "harness", ulong.TryParse(Arg("seed"), out var seed) ? seed : null);
             default: return new MenuScreen(main);

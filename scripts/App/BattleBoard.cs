@@ -239,8 +239,10 @@ public partial class BattleBoard : Control
     /// <summary>Shows a clickable marker at each gap a unit could land in.</summary>
     public void ShowGaps(IEnumerable<GapRef> gaps)
     {
+        FirstGap = null;
         foreach (var g in gaps)
         {
+            FirstGap ??= g;
             var units = _state.Formation.Units(g.Side, g.Row);
             var cw = _cardSize.X;
             var centerX = _boardArea.Position.X + _boardArea.Size.X / 2;
@@ -261,6 +263,10 @@ public partial class BattleBoard : Control
             _gapMarkers.Add(marker);
         }
     }
+
+    public int GapCount => _gapMarkers.Count;
+
+    public GapRef? FirstGap { get; private set; }
 
     public void SetGhost(int? meterFromBottom) => _momentum.Ghost = meterFromBottom;
 
