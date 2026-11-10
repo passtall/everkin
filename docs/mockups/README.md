@@ -17,3 +17,4 @@ The three interactive mockups Andreas reviewed in October 2026, saved from their
 - **Art.** The art embedded in the mockups is not the final asset set; the game uses `assets/`.
 - **Phone view, board fill, layout sizes and interface details** were settled after the mockups (ui_spec.md, Battle screen).
 - **Skill tree editing** is not in any mockup yet.
+- **Battle board** (2026-11-10): the board is now left/right (player left, enemy right, rows as vertical columns) with round portraits instead of board cards, and ground effects are drawn as pools (ui_spec.md, Battle screen; spec.md).
