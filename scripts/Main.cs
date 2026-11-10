@@ -44,12 +44,15 @@ public partial class Main : Control
 
     public string LastLevel { get; set; } = "normal";
 
+    public string? LastEncounter { get; set; }
+
     /// <summary>Starts a battle against the AI for the player (side A) and remembers its setup.</summary>
-    public void StartBattle(Everkin.Core.Setup.BattleSpec spec, string level)
+    public void StartBattle(Everkin.Core.Setup.BattleSpec spec, string level, string? encounter = null)
     {
         LastSpec = spec;
         LastLevel = level;
-        Open(new PlayScreen(this, spec, level));
+        LastEncounter = encounter;
+        Open(new PlayScreen(this, spec, level, encounter));
     }
 
     /// <summary>Replaces the current screen with one that has been made already.</summary>

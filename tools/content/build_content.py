@@ -329,6 +329,79 @@ def parse_statuses():
     return statuses
 
 
+# ------------------------------------------------------------------- campaign
+
+def parse_campaign(creatures):
+    """content/campaign.json from docs/campaign.md: chapters, encounters, enemy teams, rewards (milestone M5.3)."""
+    file = "campaign.md"
+    by_name = {}
+    for c in creatures:
+        if c["name"] in by_name:
+            fail(file, c["name"], "two creatures share this display name")
+        by_name[c["name"]] = c
+    biome_ids = {c["biome"] for c in creatures}
+
+    def creature(name, ident):
+        if name not in by_name:
+            fail(file, ident, f"unknown creature '{name}'")
+        return by_name[name]
+
+    chapters = []
+    for heading, before, header, rows in read_tables(ROOT / "docs" / file):
+        if "Encounter" not in header:
+            continue
+        if heading.startswith("Tutorial"):
+            cid, name = "T", heading.split(":", 1)[1].strip()
+        elif heading.startswith("Chapter"):
+            cid, name = heading.split(":")[0].split()[1], heading.split(":", 1)[1].strip()
+        elif heading.startswith("Challenge"):
+            cid, name = "C", "Challenge encounters"
+        else:
+            fail(file, heading, "unknown table")
+        encounters = []
+        for row in rows:
+            eid = row["#"]
+            team = []
+            segments = row[[h for h in header if h.startswith("Enemy team")][0]].split(" · ")
+            if len(segments) != 3:
+                fail(file, eid, "an enemy team needs Front · Middle · Rear")
+            for row_name, segment in zip(("Front", "Middle", "Rear"), segments):
+                if segment.strip() == "—":
+                    continue
+                for entry in segment.split(", "):
+                    boss = entry.startswith("**")
+                    nm = entry.replace("**", "").replace(" (boss)", "").strip()
+                    c = creature(nm, eid)
+                    team.append({"creature": c["id"], "row": row_name, "boss": boss})
+            rewards = [creature(n.strip(), eid)["id"] for n in row["Reward"].split(",")]
+            for r in rewards:
+                if r not in [t["creature"] for t in team]:
+                    fail(file, eid, f"reward {r} is not in the enemy team")
+            cost = sum(by_name_id(creatures, t["creature"])["cost"] for t in team)
+            if cost != int(row["Team Cost"]):
+                fail(file, eid, f"team Cost {cost} does not match the table's {row['Team Cost']}")
+            biome = slug(row["Biome"])
+            if biome not in biome_ids:
+                fail(file, eid, f"unknown biome '{row['Biome']}'")
+            ai = row["AI"].strip().lower()
+            if ai not in ("easy", "normal", "hard"):
+                fail(file, eid, f"unknown AI level '{row['AI']}'")
+            encounters.append({"id": eid, "name": row["Encounter"], "biome": biome, "ai": ai, "team": team, "cost": cost, "rewards": rewards})
+        chapters.append({"id": cid, "name": name, "biomes": [], "encounters": encounters})
+    if [c["id"] for c in chapters] != ["T", "1", "2", "3", "4", "C"]:
+        fail(file, "chapters", "expected the tutorial, chapters 1 to 4 and the challenge encounters in this order")
+    for ch in chapters:
+        ch["biomes"] = sorted({e["biome"] for e in ch["encounters"]})
+    return {"chapters": chapters, "bossHpFactorPercent": 150, "bossHpStep": 5, "bossPowerBonus": 2}
+
+
+def by_name_id(creatures, cid):
+    for c in creatures:
+        if c["id"] == cid:
+            return c
+    raise KeyError(cid)
+
+
 # ------------------------------------------------------------------- main
 
 def build():
@@ -343,6 +416,7 @@ def build():
         "skills.json": {"attackSkills": attack_skills, "professionSkills": skills},
         "creatures.json": {"creatures": creatures},
         "statuses.json": {"statuses": parse_statuses()},
+        "campaign.json": parse_campaign(creatures),
     }
 
 

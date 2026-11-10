@@ -35,11 +35,28 @@ public partial class PlayScreen : Control
     private InspectionPanel? _inspection;
     private Control? _result;
 
-    public PlayScreen(Main main, BattleSpec spec, string level)
+    private readonly string? _encounter;
+    private BattleSave _save;
+    private readonly BattleSave? _resume;
+    private static SaveStore BattleStore => new(ProjectSettings.GlobalizePath("user://battle.json"));
+
+    /// <summary>The battle in progress on disk (written after every action), or null when there is none.</summary>
+    public static BattleSave? SavedBattle()
+    {
+        try { return BattleStore.Load() is { } text ? BattleSave.FromJson(text) : null; }
+        catch (Exception) { return null; }
+    }
+
+    public static void DropSavedBattle() => BattleStore.Delete();
+
+    public PlayScreen(Main main, BattleSpec spec, string level, string? encounter = null, BattleSave? resume = null)
     {
         _main = main;
-        _spec = spec;
-        _level = level;
+        _spec = resume?.ToSpec() ?? spec;
+        _level = resume?.Level ?? level;
+        _encounter = resume?.Encounter ?? encounter;
+        _resume = resume;
+        _save = resume ?? BattleSave.Of(_spec, _level, _encounter, Game.ContentFingerprint);
     }
 
     public override void _Ready()
@@ -93,8 +110,10 @@ public partial class PlayScreen : Control
 
     private void Start()
     {
-        _state = BattleSetup.Create(_spec, Game.Catalog);
+        _state = _resume != null ? _resume.Replay(Game.Catalog) ?? BattleSetup.Create(_spec, Game.Catalog) : BattleSetup.Create(_spec, Game.Catalog);
+        if (_resume != null && _state.TurnsTaken == 0) _save.Actions.Clear();
         _ai = new AiSearch(Game.Catalog, Game.Settings.Level(_level), new BattleRandom(_spec.Seed * 2 + 2));
+        _aiPlayer = new AiSearch(Game.Catalog, Game.Settings.Level("harness"), new BattleRandom(_spec.Seed * 2 + 1));
         _board.Setup(_state, Side.A);
         _ = RunAsync();
     }
@@ -110,7 +129,12 @@ public partial class PlayScreen : Control
             if (_state.IsOver || unitId is not { } id) break;
 
             AiAction action;
-            if (_state.GetUnit(id).Side == Side.A) action = await AskPlayer(id);
+            if (_state.GetUnit(id).Side == Side.A && Autoplay)
+            {
+                var snap = _state;
+                action = await Task.Run(() => _aiPlayer.Choose(snap, id));
+            }
+            else if (_state.GetUnit(id).Side == Side.A) action = await AskPlayer(id);
             else
             {
                 var snapshot = _state;
@@ -120,6 +144,8 @@ public partial class PlayScreen : Control
             _resolving = true;
             var events = action.Apply(_state, Game.Catalog, id);
             if (BattleEnd.CheckTurnCap(_state)) events = events.Concat(_state.DrainEvents()).ToList();
+            _save.Actions.Add(SavedAction.From(id, action));
+            if (!_state.IsOver) BattleStore.Save(_save.ToJson());                       // the battle resumes where it stopped (production section 1.4)
             await _board.PlayAsync(events);
             _resolving = false;
         }
@@ -156,6 +182,11 @@ public partial class PlayScreen : Control
 
     /// <summary>Plays animations without waiting (with --instant).</summary>
     public bool Instant { get; set; }
+
+    /// <summary>The AI plays the player's side too (with --autoplay), to check a whole campaign battle end to end.</summary>
+    public bool Autoplay { get; set; }
+
+    private AiSearch _aiPlayer = null!;
 
     /// <summary>Surrenders after a moment (with --surrender), to see the result overlay.</summary>
     public bool AutoSurrender { get; set; }
@@ -446,6 +477,7 @@ public partial class PlayScreen : Control
 
     private void ShowResult()
     {
+        DropSavedBattle();
         _bar.Clear();
         _hint.Text = "";
         _previewPanel.Visible = false;
@@ -457,13 +489,34 @@ public partial class PlayScreen : Control
         box.AddThemeConstantOverride("separation", 16);
         box.AddChild(Ui.Label(text, 64, result == PlayerResult.Victory ? Ui.Gold : Ui.Ink, bold: true, align: HorizontalAlignment.Center));
         if (outcome == BattleOutcome.Draw) box.AddChild(Ui.Label("A draw counts as a defeat.", 22, new Color("cdbd9a"), align: HorizontalAlignment.Center));
-        var retry = Ui.Button("Retry", 28);
-        retry.Pressed += () => _main.Show("play-again");
-        var exit = Ui.Button("Exit", 28);
-        exit.Pressed += () => _main.Show("menu");
         var row = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center };
         row.AddThemeConstantOverride("separation", 16);
-        row.AddChild(retry);
+        var enc = _encounter != null ? Game.Campaign.Encounter(_encounter) : null;
+        var won = result == PlayerResult.Victory;
+        if (enc != null && won)
+        {
+            var fresh = Profile.Complete(enc);
+            if (fresh.Count > 0)
+                box.AddChild(Ui.Label("New: " + string.Join(", ", fresh.Select(f => Game.Content.CreaturesById[f].Name)), 28, Ui.Gold, bold: true, align: HorizontalAlignment.Center));
+            else box.AddChild(Ui.Label("The reward was already received.", 22, new Color("cdbd9a"), align: HorizontalAlignment.Center));
+            var cont = Ui.Button("Continue", 28);
+            cont.Pressed += () => _main.Open(new ChapterMapScreen(_main, Game.Campaign.ChapterOf(enc.Id)));
+            row.AddChild(cont);
+        }
+        else
+        {
+            var retry = Ui.Button("Retry", 28);
+            retry.Pressed += () => _main.Show("play-again");
+            row.AddChild(retry);
+            if (enc != null)
+            {
+                var edit = Ui.Button("Edit team", 28);
+                edit.Pressed += () => _main.Open(new TeamEditor(_main) { Back = () => _main.Open(new ChapterMapScreen(_main, Game.Campaign.ChapterOf(enc.Id))) });
+                row.AddChild(edit);
+            }
+        }
+        var exit = Ui.Button(enc != null ? "Map" : "Exit", 28);
+        exit.Pressed += () => { if (enc != null) _main.Open(new ChapterMapScreen(_main, Game.Campaign.ChapterOf(enc.Id))); else _main.Show("menu"); };
         row.AddChild(exit);
         box.AddChild(row);
         var center = new CenterContainer();

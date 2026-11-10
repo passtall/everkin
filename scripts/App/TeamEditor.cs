@@ -13,11 +13,13 @@ public partial class DragCard : CardView
 {
     public string CreatureId { get; init; } = "";
     public bool InTeam { get; init; }
+    public bool Draggable { get; init; } = true;
 
     public DragCard() => ClickOnRelease = true;
 
     public override Variant _GetDragData(Vector2 atPosition)
     {
+        if (!Draggable) return default;
         var preview = new CardView { Mode = CardMode.Compact, Size = new Vector2(100, 150), Modulate = new Color(1, 1, 1, 0.85f) };
         preview.Bind(Info);
         var holder = new Control();
@@ -97,13 +99,19 @@ public partial class TeamEditor : Control
     private readonly Dictionary<Row, RowDrop> _rows = new();
     private readonly GridContainer _grid = new() { Columns = 5 };
     private readonly Label _page = Ui.Label("", 20);
-    private OptionButton _attack = null!, _profession = null!, _sort = null!;
+    private OptionButton _attack = null!, _profession = null!, _sort = null!, _owned = null!;
+
+    /// <summary>Where Back leads (the campaign map when opened from it); the main menu by default.</summary>
+    public Action? Back { get; init; }
+
+    /// <summary>The tutorial's automatic team is being edited (the one team the tutorial uses).</summary>
+    public bool TutorialTeam { get; init; }
     private int _pageIndex;
     private InspectionLite? _inspection;
 
     public TeamEditor(Main main) => _main = main;
 
-    private TeamData Team => Profile.CurrentTeam;
+    private TeamData Team => TutorialTeam ? Profile.TutorialTeam() : Profile.CurrentTeam;
 
     public override void _Ready()
     {
@@ -120,9 +128,9 @@ public partial class TeamEditor : Control
         var top = new HBoxContainer();
         top.AddThemeConstantOverride("separation", 10);
         var back = Ui.Button("Back", 22);
-        back.Pressed += () => _main.Show("menu");
+        back.Pressed += () => { if (Back != null) Back(); else _main.Show("menu"); };
         top.AddChild(back);
-        top.AddChild(_chips);
+        if (!TutorialTeam) top.AddChild(_chips);
         top.AddChild(new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill });
         top.AddChild(_message);
         top.AddChild(_cost);
@@ -151,6 +159,7 @@ public partial class TeamEditor : Control
         _attack = Options(filters, "All attack types", Game.Content.AttackTypes.Select(a => (a.Id, a.Name)));
         _profession = Options(filters, "All professions", Game.Content.Professions.Select(p => (p.Id, p.Name)));
         _sort = Options(filters, null, new[] { ("name", "Name"), ("hp", "HP"), ("speed", "Speed"), ("power", "Power"), ("cost", "Cost") });
+        _owned = Options(filters, null, new[] { ("owned", "Owned"), ("not", "Not owned") });
         rightBox.AddChild(filters);
         _grid.AddThemeConstantOverride("h_separation", 8);
         _grid.AddThemeConstantOverride("v_separation", 8);
@@ -198,7 +207,8 @@ public partial class TeamEditor : Control
         why = null;
         var existing = Team.Units.FirstOrDefault(u => u.Creature == creature);
         var others = Team.Units.Count(u => u.Creature != creature);
-        if (others >= BattleSetup.TeamSize) why = "A team holds up to six creatures";
+        if (!Profile.Owns(creature)) why = "You do not own this creature yet";
+        else if (others >= BattleSetup.TeamSize) why = "A team holds up to six creatures";
         else if (Team.Units.Count(u => u.Row == row.ToString() && u.Creature != creature) >= Formation.RowCapacity) why = "That row is full";
         else if (Profile.Cost(Team) - (existing != null ? Game.Content.CreaturesById[creature].Cost : 0) + Game.Content.CreaturesById[creature].Cost > BattleSetup.TeamBudget)
             why = $"Over the team budget of {BattleSetup.TeamBudget}";
@@ -248,11 +258,11 @@ public partial class TeamEditor : Control
         RebuildCollection();
     }
 
-    private DragCard MakeCard(CreatureDef def, CardMode mode, Vector2 size, bool inTeam)
+    private DragCard MakeCard(CreatureDef def, CardMode mode, Vector2 size, bool inTeam, bool draggable = true)
     {
-        var card = new DragCard { CreatureId = def.Id, InTeam = inTeam, Mode = mode, CustomMinimumSize = size, Size = size, SizeFlagsHorizontal = SizeFlags.ShrinkCenter, SizeFlagsVertical = SizeFlags.ShrinkCenter, TooltipText = $"{def.Name}\n{CardInfo.FromCreature(def).ClassLine}\nHP {def.Hp}  Power {def.Power}  Speed {def.Speed}  Cost {def.Cost}" };
+        var card = new DragCard { CreatureId = def.Id, InTeam = inTeam, Draggable = draggable, Mode = mode, CustomMinimumSize = size, Size = size, SizeFlagsHorizontal = SizeFlags.ShrinkCenter, SizeFlagsVertical = SizeFlags.ShrinkCenter, TooltipText = $"{def.Name}\n{CardInfo.FromCreature(def).ClassLine}\nHP {def.Hp}  Power {def.Power}  Speed {def.Speed}  Cost {def.Cost}" };
         card.Bind(CardInfo.FromCreature(def));
-        card.Clicked += c => _main.Open(new SkillTreeEditor(_main, ((DragCard)c).CreatureId, () => _main.Open(new TeamEditor(_main))));
+        card.Clicked += c => _main.Open(new SkillTreeEditor(_main, ((DragCard)c).CreatureId, () => _main.Open(new TeamEditor(_main) { Back = Back, TutorialTeam = TutorialTeam })));
         card.RightClicked += c => Inspect(((DragCard)c).CreatureId);
         return card;
     }
@@ -341,7 +351,8 @@ public partial class TeamEditor : Control
     private void RebuildCollection()
     {
         foreach (var c in _grid.GetChildren()) c.QueueFree();
-        IEnumerable<CreatureDef> list = Game.Content.Creatures;
+        var notOwned = Selected(_owned, false) == "not";
+        IEnumerable<CreatureDef> list = Game.Content.Creatures.Where(c => Profile.Owns(c.Id) != notOwned);
         if (Selected(_attack, true) is { } at) list = list.Where(c => c.AttackType == at);
         if (Selected(_profession, true) is { } pr) list = list.Where(c => c.Professions.Contains(pr));
         list = Selected(_sort, false) switch
@@ -359,8 +370,9 @@ public partial class TeamEditor : Control
         foreach (var def in all.Skip(_pageIndex * PageSize).Take(PageSize))
         {
             var inTeam = Team.Units.Any(u => u.Creature == def.Id);
-            var card = MakeCard(def, CardMode.Front, new Vector2(140, 210), inTeam: false);
-            if (inTeam) card.Highlight = CardHighlight.Illegal;
+            var card = MakeCard(def, CardMode.Front, new Vector2(140, 210), inTeam: false, draggable: !notOwned);
+            if (inTeam || notOwned) card.Highlight = CardHighlight.Illegal;
+            if (notOwned) card.TooltipText = def.Name + ", " + Profile.SourceOf(def.Id);
             _grid.AddChild(card);
         }
     }

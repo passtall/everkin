@@ -5,7 +5,7 @@ using Everkin.Core.Skills;
 namespace Everkin.Core.Setup;
 
 /// <summary>One creature of a team: which creature, its skill build (node IDs) and where it stands.</summary>
-public sealed record UnitSetup(string CreatureId, IReadOnlyList<string> Build, Row Row);
+public sealed record UnitSetup(string CreatureId, IReadOnlyList<string> Build, Row Row, bool Boss = false);
 
 /// <summary>A team: up to six units; within a row the units stand in the order they are listed.</summary>
 public sealed record TeamSetup(IReadOnlyList<UnitSetup> Units)
@@ -22,6 +22,11 @@ public static class BattleSetup
     public const int TeamSize = 6;
     public const int TeamBudget = 35;
 
+    /// <summary>A boss is the strengthened version of its creature: HP × 1.5 rounded down to a multiple of 5, Power + 2 (campaign.md, starting values).</summary>
+    public static int BossHp(int hp) => hp * 3 / 2 / 5 * 5;
+
+    public const int BossPowerBonus = 2;
+
     /// <summary>
     /// A ready battle: the units of side A then side B with their Attack Type attack and build skills, the formation, every unit's first
     /// turn on the timeline (ties by the battle's seeded generator) and the passives installed. Call nothing else before the first turn.
@@ -37,6 +42,11 @@ public static class BattleSetup
             {
                 var def = content.CreaturesById[u.CreatureId];
                 var unit = state.AddUnit(def, side);
+                if (u.Boss)
+                {
+                    unit.MaxHp = unit.Hp = BossHp(def.Hp);
+                    unit.Power = def.Power + BossPowerBonus;
+                }
                 unit.LearnSkill(catalog.AttackSkillFor(def.AttackType));
                 foreach (var node in u.Build) unit.LearnSkill(node);
                 perRow[u.Row].Add(unit.Id);

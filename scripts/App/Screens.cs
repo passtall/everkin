@@ -14,15 +14,27 @@ public static class Screens
         {
             case "cards": return new CardsDemo();
             case "play-again" when main.LastSpec != null:
-                return new PlayScreen(main, main.LastSpec, main.LastLevel);
+                return new PlayScreen(main, main.LastSpec, main.LastLevel, main.LastEncounter);
             case "play":
             {
                 var spec = Everkin.Core.Setup.BattleSetup.RandomSpec(Game.Content, Game.Trees, ulong.TryParse(Arg("seed"), out var s) ? s : 7);
                 main.LastSpec = spec;
                 main.LastLevel = Arg("level") ?? "easy";
-                return new PlayScreen(main, spec, main.LastLevel) { SelfTest = args.Contains("selftest"), Instant = args.Contains("instant"), AutoSurrender = args.Contains("surrender") };
+                return new PlayScreen(main, spec, main.LastLevel) { SelfTest = args.Contains("selftest"), Instant = args.Contains("instant"), AutoSurrender = args.Contains("surrender"), Autoplay = args.Contains("autoplay") };
             }
             case "free": return new FreeBattleScreen(main);
+            case "world": return new WorldMapScreen(main);
+            case "encounter":
+            {
+                var enc = Game.Campaign.Encounter(Arg("id") ?? "T1");
+                var team = enc.Id.StartsWith('T') ? Profile.TutorialTeam() : Profile.CurrentTeam;
+                var spec = new Everkin.Core.Setup.BattleSpec(7, Profile.ToSetup(team), enc.EnemyTeam(Game.Content));
+                main.LastSpec = spec;
+                main.LastLevel = enc.Ai;
+                main.LastEncounter = enc.Id;
+                return new PlayScreen(main, spec, enc.Ai, enc.Id) { SelfTest = args.Contains("selftest"), Instant = args.Contains("instant"), AutoSurrender = args.Contains("surrender"), Autoplay = args.Contains("autoplay") };
+            }
+            case "chapter": return new ChapterMapScreen(main, Game.Campaign.Chapters.First(c => c.Id == (Arg("id") ?? "T")));
             case "teams":
                 if (args.Contains("demo"))
                 {
@@ -62,8 +74,25 @@ public partial class MenuScreen : Control
             b.Pressed += () => _main.Show(screen);
             box.AddChild(b);
         }
-        Item("Free battle", "free");
-        Item("Team editor", "teams");
+        if (PlayScreen.SavedBattle() is { } saved && saved.ContentHash == Game.ContentFingerprint)
+        {
+            var resume = Ui.Button("Resume battle", 28);
+            resume.CustomMinimumSize = new Vector2(420, 64);
+            resume.Pressed += () => _main.Open(new PlayScreen(_main, saved.ToSpec(), saved.Level, saved.Encounter, saved));
+            box.AddChild(resume);
+        }
+        else if (PlayScreen.SavedBattle() != null)
+        {
+            PlayScreen.DropSavedBattle();                                                  // the content changed: the battle is dropped with a note
+            box.AddChild(Ui.Label("A battle in progress was dropped because the game content changed.", 18, Ui.Bad, align: HorizontalAlignment.Center));
+        }
+        Item(Profile.TutorialComplete ? "Campaign" : "Campaign (tutorial)", "world");
+        if (Profile.TutorialComplete)
+        {
+            Item("Free battle", "free");
+            Item("Team editor", "teams");
+        }
+        if (Profile.LoadNote != null) box.AddChild(Ui.Label(Profile.LoadNote, 18, Ui.Bad, align: HorizontalAlignment.Center));
         Item("Battle viewer (AI vs AI)", "viewer");
         Item("Cards", "cards");
         var center = new CenterContainer();

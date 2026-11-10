@@ -2,7 +2,7 @@
   "levels": {
     "easy": {
       "depth": 2, "candidates": 8, "pickTop": 3, "pickPercent": 35, "deeperMoveAndSkip": false,
-      "momentumPoint": 200, "statusValue": 60, "summonPercent": 50
+      "momentumPoint": 200, "statusValue": 60, "summonPercent": 20
     },
     "normal": {
       "depth": 4, "candidates": 8, "pickTop": 2, "pickPercent": 10, "deeperMoveAndSkip": false,

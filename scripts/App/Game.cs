@@ -14,6 +14,10 @@ public static class Game
     public static SkillCatalog Catalog = null!;
     public static SkillTrees Trees = null!;
     public static AiSettings Settings = null!;
+    public static CampaignDef Campaign = null!;
+
+    /// <summary>The content files a battle in progress depends on (a saved battle resumes only if their fingerprint is unchanged).</summary>
+    public static string ContentFingerprint = "";
 
     private static readonly Dictionary<string, Texture2D?> Textures = new();
     private static readonly Dictionary<string, Font?> Fonts = new();
@@ -27,6 +31,8 @@ public static class Game
         Catalog = SkillCatalog.Create(Content);
         Trees = new SkillTrees(Content);
         Settings = AiSettings.FromJson(Read("ai_settings.json"));
+        Campaign = CampaignDef.FromJson(Read("campaign.json"), Content);
+        ContentFingerprint = Everkin.Core.Setup.ContentHash.Of(new[] { "classes.json", "skills.json", "creatures.json", "statuses.json", "default_builds.json" }.Select(Read));
     }
 
     /// <summary>A texture from res:// (null if the file is missing). Cached.</summary>
