@@ -1069,7 +1069,7 @@ The **front** contains:
 - Relevant combat stats, including Life (current and maximum HP), Speed, Power, and Cost.
 - Clear status and KO overlays on or around the border.
 
-On the battlefield a unit is shown as a **compact card**: portrait, HP bar, statuses and KO. The full front appears on hover and in the inspection panel, which shows front and back side by side ([ui_spec.md](ui_spec.md)).
+On the battlefield a unit is shown as a **round battle portrait** facing the enemy, showing HP and KO only (adopted 2026-11-10; it replaced the compact card; statuses are seen in the inspection panel). The full front appears on hover and in the inspection panel, which shows front and back side by side ([ui_spec.md](ui_spec.md)).
 
 Cosmetic frames must never reduce gameplay readability. KO must be unmistakable, for example through desaturation or darkening in addition to an explicit KO indication.
 
