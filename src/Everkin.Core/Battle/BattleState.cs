@@ -269,6 +269,7 @@ public sealed class BattleState
     private readonly List<AttackBan> _attackBans = new();
     private readonly List<StatusRemovedHook> _statusRemovedHooks = new();
     private readonly List<DamageModifier> _damageModifiers = new();
+    private readonly List<ReachOverride> _reachOverrides = new();
     private readonly List<DamageSharing> _damageSharings = new();
     private readonly List<LethalGuard> _lethalGuards = new();
     private readonly List<StatusApplicationModifier> _statusApplicationModifiers = new();
@@ -323,6 +324,8 @@ public sealed class BattleState
         _attackBans.AddRange(other._attackBans);
         _statusRemovedHooks.AddRange(other._statusRemovedHooks);
         _damageModifiers.AddRange(other._damageModifiers);
+        _reachOverrides.AddRange(other._reachOverrides);
+        ScoutedUntil = (int?[])other.ScoutedUntil.Clone();
         _damageSharings.AddRange(other._damageSharings);
         _lethalGuards.AddRange(other._lethalGuards);
         MistsUntil = other.MistsUntil;
@@ -462,6 +465,12 @@ public sealed class BattleState
 
     public IReadOnlyList<LethalGuard> LethalGuards => _lethalGuards;
     public void AddLethalGuard(LethalGuard hook) => _lethalGuards.Add(hook);
+
+    public IReadOnlyList<ReachOverride> ReachOverrides => _reachOverrides;
+    public void AddReachOverride(ReachOverride hook) => _reachOverrides.Add(hook);
+
+    /// <summary>Scout Ahead: until this battle time, no unit of the side (indexed by <see cref="Side"/>) can gain stealth.</summary>
+    public int?[] ScoutedUntil { get; private set; } = new int?[2];
 
     /// <summary>Rite of Mists: until this battle time, projectile hits from units standing on water deal half damage.</summary>
     public int? MistsUntil { get; set; }

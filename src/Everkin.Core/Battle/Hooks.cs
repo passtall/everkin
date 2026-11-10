@@ -118,3 +118,6 @@ public delegate IReadOnlyList<int> DamageSharing(BattleState state, int targetId
 
 /// <summary>A unit that would drop to 0 HP is saved by a totem (Totem of Return): returns the totem that breaks, or null.</summary>
 public delegate int? LethalGuard(BattleState state, int targetId);
+
+/// <summary>True when the unit's skills have unlimited range right now (Boundless Sky while airborne).</summary>
+public delegate bool ReachOverride(BattleState state, int userId);

@@ -384,3 +384,11 @@ Branches: Mobility, Skywatch, Assault.
 | Assault | Headwind | A | Gust | 4 / 0 | Direct · D1 | Wind. A unit's next action comes 5 time units later. |
 | Assault | Turbulence | A | Headwind | 4 / 0 |  | Wind. Every airborne unit, on both sides, lands. |
 | Assault | Dust Up | A | Gust | 4 / 0 | Direct · D1 | Wind. A unit is Blind for 10 time units. |
+
+**Flying rulings (owner decisions 2026-11-10).**
+
+- **Take Off** affects the user only: airborne for 20 time units (40 with High Altitude); using it while airborne restarts the timer. A unit under Curse of Weight cannot use it.
+- **Sky Lord:** at battle start maximum HP and HP become 70% (rounded down, minimum 1) and the unit becomes airborne with no end. If it is landed (Turbulence) it takes to the air again at once, unless Curse of Weight forbids it.
+- **Scout Ahead:** the player picks a side by choosing any of its rows (either side is allowed). Every stealthed unit of that side is revealed (as Read Tracks), and none of that side can gain stealth for 10 time units. **Watchtower:** every 20 time units from the start of the battle, an auto event owned by the unit repeats Scout Ahead, free, on the enemy side, if the unit is airborne when it comes up.
+- **Spotter** marks an enemy for 20 time units; **Long Watch** adds 10 time units to every Mark with a clock that the unit applies.
+- **Airlift** moves an ally to any free gap of any row of your side, its own row included, as a forced move (Immobilized allies and Hold Position stop it). **Gust** is a forced push one row back (bumps apply). **Headwind** pushes the target's next turn back 5 time units (not if it is immune to that). **Turbulence** lands every airborne unit on both sides. **Boundless Sky:** while the unit is airborne its skills reach any unit that the other legality rules allow.

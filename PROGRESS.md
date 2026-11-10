@@ -2,17 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-10, M1.16k (Primalist) done and tested (695 tests green); next is M1.16l Flying.
+**Last updated:** 2026-11-10, M1.16l (Flying) done: every profession skill of M1.16 is implemented (706 tests green); next is M1.17.
 
 ## Current task
 
-**M1.16** Attack Type attacks and the Hunter, Guardian, Healer, Sorcerer, Elementalist, Warrior, Leader, Rogue, Tinker, Summoner (a to j) and Primalist (k) skills are done and tested (695 tests green). **Next: M1.16l Flying** (the last profession). Nothing is uncommitted after the Primalist commit.
+**M1.16 is complete** (the nine Attack Type attacks and all twelve professions, 706 tests green). **Next: M1.17** (every worked check in game_system §20.5 is a passing test). Nothing is uncommitted after the Flying commit.
 
 ## Next step
 
-M1.16l Flying (13 skills, skills.md "Flying" section; read it and game_system §10.6 airborne first; `StatusIds.Airborne`, `Unit.IsAirborne`, melee reach rules and the Curse of Weight refusal already exist; Sky Lord's always-airborne rule is still open). Pattern: `src/Everkin.Core/Skills/PrimalistSkills.cs` / `PrimalistSkillTests.cs`. Update docs first for each owner decision (ask the owner about open readings with concrete options), run `dotnet test`, commit when green, push. Then M1.17 and M1.18 (see below). Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
-
-After the Flying skills: M1.17 (every §20.5 worked check is a passing test: audit the table row by row against the tests), M1.18 (preview queries), then M2.
+M1.17: read game_system §20.5 and audit the table row by row against the existing tests (`src/Everkin.Core.Tests/`); for every row without a test, write one (name it after the row); where a row contradicts the code, the docs win unless the owner says otherwise, so ask. Then M1.18 (preview queries: damage range, interception chance, timeline position, forced movement; production §2.2) and M2. Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
 
 ## In flight
 
@@ -71,6 +69,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - M1.16i framework additions (owner rulings 2026-11-10 in skills.md): `Turrets` (auto events `turret:<id>` owned by the Tinker; `AfterAction` is called at the end of `Actions.Use`, `Move` and `SkipTurn`, queues one shot per turret with `Timeline.AddNow` (due now, the only entry with no Wait) and resolves them in placement order; `BattleDriver.NextTurn` also resolves a popped AutoEvent through `Turrets.HandleAutoEvent`), `StatusApplicationModifiers` (Showman doubles Blind/Stunned it applies), `SkillDelayModifiers` (Showman +2 on `IsAttack` skills). Reading to confirm: a turret exists when the action that places it ends, so it shoots at once right after being placed.
 - M1.16j framework additions (owner rulings 2026-11-10 in skills.md): `BattleDriver.NextTurn(state, catalog)` plays the turns of units with `Unit.AutoSkillId` itself through `AutonomousTurns.Play` (nearest legal enemy, Skip Turn without one; the events stay in the state's buffer); hidden skills `clay_golem_strike`, `rune_golem_strike`, `clockwork_golem_strike`, `blade_shot`, `bell_golem_pulse` live in `SummonerSkills.All` but have no content row; `Skill.PlacesRandomly` (Portal: no place from the player); `Unit.HealingHurts` (undead or Lich Form), `NoReviveUntil` (Desecrate, checked in `HealerSkills.CanBeRevived`), `Answering` (Animate Mirror guard). **Bug fixed on the way:** the `Unit` clone constructor did not copy `LastSkillId`, `LastActiveSkillId`, `MarkedAtKo` and `SneakReady` (fields added in M1.16g/h); `BattleState.Clone()` now copies them. Reading to confirm: a raised undead's autonomous attack needs its creature to exist in the content (a unit without a creature ID has no behaviour); Plague Corpse's Poison lasts the 20 time units the skill states (the status table says 50).
 - M1.16k framework additions (owner rulings 2026-11-10 in skills.md): `BattleState.DealDamage` now goes through `DealDamageCore(..., secondary)`: hooks `DamageSharings` (Spirit Link Totem: even split, remainder with the hurt unit, shares are "secondary" blows that meet Ward/Dampen but are not changed, shared or echoed again) and `LethalGuards` (Totem of Return: keeps 1 HP, the totem is removed), the `fate_link` status (Linked Fates / Shared Fate: half of the HP lost as an unreducible echo, no chain), `BattleState.MistsUntil` (Rite of Mists, checked in `ApplyHit`), event `HpSwapped`; `Totems.HandleAutoEvent` (the Healing Totem's pulse every 10 time units, owned by the totem; dispatches turret events to `Turrets`). Reading to confirm: a totem placed this action first pulses 10 time units later; Life Swap sets HP directly (it ignores shared HP pools).
+- M1.16l framework additions (owner rulings 2026-11-10 in skills.md): `BattleState.ReachOverrides` (Boundless Sky, honoured by `Actions.ReachOf`), `ScoutedUntil` per side (Scout Ahead stops stealth gain through a stealth blocker), Watchtower's repeating auto event (tag `watchtower:<id>`, dispatched by `Totems.HandleAutoEvent` through `FlyingSkills.TryHandleAutoEvent`), Sky Lord keeps itself airborne through an aura sync (Curse of Weight can still keep it down). Readings to confirm: Watchtower ticks every 20 time units from the battle start and only acts if the unit is airborne at that moment; Sky Lord's HP cut happens in `Install`, so `BattleStart.Install` must run before the first turn.
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -110,7 +109,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - [x] M1.16i Tinker skills
 - [x] M1.16j Summoner skills
 - [x] M1.16k Primalist skills
-- [ ] M1.16l Flying skills
+- [x] M1.16l Flying skills
 - [ ] M1.17 All §20.5 worked checks pass
 - [ ] M1.18 Preview queries
 - [ ] M2.1 AI search
@@ -176,3 +175,4 @@ One line per finished task: date, task, commit.
 2026-11-10 M1.16i Tinker skills (see git log)
 2026-11-10 M1.16j Summoner skills (see git log)
 2026-11-10 M1.16k Primalist skills (see git log)
+2026-11-10 M1.16l Flying skills (see git log)

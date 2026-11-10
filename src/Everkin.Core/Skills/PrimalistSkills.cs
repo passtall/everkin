@@ -71,6 +71,7 @@ public static class Totems
             Pulse(state, totemId);
             return;
         }
+        if (FlyingSkills.TryHandleAutoEvent(state, entry)) return;
         Turrets.HandleAutoEvent(state, entry);
     }
 

@@ -89,7 +89,7 @@ public static class Actions
 
     /// <summary>The reach a skill has for this user now: unlimited for an attack by a unit with Phase Weapon on it (its next attack), else the skill's own.</summary>
     public static Reach ReachOf(BattleState state, int userId, Skill skill) =>
-        skill.IsAttack && Statuses.Has(state.GetUnit(userId), StatusIds.Phased) ? Reach.Unlimited : skill.Reach;
+        (skill.IsAttack && Statuses.Has(state.GetUnit(userId), StatusIds.Phased)) || state.ReachOverrides.Any(o => o(state, userId)) ? Reach.Unlimited : skill.Reach;
 
     /// <summary>Every unit that is a legal target of the skill right now (empty for skills that take none).</summary>
     public static IReadOnlyList<int> LegalTargets(BattleState state, SkillCatalog catalog, int userId, string skillId)
