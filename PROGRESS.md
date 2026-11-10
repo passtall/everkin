@@ -2,17 +2,17 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-10, M1.16f (Warrior) done and tested (625 tests green); next is M1.16g Leader.
+**Last updated:** 2026-11-10, M1.16g (Leader) done and tested (641 tests green); next is M1.16h Rogue.
 
 ## Current task
 
-**M1.16** Attack Type attacks, Hunter (a), Guardian (b), Healer (c), Sorcerer (d), Elementalist (e) and Warrior (f) are done and tested (625 tests green). **Next: M1.16g Leader.** Nothing is uncommitted after the Warrior commit.
+**M1.16** Attack Type attacks and the Hunter (a), Guardian (b), Healer (c), Sorcerer (d), Elementalist (e), Warrior (f) and Leader (g) skills are done and tested (641 tests green). **Next: M1.16h Rogue.** Nothing is uncommitted after the Leader commit.
 
 ## Next step
 
-M1.16g Leader (15 skills, skills.md "Leader" section; read it and game_system §6.1 timeline pulls and §9 first). Pattern: `src/Everkin.Core/Skills/WarriorSkills.cs` / `WarriorSkillTests.cs`. Update docs first for each owner decision (ask the owner about open readings with concrete options), run `dotnet test`, commit when green, push. Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
+M1.16h Rogue (14 skills, skills.md "Rogue" section; read it and game_system §10.1 stealth first). Pattern: `src/Everkin.Core/Skills/LeaderSkills.cs` / `LeaderSkillTests.cs`. Update docs first for each owner decision (ask the owner about open readings with concrete options), run `dotnet test`, commit when green, push. Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
 
-After the Leader: h Rogue (14), i Tinker (13: Barricade doubles HP with Keeper of the Gate; turrets as constructs with auto events: needs `BattleDriver` handling of AutoEvent / DelayedEvent entries), j Summoner (15), k Primalist (15), l Flying (13). Then M1.17 (every §20.5 worked check is a passing test: audit the table row by row against the tests), M1.18 (preview queries), then M2.
+After the Rogue: i Tinker (13: Barricade doubles HP with Keeper of the Gate; turrets as constructs with auto events: needs `BattleDriver` handling of AutoEvent / DelayedEvent entries), j Summoner (15), k Primalist (15), l Flying (13). Then M1.17 (every §20.5 worked check is a passing test: audit the table row by row against the tests), M1.18 (preview queries), then M2.
 
 ## In flight
 
@@ -66,6 +66,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - M1.16d framework additions: new statuses phased, piercing, echo, glass_body, transmuted, stone_shell, weighted, stagnant, betrayed (`StatusIds`, `StatusRules.PolarityOf`); `Statuses.Remove/RemoveAll/Transfer` take an optional `byUnitId` (a cleansing skill passes `context.UserId`) and call `BattleState.StatusRemovedHooks` (Lingering Malice); `StatusInstance.Held` / `TimeLeft` (Curse of Stagnation); `Unit.EffectivePower` (Transmute) and `EffectiveSpeed` read `transmuted`; `Actions.ReachOf` (Phase Weapon), `SkillContext.IgnoresInterception` / `PierceBehind` and `HitSpec.NoInterception`; Echo in `Actions.Use`. The Sorcerer's enchantment and curse lengths are constants in `SorcererSkills`.
 - M1.16e framework additions (owner rulings 2026-11-10 are in skills.md): `BattleState.AddDamageModifier` (Brittle: Hit damage × 3 ÷ 2 for Frozen enemies of the owner, before Ward); `Movement.ForceMove(..., landingCoordinate)` (a group move keeps each unit's pre-push coordinate: Tempest); a Frozen status with `UsesLeft` > 1 skips that many turns (Cold Heart: 2); `ElementalistSkills.Lightning` (Stun + half-time spread over touching water), `Freeze`, `Beside` (coordinate ±2, within -5..5), `Ignite`. Steam Burst needs no code: GroundField already does steam for every source (question 9b).
 - M1.16f framework additions (owner rulings 2026-11-10 in skills.md): hook lists on `BattleState` (`DamageBonuses` percent bonuses that add up, `PostHitHooks` with the HP lost (recoil), `AttackMissHooks`, `DamageFloors` for Periodic damage (Endure), `StatusImmunities`, `TurnPushImmunities` + `BattleState.PushTurnBack` (all skills that push a turn must use it), `MoveBans`, `TargetRestrictions` (checked in `Targeting.IsLegalTarget`), `AttackExpanders` (Crowd Fighter)); `SkillContext.Execute`, `PushGroupBack` (group forced move with kept coordinates; Tempest uses it), `InterceptEffect` (a melee/projectile non-damaging effect goes to the first interceptor); `AfterForcedMove` now also raises `WhenMoved` triggers for every moved unit; statuses sidestep and duel. Open readings (none block a task): (a) Hunt Down reacts to forced movement only; (b) Last Stand's immunity applies to any side, so Hit and Run's own move is skipped; (c) a pulled unit that lands at 100% overlap on a Front unit is blocked at the formation boundary (bump damage), so Drag Out needs a 50% landing (two Front units, or the unit offset) to pull into the Front row.
+- M1.16g framework additions (owner rulings 2026-11-10 in skills.md): `Actions.CostOf` (Press the Advantage = 0, `MomentumCostModifiers` for All In), `MomentumShiftModifiers` (All In), `RepeatDelayReductions` + `Unit.LastSkillId` (Rhythm; Move/Skip clear it), `BattleState.AddAuraSync` / `RunAuras` (called after every action and event; Song of Haste keeps the `song_haste` status in step with the formation), `FirstInstall(key)` for rules shared by several units (War Drums, Rhythm), `Timeline.SwapDue`, `SkillContext.PullGroupForward` and group moves that return the moved units (Drill), `Bard.Covers` (reach rules). Grand Chorus is checked in `Actions.WhyNot`. Reading to confirm: All In only zeroes Momentum GAINED; a miss still costs 1 (owner asked whether a miss should lose Momentum at all; §6.7 says it does).
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -100,7 +101,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - [x] M1.16d Sorcerer skills
 - [x] M1.16e Elementalist skills
 - [x] M1.16f Warrior skills
-- [ ] M1.16g Leader skills
+- [x] M1.16g Leader skills
 - [ ] M1.16h Rogue skills
 - [ ] M1.16i Tinker skills
 - [ ] M1.16j Summoner skills
@@ -166,3 +167,4 @@ One line per finished task: date, task, commit.
 2026-11-10 M1.16d Sorcerer skills (see git log)
 2026-11-10 M1.16e Elementalist skills (see git log)
 2026-11-10 M1.16f Warrior skills (see git log)
+2026-11-10 M1.16g Leader skills (see git log)

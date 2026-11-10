@@ -281,6 +281,13 @@ public sealed class Timeline
         entry.Order = _nextOrder++;
     }
 
+    /// <summary>Swap Turns: the two entries exchange their due times and their places in the tie order.</summary>
+    public void SwapDue(TimelineEntry a, TimelineEntry b)
+    {
+        (a.Due, b.Due) = (b.Due, a.Due);
+        (a.Order, b.Order) = (b.Order, a.Order);
+    }
+
     /// <summary>Pull Forward: removes time units from the remaining Wait.</summary>
     public void PullForward(TimelineEntry entry, int timeUnits) => AdjustRemaining(entry, -Math.Abs(timeUnits));
 

@@ -143,6 +143,9 @@ public sealed class Unit
     public int Speed { get; set; }
     public int Power { get; set; }
 
+    /// <summary>The skill this unit used last, null after a Move or Skip Turn (Rhythm: the same skill twice in a row).</summary>
+    public string? LastSkillId { get; set; }
+
     /// <summary>Knocked out: HP is 0 (game_system.md section 10.2). A KO body keeps its place in the row.</summary>
     public bool IsKnockedOut => Hp <= 0;
 
@@ -239,6 +242,11 @@ public sealed class BattleState
     private readonly List<AttackBan> _attackBans = new();
     private readonly List<StatusRemovedHook> _statusRemovedHooks = new();
     private readonly List<DamageModifier> _damageModifiers = new();
+    private readonly List<MomentumShiftModifier> _momentumShiftModifiers = new();
+    private readonly List<MomentumCostModifier> _momentumCostModifiers = new();
+    private readonly List<RepeatDelayReduction> _repeatDelayReductions = new();
+    private readonly List<(string Key, Action<BattleState> Sync)> _auraSyncs = new();
+    private readonly HashSet<string> _installedKeys = new();
     private readonly List<DamageBonus> _damageBonuses = new();
     private readonly List<PostHitHook> _postHitHooks = new();
     private readonly List<AttackMissHook> _attackMissHooks = new();
@@ -283,6 +291,11 @@ public sealed class BattleState
         _attackBans.AddRange(other._attackBans);
         _statusRemovedHooks.AddRange(other._statusRemovedHooks);
         _damageModifiers.AddRange(other._damageModifiers);
+        _momentumShiftModifiers.AddRange(other._momentumShiftModifiers);
+        _momentumCostModifiers.AddRange(other._momentumCostModifiers);
+        _repeatDelayReductions.AddRange(other._repeatDelayReductions);
+        _auraSyncs.AddRange(other._auraSyncs);
+        foreach (var key in other._installedKeys) _installedKeys.Add(key);
         _damageBonuses.AddRange(other._damageBonuses);
         _postHitHooks.AddRange(other._postHitHooks);
         _attackMissHooks.AddRange(other._attackMissHooks);
@@ -396,6 +409,31 @@ public sealed class BattleState
     /// <summary>Called when another unit's skill cleanses a status off a unit (Lingering Malice).</summary>
     public IReadOnlyList<StatusRemovedHook> StatusRemovedHooks => _statusRemovedHooks;
     public void AddStatusRemovedHook(StatusRemovedHook hook) => _statusRemovedHooks.Add(hook);
+
+    // Leader hooks (docs/skills.md Leader rulings)
+    public IReadOnlyList<MomentumShiftModifier> MomentumShiftModifiers => _momentumShiftModifiers;
+    public void AddMomentumShiftModifier(MomentumShiftModifier hook) => _momentumShiftModifiers.Add(hook);
+
+    public IReadOnlyList<MomentumCostModifier> MomentumCostModifiers => _momentumCostModifiers;
+    public void AddMomentumCostModifier(MomentumCostModifier hook) => _momentumCostModifiers.Add(hook);
+
+    public IReadOnlyList<RepeatDelayReduction> RepeatDelayReductions => _repeatDelayReductions;
+    public void AddRepeatDelayReduction(RepeatDelayReduction hook) => _repeatDelayReductions.Add(hook);
+
+    /// <summary>True the first time a key is seen: passives of several units that install one shared rule use it to install it once.</summary>
+    public bool FirstInstall(string key) => _installedKeys.Add(key);
+
+    /// <summary>Registers an aura that keeps statuses in step with positions (Song of Haste). Run by <see cref="RunAuras"/> after every event.</summary>
+    public void AddAuraSync(string key, Action<BattleState> sync)
+    {
+        if (_auraSyncs.All(a => a.Key != key)) _auraSyncs.Add((key, sync));
+    }
+
+    /// <summary>Brings every aura up to date with the formation and the living units.</summary>
+    public void RunAuras()
+    {
+        foreach (var (_, sync) in _auraSyncs.ToArray()) sync(this);
+    }
 
     // Warrior hooks (docs/skills.md Warrior rulings)
     public IReadOnlyList<DamageBonus> DamageBonuses => _damageBonuses;

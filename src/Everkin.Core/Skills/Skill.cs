@@ -321,19 +321,29 @@ public sealed class SkillContext
     }
 
     /// <summary>Pushes units one row back as a group, each landing where its coordinate was before the push (Tempest, Isolate, Sweeping Kick). Rear-row units stay.</summary>
-    public void PushGroupBack(IEnumerable<int> unitIds)
+    public IReadOnlyList<int> PushGroupBack(IEnumerable<int> unitIds) => MoveGroup(unitIds, 1);
+
+    /// <summary>As <see cref="PushGroupBack"/> but one row toward the Front (Advance). Front-row units stay.</summary>
+    public IReadOnlyList<int> PullGroupForward(IEnumerable<int> unitIds) => MoveGroup(unitIds, -1);
+
+    private IReadOnlyList<int> MoveGroup(IEnumerable<int> unitIds, int direction)
     {
+        var moved = new List<int>();
         var group = unitIds.Where(id => State.Formation.Contains(id) && !State.GetUnit(id).IsKnockedOut)
             .Select(id => (Id: id, Position: State.Formation.PositionOf(id), Coordinate: State.Formation.CenterOf(State.Formation.PositionOf(id)))).ToArray();
         foreach (var (id, start, coordinate) in group)
         {
-            if (start.Row == Battle.Row.Rear || !State.Formation.Contains(id) || State.GetUnit(id).IsKnockedOut) continue;
+            if (direction > 0 ? start.Row == Battle.Row.Rear : start.Row == Battle.Row.Front) continue;
+            if (!State.Formation.Contains(id) || State.GetUnit(id).IsKnockedOut) continue;
             var position = State.Formation.PositionOf(id);
             if (position.Side != start.Side || position.Row != start.Row) continue;      // an earlier push bumped it elsewhere
-            AfterForcedMove(Movement.ForceMove(State, id, (Battle.Row)((int)start.Row + 1), UserSide, coordinate));
-            if (Over) return;
+            var result = Movement.ForceMove(State, id, (Battle.Row)((int)start.Row + direction), UserSide, coordinate);
+            moved.AddRange(result.Moves.Select(m => m.UnitId));
+            AfterForcedMove(result);
+            if (Over) return moved;
         }
         Settle();
+        return moved;
     }
 
     private void WasHit(int unitId, List<Trigger> triggers, EffectTags tags)
@@ -358,6 +368,7 @@ public sealed class SkillContext
         if (shiftMomentum)
         {
             var shift = MomentumRules.ActionShift(outcomes);
+            foreach (var modifier in State.MomentumShiftModifiers) shift = modifier(State, UserId, shift);   // All In
             if (shift != 0) State.ShiftMomentum(UserSide, shift);
         }
 
@@ -370,6 +381,7 @@ public sealed class SkillContext
                 batch.Add(new Trigger(TriggerKind.WhenKo, id, UserId));
         }
 
+        State.RunAuras();
         BattleEnd.Resolve(State);
     }
 

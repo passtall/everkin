@@ -226,6 +226,15 @@ Branches: Tactician, Commander, Bard.
 | Bard | Solo Performer | K | War Drums |  |  | The Leader's Bard passives are twice as strong, but they reach only the Leader's own row. |
 | Bard | Grand Chorus | K | Rhythm |  |  | The Leader's Bard passives reach every ally, but the Leader can use no active skills except its type-specific attack. |
 
+**Leader rulings (owner decisions 2026-11-10).**
+
+- **Rotation** turns the three rows of your side: Front to Middle, Middle to Rear, Rear to Front. Only living allies that are not Immobilized and not immune to being moved take part; KO bodies, Immobilized and immune units stay where they are. Movers keep their left-to-right order and coordinates and are inserted into the new row among the units that stayed. If a row would end up with more than 6 units, the rotation fails and nothing moves (no bump damage).
+- **All In:** costs are halved (rounded up) for every skill of the Leader, including the lead it needs. Only Momentum *gained* from its hits is 0; the general rule of game_system §6.7 for a missed attack is not changed by All In.
+- **Bard passives** count the Leader as an ally. Reach without a keystone: Song of Haste the Leader's row, War Drums the Leader and the units next to it (§8.4 adjacency), Rhythm every ally. Solo Performer: every Bard passive reaches only the Leader's row and is twice as strong (Song of Haste +2 Speed, Rhythm 2 less Delay; War Drums has no number). Grand Chorus: every Bard passive reaches every ally. With both keystones the Grand Chorus reach and the Solo Performer strength apply. Several Leaders' effects do not add up: the strongest applies.
+- **Rhythm:** an ally's consecutive uses of the same skill; a Move or Skip Turn in between breaks the streak.
+- **Swap Turns:** the two allies exchange the due times (and tie order) of their next turns. **Press the Advantage** has no time limit: the unit's next skill costs 0 Momentum and needs no lead. **Drill** pulls forward 3 every unit (the Leader included) that one of the Leader's movement skills moves.
+- **Inspiring Presence** needs the KO to come from the ally's own skill; **Reposition** may move the Leader itself.
+
 ## Rogue (14)
 
 Branches: Thief, Assassin, Saboteur.

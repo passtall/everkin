@@ -24,7 +24,10 @@ public static class Actions
         if (skill.IsPassive) return "a passive is always on and is not used";
         if (skill.IsAttack && state.AttackBans.Any(b => b(state, use.UserId))) return "this unit can never attack";
         if (skill.Magical && !Statuses.CanUseMagical(user)) return "Silenced: magical skills cannot be used";
-        if (!state.Momentum.CanPay(user.Side, skill.MomentumCost)) return $"needs the side to be {skill.MomentumCost} ahead in Momentum";
+        if (user.KnownSkills.Contains("grand_chorus") && !catalog.Content.AttackSkills.Any(a => a.Id == use.SkillId))
+            return "Grand Chorus: only the type-specific attack can be used";
+        var cost = CostOf(state, use.UserId, skill);
+        if (!state.Momentum.CanPay(user.Side, cost)) return $"needs the side to be {cost} ahead in Momentum";
         var own = skill.Unavailable(state, use.UserId);
         if (own is not null) return own;
 
@@ -68,6 +71,15 @@ public static class Actions
                 if (!skill.TargetFilter(state, use.UserId, target)) return "not a valid target for this skill";
                 return DistractedFrom(state, use.UserId, skill, target);
         }
+    }
+
+    /// <summary>The Momentum a skill costs its user now: 0 after Press the Advantage, otherwise the skill's cost changed by passives (All In).</summary>
+    public static int CostOf(BattleState state, int userId, Skill skill)
+    {
+        if (Statuses.Has(state.GetUnit(userId), StatusIds.FreeMomentum)) return 0;
+        var cost = skill.MomentumCost;
+        foreach (var modifier in state.MomentumCostModifiers) cost = modifier(state, userId, cost);
+        return cost;
     }
 
     /// <summary>The reach a skill has for this user now: unlimited for an attack by a unit with Phase Weapon on it (its next attack), else the skill's own.</summary>
@@ -118,10 +130,13 @@ public static class Actions
 
         state.BeginAction();
         state.Emit(new SkillUsed(use.UserId, use.SkillId, target));
-        if (skill.MomentumCost > 0) state.PayMomentum(user.Side, skill.MomentumCost);
+        var cost = CostOf(state, use.UserId, skill);
+        if (Statuses.Has(user, StatusIds.FreeMomentum)) Statuses.Remove(state, use.UserId, StatusIds.FreeMomentum, StatusEndCause.Consumed);
+        if (cost > 0) state.PayMomentum(user.Side, cost);
+        var rhythm = user.LastSkillId == skill.Id ? state.RepeatDelayReductions.Select(r => r(state, use.UserId, skill.Id)).DefaultIfEmpty(0).Max() : 0;
         // Effects that add Delay to the next skill (Net Trap's +3) count once; Delay stays within 1 to 10 after all modifiers.
         var boundStrength = state.SharedPoolOf(use.UserId) is { BoundStrength: true } ? 1 : 0;   // Bound Strength: 1 less Delay while sharing HP
-        ScheduleNextTurn(state, use.UserId, skill.Delay + Statuses.ConsumeNextSkillDelay(state, use.UserId) - boundStrength);
+        ScheduleNextTurn(state, use.UserId, Math.Clamp(skill.Delay + Statuses.ConsumeNextSkillDelay(state, use.UserId) - boundStrength - rhythm, 1, 10));
 
         if (Statuses.Get(user, StatusIds.LieInWait) is { } lie)
         {
@@ -159,6 +174,8 @@ public static class Actions
             }
         }
         user.LastActionIndex = state.ActionCounter;
+        user.LastSkillId = skill.Id;
+        state.RunAuras();
         return state.DrainEvents();
     }
 
@@ -189,6 +206,8 @@ public static class Actions
         ScheduleNextTurn(state, userId, Movement.MoveDelay);
         AfterSkill(state, userId, melee: false, move: true);
         state.GetUnit(userId).LastActionIndex = state.ActionCounter;
+        state.GetUnit(userId).LastSkillId = null;
+        state.RunAuras();
         return state.DrainEvents();
     }
 
@@ -199,6 +218,7 @@ public static class Actions
         state.BeginAction();
         ScheduleNextTurn(state, userId, Timeline.SkippedTurnDelay);
         state.GetUnit(userId).LastActionIndex = state.ActionCounter;
+        state.GetUnit(userId).LastSkillId = null;
         return state.DrainEvents();
     }
 
@@ -227,6 +247,7 @@ public static class Actions
             if (fallen.Count == 0) break;
             Reactions.Resolve(state, fallen.Select(id => new Trigger(TriggerKind.WhenKo, id, sourceUnitId)).ToArray());
         }
+        state.RunAuras();
         BattleEnd.Resolve(state);
     }
 }

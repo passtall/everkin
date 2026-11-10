@@ -80,6 +80,12 @@ public static class StatusIds
     /// <summary>Single Combat: the unit and its duel partner (the magnitude is the partner's ID) can be targeted only by each other.</summary>
     public const string Duel = "duel";
 
+    /// <summary>Press the Advantage: the unit's next skill costs no Momentum.</summary>
+    public const string FreeMomentum = "free_momentum";
+
+    /// <summary>Song of Haste: Speed raised by the magnitude while a Leader's song reaches the unit. Kept by the aura, not applied by a skill.</summary>
+    public const string SongHaste = "song_haste";
+
     /// <summary>The Sorcerer's curses (Lingering Malice and Witch's Patience look at these).</summary>
     public static bool IsCurse(string statusId) => statusId is Weighted or Stagnant or Betrayed;
 
@@ -185,7 +191,7 @@ public static class StatusRules
             or StatusIds.Marked or StatusIds.Slow or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted
             or StatusIds.GlassBody or StatusIds.StoneShell or StatusIds.Weighted or StatusIds.Stagnant or StatusIds.Betrayed => Polarity.Harmful,
         StatusIds.Ward or StatusIds.Dampen or StatusIds.Haste or StatusIds.Charge or StatusIds.LeapCover or StatusIds.Pledge
-            or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo or StatusIds.Sidestep => Polarity.Helpful,
+            or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo or StatusIds.Sidestep or StatusIds.FreeMomentum => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };
 
@@ -195,6 +201,7 @@ public static class StatusRules
         StatusIds.Chilled => -ChilledSpeedLoss,
         StatusIds.Haste => status.Magnitude,
         StatusIds.Slow => -status.Magnitude,
+        StatusIds.SongHaste => status.Magnitude,
         _ => 0,
     };
 }
