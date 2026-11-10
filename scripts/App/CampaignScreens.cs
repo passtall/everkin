@@ -9,8 +9,10 @@ using Godot;
 namespace Everkin.App;
 
 /// <summary>The world map (M5.2, ui_spec "Campaign map"): the tutorial and the four chapters in their fixed order; chapters not yet reached stay dark.</summary>
-public partial class WorldMapScreen : Control
+public partial class WorldMapScreen : Control, IBackNavigable
 {
+    public bool GoBack() { _main.Show("menu"); return true; }
+
     private readonly Main _main;
 
     public WorldMapScreen(Main main) => _main = main;
@@ -74,8 +76,10 @@ public partial class WorldMapScreen : Control
 /// One stage's map: the encounters on a path in their fixed order; the next one highlighted, won ones marked, later ones dark, the boss larger. Selecting
 /// one opens a panel with the reward, the enemy team, the team to fight with and Fight (ui_spec "Campaign map").
 /// </summary>
-public partial class ChapterMapScreen : Control
+public partial class ChapterMapScreen : Control, IBackNavigable
 {
+    public bool GoBack() { _main.Open(new WorldMapScreen(_main)); return true; }
+
     private readonly Main _main;
     private readonly ChapterDef _chapter;
     private EncounterDef _selected;
@@ -107,6 +111,9 @@ public partial class ChapterMapScreen : Control
         var back = Ui.Button("World map", 22);
         back.Pressed += () => _main.Open(new WorldMapScreen(_main));
         top.AddChild(back);
+        var title = Ui.Button("Title", 22);
+        title.Pressed += () => _main.Show("menu");
+        top.AddChild(title);
         top.AddChild(Ui.Label(_chapter.Name, 34, Ui.Gold, bold: true));
         top.AddChild(new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill });
         var all = new[] { Game.Campaign.Tutorial }.Concat(Game.Campaign.Story).ToList();

@@ -14,8 +14,35 @@ namespace Everkin.App;
 /// A battle in which the player controls side A against the AI (M4.1): the action bar, skill then target selection with previews, Move, Skip
 /// Turn, surrender, and the result overlay. Side B and every summon play themselves.
 /// </summary>
-public partial class PlayScreen : Control
+public partial class PlayScreen : Control, IBackNavigable
 {
+    private bool _left;
+
+    /// <summary>Back during a battle: first cancels a half-made choice, then asks whether to leave (the battle stays saved and can be resumed).</summary>
+    public bool GoBack()
+    {
+        if (_result != null) { LeaveBattle(); return true; }
+        if (_selected != null || _partial != null) { Cancel(); return true; }
+        ConfirmLeave();
+        return true;
+    }
+
+    private void ConfirmLeave()
+    {
+        var dialog = new ConfirmationDialog { DialogText = "Leave the battle? It is saved and can be resumed from the menu.", OkButtonText = "Leave" };
+        dialog.Confirmed += LeaveBattle;
+        AddChild(dialog);
+        dialog.PopupCentered();
+    }
+
+    private void LeaveBattle()
+    {
+        _left = true;
+        _choice?.TrySetResult(AiAction.Skip);
+        if (_encounter != null) _main.Open(new ChapterMapScreen(_main, Game.Campaign.ChapterOf(_encounter)));
+        else _main.Show("menu");
+    }
+
     private readonly Main _main;
     private readonly BattleSpec _spec;
     private readonly string _level;
@@ -92,8 +119,11 @@ public partial class PlayScreen : Control
         top.AddThemeConstantOverride("separation", 8);
         var view = Ui.Button("View", 20);
         view.Pressed += () => { _board.OneSide = !_board.OneSide; _board.Layout(false); };
+        var leave = Ui.Button("Leave", 20);
+        leave.Pressed += ConfirmLeave;
         var surrender = Ui.Button("Surrender", 20);
         surrender.Pressed += ConfirmSurrender;
+        top.AddChild(leave);
         top.AddChild(view);
         top.AddChild(surrender);
         var holder = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.End, MouseFilter = MouseFilterEnum.Ignore };
@@ -126,7 +156,7 @@ public partial class PlayScreen : Control
         {
             var unitId = BattleDriver.NextTurn(_state, Game.Catalog);
             await _board.PlayAsync(_state.DrainEvents());
-            if (_state.IsOver || unitId is not { } id) break;
+            if (_left || _state.IsOver || unitId is not { } id) break;
 
             AiAction action;
             if (_state.GetUnit(id).Side == Side.A && Autoplay)
@@ -140,7 +170,7 @@ public partial class PlayScreen : Control
                 var snapshot = _state;
                 action = await Task.Run(() => _ai.Choose(snapshot, id));
             }
-            if (_surrendered) break;
+            if (_surrendered || _left) break;
             _resolving = true;
             var events = action.Apply(_state, Game.Catalog, id);
             if (BattleEnd.CheckTurnCap(_state)) events = events.Concat(_state.DrainEvents()).ToList();
@@ -149,7 +179,7 @@ public partial class PlayScreen : Control
             await _board.PlayAsync(events);
             _resolving = false;
         }
-        ShowResult();
+        if (!_left) ShowResult();
     }
 
     private Task<AiAction> AskPlayer(int unitId)
@@ -236,7 +266,7 @@ public partial class PlayScreen : Control
     public override void _UnhandledKeyInput(InputEvent e)
     {
         if (e is not InputEventKey { Pressed: true } k) return;
-        if (k.Keycode == Key.Escape) { if (_inspection != null && IsInstanceValid(_inspection)) return; Cancel(); return; }
+        if (k.Keycode == Key.Escape) return;                                   // Esc is "back": see GoBack (the main screen calls it)
         if (Locked) return;
         if (k.Keycode == Key.M) OnSlot(_bar.Slots.First(s => s.Id == "@move"));
         else if (k.Keycode == Key.S) OnSlot(_bar.Slots.First(s => s.Id == "@skip"));

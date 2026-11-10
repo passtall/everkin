@@ -7,8 +7,10 @@ using Godot;
 namespace Everkin.App;
 
 /// <summary>Free battle setup (M4.4): pick a team, a difficulty and an enemy team (random, within the budget), then fight.</summary>
-public partial class FreeBattleScreen : Control
+public partial class FreeBattleScreen : Control, IBackNavigable
 {
+    public bool GoBack() { _main.Show("menu"); return true; }
+
     private readonly Main _main;
     private readonly Random _random = new();
     private string _level = "normal";

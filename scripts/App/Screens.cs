@@ -12,7 +12,7 @@ public static class Screens
         string? Arg(string key) => args.FirstOrDefault(a => a.StartsWith(key + "="))?.Substring(key.Length + 1);
         switch (name)
         {
-            case "cards": return new CardsDemo();
+            case "cards": return new CardsDemo(main);
             case "play-again" when main.LastSpec != null:
                 // Retry: the same teams and formations with a new seed (a new roll of the dice).
                 return new PlayScreen(main, new Everkin.Core.Setup.BattleSpec((ulong)new Random().NextInt64(1, 1_000_000_000), main.LastSpec.SideA, main.LastSpec.SideB), main.LastLevel, main.LastEncounter);
@@ -46,7 +46,7 @@ public static class Screens
             case "skills":
                 return new SkillTreeEditor(main, Arg("creature") ?? Game.Content.Creatures[0].Id, () => main.Show("teams"));
             case "viewer":
-                return new ViewerScreen(Arg("level") ?? "harness", ulong.TryParse(Arg("seed"), out var seed) ? seed : null);
+                return new ViewerScreen(Arg("level") ?? "harness", ulong.TryParse(Arg("seed"), out var seed) ? seed : null).WithMain(main);
             default: return new MenuScreen(main);
         }
     }
@@ -104,13 +104,23 @@ public partial class MenuScreen : Control
 }
 
 /// <summary>A sheet of cards in every mode, for checking the card look (M3.1).</summary>
-public partial class CardsDemo : Control
+public partial class CardsDemo : Control, IBackNavigable
 {
+    private readonly Main _main;
+
+    public CardsDemo(Main main) => _main = main;
+
+    public bool GoBack() { _main.Show("menu"); return true; }
+
     public override void _Ready()
     {
         var bg = new ColorRect { Color = new Color("0d0a08") };
         AddChild(bg);
         Ui.Fill(bg);
+        var back = Ui.Button("Back", 22);
+        back.Position = new Vector2(1780, 12);
+        back.Pressed += () => GoBack();
+        AddChild(back);
         var defs = Game.Content.Creatures.Skip(30).Take(3).ToList();
         var x = 20f;
         foreach (var def in defs)

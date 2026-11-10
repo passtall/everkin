@@ -83,8 +83,10 @@ public partial class BranchView : Control
 /// The skill tree editor (M4.3, ui_spec "Skill tree editor"): the card back on the left, one panel per branch in the middle, the last clicked skill
 /// on the right. Clicking a node learns it, clicking it again unlearns it with everything below it; there is no Learn button. Changes save at once.
 /// </summary>
-public partial class SkillTreeEditor : Control
+public partial class SkillTreeEditor : Control, IBackNavigable
 {
+    public bool GoBack() { _back(); return true; }
+
     private readonly Main _main;
     private readonly CreatureDef _def;
     private readonly Action _back;

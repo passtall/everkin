@@ -89,8 +89,10 @@ public partial class CollectionDrop : PanelContainer
 /// The team editor in the manner of a deck builder (M4.2, ui_spec "Party setup"): saved teams as chips, the formation on the left, the collection on
 /// the right with filters and sorting. Creatures are added and moved by dragging; every change is saved at once.
 /// </summary>
-public partial class TeamEditor : Control
+public partial class TeamEditor : Control, IBackNavigable
 {
+    public bool GoBack() { if (Back != null) Back(); else _main.Show("menu"); return true; }
+
     private const int PageSize = 15;
     private readonly Main _main;
     private readonly HBoxContainer _chips = new();

@@ -5,6 +5,13 @@ using Godot;
 
 namespace Everkin;
 
+/// <summary>A screen that knows where "back" leads: Esc (and the Android back button) calls it. Every screen except the title has one.</summary>
+public interface IBackNavigable
+{
+    /// <summary>Goes back one step. Returns false when there is nothing to go back to.</summary>
+    bool GoBack();
+}
+
 /// <summary>
 /// The root of the game. It owns the current screen. Command line (after a lone "--"): --screen=&lt;name&gt; opens a screen directly, and
 /// --shot=&lt;file.png&gt; saves a screenshot after a moment and quits (used to check the UI without a person watching).
@@ -26,6 +33,17 @@ public partial class Main : Control
         if (double.TryParse(Arg("wait"), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var wait)) _shotAt = wait;
         var screen = Arg("screen") ?? "menu";
         Show(screen, args);
+    }
+
+    public override void _UnhandledKeyInput(InputEvent e)
+    {
+        if (e is InputEventKey { Pressed: true, Keycode: Key.Escape } && _screen is IBackNavigable nav && nav.GoBack())
+            GetViewport().SetInputAsHandled();
+    }
+
+    public override void _Notification(int what)
+    {
+        if (what == NotificationWMGoBackRequest && _screen is IBackNavigable nav) nav.GoBack();
     }
 
     public override void _Process(double delta)

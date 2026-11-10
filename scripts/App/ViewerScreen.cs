@@ -15,8 +15,14 @@ namespace Everkin.App;
 /// The battle viewer (M3.4, production section 2.3): AI against AI on the card UI as a debug mode. Pause, step one action, speed 1x / 2x /
 /// instant, inspect any unit (right-click), start a new battle with the same setup as a recorded one. It shows only what a player would see.
 /// </summary>
-public partial class ViewerScreen : Control
+public partial class ViewerScreen : Control, IBackNavigable
 {
+    private Main? _main;
+
+    public ViewerScreen WithMain(Main main) { _main = main; return this; }
+
+    public bool GoBack() { if (_main == null) return false; _generation++; _main.Show("menu"); return true; }
+
     private readonly BattleBoard _board = new();
     private readonly Label _status = Ui.Label("", 20);
     private readonly Button _pauseButton = Ui.Button("Pause", 20);
@@ -46,6 +52,9 @@ public partial class ViewerScreen : Control
 
         var bar = new HBoxContainer();
         bar.AddThemeConstantOverride("separation", 8);
+        var back = Ui.Button("Back", 20);
+        back.Pressed += () => GoBack();
+        bar.AddChild(back);
         _pauseButton.Pressed += () => { _paused = !_paused; _pauseButton.Text = _paused ? "Play" : "Pause"; };
         bar.AddChild(_pauseButton);
         var step = Ui.Button("Step", 20);

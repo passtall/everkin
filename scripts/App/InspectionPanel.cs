@@ -74,7 +74,7 @@ public partial class InspectionPanel : Control
 
     public override void _UnhandledKeyInput(InputEvent e)
     {
-        if (e is InputEventKey { Pressed: true, Keycode: Key.Escape or Key.I }) Close();
+        if (e is InputEventKey { Pressed: true, Keycode: Key.Escape or Key.I }) { GetViewport().SetInputAsHandled(); Close(); }
     }
 
     private void Close()
