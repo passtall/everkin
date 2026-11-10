@@ -27,6 +27,9 @@ No rule changes. Rows, coordinates, distances, adjacency, interception and groun
 
 - **Look.** A round portrait of the **whole creature**, three-quarter view facing right, in the same pose and expression as its card, on a **plain disc** that contrasts with it (dark plum by default; a lighter colour for creatures too dark for it), inside **one shared dark gold ring**. Undead use the undead ring with their creature's portrait. Summons have their own portraits and keep the summon marker; hovering a summon highlights its summoner.
 - **On the portrait: HP only.** An HP arc in the ring's groove and the HP number in the ring's bottom socket (at least 22 px at base). No Power, Speed or Cost, **no status icons**, no side colour (side = position and facing). Statuses and changed values are seen on the full card in the inspection panel (L3, A9, A10).
+- **Stealth** (S1): semi-transparent with a faint shimmer; it turns solid again with a short flash when stealth breaks.
+- **Airborne** (S2): the portrait floats a little higher and gently bobs, with a soft updraft (faint rising air wisps) under it; ground effects under it stay visible.
+- **Target highlights** (S3): a glow on the ring in today's colours: gold legal, white selected, light hover; illegal targets are dimmed.
 - **Hover** shows name and classes as before; right-click, long-press or I opens the inspection panel with the full cards.
 - **KO** (L4): the portrait cracks (the same thin light crack line), shakes once, turns grey with its ring dimmed and sinks slightly; it stays as a body. No flip, since a portrait has no back. Revive restores colour and removes the crack.
 - **Hit:** the portrait shakes briefly, as cards did.
