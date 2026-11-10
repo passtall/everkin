@@ -7,6 +7,21 @@ namespace Everkin.Core.Battle;
 /// </summary>
 public sealed class BattleRandom
 {
+    /// <summary>How the generator answers. Only preview queries on a clone change it from <see cref="RollMode.Normal"/>.</summary>
+    public enum RollMode
+    {
+        Normal,
+
+        /// <summary>Every roll is its lowest possible value and every chance fails (no miss, no interception): the low end of a preview.</summary>
+        Lowest,
+
+        /// <summary>Every roll is its highest possible value and every chance fails: the high end of a preview.</summary>
+        Highest,
+    }
+
+    /// <summary>Preview queries set this on a clone; battles never do. It does not change the sequence of <see cref="RollMode.Normal"/>.</summary>
+    public RollMode Mode { get; set; }
+
     private ulong _s0, _s1, _s2, _s3;
 
     public BattleRandom(ulong seed)
@@ -26,6 +41,7 @@ public sealed class BattleRandom
         _s1 = other._s1;
         _s2 = other._s2;
         _s3 = other._s3;
+        Mode = other.Mode;
     }
 
     /// <summary>The seed this generator started from (battles are replayed from it).</summary>
@@ -51,6 +67,8 @@ public sealed class BattleRandom
     public int NextInt(int maxExclusive)
     {
         if (maxExclusive <= 0) throw new ArgumentOutOfRangeException(nameof(maxExclusive));
+        if (Mode == RollMode.Lowest) return 0;
+        if (Mode == RollMode.Highest) return maxExclusive - 1;
         var n = (ulong)maxExclusive;
         var threshold = (0UL - n) % n;
         ulong r;
@@ -70,6 +88,7 @@ public sealed class BattleRandom
     {
         if (percent <= 0) return false;
         if (percent >= 100) return true;
+        if (Mode != RollMode.Normal) return false;
         return NextInt(100) < percent;
     }
 

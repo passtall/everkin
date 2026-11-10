@@ -2,15 +2,15 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-10, M1.17 done (every worked check of section 20.5 is a test; 727 tests green); next is M1.18.
+**Last updated:** 2026-11-10, M1.18 done: the rules core (M1) is complete (738 tests green); next is M2.1 (AI search).
 
 ## Current task
 
-**M1.17 is done** (the audit of game_system section 20.5 is finished, 727 tests green). **Next: M1.18** (preview queries). Nothing is uncommitted after the M1.17 commit.
+**M1 (the rules core) is complete**: M1.1 to M1.18, 738 tests green. **Next: M2.1 AI search.** Nothing is uncommitted after the M1.18 commit.
 
 ## Next step
 
-M1.18 preview queries (production section 2.2, ui_spec battle screen): read-only queries on a `BattleState` that the UI and the AI use without changing anything: the damage range of a skill on a target (after Power scaling, bonuses, Brittle etc. but before the roll), the interception chance(s) for a target, where the acting unit's next turn would land on the timeline for a chosen skill, and what a forced move would do (landing, bumps, blocked). Build them on `Clone()` or on pure functions of the existing rules; a test that a preview never changes the state (compare a clone's events/HP/timeline before and after). Then M2.1 (AI search). Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
+M2.1 AI search (game_system §2.5 and production §2.3): alpha-beta minimax with iterative deepening, candidate pruning, scoring and difficulty levels. The AI never draws from the battle's random generator (production §2.1); it works on `BattleState.Clone()` and uses `Actions.WhyNot` / `LegalTargets` / `Preview` to list moves. Things the AI search needs that exist now: `BattleDriver.NextTurn(state, catalog)` plays summon turns itself; `Preview.Skill` runs a skill on a clone with every roll at its lowest or highest value (`BattleRandom.Mode`), which gives min/max outcomes without chance nodes; `BattleStart.Install` must run once before the first turn. **Battle setup (creatures to units, builds to known skills, formation) is still not written; M2.1/M2.2 need it first** (see the M1.16 notes). Read §2.5 first and ask the owner about anything it leaves open (scoring weights, difficulty levels, search depth, how random outcomes are handled). Tip: the Bash tool chokes on long heredocs with many quotes; write patch scripts with the Write tool and run them.
 
 ## In flight
 
@@ -71,6 +71,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - M1.16k framework additions (owner rulings 2026-11-10 in skills.md): `BattleState.DealDamage` now goes through `DealDamageCore(..., secondary)`: hooks `DamageSharings` (Spirit Link Totem: even split, remainder with the hurt unit, shares are "secondary" blows that meet Ward/Dampen but are not changed, shared or echoed again) and `LethalGuards` (Totem of Return: keeps 1 HP, the totem is removed), the `fate_link` status (Linked Fates / Shared Fate: half of the HP lost as an unreducible echo, no chain), `BattleState.MistsUntil` (Rite of Mists, checked in `ApplyHit`), event `HpSwapped`; `Totems.HandleAutoEvent` (the Healing Totem's pulse every 10 time units, owned by the totem; dispatches turret events to `Turrets`). Reading to confirm: a totem placed this action first pulses 10 time units later; Life Swap sets HP directly (it ignores shared HP pools).
 - M1.16l framework additions (owner rulings 2026-11-10 in skills.md): `BattleState.ReachOverrides` (Boundless Sky, honoured by `Actions.ReachOf`), `ScoutedUntil` per side (Scout Ahead stops stealth gain through a stealth blocker), Watchtower's repeating auto event (tag `watchtower:<id>`, dispatched by `Totems.HandleAutoEvent` through `FlyingSkills.TryHandleAutoEvent`), Sky Lord keeps itself airborne through an aura sync (Curse of Weight can still keep it down). Readings to confirm: Watchtower ticks every 20 time units from the battle start and only acts if the unit is airborne at that moment; Sky Lord's HP cut happens in `Install`, so `BattleStart.Install` must run before the first turn.
 - M1.17 audit: every row of the game_system §20.5 table is tested. Most rows are tested in the class of their area (each marked with a "20.5" comment: Timeline, Damage, Interception, Reaction, Status, Movement, Knockout/Stealth, Targeting, Summon, Momentum, BattleEnd and the profession tests); the rows that had no direct test are in `WorkedChecksTests.cs`, each named after its row. New core pieces from the audit: `LockedTargets` (who a delayed `direct` effect or a queued `projectile` shot hits when its target became stealthed or moved: section 10.1) and `Prices.CoinCreature` (50 + 25 × Cost). No delayed-event skill exists yet; `LockedTargets` is the rule the first one must use.
+- M1.18: `Preview.Skill(state, catalog, use)` returns a `SkillPreview` (per-unit damage / HP-lost / heal ranges, success chance in percent, interceptors with their chance, Momentum cost and the meter after paying, the user's next turn time and position, other timeline shifts, forced moves, blocked chains and bump damage, and the events of the lowest-roll run), `Preview.SkipTurn` and `Preview.Move` give the next-turn landing. It clones the state, sets `BattleRandom.Mode` to Lowest or Highest (every roll at its end, every chance fails) and runs the real `Actions.Use`, so it cannot disagree with execution; tests check that it leaves the state and the random sequence untouched. Random choices (equally near targets, random statuses) are shown as the lowest-roll choice.
 - Boot scene `scenes/boot.tscn` + `scripts/Boot.cs` is a placeholder main scene for the export test; replace in M3.
 - **Android needs Gradle builds** to keep net10.0: the non-Gradle template only supports net9.0 (owner chose "try Gradle, keep net10.0" on 2026-11-08; it works). The Gradle template lives in git-ignored `android/build/` (extract `android_source.zip` from the export templates there and write `android/.build_version` containing `4.7.2.stable.mono`; do this again after a Godot update). `project.godot` has `textures/vram_compression/import_etc2_astc=true`, required for Android export. Debug APK is 570 MB until M10.3 compresses the art.
 - Android export: same headless command with preset `"Android"` and `build/android/Everkin.apk`.
@@ -112,7 +113,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - [x] M1.16k Primalist skills
 - [x] M1.16l Flying skills
 - [x] M1.17 All §20.5 worked checks pass
-- [ ] M1.18 Preview queries
+- [x] M1.18 Preview queries
 - [ ] M2.1 AI search
 - [ ] M2.2 Batch runner
 - [ ] M2.3 First 10,000-battle run reviewed
@@ -178,3 +179,4 @@ One line per finished task: date, task, commit.
 2026-11-10 M1.16k Primalist skills (see git log)
 2026-11-10 M1.16l Flying skills (see git log)
 2026-11-10 M1.17 All §20.5 worked checks pass (see git log)
+2026-11-10 M1.18 Preview queries (see git log)
