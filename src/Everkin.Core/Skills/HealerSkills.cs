@@ -129,7 +129,7 @@ public sealed class Absolve : HealerSkill
     public override void Resolve(SkillContext context)
     {
         var id = context.TargetId!.Value;
-        Statuses.RemoveAll(context.State, id, Polarity.Harmful);
+        Statuses.RemoveAll(context.State, id, Polarity.Harmful, byUnitId: context.UserId);
         Stealth.Break(context.State, id, StealthCause.Revealed);
         if (context.State.Timeline.TurnOf(id) is { } turn) context.State.Timeline.PushBack(turn, 2);
         context.Settle();
@@ -224,7 +224,7 @@ public sealed class TurnBack : HealerSkill
     {
         var from = context.TargetId!.Value;
         var chosen = HealerSkills.Pick(context.State, Returnable(context.State, from));
-        Statuses.Transfer(context.State, from, chosen.SourceUnitId!.Value, chosen.Id);
+        Statuses.Transfer(context.State, from, chosen.SourceUnitId!.Value, chosen.Id, context.UserId);
         context.Settle();
     }
 }

@@ -46,6 +46,39 @@ public static class StatusIds
 
     /// <summary>Slow: Speed lowered by the status's magnitude in steps (section 6.1).</summary>
     public const string Slow = "slow";
+
+    /// <summary>Phase Weapon: the unit's next attack has unlimited range (magnitude 1 with Phasing Strike: it also cannot be intercepted). The source is the Sorcerer.</summary>
+    public const string Phased = "phased";
+
+    /// <summary>Piercing Enchant: the unit's next attack also hits the unit behind its target.</summary>
+    public const string Piercing = "piercing";
+
+    /// <summary>Echo Enchant: the unit's next skill happens a second time, free.</summary>
+    public const string Echo = "echo";
+
+    /// <summary>Glass Body: the next hit on the unit deals double damage.</summary>
+    public const string GlassBody = "glass_body";
+
+    /// <summary>Transmute: the unit's Power and Speed swap values.</summary>
+    public const string Transmuted = "transmuted";
+
+    /// <summary>Stone Shell: the unit cannot act and cannot be damaged. A status, so it can be cleansed.</summary>
+    public const string StoneShell = "stone_shell";
+
+    /// <summary>Curse of Weight: the unit cannot Move or become airborne.</summary>
+    public const string Weighted = "weighted";
+
+    /// <summary>Curse of Stagnation: the unit's timed statuses do not run down.</summary>
+    public const string Stagnant = "stagnant";
+
+    /// <summary>Curse of Betrayal: healing the unit would receive goes to the Sorcerer's side instead.</summary>
+    public const string Betrayed = "betrayed";
+
+    /// <summary>The Sorcerer's curses (Lingering Malice and Witch's Patience look at these).</summary>
+    public static bool IsCurse(string statusId) => statusId is Weighted or Stagnant or Betrayed;
+
+    /// <summary>The Sorcerer's enchantments (Enchanted Soul looks at these).</summary>
+    public static bool IsEnchantment(string statusId) => statusId is Phased or Piercing or Echo;
 }
 
 /// <summary>What happens when a status is applied to a unit that already has it (section 10.5).</summary>
@@ -99,6 +132,15 @@ public sealed class StatusInstance
     /// <summary>Poison and similar damage over time: what has built up, in hundredths of HP, not yet landed (section 10.5).</summary>
     public int BuildupHundredths { get; internal set; }
 
+    /// <summary>Curse of Stagnation holds this timed status: its end marker is off the timeline and the time left is kept in <see cref="HeldTimeLeft"/>.</summary>
+    public bool Held { get; internal set; }
+
+    /// <summary>The time units the status still has to run once it is released (only while <see cref="Held"/>).</summary>
+    public int HeldTimeLeft { get; internal set; }
+
+    /// <summary>Time units left on the battle clock at the given time, or null for a status without a clock.</summary>
+    public int? TimeLeft(int now) => Held ? HeldTimeLeft : EndsAt is { } end ? Math.Max(0, end - now) : null;
+
     /// <summary>The battle time up to which the buildup has been counted.</summary>
     public int LastTickTime { get; internal set; }
 
@@ -134,9 +176,10 @@ public static class StatusRules
     {
         StatusIds.Blind or StatusIds.Poison or StatusIds.Bleeding or StatusIds.Silenced or StatusIds.Chilled
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
-            or StatusIds.Marked or StatusIds.Slow or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted => Polarity.Harmful,
+            or StatusIds.Marked or StatusIds.Slow or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted
+            or StatusIds.GlassBody or StatusIds.StoneShell or StatusIds.Weighted or StatusIds.Stagnant or StatusIds.Betrayed => Polarity.Harmful,
         StatusIds.Ward or StatusIds.Dampen or StatusIds.Haste or StatusIds.Charge or StatusIds.LeapCover or StatusIds.Pledge
-            or StatusIds.ShieldWall or StatusIds.LifeLink => Polarity.Helpful,
+            or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };
 
@@ -211,6 +254,7 @@ public static class Statuses
         if (unit.IsKnockedOut) throw new InvalidOperationException($"Unit {a.UnitId} is KO and cannot gain statuses.");
         var existing = Get(unit, a.Id);
         var timeline = state.Timeline;
+        if (a.Id == StatusIds.Airborne && Has(unit, StatusIds.Weighted)) return false;   // Curse of Weight: cannot become airborne
 
         switch (StatusRules.Reapply(a.Id))
         {
@@ -218,7 +262,7 @@ public static class Statuses
                 if (unit.Ward > 0 && a.Magnitude < unit.Ward) return false;
                 break;
             case ReapplyRule.KeepLongerDuration:
-                if (existing?.EndsAt is { } ends && a.Duration is { } d && ends - timeline.Now >= d) return false;
+                if (existing?.TimeLeft(timeline.Now) is { } left && a.Duration is { } d && left >= d) return false;
                 break;
         }
 
@@ -246,6 +290,10 @@ public static class Statuses
         unit.StatusStore[a.Id] = instance;
         if (a.Id == StatusIds.Ward) unit.Ward = a.Magnitude;
         Sync(unit, a.Id);
+        // Curse of Stagnation: a timed status applied under the curse is held at once; the curse itself holds the ones already there.
+        if (a.Id != StatusIds.Stagnant && Has(unit, StatusIds.Stagnant)) Hold(state, unit, instance);
+        if (a.Id == StatusIds.Stagnant)
+            foreach (var other in unit.StatusInstances.Values.Where(o => o.Id != StatusIds.Stagnant).ToArray()) Hold(state, unit, other);
         AdjustTimelineForSpeed(state, unit, oldSpeed);
 
         state.Emit(new StatusApplied(a.UnitId, a.Id, a.Magnitude, a.Duration, refreshed));
@@ -253,7 +301,7 @@ public static class Statuses
     }
 
     /// <summary>Removes a status and its end marker and reports it. Returns false if the unit does not have it.</summary>
-    public static bool Remove(BattleState state, int unitId, string statusId, StatusEndCause cause)
+    public static bool Remove(BattleState state, int unitId, string statusId, StatusEndCause cause, int? byUnitId = null)
     {
         var unit = state.GetUnit(unitId);
         if (!unit.StatusStore.TryGetValue(statusId, out var instance)) return false;
@@ -265,18 +313,44 @@ public static class Statuses
         Sync(unit, statusId);
         AdjustTimelineForSpeed(state, unit, oldSpeed);
         state.Emit(new StatusEnded(unitId, statusId, cause));
+        if (statusId == StatusIds.Stagnant)
+            foreach (var held in unit.StatusInstances.Values.Where(o => o.Held).ToArray()) Release(state, unit, held);
+        if (cause == StatusEndCause.Cleansed && byUnitId is { } by)
+            foreach (var hook in state.StatusRemovedHooks.ToArray()) hook(state, unitId, instance, by);
         return true;
     }
 
+    /// <summary>Curse of Stagnation: stops a timed status running down. Its end marker leaves the timeline and the time left is kept.</summary>
+    private static void Hold(BattleState state, Unit unit, StatusInstance instance)
+    {
+        if (instance.Held || instance.EndsAt is not { } end) return;
+        if (instance.Id == StatusIds.Poison) LandPoison(state, unit, instance);   // what has built up lands before it stops
+        instance.HeldTimeLeft = Math.Max(0, end - state.Timeline.Now);
+        if (instance.MarkerEntryId is { } marker) state.Timeline.Remove(marker);
+        instance.MarkerEntryId = null;
+        instance.EndsAt = null;
+        instance.Held = true;
+    }
+
+    /// <summary>The curse ended: a held status runs again for the time it had left.</summary>
+    private static void Release(BattleState state, Unit unit, StatusInstance instance)
+    {
+        instance.Held = false;
+        var left = Math.Max(1, instance.HeldTimeLeft);
+        instance.MarkerEntryId = state.Timeline.Add(TimelineKind.EffectEnd, left, unit.Id, instance.Id).Id;
+        instance.EndsAt = state.Timeline.Now + left;
+        instance.LastTickTime = state.Timeline.Now;
+    }
+
     /// <summary>Removes every status of the given polarity (Absolve removes the harmful ones, Dispel the helpful ones). Returns what ended.</summary>
-    public static IReadOnlyList<string> RemoveAll(BattleState state, int unitId, Polarity polarity, StatusEndCause cause = StatusEndCause.Cleansed)
+    public static IReadOnlyList<string> RemoveAll(BattleState state, int unitId, Polarity polarity, StatusEndCause cause = StatusEndCause.Cleansed, int? byUnitId = null)
     {
         var unit = state.GetUnit(unitId);
         var ids = unit.StatusInstances.Keys.Where(id => StatusRules.PolarityOf(id) == polarity).ToList();
         if (polarity == Polarity.Helpful && unit.Ward > 0 && !ids.Contains(StatusIds.Ward)) ids.Add(StatusIds.Ward);
         var removed = new List<string>();
         foreach (var id in ids)
-            if (Remove(state, unitId, id, cause)) removed.Add(id);
+            if (Remove(state, unitId, id, cause, byUnitId)) removed.Add(id);
         return removed;
     }
 
@@ -300,7 +374,9 @@ public static class Statuses
                 goto case StatusIds.Stunned;
             case StatusIds.Stunned:
             case StatusIds.Frozen:
+            case StatusIds.StoneShell:
                 unit.InterceptionBlocked = unit.StatusInstances.ContainsKey(StatusIds.Stunned)
+                    || unit.StatusInstances.ContainsKey(StatusIds.StoneShell)
                     || unit.StatusInstances.ContainsKey(StatusIds.Frozen)
                     || unit.StatusInstances.ContainsKey(StatusIds.Immobilized);
                 break;
@@ -359,6 +435,7 @@ public static class Statuses
 
     private static bool LandPoison(BattleState state, Unit unit, StatusInstance poison)
     {
+        if (poison.Held) return false;
         var until = Math.Min(state.Timeline.Now, poison.EndsAt ?? state.Timeline.Now);
         poison.BuildupHundredths += Math.Max(0, until - poison.LastTickTime) * StatusRules.PoisonHundredthsPerTimeUnit;
         poison.LastTickTime = Math.Max(poison.LastTickTime, until);
@@ -383,7 +460,7 @@ public static class Statuses
 
         var unit = state.GetUnit(unitId);
         var frozen = Remove(state, unitId, StatusIds.Frozen, StatusEndCause.Consumed);
-        return new TurnStartResult(frozen, Has(unit, StatusIds.Stunned));
+        return new TurnStartResult(frozen, Has(unit, StatusIds.Stunned) || Has(unit, StatusIds.StoneShell));
     }
 
     /// <summary>
@@ -419,15 +496,15 @@ public static class Statuses
     /// time, amount, source and count it had left. The second unit's reapplication rule applies (a smaller Ward does not replace a larger
     /// one). Returns false if the second unit did not take it.
     /// </summary>
-    public static bool Transfer(BattleState state, int fromId, int toId, string statusId)
+    public static bool Transfer(BattleState state, int fromId, int toId, string statusId, int? byUnitId = null)
     {
         var from = state.GetUnit(fromId);
         var instance = Get(from, statusId);
         var magnitude = statusId == StatusIds.Ward ? from.Ward : instance?.Magnitude ?? 0;
         if (instance is null && !(statusId == StatusIds.Ward && from.Ward > 0)) return false;
-        int? remaining = instance?.EndsAt is { } end ? Math.Max(1, end - state.Timeline.Now) : null;
+        int? remaining = instance?.TimeLeft(state.Timeline.Now) is { } left ? Math.Max(1, left) : null;
         var application = new StatusApplication(toId, statusId, remaining, magnitude, instance?.SourceUnitId, instance?.EndsAtNextTurnOf, instance?.UsesLeft);
-        if (instance is not null) Remove(state, fromId, statusId, StatusEndCause.Cleansed);
+        if (instance is not null) Remove(state, fromId, statusId, StatusEndCause.Cleansed, byUnitId);
         else from.Ward = 0;
         return Apply(state, application);
     }

@@ -123,6 +123,13 @@ Branches: Enchantment, Transmutation, Malediction.
 | Malediction | Lingering Malice | P | Curse of Stagnation |  |  | When an enemy removes one of the Sorcerer's curses or hexes, the remover is Silenced for 10 time units. |
 | Malediction | Witch's Patience | K | Curse of Betrayal |  |  | The Sorcerer's curses last until removed, but it can keep only one curse at a time. |
 
+**Sorcerer rulings (owner decisions 2026-11-10).**
+
+- **Enchantments** (Phase Weapon, Piercing Enchant, Echo Enchant) are statuses on the enchanted unit. Without Enchanted Soul an unused enchantment fades after 20 time units and any number can be active together. With Enchanted Soul they never fade, and applying a new enchantment removes the Sorcerer's earlier one (on any unit). Phase Weapon and Piercing Enchant are used up by the unit's next attack, Echo Enchant by its next skill.
+- **Curses** (Curse of Weight, Curse of Stagnation, Curse of Betrayal) last 20 time units. With Witch's Patience they last until removed, and a new curse removes the Sorcerer's earlier one (on any unit).
+- **Curse of Betrayal:** healing the cursed unit would receive goes instead to the Sorcerer's unit with the lowest HP (ties by the seeded roll). If the Sorcerer's side has no unit that can be healed, the cursed unit is healed as usual.
+- **Curse of Stagnation:** every timed status on the unit stops running down while the curse lasts, including statuses applied during it: each ends later by the time it was held. Statuses that last "until the next turn" are not timed and are not held.
+
 ## Elementalist (17)
 
 Branches: Pyromancy, Stormcalling, Cryomancy.

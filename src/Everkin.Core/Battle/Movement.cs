@@ -50,7 +50,10 @@ public static class Movement
     /// Every place the Move action offers: any gap in any other row of the unit's own side, except full rows
     /// (section 9.1, 9.2). It cannot reorder a unit within its own row. Empty when the unit cannot move.
     /// </summary>
-    public static IReadOnlyList<MoveOption> LegalMoves(BattleState state, int unitId)
+    public static IReadOnlyList<MoveOption> LegalMoves(BattleState state, int unitId) =>
+        Statuses.Has(state.GetUnit(unitId), StatusIds.Weighted) ? Array.Empty<MoveOption>() : Places(state, unitId);   // Curse of Weight: cannot Move
+
+    private static IReadOnlyList<MoveOption> Places(BattleState state, int unitId)
     {
         var result = new List<MoveOption>();
         if (!IsMovable(state.GetUnit(unitId))) return result;
@@ -72,7 +75,7 @@ public static class Movement
     /// </summary>
     public static void Move(BattleState state, int unitId, Row row, int gap)
     {
-        if (!LegalMoves(state, unitId).Contains(new MoveOption(row, gap)))
+        if (!Places(state, unitId).Contains(new MoveOption(row, gap)))
             throw new InvalidOperationException($"Unit {unitId} cannot move to {row} gap {gap}.");
         state.Ground.Accrue();
         var from = state.Formation.Remove(unitId);

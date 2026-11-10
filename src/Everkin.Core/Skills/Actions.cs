@@ -46,7 +46,7 @@ public static class Actions
                 var opts = skill.Options with { Delivery = skill.Delivery };
                 foreach (var who in new[] { first, second })
                 {
-                    if (!Targeting.IsLegalTarget(state, use.UserId, who, skill.Reach, opts)) return "not a legal target";
+                    if (!Targeting.IsLegalTarget(state, use.UserId, who, ReachOf(state, use.UserId, skill), opts)) return "not a legal target";
                     if (!skill.TargetFilter(state, use.UserId, who)) return "not a valid target for this skill";
                 }
                 return skill.PairFilter(state, use.UserId, first, second) ? null : "not a valid pair for this skill";
@@ -55,7 +55,7 @@ public static class Actions
             {
                 if (use.TargetUnitId is not { } who) return "needs a target";
                 if (who < 0 || who >= state.Units.Count) return "unknown target";
-                if (!Targeting.IsLegalTarget(state, use.UserId, who, skill.Reach, skill.Options with { Delivery = skill.Delivery })) return "not a legal target";
+                if (!Targeting.IsLegalTarget(state, use.UserId, who, ReachOf(state, use.UserId, skill), skill.Options with { Delivery = skill.Delivery })) return "not a legal target";
                 if (!skill.TargetFilter(state, use.UserId, who)) return "not a valid target for this skill";
                 if (use.Placement is not { } where) return "needs a place";
                 return skill.PlacementOptionsFor(state, use.UserId, who).Contains(where) ? null : "not a legal place";
@@ -64,18 +64,22 @@ public static class Actions
                 if (use.TargetUnitId is not { } target) return "needs a target";
                 if (target < 0 || target >= state.Units.Count) return "unknown target";
                 var options = skill.Options with { Delivery = skill.Delivery };
-                if (!Targeting.IsLegalTarget(state, use.UserId, target, skill.Reach, options)) return "not a legal target";
+                if (!Targeting.IsLegalTarget(state, use.UserId, target, ReachOf(state, use.UserId, skill), options)) return "not a legal target";
                 if (!skill.TargetFilter(state, use.UserId, target)) return "not a valid target for this skill";
                 return DistractedFrom(state, use.UserId, skill, target);
         }
     }
+
+    /// <summary>The reach a skill has for this user now: unlimited for an attack by a unit with Phase Weapon on it (its next attack), else the skill's own.</summary>
+    public static Reach ReachOf(BattleState state, int userId, Skill skill) =>
+        skill.IsAttack && Statuses.Has(state.GetUnit(userId), StatusIds.Phased) ? Reach.Unlimited : skill.Reach;
 
     /// <summary>Every unit that is a legal target of the skill right now (empty for skills that take none).</summary>
     public static IReadOnlyList<int> LegalTargets(BattleState state, SkillCatalog catalog, int userId, string skillId)
     {
         var skill = catalog.Get(skillId);
         if (skill.Target != TargetKind.Unit) return Array.Empty<int>();
-        return Targeting.LegalTargets(state, userId, skill.Reach, skill.Options with { Delivery = skill.Delivery })
+        return Targeting.LegalTargets(state, userId, ReachOf(state, userId, skill), skill.Options with { Delivery = skill.Delivery })
             .Where(id => skill.TargetFilter(state, userId, id) && DistractedFrom(state, userId, skill, id) is null).ToArray();
     }
 
@@ -88,7 +92,7 @@ public static class Actions
         if (!skill.IsAttack || Statuses.Get(state.GetUnit(userId), StatusIds.Distracted)?.SourceUnitId is not { } guardian) return null;
         if (guardian == targetId || state.GetUnit(guardian).IsKnockedOut) return null;
         var options = skill.Options with { Delivery = skill.Delivery };
-        return Targeting.IsLegalTarget(state, userId, guardian, skill.Reach, options) && skill.TargetFilter(state, userId, guardian)
+        return Targeting.IsLegalTarget(state, userId, guardian, ReachOf(state, userId, skill), options) && skill.TargetFilter(state, userId, guardian)
             ? "Distracted: must target the Guardian" : null;
     }
 
@@ -132,11 +136,43 @@ public static class Actions
         {
             if (skill.IsAttack && Statuses.Has(user, StatusIds.Distracted))
                 Statuses.Remove(state, use.UserId, StatusIds.Distracted, StatusEndCause.Consumed);   // it counted: this was its next attack
-            skill.Resolve(new SkillContext(state, skill, use.UserId, use, target));
+            // The Sorcerer's enchantments on the user are used up by this skill: Phase Weapon and Piercing Enchant by an attack, Echo Enchant by any skill.
+            var phased = skill.IsAttack ? Statuses.Get(user, StatusIds.Phased) : null;
+            var piercing = skill.IsAttack ? Statuses.Get(user, StatusIds.Piercing) : null;
+            var echo = Statuses.Get(user, StatusIds.Echo);
+            foreach (var used in new[] { phased?.Id, piercing?.Id, echo?.Id })
+                if (used is not null) Statuses.Remove(state, use.UserId, used, StatusEndCause.Consumed);
+
+            var context = new SkillContext(state, skill, use.UserId, use, target)
+            {
+                IgnoresInterception = phased is { Magnitude: > 0 },   // Phasing Strike
+                PierceBehind = piercing is not null,
+            };
+            skill.Resolve(context);
             AfterSkill(state, use.UserId, skill.Tags.HasFlag(EffectTags.Melee), skill.Tags.HasFlag(EffectTags.Move));
+
+            // Echo Enchant: the skill happens a second time at the same target, free (no Delay, no Momentum). Skills that place something do not echo.
+            if (echo is not null && CanEcho(state, skill, use, target))
+            {
+                state.Emit(new SkillUsed(use.UserId, use.SkillId, target));
+                skill.Resolve(new SkillContext(state, skill, use.UserId, use, target) { IgnoresInterception = context.IgnoresInterception });
+            }
         }
         user.LastActionIndex = state.ActionCounter;
         return state.DrainEvents();
+    }
+
+    /// <summary>Whether Echo Enchant's second use can happen: the battle goes on, the user stands and the same target is still there.</summary>
+    private static bool CanEcho(BattleState state, Skill skill, SkillUse use, int? target)
+    {
+        if (state.IsOver || state.GetUnit(use.UserId).IsKnockedOut) return false;
+        return skill.Target switch
+        {
+            TargetKind.None => true,
+            TargetKind.Unit => target is { } t && !state.GetUnit(t).IsKnockedOut && !state.GetUnit(t).IsRemoved && state.Formation.Contains(t),
+            TargetKind.Row => use.Row is { } row && skill.LegalRows(state, use.UserId).Contains(row),
+            _ => false,
+        };
     }
 
     /// <summary>
@@ -146,6 +182,8 @@ public static class Actions
     public static IReadOnlyList<BattleEvent> Move(BattleState state, int userId, Row row, int gap)
     {
         if (state.IsOver) throw new InvalidOperationException("The battle is over.");
+        if (!Movement.LegalMoves(state, userId).Contains(new MoveOption(row, gap)))
+            throw new InvalidOperationException($"Unit {userId} cannot move to {row} gap {gap}.");
         state.BeginAction();
         Movement.Move(state, userId, row, gap);
         ScheduleNextTurn(state, userId, Movement.MoveDelay);

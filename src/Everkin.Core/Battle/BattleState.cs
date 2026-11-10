@@ -190,7 +190,10 @@ public sealed class Unit
     /// Speed as the turn formula sees it before clamping to 1–10: the creature's Speed plus Haste, minus Slow and Chilled
     /// (section 6.1). The timeline clamps it when it computes a Wait.
     /// </summary>
-    public int EffectiveSpeed => Speed + _statusInstances.Values.Sum(StatusRules.SpeedModifier);
+    public int EffectiveSpeed => (_statusInstances.ContainsKey(StatusIds.Transmuted) ? Power : Speed) + _statusInstances.Values.Sum(StatusRules.SpeedModifier);
+
+    /// <summary>Power as the damage and healing rules see it: the creature's Power, or its Speed while Transmuted (Power and Speed swap).</summary>
+    public int EffectivePower => _statusInstances.ContainsKey(StatusIds.Transmuted) ? Speed : Power;
 
     /// <summary>
     /// Removes every status: KO removes all of them, helpful and harmful alike (section 10.3). Today these are Ward, Dampen,
@@ -234,6 +237,7 @@ public sealed class BattleState
     private readonly List<AreaRedirect> _areaRedirects = new();
     private readonly List<AfterMove> _afterMoveHooks = new();
     private readonly List<AttackBan> _attackBans = new();
+    private readonly List<StatusRemovedHook> _statusRemovedHooks = new();
     private readonly List<SharedHp> _sharedPools = new();
     private readonly List<ReactionDef> _reactions = new();
     private readonly Dictionary<string, int> _reactionUses = new();
@@ -267,6 +271,7 @@ public sealed class BattleState
         _areaRedirects.AddRange(other._areaRedirects);
         _afterMoveHooks.AddRange(other._afterMoveHooks);
         _attackBans.AddRange(other._attackBans);
+        _statusRemovedHooks.AddRange(other._statusRemovedHooks);
         _sharedPools.AddRange(other._sharedPools.Select(p => p.Clone()));
         Outcome = other.Outcome;
         EndReason = other.EndReason;
@@ -368,6 +373,10 @@ public sealed class BattleState
     }
     public void AddAttackBan(AttackBan hook) => _attackBans.Add(hook);
 
+    /// <summary>Called when another unit's skill cleanses a status off a unit (Lingering Malice).</summary>
+    public IReadOnlyList<StatusRemovedHook> StatusRemovedHooks => _statusRemovedHooks;
+    public void AddStatusRemovedHook(StatusRemovedHook hook) => _statusRemovedHooks.Add(hook);
+
     /// <summary>Whether the battle is over and who won (section 12.3). Set by <see cref="BattleEnd"/>.</summary>
     public BattleOutcome Outcome { get; private set; }
 
@@ -434,7 +443,7 @@ public sealed class BattleState
     public int PowerOf(int unitId)
     {
         var unit = GetUnit(unitId);
-        return unit.IsSummoned && unit.SummonerId is { } summoner ? GetUnit(summoner).Power : unit.Power;
+        return unit.IsSummoned && unit.SummonerId is { } summoner ? PowerOf(summoner) : unit.EffectivePower;
     }
 
     /// <summary>Adds a unit with the stats of a roster creature at full HP.</summary>
@@ -453,6 +462,19 @@ public sealed class BattleState
     {
         var target = GetUnit(targetId);
         if (target.IsKnockedOut) throw new InvalidOperationException($"Unit {targetId} is KO and cannot take damage.");
+        if (Statuses.Has(target, StatusIds.StoneShell))
+        {
+            // Stone Shell: the unit cannot be damaged. Nothing reaches the shield or HP.
+            var none = new DamageResult(amount, 0, 0, target.Ward);
+            Emit(new DamageDealt(sourceUnitId, targetId, source, none, target.Hp));
+            return none;
+        }
+        if (source == DamageSource.Hit && Statuses.Has(target, StatusIds.GlassBody))
+        {
+            // Glass Body: the next hit on the unit deals double damage, then the status is used up.
+            amount *= 2;
+            Statuses.Remove(this, targetId, StatusIds.GlassBody, StatusEndCause.Consumed);
+        }
         var result = DamageMath.Resolve(amount, target.Ward, target.Dampen, source);
         target.Ward = result.WardLeft;
         target.Hp = Math.Max(0, target.Hp - result.HpLost);
@@ -477,6 +499,12 @@ public sealed class BattleState
         var target = GetUnit(targetId);
         if (target.IsKnockedOut) throw new InvalidOperationException($"Unit {targetId} is KO and cannot be healed, only revived.");
         if (amount < 0) throw new ArgumentOutOfRangeException(nameof(amount));
+        if (allowLink && Statuses.Get(target, StatusIds.Betrayed) is { SourceUnitId: { } sorcerer } && BetrayalRecipient(sorcerer) is { } recipient)
+        {
+            // Curse of Betrayal: the healing goes to the Sorcerer's unit with the lowest HP instead; it is not redirected again.
+            HealCore(sourceUnitId, recipient, amount, allowLink: false);
+            return 0;
+        }
         if (target.IsUndead)
         {
             // Healing an undead deals that amount as damage instead (section 11.5).
@@ -506,6 +534,17 @@ public sealed class BattleState
             if (!partner.IsKnockedOut && !partner.IsRemoved) HealCore(sourceUnitId, partner.Id, Math.Max(1, healed / 2), allowLink: false);
         }
         return healed;
+    }
+
+    /// <summary>The Sorcerer's unit that gets healing taken by Curse of Betrayal: the living, healable unit of its side with the lowest HP (ties by the seeded roll); null if none.</summary>
+    private int? BetrayalRecipient(int sorcererId)
+    {
+        var side = GetUnit(sorcererId).Side;
+        var candidates = _units.Where(u => u.Side == side && !u.IsKnockedOut && !u.IsRemoved && !u.IsUndead && _formation.Contains(u.Id)).ToList();
+        if (candidates.Count == 0) return null;
+        var lowest = candidates.Min(u => u.Hp);
+        var tied = candidates.Where(u => u.Hp == lowest).ToList();
+        return tied.Count == 1 ? tied[0].Id : tied[Random.NextInt(tied.Count)].Id;
     }
 
     /// <summary>Gives a unit a Ward; a smaller new Ward does not replace a larger one that is left (section 5.2).</summary>

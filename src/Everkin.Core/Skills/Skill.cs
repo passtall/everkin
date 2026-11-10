@@ -114,6 +114,7 @@ public sealed class SkillContext
 {
     private readonly Skill _skill;
     private bool _attacked;
+    private bool _pierced;
 
     internal SkillContext(BattleState state, Skill skill, int userId, SkillUse use, int? targetId)
     {
@@ -125,6 +126,12 @@ public sealed class SkillContext
         Placement = use.Placement;
         SecondTargetId = use.SecondTargetUnitId;
     }
+
+    /// <summary>Phasing Strike: this attack cannot be intercepted (set by the executor from the user's Phase Weapon enchantment).</summary>
+    internal bool IgnoresInterception { get; set; }
+
+    /// <summary>Piercing Enchant: this attack also hits the unit behind its target (set by the executor).</summary>
+    internal bool PierceBehind { get; set; }
 
     /// <summary>The second unit of a skill with two targets.</summary>
     public int? SecondTargetId { get; }
@@ -154,7 +161,7 @@ public sealed class SkillContext
     public int Scaled(int atPower5) => DamageMath.Scale(atPower5, State.PowerOf(UserId));
 
     /// <summary>One piece of a hit: who is hit and for how much (a rolled, scaled amount).</summary>
-    public readonly record struct HitSpec(int TargetId, IntRange Range);
+    public readonly record struct HitSpec(int TargetId, IntRange Range, bool NoInterception = false);
 
     /// <summary>What happened to one hit.</summary>
     public sealed record HitReport(int TargetId, HitOutcome Outcome, IReadOnlyList<InterceptedShare> Interceptions, int Rolled)
@@ -203,6 +210,15 @@ public sealed class SkillContext
             hits = redirected;
         }
 
+        if (PierceBehind && !_pierced && TargetId is { } aimedAt && hits.FirstOrDefault(h => h.TargetId == aimedAt) is { Range: var pierceRange } && hits.Any(h => h.TargetId == aimedAt))
+        {
+            // Piercing Enchant: the unit behind the target is also hit, a separate roll of the same range, and it cannot be intercepted.
+            _pierced = true;
+            var extra = AreaPatterns.HitBehind(State, AreaPatterns.UnitsBehind(State, aimedAt))
+                .Select(id => new HitSpec(id, pierceRange, NoInterception: true));
+            hits = hits.Concat(extra).ToList();
+        }
+
         foreach (var spec in hits)
         {
             if (State.GetUnit(spec.TargetId).IsKnockedOut) continue;   // an earlier part of the block took it out
@@ -234,7 +250,7 @@ public sealed class SkillContext
             return new HitReport(spec.TargetId, HitOutcome.Missed, Array.Empty<InterceptedShare>(), rolled);
         }
 
-        var interception = _skill.Delivery is { } delivery && Interception.CanBeIntercepted(delivery)
+        var interception = _skill.Delivery is { } delivery && Interception.CanBeIntercepted(delivery, IgnoresInterception || spec.NoInterception)
             ? Interception.Resolve(State, spec.TargetId, rolled)
             : new InterceptionResult(Array.Empty<InterceptedShare>(), rolled);
 
@@ -253,7 +269,7 @@ public sealed class SkillContext
             WasHit(spec.TargetId, triggers, tags);
             outcome = interception.Intercepted ? HitOutcome.Intercepted
                 : friendly ? HitOutcome.OnActingSide
-                : result.FullyAbsorbed ? HitOutcome.FullyAbsorbed
+                : result.FullyAbsorbed || Statuses.Has(target, StatusIds.StoneShell) ? HitOutcome.FullyAbsorbed   // Stone Shell takes nothing, like a full shield
                 : HitOutcome.Landed;
         }
         else if (friendly && !interception.Intercepted) outcome = HitOutcome.OnActingSide;
@@ -343,7 +359,7 @@ public sealed class SkillContext
     {
         var healed = State.Heal(UserId, unitId, amount);
         var overflow = amount - healed;
-        if (overflow <= 0 || State.GetUnit(unitId).IsUndead || !User.KnownSkills.Contains("overflowing_care")) return healed;
+        if (overflow <= 0 || State.GetUnit(unitId).IsUndead || Statuses.Has(State.GetUnit(unitId), StatusIds.Betrayed) || !User.KnownSkills.Contains("overflowing_care")) return healed;
         var side = State.GetUnit(unitId).Side;
         var candidates = State.Formation.Adjacent(unitId)
             .Where(id => State.GetUnit(id).Side == side && !State.GetUnit(id).IsKnockedOut && !State.GetUnit(id).IsUndead).ToList();

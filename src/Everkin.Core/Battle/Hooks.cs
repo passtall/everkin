@@ -61,3 +61,6 @@ public delegate void AfterMove(BattleState state, int movedUnitId);
 
 /// <summary>True when the unit can never attack (Living Wall).</summary>
 public delegate bool AttackBan(BattleState state, int unitId);
+
+/// <summary>A status was cleansed off a unit by another unit's skill (Lingering Malice).</summary>
+public delegate void StatusRemovedHook(BattleState state, int unitId, StatusInstance status, int byUnitId);
