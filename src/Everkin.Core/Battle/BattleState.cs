@@ -239,6 +239,15 @@ public sealed class BattleState
     private readonly List<AttackBan> _attackBans = new();
     private readonly List<StatusRemovedHook> _statusRemovedHooks = new();
     private readonly List<DamageModifier> _damageModifiers = new();
+    private readonly List<DamageBonus> _damageBonuses = new();
+    private readonly List<PostHitHook> _postHitHooks = new();
+    private readonly List<AttackMissHook> _attackMissHooks = new();
+    private readonly List<DamageFloor> _damageFloors = new();
+    private readonly List<StatusImmunity> _statusImmunities = new();
+    private readonly List<TurnPushImmunity> _turnPushImmunities = new();
+    private readonly List<MoveBan> _moveBans = new();
+    private readonly List<TargetRestriction> _targetRestrictions = new();
+    private readonly List<AttackExpander> _attackExpanders = new();
     private readonly List<SharedHp> _sharedPools = new();
     private readonly List<ReactionDef> _reactions = new();
     private readonly Dictionary<string, int> _reactionUses = new();
@@ -274,6 +283,15 @@ public sealed class BattleState
         _attackBans.AddRange(other._attackBans);
         _statusRemovedHooks.AddRange(other._statusRemovedHooks);
         _damageModifiers.AddRange(other._damageModifiers);
+        _damageBonuses.AddRange(other._damageBonuses);
+        _postHitHooks.AddRange(other._postHitHooks);
+        _attackMissHooks.AddRange(other._attackMissHooks);
+        _damageFloors.AddRange(other._damageFloors);
+        _statusImmunities.AddRange(other._statusImmunities);
+        _turnPushImmunities.AddRange(other._turnPushImmunities);
+        _moveBans.AddRange(other._moveBans);
+        _targetRestrictions.AddRange(other._targetRestrictions);
+        _attackExpanders.AddRange(other._attackExpanders);
         _sharedPools.AddRange(other._sharedPools.Select(p => p.Clone()));
         Outcome = other.Outcome;
         EndReason = other.EndReason;
@@ -379,6 +397,43 @@ public sealed class BattleState
     public IReadOnlyList<StatusRemovedHook> StatusRemovedHooks => _statusRemovedHooks;
     public void AddStatusRemovedHook(StatusRemovedHook hook) => _statusRemovedHooks.Add(hook);
 
+    // Warrior hooks (docs/skills.md Warrior rulings)
+    public IReadOnlyList<DamageBonus> DamageBonuses => _damageBonuses;
+    public void AddDamageBonus(DamageBonus hook) => _damageBonuses.Add(hook);
+
+    public IReadOnlyList<PostHitHook> PostHitHooks => _postHitHooks;
+    public void AddPostHitHook(PostHitHook hook) => _postHitHooks.Add(hook);
+
+    public IReadOnlyList<AttackMissHook> AttackMissHooks => _attackMissHooks;
+    public void AddAttackMissHook(AttackMissHook hook) => _attackMissHooks.Add(hook);
+
+    public IReadOnlyList<DamageFloor> DamageFloors => _damageFloors;
+    public void AddDamageFloor(DamageFloor hook) => _damageFloors.Add(hook);
+
+    public IReadOnlyList<StatusImmunity> StatusImmunities => _statusImmunities;
+    public void AddStatusImmunity(StatusImmunity hook) => _statusImmunities.Add(hook);
+
+    public IReadOnlyList<TurnPushImmunity> TurnPushImmunities => _turnPushImmunities;
+    public void AddTurnPushImmunity(TurnPushImmunity hook) => _turnPushImmunities.Add(hook);
+
+    public IReadOnlyList<MoveBan> MoveBans => _moveBans;
+    public void AddMoveBan(MoveBan hook) => _moveBans.Add(hook);
+
+    public IReadOnlyList<TargetRestriction> TargetRestrictions => _targetRestrictions;
+    public void AddTargetRestriction(TargetRestriction hook) => _targetRestrictions.Add(hook);
+
+    public IReadOnlyList<AttackExpander> AttackExpanders => _attackExpanders;
+    public void AddAttackExpander(AttackExpander hook) => _attackExpanders.Add(hook);
+
+    /// <summary>Pushes a unit's turn back, unless a passive forbids it (Unstoppable). Returns whether it moved.</summary>
+    public bool PushTurnBack(int unitId, int timeUnits)
+    {
+        if (_turnPushImmunities.Any(h => h(this, unitId))) return false;
+        if (Timeline.TurnOf(unitId) is not { } turn) return false;
+        Timeline.PushBack(turn, timeUnits);
+        return true;
+    }
+
     /// <summary>Changes the damage of hits before shields (Brittle).</summary>
     public void AddDamageModifier(DamageModifier hook) => _damageModifiers.Add(hook);
 
@@ -483,6 +538,13 @@ public sealed class BattleState
         if (source == DamageSource.Hit)
             foreach (var modifier in _damageModifiers) amount = modifier(this, sourceUnitId, targetId, amount);
         var result = DamageMath.Resolve(amount, target.Ward, target.Dampen, source);
+        if (source == DamageSource.Periodic && _damageFloors.Count > 0)
+        {
+            // Endure: damage from statuses cannot take the unit below its floor.
+            var floor = _damageFloors.Max(h => h(this, targetId));
+            if (floor > 0 && target.Hp - result.HpLost < floor)
+                result = new DamageResult(result.Incoming, result.AbsorbedByWard, Math.Max(0, target.Hp - floor), result.WardLeft);
+        }
         target.Ward = result.WardLeft;
         target.Hp = Math.Max(0, target.Hp - result.HpLost);
         if (result.HpLost > 0 && SharedPoolOf(targetId) is { } pool)

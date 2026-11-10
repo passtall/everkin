@@ -115,6 +115,7 @@ public sealed class SkillContext
     private readonly Skill _skill;
     private bool _attacked;
     private bool _pierced;
+    private bool _expanded;
 
     internal SkillContext(BattleState state, Skill skill, int userId, SkillUse use, int? targetId)
     {
@@ -210,6 +211,17 @@ public sealed class SkillContext
             hits = redirected;
         }
 
+        if (_skill.IsAttack && !_expanded && hits.Count > 0)
+        {
+            // Crowd Fighter: the attack also hits the other units a passive names, with the same range.
+            _expanded = true;
+            var first = hits[0].Range;
+            var current = hits;
+            var extra = State.AttackExpanders.SelectMany(e => e(State, UserId)).Distinct()
+                .Where(id => current.All(h => h.TargetId != id)).Select(id => new HitSpec(id, first)).ToList();
+            if (extra.Count > 0) hits = hits.Concat(extra).ToList();
+        }
+
         if (PierceBehind && !_pierced && TargetId is { } aimedAt && hits.FirstOrDefault(h => h.TargetId == aimedAt) is { Range: var pierceRange } && hits.Any(h => h.TargetId == aimedAt))
         {
             // Piercing Enchant: the unit behind the target is also hit, a separate roll of the same range, and it cannot be intercepted.
@@ -242,23 +254,30 @@ public sealed class SkillContext
         var rolled = DamageMath.Roll(State.Random, Scaled(spec.Range));
         var tags = _skill.Tags;
 
+        var bonus = State.DamageBonuses.Sum(h => h(State, UserId, spec.TargetId));
+        if (bonus != 0) rolled = rolled * (100 + bonus) / 100;                  // Reckless Swing, Last Stand: the bonuses add up
+
+        // Sidestep: the next attack on the unit misses and the status is spent.
+        if (_skill.IsAttack && Statuses.Has(target, StatusIds.Sidestep))
+        {
+            Statuses.Remove(State, spec.TargetId, StatusIds.Sidestep, StatusEndCause.Consumed);
+            return Missed(spec, rolled);
+        }
+
         // Blind: all of the unit's attacks have a 50% chance to miss.
         var miss = Statuses.AttackMissChance(User);
-        if (miss > 0 && State.Random.Chance(miss))
-        {
-            State.Emit(new AttackMissed(UserId, spec.TargetId));
-            return new HitReport(spec.TargetId, HitOutcome.Missed, Array.Empty<InterceptedShare>(), rolled);
-        }
+        if (miss > 0 && State.Random.Chance(miss)) return Missed(spec, rolled);
 
         var interception = _skill.Delivery is { } delivery && Interception.CanBeIntercepted(delivery, IgnoresInterception || spec.NoInterception)
             ? Interception.Resolve(State, spec.TargetId, rolled)
             : new InterceptionResult(Array.Empty<InterceptedShare>(), rolled);
 
+        var hpLost = 0;
         foreach (var share in interception.Shares)
         {
             var interceptor = State.GetUnit(share.InterceptorId);
             if (interceptor.IsKnockedOut) continue;
-            State.DealDamage(UserId, share.InterceptorId, share.Amount);
+            hpLost += State.DealDamage(UserId, share.InterceptorId, share.Amount).HpLost;
             WasHit(share.InterceptorId, triggers, tags);
         }
 
@@ -266,6 +285,7 @@ public sealed class SkillContext
         if (interception.Remaining > 0)
         {
             var result = State.DealDamage(UserId, spec.TargetId, interception.Remaining);
+            hpLost += result.HpLost;
             WasHit(spec.TargetId, triggers, tags);
             outcome = interception.Intercepted ? HitOutcome.Intercepted
                 : friendly ? HitOutcome.OnActingSide
@@ -275,7 +295,45 @@ public sealed class SkillContext
         else if (friendly && !interception.Intercepted) outcome = HitOutcome.OnActingSide;
 
         if (friendly && outcome == HitOutcome.Landed) outcome = HitOutcome.OnActingSide;
+        foreach (var hook in State.PostHitHooks.ToArray()) hook(State, UserId, spec.TargetId, hpLost);
         return new HitReport(spec.TargetId, outcome, interception.Shares, rolled);
+    }
+
+    private HitReport Missed(HitSpec spec, int rolled)
+    {
+        State.Emit(new AttackMissed(UserId, spec.TargetId));
+        foreach (var hook in State.AttackMissHooks.ToArray()) hook(State, UserId, spec.TargetId);
+        return new HitReport(spec.TargetId, HitOutcome.Missed, Array.Empty<InterceptedShare>(), rolled);
+    }
+
+    /// <summary>Execution: the target's HP goes to 0. Not a roll: it ignores interception and shields. Breaks the user's stealth, counts as a landed hit.</summary>
+    public void Execute(int targetId)
+    {
+        if (!_attacked)
+        {
+            _attacked = true;
+            Stealth.Break(State, UserId, StealthCause.Attacked);
+        }
+        var triggers = new List<Trigger>();
+        State.DealDamage(UserId, targetId, State.GetUnit(targetId).Hp, DamageSource.Unreducible);
+        WasHit(targetId, triggers, _skill.Tags);
+        EndOfEvent(new[] { HitOutcome.Landed }, triggers, shiftMomentum: true);
+    }
+
+    /// <summary>Pushes units one row back as a group, each landing where its coordinate was before the push (Tempest, Isolate, Sweeping Kick). Rear-row units stay.</summary>
+    public void PushGroupBack(IEnumerable<int> unitIds)
+    {
+        var group = unitIds.Where(id => State.Formation.Contains(id) && !State.GetUnit(id).IsKnockedOut)
+            .Select(id => (Id: id, Position: State.Formation.PositionOf(id), Coordinate: State.Formation.CenterOf(State.Formation.PositionOf(id)))).ToArray();
+        foreach (var (id, start, coordinate) in group)
+        {
+            if (start.Row == Battle.Row.Rear || !State.Formation.Contains(id) || State.GetUnit(id).IsKnockedOut) continue;
+            var position = State.Formation.PositionOf(id);
+            if (position.Side != start.Side || position.Row != start.Row) continue;      // an earlier push bumped it elsewhere
+            AfterForcedMove(Movement.ForceMove(State, id, (Battle.Row)((int)start.Row + 1), UserSide, coordinate));
+            if (Over) return;
+        }
+        Settle();
     }
 
     private void WasHit(int unitId, List<Trigger> triggers, EffectTags tags)
@@ -389,16 +447,22 @@ public sealed class SkillContext
     /// </summary>
     public int ApplyStatus(int targetId, StatusApplication template)
     {
-        var receiver = targetId;
-        if (_skill.Delivery is { } d && Interception.CanBeIntercepted(d))
-        {
-            var r = Interception.Resolve(State, targetId, 1, splittable: false);
-            if (r.Intercepted) receiver = r.Shares[0].InterceptorId;
-        }
+        var receiver = InterceptEffect(targetId);
         if (!State.GetUnit(receiver).IsKnockedOut)
             Statuses.Apply(State, template with { UnitId = receiver, SourceUnitId = UserId });
         EndOfEvent(Array.Empty<HitOutcome>(), Array.Empty<Trigger>(), shiftMomentum: false);
         return receiver;
+    }
+
+    /// <summary>A non-damaging effect aimed at a unit goes entirely to the first interceptor if the skill is `melee` or `projectile` and someone intercepts. Returns who gets it.</summary>
+    public int InterceptEffect(int targetId)
+    {
+        if (_skill.Delivery is { } d && Interception.CanBeIntercepted(d, IgnoresInterception))
+        {
+            var r = Interception.Resolve(State, targetId, 1, splittable: false);
+            if (r.Intercepted) return r.Shares[0].InterceptorId;
+        }
+        return targetId;
     }
 
     /// <summary>
@@ -409,7 +473,8 @@ public sealed class SkillContext
     /// <summary>Raises the "when hit" reactions for units that took bump damage in a blocked forced move, then settles.</summary>
     public void AfterForcedMove(ForcedMoveResult result)
     {
-        var triggers = result.BumpDamaged.Select(id => new Trigger(TriggerKind.WhenHit, id, null, EffectTags.None)).ToArray();
+        var triggers = result.BumpDamaged.Select(id => new Trigger(TriggerKind.WhenHit, id, null, EffectTags.None))
+            .Concat(result.Moves.Select(m => new Trigger(TriggerKind.WhenMoved, m.UnitId, UserId))).ToArray();
         EndOfEvent(Array.Empty<HitOutcome>(), triggers, shiftMomentum: false);
     }
 }

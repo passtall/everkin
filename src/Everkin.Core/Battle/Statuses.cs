@@ -74,6 +74,12 @@ public static class StatusIds
     /// <summary>Curse of Betrayal: healing the unit would receive goes to the Sorcerer's side instead.</summary>
     public const string Betrayed = "betrayed";
 
+    /// <summary>Sidestep: the next attack on the unit misses.</summary>
+    public const string Sidestep = "sidestep";
+
+    /// <summary>Single Combat: the unit and its duel partner (the magnitude is the partner's ID) can be targeted only by each other.</summary>
+    public const string Duel = "duel";
+
     /// <summary>The Sorcerer's curses (Lingering Malice and Witch's Patience look at these).</summary>
     public static bool IsCurse(string statusId) => statusId is Weighted or Stagnant or Betrayed;
 
@@ -179,7 +185,7 @@ public static class StatusRules
             or StatusIds.Marked or StatusIds.Slow or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted
             or StatusIds.GlassBody or StatusIds.StoneShell or StatusIds.Weighted or StatusIds.Stagnant or StatusIds.Betrayed => Polarity.Harmful,
         StatusIds.Ward or StatusIds.Dampen or StatusIds.Haste or StatusIds.Charge or StatusIds.LeapCover or StatusIds.Pledge
-            or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo => Polarity.Helpful,
+            or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo or StatusIds.Sidestep => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };
 
@@ -254,6 +260,7 @@ public static class Statuses
         if (unit.IsKnockedOut) throw new InvalidOperationException($"Unit {a.UnitId} is KO and cannot gain statuses.");
         var existing = Get(unit, a.Id);
         var timeline = state.Timeline;
+        if (state.StatusImmunities.Any(h => h(state, a.UnitId, a.Id))) return false;   // Unstoppable
         if (a.Id == StatusIds.Airborne && Has(unit, StatusIds.Weighted)) return false;   // Curse of Weight: cannot become airborne
 
         switch (StatusRules.Reapply(a.Id))

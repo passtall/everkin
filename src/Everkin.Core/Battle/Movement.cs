@@ -51,7 +51,7 @@ public static class Movement
     /// (section 9.1, 9.2). It cannot reorder a unit within its own row. Empty when the unit cannot move.
     /// </summary>
     public static IReadOnlyList<MoveOption> LegalMoves(BattleState state, int unitId) =>
-        Statuses.Has(state.GetUnit(unitId), StatusIds.Weighted) ? Array.Empty<MoveOption>() : Places(state, unitId);   // Curse of Weight: cannot Move
+        Statuses.Has(state.GetUnit(unitId), StatusIds.Weighted) || state.MoveBans.Any(b => b(state, unitId)) ? Array.Empty<MoveOption>() : Places(state, unitId);   // Curse of Weight: cannot Move
 
     private static IReadOnlyList<MoveOption> Places(BattleState state, int unitId)
     {

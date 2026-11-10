@@ -131,7 +131,7 @@ public sealed class Absolve : HealerSkill
         var id = context.TargetId!.Value;
         Statuses.RemoveAll(context.State, id, Polarity.Harmful, byUnitId: context.UserId);
         Stealth.Break(context.State, id, StealthCause.Revealed);
-        if (context.State.Timeline.TurnOf(id) is { } turn) context.State.Timeline.PushBack(turn, 2);
+        context.State.PushTurnBack(id, 2);
         context.Settle();
     }
 }

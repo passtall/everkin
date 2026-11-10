@@ -188,6 +188,20 @@ Branches: Berserker, Champion, Whirlwind, Footwork.
 | Footwork | Counter Step | P | Sidestep |  |  | When an attack on the Warrior misses, its next turn is pulled forward 5 time units. |
 | Footwork | Hit and Run | A | Sidestep | 4 / 0 | Melee · D1 | Strike a unit in melee for 3–4: its next action comes 3 time units later, then the Warrior moves one row back. |
 
+**Warrior rulings (owner decisions 2026-11-10).**
+
+- **Reckless Swing, Last Stand.** Bonuses to the Warrior's hits add up: Reckless Swing +100%, Last Stand +50%, together +150% (×2.5), applied to the rolled amount (rounded down) before interception and shields. Reckless Swing's recoil is half (rounded down) of the HP that the target and its interceptors actually lost; it is unreducible (Ward and Dampen do not apply) and can KO the Warrior. Endure only covers damage from statuses (Poison, Bleeding), not recoil, ground effects or hits.
+- **Last Stand** blocks the Move action, every push, pull or swap of the Warrior by anyone, and the Warrior's own skills that move it (Hit and Run skips its move). **Unstoppable** works while the Warrior has less than 25% of its maximum HP: Immobilized and Frozen are refused, and its turn cannot be pushed back (pulling it forward still works).
+- **Challenge** marks an enemy; the Mark has no clock and moves when the Warrior marks another unit. Drag Out, Isolate, Execution and Single Combat need a Marked enemy; Hunt Down reacts to forced movement of any Marked enemy, whoever marked it. A pull by Drag Out that is intercepted goes entirely to the first interceptor.
+- **Isolate:** the player picks a Marked enemy; the units to its left and right in the same row are pushed one row back as a group (coordinates kept, bumps apply, Rear-row units stay). The Marked unit stays.
+- **Execution** can only be used on a Marked enemy below 25% HP (HP × 4 below its maximum). It cannot be intercepted and ignores shields: the unit's HP goes to 0.
+- **Sweeping Kick** and **Battle Roar** affect every enemy within distance 1 of the Warrior (the nearest enemy row, stealthed units left out). The kick pushes them as a group like Tempest and cannot be intercepted.
+- **Crowd Fighter:** while three or more enemies are within distance 1, each attack also hits all of them (a separate roll each, one simultaneous block); the declared target is hit as well if it is not among them.
+- **Single Combat:** for 10 time units no unit other than the two duellists can target either of them (every skill, helpful ones included). Each duellist may still target itself and others. It ends if either duellist is KO.
+- **Sidestep** has no time limit and ends with the next attack skill that targets the Warrior (checked before interception, area attacks included). Counter Step reacts to every miss on the Warrior, Blind misses included.
+- **Hit and Run:** if the strike was intercepted, the interceptor's turn is pushed back 3; if it missed, nothing is pushed. The Warrior moves one row back either way (a blocked move bumps, the rest resolves).
+- **Hunt Down** reacts to forced movement only (push, pull, swap), not to a unit's own Move.
+
 ## Leader (15)
 
 Branches: Tactician, Commander, Bard.

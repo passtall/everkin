@@ -67,3 +67,30 @@ public delegate void StatusRemovedHook(BattleState state, int unitId, StatusInst
 
 /// <summary>Changes the damage a hit would do to a target before shields (Brittle). Returns the new amount.</summary>
 public delegate int DamageModifier(BattleState state, int? sourceUnitId, int targetId, int amount);
+
+/// <summary>A percentage added to the damage of the attacker's hits (Reckless Swing +100, Last Stand +50). All bonuses of a hit are added together.</summary>
+public delegate int DamageBonus(BattleState state, int attackerId, int targetId);
+
+/// <summary>Called after a hit with the HP the target and its interceptors actually lost (Reckless Swing's recoil).</summary>
+public delegate void PostHitHook(BattleState state, int attackerId, int targetId, int hpLost);
+
+/// <summary>Called when an attack misses its target (Sidestep, Blind): Counter Step.</summary>
+public delegate void AttackMissHook(BattleState state, int attackerId, int targetId);
+
+/// <summary>The HP that damage from statuses cannot take a unit below (Endure: 1). 0 for no floor.</summary>
+public delegate int DamageFloor(BattleState state, int unitId);
+
+/// <summary>True when the unit cannot gain the status (Unstoppable: Immobilized, Frozen).</summary>
+public delegate bool StatusImmunity(BattleState state, int unitId, string statusId);
+
+/// <summary>True when the unit's turn cannot be pushed back (Unstoppable).</summary>
+public delegate bool TurnPushImmunity(BattleState state, int unitId);
+
+/// <summary>True when the unit cannot use the Move action (Last Stand).</summary>
+public delegate bool MoveBan(BattleState state, int unitId);
+
+/// <summary>False when the user may not target that unit (Single Combat).</summary>
+public delegate bool TargetRestriction(BattleState state, int userId, int targetId);
+
+/// <summary>Extra units that an attack by this unit also hits (Crowd Fighter).</summary>
+public delegate IReadOnlyList<int> AttackExpander(BattleState state, int attackerId);

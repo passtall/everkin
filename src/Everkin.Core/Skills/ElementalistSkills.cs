@@ -241,17 +241,7 @@ public sealed class Tempest : ElementalistSkill
         var state = context.State;
         var row = context.Row!.Value;
         if (row.Row == Row.Rear) { context.Settle(); return; }
-        // The row moves together: every unit lands where its own coordinate was before the push, whatever the recentering does.
-        var group = state.Formation.Units(row.Side, row.Row).Select(id => (Id: id, Coordinate: state.Formation.CenterOf(state.Formation.PositionOf(id)))).ToArray();
-        foreach (var (id, coordinate) in group)
-        {
-            if (!state.Formation.Contains(id) || state.GetUnit(id).IsKnockedOut) continue;
-            var position = state.Formation.PositionOf(id);
-            if (position.Side != row.Side || position.Row != row.Row) continue;     // an earlier push bumped it elsewhere
-            context.AfterForcedMove(Movement.ForceMove(state, id, (Row)((int)row.Row + 1), context.UserSide, coordinate));
-            if (context.Over) return;
-        }
-        context.Settle();
+        context.PushGroupBack(state.Formation.Units(row.Side, row.Row).ToArray());     // the row moves together
     }
 }
 

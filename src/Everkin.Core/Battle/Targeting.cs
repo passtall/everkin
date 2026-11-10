@@ -103,7 +103,7 @@ public static class Targeting
         if (target.IsKnockedOut && !options.IncludeKnockedOut) return false;
         if (!own && target.IsStealthed) return false;
         if (options.Delivery == Everkin.Core.Battle.Delivery.Melee && target.IsAirborne && !state.GetUnit(userId).IsAirborne) return false;
-        return InReach(state, userId, targetId, reach);
+        return InReach(state, userId, targetId, reach) && state.TargetRestrictions.All(r => r(state, userId, targetId));
     }
 
     /// <summary>

@@ -22,7 +22,7 @@ public sealed class SkillCatalog
 
     /// <summary>The skills implemented so far: the nine Attack Type attacks, then the professions one by one.</summary>
     public static SkillCatalog Create(ContentSet content) =>
-        new(content, AttackSkills.All(content).Concat(HunterSkills.All(content)).Concat(GuardianSkills.All(content)).Concat(HealerSkills.All(content)).Concat(SorcererSkills.All(content)).Concat(ElementalistSkills.All(content)));
+        new(content, AttackSkills.All(content).Concat(HunterSkills.All(content)).Concat(GuardianSkills.All(content)).Concat(HealerSkills.All(content)).Concat(SorcererSkills.All(content)).Concat(ElementalistSkills.All(content)).Concat(WarriorSkills.All(content)));
 
     public bool Has(string skillId) => _skills.ContainsKey(skillId);
 
