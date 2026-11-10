@@ -103,3 +103,6 @@ public delegate int MomentumCostModifier(BattleState state, int userId, int cost
 
 /// <summary>Less Delay for a skill the unit uses again right after using it (Rhythm). Returns how much less.</summary>
 public delegate int RepeatDelayReduction(BattleState state, int userId, string skillId);
+
+/// <summary>Called when a hit reaches its target itself (landed or fully absorbed, not taken by an interceptor): Light Fingers.</summary>
+public delegate void TargetHitHook(BattleState state, int attackerId, int targetId);

@@ -22,6 +22,7 @@ public static class Knockout
         state.Ground.Accrue();
 
         if (unit.IsStealthed) Stealth.Break(state, unitId, StealthCause.KnockedOut);
+        unit.MarkedAtKo = Statuses.Has(unit, StatusIds.Marked);
         Statuses.ClearAll(state, unitId);
         unit.ClearStatuses();
 

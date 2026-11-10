@@ -299,6 +299,12 @@ public sealed class NetTrap : ProfessionSkill
         void Slow(BattleState st, ReactionContext ctx)
         {
             if (ctx.Trigger.SourceUnitId is not { } attacker || st.GetUnit(attacker).IsKnockedOut) return;
+            if (st.GetUnit(attacker).Side != st.GetUnit(trap).Side && st.GetUnit(attacker).KnownSkills.Contains("disarm_trap"))
+            {
+                // Disarm Trap: the trap goes off without its effect on the Rogue and is used up.
+                if (!st.GetUnit(trap).IsRemoved) Summons.Remove(st, trap, RemovalCause.Expired);
+                return;
+            }
             Statuses.Apply(st, new StatusApplication(attacker, StatusIds.NextSkillDelay, Magnitude: 3, SourceUnitId: trap));
         }
         // A hit that destroys the trap still counts: a KO'd owner reacts only through "when KO'd", so both are registered.

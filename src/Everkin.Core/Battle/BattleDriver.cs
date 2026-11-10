@@ -50,6 +50,7 @@ public static class BattleDriver
                         state.Timeline.ScheduleTurnWithWait(unitId, Timeline.SkippedTurnWait(unit.EffectiveSpeed));
                         break;
                     }
+                    unit.SneakReady = true;
                     return unitId;
 
                 default:

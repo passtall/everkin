@@ -146,6 +146,15 @@ public sealed class Unit
     /// <summary>The skill this unit used last, null after a Move or Skip Turn (Rhythm: the same skill twice in a row).</summary>
     public string? LastSkillId { get; set; }
 
+    /// <summary>The last skill this unit used with a turn action (not cleared by Move or Skip Turn): Lift a Skill copies it.</summary>
+    public string? LastActiveSkillId { get; set; }
+
+    /// <summary>It was Marked when it was KO'd (the KO clears statuses): Deathmark Bloom.</summary>
+    public bool MarkedAtKo { get; set; }
+
+    /// <summary>The turn has just started and the unit has not acted yet: Sneak's extra move is allowed.</summary>
+    public bool SneakReady { get; set; }
+
     /// <summary>Knocked out: HP is 0 (game_system.md section 10.2). A KO body keeps its place in the row.</summary>
     public bool IsKnockedOut => Hp <= 0;
 
@@ -242,6 +251,7 @@ public sealed class BattleState
     private readonly List<AttackBan> _attackBans = new();
     private readonly List<StatusRemovedHook> _statusRemovedHooks = new();
     private readonly List<DamageModifier> _damageModifiers = new();
+    private readonly List<TargetHitHook> _targetHitHooks = new();
     private readonly List<MomentumShiftModifier> _momentumShiftModifiers = new();
     private readonly List<MomentumCostModifier> _momentumCostModifiers = new();
     private readonly List<RepeatDelayReduction> _repeatDelayReductions = new();
@@ -291,6 +301,7 @@ public sealed class BattleState
         _attackBans.AddRange(other._attackBans);
         _statusRemovedHooks.AddRange(other._statusRemovedHooks);
         _damageModifiers.AddRange(other._damageModifiers);
+        _targetHitHooks.AddRange(other._targetHitHooks);
         _momentumShiftModifiers.AddRange(other._momentumShiftModifiers);
         _momentumCostModifiers.AddRange(other._momentumCostModifiers);
         _repeatDelayReductions.AddRange(other._repeatDelayReductions);
@@ -409,6 +420,9 @@ public sealed class BattleState
     /// <summary>Called when another unit's skill cleanses a status off a unit (Lingering Malice).</summary>
     public IReadOnlyList<StatusRemovedHook> StatusRemovedHooks => _statusRemovedHooks;
     public void AddStatusRemovedHook(StatusRemovedHook hook) => _statusRemovedHooks.Add(hook);
+
+    public IReadOnlyList<TargetHitHook> TargetHitHooks => _targetHitHooks;
+    public void AddTargetHitHook(TargetHitHook hook) => _targetHitHooks.Add(hook);
 
     // Leader hooks (docs/skills.md Leader rulings)
     public IReadOnlyList<MomentumShiftModifier> MomentumShiftModifiers => _momentumShiftModifiers;

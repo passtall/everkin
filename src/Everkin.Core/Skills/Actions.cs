@@ -13,7 +13,10 @@ public static class Actions
     /// the unit cannot act or does not know the skill, Silenced blocks a `magical` skill, the side is not far enough ahead
     /// for the Momentum cost, the skill's own requirements, or the target is missing or not legal.
     /// </summary>
-    public static string? WhyNot(BattleState state, SkillCatalog catalog, SkillUse use)
+    public static string? WhyNot(BattleState state, SkillCatalog catalog, SkillUse use) =>
+        WhyNotCore(state, catalog, use) ?? (catalog.TryGet(use.SkillId, out var skill) ? skill.CheckUse(state, catalog, use) : null);
+
+    private static string? WhyNotCore(BattleState state, SkillCatalog catalog, SkillUse use)
     {
         if (state.IsOver) return "the battle is over";
         if (use.UserId < 0 || use.UserId >= state.Units.Count) return "unknown unit";
@@ -160,6 +163,7 @@ public static class Actions
 
             var context = new SkillContext(state, skill, use.UserId, use, target)
             {
+                Catalog = catalog,
                 IgnoresInterception = phased is { Magnitude: > 0 },   // Phasing Strike
                 PierceBehind = piercing is not null,
             };
@@ -170,11 +174,13 @@ public static class Actions
             if (echo is not null && CanEcho(state, skill, use, target))
             {
                 state.Emit(new SkillUsed(use.UserId, use.SkillId, target));
-                skill.Resolve(new SkillContext(state, skill, use.UserId, use, target) { IgnoresInterception = context.IgnoresInterception });
+                skill.Resolve(new SkillContext(state, skill, use.UserId, use, target) { IgnoresInterception = context.IgnoresInterception, Catalog = catalog });
             }
         }
         user.LastActionIndex = state.ActionCounter;
         user.LastSkillId = skill.Id;
+        user.LastActiveSkillId = skill.Id;
+        user.SneakReady = false;
         state.RunAuras();
         return state.DrainEvents();
     }
@@ -192,6 +198,28 @@ public static class Actions
         };
     }
 
+    /// <summary>Sneak: the places the stealthed Rogue may step to at the start of its turn: one row forward or back, any gap. Empty if it cannot.</summary>
+    public static IReadOnlyList<MoveOption> SneakOptions(BattleState state, int userId)
+    {
+        var unit = state.GetUnit(userId);
+        if (state.IsOver || !unit.SneakReady || !unit.IsStealthed || unit.IsKnockedOut || !unit.KnownSkills.Contains("sneak"))
+            return Array.Empty<MoveOption>();
+        var row = (int)state.Formation.PositionOf(userId).Row;
+        return Movement.LegalMoves(state, userId).Where(m => Math.Abs((int)m.Row - row) == 1).ToArray();
+    }
+
+    /// <summary>Sneak: the extra move. It costs nothing on the timeline and stealth stays. Allowed once, before the unit's action.</summary>
+    public static IReadOnlyList<BattleEvent> SneakMove(BattleState state, int userId, Row row, int gap)
+    {
+        if (!SneakOptions(state, userId).Contains(new MoveOption(row, gap)))
+            throw new InvalidOperationException("Sneak cannot move there now.");
+        state.GetUnit(userId).SneakReady = false;
+        Movement.Move(state, userId, row, gap);
+        Settle(state, userId);
+        state.RunAuras();
+        return state.DrainEvents();
+    }
+
     /// <summary>
     /// The basic Move action (section 9.1): the unit lands in the gap its player chose. Delay 5, the `move` tag (it triggers
     /// Bleeding). A Speed 6 unit waits 10 time units.
@@ -207,6 +235,7 @@ public static class Actions
         AfterSkill(state, userId, melee: false, move: true);
         state.GetUnit(userId).LastActionIndex = state.ActionCounter;
         state.GetUnit(userId).LastSkillId = null;
+        state.GetUnit(userId).SneakReady = false;
         state.RunAuras();
         return state.DrainEvents();
     }
@@ -219,6 +248,7 @@ public static class Actions
         ScheduleNextTurn(state, userId, Timeline.SkippedTurnDelay);
         state.GetUnit(userId).LastActionIndex = state.ActionCounter;
         state.GetUnit(userId).LastSkillId = null;
+        state.GetUnit(userId).SneakReady = false;
         return state.DrainEvents();
     }
 

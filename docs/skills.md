@@ -258,6 +258,18 @@ Branches: Thief, Assassin, Saboteur.
 | Saboteur | Jam | A | — | 3 / 0 | Projectile · D3 | A unit's next skill has +3 Delay. |
 | Saboteur | Disarm Trap | P | Cut the Strings |  |  | The Rogue sets off enemy traps without taking their effect. |
 
+**Rogue rulings (owner decisions 2026-11-10).**
+
+- **Sneak** is an extra, optional move of one row (any gap) that the stealthed Rogue may make at the start of its turn, once, before its action. It costs no Delay and does not break stealth.
+- **Light Fingers:** when the Rogue's hit reaches an enemy itself (landed or fully absorbed, not taken by an interceptor), one helpful status chosen by the seeded roll moves from the enemy to the Rogue with its remaining time. Stealth is a flag and is not stolen.
+- **Lift a Skill:** the player picks the enemy whose last active skill is copied, and, if the copy needs a target, a legal target for it from the Rogue's position. The copy is free (no Delay, no Momentum beyond Lift's own) and uses the Rogue's Power. "Active skill" means any skill the unit used with a turn action, Attack Type attacks included; Move, Skip Turn, passives and Lift a Skill itself are never copied. Only copies that need no target or one unit target are possible. A magical copy cannot be made while the Rogue is Silenced.
+- **Backstab** deals no damage: it needs the Rogue to be stealthed, and the target (or the interceptor that takes it) is Silenced for 20 time units and Bleeds (its next 3 melee or move skills). The Rogue stays stealthed.
+- **Contract:** the Rogue's hits do 100% more damage to Marked enemies and 50% less to everyone else (minimum 1); the percentages add to other bonuses.
+- **Mark for Death** marks an enemy for 20 time units (no limit on how many). **Deathmark Bloom:** when a Marked enemy is KO, a new Mark of 20 time units goes to the nearest living enemy of that unit's side, nearest by row first, then by horizontal distance (ties by the seeded roll); it does not jump if the KO'd unit was a summon that has left the board.
+- **Poison Vial** and **Jam** are projectiles: an interceptor takes the effect instead (the vial lands on its spot, the Delay on its next skill).
+- **Cut the Strings:** the player picks an enemy unit within reach that owns auto events; its next auto event is removed from the timeline.
+- **Disarm Trap:** when the Rogue hits an enemy trap, the trap goes off (it is used up and removed) but its effect does not reach the Rogue.
+
 ## Tinker (13)
 
 Branches: Engineer, Chemist, Pyrotechnician.

@@ -83,6 +83,9 @@ public abstract class Skill
     /// <summary>Extra condition on the target beyond reach and legality (a skill that needs a Marked unit).</summary>
     public virtual bool TargetFilter(BattleState state, int userId, int targetId) => true;
 
+    /// <summary>Extra checks on the whole use, after the target checks (Lift a Skill: the copied skill and its target). Null if fine.</summary>
+    public virtual string? CheckUse(BattleState state, SkillCatalog catalog, SkillUse use) => null;
+
     /// <summary>For a skill with two targets: whether this pair is allowed.</summary>
     public virtual bool PairFilter(BattleState state, int userId, int firstId, int secondId) => true;
 
@@ -133,6 +136,9 @@ public sealed class SkillContext
 
     /// <summary>Piercing Enchant: this attack also hits the unit behind its target (set by the executor).</summary>
     internal bool PierceBehind { get; set; }
+
+    /// <summary>The catalog the skill was found in (Lift a Skill copies another skill).</summary>
+    public SkillCatalog? Catalog { get; internal init; }
 
     /// <summary>The second unit of a skill with two targets.</summary>
     public int? SecondTargetId { get; }
@@ -255,7 +261,7 @@ public sealed class SkillContext
         var tags = _skill.Tags;
 
         var bonus = State.DamageBonuses.Sum(h => h(State, UserId, spec.TargetId));
-        if (bonus != 0) rolled = rolled * (100 + bonus) / 100;                  // Reckless Swing, Last Stand: the bonuses add up
+        if (bonus != 0) rolled = Math.Max(1, rolled * (100 + bonus) / 100);                  // Reckless Swing, Last Stand: the bonuses add up
 
         // Sidestep: the next attack on the unit misses and the status is spent.
         if (_skill.IsAttack && Statuses.Has(target, StatusIds.Sidestep))
@@ -286,6 +292,7 @@ public sealed class SkillContext
         {
             var result = State.DealDamage(UserId, spec.TargetId, interception.Remaining);
             hpLost += result.HpLost;
+            if (!friendly) foreach (var hook in State.TargetHitHooks.ToArray()) hook(State, UserId, spec.TargetId);
             WasHit(spec.TargetId, triggers, tags);
             outcome = interception.Intercepted ? HitOutcome.Intercepted
                 : friendly ? HitOutcome.OnActingSide
