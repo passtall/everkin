@@ -14,7 +14,8 @@ public static class Screens
         {
             case "cards": return new CardsDemo();
             case "play-again" when main.LastSpec != null:
-                return new PlayScreen(main, main.LastSpec, main.LastLevel, main.LastEncounter);
+                // Retry: the same teams and formations with a new seed (a new roll of the dice).
+                return new PlayScreen(main, new Everkin.Core.Setup.BattleSpec((ulong)new Random().NextInt64(1, 1_000_000_000), main.LastSpec.SideA, main.LastSpec.SideB), main.LastLevel, main.LastEncounter);
             case "play":
             {
                 var spec = Everkin.Core.Setup.BattleSetup.RandomSpec(Game.Content, Game.Trees, ulong.TryParse(Arg("seed"), out var s) ? s : 7);
