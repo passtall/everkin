@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 6 and the creature assignment applied). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 7 and the creature assignment applied; all design questions answered; doc rewrite waits for the owner's go). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -235,8 +235,33 @@ Keystones: *Lasting Change*: Transmute lasts until the end of battle, but only o
 
 All 319 creatures have two classes, two keystones and a unique attack in [classes-creatures.md](classes-creatures.md). Every one of the 84 keystones is used at least once. Round 3 note changes filled in by Claude: Jam +5 Delay; Life Swap swaps current HP (capped at max); Frost Nova and Chain Lightning deal 1–2.
 
-## 2. Open questions (later rounds)
+## 1g. Delivery, range and action bar (round 7, answered 2026-11-11)
 
-- **Skill details for new skills:** Delivery and range for the new and reworded skills, checked against game_system §7.4 and §8.1.
-- **Action bar:** the attack plus 6 class skills = 7 buttons (ui_spec action bar); confirm the layout once the attacks are known.
-- **Doc rewrite** once final: class_system.md, skills.md, game_system.md (§4.1 trees, §4.4 attacks, §19 Builds), creature-classes.md, ui_spec.md (tree editor), implementation plan and code (default builds, tree editor).
+| Skill | Class | Delivery · Range |
+|---|---|---|
+| Feint | Assassin | Melee · D1 |
+| Backstab | Assassin | Melee · D1 |
+| Hunter's Shot | Tracker | Projectile · D3 |
+| Leap to Defend | Bulwark | Direct · D3, own side |
+| Shield Bash | Bulwark | Melee · D1 |
+| Ward Burst | Keeper | Direct · D1 |
+| Searing Light | Mender | Direct · D3 |
+| Withering Hex | Hexer | Direct · D3 |
+| Fireball | Pyromancer | Projectile · D3 |
+| Lightning Bolt | Stormcaller | Direct · D3 |
+| Ice Lance | Cryomancer | Projectile · D3 |
+| Rampage | Berserker | Melee · D1 |
+| Coordinated Strike | Tactician | Direct · D3 (any visible enemy) |
+| Song of Haste | Bard | No target (the Bard's row) |
+| War Drums | Bard | No target (allies next to the Bard) |
+| Lullaby | Bard | Direct · D3 |
+| Snatch | Thief | Melee · D1 |
+| Dive | Skyborne | Melee · any visible enemy |
+
+- **Coordinated Strike:** two random allies among all allies whose attack can reach the enemy make their attack (equal chances); if only one can, only it attacks; if none can, nothing happens.
+- **Action bar:** the attack first, then the first class's 3 skills, then the second class's 3 skills, with a small gap between the groups; the class name shows on hover.
+- **Keystones** show only in the inspection panel, not on the action bar.
+
+## 2. Open questions
+
+- **Doc rewrite:** class_system.md, skills.md, game_system.md (§4.1 trees, §4.4 attacks, §19 Builds), creature-classes.md, ui_spec.md (tree editor, action bar), implementation plan and code (default builds, tree editor). Not started: the owner confirms first (2026-11-11).
