@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (round 1 applied, round 2 posted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 and 2 applied, round 3 posted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -15,7 +15,7 @@ First step: go through every new class and decide whether it stays, merges into 
 
 ## 1. Classes (round 1 decided 2026-11-11)
 
-The 12 professions had 38 branches in [skills.md](docs/skills.md). Round 1 (https://claude.ai/artifact/TuKYsxEXMpwNqNjvSsc4hd, db doc answers/round1) kept or merged each one; none was removed outright. **30 classes:**
+The 12 professions had 38 branches in [skills.md](docs/skills.md). Round 1 (https://claude.ai/artifact/TuKYsxEXMpwNqNjvSsc4hd, db doc answers/round1) kept or merged each one; none was removed outright. **30 classes** (29 after round 2 merged Bodyguard into Bulwark):
 
 | Old profession | Classes (merged branches in brackets) |
 |---|---|
@@ -34,7 +34,19 @@ The 12 professions had 38 branches in [skills.md](docs/skills.md). Round 1 (http
 
 New skill requested for **Stalker**: a real backstab, only from stealth, range 1, high damage (round 2 suggests "Pounce": D 5 / M 2, Melee · D1, hit for 12–14, breaks stealth).
 
-Round 2 (which skills each class keeps): same page, db doc answers/round2.
+Round 2 (which skills each class keeps, db doc answers/round2), answered 2026-11-11 for Stalker to Cleric; every skill below Cleric kept:
+
+- **Stalker:** Stalk, Creep Closer, Freeze in Place and Lie in Wait cut; Vanish kept (no row requirement); Pounce kept; add a skill that Confuses.
+- **Tracker:** Scent, Cut Off Retreat and Pack Strike cut; Scent of Blood and Sniff the Air become keystones.
+- **Bulwark:** Bodyguard merged into Bulwark (29 classes). Full Cover, Living Wall, Take a Charge, Follow the Charge, Distract and Pledge cut. Shield Wall becomes a keystone that works with every unit that has it; Hold Position a keystone. Leap to Defend: the Bulwark moves in front of the ally and takes the attack right away.
+- **Keeper:** Lasting Ward and Keeper of the Gate cut.
+- **Mender, Cleric:** all kept.
+
+## 1a. Class shape (owner, 2026-11-11)
+
+Each class has exactly **3 active skills** and **3 keystones** (powerful passives). A creature gets one keystone of each of its two classes, so creatures of the same class can differ. Other passives are gone; modifiers are folded into their skill.
+
+Round 3 (pick the 3 actives and 3 keystones per class, with Claude's suggestions and new skills including damage skills): same page, db doc answers/round3 {pick:{"Class/Skill": true|false, only changes from the suggestion}, n:{"Class/Skill" or "class:Class": note}, note}. List: project file everkin/class-branches-round3.md.
 
 ## 2. Open questions (later rounds)
 
