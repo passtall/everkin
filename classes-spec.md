@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds. Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (round 1 applied, round 2 posted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -13,26 +13,28 @@
 
 First step: go through every new class and decide whether it stays, merges into another or is removed.
 
-## 1. Candidate classes (38)
+## 1. Classes (round 1 decided 2026-11-11)
 
-The 12 professions in [class_system.md](docs/class_system.md) have 38 branches in [skills.md](docs/skills.md). Each is a candidate class:
+The 12 professions had 38 branches in [skills.md](docs/skills.md). Round 1 (https://claude.ai/artifact/TuKYsxEXMpwNqNjvSsc4hd, db doc answers/round1) kept or merged each one; none was removed outright. **30 classes:**
 
-| Old profession | Candidate classes |
+| Old profession | Classes (merged branches in brackets) |
 |---|---|
-| Hunter | Stalker, Tracker, Trapper, Predator |
+| Hunter | Stalker, Tracker (+ Predator); Trapper merged into Engineer |
 | Guardian | Bulwark, Bodyguard, Keeper |
 | Healer | Mender, Cleric, Lifebinder |
 | Sorcerer | Enchantment, Transmutation, Malediction |
 | Elementalist | Pyromancy, Stormcalling, Cryomancy |
-| Warrior | Berserker, Champion, Whirlwind, Footwork |
+| Warrior | Berserker (+ Whirlwind), Champion (+ Footwork) |
 | Leader | Tactician, Commander, Bard |
 | Rogue | Thief, Assassin, Saboteur |
-| Tinker | Engineer, Chemist, Pyrotechnician |
-| Summoner | Necromancer, Golemancer, Conjurer |
+| Tinker | Engineer (+ Trapper), Chemist (+ Pyrotechnician) |
+| Summoner | Necromancer, Golemancer + Conjurer (one class, name open) |
 | Primalist | Totemist, Ritualist, Spiritwalker |
-| Flying | Mobility, Skywatch, Assault |
+| Flying | Flying (Mobility, Skywatch and Assault in one class) |
 
-Round 1 (keep, merge or remove each one): https://claude.ai/artifact/TuKYsxEXMpwNqNjvSsc4hd (db doc answers/round1). Log: project file everkin/class-branches-decisions.md.
+New skill requested for **Stalker**: a real backstab, only from stealth, range 1, high damage (round 2 suggests "Pounce": D 5 / M 2, Melee · D1, hit for 12–14, breaks stealth).
+
+Round 2 (which skills each class keeps): same page, db doc answers/round2.
 
 ## 2. Open questions (later rounds)
 
