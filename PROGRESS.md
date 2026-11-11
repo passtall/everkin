@@ -195,3 +195,7 @@ One line per finished task: date, task, commit.
 2026-11-10 M3.1 to M3.4 card, board, animation, viewer (see git log)
 2026-11-10 M4.1 to M4.4 player turn, team editor, skill tree editor, free battle (see git log)
 2026-11-10 M5.1 to M5.4 profile and saving, campaign maps, encounters, tutorial, chapter 1 (see git log)
+
+## Battle portrait assets — 2026-11-11
+
+Published the generated asset folders beside their prompts in `docs/assets/`: 203/319 creature portraits, 14/14 summon portraits, and all three rings. Creature and summon folders include original generated images, cleaned portraits, contact sheets, and disc metadata. Remaining 116 creature filenames are listed in `docs/assets/portrait-creatures/remaining.txt`; generation stopped at the image service daily limit. Card-by-card visual review is incomplete; the heron is near profile with only one eye clearly visible. Game asset integration has not been performed.

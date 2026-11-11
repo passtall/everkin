@@ -1,0 +1,58 @@
+{
+  "clay-golem": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.108
+  },
+  "rune-golem": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.1015
+  },
+  "clockwork-golem": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.1094
+  },
+  "bell-golem": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.1208
+  },
+  "animated-blades": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.3447
+  },
+  "animated-mirror": {
+    "disc": "light-plum",
+    "medianEdgeLuminance": 0.0599
+  },
+  "bolt-turret": {
+    "disc": "light-plum",
+    "medianEdgeLuminance": 0.0878
+  },
+  "flame-turret": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.1044
+  },
+  "barricade": {
+    "disc": "light-plum",
+    "medianEdgeLuminance": 0.087
+  },
+  "healing-totem": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.1443
+  },
+  "spirit-link-totem": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.354
+  },
+  "totem-of-return": {
+    "disc": "light-plum",
+    "medianEdgeLuminance": 0.0774
+  },
+  "net-trap": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.151
+  },
+  "hunter-decoy": {
+    "disc": "dark-plum",
+    "medianEdgeLuminance": 0.1109
+  }
+}

@@ -1,0 +1,814 @@
+{
+  "abacus-01.png": {
+    "edge_brightness": 73.43,
+    "disc": "lighter-plum"
+  },
+  "accordion-01.png": {
+    "edge_brightness": 105.73,
+    "disc": "dark-plum"
+  },
+  "anchor-01.png": {
+    "edge_brightness": 68.37,
+    "disc": "lighter-plum"
+  },
+  "ankylosaur-01.png": {
+    "edge_brightness": 136.04,
+    "disc": "dark-plum"
+  },
+  "ant-01.png": {
+    "edge_brightness": 93.78,
+    "disc": "dark-plum"
+  },
+  "armadillo-01.png": {
+    "edge_brightness": 138.65,
+    "disc": "dark-plum"
+  },
+  "armadillo-02.png": {
+    "edge_brightness": 114.68,
+    "disc": "dark-plum"
+  },
+  "astrolabe-01.png": {
+    "edge_brightness": 97.04,
+    "disc": "dark-plum"
+  },
+  "aurochs-01.png": {
+    "edge_brightness": 71.1,
+    "disc": "lighter-plum"
+  },
+  "axolotl-01.png": {
+    "edge_brightness": 134.59,
+    "disc": "dark-plum"
+  },
+  "ayeaye-01.png": {
+    "edge_brightness": 79.79,
+    "disc": "dark-plum"
+  },
+  "badger-01.png": {
+    "edge_brightness": 92.89,
+    "disc": "dark-plum"
+  },
+  "ballast-01.png": {
+    "edge_brightness": 85.72,
+    "disc": "dark-plum"
+  },
+  "basilisk-01.png": {
+    "edge_brightness": 90.77,
+    "disc": "dark-plum"
+  },
+  "bassoon-01.png": {
+    "edge_brightness": 90.43,
+    "disc": "dark-plum"
+  },
+  "bat-01.png": {
+    "edge_brightness": 168.9,
+    "disc": "dark-plum"
+  },
+  "bat-02.png": {
+    "edge_brightness": 71.18,
+    "disc": "lighter-plum"
+  },
+  "baton-01.png": {
+    "edge_brightness": 139.63,
+    "disc": "dark-plum"
+  },
+  "beacon-01.png": {
+    "edge_brightness": 83.97,
+    "disc": "dark-plum"
+  },
+  "beaver-01.png": {
+    "edge_brightness": 105.0,
+    "disc": "dark-plum"
+  },
+  "bee-01.png": {
+    "edge_brightness": 164.59,
+    "disc": "dark-plum"
+  },
+  "beetle-01.png": {
+    "edge_brightness": 107.9,
+    "disc": "dark-plum"
+  },
+  "beetle-02.png": {
+    "edge_brightness": 107.93,
+    "disc": "dark-plum"
+  },
+  "beetle-04.png": {
+    "edge_brightness": 103.94,
+    "disc": "dark-plum"
+  },
+  "behemoth-01.png": {
+    "edge_brightness": 124.48,
+    "disc": "dark-plum"
+  },
+  "bell-01.png": {
+    "edge_brightness": 89.38,
+    "disc": "dark-plum"
+  },
+  "bellows-01.png": {
+    "edge_brightness": 73.63,
+    "disc": "lighter-plum"
+  },
+  "binturong-01.png": {
+    "edge_brightness": 103.28,
+    "disc": "dark-plum"
+  },
+  "bloomspear-01.png": {
+    "edge_brightness": 81.91,
+    "disc": "dark-plum"
+  },
+  "boar-01.png": {
+    "edge_brightness": 79.49,
+    "disc": "dark-plum"
+  },
+  "boar-02.png": {
+    "edge_brightness": 95.98,
+    "disc": "dark-plum"
+  },
+  "bombardierbeetle-01.png": {
+    "edge_brightness": 77.1,
+    "disc": "dark-plum"
+  },
+  "book-01.png": {
+    "edge_brightness": 141.15,
+    "disc": "dark-plum"
+  },
+  "brazier-01.png": {
+    "edge_brightness": 73.3,
+    "disc": "lighter-plum"
+  },
+  "buffalo-01.png": {
+    "edge_brightness": 134.34,
+    "disc": "dark-plum"
+  },
+  "bugle-01.png": {
+    "edge_brightness": 113.21,
+    "disc": "dark-plum"
+  },
+  "candelabrum-01.png": {
+    "edge_brightness": 107.5,
+    "disc": "dark-plum"
+  },
+  "cannon-01.png": {
+    "edge_brightness": 85.23,
+    "disc": "dark-plum"
+  },
+  "capybara-01.png": {
+    "edge_brightness": 124.13,
+    "disc": "dark-plum"
+  },
+  "caracal-01.png": {
+    "edge_brightness": 122.64,
+    "disc": "dark-plum"
+  },
+  "carillon-01.png": {
+    "edge_brightness": 87.97,
+    "disc": "dark-plum"
+  },
+  "cassowary-01.png": {
+    "edge_brightness": 86.57,
+    "disc": "dark-plum"
+  },
+  "caterpillar-01.png": {
+    "edge_brightness": 141.36,
+    "disc": "dark-plum"
+  },
+  "catfolk-01.png": {
+    "edge_brightness": 114.3,
+    "disc": "dark-plum"
+  },
+  "centipede-01.png": {
+    "edge_brightness": 117.83,
+    "disc": "dark-plum"
+  },
+  "chalice-01.png": {
+    "edge_brightness": 96.7,
+    "disc": "dark-plum"
+  },
+  "chameleon-01.png": {
+    "edge_brightness": 125.13,
+    "disc": "dark-plum"
+  },
+  "chandelier-01.png": {
+    "edge_brightness": 127.62,
+    "disc": "dark-plum"
+  },
+  "chest-01.png": {
+    "edge_brightness": 124.57,
+    "disc": "dark-plum"
+  },
+  "chinchilla-01.png": {
+    "edge_brightness": 144.89,
+    "disc": "dark-plum"
+  },
+  "cicada-01.png": {
+    "edge_brightness": 145.77,
+    "disc": "dark-plum"
+  },
+  "cinderhorn-01.png": {
+    "edge_brightness": 88.39,
+    "disc": "dark-plum"
+  },
+  "coati-01.png": {
+    "edge_brightness": 110.86,
+    "disc": "dark-plum"
+  },
+  "cobra-01.png": {
+    "edge_brightness": 101.12,
+    "disc": "dark-plum"
+  },
+  "compass-02.png": {
+    "edge_brightness": 109.58,
+    "disc": "dark-plum"
+  },
+  "conchphone-01.png": {
+    "edge_brightness": 127.17,
+    "disc": "dark-plum"
+  },
+  "corkscrew-01.png": {
+    "edge_brightness": 87.88,
+    "disc": "dark-plum"
+  },
+  "crab-01.png": {
+    "edge_brightness": 106.45,
+    "disc": "dark-plum"
+  },
+  "crab-02.png": {
+    "edge_brightness": 95.55,
+    "disc": "dark-plum"
+  },
+  "crab-03.png": {
+    "edge_brightness": 99.49,
+    "disc": "dark-plum"
+  },
+  "crane-01.png": {
+    "edge_brightness": 101.64,
+    "disc": "dark-plum"
+  },
+  "crane-02.png": {
+    "edge_brightness": 189.55,
+    "disc": "dark-plum"
+  },
+  "cricket-01.png": {
+    "edge_brightness": 139.32,
+    "disc": "dark-plum"
+  },
+  "crocodile-01.png": {
+    "edge_brightness": 97.37,
+    "disc": "dark-plum"
+  },
+  "crow-01.png": {
+    "edge_brightness": 73.25,
+    "disc": "lighter-plum"
+  },
+  "crucible-01.png": {
+    "edge_brightness": 71.43,
+    "disc": "lighter-plum"
+  },
+  "cuttlefish-01.png": {
+    "edge_brightness": 138.2,
+    "disc": "dark-plum"
+  },
+  "deer-01.png": {
+    "edge_brightness": 137.43,
+    "disc": "dark-plum"
+  },
+  "dormouse-01.png": {
+    "edge_brightness": 166.58,
+    "disc": "dark-plum"
+  },
+  "dragon-01.png": {
+    "edge_brightness": 111.93,
+    "disc": "dark-plum"
+  },
+  "dragon-02.png": {
+    "edge_brightness": 91.41,
+    "disc": "dark-plum"
+  },
+  "dragon-03.png": {
+    "edge_brightness": 101.22,
+    "disc": "dark-plum"
+  },
+  "dragon-04.png": {
+    "edge_brightness": 172.11,
+    "disc": "dark-plum"
+  },
+  "dragonfly-01.png": {
+    "edge_brightness": 151.36,
+    "disc": "dark-plum"
+  },
+  "drake-01.png": {
+    "edge_brightness": 123.99,
+    "disc": "dark-plum"
+  },
+  "drawbridge-01.png": {
+    "edge_brightness": 79.41,
+    "disc": "dark-plum"
+  },
+  "drum-01.png": {
+    "edge_brightness": 92.08,
+    "disc": "dark-plum"
+  },
+  "dugong-02.png": {
+    "edge_brightness": 178.75,
+    "disc": "dark-plum"
+  },
+  "elephant-01.png": {
+    "edge_brightness": 128.42,
+    "disc": "dark-plum"
+  },
+  "ferret-01.png": {
+    "edge_brightness": 114.64,
+    "disc": "dark-plum"
+  },
+  "firefly-01.png": {
+    "edge_brightness": 142.87,
+    "disc": "dark-plum"
+  },
+  "firefly-02.png": {
+    "edge_brightness": 148.34,
+    "disc": "dark-plum"
+  },
+  "flyingfish-01.png": {
+    "edge_brightness": 206.1,
+    "disc": "dark-plum"
+  },
+  "fossa-01.png": {
+    "edge_brightness": 88.2,
+    "disc": "dark-plum"
+  },
+  "fox-01.png": {
+    "edge_brightness": 94.68,
+    "disc": "dark-plum"
+  },
+  "frigatebird-01.png": {
+    "edge_brightness": 59.53,
+    "disc": "lighter-plum"
+  },
+  "frog-01.png": {
+    "edge_brightness": 142.91,
+    "disc": "dark-plum"
+  },
+  "furnace-01.png": {
+    "edge_brightness": 84.84,
+    "disc": "dark-plum"
+  },
+  "gargoyle-01.png": {
+    "edge_brightness": 125.36,
+    "disc": "dark-plum"
+  },
+  "gaur-01.png": {
+    "edge_brightness": 90.95,
+    "disc": "dark-plum"
+  },
+  "gecko-01.png": {
+    "edge_brightness": 160.23,
+    "disc": "dark-plum"
+  },
+  "gecko-02.png": {
+    "edge_brightness": 143.45,
+    "disc": "dark-plum"
+  },
+  "goat-01.png": {
+    "edge_brightness": 115.45,
+    "disc": "dark-plum"
+  },
+  "goblet-01.png": {
+    "edge_brightness": 146.13,
+    "disc": "dark-plum"
+  },
+  "golem-01.png": {
+    "edge_brightness": 83.71,
+    "disc": "dark-plum"
+  },
+  "golem-02.png": {
+    "edge_brightness": 124.95,
+    "disc": "dark-plum"
+  },
+  "gong-01.png": {
+    "edge_brightness": 77.53,
+    "disc": "dark-plum"
+  },
+  "gorilla-01.png": {
+    "edge_brightness": 101.16,
+    "disc": "dark-plum"
+  },
+  "griffin-01.png": {
+    "edge_brightness": 114.3,
+    "disc": "dark-plum"
+  },
+  "harpsichord-01.png": {
+    "edge_brightness": 98.82,
+    "disc": "dark-plum"
+  },
+  "harpy-eagle-01.png": {
+    "edge_brightness": 74.56,
+    "disc": "lighter-plum"
+  },
+  "hawk-01.png": {
+    "edge_brightness": 112.26,
+    "disc": "dark-plum"
+  },
+  "hermitcrab-01.png": {
+    "edge_brightness": 74.19,
+    "disc": "lighter-plum"
+  },
+  "heron-01.png": {
+    "edge_brightness": 113.57,
+    "disc": "dark-plum"
+  },
+  "heron-02.png": {
+    "edge_brightness": 117.11,
+    "disc": "dark-plum"
+  },
+  "hippo-01.png": {
+    "edge_brightness": 145.85,
+    "disc": "dark-plum"
+  },
+  "hornbill-01.png": {
+    "edge_brightness": 105.0,
+    "disc": "dark-plum"
+  },
+  "horseshoe-01.png": {
+    "edge_brightness": 68.23,
+    "disc": "lighter-plum"
+  },
+  "horseshoecrab-01.png": {
+    "edge_brightness": 109.68,
+    "disc": "dark-plum"
+  },
+  "hourglass-01.png": {
+    "edge_brightness": 123.09,
+    "disc": "dark-plum"
+  },
+  "howlermonkey-01.png": {
+    "edge_brightness": 61.83,
+    "disc": "lighter-plum"
+  },
+  "human-01.png": {
+    "edge_brightness": 105.83,
+    "disc": "dark-plum"
+  },
+  "human-02.png": {
+    "edge_brightness": 85.68,
+    "disc": "dark-plum"
+  },
+  "human-03.png": {
+    "edge_brightness": 150.62,
+    "disc": "dark-plum"
+  },
+  "human-04.png": {
+    "edge_brightness": 125.42,
+    "disc": "dark-plum"
+  },
+  "human-05.png": {
+    "edge_brightness": 90.11,
+    "disc": "dark-plum"
+  },
+  "human-06.png": {
+    "edge_brightness": 99.63,
+    "disc": "dark-plum"
+  },
+  "human-07.png": {
+    "edge_brightness": 88.63,
+    "disc": "dark-plum"
+  },
+  "human-08.png": {
+    "edge_brightness": 111.86,
+    "disc": "dark-plum"
+  },
+  "human-09.png": {
+    "edge_brightness": 101.03,
+    "disc": "dark-plum"
+  },
+  "human-10.png": {
+    "edge_brightness": 86.47,
+    "disc": "dark-plum"
+  },
+  "human-11.png": {
+    "edge_brightness": 86.29,
+    "disc": "dark-plum"
+  },
+  "human-12.png": {
+    "edge_brightness": 82.92,
+    "disc": "dark-plum"
+  },
+  "human-13.png": {
+    "edge_brightness": 117.44,
+    "disc": "dark-plum"
+  },
+  "human-14.png": {
+    "edge_brightness": 89.27,
+    "disc": "dark-plum"
+  },
+  "human-15.png": {
+    "edge_brightness": 132.82,
+    "disc": "dark-plum"
+  },
+  "human-16.png": {
+    "edge_brightness": 107.92,
+    "disc": "dark-plum"
+  },
+  "human-17.png": {
+    "edge_brightness": 109.29,
+    "disc": "dark-plum"
+  },
+  "human-18.png": {
+    "edge_brightness": 108.77,
+    "disc": "dark-plum"
+  },
+  "human-19.png": {
+    "edge_brightness": 104.45,
+    "disc": "dark-plum"
+  },
+  "human-20.png": {
+    "edge_brightness": 91.49,
+    "disc": "dark-plum"
+  },
+  "human-21.png": {
+    "edge_brightness": 82.41,
+    "disc": "dark-plum"
+  },
+  "human-22.png": {
+    "edge_brightness": 84.4,
+    "disc": "dark-plum"
+  },
+  "human-23.png": {
+    "edge_brightness": 78.12,
+    "disc": "dark-plum"
+  },
+  "human-24.png": {
+    "edge_brightness": 148.1,
+    "disc": "dark-plum"
+  },
+  "human-25.png": {
+    "edge_brightness": 118.33,
+    "disc": "dark-plum"
+  },
+  "human-26.png": {
+    "edge_brightness": 87.71,
+    "disc": "dark-plum"
+  },
+  "human-27.png": {
+    "edge_brightness": 106.24,
+    "disc": "dark-plum"
+  },
+  "human-28.png": {
+    "edge_brightness": 89.67,
+    "disc": "dark-plum"
+  },
+  "human-29.png": {
+    "edge_brightness": 81.38,
+    "disc": "dark-plum"
+  },
+  "human-30.png": {
+    "edge_brightness": 82.63,
+    "disc": "dark-plum"
+  },
+  "human-31.png": {
+    "edge_brightness": 114.4,
+    "disc": "dark-plum"
+  },
+  "human-32.png": {
+    "edge_brightness": 98.34,
+    "disc": "dark-plum"
+  },
+  "human-33.png": {
+    "edge_brightness": 95.79,
+    "disc": "dark-plum"
+  },
+  "human-34.png": {
+    "edge_brightness": 159.24,
+    "disc": "dark-plum"
+  },
+  "human-35.png": {
+    "edge_brightness": 105.84,
+    "disc": "dark-plum"
+  },
+  "human-36.png": {
+    "edge_brightness": 105.49,
+    "disc": "dark-plum"
+  },
+  "human-37.png": {
+    "edge_brightness": 110.71,
+    "disc": "dark-plum"
+  },
+  "human-38.png": {
+    "edge_brightness": 91.41,
+    "disc": "dark-plum"
+  },
+  "human-39.png": {
+    "edge_brightness": 118.19,
+    "disc": "dark-plum"
+  },
+  "human-40.png": {
+    "edge_brightness": 155.29,
+    "disc": "dark-plum"
+  },
+  "human-41.png": {
+    "edge_brightness": 140.61,
+    "disc": "dark-plum"
+  },
+  "human-42.png": {
+    "edge_brightness": 105.11,
+    "disc": "dark-plum"
+  },
+  "human-43.png": {
+    "edge_brightness": 83.65,
+    "disc": "dark-plum"
+  },
+  "human-44.png": {
+    "edge_brightness": 68.48,
+    "disc": "lighter-plum"
+  },
+  "human-45.png": {
+    "edge_brightness": 65.7,
+    "disc": "lighter-plum"
+  },
+  "human-46.png": {
+    "edge_brightness": 66.28,
+    "disc": "lighter-plum"
+  },
+  "human-47.png": {
+    "edge_brightness": 94.35,
+    "disc": "dark-plum"
+  },
+  "human-48.png": {
+    "edge_brightness": 68.44,
+    "disc": "lighter-plum"
+  },
+  "human-49.png": {
+    "edge_brightness": 85.68,
+    "disc": "dark-plum"
+  },
+  "human-51.png": {
+    "edge_brightness": 108.37,
+    "disc": "dark-plum"
+  },
+  "human-52.png": {
+    "edge_brightness": 99.01,
+    "disc": "dark-plum"
+  },
+  "hummingbird-01.png": {
+    "edge_brightness": 146.88,
+    "disc": "dark-plum"
+  },
+  "hydra-01.png": {
+    "edge_brightness": 107.65,
+    "disc": "dark-plum"
+  },
+  "hyena-01.png": {
+    "edge_brightness": 82.73,
+    "disc": "dark-plum"
+  },
+  "ibex-01.png": {
+    "edge_brightness": 109.76,
+    "disc": "dark-plum"
+  },
+  "incense-censor-01.png": {
+    "edge_brightness": 80.53,
+    "disc": "dark-plum"
+  },
+  "inkwell-01.png": {
+    "edge_brightness": 120.47,
+    "disc": "dark-plum"
+  },
+  "isopod-01.png": {
+    "edge_brightness": 107.78,
+    "disc": "dark-plum"
+  },
+  "jackalope-01.png": {
+    "edge_brightness": 86.08,
+    "disc": "dark-plum"
+  },
+  "jelly-01.png": {
+    "edge_brightness": 126.44,
+    "disc": "dark-plum"
+  },
+  "jellyfish-02.png": {
+    "edge_brightness": 184.51,
+    "disc": "dark-plum"
+  },
+  "jerboa-01.png": {
+    "edge_brightness": 152.45,
+    "disc": "dark-plum"
+  },
+  "kestrel-01.png": {
+    "edge_brightness": 106.23,
+    "disc": "dark-plum"
+  },
+  "kettle-01.png": {
+    "edge_brightness": 75.45,
+    "disc": "dark-plum"
+  },
+  "kiln-01.png": {
+    "edge_brightness": 84.54,
+    "disc": "dark-plum"
+  },
+  "kingfisher-01.png": {
+    "edge_brightness": 93.37,
+    "disc": "dark-plum"
+  },
+  "kinkajou-01.png": {
+    "edge_brightness": 100.27,
+    "disc": "dark-plum"
+  },
+  "kite-01.png": {
+    "edge_brightness": 152.79,
+    "disc": "dark-plum"
+  },
+  "komodo-01.png": {
+    "edge_brightness": 90.9,
+    "disc": "dark-plum"
+  },
+  "kraken-01.png": {
+    "edge_brightness": 80.86,
+    "disc": "dark-plum"
+  },
+  "lantern-01.png": {
+    "edge_brightness": 107.38,
+    "disc": "dark-plum"
+  },
+  "lizardfolk-02.png": {
+    "edge_brightness": 92.51,
+    "disc": "dark-plum"
+  },
+  "lizardfolk-03.png": {
+    "edge_brightness": 103.72,
+    "disc": "dark-plum"
+  },
+  "lizardfolk-04.png": {
+    "edge_brightness": 103.85,
+    "disc": "dark-plum"
+  },
+  "lobster-01.png": {
+    "edge_brightness": 88.17,
+    "disc": "dark-plum"
+  },
+  "lobster-02.png": {
+    "edge_brightness": 107.0,
+    "disc": "dark-plum"
+  },
+  "lockbox-01.png": {
+    "edge_brightness": 65.47,
+    "disc": "lighter-plum"
+  },
+  "loom-01.png": {
+    "edge_brightness": 92.99,
+    "disc": "dark-plum"
+  },
+  "lyrebird-01.png": {
+    "edge_brightness": 93.81,
+    "disc": "dark-plum"
+  },
+  "mammoth-01.png": {
+    "edge_brightness": 148.14,
+    "disc": "dark-plum"
+  },
+  "manatee-01.png": {
+    "edge_brightness": 175.07,
+    "disc": "dark-plum"
+  },
+  "mandrake-01.png": {
+    "edge_brightness": 88.24,
+    "disc": "dark-plum"
+  },
+  "mandrill-01.png": {
+    "edge_brightness": 108.28,
+    "disc": "dark-plum"
+  },
+  "mannequin-01.png": {
+    "edge_brightness": 110.78,
+    "disc": "dark-plum"
+  },
+  "manticore-01.png": {
+    "edge_brightness": 68.43,
+    "disc": "lighter-plum"
+  },
+  "mantis-01.png": {
+    "edge_brightness": 92.59,
+    "disc": "dark-plum"
+  },
+  "marabou-01.png": {
+    "edge_brightness": 87.02,
+    "disc": "dark-plum"
+  },
+  "mole-01.png": {
+    "edge_brightness": 108.33,
+    "disc": "dark-plum"
+  },
+  "mole-02.png": {
+    "edge_brightness": 94.76,
+    "disc": "dark-plum"
+  },
+  "mongoose-01.png": {
+    "edge_brightness": 76.91,
+    "disc": "dark-plum"
+  },
+  "mongoose-02.png": {
+    "edge_brightness": 97.26,
+    "disc": "dark-plum"
+  },
+  "mushroom-01.png": {
+    "edge_brightness": 121.67,
+    "disc": "dark-plum"
+  }
+}
