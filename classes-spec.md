@@ -94,7 +94,7 @@ Changes from the owner's notes:
 - **Life Swap** is a real HP swap (current HP values, not shares).
 - **Lasting Change** can affect only one unit at a time.
 - **Grand Chorus:** songs reach every ally, but the Bard can have only one song at a time.
-- **Boundless Sky** dropped, note "Always true now" (meaning to confirm).
+- **Boundless Sky** dropped: flyers already have unlimited range (owner confirmed 2026-11-11).
 
 ## 2. Open questions (later rounds)
 
