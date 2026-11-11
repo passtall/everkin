@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 4c applied: all 28 classes have 3 actives and 3 keystones; round 5 posted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 5 applied; round 6 on unique attacks posted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -96,6 +96,15 @@ Changes from the owner's notes:
 - **Glass Body:** the next hit deals 50% more; **Brittle Glass** makes it double.
 - **Mirror Form:** Transmute swaps Power and Speed between two units.
 - **Boundless Sky** dropped: flyers already have unlimited range (owner confirmed 2026-11-11).
+
+## 1c. Names and rules (round 5, answered 2026-11-11)
+
+- **Names.** The six school classes are named after their user: Enchanter, Transmuter, Hexer (was Malediction), Pyromancer, Stormcaller, Cryomancer. The merged Golemancer and Conjurer class is called **Summoner**. Flying is renamed **Skyborne**.
+- **Two classes per creature.** Claude proposes two classes for each creature, fitting its art, and the owner reviews them in a creature quiz. Both classes may come from the same old profession. Old professions guide the proposal but are not required. Every keystone of every class must be used by at least one creature.
+- **Keystones.** A creature has two keystones, one from each of its classes, fixed per creature in the roster (no player choice, no builds).
+- **Attack Type is dropped.** Each creature has its own unique attack instead of one of the nine shared Attack Type attacks.
+- **Cost** stays as it is until AI-versus-AI testing; it is recalculated then.
+- **Skill points, skill trees, the tree editor and default builds are removed** everywhere (docs, tree editor screen, content/default_builds.json).
 
 ## 2. Open questions (later rounds)
 
