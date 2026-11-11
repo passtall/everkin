@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 5 applied; round 6 on unique attacks posted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 6 applied; creature quiz next). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -106,9 +106,17 @@ Changes from the owner's notes:
 - **Cost** stays as it is until AI-versus-AI testing; it is recalculated then.
 - **Skill points, skill trees, the tree editor and default builds are removed** everywhere (docs, tree editor screen, content/default_builds.json).
 
+## 1d. Unique attacks (round 6, answered 2026-11-11)
+
+- An attack has a **name, delivery (Melee, Projectile or Direct), range, damage, and at most one small extra**.
+- **Strength:** the same band as the old shared attacks: 3 to 6 damage at Power 5, Delay 3 or 4, no Momentum cost. An extra is paid for with less damage.
+- **Extras:** a short list guides them (Bleed, Poison, Stun, burning ground, push, splash, longer reach, cannot be intercepted, life steal, each at a low chance or small size), but anything that fits the art may be proposed; the owner rejects what is too strong.
+- Attacks always hit an enemy; healing and support stay in class skills.
+- **Animation:** a few shared styles (lunge, swing, shot, throw, bolt, breath, pulse); each attack picks one and a colour.
+- **Claude writes all 319 attacks** in the creature quiz, together with each creature's two classes and two keystones.
+
 ## 2. Open questions (later rounds)
 
-- **Unique attacks** (round 6): what a creature's own attack is made of, how strong it is, and who writes the 319 attacks.
 - **Creature assignment** (round 7): two classes, two keystones and the unique attack for each of the 319 creatures; Claude proposes, the owner reviews.
 - **Skill details for new skills:** Delivery and range for the new and reworded skills, checked against game_system §7.4 and §8.1.
 - **Action bar:** the attack plus 6 class skills = 7 buttons (ui_spec action bar); confirm the layout once the attacks are known.
