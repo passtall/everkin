@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 and 2 applied, round 3 posted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 3 applied, round 4 posted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -47,6 +47,54 @@ Round 2 (which skills each class keeps, db doc answers/round2), answered 2026-11
 Each class has exactly **3 active skills** and **3 keystones** (powerful passives). A creature gets one keystone of each of its two classes, so creatures of the same class can differ. Other passives are gone; modifiers are folded into their skill.
 
 Round 3 (pick the 3 actives and 3 keystones per class, with Claude's suggestions and new skills including damage skills): same page, db doc answers/round3 {pick:{"Class/Skill": true|false, only changes from the suggestion}, n:{"Class/Skill" or "class:Class": note}, note}. List: project file everkin/class-branches-round3.md.
+
+## 1b. Round 3 result (answered 2026-11-11)
+
+Skill texts for new and reworded skills: project file everkin/class-branches-round3.md. Classes marked pending are completed in round 4 (db doc answers/round4, list everkin/class-branches-round4.md).
+
+| Class | Actives | Keystones |
+|---|---|---|
+| Stalker | Vanish, Pounce, Feint | Unseen, Vanishing Kill (round 4 pending) |
+| Tracker | Target, Read Tracks, Hunter's Shot | Sniff the Air, Scent of Blood, Relentless |
+| Bulwark | Leap to Defend, Rescue, Shield Bash | Shield Wall, Hold Position, Unbreakable |
+| Keeper | Ward, Shield Dome, Ward Burst | Thorned Ward, Twin Wards, Steadfast Ward |
+| Mender | Mend, Rain of Mending, Searing Light | Overflowing Care, Regrowth, Triage |
+| Cleric | Absolve, Dispel, Turn Back | Sanctity, Purifying Aura, Judgment |
+| Lifebinder | Burnout Heal, Life for Life, Bound Resurrect | Martyr (round 4 pending) |
+| Enchantment | Echo Enchant, Phase Weapon, Piercing Enchant | Twin Enchant (round 4 pending) |
+| Transmutation | Transmute, Glass Body, Petrify | Lasting Change, Brittle Glass (round 4 pending) |
+| Malediction | Curse of Betrayal, Curse of Weight, Withering Hex | Witch's Patience, Lingering Malice, Spreading Curse |
+| Pyromancy | Fireball, Kindle, Row of Fire | Wildfire, Inferno, Ashwalker |
+| Stormcalling | Lightning Bolt, Chain Lightning, Tempest | Conductor, Static Field, Eye of the Storm |
+| Cryomancy | Ice Lance, Freeze, Frost Nova | Cold Heart, Brittle, Steam Burst |
+| Berserker | Rampage, Sweeping Kick, Battle Roar | Reckless Swing, Last Stand, Unstoppable |
+| Champion | Challenge, Single Combat, Execution | Hunt Down, Duelist (round 4 pending) |
+| Tactician | Swap Turns, Press the Advantage, Coordinated Strike | All In, Inspiring Presence, Initiative |
+| Commander | Advance, Switch Places, Rotation | Drill, Rally, Vanguard |
+| Bard | Song of Haste, War Drums | Grand Chorus, Rhythm (round 4 pending) |
+| Thief | Melt Away, Lift a Skill, Snatch | Escape Artist (round 4 pending) |
+| Assassin | Backstab, Poison Vial, Mark for Death | Contract, Deathmark Bloom, Shadow Kill (round 4 pending) |
+| Saboteur | Flash Powder, Cut the Strings, Jam | Wrecker, Chaos Agent, Disarm Trap |
+| Engineer | Bolt Turret, Barricade, Net Trap | Reinforced, Self-Repair, Rapid Fire |
+| Chemist | Poison Gas, Firebomb, Healing Draught | Showman, Potent Brew (round 4 pending) |
+| Necromancer | Raise Undead, Corpse Explosion, Desecrate | Lich Form, Bone Armor, Death's Bounty |
+| Golemancer | Clay Golem, Rune Golem, Animate Blades | Golem Heart, Portal, Quickening |
+| Totemist | Healing Totem, Spirit Link Totem, Totem of Return | Great Totem, Twin Totems, Spirit Shield |
+| Ritualist | Rain Dance, Hoarfrost, Rite of Mists | Deluge, Tidecaller, Frostbinder |
+| Spiritwalker | Puppet Soul, Life Swap, Forced Step | Soul Anchor, Haunting, Puppeteer |
+| Flying | Take Off, Gust, Dive | Sky Lord (round 4 pending) |
+
+Changes from the owner's notes:
+- **Assassin** is removed for now and merged into **Stalker** (28 classes).
+- **Shield Wall** already works with 2 units side by side.
+- **Thorned Ward:** the attacker takes 3 when it attacks a Ward (not only when the Ward breaks).
+- **Frost Nova** and **Chain Lightning** also deal low damage.
+- **Conductor** needs no water: Stuns from the Stormcaller last 5 time units longer.
+- **Jam** adds more Delay.
+- **Life Swap** is a real HP swap (current HP values, not shares).
+- **Lasting Change** can affect only one unit at a time.
+- **Grand Chorus:** songs reach every ally, but the Bard can have only one song at a time.
+- **Boundless Sky** dropped, note "Always true now" (meaning to confirm).
 
 ## 2. Open questions (later rounds)
 
