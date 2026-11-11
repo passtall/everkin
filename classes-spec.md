@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 4b applied; Flying's third keystone open; round 5 drafted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 4c applied: all 28 classes have 3 actives and 3 keystones; round 5 posted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -50,7 +50,7 @@ Round 3 (pick the 3 actives and 3 keystones per class, with Claude's suggestions
 
 ## 1b. The 28 classes (rounds 3 and 4, answered 2026-11-11)
 
-Skill texts for new and reworded skills: project file everkin/class-branches-round3.md. Round 4 (db doc answers/round4, list everkin/class-branches-round4.md) filled the classes that were short. Round 4b (db doc answers/round4b) let the owner pick the missing keystones himself; Flying's third keystone is open (round 4c, db doc answers/round4c). Keystone texts: project files everkin/class-branches-round4.md and class-branches/round4c.json.
+Skill texts for new and reworded skills: project file everkin/class-branches-round3.md. Round 4 (db doc answers/round4, list everkin/class-branches-round4.md) filled the classes that were short. Round 4b (db doc answers/round4b) let the owner pick the missing keystones himself; Flying's third keystone is Lift (round 4c, db doc answers/round4c: Take Off also makes one ally next to the unit airborne for the same time). Keystone texts: project files everkin/class-branches-round4.md and class-branches/round4c.json.
 
 | Class | Actives | Keystones |
 |---|---|---|
@@ -81,7 +81,7 @@ Skill texts for new and reworded skills: project file everkin/class-branches-rou
 | Totemist | Healing Totem, Spirit Link Totem, Totem of Return | Great Totem, Twin Totems, Spirit Shield |
 | Ritualist | Rain Dance, Hoarfrost, Rite of Mists | Deluge, Tidecaller, Frostbinder |
 | Spiritwalker | Puppet Soul, Life Swap, Forced Step | Soul Anchor, Haunting, Puppeteer |
-| Flying | Take Off, Gust, Dive | Sky Lord, Eagle Eye, (third pending) |
+| Flying | Take Off, Gust, Dive | Sky Lord, Eagle Eye, Lift |
 
 Changes from the owner's notes:
 - **Assassin** merged with **Stalker** (28 classes); round 4 renamed the merged class **Assassin**. Pounce is cut; **Backstab**: only from stealth, hit for 8–10 and the target Bleeds, no double damage, breaks stealth.
