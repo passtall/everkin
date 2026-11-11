@@ -67,7 +67,7 @@ Accepted by the owner on 2026-11-11 ("I'll just accept it all"; batch 1 reviewed
 | `crane-hoist-titan` | Hoist Titan | Mender, Engineer | Triage, Rapid Fire | Titan Rake | Melee · D1 · D 3 / M 0 · lunge. Hit for 3–4; 20%: the target is Stunned for 5 time units. |
 | `crane-summoner-feather` | Featherveil Crane | Summoner, Stormcaller | Quickening, Static Field | Feather Burst | Projectile · D3 · D 4 / M 0 · bolt. Hit for 3–4. |
 | `cricket-bard-fiddle` | Fiddlewhit | Bard, Commander | Rhythm, Rally | Fiddle Missile | Projectile · D3 · D 4 / M 0 · bolt. Hit for 2–3; 20%: the target is Confused for 5 time units. |
-| `crocodile-shaman` | Crocodile Shaman | Totemist, Berserker | Twin Totems, Unstoppable | Crocodile Jab | Melee · D1 · D 3 / M 0 · lunge. Hit for 4–5. |
+| `crocodile-shaman` | Crocodile Shaman | Totemist, Berserker | Sturdy Totems, Unstoppable | Crocodile Jab | Melee · D1 · D 3 / M 0 · lunge. Hit for 4–5. |
 | `crow-necromancer-skull` | Skullcaw | Necromancer, Skyborne | Bone Armor, Lift | Skull Bolt | Projectile · D3 · D 4 / M 0 · bolt. Hit for 3–4; heals the attacker for 1. |
 | `crucible-summoner` | Moltencup | Bulwark, Keeper | Shield Wall, Steadfast Ward | Crucible Pulse | Direct · D1 · D 4 / M 0 · pulse. Every enemy in melee reach takes 2–3. |
 | `cuttlefish-assassin-needle` | Needleglow | Assassin, Thief | Vanishing Kill, Escape Artist | Needle Carve | Melee · D1 · D 3 / M 0 · swing. Hit for 3–4; 30%: the target Bleeds. |
@@ -162,7 +162,7 @@ Accepted by the owner on 2026-11-11 ("I'll just accept it all"; batch 1 reviewed
 | `human-rogue-shadow` | Nika Volkova | Assassin, Summoner | Vanishing Kill, Quickening | Shadow Cut | Melee · D1 · D 3 / M 0 · swing. Hit for 3–4; cannot be intercepted. |
 | `human-rogue` | Daniel Hart | Thief, Saboteur | Shadow Purse, Wrecker | Rogue Cut | Melee · D1 · D 3 / M 0 · swing. Hit for 4–5. |
 | `human-scout-lantern` | Elsa Lindgren | Thief, Summoner | Master Thief, Golem Heart | Lantern Hack | Melee · D1 · D 3 / M 0 · swing. Hit for 4–5. |
-| `human-shaman` | Kofi Mensah | Totemist, Commander | Twin Totems, Rally | Shaman Ray | Projectile · D3 · D 4 / M 0 · bolt. Hit for 3–4. |
+| `human-shaman` | Kofi Mensah | Totemist, Commander | Sturdy Totems, Rally | Shaman Ray | Projectile · D3 · D 4 / M 0 · bolt. Hit for 3–4. |
 | `human-smith` | Hugo Schmidt | Engineer, Berserker | Reinforced, Reckless Swing | Smith Crush | Melee · D1 · D 4 / M 0 · swing. Hit for 5–6. |
 | `human-spellblade-2` | Laura Cole | Champion, Enchanter | Duelist, Lingering Magic | Spellblade Cleave | Melee · D1 · D 3 / M 0 · swing. Hit for 3–4; 30%: the target Bleeds. |
 | `human-spellblade` | Richard Novak | Champion, Enchanter | Hunt Down, Twin Enchant | Spellblade Slash | Melee · D1 · D 3 / M 0 · swing. Hit for 3–4; 30%: the target Bleeds. |

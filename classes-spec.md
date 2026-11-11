@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 7 and the creature assignment applied; all design questions answered; doc rewrite waits for the owner's go). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 8 and the creature assignment applied; doc rewrite waits for the owner's go). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -221,7 +221,7 @@ Keystones: *Escape Artist*: The first time the Thief drops below half HP, it gai
 
 **Totemist**  
 Actives: *Healing Totem*: Places a totem (HP 8): allies in its row regain 2 HP every 10 time units.; *Spirit Link Totem*: Places a totem (HP 10): damage to allies in its row is split evenly between them.; *Totem of Return*: Places a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks.  
-Keystones: *Great Totem*: The Primalist keeps only 1 totem, but it has triple HP and also affects the rows next to it.; *Twin Totems*: The Totemist may keep two of each totem.; *Spirit Shield*: When a totem of the Totemist breaks, every ally in its row gains a Ward of 4.
+Keystones: *Great Totem*: The Primalist keeps only 1 totem, but it has triple HP and also affects the rows next to it.; *Sturdy Totems*: Totems of the Totemist have double HP.; *Spirit Shield*: When a totem of the Totemist breaks, every ally in its row gains a Ward of 4.
 
 **Tracker**  
 Actives: *Target*: Mark any visible unit (one Mark from this Hunter at a time; marking another moves it).; *Read Tracks*: Pick a row. Every stealthed unit in it is revealed.; *Hunter's Shot*: Hit a Marked unit for 9–11.  
@@ -261,6 +261,18 @@ All 319 creatures have two classes, two keystones and a unique attack in [classe
 - **Coordinated Strike:** two random allies among all allies whose attack can reach the enemy make their attack (equal chances); if only one can, only it attacks; if none can, nothing happens.
 - **Action bar:** the attack first, then the first class's 3 skills, then the second class's 3 skills, with a small gap between the groups; the class name shows on hover.
 - **Keystones** show only in the inspection panel, not on the action bar.
+
+## 1h. Loose ends (round 8, answered 2026-11-11)
+
+- **Twin Totems** is replaced by **Sturdy Totems**: totems of the Totemist have double HP. There is still no totem limit.
+- **Songs:** Song of Haste, War Drums and Lullaby count as songs for Grand Chorus. Lullaby stays instant, so Encore and Crescendo affect only Song of Haste and War Drums.
+- **Undead, Puppet Soul and Coordinated Strike** use the creature's own unique attack.
+- **Dropped content:** Clockwork Golem, Bell Golem, Animate Mirror, Flame Turret, Cage and the Hunter decoy leave the game; their art files are kept for later.
+- **Achievements #29 Keystones and #30 Tinkerer are removed.**
+- **Campaign:** enemies have no builds. Formations by role: Bulwark, Keeper and creatures with a melee D1 attack in Front, D2 attacks in the Middle, projectile and direct attacks and healers in the Rear.
+- **Team editor** filters by class only.
+- **Skill icons:** one icon per skill (84 actives) plus one per unique attack.
+- **Hunt Down** also triggers when the Marked enemy moves by itself.
 
 ## 2. Open questions
 
