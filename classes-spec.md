@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 6 applied; creature quiz next). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 6 and the creature assignment applied). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -115,9 +115,128 @@ Changes from the owner's notes:
 - **Animation:** a few shared styles (lunge, swing, shot, throw, bolt, breath, pulse); each attack picks one and a colour.
 - **Claude writes all 319 attacks** in the creature quiz, together with each creature's two classes and two keystones.
 
+## 1e. Class sheet (texts as of 2026-11-11)
+
+Every class with its 3 actives and 3 keystones. Old class names inside the texts (Warrior, Tinker, Leader, Guardian and so on) mean the class the skill now belongs to. Delivery and range of new skills are still open.
+
+**Assassin**  
+Actives: *Vanish*: Gain stealth, wherever the Assassin stands.; *Feint*: Only from stealth: a unit is Confused for 10 time units. The Stalker stays stealthed.; *Backstab*: Only from stealth: hit for 8–10 and the target Bleeds. Breaks stealth.  
+Keystones: *Unseen*: The Stalker starts every battle stealthed.; *Vanishing Kill*: When the Stalker KOs a unit, it gains stealth again (Shadow Kill folded in).; *Venom Blades*: Every hit of the Stalker Poisons the target for 20 time units.
+
+**Bard**  
+Actives: *Song of Haste*: Allies in the Bard's row have +1 Speed for 20 time units.; *War Drums*: For 20 time units, allies next to the Bard cannot be Stunned or Frozen.; *Lullaby*: Song. Every enemy in one row has its next turn pushed back 5 time units.  
+Keystones: *Grand Chorus*: The Bard's songs reach every ally, but the Bard can have only one song active at a time.; *Rhythm*: When an ally uses the same skill twice in a row, the second use has 1 less Delay.; *Crescendo*: The Bard's songs last 10 time units longer.
+
+**Berserker**  
+Actives: *Rampage*: Hit for 10–12. The Berserker takes 3.; *Sweeping Kick*: Push every unit in melee reach one row back (bumps apply).; *Battle Roar*: Every unit in melee reach has its next turn pushed back 5 time units.  
+Keystones: *Reckless Swing*: The Warrior's hits deal double damage, but the Warrior takes half of the damage it deals (rounded down).; *Last Stand*: The Warrior cannot Move or be moved, but deals 50% more damage.; *Unstoppable*: Below a quarter of its HP, the Warrior cannot be Immobilized or Frozen, and its turns cannot be pushed back.
+
+**Bulwark**  
+Actives: *Leap to Defend*: Own side only. The Bulwark moves in front of an ally anywhere on your side (any gap) and takes the next attack aimed at that ally (melee, projectile or direct), once.; *Rescue*: Own side only. Swap places with an ally within distance 2 that is below half HP.; *Shield Bash*: Hit for 6–7 and push the target one row back (bumps apply).  
+Keystones: *Shield Wall*: While 2 or more of your units that have Shield Wall stand side by side in one row, attacks on units behind them are always intercepted by them.; *Hold Position*: Enemy effects cannot push, pull or swap the Guardian.; *Unbreakable*: The first time the Bulwark would be KO, it keeps 1 HP instead.
+
+**Champion**  
+Actives: *Challenge*: Mark a unit (one Mark from this Warrior at a time).; *Single Combat*: For 10 time units, the Warrior and one Marked unit can be targeted only by each other.; *Execution*: A Marked unit below 25% HP is KO.  
+Keystones: *Hunt Down*: When a Marked enemy is moved, the Warrior Stuns it for 5 time units.; *Duelist*: The Champion deals 50% more damage to the unit it has Marked.; *Glory*: When the Champion KOs its Marked unit, it heals a quarter of its max HP.
+
+**Chemist**  
+Actives: *Poison Gas*: Poison ground on a unit's spot and the spots beside it, for 20 time units.; *Firebomb*: Fire on a unit's spot and the spots beside it, for 20 time units.; *Healing Draught*: Throw a potion: a unit heals 6–7.  
+Keystones: *Showman*: The Tinker's Blind and Stunned last twice as long, but the Tinker's skills that deal damage have +2 Delay.; *Potent Brew*: Healing Draught also removes one harmful status.; *Volatile*: The Chemist's fire and poison ground last twice as long.
+
+**Cleric**  
+Actives: *Absolve*: Remove every harmful status from one unit; its next turn is pushed back 2.; *Dispel*: Remove every helpful status (Ward, Haste, stealth and others) from a unit within distance 3.; *Turn Back*: Move one harmful status from a unit onto the unit that applied it. If the unit has several harmful statuses whose applier is still standing, the battle's seeded roll picks one, each with equal chance (decided 2026-11-08).  
+Keystones: *Sanctity*: The Cleric cannot get harmful statuses.; *Purifying Aura*: Harmful statuses on allies next to the Cleric last half as long.; *Judgment*: Each status the Cleric's Dispel removes deals 4 damage to that unit.
+
+**Commander**  
+Actives: *Advance*: Own side only. Move every ally in one row one row forward (bumps apply).; *Switch Places*: Own side only. Two allies swap places.; *Rotation*: Own side only. Every ally moves one row back, and the Rear row moves to the Front.  
+Keystones: *Drill*: An ally the Leader moves has its next turn pulled forward 3 time units.; *Rally*: When an ally is KO, every other ally's next turn is pulled forward 3 time units.; *Vanguard*: An ally the Commander moves into the Front row gains a Ward of 3.
+
+**Cryomancer**  
+Actives: *Ice Lance*: Hit for 7–8; Frozen units take double.; *Freeze*: A unit is Frozen.; *Frost Nova*: Every enemy in melee reach of the Cryomancer takes 1–2 and is Frozen.  
+Keystones: *Cold Heart*: Frozen from the Elementalist lasts 1 more turn, but it can keep only one unit Frozen at a time.; *Brittle*: Frozen enemies take 50% more damage.; *Steam Burst*: When fire is set on an iced spot, both end and the unit there is Confused for 10 time units.
+
+**Enchanter**  
+Actives: *Echo Enchant*: A unit's next skill happens twice: the second use is free (no Delay, no Momentum) and hits the same target.; *Phase Weapon*: A unit's next attack has unlimited range and cannot be intercepted (Phasing Strike folded in).; *Piercing Enchant*: A unit's next attack also hits the unit behind its target.  
+Keystones: *Twin Enchant*: Each enchantment also goes on one ally next to the target.; *Lingering Magic*: Each enchantment from the Enchanter lasts for two uses instead of one.; *Spell Ward*: A unit carrying an enchantment from the Enchanter cannot be Silenced or Stunned.
+
+**Engineer**  
+Actives: *Bolt Turret*: Places a turret (HP 8). Each time the Tinker takes a turn, it hits the nearest enemy for 2–3.; *Barricade*: Places a barricade (HP 10) on any free spot of your side.; *Net Trap*: HP 4. A unit that hits it has +3 Delay on its next skill.  
+Keystones: *Reinforced*: The Engineer's constructs and traps have double HP.; *Self-Repair*: The Engineer's constructs regain 2 HP each time the Engineer takes a turn.; *Rapid Fire*: Bolt Turret fires twice each time.
+
+**Hexer**  
+Actives: *Curse of Betrayal*: For 20 time units, a unit's healing goes to your units instead.; *Curse of Weight*: A unit cannot Move or become airborne for 20 time units.; *Withering Hex*: A unit takes 3 every 10 time units for 40 time units.  
+Keystones: *Witch's Patience*: The Sorcerer's curses last until removed, but it can keep only one curse at a time.; *Lingering Malice*: When an enemy removes one of the Sorcerer's curses or hexes, the remover is Silenced for 10 time units.; *Spreading Curse*: When a cursed unit is KO, its curse jumps to the nearest enemy.
+
+**Keeper**  
+Actives: *Ward*: A unit within distance 2 gains a Ward of 4 until the Guardian's next turn.; *Shield Dome*: Every ally gains a Ward of 2 until the Guardian's next turn.; *Ward Burst*: A unit's Ward breaks and deals its remaining value as damage to every enemy in melee reach of that unit.  
+Keystones: *Thorned Ward*: When an attack hits a Ward from the Keeper, the attacker takes 3.; *Twin Wards*: Ward and Overcharged Ward also give the same Ward to one adjacent ally.; *Steadfast Ward*: While a unit has a Ward from the Keeper, it cannot be Stunned or moved by enemies.
+
+**Lifebinder**  
+Actives: *Burnout Heal*: Heal every unit around the Healer for 6–8; the Healer is KO (§10.4).; *Life for Life*: The Healer gives up half its current HP to revive a KO unit with that much HP.; *Bound Resurrect*: Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Healer share one HP pool (game_system §10.4).  
+Keystones: *Martyr*: When the Lifebinder is KO, every ally heals 6–8.; *Phoenix*: Life for Life costs only a quarter of the Lifebinder's current HP.; *Lifeblood*: When an ally is KO, the Lifebinder heals 5.
+
+**Mender**  
+Actives: *Mend*: Heal one unit for 8–10.; *Rain of Mending*: Pick a row: every unit in it is healed for 3–4, and the row behind for half (Downpour folded in).; *Searing Light*: Hit for 7–8. Undead take double.  
+Keystones: *Overflowing Care*: Healing beyond the target's max HP goes to its adjacent ally with the lowest HP.; *Regrowth*: A unit the Mender heals also regains 2 HP every 10 time units for 20 time units.; *Triage*: Mend heals double on units below 25% HP.
+
+**Necromancer**  
+Actives: *Raise Undead*: Turns one KO'd body from either side into an undead of yours (HP 12, Power 4); also raises one more random body (Mass Grave folded in).; *Corpse Explosion*: A body or an undead of the Necromancer explodes: 6 to every unit next to it, and they are Poisoned for 20 time units (Plague Corpse folded in).; *Desecrate*: A KO'd body cannot be revived for 40 time units.  
+Keystones: *Lich Form*: The Summoner counts as undead (healing hurts it), but every undead of the Summoner has +2 Power.; *Bone Armor*: For each undead it has, the Necromancer has a Ward of 2 that renews every turn.; *Death's Bounty*: When a unit is KO next to the Necromancer, the Necromancer heals 5.
+
+**Pyromancer**  
+Actives: *Fireball*: Hit for 8–9 and set fire to the target's spot.; *Kindle*: Set fire to a unit's spot and the spots next to it (Scorch folded in).; *Row of Fire*: Set fire to a whole row for 20 time units.  
+Keystones: *Wildfire*: The Pyromancer's burning ground lasts twice as long.; *Inferno*: Burning ground from the Pyromancer deals double damage.; *Ashwalker*: The Pyromancer takes no damage from burning ground and has +1 Speed while standing on it.
+
+**Ritualist**  
+Actives: *Rain Dance*: Water on every spot of one row; lasts 20 time units longer than usual and allies in it regain 4 HP (Long Rain and Healing Rain folded in).; *Hoarfrost*: Ice on a unit's spot (§12.2).; *Rite of Mists*: Ranged hits from units standing on water deal half damage for 20 time units.  
+Keystones: *Deluge*: Water from the Ritualist lasts until the end of battle.; *Tidecaller*: Allies standing on water have 1 less Delay on every skill.; *Frostbinder*: A unit standing on the Ritualist's ice is Immobilized.
+
+**Saboteur**  
+Actives: *Flash Powder*: Every unit in melee reach is Blind for 20 time units.; *Cut the Strings*: Remove one auto event the other side has on the timeline.; *Jam*: A unit's next skill has +5 Delay.  
+Keystones: *Wrecker*: The Saboteur deals double damage to constructs, totems, traps and barricades.; *Chaos Agent*: Every skill of the Saboteur that hits an enemy also pushes its next turn back 2 time units.; *Disarm Trap*: The Rogue sets off enemy traps without taking their effect.
+
+**Skyborne**  
+Actives: *Take Off*: For 40 time units the unit is airborne (High Altitude folded in).; *Gust*: Wind. Pushes a unit one row back.; *Dive*: Only while airborne: hit any visible unit for 9–11, then land.  
+Keystones: *Sky Lord*: The unit is always airborne, but has 30% less HP (rounded down).; *Eagle Eye*: While airborne, the unit sees stealthed units and reveals them.; *Lift*: Take Off also makes one ally next to the unit airborne for the same time.
+
+**Spiritwalker**  
+Actives: *Puppet Soul*: Possession. A unit hits a unit next to it at once with its basic attack.; *Life Swap*: Soul swap. Two units swap their current HP (each capped at its max).; *Forced Step*: Possession. A unit moves to a free spot of your choice on its own side.  
+Keystones: *Soul Anchor*: Enemies cannot possess, move or soul-swap the Spiritwalker.; *Haunting*: When the Spiritwalker is KO, the unit that KO'd it is Confused for 20 time units.; *Puppeteer*: Puppet Soul hits deal double damage.
+
+**Stormcaller**  
+Actives: *Lightning Bolt*: Hit for 9–10. Cannot be intercepted.; *Chain Lightning*: Hits a unit for 1–2 and Stuns it for 5 time units, then jumps to an adjacent unit, three more times.; *Tempest*: Push every unit in one row one row back (bumps apply). No extra hit.  
+Keystones: *Conductor*: Stuns from the Stormcaller last 5 time units longer.; *Static Field*: A unit that hits the Stormcaller in melee is Stunned for 5 time units.; *Eye of the Storm*: The Stormcaller cannot be pushed, pulled or Stunned.
+
+**Summoner**  
+Actives: *Clay Golem*: Summons a golem (HP 25, Speed 3) that makes melee hits for 5–6. The plain, sturdy golem.; *Rune Golem*: Summons a rune golem (HP 18, Speed 4) that makes melee hits for 3–4; each hit Silences the target for 10 time units.; *Animate Blades*: Summons two sets of flying blades (HP 6, Speed 7) that make ranged hits for 2–3. Lasts 30 time units (Blade Storm folded in).  
+Keystones: *Golem Heart*: The Summoner can keep only one golem, but it has double HP.; *Portal*: The Summoner's summons appear on a random free spot of your side instead of being placed.; *Quickening*: The Golemancer's summons take their first turn at once.
+
+**Tactician**  
+Actives: *Swap Turns*: Own side only. Two allies swap their places on the timeline.; *Press the Advantage*: A unit's next skill costs no Momentum.; *Coordinated Strike*: Own side only. Two allies each make their basic attack on one enemy right now (each must be able to reach it).  
+Keystones: *All In*: The Leader's Momentum costs are halved (rounded up), but Momentum gained from its hits is 0.; *Inspiring Presence*: When an ally next to the Leader KOs an enemy, Momentum moves 1 more toward your side.; *Initiative*: At battle start, every ally's first turn is pulled forward 5 time units.
+
+**Thief**  
+Actives: *Melt Away*: The Rogue gains stealth anywhere, even in the Front row.; *Lift a Skill*: Use a copy of the last active skill the target used, with the Rogue's own Power.; *Snatch*: Hit for 5–6 and steal one helpful status from the target.  
+Keystones: *Escape Artist*: The first time the Thief drops below half HP, it gains stealth.; *Master Thief*: Snatch steals every helpful status from the target, not just one.; *Shadow Purse*: Each time the Thief steals a status, Momentum moves 1 toward your side.
+
+**Totemist**  
+Actives: *Healing Totem*: Places a totem (HP 8): allies in its row regain 2 HP every 10 time units.; *Spirit Link Totem*: Places a totem (HP 10): damage to allies in its row is split evenly between them.; *Totem of Return*: Places a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks.  
+Keystones: *Great Totem*: The Primalist keeps only 1 totem, but it has triple HP and also affects the rows next to it.; *Twin Totems*: The Totemist may keep two of each totem.; *Spirit Shield*: When a totem of the Totemist breaks, every ally in its row gains a Ward of 4.
+
+**Tracker**  
+Actives: *Target*: Mark any visible unit (one Mark from this Hunter at a time; marking another moves it).; *Read Tracks*: Pick a row. Every stealthed unit in it is revealed.; *Hunter's Shot*: Hit a Marked unit for 9–11.  
+Keystones: *Sniff the Air*: At battle start, the enemy with the highest Power becomes Marked.; *Scent of Blood*: When an enemy's HP falls below 20%, it becomes Marked.; *Relentless*: The Tracker's Mark lasts until its target is KO and cannot be removed.
+
+**Transmuter**  
+Actives: *Transmute*: A unit's Power and Speed swap values for 20 time units.; *Glass Body*: The next hit on a unit deals 50% more damage.; *Petrify*: A unit turns to stone: it is Stunned for 10 time units.  
+Keystones: *Lasting Change*: Transmute lasts until the end of battle, but only one unit can be transmuted at a time.; *Brittle Glass*: Glass Body makes the next hit deal double instead of 50% more.; *Mirror Form*: Transmute can instead swap Power and Speed between two units.
+
+## 1f. Creatures (accepted 2026-11-11)
+
+All 319 creatures have two classes, two keystones and a unique attack in [classes-creatures.md](classes-creatures.md). Every one of the 84 keystones is used at least once. Round 3 note changes filled in by Claude: Jam +5 Delay; Life Swap swaps current HP (capped at max); Frost Nova and Chain Lightning deal 1–2.
+
 ## 2. Open questions (later rounds)
 
-- **Creature assignment** (round 7): two classes, two keystones and the unique attack for each of the 319 creatures; Claude proposes, the owner reviews.
 - **Skill details for new skills:** Delivery and range for the new and reworded skills, checked against game_system §7.4 and §8.1.
 - **Action bar:** the attack plus 6 class skills = 7 buttons (ui_spec action bar); confirm the layout once the attacks are known.
 - **Doc rewrite** once final: class_system.md, skills.md, game_system.md (§4.1 trees, §4.4 attacks, §19 Builds), creature-classes.md, ui_spec.md (tree editor), implementation plan and code (default builds, tree editor).
