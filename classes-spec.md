@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 4 applied: class list and skills complete). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 4 applied; round 4b reviews the keystones of 8 classes; round 5 drafted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -50,7 +50,7 @@ Round 3 (pick the 3 actives and 3 keystones per class, with Claude's suggestions
 
 ## 1b. The 28 classes (rounds 3 and 4, answered 2026-11-11)
 
-Skill texts for new and reworded skills: project file everkin/class-branches-round3.md. Round 4 (db doc answers/round4, list everkin/class-branches-round4.md) filled the classes that were short. Every class now has exactly 3 actives and 3 keystones.
+Skill texts for new and reworded skills: project file everkin/class-branches-round3.md. Round 4 (db doc answers/round4, list everkin/class-branches-round4.md) filled the classes that were short. Every class now has exactly 3 actives and 3 keystones, but the new keystones of Lifebinder, Enchantment, Transmutation, Champion, Thief, Chemist and Flying and Bard's third active and keystone are Claude's suggestions only and are being reviewed (round 4b, db doc answers/round4b).
 
 | Class | Actives | Keystones |
 |---|---|---|
