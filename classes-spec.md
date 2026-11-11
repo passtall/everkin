@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 4 applied; round 4b reviews the keystones of 8 classes; round 5 drafted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 4b applied; Flying's third keystone open; round 5 drafted). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -50,7 +50,7 @@ Round 3 (pick the 3 actives and 3 keystones per class, with Claude's suggestions
 
 ## 1b. The 28 classes (rounds 3 and 4, answered 2026-11-11)
 
-Skill texts for new and reworded skills: project file everkin/class-branches-round3.md. Round 4 (db doc answers/round4, list everkin/class-branches-round4.md) filled the classes that were short. Every class now has exactly 3 actives and 3 keystones, but the new keystones of Lifebinder, Enchantment, Transmutation, Champion, Thief, Chemist and Flying and Bard's third active and keystone are Claude's suggestions only and are being reviewed (round 4b, db doc answers/round4b).
+Skill texts for new and reworded skills: project file everkin/class-branches-round3.md. Round 4 (db doc answers/round4, list everkin/class-branches-round4.md) filled the classes that were short. Round 4b (db doc answers/round4b) let the owner pick the missing keystones himself; Flying's third keystone is open (round 4c, db doc answers/round4c). Keystone texts: project files everkin/class-branches-round4.md and class-branches/round4c.json.
 
 | Class | Actives | Keystones |
 |---|---|---|
@@ -60,28 +60,28 @@ Skill texts for new and reworded skills: project file everkin/class-branches-rou
 | Keeper | Ward, Shield Dome, Ward Burst | Thorned Ward, Twin Wards, Steadfast Ward |
 | Mender | Mend, Rain of Mending, Searing Light | Overflowing Care, Regrowth, Triage |
 | Cleric | Absolve, Dispel, Turn Back | Sanctity, Purifying Aura, Judgment |
-| Lifebinder | Burnout Heal, Life for Life, Bound Resurrect | Martyr, Bound Strength, Phoenix |
+| Lifebinder | Burnout Heal, Life for Life, Bound Resurrect | Martyr, Phoenix, Lifeblood |
 | Enchantment | Echo Enchant, Phase Weapon, Piercing Enchant | Twin Enchant, Lingering Magic, Spell Ward |
-| Transmutation | Transmute, Glass Body, Petrify | Lasting Change, Brittle Glass, Shattering Stone |
+| Transmutation | Transmute, Glass Body, Petrify | Lasting Change, Brittle Glass, Mirror Form |
 | Malediction | Curse of Betrayal, Curse of Weight, Withering Hex | Witch's Patience, Lingering Malice, Spreading Curse |
 | Pyromancy | Fireball, Kindle, Row of Fire | Wildfire, Inferno, Ashwalker |
 | Stormcalling | Lightning Bolt, Chain Lightning, Tempest | Conductor, Static Field, Eye of the Storm |
 | Cryomancy | Ice Lance, Freeze, Frost Nova | Cold Heart, Brittle, Steam Burst |
 | Berserker | Rampage, Sweeping Kick, Battle Roar | Reckless Swing, Last Stand, Unstoppable |
-| Champion | Challenge, Single Combat, Execution | Hunt Down, Duelist, Executioner |
+| Champion | Challenge, Single Combat, Execution | Hunt Down, Duelist, Glory |
 | Tactician | Swap Turns, Press the Advantage, Coordinated Strike | All In, Inspiring Presence, Initiative |
 | Commander | Advance, Switch Places, Rotation | Drill, Rally, Vanguard |
-| Bard | Song of Haste, War Drums, Lullaby | Grand Chorus, Rhythm, Encore |
-| Thief | Melt Away, Lift a Skill, Snatch | Escape Artist, Master Thief, Mimic |
+| Bard | Song of Haste, War Drums, Lullaby | Grand Chorus, Rhythm, Crescendo |
+| Thief | Melt Away, Lift a Skill, Snatch | Escape Artist, Master Thief, Shadow Purse |
 | Saboteur | Flash Powder, Cut the Strings, Jam | Wrecker, Chaos Agent, Disarm Trap |
 | Engineer | Bolt Turret, Barricade, Net Trap | Reinforced, Self-Repair, Rapid Fire |
-| Chemist | Poison Gas, Firebomb, Healing Draught | Showman, Potent Brew, Toxic Fumes |
+| Chemist | Poison Gas, Firebomb, Healing Draught | Showman, Potent Brew, Volatile |
 | Necromancer | Raise Undead, Corpse Explosion, Desecrate | Lich Form, Bone Armor, Death's Bounty |
 | Golemancer | Clay Golem, Rune Golem, Animate Blades | Golem Heart, Portal, Quickening |
 | Totemist | Healing Totem, Spirit Link Totem, Totem of Return | Great Totem, Twin Totems, Spirit Shield |
 | Ritualist | Rain Dance, Hoarfrost, Rite of Mists | Deluge, Tidecaller, Frostbinder |
 | Spiritwalker | Puppet Soul, Life Swap, Forced Step | Soul Anchor, Haunting, Puppeteer |
-| Flying | Take Off, Gust, Dive | Sky Lord, Swoop, Eagle Eye |
+| Flying | Take Off, Gust, Dive | Sky Lord, Eagle Eye, (third pending) |
 
 Changes from the owner's notes:
 - **Assassin** merged with **Stalker** (28 classes); round 4 renamed the merged class **Assassin**. Pounce is cut; **Backstab**: only from stealth, hit for 8–10 and the target Bleeds, no double damage, breaks stealth.
@@ -93,6 +93,8 @@ Changes from the owner's notes:
 - **Life Swap** is a real HP swap (current HP values, not shares).
 - **Lasting Change** can affect only one unit at a time.
 - **Grand Chorus:** songs reach every ally, but the Bard can have only one song at a time.
+- **Glass Body:** the next hit deals 50% more; **Brittle Glass** makes it double.
+- **Mirror Form:** Transmute swaps Power and Speed between two units.
 - **Boundless Sky** dropped: flyers already have unlimited range (owner confirmed 2026-11-11).
 
 ## 2. Open questions (later rounds)
