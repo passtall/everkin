@@ -108,12 +108,8 @@ Changes from the owner's notes:
 
 ## 2. Open questions (later rounds)
 
-- **Names.** Some branch names read as skill groups, not classes (Mobility, Assault, Enchantment, Pyromancy). Rename where needed; a class must still be visible in the art (class_system §4).
-- **Creature assignment.** 319 creatures need exactly two new classes each; 56 have only one profession today. Does a creature's two classes have to come from its old professions?
-- **Keystones per creature.** Which creature gets which keystone, how many at most (0 or 1?), and whether classes without a keystone get one.
-- **Damage skills.** Which classes get one, and how strong (today a damage skill must "count": big, with a condition or a cost).
-- **Thin classes.** Classes with 3 or 4 skills (Trapper, Footwork, Tactician, Conjurer and others) may need more skills; with everything unlocked, class size sets how many buttons a creature has.
-- **Attack Type.** Stays as it is (one per creature, its shared attack)? Confirm.
-- **Action bar size.** Two classes with all skills plus the attack can mean 12 or more buttons (ui_spec action bar).
-- **Balance.** Cost (game_system §5.1, cost.py) and the AI harness builds depend on classes and learned skills; `content/default_builds.json` and the tree editor go away.
-- **Marked.** Marks come from Tracker, Champion, Assassin and Skywatch; check that each Mark payoff class can still get Marks.
+- **Unique attacks** (round 6): what a creature's own attack is made of, how strong it is, and who writes the 319 attacks.
+- **Creature assignment** (round 7): two classes, two keystones and the unique attack for each of the 319 creatures; Claude proposes, the owner reviews.
+- **Skill details for new skills:** Delivery and range for the new and reworded skills, checked against game_system §7.4 and §8.1.
+- **Action bar:** the attack plus 6 class skills = 7 buttons (ui_spec action bar); confirm the layout once the attacks are known.
+- **Doc rewrite** once final: class_system.md, skills.md, game_system.md (§4.1 trees, §4.4 attacks, §19 Builds), creature-classes.md, ui_spec.md (tree editor), implementation plan and code (default builds, tree editor).
