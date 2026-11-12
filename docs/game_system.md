@@ -468,7 +468,7 @@ A stealthed unit cannot be targeted by the opponent, is ignored for "nearest" (s
 - **Breaking.** Stealth ends when the unit **attacks or is hit**, whether or not damage gets through: area hits, hits that reach it without targeting it, hits a Ward fully absorbs and bump damage all count. An intercepted hit hits the interceptor instead and does not break it. Damage that is not a hit (Poisoned, Bleeding, ground damage) does not break it. A skill may override this (Feint keeps it). KO ends it, and reveal effects remove it (Read Tracks, Eagle Eye).
 - **Cleansing.** A cleansing skill that hits a stealthed unit removes its stealth (Dispel).
 - **Duration.** Stealth lasts until broken unless a skill adds a timer.
-- **Visibility.** Stealth is all or nothing; adjacency and alignment never reveal a unit. A stealth skill that would hide a side's last visible unit cannot be used.
+- **Visibility.** Stealth is all or nothing; adjacency and alignment never reveal a unit. A stealth skill that would hide a side's last visible unit cannot be used. The Unseen keystone is not a skill used in battle: every unit with it starts stealthed, even if that hides a whole side; areas and melee reach still hit them.
 - **Presentation.** The opponent sees the unit with a clear stealth cue and its turns stay on the timeline. Stealth limits targeting, not information.
 - **Locked targets that become stealthed** (delayed and auto events): a `direct` effect still hits its slot, and whoever stands there. A `projectile` passes the stealthed unit and hits the unit behind it (section 8.4); if nothing is hit, the shot is lost. Row and area effects are unaffected.
 - **Movement** does not affect stealth.
@@ -504,6 +504,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 - **Ticking.** Damage and healing over time build up per time unit and land whenever any unit gets a turn; fractions carry over. Everything built up shows as one number on the unit. A tick that KOs a unit ends its turn.
 - **Damage from statuses** (Poisoned, Bleeding, Withering Hex) is not a hit and moves Momentum 0. Reductions apply to it; Wards do not absorb it.
 - **Chances.** A stated chance is the real chance; no stat lowers it.
+- **Several units hit.** When a skill or attack hits several units, its damage and every chance are rolled separately for each unit, unless the skill says otherwise.
 - **Immunities** come only from skills and keystones (Sanctity, War Drums, Spell Ward, Unstoppable, Steadfast Ward). Creatures have none of their own. Every status applies to summons, constructs and totems unless their skill says otherwise.
 - **Cleansing** can remove any status unless the status says it cannot.
 - **New statuses** join the table only when a skill or attack needs one.
@@ -518,7 +519,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 | **Stunned** | The unit takes no actions and cannot intercept. Each of its turns that arrives while Stunned is skipped, at the skipped-turn cost. Any hit ends it early. | As stated |
 | **Confused** | Each skill the unit uses, helpful ones included, has a 50% chance to target a random legal unit instead, on either side. | As stated |
 | **Immobilized** | The unit cannot Move and cannot be moved. It cannot intercept. | As stated |
-| **Marked** | Only enemies can be Marked. A skill that reads a Mark works on every Marked enemy, whoever placed it. The marking skill states the duration and any limit. | As stated |
+| **Marked** | Only enemies can be Marked. A skill that reads a Mark works on every Marked enemy, whoever placed it. A Mark lasts 30 time units unless the marking skill says otherwise (Relentless); the marking skill states any limit. | 30 |
 
 Only the ground burns, never a unit: a unit takes fire damage only from standing on burning ground (section 12.2).
 
@@ -574,9 +575,9 @@ A ground effect sits on a spot (section 7.3) and affects the unit standing there
 |---|---|---|---|
 | **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Water: fire set on water does not start, and the water stays. Ice: steam. Poison ground: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
 | **Ice** | A unit pushed or pulled across it slides one row further (bumps apply). | Fire: steam. | Ritualist (Hoarfrost), attack extras |
-| **Water** | Harmless alone. | A Stun from Chain Lightning on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. | Ritualist (Rain Dance), attack extras |
+| **Water** | Harmless alone. | Any Stun on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. | Ritualist (Rain Dance), attack extras |
 | **Steam** | When fire is set on an iced spot, both end, the unit there is Confused for 10, and water stays on the spot. | | Cryomancer (Steam Burst) |
-| **Poison ground** | A unit that has stood there for 5 time units is Poisoned, and every further 5 restart its Poison. | Fire placed on the same row as poison ground at once: every poison spot in that row explodes, each unit on one takes 6 and the spot becomes burning ground. | Chemist (Poison Gas), attack extras |
+| **Poison ground** | A unit that has stood there for 5 time units is Poisoned for 20, and every further 5 restart its Poison. | Fire placed on the same row as poison ground at once: every poison spot in that row explodes, each unit on one takes 6 and the spot becomes burning ground. | Chemist (Poison Gas), attack extras |
 
 Water spots touch when they are side by side in a row or overlap across neighbouring rows.
 

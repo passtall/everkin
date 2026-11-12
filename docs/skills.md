@@ -34,7 +34,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Hunter's Shot | A | 4 / 2 | Projectile | Hit a Marked unit for 9–11. |
 | Sniff the Air | K | | | At battle start, the enemy with the highest Power becomes Marked. |
 | Scent of Blood | K | | | When an enemy's HP falls below 20%, it becomes Marked. |
-| Relentless | K | | | The Tracker's Marks last until their target is KO and cannot be removed. |
+| Relentless | K | | | The Tracker's Marks have no time limit: they last until their target is KO and cannot be removed. |
 
 - A skill that reads a Mark (Hunter's Shot, the Champion's skills) works on any Marked unit, whoever placed the Mark (game_system §10.5).
 
@@ -49,7 +49,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Hold Position | K | | | Enemy effects cannot push, pull or swap the Bulwark. |
 | Unbreakable | K | | | The first time the Bulwark would be KO, it keeps 1 HP instead. |
 
-- **Leap to Defend** lasts until the next attack of any delivery aimed at that ally; that attack is aimed at the Bulwark instead, once. It ends if the Bulwark is KO.
+- **Leap to Defend** lasts until the next attack of any delivery aimed at that ally; that attack is aimed at the Bulwark instead, once. It ends if the Bulwark is KO. If the ally already stands in the Front row, the Bulwark moves into a gap next to it in the Front row instead; if that row is full it cannot move, and still takes the attack.
 - **Shield Wall:** a melee or projectile attack on a unit behind the wall is intercepted by the nearest wall unit that overlaps that unit by at least 50%, with 100% chance instead of the roll; the hit is still full or partial as usual. Direct attacks pass.
 
 ## Keeper
@@ -160,7 +160,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Static Field | K | | | A unit that hits the Stormcaller in melee is Stunned for 5. |
 | Eye of the Storm | K | | | The Stormcaller cannot be pushed, pulled or Stunned. |
 
-- **Chain Lightning** jumps to a random adjacent living unit (game_system §8.4) that this chain has not hit yet, and ends early when none is left. Lightning on a unit standing in water spreads as game_system §12.2 says.
+- **Chain Lightning** jumps to a random adjacent living unit (game_system §8.4) that this chain has not hit yet, and ends early when none is left. Its Stuns spread through water like any Stun (game_system §12.2).
 - **Tempest** picks any row of either side that has a living unit. Units in the Rear row stay. The row moves together: each unit keeps its coordinate, so units side by side stay side by side.
 
 ## Cryomancer
