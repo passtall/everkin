@@ -155,8 +155,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Lightning Bolt | A | 5 / 2 | Direct | Hit for 9–10. |
-| Chain Lightning | A | 5 / 3 | Direct | Hit a unit for 1–2, then jump to an adjacent unit and do the same, three more times. |
+| Lightning Bolt | A | 5 / 2 | Direct | Hit for 9–10. Explodes poison gas the target stands in. |
+| Chain Lightning | A | 5 / 3 | Direct | Hit a unit for 1–2, then jump to an adjacent unit and do the same, three more times. Each hit explodes poison gas the unit stands in. |
 | Tempest | A | 8 / 5 | Direct | Push every unit in one row one row back (bumps apply). |
 | Overcharge | K | | | The Stormcaller's Chain Lightning jumps two more times (six units in all). |
 | Static Field | K | | | A unit that hits the Stormcaller in melee is Stunned for 5. |
@@ -301,12 +301,12 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Poison Gas | A | 4 / 0 | Direct | Poison ground on a unit's spot and the spots next to it, for 20. |
+| Poison Gas | A | 4 / 0 | Direct | Poison gas on a unit's spot and the spots next to it. |
 | Firebomb | A | 5 / 2 | Projectile | Fire on a unit's spot and the spots next to it, for 20. |
 | Healing Draught | A | 3 / 0 | Projectile | A unit heals 6–7. |
 | Big Finish | K | | | Firebomb and Poison Gas also cover the spots next to those spots (five spots in all), but both have +2 Delay. |
 | Potent Brew | K | | | Healing Draught also removes one harmful status. |
-| Volatile | K | | | The Chemist's fire and poison ground last twice as long. |
+| Volatile | K | | | The Chemist's fire and poison gas last twice as long. |
 
 - An intercepted Firebomb lands on the interceptor's spot.
 
@@ -315,14 +315,14 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Raise Undead | A | 8 / 4 | Direct | Turn a KO'd body of either side into an undead of yours (HP 12, Power 4), and raise one more random body. |
-| Corpse Explosion | A | 5 / 2 | Direct | A body or an undead of the Necromancer explodes: 6 to every unit next to it, and they are Poisoned for 20. |
+| Corpse Explosion | A | 5 / 2 | Direct | A body or an undead of the Necromancer bursts into poison gas on its spot and the spots next to it. |
 | Desecrate | A | 5 / 2 | Direct | A KO'd body cannot be revived for 40. |
 | Lich Form | K | | | Healing hurts the Necromancer, but its undead have +2 Power. |
 | Bone Armor | K | | | For each undead it has, the Necromancer has a Ward of 2 that renews every turn. |
 | Death's Bounty | K | | | When a unit is KO next to the Necromancer, the Necromancer heals 5. |
 
 - **Raise Undead:** the player picks the body and a free spot on your side for it. The second body is picked by the seeded roll among the remaining KO bodies of either side and goes on a random free spot; it is skipped when there is no body or no room. Undead follow game_system §11.5.
-- **Corpse Explosion:** "next to" uses game_system §8.4 adjacency on the side of the exploding unit, so allies and enemies alike if they stand there. An exploding undead takes the 6 too; a body stays where it is.
+- **Corpse Explosion:** "the spots next to" are as in game_system §12.2. The body or undead stays where it is and takes no damage.
 - **Desecrate** blocks every revive (Life for Life, Bound Resurrect, restoring an undead); Raise Undead still works.
 
 ## Summoner

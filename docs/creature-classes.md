@@ -57,7 +57,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `bloomspear` | Bloomspear | Spiritwalker, Champion | Soul Anchor, Hunt Down | Bloomspear Lunge | Melee | 3 / 0 | lunge | Hit for 4–5. | `bloomspear-01.png` | `7_f.png` |
 | `boar-magma` | Magma Hog | Berserker, Champion | Unstoppable, Duelist | Boar Bite | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: burning ground on the target's spot. | `boar-01.png` | `10_f.png` |
 | `boar-guard-hex` | Hexbristle | Bulwark, Hexer | Unbreakable, Lingering Malice | Hex Butt | Melee | 3 / 0 | lunge | Hit for 4–5; heals the attacker for 1. | `boar-02.png` | — |
-| `bombardierbeetle-alchemist-acid` | Acidpop | Chemist, Saboteur | Volatile, Wrecker | Acid Throw | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `bombardierbeetle-01.png` | — |
+| `bombardierbeetle-alchemist-acid` | Acidpop | Chemist, Saboteur | Volatile, Wrecker | Acid Throw | Projectile | 3 / 0 | shot | Hit for 2–3; 20%: poison gas on the target's spot. | `bombardierbeetle-01.png` | — |
 | `book-summoner-fold` | Foldtome | Summoner, Spiritwalker | Portal, Haunting | Fold Bolt | Projectile | 4 / 0 | bolt | Hit for 3–4. | `book-01.png` | — |
 | `brazier-summoner-coal` | Coalwraith Brazier | Summoner, Pyromancer | Quickening, Wildfire | Coal Pulse | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 1–2; 20%: burning ground on the target's spot. | `brazier-01.png` | — |
 | `buffalo-guard-root` | Rootyoke Buffalo | Bulwark, Ritualist | Shield Wall, Frostbinder | Root Snap | Melee | 3 / 0 | swing | Hit for 2–3; 20%: the target is Immobilized for 5 time units. | `buffalo-01.png` | — |
@@ -117,7 +117,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `furnace-titan` | Furnace Titan | Champion, Bulwark | Hunt Down, Shield Wall | Furnace Spray | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: burning ground on the target's spot. | `furnace-01.png` | — |
 | `gargoyle-sentinel-stone` | Stonewatch Gargoyle | Skyborne, Tracker | Lift, Scent of Blood | Stone Poke | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `gargoyle-01.png` | — |
 | `gaur-bodyguard-armor` | Bolted Gaur | Bulwark, Berserker | Hold Position, Last Stand | Armor Stomp | Melee | 3 / 0 | lunge | Hit for 4–5. | `gaur-01.png` | — |
-| `gecko-alchemist-resin` | Resinpaw | Chemist, Thief | Potent Brew, Master Thief | Resin Throw | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `gecko-01.png` | — |
+| `gecko-alchemist-resin` | Resinpaw | Chemist, Thief | Potent Brew, Master Thief | Resin Throw | Projectile | 3 / 0 | shot | Hit for 2–3; 20%: poison gas on the target's spot. | `gecko-01.png` | — |
 | `gecko-summoner-prism` | Prismtoe | Summoner, Transmuter | Portal, Lasting Change | Prism Bolt | Projectile | 4 / 0 | bolt | Hit for 3–4. | `gecko-02.png` | — |
 | `goat-shaman-totem` | Totemhorn | Totemist, Lifebinder | Great Totem, Phoenix | Totem Jab | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Confused for 5 time units. | `goat-01.png` | — |
 | `goblet-paladin` | Grailward | Cleric, Champion | Sanctity, Duelist | Goblet Hum | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3. | `goblet-01.png` | — |
@@ -132,7 +132,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `hermitcrab-sentinel-basalt` | Basaltshell | Bulwark, Keeper | Unbreakable, Twin Wards | Basalt Headbutt | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `hermitcrab-01.png` | — |
 | `heron-engineer-wing` | Wingwright Heron | Engineer, Skyborne | Rapid Fire, Sky Lord | Wing Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `heron-01.png` | — |
 | `heron-hunter-harpoon` | Stillspear | Skyborne, Champion | Eagle Eye, Hunt Down | Harpoon Skewer | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: pull the target one row toward the battle line. | `heron-02.png` | — |
-| `hippo-healer-potion` | Tonic Hippo | Mender, Chemist | Regrowth, Volatile | Potion Spit | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 30%: the target is Poisoned for 20 time units. | `hippo-01.png` | — |
+| `hippo-healer-potion` | Tonic Hippo | Mender, Chemist | Regrowth, Volatile | Potion Spit | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: poison gas on the target's spot. | `hippo-01.png` | — |
 | `hornbill-bard-drum` | Drumbill | Bard, Skyborne | Crescendo, Lift | Drum Crush | Melee | 4 / 0 | swing | Hit for 4–5; 20%: the target is Confused for 5 time units. | `hornbill-01.png` | — |
 | `horseshoe-champion` | Lucky Ironshoe | Champion, Bulwark | Duelist, Shield Wall | Horseshoe Butt | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `horseshoe-01.png` | — |
 | `horseshoecrab-sentinel-bronze` | Bronzeback Sentinel | Bulwark, Stormcaller | Hold Position, Static Field | Bronze Gore | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `horseshoecrab-01.png` | — |
@@ -238,8 +238,8 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `moray-trickster-hook` | Hookgrin Moray | Saboteur, Tracker | Disarm Trap, Scent of Blood | Hook Snap | Melee | 3 / 0 | swing | Hit for 2–3; 20%: pull the target one row toward the battle line. | `moray-01.png` | — |
 | `mortar-alchemist-bastion` | Bastion Mortar | Berserker, Bulwark | Reckless Swing, Unbreakable | Bastion Clobber | Melee | 4 / 0 | swing | Hit for 5–6. | `mortar-01.png` | — |
 | `moth-cleric-lantern` | Lanternmoth | Cleric, Skyborne | Purifying Aura, Sky Lord | Lantern Ray | Projectile | 4 / 0 | bolt | Hit for 3–4. | `moth-02.png` | — |
-| `mushroom-druid` | Sporedruid | Ritualist, Lifebinder | Deluge, Phoenix | Mushroom Ray | Projectile | 4 / 0 | bolt | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `mushroom-01.png` | `mushroom-druid.png` |
-| `mushroom-sentinel-shield` | Capshield | Bulwark, Spiritwalker | Shield Wall, Soul Anchor | Shield Pulse | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 1–2; 30%: the target is Poisoned for 20 time units. | `mushroom-03.png` | — |
+| `mushroom-druid` | Sporedruid | Ritualist, Lifebinder | Deluge, Phoenix | Mushroom Ray | Projectile | 4 / 0 | bolt | Hit for 2–3; 20%: poison gas on the target's spot. | `mushroom-01.png` | `mushroom-druid.png` |
+| `mushroom-sentinel-shield` | Capshield | Bulwark, Spiritwalker | Shield Wall, Soul Anchor | Shield Pulse | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 1–2; 20%: poison gas on the target's spot. | `mushroom-03.png` | — |
 | `musicbox-summoner-drum` | Windup Drummer | Summoner, Bulwark | Quickening, Hold Position | Drum Headbutt | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Confused for 5 time units. | `musicbox-01.png` | — |
 | `muskox-bodyguard-buckler` | Bucklerhorn | Bulwark, Berserker | Unbreakable, Last Stand | Buckler Bash | Melee | 4 / 0 | swing | Hit for 4–5; 20%: the target is Confused for 5 time units. | `muskox-01.png` | — |
 | `newt-alchemist-coil` | Coilnewt | Chemist, Engineer | Volatile, Self-Repair | Coil Crack | Melee | 3 / 0 | swing | Hit for 3–4. | `newt-01.png` | — |
@@ -262,14 +262,14 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `platypus-alchemist-rune` | Runebill | Chemist, Engineer | Big Finish, Rapid Fire | Rune Plume | Direct, melee reach | 4 / 0 | breath | Hit the target for 3–4 and every unit next to it for 1–2. | `platypus-01.png` | — |
 | `plough-ravager` | Furrow Ravager | Champion, Summoner | Duelist, Quickening | Plough Slash | Melee | 3 / 0 | swing | Hit for 4–5. | `plough-01.png` | — |
 | `pocketwatch-warden` | Tickwarden | Keeper, Commander | Steadfast Ward, Drill | Pocketwatch Wave | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3. | `pocketwatch-01.png` | — |
-| `porcupine-alchemist-shield` | Quillflask | Chemist, Bulwark | Potent Brew, Hold Position | Shield Flick | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `porcupine-01.png` | — |
+| `porcupine-alchemist-shield` | Quillflask | Chemist, Bulwark | Potent Brew, Hold Position | Shield Flick | Projectile | 3 / 0 | shot | Hit for 2–3; 20%: poison gas on the target's spot. | `porcupine-01.png` | — |
 | `portcullis-colossus` | Portcullis Colossus | Bulwark, Keeper | Unbreakable, Thorned Ward | Portcullis Smash | Melee | 4 / 0 | swing | Hit for 4–5; 20%: the target is Stunned for 5 time units. | `portcullis-01.png` | — |
 | `printingpress-summoner-type` | Typesetter | Summoner, Engineer | Golem Heart, Reinforced | Type Fling | Projectile | 3 / 0 | shot | Hit for 3–4. | `printingpress-01.png` | — |
 | `prism-hexer` | Shardhex | Skyborne, Keeper | Sky Lord, Twin Wards | Prism Spark | Projectile | 4 / 0 | bolt | Hit for 3–4; heals the attacker for 1. | `prism-01.png` | — |
 | `puffin-bodyguard-shield` | Shieldpuff | Skyborne, Bulwark | Eagle Eye, Shield Wall | Shield Thump | Melee | 4 / 0 | swing | Hit for 5–6. | `puffin-01.png` | — |
 | `quern-oracle` | Grindstone Oracle | Spiritwalker, Skyborne | Puppeteer, Lift | Quern Pound | Melee | 4 / 0 | swing | Hit for 4–5; 20%: the target is Stunned for 5 time units. | `quern-01.png` | — |
 | `quokka-summoner-pebble` | Pebblegrin | Summoner, Enchanter | Portal, Spell Ward | Pebble Burst | Projectile | 4 / 0 | bolt | Hit for 3–4. | `quokka-01.png` | — |
-| `raccoon-alchemist-potion` | Potionpaw | Chemist, Thief | Volatile, Shadow Purse | Potion Volley | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `raccoon-01.png` | — |
+| `raccoon-alchemist-potion` | Potionpaw | Chemist, Thief | Volatile, Shadow Purse | Potion Volley | Projectile | 3 / 0 | shot | Hit for 2–3; 20%: poison gas on the target's spot. | `raccoon-01.png` | — |
 | `ram-paladin-sun` | Sunhorn Paladin | Bard, Keeper | Rhythm, Steadfast Ward | Sun Slam | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: burning ground on the target's spot. | `ram-01.png` | `ram-paladin-sun.png` |
 | `ram-bard-bellows` | Bellows Ram | Bard, Engineer | Grand Chorus, Self-Repair | Bellows Gust | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units. | `ram-02.png` | — |
 | `reliquary-summoner-seal` | Sealed Reliquary | Summoner, Enchanter | Quickening, Twin Enchant | Seal Spark | Projectile | 4 / 0 | bolt | Hit for 3–4. | `reliquary-01.png` | — |
@@ -330,12 +330,12 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `turtle-bard-frost` | Frostshell Bard | Bulwark, Enchanter | Shield Wall, Twin Enchant | Frost Breath | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; the target's next turn comes 2 time units later. | `turtle-03.png` | — |
 | `umbrella-guardian-fan` | Fanbrella | Skyborne, Stormcaller | Sky Lord, Overcharge | Fan Smash | Melee | 4 / 0 | swing | Hit for 5–6. | `umbrella-01.png` | — |
 | `velvetworm-hexer-rune` | Runevelvet | Thief, Spiritwalker | Master Thief, Haunting | Rune Lash | Melee | 3 / 0 | swing | Hit for 3–4; heals the attacker for 1. | `velvetworm-01.png` | — |
-| `vinegaroon-alchemist-flask` | Vinegar Flask | Chemist, Tracker | Potent Brew, Relentless | Flask Throw | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `vinegaroon-01.png` | — |
+| `vinegaroon-alchemist-flask` | Vinegar Flask | Chemist, Tracker | Potent Brew, Relentless | Flask Throw | Projectile | 3 / 0 | shot | Hit for 2–3; 20%: poison gas on the target's spot. | `vinegaroon-01.png` | — |
 | `vise-enforcer` | Vise Enforcer | Bulwark, Engineer | Unbreakable, Self-Repair | Vise Slam | Melee | 3 / 0 | lunge | Hit for 4–5. | `vise-01.png` | — |
 | `vulture-healer-cinder` | Cinderbeak | Skyborne, Stormcaller | Eagle Eye, Static Field | Cinder Throb | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3. | `vulture-01.png` | — |
 | `walrus-bard-horn` | Tuskhorn Walrus | Bard, Commander | Crescendo, Vanguard | Horn Plume | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units. | `walrus-01.png` | — |
 | `warthog-engineer-cannon` | Cannon Warthog | Engineer, Chemist | Rapid Fire, Volatile | Cannon Fling | Projectile | 3 / 0 | shot | Hit for 3–4. | `warthog-01.png` | — |
-| `wasp-alchemist-potion` | Stingflask | Chemist, Skyborne | Big Finish, Lift | Potion Toss | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `wasp-01.png` | — |
+| `wasp-alchemist-potion` | Stingflask | Chemist, Skyborne | Big Finish, Lift | Potion Toss | Projectile | 3 / 0 | shot | Hit for 2–3; 20%: poison gas on the target's spot. | `wasp-01.png` | — |
 | `weasel-rogue-dagger` | Daggerwhisk | Assassin, Thief | Venom Blades, Shadow Purse | Dagger Carve | Melee | 3 / 0 | swing | Hit for 3–4; 30%: the target Bleeds. | `weasel-01.png` | — |
 | `weathervane-summoner-arrow` | Gustarrow | Summoner, Skyborne | Golem Heart, Sky Lord | Arrow Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `weathervane-01.png` | — |
 | `weaverbird-summoner-banner` | Bannerweave | Commander, Summoner | Drill, Portal | Banner Ray | Projectile | 4 / 0 | bolt | Hit for 3–4. | `weaverbird-01.png` | — |

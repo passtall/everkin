@@ -513,7 +513,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 | Status | Effect | Duration |
 |---|---|---|
 | **Blind** | Each attack of the unit has a 50% chance to miss. A miss moves Momentum 1 against the unit's side. | As stated (Flash Powder: 20) |
-| **Poisoned** | 1 damage per 10 time units, built up and landing whenever any unit gets a turn. | As stated (usually 20) |
+| **Poisoned** | 1 damage per 5 time units, built up and landing whenever any unit gets a turn. | As stated (usually 20) |
 | **Bleeding** | 2 damage after each `melee` or `move` skill the unit uses (Move included). | The unit's next 3 such skills |
 | **Silenced** | The unit cannot use `magical` skills or a magical attack. | As stated |
 | **Frozen** | The unit's next turn is skipped, at the skipped-turn cost (section 6.1). It cannot intercept. It ends early when fire is set on the unit's spot. | The unit's next turn |
@@ -574,13 +574,13 @@ A ground effect sits on a spot (section 7.3) and affects the unit standing there
 
 | Effect | What it does | Combines with | Sources |
 |---|---|---|---|
-| **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Ice: the fire burns there for 10, then both end and the spot holds water, whichever came first. Water: fire set on water burns there for 10, then both end and the water becomes steam; water placed on fire ends the fire at once and stays. Poison ground: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
+| **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Ice: the fire burns there for 10, then both end and the spot holds water, whichever came first. Water: fire set on water burns there for 10, then both end and the water becomes steam; water placed on fire ends the fire at once and stays. Poison gas: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
 | **Ice** | A unit pushed or pulled across it slides one row further (bumps apply). | Fire: water after 10. | Ritualist (Hoarfrost), Cryomancer (Deep Chill), attack extras |
 | **Water** | Harmless alone. | Any Stun on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. Fire set on water: steam after 10. Water placed on fire: the fire ends. | Ritualist (Rain Dance), attack extras |
 | **Steam** | Not a lasting effect: when fire turns water to steam, the unit there is Confused for 10 and the spot is left clear. | | Fire on water |
-| **Poison ground** | A unit that has stood there for 5 time units is Poisoned for 20, and every further 5 restart its Poison. | Fire placed on the same row as poison ground at once: every poison spot in that row explodes, each unit on one takes 6 and the spot becomes burning ground. | Chemist (Poison Gas), attack extras |
+| **Poison gas** | A unit standing in it is Poisoned for 20 at once (when the gas appears or the unit is moved in), and again every 5 while it stays. Gas lasts 10 unless a skill says otherwise. | **Explodes** when fire meets it, whichever comes first, or when Lightning Bolt or Chain Lightning hits a unit standing in it: that spot and every gas spot touching it (side by side in a row, or overlapping across neighbouring rows, and so on) go off; each unit on an exploding spot takes 6 and the spots are left clear. | Chemist (Poison Gas), Necromancer (Corpse Explosion), attack extras |
 
-Water spots touch when they are side by side in a row or overlap across neighbouring rows.
+Water and gas spots touch when they are side by side in a row or overlap across neighbouring rows.
 
 ### 12.3 Battle end
 
@@ -739,7 +739,7 @@ Concrete examples of the rules; each becomes a test. They are expected behavior,
 | An attack is intercepted | Momentum does not change. |
 | A Bolt Turret hits on three of the Engineer's turns | Momentum shifts three times. |
 | A pulse hits three enemies and two hits land | One shift of 1 toward the attacker's side. |
-| A Poisoned unit ticks | It takes 1 per 10 time units, landing whenever any unit gets a turn; Momentum is unchanged; a Ward does not absorb it. |
+| A Poisoned unit ticks | It takes 1 per 5 time units, landing whenever any unit gets a turn; Momentum is unchanged; a Ward does not absorb it. |
 | Poison with 30 time units left is reapplied with 20 | It now has 20 left. |
 | Burning ground damages a unit with a Ward of 8 | The Ward absorbs the damage. |
 | A unit with Bleeding (3 skills left) uses a melee skill | It takes 2 after the skill, and 2 skills remain. |

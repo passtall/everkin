@@ -129,7 +129,7 @@ About 30, all earnable offline, none hidden, no goal above 100 wins (production.
 | 24 | Swarm | Have six summons on your side at the same time. |
 | 25 | Unseen | KO an enemy with an attack made from stealth. |
 | 26 | Domino | Push or pull an enemy into another unit so that it bumps. |
-| 27 | Chain Reaction | Make poison ground explode with fire. |
+| 27 | Chain Reaction | Make poison gas explode. |
 | 28 | Nine Ways | Win a battle with 12 different classes on your team. |
 
 When earned frames return (production.md §1.2, postponed), the harder ones (6, 7, 15, 17, 21) are the candidates to give one.
