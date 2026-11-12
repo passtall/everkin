@@ -1,112 +1,65 @@
 # Everkin – Class System
 
-**Status:** Finalized  
-**Version:** 1.5
+This document owns the classes, the keystone and unique attack rules, and how classes are assigned to creatures. Every skill and keystone with its numbers is in [skills.md](skills.md); each creature's classes, keystones and attack are in [creature-classes.md](creature-classes.md). Game-wide rules are in [game_system.md](game_system.md).
 
-> Posted by Andreas on 2026-10-09 as the single source of truth for creature classes. It supersedes every earlier class and skill definition: the seven-class roster (Hunter, Elementalist, Healer, Warrior, Guardian, Feral, Leader), the skills in [classes_and_skills.md](archive/classes_and_skills.md), the type-specific attack library and class assignments in [archive/creatures.md](archive/creatures.md), and the class rules in [game_system.md](game_system.md) §3.7 and §4. The skills of every profession are in [skills.md](skills.md) (adopted 2026-11-03). How skill trees and basic attacks are built on top of this system is still open (game_system.md §19).
->
-> **v1.2 (2026-10-14):** Black Mage removed. Necromancy moved to Summoner, curses, hexes and life drain moved to Sorcerer, and elemental magic left Sorcerer for the new Elementalist profession. Still 16 Professions. Decided in the class rework quiz.
->
-> **v1.3 (2026-10-14):** Merges decided in the class merge and names quizzes. Professions: Bodyguard merged into Guardian; Assassin and Trickster merged into Rogue; Alchemist and Engineer merged into Tinker; Bard, Leader and Primalist sharpened; Paladin moved to Healer. Attack Types: Thrown merged into Ranged; Unarmed and Feral merged into Brawl; Lashing renamed Whip. Now 9 Attack Types and 13 Professions.
->
-> **v1.4 (2026-10-14):** Skill-fit rules added (section 4).
->
-> **v1.5 (2026-10-19):** Bard removed (Andreas, in the synergy quiz). Every creature that had Bard has Leader instead; a creature that had both keeps only Leader. Bard becomes a branch name of Leader (round 3). Now 12 Professions. Movement roles added (section 5).
+## 1. What a creature has
 
-## 1. Core Concept
+- **Two classes.** Every creature has exactly two different classes. Both may be close relatives (Mender and Cleric); there is no main class.
+- **Six skills.** Each class has three active skills. A creature can always use all six actives of its two classes. There are no skill points, skill trees, builds or respecs.
+- **Two keystones.** Each class has three keystones (powerful passives). A creature has one keystone from each of its classes, fixed in the roster: the player never picks them, and two creatures of the same class can have different keystones. Every keystone is used by at least one creature.
+- **One unique attack.** Every creature has its own attack (section 4). There are no shared attacks.
 
-Every Everkin creature has two independent class components:
+A skill or keystone text that names its class ("the Bard", "the Engineer") means the creature that has it, and it applies to all of that creature's skills unless it names a skill.
 
-- **1 Attack Type (required):** Defines the creature's primary attack method, including its basic attack behavior and animation style.
-- **1–2 Professions (required):** Define the creature's special abilities, tactical role, strengths, and identity.
+## 2. The 28 classes
 
-Attack Types and Professions can be combined freely.
+| Class | Role | Actives | Keystones |
+|---|---|---|---|
+| **Assassin** | Stealth and a hard strike from it. | Vanish, Feint, Backstab | Unseen, Vanishing Kill, Venom Blades |
+| **Tracker** | Marks an enemy, finds stealthed units, shoots the marked. | Target, Read Tracks, Hunter's Shot | Sniff the Air, Scent of Blood, Relentless |
+| **Bulwark** | Stands in front of allies and takes their hits. | Leap to Defend, Rescue, Shield Bash | Shield Wall, Hold Position, Unbreakable |
+| **Keeper** | Wards that absorb damage. | Ward, Shield Dome, Ward Burst | Thorned Ward, Twin Wards, Steadfast Ward |
+| **Mender** | Plain healing. | Mend, Rain of Mending, Searing Light | Overflowing Care, Regrowth, Triage |
+| **Cleric** | Removes statuses, good and bad. | Absolve, Dispel, Turn Back | Sanctity, Purifying Aura, Judgment |
+| **Lifebinder** | Revives, paid for with its own life. | Burnout Heal, Life for Life, Bound Resurrect | Martyr, Phoenix, Lifeblood |
+| **Enchanter** | Enchants an ally's next attack or skill. | Echo Enchant, Phase Weapon, Piercing Enchant | Twin Enchant, Lingering Magic, Spell Ward |
+| **Transmuter** | Changes what a unit is: stats, glass, stone. | Transmute, Glass Body, Petrify | Lasting Change, Brittle Glass, Mirror Form |
+| **Hexer** | Curses and hexes. | Curse of Betrayal, Curse of Weight, Withering Hex | Witch's Patience, Lingering Malice, Spreading Curse |
+| **Pyromancer** | Fire damage and burning ground. | Fireball, Kindle, Row of Fire | Wildfire, Inferno, Ashwalker |
+| **Stormcaller** | Lightning, Stuns and wind. | Lightning Bolt, Chain Lightning, Tempest | Conductor, Static Field, Eye of the Storm |
+| **Cryomancer** | Frost: Frozen and ice. | Ice Lance, Freeze, Frost Nova | Cold Heart, Brittle, Steam Burst |
+| **Berserker** | Raw melee damage and pushing the enemy Front row. | Rampage, Sweeping Kick, Battle Roar | Reckless Swing, Last Stand, Unstoppable |
+| **Champion** | Marks one enemy and duels it. | Challenge, Single Combat, Execution | Hunt Down, Duelist, Glory |
+| **Tactician** | The timeline and Momentum. | Swap Turns, Press the Advantage, Coordinated Strike | All In, Inspiring Presence, Initiative |
+| **Commander** | Moves your own units. | Advance, Switch Places, Rotation | Drill, Rally, Vanguard |
+| **Bard** | Songs for allies, a lullaby for enemies. | Song of Haste, War Drums, Lullaby | Grand Chorus, Rhythm, Crescendo |
+| **Thief** | Steals statuses and skills. | Melt Away, Lift a Skill, Snatch | Escape Artist, Master Thief, Shadow Purse |
+| **Saboteur** | Blinds, delays and breaks plans. | Flash Powder, Cut the Strings, Jam | Wrecker, Chaos Agent, Disarm Trap |
+| **Engineer** | Turrets, barricades and traps. | Bolt Turret, Barricade, Net Trap | Reinforced, Self-Repair, Rapid Fire |
+| **Chemist** | Poison and fire on the ground, potions. | Poison Gas, Firebomb, Healing Draught | Showman, Potent Brew, Volatile |
+| **Necromancer** | Raises and uses the dead. | Raise Undead, Corpse Explosion, Desecrate | Lich Form, Bone Armor, Death's Bounty |
+| **Summoner** | Golems and animated blades. | Clay Golem, Rune Golem, Animate Blades | Golem Heart, Portal, Quickening |
+| **Totemist** | Totems that protect a row. | Healing Totem, Spirit Link Totem, Totem of Return | Great Totem, Sturdy Totems, Spirit Shield |
+| **Ritualist** | Water and ice on the ground. | Rain Dance, Hoarfrost, Rite of Mists | Deluge, Tidecaller, Frostbinder |
+| **Spiritwalker** | Possession and soul swaps. | Puppet Soul, Life Swap, Forced Step | Soul Anchor, Haunting, Puppeteer |
+| **Skyborne** | Flight, wind and dives. | Take Off, Gust, Dive | Sky Lord, Eagle Eye, Lift |
 
-The system is designed for creatures of any shape, including humanoids, animals, floating entities, amorphous creatures, and completely abstract beings.
+**Magical classes.** Every active of Mender, Cleric, Lifebinder, Enchanter, Transmuter, Hexer, Pyromancer, Stormcaller, Cryomancer, Necromancer, Summoner, Totemist, Ritualist and Spiritwalker is magical, and so are the Bard's three songs. Every other skill is physical. Silenced blocks magical skills (game_system §10.5).
 
-Classes describe broad archetypes rather than individual weapons or specialized fantasy RPG roles.
+## 3. Assigning classes
 
----
+- **Visible in the art.** A class must be visible in the creature's art, shown and not implied by colour or material. Casters (Mender, Cleric, Lifebinder, Enchanter, Transmuter, Hexer, the three elemental classes, Necromancer, Summoner, Totemist, Ritualist, Spiritwalker) need a casting tool or clear spellcasting: a wand, staff, orb, tome, runes or a spell in hand. A fire-coloured body alone is not a Pyromancer; it suggests a fire attack instead. Skyborne needs wings or another clear way to fly.
+- **Fit comes from care, not rules.** Avoid only what clearly clashes with the art. Everkin is a card game with light animation, so generous fits are fine: a living drawbridge can have a charge.
+- **No gating.** There are no subclasses, element tags, body traits or per-creature exclusion lists.
 
-## 2. Attack Types (9)
+## 4. Unique attacks
 
-| Attack Type | Description |
-|---|---|
-| **Brawl** | The body itself: fists, kicks, martial arts, claws, bites, horns, beaks and fangs |
-| **Bladed** | Swords, daggers, axes, scythes, and bladed weapons |
-| **Polearm** | Spears, lances, halberds, and other long-reach weapons |
-| **Ranged** | Bows, crossbows, slings, and other projectile weapons, and directly thrown objects such as knives, rocks, spears and explosives |
-| **Magic** | Spells, magical bolts, and supernatural projectiles |
-| **Blunt** | Hammers, clubs, maces, and other blunt weapons |
-| **Breath** | Fire breath, frost breath, poison spit, acid sprays, and similar emissions |
-| **Whip** | Whips, tentacles, tails, vines, and flexible appendages |
-| **Aura** | Continuous or pulsing damage fields surrounding the creature |
+Every creature has one attack of its own, listed in [creature-classes.md](creature-classes.md). It is always the first button of the action bar.
 
-### Attack Type Rules
-
-- Every creature has exactly one primary Attack Type.
-- Attack Types describe how the creature normally attacks, not every ability it can use.
-- Individual weapons, body parts, and animations are variants within their Attack Type.
-- Aura describes area-based damage originating around the creature.
-- Magic describes the primary attack method and does not require the Sorcerer profession.
-- Special abilities may employ other attack methods without changing the primary Attack Type.
-
----
-
-## 3. Professions (12)
-
-| Profession | Description and included archetypes |
-|---|---|
-| **Hunter** | Tracking, hunting, trapping, survival. Includes Ranger, Tracker, Trapper |
-| **Guardian** | Defensive abilities, endurance, area protection, battlefield control, and protecting allies: intercepting attacks and taking damage for others. Includes Defender, Tank, Sentinel, Bodyguard |
-| **Healer** | Restoring health, cleansing conditions, regeneration, holy protection. Includes Medic, Cleric, Paladin |
-| **Sorcerer** | All non-elemental spells: arcane magic, enchantment, magical enhancement, and dark magic such as curses, hexes and life drain. Includes Enchanter, Warlock, Hexer |
-| **Elementalist** | Fire, frost, water, storm and earth magic; earth includes stone and crystal. Includes elemental weapons and armor |
-| **Warrior** | Offensive martial abilities, endurance, combat mastery. Includes Berserker, Duelist, Knight, Monk |
-| **Leader** | Commanding the flow of battle: the shared timeline and Momentum, who acts when, tactical coordination, and moving your own units around the field. Includes Commander, Tactician |
-| **Rogue** | Stealth, precision, critical attacks, executing vulnerable targets, deception, illusions, misdirection, sabotage and theft. Includes Assassin, Ninja, Trickster, Illusionist, Thief |
-| **Tinker** | Making things: potions, chemicals, poisons, mixtures, machinery, gadgets, constructs, mechanical traps. Includes Alchemist, Herbalist, Poisoner, Engineer, Artificer |
-| **Summoner** | Summoning and commanding additional creatures, spirits, entities, or constructs, including necromancy: raising the dead and bone constructs. Includes Beastmaster, Necromancer |
-| **Primalist** | Primal nature and the soul: plants, roots, beasts, shapeshifting, totems, nature spirits, rituals and life force. Spirits of the dead belong to Summoner. Includes Druid, Shaman |
-| **Flying** | Flight, aerial mobility, evasive maneuvers, dive attacks, and airborne combat advantages |
-
-### Profession Rules
-
-- Every creature receives one or two Professions.
-- Professions describe special abilities and tactical identity, not the creature's basic weapon or attack animation.
-- Professions are intentionally broad. Narrower fantasy archetypes are included rather than becoming independent classes.
-- Two Professions combine their capabilities and can create unusual playstyles.
-- Professions are not restricted by Attack Type or physical appearance.
-- Flying describes aerial capabilities and movement rather than a primary attack method.
-
----
-
-## 4. Skill Fit (adopted 2026-10-14)
-
-Andreas's goal: no creature gets access to skills that clearly do not fit its design. Decided in the skill-fit quiz:
-
-- **No subclasses and no tags.** There are no element tags, no summon kinds, no assigned branches and no per-creature exclusion lists. Every Elementalist can learn skills of every element.
-- **Branches are organizational only.** A profession's skill tree may be grouped into branches (for example by the archetypes listed in section 3), but a creature can learn from all branches of its professions. Within a branch, each skill needs its parent (game_system §4.1); across branches only skill points limit what it learns.
-- **No body traits.** Skills are not gated by hands, wings, voice or similar traits.
-- **Fit comes from care, not rules.** Avoid only what clearly clashes with a creature's art when assigning professions and designing skills. Everkin is a card game with light animation, so generous fits are fine: a living drawbridge can have a charge attack.
-- **A profession must be visible in the art (Andreas, 2026-10-14).** Its cue has to be shown, not implied by color or material. Sorcerers and Elementalists need a casting tool or clear spellcasting: a wand, staff, orb, tome, runes or a spell in hand. A fire-colored body alone is not an Elementalist; it suggests a fire basic attack (Breath, Aura or Magic with that element) instead.
-
----
-
-## 5. Movement roles and battlefield effects (adopted 2026-10-19)
-
-Decided by Andreas in the synergy quiz, round 2. Ground effects sit on a spot, as burning ground does; statuses sit on a unit.
-
-- **Guardian** blocks movement. It gets no ground effects.
-- **Warrior** moves enemies: forced movement of enemy units.
-- **Leader** moves your own units: forced movement of friendly units.
-- **Hunter** has traps and marks an enemy; it needs no further effects.
-- **Healer** gets no ground effects.
-- **Elementalist** causes burning ground, ice, water, Frozen and steam (game_system section 12.2).
-- **Rogue** causes Blind (flash powder) and poison ground (Poison vial).
-- **Primalist** causes ice and water effects: Rain dance, Hoarfrost.
-- **Tinker** causes fire and poison effects: Firebomb, Flame turret, poison ground (Poison gas), and poison ground exploding when fire lands on the same row.
-- **Sorcerer** has none yet: none of the 15 suggestions were kept.
-- **Summoner** and **Flying** get no ground effects.
-- **Leader** has a **Bard** branch, for the former Bard creatures.
-
+- **Parts:** a name, a delivery (Melee, Projectile or Direct), damage, at most one small extra, Delay and Momentum, and an animation style.
+- **Strength:** 3 to 6 damage at Power 5, Delay 3 or 4, no Momentum cost. An extra is paid for with less damage. Extras are small: a low chance of Bleeding, Poisoned, Stunned or Confused, a push or pull, splash on the units next to the target, life steal of 1, or anything similar that fits the art and is not too strong.
+- **Always hostile:** an attack always hits an enemy; healing and support stay in class skills.
+- **Breath and pulse attacks** (Direct) work in melee reach (game_system §8.1): a breath hits one enemy there and splashes the units next to it, a pulse hits every enemy there.
+- **Magical attacks:** an attack with the bolt or pulse animation is magical; every other attack is physical.
+- **Animation:** one of the shared styles lunge, swing, shot, throw, bolt, breath or pulse, with a colour.
+- **Used by others:** raised undead, Puppet Soul and Coordinated Strike use the creature's own unique attack.

@@ -70,7 +70,7 @@ Each task names the doc sections it implements. Read those sections before codin
 - **M1.3** Formation: rows, capacity, ordered positions, alignment, adjacency (game_system §7, §8.4 adjacency).
 - **M1.4** Timeline: Delay, Speed, ties, auto events, delayed events, skipped turns (§6.1 to §6.5).
 - **M1.5** Momentum: scale, gains, costs, refunds, shifts (§6.7).
-- **M1.6** Ranges and targeting: opposing distance, own-side range, either-side rule, Own side only, empty rows (§7.4, §8.1).
+- **M1.6** Ranges and targeting: opposing distance, own-side range, either-side rule, Own side only, empty rows (§7.4, §8.1). Range was removed on 2026-11-12; M5.6 replaces it with the Front-row melee rule and melee reach.
 - **M1.7** Damage, healing and shields: rolls, Power scaling ×Power÷5, Ward and Dampen, minimum 1 (§5.2).
 - **M1.8** Interception and area patterns (§8.2 to §8.5).
 - **M1.9** Movement: Move, movement inside skills, forced repositioning and bumps (§9).
@@ -79,8 +79,8 @@ Each task names the doc sections it implements. Read those sections before codin
 - **M1.12** Reactions (§6.6).
 - **M1.13** Summons, constructs, totems, traps, undead (§11).
 - **M1.14** Ground effects (§12.2) and battle end (§12.3).
-- **M1.15** Skill trees and builds: 8 points, one parent per node (Needs column), random legal builds, default builds (§4.1).
-- **M1.16** The nine Attack Type attacks, then every profession skill in skills.md, one profession at a time, one class per skill built from shared building blocks (production §2.2). One task per profession: M1.16a Hunter, b Guardian, c Healer, d Sorcerer, e Elementalist, f Warrior, g Leader, h Rogue, i Tinker, j Summoner, k Primalist, l Flying.
+- **M1.15** Skill trees and builds: 8 points, one parent per node, random legal builds, default builds. Superseded: M5.6 removes trees and builds.
+- **M1.16** The nine Attack Type attacks, then every profession skill in skills.md, one profession at a time, one class per skill built from shared building blocks (production §2.2). One task per profession: M1.16a Hunter, b Guardian, c Healer, d Sorcerer, e Elementalist, f Warrior, g Leader, h Rogue, i Tinker, j Summoner, k Primalist, l Flying. Superseded: M5.6 replaces Attack Types and professions with the 28 classes and the creatures' unique attacks.
 - **M1.17** Every worked check in §20.5 is a passing test.
 - **M1.18** Preview queries: damage range, interception chance, timeline position, forced movement (production §2.2).
 
@@ -101,7 +101,7 @@ Each task names the doc sections it implements. Read those sections before codin
 
 - **M4.1** Player turn: action bar, targeting, previews, Move, Skip Turn, surrender (ui_spec).
 - **M4.2** Team editor and collection (ui_spec party setup and collection).
-- **M4.3** Skill tree editor (ui_spec skill tree editor).
+- **M4.3** Skill tree editor. Superseded: M5.6 removes it.
 - **M4.4** Free battle setup, difficulty choice and result screen.
 
 ### M5 Tutorial and chapter 1
@@ -113,6 +113,8 @@ Each task names the doc sections it implements. Read those sections before codin
 
 - **M5.5** Battle UI left/right with round portraits and visible ground effects ([spec.md](../spec.md), ui_spec battle screen). First the art: extend `tools/art/generate_creatures.py` for the portraits and three rings (docs/assets/battle-portraits.md), 4 test portraits for the owner, the batch, a contact sheet for the owner, cleaning; then the board, portraits, ground layer, timeline, log and preview.
 
+- **M5.6** Classes rework (owner 2026-11-11 and 2026-11-12, [classes-spec.md](../classes-spec.md) work order). The rules are in the docs: class_system.md (28 classes, unique attacks), skills.md (one table per class), creature-classes.md (each creature's 2 classes, 2 keystones and attack), game_system.md (no range, Front-row melee, melee reach, interception 75/50 and 50/25, nearest, summon placement) and ui_spec.md (card, action bar, team editor). Replace Attack Types, professions, trees, builds and range in the core, content JSON, AI, runner and UI; rewrite the §20.5 tests; then rerun the AI-versus-AI batch.
+
 ### M6 Local two-player
 
 - **M6.1** Hot-seat battles with the board flipped so the acting player's side is on the left (game_system §2.4 and the 2P rules).
@@ -120,7 +122,7 @@ Each task names the doc sections it implements. Read those sections before codin
 ### M7 Rest of the campaign
 
 - **M7.1** Chapters 2 to 4 with their bosses (campaign.md).
-- **M7.2** Achievements: the 30 in campaign.md, page and toasts (ui_spec), platform mirroring later in M10.
+- **M7.2** Achievements: the 28 in campaign.md, page and toasts (ui_spec), platform mirroring later in M10.
 
 ### M8 Post-story content
 

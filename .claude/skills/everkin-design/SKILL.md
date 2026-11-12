@@ -10,10 +10,10 @@ The design documents are the source of truth. Never answer, propose or edit from
 ## Before doing anything
 
 1. Read the relevant parts of **docs/game_system.md**. It is large (about 1500 lines); read it in pages or search for the section headings. The section map:
-   - §2 modes, campaign, coins, AI-versus-AI harness (§2.5) · §4 skill trees and skill rules (§4.1 tree model, §4.7) · §5 stats, damage formula, Cost, anchors · §6 timeline, auto events, Momentum (§6.7)
-   - §7 formation, rows and distance (§7.4) · §8 targeting, interception (§8.2), area patterns (§8.4) · §9 movement · §10 stealth, KO, statuses (§10.5), airborne (§10.6)
+   - §2 modes, campaign, coins, AI-versus-AI harness (§2.5) · §4 skill rules (§4.1 fixed skills and keystones, §4.7 tags) · §5 stats, damage formula, Cost, anchors · §6 timeline, auto events, Momentum (§6.7)
+   - §7 formation and rows (§7.4, no range) · §8 targeting, interception (§8.2), area patterns (§8.4) · §9 movement · §10 stealth, KO, statuses (§10.5), airborne (§10.6)
    - §11 summons and undead (§11.5) · §12 ground effects and battle end · §15 world and chapters · §19 decisions still required · §20 details before implementation
-2. Read **docs/class_system.md** for Attack Types and Professions and **docs/skills.md** for every skill. Read **docs/creature-classes.md** for the roster (all 319 creatures: classes, biome, stats, Cost, art and crops).
+2. Read **docs/class_system.md** for the 28 classes and unique attacks and **docs/skills.md** for every class skill and keystone. Read **docs/creature-classes.md** for the roster (all 319 creatures: classes, biome, stats, Cost, art and crops).
 3. Read **docs/ui_spec.md** for any UI, screen or interaction question.
 4. Read **docs/production.md** for platforms, release, business model, technology, saving and online. New decisions that are not game mechanics go there, not into game_system.md.
 5. Check §19 of game_system.md. If a rule is listed there as undecided, do not invent it: ask the owner.
@@ -24,8 +24,8 @@ The design documents are the source of truth. Never answer, propose or edit from
 | Content | Document |
 |---|---|
 | Game-wide rules (damage, Momentum, timeline, interception, statuses, formation, summons, ground effects) | docs/game_system.md |
-| Attack Types and Professions | docs/class_system.md |
-| Every attack and profession skill, with Delay, Momentum, delivery and range | docs/skills.md |
+| The 28 classes and unique attacks | docs/class_system.md |
+| Every class skill and keystone, with Delay, Momentum and delivery | docs/skills.md |
 | Creature roster: classes, biome, stats, Cost, art file and crops | docs/creature-classes.md |
 | Screens, layouts, interactions | docs/ui_spec.md (reviewed mockups in docs/mockups/, reference only) |
 | Implementation tasks / live progress and open questions from coding | docs/implementation-plan.md / PROGRESS.md (how to work: CLAUDE.md) |

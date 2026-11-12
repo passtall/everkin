@@ -11,7 +11,7 @@ Everything the game loads. Godot sees this folder as `res://assets/`. Originals 
 | `backgrounds/card/` | One card background per biome. | 1024 × 1536 WebP |
 | `backgrounds/battle/` | One photo-real night battle background per biome. | 1672 × 941 PNG, scaled up to 1920 × 1080 on import |
 | `ui/` | Menu background (night fairytale), PNG and SVG. | |
-| `icons/skills/` | Action bar icons: `attack-<type>`, `action-move`, `action-skip`, `<profession>-<branch>`. A skill uses its branch icon unless `<skill_id>.png` exists. | 512 × 512 RGB PNG, full bleed |
+| `icons/skills/` | Action bar icons: `action-move`, `action-skip`, and one `<skill_id>.png` per class skill and unique attack (made in M5.6; until then the old `attack-<type>` and `<profession>-<branch>` icons stand in). | 512 × 512 RGB PNG, full bleed |
 | `icons/ui/` | `status-*`, `ground-*`, `marker-*`, `hud-*`. The game overlays the status letter. | 256 × 256 RGBA PNG |
 | `brand/` | `emblem.png`, `wordmark.png`, `app-icon.png` (also the Godot project icon). No vector versions. | PNG |
 | `fonts/` | Alegreya (headings and names, variable weight, plus italic) and Alegreya Sans (body text and numbers: Regular, Medium, Bold, Italic), from Google Fonts. Their licences `OFL-Alegreya.txt` and `OFL-AlegreyaSans.txt` ship with the game. | TTF |

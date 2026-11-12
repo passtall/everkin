@@ -14,6 +14,8 @@ The implementation state, kept current by every Claude Code session ([docs/imple
 2. **Play-test chapter 1 with the owner** (nobody has played the campaign by hand yet; I checked the screens by screenshots and played battles with the AI standing in for the player). The AI-played tutorial and 1-1 battles were lost, because the AI is weak on a 2 to 6 creature team and the enemy side spams constructs (see question 17). If tutorial and chapter 1 are too hard for a person, the numbers to tune are the team formations and `ai_settings.json` (`summonPercent` of Easy was lowered from 50 to 20 on 2026-11-10 for this; the adopted 50 still stands for Normal and Hard).
 3. **M5.5 battle UI left/right** (owner 2026-11-10, before M6.1): read spec.md and docs/assets/battle-portraits.md. Portraits and rings first (generate, owner checks 4 tests and a contact sheet), then the board. **M6.1 local two-player** (game_system §2.4) follows: hot-seat battles with the board flipped so the acting player's side is on the left; player 1 picks a saved team, then player 2; both teams side by side, then Fight. The battle screen is `PlayScreen` (player side A vs AI): a second human needs a `Bottom` side switch in `BattleBoard` (`Setup(state, bottom)` exists) and a controller for side B that reuses `AskPlayer`.
 
+4. **M5.6 classes rework** (owner 2026-11-11/12, after M5.5): the docs were rewritten on 2026-11-12 for the 28 classes, unique attacks and no skill distance; [classes-spec.md](classes-spec.md) is the work order. Questions 1, 10 and 12 to 15 above refer to the old trees and professions and lapse with M5.6.
+
 ## In flight
 
 Nothing.

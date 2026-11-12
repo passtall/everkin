@@ -1,346 +1,170 @@
 # Everkin — Game Design Document
 
-**Version:** 0.6 — Defense removed; the fourth stat is Cost, with a team budget
+**Format:** digital tactical card game with creature collection.
 
-**Updated:** 2026-10-15
-
-**Format:** Digital tactical card game with creature collection and RPG character builds
-
-**Project name:** Everkin is a working title.
-
-**Companion documents:** [UI specification](ui_spec.md) owns screens and interactions. [Class system](class_system.md) owns the class definitions (Attack Types and Professions); [Skills](skills.md) owns every profession's skills (adopted 2026-11-03); [classes_and_skills.md](archive/classes_and_skills.md) is superseded. [Creature classes](creature-classes.md) owns the creature roster (classes, biome, stats, Cost, art); [archive/creatures.md](archive/creatures.md) keeps the size tiers of the first draft. This document owns game rules, scope, and implementation requirements.
-
-**Current work:** define the whole game before gameplay implementation. Classes and skills are designed one class at a time, with about ten questions per round, and the answers are applied directly to these documents. Keep unresolved choices explicit; no separate decision history is maintained.
+**Companion documents:** [class_system.md](class_system.md) owns the classes, keystones and unique attack rules; [skills.md](skills.md) every skill and keystone; [creature-classes.md](creature-classes.md) the creature roster (classes, keystones, attack, biome, stats, Cost, art); [ui_spec.md](ui_spec.md) screens and interactions; [campaign.md](campaign.md) the campaign content; [production.md](production.md) platforms, technology, saving, online and the roadmap. This document owns the game rules and scope.
 
 ## 1. Design vision
 
 > Build your perfect fighting party from everything the world has to offer.
 
-Everkin centers on collecting and combining humans, animals, and fantasy beings into a highly customizable combat team. Every recruit belongs to the same party system. Humans are combatants alongside other creatures, rather than a separate trainer category.
+Everkin is about collecting and combining humans, animals and fantasy beings into a combat team. Every recruit belongs to the same party system; humans fight alongside the other creatures rather than training them.
 
-The player expresses strategy through team selection, skill-tree investment, formation, and individual combat actions. A visible, manipulable turn timeline and meaningful positioning create the tactical identity of the game.
+The player expresses strategy through team selection, formation and individual combat actions. A visible, manipulable turn timeline and meaningful positioning give combat its identity.
 
-Everkin is now a **card game as its intended product format**, rather than a card prototype awaiting a 3D conversion. Characters appear as illustrated cards. **No 3D assets will be created.** Hearthstone is a reference for the accessibility and appeal of a card-based presentation, not a specification to copy its rules, interface, artwork, or branding.
-
-The established combat model remains skill-driven: cards represent persistent team members, and those members use their learned abilities. The presentation change does not introduce a shuffled deck, hand, random action-card draws, or a per-round mana system. Those systems were not selected in the discussions.
+Everkin is a **card game**: characters appear as illustrated cards, and no 3D assets are made. Cards represent persistent team members who use their own skills. There is no shuffled deck, hand, card draw or per-round mana.
 
 ### 1.1 Design pillars
 
 | Pillar | Design requirement |
 |---|---|
-| Team freedom | Humans, ordinary animals, and fantastic creatures are all valid party members. |
-| Build diversity | Species, accessible skill trees, point allocation, and formation produce distinct builds. |
-| Tactical clarity | Players can understand legal targets, protection, movement, and turn-order consequences. |
-| Meaningful timing | Speed and skills affect when units act; combat does not rely on a fixed once-per-round sequence. |
-| Meaningful formation | Position changes access, protection, area effects, and skill behavior. |
+| Team freedom | Humans, ordinary animals and fantastic creatures are all valid party members. |
+| Variety | Every creature has two classes, two keystones and its own attack, so even creatures of the same classes play differently. |
+| Tactical clarity | Players can understand legal targets, protection, movement and turn-order consequences. |
+| Meaningful timing | Speed and skills decide when units act; there is no fixed once-per-round sequence. |
+| Meaningful formation | Position decides who can use melee, who covers whom, area effects and movement. |
 | Few required decisions | A turn asks only for the choices needed to execute the action. Reactions resolve automatically. |
-| Character variety | Tiny animals, humans, unusual fantasy beings, and immense creatures belong in the same collection. |
-| Achievable production | Reusable systems, readable artwork, and a focused playable core take priority over content volume. |
+| Achievable production | Reusable systems, readable artwork and a focused playable core take priority over content volume. |
 
-### 1.2 Document status
+### 1.2 Document rules
 
-This is the current game design, still being completed. **Established** rules are selected; **proposed** rules and example numbers require a decision; **open** items remain undefined; **deferred** features are outside the current scope unless explicitly included later.
-
-An agent must not invent missing gameplay rules. Before implementation, settle the scope, numerical rules, content, and UI behavior of every included feature. Examples illustrate behavior without fixing balance values unless explicitly adopted.
+Rules here are decided unless section 19 lists them as open. An agent must not invent missing rules: if a case is not covered, it asks the owner. Examples illustrate behavior without fixing balance values unless they say so. All numbers are starting values that AI-versus-AI testing tunes.
 
 ## 2. Player experience and game loop
 
 ### 2.1 Core combat loop
 
-1. Review available recruits and their characteristics.
-2. Select a party.
-3. Allocate skill points across each member's available trees.
-4. Set the starting formation.
-5. Fight using unit skills, positioning, and the turn timeline.
-6. Evaluate the result and revise the party, builds, or formation.
+1. Review the collection.
+2. Pick a team of up to six creatures within the team budget (section 5.1).
+3. Set the starting formation.
+4. Fight with skills, positioning and the turn timeline.
+5. Evaluate the result and revise the team or formation.
 
-The immediate playable experience is a team-building and combat game. Combat must be enjoyable before a larger progression or narrative structure is added.
+There are no skill points, skill trees, builds or respecs: a creature's skills and keystones are fixed (section 4.1).
 
-### 2.2 Collection and progression loop
+### 2.2 Collection and progression
 
-**Design intent:** discover or unlock recruits, gain access to new combinations, improve builds, and face encounters that reward different strategies.
+**Campaign.** The story campaign is a linear sequence of **four chapters** of fixed-order battles, each of about five battles plus a boss battle, shown on illustrated maps (section 15; content in campaign.md). Each won encounter gives **one fixed creature** from the defeated enemy team, shown on the map before the battle. A won encounter can be replayed, but its reward is given only once. Losing has no penalty: the player can retry at once or change the team first. Encounters never restrict the player's team beyond the team budget. The campaign cannot be restarted; finished encounters can be replayed.
 
-Players explore a **story campaign presented as illustrated locations**. For now, use a **linear sequence of four stages**. Each stage has **about five battles plus a boss battle** that ends the stage (about 24 battles in total), played in a fixed order; the location map is illustration, not a route choice. Detailed campaign content will be specified later. The four-stage sequence is the current testing scope, not a final campaign-length commitment.
+**Collection.** A player owns each creature at most once, and a player's team uses each creature at most once. Enemy teams may repeat creatures. There are no creature levels.
 
-Units unlock through **guaranteed encounter rewards** for now. Each won encounter gives **one fixed creature**, shown on the map before the battle, and that creature is **one of the defeated enemy team**. Exact encounter-to-unit assignments remain open. A won encounter can be replayed, but its unit reward is given only once. A mixture of acquisition methods may be considered later, but capture or other recruitment mechanics are not currently required.
+**Tutorial.** A new player starts with the campaign tutorial: three short battles. The player starts with **Daggerwhisk** and **Slingwhisker**, gains **Tailwind Kite** after the first win, **Ripplequill** after the second, and **Hornpip** and **Potionpaw** after the third. During the tutorial the game keeps one automatic team with every owned creature in a default formation; Edit team in the campaign panel works on it. All other modes unlock once the tutorial is complete.
 
-**Collection.** A player owns each creature at most once, and a player's team uses each creature at most once. Enemy teams may repeat creatures.
+**After the story.** Fixed, harder **challenge encounters** appear on the map; each unlocks one more creature. At least one **random-battle mode** gives continued play: the player picks a difficulty and the enemy team is drawn at random. Random battles unlock no creatures.
 
-**Start of play.** A new player begins with the **campaign tutorial**: three short battles. The player starts with **two cheap creatures** (Cost 2–3) and gains one after the first win, one after the second and two after the third, reaching six (adopted 2026-10-07). **Tutorial creatures (adopted 2026-11-04):** the player starts with **Daggerwhisk** (Rogue, Hunter) and **Slingwhisker** (Hunter, Rogue), gains **Tailwind Kite** (Flying, Healer) after the first win, **Ripplequill** (Elementalist, Sorcerer) after the second, and **Hornpip** (Leader, Summoner) and **Potionpaw** (Tinker, Rogue) after the third. All other modes unlock once the tutorial is complete. **Tutorial team (adopted 2026-11-08):** during the tutorial the game keeps one automatic team with every owned creature in a default formation; Edit team in the campaign panel works on it.
+**Coins.** Coins unlock creatures that are not campaign rewards. A random-battle win pays **10 coins** at every difficulty and an online win **15**; losses, surrenders and challenge encounters pay none. Coins are earned, spent and bought only **while connected** to the online server, which keeps the balance (production.md §1.4). A coin creature costs **50 + 25 × its Cost** coins and is bought from its card in the collection; the Shop sells only coin packs (ui_spec.md, production.md §1.2).
 
-**Campaign rules (adopted 2026-10-06).** Losing a campaign battle has no penalty: the player can retry the encounter at once or change the team first. Campaign locations hold battles only for now; story events and other encounters come with the full campaign design. Encounters never restrict the player's team beyond the team budget (section 5.1, adopted 2026-10-15). The campaign cannot be restarted; finished encounters can be replayed instead.
+**Roster split (guide).** About 6 tutorial creatures, about 24 campaign rewards, one challenge creature per chapter, and the rest bought with coins.
 
-**Levels.** There are no creature levels for now (Andreas, 2026-11-03): every unit has its full skill points from the start (section 4.1).
-
-After completing the story, at least one **random-battle mode** provides continued play. The player picks a difficulty and the enemy team is drawn at random. Random battles unlock no creatures; their wins pay coins while the game is connected (see below).
-
-**After the story.** Fixed, harder **challenge encounters** appear on the map; each unlocks one more creature. After the story, and in online play, the player also earns **coins**. Coins unlock creatures that are not campaign rewards. Random-battle wins and online play pay coins; challenge encounters give only their creature, no coins. Each coin creature has its own price. Coins can also be bought (production.md §1.2). A coin creature is bought from its card in the collection; the Shop sells only coin packs (ui_spec.md).
-
-**Coin numbers (starting values for testing, adopted 2026-10-07).** A random-battle win pays **10 coins** at every difficulty. Coins are only earned, spent and bought **while connected** to the online server, which keeps the balance (adopted 2026-10-18, production.md §1.4); a random battle played offline pays nothing. **Prices (adopted 2026-11-08, replacing the size-tier guide):** a coin creature costs **50 + 25 × its Cost** coins (Cost 2 = 100, Cost 5 = 175, Cost 10 = 300). The economy is checked again in the closed test.
-
-**Roster split (guide).** Roughly 6 tutorial creatures, about 24 campaign rewards, one challenge creature per stage, and the rest bought with coins. The roster is not complete yet, so these counts are proportions, not fixed numbers.
-
-There is no established collectible-card business model. The use of cards does not itself imply booster packs, paid randomized acquisition, trading, or duplicate conversion.
+There are no booster packs, randomized paid acquisition, trading or duplicate conversion.
 
 ### 2.3 Platforms and controls
 
-The required platforms are **Windows, Android, and iOS**, with **landscape orientation only**. Desktop and touch readability must influence the design from the start.
+Windows, Android and iOS, **landscape only**. Desktop and touch readability shape the design from the start. Release order, stores, devices and controllers are in production.md §1.
 
-Release order, stores, minimum devices, screen shapes and controller support are adopted in [production.md](production.md), section 1. Required platform support must be verified during implementation; it is not an existing implementation milestone.
+### 2.4 Modes
 
-### 2.4 Modes and development order
-
-- **AI versus AI:** the first development/testing mode, allowing both parties to play automatically for easier combat testing.
-- **Single-player versus AI:** required, including the story campaign and at least one post-story random-battle mode.
-- **Free battle versus AI:** available once the tutorial is complete. The player picks a team from their collection, an enemy team (random or chosen from unlocked units) and the AI difficulty. No rewards.
-- **Local two-player:** required. Both players build their teams from the collection saved on the device, and both teams may use any creature in it, including the same ones. The board rotates 180° so the acting player's side is always at the bottom (adopted 2026-11-08).
-- **AI strength.** Each campaign and random-battle encounter sets its own AI level. Only free battles let the player choose it.
-- **Battle viewer:** only in development builds.
-- **Online PvP:** in the first release. The owner **greenlit it on 2026-10-18**: it is built in its roadmap slot, after post-story content and before release (production.md §3). Until then, code keeps the interfaces and boundaries ready for it; the backend will be a Spring Boot (Java) server plus a C# battle service running the rules core (production.md §2.4).
-  - **Online rules (adopted 2026-10-09).** Players use only their **own collection**, as in single-player. Opponents are found by **quick match** against a similar player or in a **private match** with a friend code. Matchmaking uses a **hidden rating**; there is no visible ladder at first. Each player picks a saved team **before** being matched and sees the opponent's team only when the battle starts. Each turn has a **60-second timer**; when it runs out, the unit uses Skip Turn. A player who disconnects has **1 minute** to reconnect and continue (their timer keeps running), then loses (shortened from 2 minutes on 2026-10-18). An online win pays **15 coins**; a loss or surrender pays nothing (changed 2026-10-18, it used to pay 5). Players can send a few **fixed emotes** (Hello, Well played, Thanks), which the other side can mute; there is no text chat.
-  - **Online details (adopted 2026-10-18).** Players are shown by their **platform display name**. In quick match the allowed rating gap **widens over time** until anyone can be matched; the player can cancel at any time and there are no bots. A **private match** works with a short code: one player opens a match and shares the code, which expires once the match starts. After any online battle both players can choose **Rematch**; it starts only if both accept. A player who quits **3 times in a day** (surrender or disconnect loss) cannot use quick match for **10 minutes**. Online play needs the full game, not the demo.
-
-**Balance testing method.** AI-versus-AI battles start from random units. Each AI picks its action on its turn with a minimax search. Every battle's setup and result are recorded (section 2.5), and statistics are kept on which units, classes and skills win or lose more often. Those statistics drive balance adjustments. Battles must therefore be deterministic given a seed, and the rules core must be able to run battles without any presentation.
-
-The AI-versus-AI milestone comes first once gameplay implementation begins. The current task remains defining the game before implementation.
+- **AI versus AI:** the first development and testing mode (section 2.5).
+- **Campaign and random battles versus AI** (section 2.2).
+- **Free battle versus AI:** after the tutorial. The player picks a team from the collection, an enemy team (random or chosen from unlocked creatures) and the AI difficulty. No rewards.
+- **Local two-player:** both players build their teams from the collection on the device and may use the same creatures. The board turns so the acting player's side is always their own (ui_spec.md).
+- **AI strength.** Each campaign and random-battle encounter sets its own AI level; only free battles let the player choose it.
+- **Battle viewer:** development builds only.
+- **Online PvP:** in the first release, built after post-story content (production.md §3). Players use only their own collection. Opponents come from **quick match** (hidden rating; the allowed gap widens over time until anyone can be matched; cancel at any time; no bots) or a **private match** with a short code that expires when the match starts. Each player picks a saved team before matching and sees the opponent's team when the battle starts. Each turn has a **60-second timer**; when it runs out, the unit uses Skip Turn. A player who disconnects has **1 minute** to reconnect (their timer keeps running), then loses. Players can send fixed emotes (Hello, Well played, Thanks), which the other side can mute; there is no text chat. Players are shown by their platform display name. After a battle both can choose **Rematch**; it starts only if both accept. A player who quits **3 times in a day** (surrender or disconnect loss) cannot use quick match for **10 minutes**. Online needs the full game, not the demo. Backend: production.md §2.4.
 
 ### 2.5 AI-versus-AI test harness
 
-The harness plays battles automatically for balance testing and debugging. Adopted rules:
+The harness plays battles automatically for balance testing and debugging. Battles are deterministic given a seed, and the rules core runs them without any presentation.
 
-- **Teams.** Each side gets 6 random creatures from the roster ([creature-classes.md](creature-classes.md)) whose total Cost fits the team budget (section 5.1), with no duplicates within a side. The same creature may appear on both sides. Each unit gets a **random legal build**: its 10 skill points are assigned at random under the tree rules of section 4.1, and the build is recorded with the battle (adopted 2026-11-08).
-- **Party size.** Test battles are 6 versus 6 only for now.
-- **Formation.** Each side's starting formation is a random legal placement. It is recorded with the battle, so the statistics also show which rows work for which units.
-- **Search.** Each AI uses a minimax search over a fixed number of upcoming timeline turns, counted across both sides. Both AIs in a test battle use the same settings.
-- **Depth and difficulty.** Search depth comes from the AI's difficulty level: low difficulty searches shallow, and the highest level uses a high depth that still runs without problems. Test runs use the highest level. Starting values are below; they are tuned after measuring speed in the prototype.
-- **Chance in the search.** The search uses average values for damage rolls and probabilities. The real seeded roll is applied once the action is chosen.
-- **Evaluation.** At the end of its look-ahead the search scores a position as a weighted sum of each side's remaining HP share, units still standing, and Momentum. The weights live in a config file.
+- **Teams.** Each side gets 6 random creatures from the roster whose total Cost fits the team budget (section 5.1), with no duplicates within a side. The same creature may appear on both sides.
+- **Formation.** Each side's starting formation is a random legal placement, recorded with the battle, so the statistics show which rows work for which creatures.
+- **Search.** Each AI picks its action with a minimax search over a fixed number of upcoming timeline turns, counted across both sides. Both AIs in a test battle use the same settings. Search depth comes from the difficulty: **Easy 2, Normal 4, Hard 6**; test runs use Hard. Weaker picks: Easy picks at random among its top 3 actions 35% of the time, Normal among its top 2 10% of the time, Hard always picks its best.
+- **Chance in the search.** The search uses average values for damage rolls and probabilities; the real seeded roll is applied once the action is chosen.
+- **Scoring.** A position is scored by each side's remaining HP as a share of its maximum, where every living unit counts as if it had 25% more HP. Each point of Momentum is worth 2% of a team's total HP. Harmful statuses on enemies and helpful ones on allies count a little, more the longer they last. Summons and constructs count like units at half value. The weights live in a settings file per AI level.
 - **Information.** The AI knows only what a player would see. Because stealth limits targeting, not information (section 10.1), that includes stealthed units, their HP and statuses. Opposing future skill choices are not known.
-- **Length cap.** A battle stops after 500 unit turns in total and is recorded as a draw (section 12.3).
-- **Run size.** One test run plays 10,000 battles with seeds numbered 1 to 10,000. Each run gets an ID and stores a snapshot of the rules version, content and AI settings it used, so the runner can reproduce a battle exactly from its run ID and seed, even after later balance changes.
-- **Saved per battle.** Run ID, seed, teams, formations, result and length, plus per-unit damage dealt and taken, healing, KOs and skill uses. No event log is stored.
-- **Report.** Win rate and appearance count per creature, class and skill; each creature's win rate by starting row; skill usage counts; battle length and draw rate; and pair statistics showing which creatures do well together and against each other.
-- **Imbalance flags.** The report flags the top and bottom 10% by win rate. Balancing starts with the most extreme ones.
+- **Length cap.** A battle stops after 500 unit turns in total and is recorded as a draw.
+- **Run size.** One test run plays 10,000 battles with seeds 1 to 10,000. Each run gets an ID and stores a snapshot of the rules version, content and AI settings, so any battle can be reproduced from its run ID and seed.
+- **Saved per battle.** Run ID, seed, teams, formations, result and length, plus per-unit damage dealt and taken, healing, KOs and skill uses. No event log.
+- **Report.** Win rate and appearance count per creature, class, keystone and skill; each creature's win rate by starting row; skill usage counts; battle length and draw rate; pair statistics for creatures that do well together and against each other.
+- **Imbalance flags.** The report flags the top and bottom 10% by win rate. Balancing starts with the most extreme.
 - **Balance changes.** Claude proposes changes from the report, the owner approves them, and the next run checks their effect.
-- **Watching battles.** Headless batch runs come first. A battle viewer on the card UI then serves as a debug mode, also used to debug UI issues. It can **start a new AI-versus-AI battle with the same setup** (teams and formations) as any recorded battle. It does not need to replay the recorded battle exactly, so the new battle may play out differently.
+- **Endless chains.** The harness detects and reports reaction chains that do not end (section 6.6).
+- **Watching battles.** Headless batch runs come first. The battle viewer can start a new AI-versus-AI battle with the same teams and formations as any recorded battle; it need not replay it exactly.
 
-**Scoring (adopted 2026-11-04, starting values).** The AI judges a position by each side's remaining HP as a share of its maximum, where every living unit counts as if it had 25% more HP. Each point of Momentum is worth 2% of a team's total HP. Harmful statuses on enemies and helpful ones on allies count a little, more the longer they last. Summons and constructs count like units at half value. The weights live in a settings file per AI level, so test runs can tune them without code changes.
+## 3. Party and creatures
 
-**Difficulty levels (adopted 2026-11-08, starting values).** Search depth, counted in timeline turns across both sides: **Easy 2, Normal 4, Hard 6**. Weaker picks: Easy picks at random among its top 3 actions 35% of the time, Normal among its top 2 10% of the time, Hard always picks its best. Tuned after measuring speed.
+### 3.1 Party
 
-## 3. Party composition and creature identity
+A battle is **six versus six**, placed freely among three rows. A player may fight with one to six creatures; teams with fewer than six show a warning icon where teams are picked. There is no reserve swapping during combat. No class dictates a row, but melee needs the Front row (section 8.1).
 
-### 3.1 Party baseline
+### 3.2 What a creature is
 
-The current intended battle size is **six active team members versus six**, placed freely among three rows. All starting members participate; there is **no reserve-member swapping during combat**. Moving or swapping battlefield positions is a separate mechanic and is permitted when its rules allow it.
+A creature has a species (its art and identity), stats (section 5.1), **two classes**, **two keystones** and **one unique attack** (class_system.md). Creatures of the same species have the same stats; there are no hidden individual rolls.
 
-Six-unit party readability must be tested in the actual prototype. If combat becomes crowded or difficult to parse, reducing the standard party size to four or five should be considered. This remains a prototype readability question, not a finalized reduction.
+### 3.3 Humans
 
-A player may fight with one to six members; teams with fewer than six show a warning icon where teams are picked (adopted 2026-10-08, ui_spec.md). Enemy party-size exceptions and boss composition have not been finalized.
+Human recruits are **fixed individuals** with names and their own class mix, made during content creation and stored as content; they are never generated at runtime. One per chapter is a campaign reward: chapter 1 **Tom Reed**, chapter 2 **Kofi Mensah**, chapter 3 **Edwin Marsh**, and **Ragnhild Eriksen** as the reward of chapter 4's challenge encounter.
 
-No class dictates a mandatory row. The system should support unusual but effective combinations, including defensive small creatures or an unconventional back-row guardian.
+### 3.4 Variants
 
-### 3.2 Three layers of a unit
-
-| Layer | Purpose |
-|---|---|
-| Creature type / species | Defines the unit's underlying identity, base characteristics, body concept, and natural traits. |
-| Accessible classes / skill trees | Defines the development options available to that unit. |
-| Build | Defines how its limited skill points are invested and how it functions in the chosen team. |
-
-Species and class are independent concepts. A Hunter could be a wolf, human, or fantasy creature. A Guardian could be a human, turtle, or stone being. A creature's appearance is not a reliable declaration of its class or combat role.
-
-### 3.3 Species consistency
-
-For the initial system, creatures of the same type with the same build have the same stats under equivalent progression and combat conditions. Hidden individual stat rolls or genetic values are not part of the starting design.
-
-A later system of visible natural variation or special traits remains a possibility. It is not a current requirement.
-
-### 3.4 Human individuality
-
-Humans are intended to feel like individuals. Random names, stat variation, and assigned combinations of skill trees were specifically discussed.
-
-**Adopted (2026-10-06):** human recruits are **fixed individuals** with names and their own class mix, made (possibly rolled) during content creation and stored as fixed content. They are never generated at runtime. This keeps individual identities while keeping recruitment and balance controllable.
-
-**First human recruits (2026-11-04, picked by Claude at Andreas's request).** One per chapter, each a campaign reward: chapter 1 **Tom Reed** (Hunter, Primalist), chapter 2 **Kofi Mensah** (Primalist, Leader), chapter 3 **Edwin Marsh** (Guardian, Warrior), chapter 4 **Ragnhild Eriksen** (Warrior, Sorcerer), who is the reward of chapter 4's challenge encounter, since every chapter 4 battle gives its dragon (campaign.md, 2026-11-08).
-
-Related proposals to retain for evaluation:
-
-- Keep stat differences bounded rather than producing unusable recruits.
-- Randomize the selection of available trees, not the contents of the trees themselves.
-- Make relevant information visible before recruitment.
-- If runtime generation is used, persist candidates rather than reward repeated reloads or rerolls.
-- Allow unusual combinations while ensuring each recruit has a viable use.
-
-The suggested ±10–15% stat variation was an example, not an approved range. Human generation remains an exception under consideration rather than a reason to add random stats to all creatures.
-
-### 3.5 Variants and separate creatures
-
-A **variant differs only in color**. A larger body, changed anatomy, altered silhouette, or distinctive physical features identify a **separate creature**.
-
-For example, a wolf and an alpha wolf are separate creature types if they differ in size or shape. Gray, white, and black presentations of the same wolf are color variants. No independent stat advantage for a color variant has been specified.
-
-### 3.6 Weapons and equipment
-
-The current direction avoids a general gear system. Some humans and other creatures may carry weapons, tools, or props dictated by their type. These are part of their identity and artwork rather than evidence of an interchangeable equipment or loot system.
+A **variant differs only in colour**. A larger body, changed anatomy, altered silhouette or distinctive features make a **separate creature**. There is no equipment system: weapons and props are part of a creature's art and identity.
 
 ### 3.7 Creature roster
 
-The exact creature roster lives in [creature-classes.md](creature-classes.md): every creature's unit name, display name, Attack Type, Professions, home biome, stats, Cost, art file and card crops. Adopted rules for creatures:
+The roster is [creature-classes.md](creature-classes.md).
 
-- **No size tiers (adopted 2026-11-08).** Creatures have no tier; HP, Speed and Power are set per creature in creature-classes.md. Prices come from Cost (section 2.2). The old tier table is in [archive/creatures.md](archive/creatures.md).
-- **HP** runs from 20 to 80 in steps of 5. The anchors in section 5.5 stay.
-- **Speed** runs from 1 to 10; small creatures are usually fast and big ones slow.
-- **Power** runs from 1 to 10, with the reference human at 5.
-- **Cost** runs from 1 to 10 and is set from the creature's power (section 5.1).
-- **No Defense (2026-10-15).** The Defense stat was removed. Creatures that had natural Defense received +5 HP per 10% instead, within the 20–80 HP range.
-- **Classes (2026-10-09).** Every creature has exactly 1 Attack Type and 1–2 Professions ([class_system.md](class_system.md)). This replaces the old type-specific attack library and the rule of one to three hand-assigned classes.
-- **No natural traits** for now. A creature's identity comes from its stats, classes and attack.
-- **Humans** are generated once during content creation and stored as fixed recruits (section 3.4), each with a name, its own class combination and small stat differences around the human anchor (section 5.5).
-- **IDs** are the unit names in creature-classes.md (such as `weasel-rogue-dagger`), stable once released (adopted 2026-11-08). The game loads one image per creature by ID, from cleaned copies (the front shows a portrait crop, the back the whole creature); the original files are never changed (production.md §1.6).
+- **HP** 20 to 80 in steps of 5; **Speed** 1 to 10 (small creatures are usually fast, big ones slow); **Power** 1 to 10, the reference human at 5; **Cost** 1 to 10 (section 5.1).
+- **No size tiers** and **no natural traits or immunities**. A creature's identity comes from its stats, classes, keystones and attack.
+- **IDs** are the unit names (`weasel-rogue-dagger`), stable once released. The game loads one image per creature by ID from the cleaned copies; the front shows a portrait crop, the back the whole creature. The original art is never changed (production.md §1.6).
 
-## 4. Classes and skill-tree progression
+## 4. Classes and skills
 
-> **Superseded (2026-10-09).** Classes are now defined in [class_system.md](class_system.md): 1 Attack Type (9 options) plus 1–2 Professions (12 options). Each Profession's skill tree is its skill list in [skills.md](skills.md), and each Attack Type gives one shared attack (section 4.4). Wherever this section says "class" or "class tree", read Profession and its tree. The progression rules (point budget, node types, costs, no mana or cooldowns, skill cards in §4.7) still stand; the tree model is in section 4.1.
+### 4.1 Skills and keystones
 
-### 4.1 Access and point budget
+Every creature has its unique attack, the three actives of each of its two classes, Move and Skip Turn, and one keystone from each class (class_system.md). All of them are always available; there are no skill points, trees, loadouts, builds or respecs. Keystones are passives and never take an action.
 
-Each creature has **one or two Professions** ([class_system.md](class_system.md)), each represented by its own skill tree.
+### 4.4 Actions in combat
 
-Every unit has a **single skill-point budget shared across its trees**. Access to additional trees provides more choices, not extra points.
+On its turn a unit uses one of: its **unique attack**, one of its **six class actives**, **Move** (section 9.1) or **Skip Turn**. Skip Turn costs the same as a Delay 5 skill and is always allowed. There is no Defend command and no separate basic attack system: the unique attack is an ordinary skill using the same timing, targeting and resolution as any other.
 
-**Adopted tree model (skill tree quiz, 2026-11-03).**
+### 4.6 Skill costs
 
-- **Budget.** Every unit has **8 skill points** (changed from 10 on 2026-11-08), given right away. There are no levels for now; levelling may come back later.
-- **Cost.** Every node costs **1 point**: actives, passives, modifiers and keystones alike.
-- **Prerequisites (changed 2026-11-08, replacing the keystone's 3-node rule).** Each branch is a **real tree**: its root skills have no parent, and every other node has **exactly one parent** in the same branch and can be learned only once that parent is learned. One node can be the parent of several others, so the tree splits. A modifier's parent is its skill. A creature may take every modifier of a skill; if two contradict, the modifier's text says which wins. Each node's parent is the **Needs** column of skills.md. Branches still do not lock each other: a creature can learn in every branch of its professions (class_system §4).
-- **Keystones.** No limit per unit beyond their parent and the budget.
-- **Tree size.** Each profession's tree is its skill list in [skills.md](skills.md), 13 to 20 nodes; trees are not trimmed to the old 10–15 plan.
+**No mana, no cooldowns.** Skills are balanced through Delay (section 6.1), Momentum cost (section 6.7) and other consequences: HP loss, sacrifice, position, self-inflicted statuses and harm to allies. A skill may require a position, statuses, HP thresholds, allies, free space, KO bodies or earlier actions; the UI always shows the concrete reason when a skill is unavailable. There is no global anti-spam rule.
 
-**Builds for AI teams and new creatures (adopted 2026-11-08).** AI-versus-AI tests, random battles and encounters that state no build use a **random legal build**: 8 points assigned at random under the rules above. Each creature also has a **default build**, made once with the same generator and stored with its content; a newly unlocked creature arrives with it, and the player can respec freely.
+Rules that do not need global consistency belong to the individual skill: effect order, costs, targeting exceptions, and behavior when the user or target is KO.
 
-**Respec is free outside battle.** Players may reset and reassign skill points without a resource cost. Unlearning a node also unlearns every node below it in its tree (2026-11-08). The tree editor is in ui_spec.md.
+### 4.7 Skill rules and tags
 
-### 4.2 Specialization and hybrid builds
+**Skill card.** Every skill has a unique name, its class (or its creature, for an attack), Delay (1–10, **1 is quickest**), Momentum cost (0–10, most 0), delivery, target, effect, and hidden coefficients from which the displayed numbers come (section 5.2). Keystones have a name, class, trigger and effect.
 
-A unit may specialize in one accessible tree or distribute points across several. A three-tree unit must still choose what to become good at; it cannot fully develop all three trees through an increased budget.
+**Tags are derived.** skills.md and creature-classes.md write no tags; where a rule names one, it is read like this:
 
-**Proposed tree structure:**
-
-- Multiple branches within a tree support different builds even for a single-class creature.
-- Strong upper-tier abilities require meaningful investment in that tree.
-- Low-investment nodes should not make identical shallow multiclass builds universally optimal.
-- Species characteristics provide identity independently of tree access.
-
-The earlier proposal of six class ranks with automatic single-class mastery was replaced by the shared skill-point model.
-
-### 4.3 Node types and meaningful effects
-
-| Node type | Function |
-|---|---|
-| Active skill | Adds an action available in combat. |
-| Passive | Adds meaningful behavior, conditional effects, or rule interactions rather than generic stat-only increases. |
-| Modifier | Changes an existing ability rather than adding another unrelated button. |
-| Keystone | Produces a major, build-defining change. |
-
-For example, a marking ability could develop toward ranged-damage support, timeline delay, or transfer to another target on death. These are design examples, not implemented skills.
-
-Trees mix active skills, passives, and modifiers with **meaningful mechanical effects**. Do not fill them with generic percentage-only upgrades such as **+10% damage**. Entries should change what a unit can do or how an ability works—for example its targeting, movement, timing interaction, trigger conditions, status behavior, or interaction with other units. These are design directions, not approved individual skills.
-
-Numerical values still define and balance real effects; the restriction is against stat-only filler as a progression reward. Create the actual skills and effects first, then organize them into trees later.
-
-### 4.4 Skill availability in combat
-
-Each unit begins with **exactly one type-specific attack**: one shared attack per Attack Type, nine in total (Andreas, 2026-11-03), so every Bladed creature has the same Bladed attack. The nine attacks are listed in [skills.md](skills.md). Through its skill trees, a unit should gain **6–8 additional usable skills in total across its classes**, not 6–8 per class. **All unlocked skills are available in combat; there is no separate loadout or equipped-skill cap.**
-
-The intended developed unit therefore has **7–9 usable skills including its type-specific attack**. This is a content-design target, not a hard cap. Initial testing still grants all available creature/class skills before trees exist, so temporary test units may exceed that target. Passives and modifiers are mixed into the trees but do not each require a separate action button.
-
-There is **no separate Basic Attack system**. Bite, Claw, Shoot, and comparable attacks are ordinary skills. Detailed tree topology and node design were deliberately deferred.
-
-### 4.6 Skill costs and prerequisites
-
-**No mana. No cooldowns.** Skills are balanced through timeline costs, shared party Momentum expenditure, or other consequences: HP loss, sacrifice, unfavorable movement, self-inflicted statuses, harm or disruption to allies, and changes to later actions. Many of the strongest attacks and abilities require Momentum; its battle-wide rules are defined in section 6.7.
-
-Skills may have specific requirements involving position, range, statuses, HP thresholds, allies, formation, free space, KO targets, or earlier actions. The UI must show the concrete reason whenever a skill is unavailable.
-
-There is no global anti-spam rule. A skill's consequences and the resulting combat state must make repetition an interesting choice. Skills may modify their own future behavior, become faster or slower, accumulate recoil, transform into another version, or consume a required state. These are individual skill definitions rather than a replacement universal cooldown system.
-
-**Node costs and prerequisites (adopted 2026-11-03):** see section 4.1: every node costs 1 point, a modifier needs its parent skill, a keystone needs 3 other nodes from its branch.
-
-**Design principle:** rules that do not require global consistency belong in the individual skill or effect definition. This includes effect order, costs, targeting exceptions, and behavior when the user or target becomes KO.
-
-### 4.5 Current class roster
-
-**Replaced 2026-10-09.** The class roster is [class_system.md](class_system.md) v1.5: 9 Attack Types (Brawl, Bladed, Polearm, Ranged, Magic, Blunt, Breath, Whip, Aura) and 12 Professions (Hunter, Guardian, Healer, Sorcerer, Elementalist, Warrior, Leader, Rogue, Tinker, Summoner, Primalist, Flying; Bard became a Leader branch on 2026-10-19). The old seven classes and their skills in archive/classes_and_skills.md are invalid. Do not add other Attack Types or Professions without an explicit scope change. On 2026-10-14 Black Mage was replaced by Elementalist and several classes were merged (class_system.md v1.2 and v1.3).
-
-Class skills use the **same rules across creature types**. A class ability does not acquire a species-specific version merely because a turtle rather than a human uses it. Outcomes can still differ through the user's stats and explicitly defined build effects.
-
-Creature identity contributes one type-specific starting attack, such as Bite, Sword Slash, Punch, or Arrow. It remains an ordinary skill using the same timing, targeting, and resolution systems as other attacks.
-
-### 4.7 Skill cards, tags and design rules
-
-**Skill card.** Every skill has:
-
-| Field | Meaning |
-|---|---|
-| Name | Unique. |
-| Class | The class it belongs to. |
-| Tree slot | Branch letter and number, such as A1 (position in the class tree). |
-| Delay | 1–10, **1 is quickest**. Sets the wait before the user's next turn (section 6.1). |
-| Momentum cost | 0–10, most skills 0 (section 6.7). |
-| Tags | The tags below. |
-| Mechanic | Exact rules, written with tags. |
-| Reach | Rows and distance it can affect. |
-| Hidden stats | Designer-only numbers, such as the damage or healing coefficient, from which the displayed range is calculated (section 5.2). |
-
-**Other tree nodes** (passive, modifier, keystone) have a name, class, tree slot, prerequisite, trigger and effect. A node must change targeting, timing, movement, triggers, status behavior or interactions. **No node may only add numbers** (such as +10 damage).
-
-**Tags.** Skills have tags only, no categories. Tags are based on function and exist so skills, statuses and passives can react to each other. Add a tag only when a rule needs it.
-
-| Group | Tags | Rule |
+| Tag | Read from | Used by |
 |---|---|---|
-| Damage type | `physical`, `magical` | What kind of skill it is, for rules that react to it (Shield Wall blocks `physical`, Silenced stops `magical`). Both scale with Power (section 5.1). |
-| Delivery | `projectile` | Travels the battlefield from the user to the target, so it passes the units in front of the target and can be intercepted by them. |
-| | `melee` | Needs reach to the target. Triggers effects that react to melee. Can be intercepted. |
-| | `direct` | Hits a **specific slot** (the position on the half-card grid, section 7.3, of the selected target), with nothing passing between. It hits whoever occupies that slot when it resolves, so a delayed `direct` effect hits whatever stands there later. **Ignores interception.** Still needs a legal target and reach when it is cast. |
-| Targeting and shape | `single` | The player selects one unit; only that unit is hit. |
-| | `column` | Hits the target and the units behind it (section 8.4). |
-| | `row` | The player selects a **row** (the UI highlights it) and the skill affects the units in it. |
-| | `circular` | Hits the target and the units adjacent to it. |
-| | `random` | Picks its target at random among legal targets. |
-| | `chain` | Hits the selected target, then jumps to further targets by the skill's own rule. |
-| | `all` | Affects every unit of one side that the skill's target type allows. |
-| Function | `attack`, `heal`, `status`, `summon` | What the skill does. |
-| | `move` | Repositions units. |
-| | `cover` | Redirects or absorbs hits for other units. |
-| | `timeline` | Moves turns or events on the timeline. |
-| | `delayed` | Puts an event on the timeline that resolves later. |
-| | `momentum` | Moves the Momentum meter directly. |
-| Element | `fire`, `frost`, `storm` | Properties other skills and statuses can react to (for example a `fire` hit breaking a freeze). They are not resistance categories. |
+| `melee`, `projectile`, `direct` | The Delivery column. | Interception (section 8.2), the Front-row rule (section 8.1), airborne reach (section 10.6), Bleeding, Static Field. |
+| `magical` | The actives of the magical classes, the Bard's songs, and attacks with the bolt or pulse style (class_system §2 and §4). Everything else is `physical`. | Silenced. |
+| `move` | The Move action and every skill that moves its own user. | Bleeding. |
+| `row` | A skill whose text says "one row" or "pick a row": it selects a row. | Targeting. |
 
-**Tags are derived (adopted 2026-11-08).** skills.md writes no tags. Where a rule names a tag, it is read from the skill tables:
+There are no element tags. Ground effects react only to the effects named in section 12.2.
 
-- `melee`, `projectile`, `direct`: the Delivery column (and the attack's own text for the nine Attack Type attacks).
-- `magical`: Bolt and every active skill of the Sorcerer, Elementalist, Healer, Summoner and Primalist. Every other skill is `physical`. Silenced blocks the `magical` ones.
-- `move`: the Move action and every skill that moves its own user (for Bleeding).
-- Elements for ground combos: `fire` = Pyromancy skills, Firebomb and Flame Turret; `frost` = Cryomancy skills and Hoarfrost; `storm` (lightning) = Stormcalling skills.
-- The other tags in the table above describe behavior that skills.md states in words; no rule reads them.
+**Deliveries.**
 
-**Attack (adopted 2026-11-08).** An **attack** is any skill or summon action that deals damage to a unit, including turret and golem hits. A skill that only applies a status or moves units is not an attack. Rules and skills that say "attack" (Blind, Sidestep, Living Wall, Phase Weapon, misses in section 6.7) use this meaning.
+- **`melee`** needs the user in its own Front row (section 8.1) and cannot reach an airborne unit (section 10.6). It can be intercepted.
+- **`projectile`** travels from the user to the target and passes the units in front of it, so it can be intercepted.
+- **`direct`** hits a **specific slot** (the coordinate of the selected target on the half-card grid, section 7.3) with nothing passing between. A delayed `direct` effect hits whoever stands there when it resolves. It is never intercepted.
 
-**Targeting tags decide what the UI lets the player select.** A skill selects a unit unless it has a tag for another target type. Only skills with `row` can select a row. Any future target type (a column, a slot) needs its own tag. Skills never silently gain other target types.
+**Attack.** An **attack** is any skill or summon action that deals damage to a unit, including turret and golem hits. A skill that only applies a status or moves units is not an attack. Rules that say "attack" (Blind, Phase Weapon, misses in section 6.7) use this meaning.
 
-The tag list is a starting point. Exact shape definitions (for example which units count as adjacent for `circular`) belong in section 8.4 when decided.
+**Targeting.** A skill selects one unit unless its text selects a row. Skills never silently gain other target types.
 
-**Design rules:**
+**Design rules.**
 
-- **Every skill has its own role.** Two skills of one class must not do the same job.
-- **Realistic positioning.** A projectile must pass the units in front to reach those behind. A unit far from an ally cannot cover that ally. A skill that crosses distance must say how, for example a leap that moves the user (`move`) and then covers.
-- **No skill has a minimum distance** unless it would be physically unrealistic.
-- **Classes declare no protection.** Protection comes from skill tree choices and explicit effects (shields such as Ward, reductions such as Dampen).
-- **Every skill has a reach.** Cover, redirect, swap, push, and pull skills only work on units within their reach, and an attack can only be redirected to a unit that could legally be its target.
-- **Numbers stay low.** Players see whole numbers only.
-- **Only `melee` and `projectile` skills can be intercepted** (section 8.2). A skill without either tag, such as a `direct` skill, cannot be. A `melee` or `projectile` skill ignores interception only if it says so.
+- **Every skill has its own role.** Two skills of one class do not do the same job.
+- **Realistic positioning.** A projectile passes the units in front of its target; melee strikes from the Front row and has to get past the enemy's front units.
+- **Real effects.** A skill or keystone changes targeting, timing, movement, triggers, statuses or interactions; none only adds a flat number.
+- **Low whole numbers.** Players see whole numbers only.
+- **Only `melee` and `projectile` can be intercepted**, and such a skill ignores interception only if it says so.
 
 ## 5. Unit statistics and damage
 
@@ -349,87 +173,61 @@ The tag list is a starting point. Exact shape definitions (for example which uni
 | Stat | Definition |
 |---|---|
 | HP | Maximum health; current HP is tracked during combat. |
-| Speed | 1–10, **10 is fastest**. Determines how quickly the unit completes its turn cycle (section 6.1). |
-| Power | 1–10. Scaling basis for all skill damage and healing, `physical` and `magical` alike. Each creature type defines its own value. |
-| Cost | 1–10. Team-building points (see Team budget below). Not used in combat. |
+| Speed | 1–10, **10 is fastest**. Sets how quickly the unit's turns come round (section 6.1). |
+| Power | 1–10. Scales all skill damage, healing and Wards, `physical` and `magical` alike. |
+| Cost | 1–10. Team-building points; not used in combat. |
 
-**No Defense stat (adopted 2026-10-15).** The Defense stat (a 0–75% cut to all damage) was removed, together with Penetration, its cap and the Exposed / Armor Broken candidates. A unit's toughness is its HP. Protection comes only from explicit effects: shields (Ward) take damage first, and stated reductions (Dampen) apply after. There is a single Power: the earlier split into Physical and Magic Power was removed on 2026-10-05 to keep the stat sheet small.
+There is no Defense, accuracy, evasion, critical hit, mana, resistance or healing-power stat. A unit's toughness is its HP; protection comes from explicit effects such as Wards.
 
-**Team budget (adopted 2026-10-15).** Each creature has a **Cost** from 1 to 10, so a team of only the biggest creatures is not free. A team holds **up to six creatures** and its total Cost must not exceed the **budget of 35** (a starting value, tuned after AI-versus-AI testing). The budget is the same in **every mode**, the campaign included. Enemy teams designed for campaign encounters are not bound by it. Randomly drawn teams (random battles, free battles with a random enemy, and AI-versus-AI tests) are drawn within it. How each creature's Cost is set is described below.
+**Team budget.** A team holds **up to six creatures** whose total Cost must not exceed **35**, in every mode including the campaign. Campaign enemy teams are not bound by it. Randomly drawn teams (random battles, free battles with a random enemy, AI-versus-AI tests) are drawn within it.
 
-**How Cost is set (2026-11-03).** Cost reflects how strong a creature is. Each creature gets a power score: the square root of its offense times its durability. Offense is Power × action rate × an Attack Type factor, where action rate is 1 / (14.5 − Speed) (a Delay 3.5 skill plus the Speed wait, section 6.1) and the factor is 1.2 for Magic, 1.15 for Ranged and Breath, 1.1 for Aura, 1.05 for Polearm, Whip and Bladed, and 1.0 for Brawl and Blunt. Durability is HP, × 1.1 for a Guardian and × 1.05 for a Flying creature. A creature with two Professions gets × 1.08. The roster is then ranked by score and split into Cost 1–10 in the shares 3, 6, 10, 14, 17, 17, 14, 10, 6 and 3 percent (mean about 5.4); equal scores get equal Cost. Cost is recomputed this way when stats or classes change, and is tuned after AI-versus-AI testing.
+**How Cost is set.** Each creature gets a power score from its offense and durability; the roster is ranked by score and split into Cost 1–10 in the shares 3, 6, 10, 14, 17, 17, 14, 10, 6 and 3 percent, equal scores getting equal Cost. The current Costs come from a formula built on the old classes; the formula for the current classes is decided when AI-versus-AI testing starts, and Cost is recalculated then (section 19).
 
-Accuracy, evasion, critical chance, critical damage, mana, universal resistance, and healing power are **not additional global stats**. Skill-specific hit chances, defensive effects, or healing scaling may be defined without expanding the stat sheet. Mana and critical-hit systems remain excluded.
+### 5.2 Damage and healing
 
-### 5.2 Damage scaling
+**Scaling.** skills.md and creature-classes.md write every number for **Power 5**. Every damage, healing and Ward number of a skill is multiplied by its user's **Power ÷ 5**, rounded down, minimum 1; a range scales at both ends (4–5 at Power 3 is 2–3). Internally each number is a hidden coefficient (hit for 5–6 at Power 5 is 100–120%). A skill may scale from something else only if its text says so. Summons and constructs scale with their summoner's Power; their HP and Speed are fixed. Rule numbers never scale: bump damage, Bleeding, Poisoned, ground-effect damage and the poison explosion.
 
-Each damaging skill has a hidden **coefficient range**. The displayed damage range is that range multiplied by the user's Power.
+**Rolls.** Damage and healing are rolled **uniformly** as a whole number within the range; the displayed range already includes the user's modifiers and is rounded down. There are no critical hits. Whether several targets share one roll or roll separately is open for skills that do not say (section 19).
 
-In practice the coefficient comes from skills.md: a skill written as "hit for 5–6" at the reference Power 5 has the coefficient range 100–120%, so the same skill hits for 3 at Power 3 (see "What scales with Power" below). A skill may explicitly scale from HP or multiple stats, but that exception must be part of its definition.
+**Damage order.**
 
-**Adopted damage formula:** each creature type defines its own Power. A skill's damage is its hidden coefficient range multiplied by the user's Power, rolled uniformly, and the skill tree may change the formula. Players always see **whole numbers only**, shown for the actual user. Damage is **rounded down, with a minimum of 1**, unless a skill explicitly negates it. Numbers in the class documents assume a **reference human with Power 5**.
+1. **Roll.**
+2. **Ward.** A Ward absorbs damage first; only the remainder continues.
+3. **Reductions** stated by a skill apply to the remainder (rounded down, minimum 1 if anything passed the Ward).
+4. **HP.** The rest is subtracted from HP.
 
-**There is one damage category.** The `physical` and `magical` tags only matter to rules that name them. Fire, frost, poison, bleeding, mental effects, and similar themes use properties or statuses rather than global resistance categories.
+Fixed-damage effects go through Wards and reductions like any hit. The only damage that nothing reduces is bump damage (section 9.5) and damage a skill calls unreducible.
 
-Damage is sampled **uniformly within the skill's damage range**. Each value is equally likely; the range itself defines the variance. Some skills may have a very wide range. There are **no separate critical hits or critical multipliers**; a high roll can provide the excitement of a critical hit without another system.
+**Wards.** A unit has at most one Ward. A new Ward replaces the old one only if it absorbs at least as much as the old one has left.
 
-**Adopted damage resolution order:**
+**Healing** is capped at maximum HP; there is no overheal unless a skill says what happens to the excess.
 
-1. **Roll.** The displayed range already includes the attacker's modifiers (coefficient changes, bonus damage, conditions such as Ambush) and is rounded down. The roll is a uniform **whole number** in that range.
-2. **Shield.** A shield or similar absorb effect takes the damage first. Only the remainder continues.
-3. **Reductions.** Stated reductions (for example Dampen, which halves the damage, rounded down with a minimum of 1) apply to the remainder. If anything passes the shield, the result is at least 1. Ward and Dampen can be on the same unit: Ward absorbs first, then Dampen.
-4. **HP.** The remaining damage is subtracted from HP.
-
-**Fixed damage.** Fixed-damage skills (for example a counter dealing 2) go through shields and reductions like any other hit, with the minimum of 1. The only fixed, unreducible damage is bump damage (section 9.5).
-
-**Rolls across targets.** There is no global rule: each skill states whether its targets share one roll (an explosion rolls once) or roll independently (each hit of a meteor shower rolls separately).
-
-**Healing scaling (adopted 2026-10-06).** Healing works like damage: a hidden coefficient range times the user's Power, rolled uniformly as a whole number, rounded down, minimum 1. A skill may define its healing differently, and that exception must be part of its definition. Healing is capped at maximum HP (section 10.3).
-
-**Several Wards on one unit (adopted 2026-11-08).** A unit has at most one Ward. A new Ward replaces the old one only if it absorbs at least as much as the old one has left; otherwise the old one stays.
-
-**What scales with Power (adopted 2026-11-08).** skills.md writes every number for Power 5. Every damage, healing and shield number in a skill is multiplied by its user's Power ÷ 5, rounded down, minimum 1; a range scales at both ends (4–5 at Power 3 is 2–3). The damage and healing of summons and constructs scale with their summoner's Power; their HP and Speed stay fixed (section 11.2). Rule numbers do not scale: bump damage, Bleeding, Poison, ground-effect damage and the poison explosion.
-
-Interception is defined in section 8.2. Target previews should show the resulting damage range against the selected target wherever determinable.
+**Target previews** show the resulting damage range against the selected target wherever it can be determined.
 
 ### 5.3 Hit reliability
 
-An ordinary attack hits a valid target by default, subject to interception, shields and explicit effects. Random hit chance is an explicit property of selected risky skills, not a universal accuracy/evasion roll. A status or skill may introduce an exception, such as blindness affecting attacks that require sight.
-
-Status application is separate: a status-applying skill states its own status chance. Successful damage does not automatically guarantee a status unless that skill says so.
-
-### 5.4 Stat sources and growth
-
-The discussed sources of values are creature identity, build investments, and temporary combat effects. Level growth and the relative contribution of levels versus skill trees remain open.
-
-Healing scaling, damage-over-time calculation, status durations, stacking behavior, and cleansing belong in the relevant skill or effect definitions. Critical hits are excluded from the design.
+An attack hits its target by default, subject to interception, Wards and explicit effects such as Blind. There is no global accuracy roll. A status-applying effect states its own chance; damage does not guarantee a status unless the skill says so.
 
 ### 5.5 HP and damage anchors
 
-HP anchors: a critter (the lowest HP in the game, such as a fox) has **20**, a human **35–45**, and a giant stone turtle **80** (60 plus its former 40% Defense, converted on 2026-10-15). Damage anchor (2026-11-08): a 20 HP critter falls to **4–5 Attack Type attacks** from a Power 5 unit (for example Brawl Strike, 4–5). Keep all numbers low.
+A critter (such as a fox) has **20** HP, a human **35–45**, a giant stone turtle **80**. A 20 HP critter falls to **4–5 unique attacks** from a Power 5 unit (for example 4–5 damage). Keep all numbers low.
 
 ## 6. Turn timeline and action execution
 
-### 6.1 Shared timeline and turn progress
+### 6.1 Shared timeline
 
-Everkin uses a **single shared timeline for all friendly and enemy units**, inspired by the tactical function of FFX's conditional turn order. There are no separate team turns or traditional fixed rounds. Units act whenever their position on the timeline is reached.
-
-Turn frequency depends on both the unit's **Speed** and the **Delay** of the skill it used on its previous turn. A fast unit using quick skills may act many times before a slow unit using heavy skills acts again. This is intentional and part of each unit's balance and identity; there is no artificial limit on how many turns one unit may receive before another acts.
-
-**Two scales, both 1–10:**
+All units of both sides share **one timeline**. There are no team turns or rounds: a unit acts whenever its turn comes up. How often depends on its **Speed** and the **Delay** of the skill it used last; a fast unit using quick skills may act many times before a slow one acts again, with no artificial limit.
 
 | Scale | Belongs to | Meaning |
 |---|---|---|
-| **Speed** | Unit stat | **10 is fastest**, 1 is slowest. |
-| **Delay** | Skill | **1 is the quickest** skill, 10 the heaviest. |
-
-Speed and Delay have **equal effect**: one point of either changes the wait by one time unit.
+| **Speed** | Unit stat | 1–10, **10 is fastest**. |
+| **Delay** | Skill | 1–10, **1 is quickest**. |
 
 ```text
-Wait (time units) = Delay + (11 - Speed)
+Wait (time units) = Delay + (11 − Speed)
 ```
 
-| Unit Speed | Skill Delay | Wait |
+| Speed | Delay | Wait |
 |---|---|---:|
 | 10 | 1 | 2 |
 | 10 | 5 | 6 |
@@ -437,88 +235,42 @@ Wait (time units) = Delay + (11 - Speed)
 | 1 | 1 | 11 |
 | 1 | 10 | 20 |
 
-The fastest possible turn cycle (Speed 10, Delay 1) is **10 times shorter** than the slowest (Speed 1, Delay 10). With one unit on each side, the fast unit acts about ten times before the slow one acts again. Any Speed/Delay combination can be read directly from the formula.
+Internally the timeline tracks progress in time units. Time advances only in jumps between events; choosing an action and playing animations cost no time.
 
-Internally the system tracks **turn progress** in time units. When a unit acts, its skill and current Speed fix the Wait. The turn arrives when that Wait has elapsed. Reactions and auto events do not use this formula unless their definition says so.
+- **First turn.** At battle start each unit's first Wait is `11 − Speed`.
+- **When the next Wait starts.** The acting unit's next Wait is set when its skill is used, before the skill's effects. Pushes, pulls or Speed changes that reach the user during its own action apply on top.
+- **Ties.** When turns or other timeline entries fall into the same time unit, the one that joined that time unit **first stays first**. An entry moved by Pull Forward, Push Back or a Speed change joins its new time unit behind the entries already there. Entries created for the same time unit at the same moment (every unit's first turn, several effects from one event) are ordered by the seeded roll, each with equal chance.
+- **Speed changes** (for example Song of Haste's +1) change the remaining Wait by the same number of time units; completed progress never changes. When they end, the remaining Wait changes back. Speed stays within 1–10 for the formula, and a Wait is at least 1.
+- **Pull Forward / Push Back** remove or add time units to the remaining Wait. There is no global cap; each skill states its number. If Pull Forward removes more than remains, the turn arrives now and the extra is lost.
+- **Delay changes.** Effects that add or remove Delay never take a skill outside 1–10: after all modifiers, Delay is clamped to 1–10.
+- **Skipped turn.** A skipped turn, chosen or forced, costs like a Delay 5 skill: Wait = 5 + (11 − Speed).
+- **Durations** of statuses and ground effects are stated in time units from the moment they start. 10 time units is about one turn of an average unit; 20 is the reference length. An effect's end is shown as a marker on the timeline.
+- **Action denial.** There is no safeguard against Push Back and turn-skipping statuses for now.
 
-- **Haste / Slow** change Speed by a stated number of steps. Remaining Wait changes by the same number of time units; completed progress never changes.
-- Speed effects expire the same way: the remaining Wait is adjusted by the reverse amount. Speed stays within 1–10 for this formula; a technical minimum Wait of 1 prevents infinite loops.
-- Multiple Speed changes may repeatedly reposition a unit on the timeline.
+The UI shows the upcoming turns and previews where the acting unit's next turn moves when a skill is selected; other foreseeable timing changes are previewed where practical.
 
-The same model supports direct timeline manipulation:
+### 6.2 Action sequence
 
-| Effect | Progress behavior |
-|---|---|
-| Haste | Raises Speed: shortens the remaining Wait. |
-| Slow | Lowers Speed: lengthens the remaining Wait. |
-| Pull Forward | Directly removes time units from the remaining Wait. |
-| Push Back | Directly adds time units to the remaining Wait. |
-| Reset | Resets current turn progress. |
-
-(The timeline effect formerly called Delay is now **Push Back**, because Delay is the skill scale.)
-
-All friendly and hostile units are always evaluated within this same timeline. Units must be balanced around their actual action frequency.
-
-The UI shows multiple upcoming turns and previews where the acting unit's next turn would move when a skill is selected, before confirmation through target selection. Other foreseeable timing changes should also be previewed whenever practical.
-
-**Adopted timeline details:**
-
-- **Initial progress.** At battle start each unit's first Wait is `11 − Speed`, as if its previous skill had Delay 0. A Speed 10 unit acts at time 1 and a Speed 1 unit at time 10.
-- **Ties (adopted 2026-11-04, replacing higher Speed first).** When unit turns or other timeline events fall into the same time unit, the one that joined that time unit **first stays first**. An entry that is moved by Pull Forward, Push Back, Haste or Slow joins its new time unit at the moment of the move, behind the entries already there. Entries created for the same time unit at the same moment (for example every unit's first turn at battle start, or several effects from one event) are ordered by a **seeded random roll**, each with equal chance, so battles can be replayed from the seed.
-- **Time model.** Time advances only in jumps between events. Choosing an action and playing animations cost no time, and a turn costs time only when its skill resolves. Only online play has a turn timer (60 seconds, section 2.4).
-- **Haste and Slow.** A skill states a whole number of Speed steps (typically 2, never more than 3). Besides Speed, skills and effects may also give a unit's skills more or less Delay.
-- **Pull Forward and Push Back.** There is no global cap. Each skill states its number, checked against the damage anchor and playtesting.
-- **Reset.** Restores the full Wait of the unit's last skill, starting from now.
-- **Action denial.** There is no safeguard against Slow, Push Back and turn-skipping statuses for now. Test first.
-- **Skipped turn.** A skipped turn costs as much as a Delay 5 skill: Wait = 5 + (11 − Speed).
-
-- **Delay bounds.** Effects that add or remove Delay never take a skill outside 1–10: after all modifiers, Delay is clamped to 1–10.
-- **Overshoot (adopted 2026-10-06).** If Pull Forward removes more time than remains, the turn arrives now and the extra is lost; it does not shorten a later Wait. Among turns due at the same time, the normal tie rule applies.
-- **Durations use the battle clock (adopted 2026-10-19, effect timing quiz).** Ground effects and statuses last a stated number of **time units** from the moment they are placed. Each skill states its own length; 20 time units is the reference for burning ground, ice, water and poison ground (about two turns of an average Speed 5, Delay 5 unit). The end of every effect is shown only as a marker on the timeline, not as a countdown on the spot.
-- **When the next Wait starts (adopted 2026-10-06).** The acting unit's next Wait is set when its skill is used, before the skill's effects. Pushes, pulls, Haste or Slow that reach the user during its own action (for example from a counter) apply on top of it.
-
-Stop was removed from the timeline effects: its role is covered by Push Back and by statuses that skip turns (Frozen). Turn Now (immediately completing a unit's Wait) was removed on 2026-10-05 because no skill uses it; Pull Forward covers the role.
-
-### 6.2 Standard action sequence
-
-1. The timeline identifies the acting unit.
+1. The timeline names the acting unit.
 2. The player chooses a skill.
-3. The player supplies only the target or other input required by that skill.
-4. The action resolves immediately.
-5. Automatic effects and the updated combat state are reflected in the timeline.
-6. The next eligible unit acts.
+3. The player gives only the target or other input the skill needs.
+4. The action resolves at once.
+5. Automatic effects and the new combat state show on the timeline.
+6. The next unit acts.
 
-The timeline determines **who acts**, not a general queue in which already-selected actions wait to resolve. An animation may take time to play, but it does not open additional tactical decision windows.
+The timeline shows **turns, not intended actions**; enemy skill choices are not revealed.
 
-The timeline normally displays **turns, not intended attacks**. Enemy skill choices are not automatically revealed in advance.
+**Delayed events.** A skill may create a delayed effect that appears as its own timeline entry. The skill states whether it follows a unit or stays on a slot or row, whether it can be moved, and what movement and KO do to it.
 
-**Delayed events are supported exceptions.** Once a skill creates a delayed effect, such as a comet impact, it appears as its own visible timeline object. An event can be manipulated only when its definition allows that. Each skill specifies whether the effect follows a unit, remains on a slot or area, or uses another condition, including what movement and KO do to it. A delayed event is distinct from an enemy's unchosen future action.
-
-**Auto events.** A skill can put an auto event on the timeline, occupying a position like a unit's turn. Later effects can move it. When it reaches its turn it executes automatically. If its owner is KO, it is removed. If its target is KO when it executes, it targets units behind that target. A skill can make its auto events **blocking**: the owner takes no turn until all of them have resolved or been removed, and the owner's own turn cost starts after the last one. Haste or Slow on the owner changes only the remaining wait for pending auto events.
+**Auto events.** A skill can put an auto event on the timeline, occupying a position like a unit's turn; later effects can move it. When its turn comes it executes automatically. If its owner is KO, it is removed. If its target is KO when it executes, it targets the unit behind that target (section 8.4). A skill can make its auto events **blocking**: the owner takes no turn until they have all resolved, and its own turn cost starts after the last one. A Speed change on the owner changes only the remaining wait of pending auto events.
 
 ### 6.3 Minimal decisions
 
-The desired interaction is **skill → target → resolution**, or **skill → resolution** when no target input is necessary.
+The interaction is **skill → target → resolution**, or **skill → resolution** when no target is needed. Interception, counters and other reactions trigger automatically. **Skills never have modes**: different variants are different skills. **There are never decision popups during the enemy's turn.**
 
-Parry, counter, interception, thorns, and comparable reactions trigger automatically when their conditions are met. Their strategic control comes from builds, positioning, prior skills, or active effects, not repeated confirmation prompts.
+### 6.5 Event order and KO checks
 
-**Skills never have modes (adopted 2026-10-06).** If an action needs meaningfully different variants, each variant is a distinct skill. **There are never decision popups during the enemy turn.**
-
-### 6.4 Required actions and skipped turns
-
-Every unit always has three basic actions besides its class skills: its **type-specific attack**, **Move** (section 9.1) and **Skip Turn**. The attack still needs a legal target in reach. Skip Turn costs the same as a Delay 5 skill (section 6.1). There is **no universal Defend command**; defensive actions belong to specific creature or class movesets.
-
-No unit is ever forced to act or move: Skip Turn is always allowed. A turn is skipped automatically only when an effect says so (for example Frozen), with the same cost. (This replaces the earlier rule that a unit must act whenever it has a viable action and has no Wait command; it was changed on 2026-10-05 because Move is almost always possible.)
-
-### 6.5 Event resolution and KO checks
-
-Skills define a fixed order for their effects. **Random order when undefined (adopted 2026-11-04).** Whenever the rules or a skill leave the order of anything undefined (which unit, event or roll comes first), the order is random, each possibility with an equal chance, from the battle's seeded roll. Defined orders, such as the timeline tie rule (section 6.1, first on the timeline stays first), still apply first. **Check KO after each event.** Moving before damage and moving after damage may intentionally produce different outcomes; meaningful order must be visible in the skill description or preview.
-
-A skill may declare a **simultaneous event block**. Apply the whole block together, check its resulting KO state, then collect and process the resulting reactions. Internal slot iteration must not change who receives effects intended to be simultaneous.
-
-Each skill determines whether it continues or stops when its user becomes KO during resolution. Each hit of a multi-hit skill is an event with its own KO check; the skill defines whether remaining hits expire, retarget, or follow another explicit rule.
-
-**Order for using a skill (adopted 2026-10-06):**
+**Order for using a skill:**
 
 1. Check that the skill is usable and the target legal.
 2. Pay the Momentum cost (section 6.7).
@@ -526,827 +278,410 @@ Each skill determines whether it continues or stops when its user becomes KO dur
 4. For each event in the skill's order (or each simultaneous block): apply it, check KO, apply its Momentum shift, resolve its reactions (section 6.6), then check victory (section 12.3).
 5. The skill ends.
 
-**Targets that change mid-skill (adopted 2026-10-06).** What later hits of a skill do when their target moved, became illegal or was KO'd after an earlier hit depends on the targeting type. The targeting types are what the skill selects: a **unit**, a **slot** (`direct`) or a **row** (`row`); `melee` and `projectile` are delivery, not targeting.
+Each skill states the order of its effects. **Whenever the rules leave an order undefined** (which unit, event or roll comes first), the order is random, each possibility equally likely, from the battle's seeded roll; defined orders such as the timeline tie rule apply first.
 
-- **A unit, delivered `melee`.** If the target moves out of reach, the remaining hits are cancelled.
-- **A unit, delivered `projectile`.** The remaining shots fly to the target's **original column**. If the target is still in that column (for example moved to another row in it), it can be hit, and interception applies normally. If it left the column, the shots miss.
-- **A slot (`direct`).** The remaining hits land on the same coordinate and hit whoever covers it, both units at a 50% overlap.
-- **`random`.** Each hit picks again among the targets legal at that moment.
-- **`chain`.** Each jump is chosen when it happens, from the targets legal at that moment; if none is legal, the chain ends.
-- **Areas (`column`, `row`, `circular`, `all`).** The affected units are determined again for each hit, from the positions at that moment.
+A skill may declare a **simultaneous block**: apply the whole block, check KO, then collect and process the reactions. Each hit of a multi-hit skill is its own event with its own KO check. A skill states whether it continues when its user is KO mid-resolution.
 
-A KO'd target still follows its skill's own KO rule (section 6.5 above).
+**Targets that change mid-skill.** What later hits do when their target moved, became illegal or was KO after an earlier hit:
 
-### 6.6 Reaction chains
+- **A unit, delivered `melee`:** the remaining hits are cancelled if the hit is no longer possible (the user left its Front row or the target became airborne).
+- **A unit, delivered `projectile`:** the remaining shots fly to the target's **original column**. If the target is still in that column it can be hit, with interception as usual; if it left the column, the shots miss.
+- **A slot (`direct`):** the remaining hits land on the same coordinate and hit whoever covers it, both units at a 50% overlap.
+- **Random picks and chains:** each pick or jump is made when it happens, from the targets legal then; a chain with no legal next target ends.
+- **Areas** (rows, adjacency, melee reach): the affected units are found again for each hit.
 
-Reactions are additional effects, not automatically normal turns. They change the timeline only when explicitly defined to do so.
+### 6.6 Reactions
 
-**Adopted reaction rules:**
+Reactions are effects, not turns; they change the timeline only when they say so.
 
-- **Propagation.** Reactions can trigger further reactions by default. A reaction that causes a hit can trigger reactions to that hit. A reaction may state that it cannot.
-- **No chain limit for now.** There is no global chain limit, no self-recursion rule and no once-per-chain rule. An endless chain is a design bug that testing must find. The AI-versus-AI harness (section 2.4) must detect and report chains that do not terminate. The detection threshold is an implementation detail, not a game rule.
-- **Reaction hits.** A damaging reaction hits its target directly: it ignores interception, and shields and reductions apply as usual. A reaction has **its own tags** and does not inherit the tags of the skill or event that triggered it, or of the skill that created it. A reaction that should count as `melee` (for example a counter that strikes back in melee) says so itself, so such counters can trigger melee-only reactions and can chain.
+- **Propagation.** Reactions can trigger further reactions, unless a reaction says it cannot. There is no chain limit; an endless chain is a design bug that the AI-versus-AI harness must report.
+- **Reaction hits** go straight to their target: they ignore interception, while Wards and reductions apply. A reaction has its own delivery and does not inherit the triggering skill's; one that counts as melee says so.
 - **Timing.** Reactions resolve after each event or simultaneous block, before the triggering skill's next event.
-- **KO'd owners.** A unit KO'd by the triggering event does not react, except through explicit "when KO'd" triggers.
-- **"Once per hit".** Reactions limited to once use hit events as the unit. A multi-hit skill can trigger such a reaction once per hit.
-- **Priority.** Simultaneous reactions use three levels. **First:** effects that change or remove other effects (cleanse, reveal). **Normal:** damage, healing and statuses. **Last:** timeline changes (pulls and pushes). Reactions of the same level resolve by their owners' timeline order, with explicit skill exceptions allowed. If owners share a timeline position, the tie rule of section 6.1 applies: the one on the timeline first goes first, then the seeded roll.
+- **KO'd owners** do not react, except through explicit "when KO" triggers.
+- **Once per hit.** A multi-hit skill can trigger a once-per-hit reaction once per hit.
+- **Priority.** Simultaneous reactions resolve in three levels: **first** effects that change or remove other effects (cleanse, reveal), **then** damage, healing and statuses, **last** timeline changes. Within a level, by their owners' timeline order; owners at the same position use the tie rule of section 6.1.
 
-### 6.7 Momentum and the battle clean slate
+### 6.7 Momentum
 
-**Momentum is a single battle-wide contested meter shared by both opposing parties, not two independent party pools.** It represents which side currently has the flow of battle in its favor.
+**Momentum is one battle-wide meter shared by both sides**, from **−10 to +10**, showing which side has the flow of battle. Every battle starts with every unit at full HP and the meter at **0**; nothing carries over between battles.
 
-**Every battle starts with all participating units at full HP and the Momentum meter at neutral zero.** Momentum and all other temporary combat states never carry over between battles.
+**Shifts.**
 
-Momentum represents the current flow of battle, rather than a resource generated by fixed values on individual skills. A party's successful attacks generally move the meter toward that party's advantage; its failed attacks and successful enemy attacks generally move it away. The two sides contest the same meter.
-
-Fast creatures naturally build Momentum effectively because they can perform several fast actions in a short span of timeline time. If those attacks succeed, they can quickly shift Momentum in their party's favor.
-
-Many of the most powerful attacks and abilities require Momentum to use. This connects fast units that build Momentum through repeated successful actions with powerful units or abilities that spend the accumulated Momentum for high-impact effects.
-
-Momentum gain is not an explicit **Momentum Gain** stat attached to skills. Adopted rules:
-
-- The meter runs from **−10 to +10**, with neutral at 0.
 - A damaging hit that lands moves it **1** toward the acting side. A KO gives no bonus.
-- A missed attack moves it 1 against the attacker. A hit that is intercepted moves it **0**. A hit on a unit of the **acting side itself** (friendly fire, or a skill used on an ally) moves it 0 either way, so Momentum cannot be farmed by hitting your own units. A hit that a shield **fully absorbs** also moves it 0. A partly absorbed hit still moves it 1.
-- A skill or status may modify the shift (for example, double Momentum for hits on a marked target).
-- A skill may have a Momentum cost from **0 to 10**. It requires the user's side to be at least +N ahead and, when used, pushes the meter **N toward neutral**. If the requirement is not met, the UI states it.
+- A missed attack moves it 1 against the attacker.
+- A hit that is intercepted, fully absorbed by a Ward, or lands on the acting side's own unit moves it **0**. A partly absorbed hit still moves it 1.
+- Skills that deal no damage, healing, Move and Skip Turn move it 0, even when they land something harmful.
+- Status ticks and ground damage move it 0. Bump damage moves it 0.
+- **One shift per action:** a multi-hit or area action moves it 1 toward its side if any hit lands, otherwise 1 against if it missed, and 0 if everything was intercepted, unless the skill says otherwise.
+- Reactions and counters follow the same rules. Each **auto event** shifts the meter when it resolves, like a separate action (each turret shot shifts it).
+- Several shifts in one simultaneous block apply one by one in event order, clamped after each.
+- The meter clamps at −10 and +10; excess is lost. There is no snowball safeguard for now.
+- A skill may modify the shift if it says so.
 
-Further adopted rules:
+**Costs.** A skill may cost **0 to 10** Momentum. It needs the user's side to be at least that far ahead and, when used, moves the meter that many points toward neutral. The cost is paid before any effect and never refunded, even if the skill achieves nothing. If the requirement is not met, the UI says so.
 
-- **Limits.** The meter clamps at −10 and +10, and any excess shift is lost.
-- **Snowballing.** There is no snowball safeguard for now. Momentum costs already spend a lead. Revisit after playtesting.
-- **Periodic effects.** Poison, bleeding and similar ticks shift the meter by 0.
-- **Reactions and counters.** Their hits follow the normal rule (1 toward the acting side if they land, 1 against if they miss, 0 if intercepted).
-- **Multi-hit and area actions.** By default an action causes **one** shift: 1 toward its side if any hit lands, otherwise 1 against if it missed, and 0 if everything was intercepted. A skill may state otherwise.
-- **Auto events.** Each auto event is its own event on the timeline and shifts the meter when it resolves, like a separate action. A Bolt Turret's shots therefore each shift the meter.
-
-- **Non-damaging actions.** A skill that deals no damage moves the meter by 0, even when it is harmful and lands (a Mark, Silence, or a push without damage). Move and Skip Turn also move it by 0. Healing already moves it by 0.
-- **Paying a cost.** A Momentum cost is paid when the skill is used, before any of its effects. It is never refunded, even if the skill achieves nothing (every hit intercepted or absorbed, or a chance-based effect failing).
-- **Several shifts in one simultaneous block.** They are applied one by one in the block's event order, and the meter is clamped after each one.
-
-**Core principle:** successful combat builds Momentum, mistakes and enemy success erode it, and powerful actions often consume it.
+Fast units build Momentum with many quick successful actions; strong skills spend it.
 
 ## 7. Battlefield and formation
 
-### 7.1 Centered rows and capacity
+### 7.1 Rows and capacity
 
-Each side has three horizontal rows: **Front, Middle, and Rear**, separated from the opponent by a central battle line. There are **no visibly fixed card slots**. Units within each row are automatically centered and placed directly beside one another without gaps, similar to Hearthstone's automatic minion positioning. All normal cards have exactly the same width.
+Each side has three rows: **Front, Middle and Rear**; the two Front rows face each other across the battle line. There are no visible card slots: the units of a row are centered and placed side by side without gaps. All normal units have the same width.
 
-Each row may contain at most **six normal units**. Regular six-unit parties are not expected to fill all three rows; additional capacity mainly supports summons and other temporary units. The player may place all six party members in one row, with no required distribution by class.
-
-Eighteen normal units per side, the sum of the row capacities, is the adopted per-side cap (section 11.3). It may be revisited after prototype readability testing. Standard party size and total battlefield capacity are separate limits.
+A row holds at most **six units**, so a side holds at most **18**. A six-creature team never fills all rows; the extra room is for summons and constructs. The player may place all six creatures in one row.
 
 ### 7.2 Starting formation
 
-Starting position is a deliberate pre-battle choice. The game must not randomly rearrange the party through surprise formations or arbitrary encounter overrides.
+The starting formation is the player's choice before battle. The game never rearranges a team by surprise; position changes in combat come only from actions and stated effects.
 
-Enemy formations and encounter mechanics may create different tactical demands. Position changes during combat must be an understandable consequence of actions or explicit effects.
+### 7.3 Horizontal alignment
 
-### 7.3 Horizontal alignment and ordered positions
-
-Equal-width, gapless, centered cards in different rows have only three relevant horizontal relationships: **100% overlap, 50% overlap, or no overlap**. Automatic centering prevents arbitrary intermediate overlap values.
-
-Rows with card counts of the same odd-or-even parity can align directly. When one row has an odd count and the other an even count, their positions are offset by half a card width. This creates an **invisible half-card-width positioning grid**, without exposing explicit slots to the player.
-
-A derived coordinate model uses one half-card width as a unit. For a row of `n` cards and zero-based ordered index `i`:
+Because cards are equal-width, gapless and centered, units in different rows overlap by **100%, 50% or 0%**. Rows with the same odd-or-even count align directly; otherwise they are offset by half a card. Internally positions use a half-card grid:
 
 ```text
-Card center = 2 × i - (n - 1)
+Card center = 2 × i − (n − 1)     (row of n cards, zero-based index i)
 Card width = 2
-Overlap fraction = max(0, 1 - abs(centerA - centerB) / 2)
+Overlap fraction = max(0, 1 − abs(centerA − centerB) / 2)
 ```
 
-A three-card row has centers `-2, 0, +2`; a two-card row has `-1, +1`, producing half-overlaps. Against a one-card row centered at `0`, only the middle card of the three-card row fully overlaps. This expresses the existing formation rules, not a new visible grid.
+A three-card row has centers −2, 0, +2; a two-card row −1, +1.
 
-The order of units within a row matters for adjacency, certain area attacks, positional abilities, and other effects. Internally, the game tracks ordered positions and their derived alignment. Row distance and horizontal alignment remain separate concepts. References elsewhere to a slot mean an occupied ordered position or capacity, not a permanently numbered visible cell; future position-bound effects must define how they interact with row recentering. **Default (adopted 2026-10-06):** an effect tied to a spot (a trap, a slot effect, a delayed `direct` effect) stays on its coordinate when rows recenter. When it triggers, it affects the unit covering that coordinate; if two units overlap it by 50% each, it affects **both** (as for `direct`, section 10.1).
+The order of units within a row matters for adjacency, areas and positional skills. A "slot" or "spot" means a coordinate on this grid, not a visible cell. **An effect tied to a spot** (ground effects, delayed `direct` effects) stays on its coordinate when rows recenter; when it triggers it affects the unit covering that coordinate, and **both** units if two overlap it by 50% each.
 
-There is no general facing, rotation, or rear-attack subsystem. A backstab or similar behavior must be an explicit skill effect.
+There is no facing or rear-attack system.
 
-### 7.4 Nominal row versus effective distance
+### 7.4 Rows
 
-**Skill ranges (adopted 2026-11-04).** Every skill states a delivery (`melee`, `projectile` or `direct`) and a range in skills.md. **Distance 1** is the minimum and reaches the enemy Front row. **Distance 2** reaches the enemy Middle row and any allied row. **Distance 3** reaches the enemy Rear row. Summons, constructs and totems with a range are placed within it.
+Rows keep their identity when they empty: units never move forward on their own when allies fall. **"Front row" always means a side's real Front row.** If it is empty, no unit of that side can use melee until a unit moves into it, and enemy skills with melee reach against that side hit nobody (section 8.1).
 
-Rows retain their identity when empty. Units do not automatically move forward when allies fall.
+Skills have **no range**: rows matter for melee, interception, area shapes and movement only.
 
-For range calculations, empty rows are skipped. A unit in Rear remains in Rear for row-dependent skills, even if it is now the nearest reachable opponent.
+### 7.5 Kinds of presence
 
-Example: if the enemy Front and Middle contain no relevant active visible units, the enemy Rear loses the distance protection those rows would otherwise provide. Reviving a visible unit in Front can restore that protection without changing the surviving units' row or order.
-
-**Range on your own side (adopted 2026-11-08, replacing rows apart + horizontal gap).** A range of **D1** reaches the user itself and its adjacent units (section 8.4); **D2 or more** reaches any unit on the user's side. A range on the other side uses the opposing-row table below. Every skill states its own target type and range; reaching far is paid for in that skill's Delay and Momentum cost.
-
-Both the attacker's row and the target's row matter to reach. A melee attack from Rear cannot automatically reach the opposing Rear. The original discussion proposed the following distances before empty-row compression:
-
-| Attacker row | Enemy Front | Enemy Middle | Enemy Rear |
-|---|---:|---:|---:|
-| Front | 1 | 2 | 3 |
-| Middle | 2 | 3 | 4 |
-| Rear | 3 | 4 | 5 |
-
-**Adopted opposing distance.** The table is final. It equals `attacker's effective row + target's effective row − 1`, counting Front as 1, Middle as 2 and Rear as 3 **after skipping empty rows on both sides**. A row is skipped when it has no living unit. On the opposing side, stealthed units and KO bodies do not make a row count (sections 10.1 and 10.2). The target's own row always counts. On the user's own side, stealthed allies do count. A unit's actual row never changes: a Rear unit is always in Rear for row-dependent skills, and only the distance calculation ignores empty rows.
-
-Example: your only unit is in Rear, and the enemy has units only in Middle and Rear. Your Rear counts as row 1 and the enemy Middle as row 1, so the distance is 1. With every row occupied it would be 4.
-
-- Horizontal position is ignored for opposing distance. It still matters for cover and interception.
-- "Any visible unit" is unlimited: every visible unit is legal at any distance.
-- Range bonuses, such as Phase Weapon's unlimited range, can exceed the table maximum. Delay and Momentum cost pay for reach.
-- Range is checked **when the skill is cast**. Delayed events do not check it again when they land.
-
-Only range calculation ignores empty rows. Physical interactions (adjacency for area skills, bumps and forced movement) use the nominal rows (section 8.4).
-
-### 7.5 Different meanings of occupancy
-
-| Property | Intended use |
+| Property | Meaning |
 |---|---|
-| Physical occupancy | Determines whether another unit or object may occupy the position. |
-| Visibility | Determines whether the opponent can select the unit normally. |
-| Range relevance | Determines whether an active visible unit contributes to effective row distance. |
-| Area-effect presence | Determines whether a unit lies within an affected area, regardless of stealth. |
-| Interception eligibility | Depends on activity, visibility, position, and the relevant defensive ability. |
+| Physical occupancy | Whether another unit can take the position. KO bodies occupy it. |
+| Visibility | Whether the opponent can select the unit. Stealthed units are not visible. |
+| Area presence | Whether a unit is inside an area, regardless of stealth. |
+| Interception eligibility | Living, visible, not Stunned, Frozen or Immobilized (section 8.2). |
 
-These properties must not collapse into a single occupied/unoccupied rule. In particular, a knocked-out unit blocks its slot but does not become an active defender.
+These never collapse into one occupied/unoccupied rule: a KO body blocks its slot but never intercepts.
 
-### 7.6 Unit size
+### 7.6 Unit size and bosses
 
-**Current rule:** every normal playable unit uses the standard card width and one unit of row capacity. Large units are not planned as a standard player mechanic.
+Every unit uses one card width and one unit of row capacity. **Bosses are normal-size units**: a boss is a strengthened version of a roster creature from its chapter, with higher HP or other stats (which may exceed the normal ranges) set as explicit content values. Large multi-slot units are not planned.
 
-The underlying system should avoid assumptions that would make larger units impossible later. Bosses or special encounters may eventually use creatures that consume the space or capacity of multiple normal units. **Bosses are normal-size units (adopted 2026-10-06).** A boss uses one card width and one unit of row capacity like any unit and follows every normal rule. It differs only through higher HP or other stats, which may exceed the normal stat ranges (section 3.7), and its skills. These are explicit content values, not hidden multipliers (section 12.3). **A stage boss is a strengthened version of a roster creature from that stage (adopted 2026-10-16)**; the normal version of that creature can be the encounter's reward. Large multi-slot units and multi-row footprints are not planned.
-
-Unresolved future questions include movement fit, protection across horizontal alignments, targeting a large body, and whether overlapping an area several times deals damage once or repeatedly.
-
-## 8. Targeting, range, and protection
+## 8. Targeting and protection
 
 ### 8.1 Target legality
 
-**Either side (adopted 2026-11-04).** A targeted skill works on any unit within its range, on either side; using it on the other side is the player's choice, even when it is usually a weak one. An area skill hits every unit in its area. A skill marked **Own side only** is the exception (Leap to Defend, Rescue, Take a Charge, Switch Places, Airlift, Swap Turns, Reposition, Fall Back, Advance and Rotation). Curse of Betrayal works on any unit, and the healing it takes always goes to the caster's side. **No skill targets an empty spot** (2026-11-04): a skill that places a ground effect targets a unit and uses its spot, or targets a row. Placing a summon, construct, turret or totem on a free spot (section 11) is placement, not targeting, and stays allowed. Passives that react to an enemy or an ally are triggers, not targets, and keep their wording. Summons and constructs act by their own skill text.
+- **No range.** A skill can target any legal unit on either side; using it on the other side is the player's choice, even when it is usually a weak one. **Own side only** skills are the exception: Leap to Defend, Rescue, Swap Turns, Advance and Switch Places. Curse of Betrayal works on any unit, and the healing it takes always goes to the Hexer's side.
+- **Melee needs the Front row.** A unit can use a `melee` skill or attack only while it stands in its own Front row. Projectile and direct skills work from any row. Dive and Puppet Soul's forced hit are the only exceptions.
+- **Melee reach.** A skill or attack that works "in melee reach" (pulses, breaths, Frost Nova, Sweeping Kick, Battle Roar, Flash Powder, Ward Burst) needs its user in its own Front row, whatever its delivery, and hits **every enemy in the enemy's Front row** (a breath picks one of them as its target). If that row is empty the skill can still be used but hits nobody, and its turn and cost are spent.
+- **Airborne.** Melee cannot target an airborne unit (section 10.6).
+- **Stealth.** A stealthed enemy cannot be targeted (section 10.1).
+- **No empty spots.** No skill targets an empty spot: a ground effect goes on a target unit's spot or on a row. Placing a summon, construct, turret, trap, totem or barricade on a free spot is placement, not targeting (section 11).
+- **Areas.** An area skill hits every unit in its area; areas built from a target affect that target's side. Skills that pick targets themselves (random picks, chain jumps, "every enemy") state their side.
+- **Keystones** that react to an enemy or an ally are triggers, not targets.
 
-Skills specify valid targets, range, eligible starting rows, and relevant restrictions. A skill selects a unit unless it carries a targeting tag for another target type (section 4.7), such as `row`, which selects a row.
-
-Explicit position- or row-targeted abilities were discussed as exceptions, particularly for area effects against hidden units. The exact exception list is open. General row targeting must not silently become available for every skill.
-
-**Default target side.** Unless a skill states otherwise, a skill may target **any legal unit, ally or enemy**. Gust can push an ally. A heal can be used on an enemy, for example to trigger an unwanted effect. Resurrection skills can target allied or enemy bodies. A skill that is restricted to allies or enemies must say so in its Reach. Skills that choose targets automatically (`random`, `all`, `chain` jumps) fix their own side, since a random hit on an ally is not a useful default. Area shapes (`circular`, `column`, `row`) affect the units of the selected target's side. The class document lists the restricted skills with reasons.
-
-Target legality and interception are separate: an enemy may be a legal target while defenders still have a chance to intercept the attack.
+Target legality and interception are separate: an enemy may be a legal target while defenders still have a chance to intercept.
 
 ### 8.2 Interception
 
-Eligible defenders in front of a target may intercept appropriate attacks. Protection resolves from nearer defensive layers toward the target, with Front considered before Middle where applicable.
+Only `melee` and `projectile` skills can be intercepted, whichever side uses them and whatever they do (a projectile heal can be intercepted). A skill aimed at the user's own side is never intercepted. Reaction hits are never intercepted (section 6.6).
 
-Normal cover depends on horizontal overlap between a forward unit and the unit behind it:
+**Who covers whom.** A living unit in a row in front of the target (on the target's side) covers it if their horizontal overlap is 50% or more. Defenders are tried from the row nearest the attacker toward the target; within one row their order is random, each with equal chance.
 
-| Horizontal overlap | Normal covering relationship |
-|---|---|
-| 100% | Full column alignment: strongest normal cover, with a 50% chance to intercept. |
-| 50% | Partial cover: a 25% chance to intercept. |
-| None | That forward unit provides no normal cover to this rearward unit. |
+| Overlap | Melee | Projectile |
+|---|---|---|
+| 100% | 75% | 50% |
+| 50% | 50% | 25% |
+| None | no cover | no cover |
 
-**Which skills can be intercepted (adopted).** Only skills with the `melee` or `projectile` tag can be intercepted, whichever side uses them and whatever they do. A `projectile` heal can therefore be intercepted, while a `direct` heal cannot. A `melee` or `projectile` skill ignores interception only if it says so (for example through Phasing Strike). **Intercepted effects that are not damage (adopted).** An interceptor receives the intercepted effect instead of the target. On a full interception it receives the whole effect. On a partial interception an amount that can be split, such as healing, is split like damage: the interceptor receives half, rounded down, and the rest continues. An effect that cannot be split, such as a status or a push, goes entirely to the interceptor, as on a full interception.
+**What an interceptor takes.** It takes the **full hit (50%)** or a **partial hit (50%)**. A partial hit splits the damage: the interceptor takes half, rounded down, and the rest continues toward the target, where further defenders may still try and the target's Ward applies. A hit of 1 cannot be split and goes entirely to the interceptor. Effects that are not damage work the same way: an amount that can be split (healing) is split like damage; an effect that cannot be split (a status, a push, a Delay) goes entirely to the interceptor.
 
-**Defender order (adopted).** Defenders are tried from the nearest row toward the target. Within one row their order is **random**, each defender with an equal chance to try first (adopted 2026-11-04, replacing left to right; section 6.5 random-order rule).
+**Who can intercept.** Not a unit that is Stunned, Frozen, Immobilized, stealthed or KO. Airborne units intercept and are covered like any other unit, also against melee. Summons and constructs intercept like any unit. Other defenses come only from skills, each stating what it works against.
 
-**Adopted chances.** A forward unit that is not the intended target (passively targeted) intercepts with a **50%** chance at **100% overlap** and a **25%** chance at **50% overlap**. When it intercepts, it takes the **full hit (50%)** or a **partial hit (50%)**. A partial hit splits the damage in half: the interceptor takes half **rounded down**, and the remainder continues down the interception chain. A hit of 1 cannot be split and goes entirely to the interceptor. An intercepted hit changes Momentum by 0. Individual skills, passives, statuses, and attack types may override or modify these standard rules. Summons and constructs that act as regular units can intercept like any unit.
-
-**Who can intercept (adopted 2026-11-04).** A Stunned, Frozen or Immobilized unit cannot intercept. Airborne units intercept and are covered like any other unit (section 10.6). Guardians use the same 50% / 25% chances as everyone; they intercept better only through their skills. **Other defenses** from skills, such as parry, block or dodge, each state which attacks they work against; there is no general rule.
-
-- A full interception can stop or take over the incoming attack according to the effect.
-- A partial interception leaves a remaining attack or effect.
-- That remainder continues toward the original target.
-- Further eligible defenders may attempt to intercept it.
-- Partial interception does not remove a later defender's defense opportunity or the intended target's shields and reductions.
-
-Sequential protection is intentional and must obey the reaction-chain safeguards in section 6.6.
-
-Examples in skills.md: **Phasing Strike** lets an attack ignore interception, and **Shield Wall** makes three side-by-side units intercept every attack aimed behind them.
-
-Proposed interception effects include taking the attack, absorbing part of its damage, reducing its remaining strength, removing one effect, or stopping a projectile component. The attack types eligible for each defense, exact probabilities, processing order, and interaction with the stats are open.
-
-An area effect can be intercepted when it is `melee` or `projectile`, like any other skill.
+An intercepted hit moves Momentum 0 (section 6.7). Sequential protection obeys the reaction rules of section 6.6.
 
 ### 8.3 Target preview
 
-Before committing an action, the interface should communicate:
+Before committing, the interface shows:
 
-- Whether the target is legal and in range.
-- Which defenders may interfere.
-- The relevant success or interception chance.
-- Important exceptions such as ignored defenders or stealth interaction.
-- The affected targets and movement or timing consequences where available.
-
-An aggregate interception chance was proposed for the main display, with further detail on inspection. Example percentages from the discussions are placeholders.
+- which units are legal targets;
+- for each legal target, the chance that the skill reaches it directly (after interception), and which defenders may interfere;
+- important exceptions (cannot be intercepted, stealth, airborne);
+- the units an area affects, and movement or timing consequences where they can be foreseen;
+- the resulting damage or healing range.
 
 ### 8.4 Area patterns
 
-Area and multi-target skills use **fixed, skill-specific patterns based on slots, rows, and adjacency**. There is no freely positioned radius or cone. Patterns may include a target and neighbors, a row, a line, or a chain with defined rules.
+Areas use **fixed patterns based on rows, adjacency and melee reach**; there is no free radius or cone. The UI highlights every foreseeable affected unit before execution, including friendly fire, and separates possible from certain targets for random outcomes.
 
-The UI highlights all foreseeable affected units before execution, including secondary damage, healing, movement, statuses, and friendly fire. For random outcomes, distinguish possible targets from guaranteed targets.
+Areas hit stealthed units inside them. Areas never hit KO bodies unless the skill says so. Only skills that say so target KO bodies (revives, Raise Undead, Corpse Explosion, Desecrate).
 
-Friendly fire is **skill-specific** and may be an intentional consequence of a powerful ability. Skills define whether they affect enemies, allies, the user, any unit, or all units in an area. Only legal choices should appear as selectable targets.
+**Adjacency.** The units adjacent to a unit are its **left and right neighbours in the same row**, plus the units in the row **directly in front of and directly behind it with at least 50% overlap**, on the same side. Adjacency uses the real rows: an empty row is not skipped, so units in Front and Rear are not adjacent when Middle is empty.
 
-Area effects can affect stealthed units physically inside their area. Area effects never hit KO bodies unless the skill says so. Whether they affect allies or the user is defined by the skill.
+**Behind.** A skill that hits units **behind** its target hits them in the **next row behind the target's row that holds a unit that can be hit**: an empty row is passed over, a row with only KO bodies counts as empty, and stealthed units count. In that one row, units with **100% overlap** are hit automatically and those with **50% overlap** with a **50%** chance; nothing further back is reached. If nothing there overlaps the target, nothing is hit behind. If a skill's target is KO when it executes, the skill hits the unit behind that target instead.
 
-**Adjacency (adopted).** For `circular`, `chain` and similar patterns, the units adjacent to a unit are its **left and right neighbors in the same row**, plus the units in the row **directly in front of and directly behind it with at least 50% horizontal overlap** (section 7.3). Adjacency is a physical relationship, so it uses the **nominal rows**: an empty row is not skipped, and units in Front and Rear are not adjacent when Middle is empty. Only range calculation ignores empty rows (section 7.4). Bumps and forced movement follow the same rule: a unit shoved from Front into an empty Middle lands there and bumps nothing.
+### 8.5 Nearest
 
-A skill that hits units **behind** its target hits them in the **next row behind the target's row that holds a unit that can be hit** (adopted 2026-11-08, owner decision): the nominal rows count, so an empty row is passed over, a row with only KO bodies counts as empty, and stealthed units count. In that one row, the units with **100% overlap** are hit automatically and those with **50% overlap** with a **50%** chance; the rule never reaches into the rows after it, and if no unit there overlaps the target, nothing is hit behind. Stealthed enemies can always be hit by attacks that reach them without targeting them. If a skill's target is KO when it executes, the skill targets units behind that target. **Only resurrection skills can target KO bodies.**
+"The nearest enemy" (turrets, golems, blades, undead, Spreading Curse) is the legal enemy in the fewest rows from that side's Front: Front before Middle before Rear, empty rows ignored. Stealthed units are not legal. Ties are picked by the seeded roll, each with equal chance, for players, the AI and automatic effects alike, so "nearest" never asks for a choice.
 
-### 8.5 Closest-target ties
+## 9. Movement
 
-Stealth and empty-row rules affect nearest-target selection. **Tie rule (adopted 2026-11-08, replacing leftmost):** when several legal targets are equally close, one of them is picked by the seeded random roll, each with equal chance (section 6.5). The same rule applies to players, the AI and automatic effects, so a skill that says "nearest" never asks for a choice. A skill that selects randomly says so.
+### 9.1 Move
 
-## 9. Movement and positional skills
+Every unit has a basic **Move** action:
 
-### 9.1 Repositioning
+- It moves the unit to **any other row on its own side**; it cannot reorder a unit within its row.
+- It has **Delay 5** and counts as `move` (Bleeding).
+- The player picks any gap in the destination row; the row recenters. A full row cannot be chosen, so Move never bumps.
+- Move never swaps; swaps come only from skills.
 
-Voluntary repositioning costs a turn, as carried forward in the lane discussion. Skills may combine an action with movement; movement does not always require a separate turn when it is part of a skill.
-
-Useful design examples include an attack from Middle that advances its user, a powerful action that leaves the user exposed, or a weaker action that improves the user's defensive position.
-
-**Move (adopted).** Every unit has a basic Move action:
-
-- It moves the unit to **any other row on its own side**. It cannot reorder a unit within its own row.
-- It has **Delay 5**, the same as a skipped turn, and the `move` tag, so it triggers Bleeding (section 10.5).
-- The player picks where the unit lands: **any gap in the destination row**, between two units or at either end. The row recenters. A full row cannot be chosen (section 9.2), so Move never bumps.
-- Move never swaps. Swapping places with an ally comes only from skills such as Swap Places.
-
-**Movement inside a skill (adopted).** When a skill moves its own user (for example Hit and Run or Leap to Defend), the movement follows the forced-repositioning rules of section 9.5: realistic landing, bumping, and, if the chain is blocked, nothing moves and every unit in the chain takes 1 bump damage, allies included. A blocked movement does not cancel the rest of the skill: its other effects still resolve, from wherever the user ends up. The skill states the order of movement and damage (section 6.5).
+**Movement inside a skill.** When a skill moves its own user (Leap to Defend, Rescue), the movement follows the forced-movement rules of section 9.5. If it is blocked, the rest of the skill still resolves from wherever the user ends up.
 
 ### 9.2 Blocked movement
 
-Movement into a full destination row or beyond the formation boundary is blocked. Automatic row centering does not create extra capacity or displace units into other rows to make room; it only updates the display and alignment of the row's ordered occupants.
+Movement into a full row or past the formation edge is blocked. Recentering never creates room or shoves units into other rows.
 
-A skill may explicitly swap, push, pull, displace, or apply a consequence when movement fails. Slow, impact damage, or other effects were discussed as possibilities, not universal penalties.
+### 9.5 Forced movement
 
-Whether other parts of a combined attack-and-move skill still resolve when movement fails remains a required skill-design decision.
+Pushes, pulls and swaps of a unit other than the user follow these rules. Each skill says whether it can move enemies, allies or both.
 
-### 9.3 Position-dependent skills
+- **Landing.** A moved unit keeps its horizontal coordinate and lands in the destination row where that falls. If it lands with **100% overlap** on a unit there, that unit is **bumped** on in the same direction, and so on down the chain. If it lands with **50% overlap** between two units, it is inserted between them. If nothing is within reach, it joins the end of the row on that side. Pulls chain the same way toward the battle line.
+- **All or nothing.** If every unit in the chain has room, they all move and no damage is dealt. If some unit has nowhere to go (a full row, the formation edge), **nothing moves** and every unit in the chain, the blocker included, takes **1 bump damage**. A 50% insertion into a full row is blocked the same way: the moved unit and the two units around it take 1 each.
+- **Bump damage** is fixed at 1, never scaled or reduced. It is a hit (it breaks stealth and triggers "when hit" reactions) and can KO, but it moves Momentum 0.
+- **Immunity** comes only from skills and statuses (Hold Position, Immobilized, Last Stand, Steadfast Ward).
+- **KO bodies** cannot be moved or swapped unless a skill says so; a swap with a body fails.
+- **Attached effects** follow the unit; spot effects stay. Constructs and traps can be moved like units.
+- **Reactions.** Forced movement triggers only reactions that say "when moved".
+- **Stealth** is not affected by movement.
 
-A skill may have multiple valid starting rows and different behavior in each. For example, an attack might have greater force from Front and more reach from Middle. A row can also make a skill unavailable.
-
-This is a means of making formation matter without assigning every row an arbitrary permanent stat bonus. No universal row-bonus table has been finalized.
-
-### 9.4 Engagement
-
-Engagement and movement restriction were discussed as optional mechanics. There is no established universal opportunity-attack or zone-of-control system. Use explicit effects if such behavior is selected.
-
-### 9.5 Forced repositioning
-
-**Status: adopted, except the bump damage amount.** Pushes, pulls, swaps, and similar effects move a unit other than the user (for example Flush, Drag Out, Gust and Switch Places).
-
-- **Reach.** Position and range always matter: a skill can only reposition units within its reach. Each skill defines whether the moved unit can be an enemy, an ally, or both.
-- **Realistic landing.** A moved unit keeps its horizontal position, using the half-card coordinates of section 7.3, and lands in the destination row where that position falls. If it lands with **100% overlap** on a unit in the destination row, that unit is **bumped** and shoved on in the same direction, and so on down the chain. If it lands with **50% overlap** between two units, it is **inserted between them** (the row recenters; this uses one unit of capacity). If no unit is within its reach, it joins the end of the row on that side.
-- **Bump damage.** A chain either completes or it does not. If every unit in the chain has room, they all move and **no damage** is dealt. If some bumped unit has nowhere to go (the next row is full, for example because of summons, or the formation boundary is reached), **nothing moves** and **bump damage of 1** is dealt to **each unit in the blocked chain**: the moved unit, every unit pressed along the chain, and the blocker. A 50% insertion into a full row is blocked the same way, and the moved unit and the two units it would have been inserted between take 1 each. A long chain can therefore hit many units. Bump damage is fixed at 1 and is not scaled by any stat. It counts as a hit (it breaks stealth, section 10.1) and can KO.
-- **Immunity.** Only explicit skill or passive effects grant immunity to forced movement. There is no global resistance stat.
-- **KO bodies.** Bodies cannot be moved or swapped except by an explicit skill (section 10.2). A swap with a body fails.
-- **Position-bound things.** Effects attached to a unit follow it. Effects attached to a slot stay. **Constructs and traps can be forcibly moved** like units.
-- **Reactions.** Forced movement itself does not trigger reactions by default. A passive may opt in explicitly with a "when moved" trigger. Bump damage is a hit, so it **does** trigger "when hit" reactions.
-- **Stealth.** Movement does not affect stealth (section 10.1).
-
-- **Pulls.** Pulls such as Flush and Drag Out chain the same way: a pulled unit bumps units in front of it at 100% overlap and shoves them forward, with the same all-or-nothing rule and bump damage.
-
-- **Momentum.** Bump damage shifts the meter by 0, even though it counts as a hit, since it is not an attack.
-- **Protection.** Bump damage is fixed at 1 and cannot be lowered by shields, reductions or any other effect.
-
-All forced repositioning rules are now specified.
-
-## 10. Stealth, incapacitation, and resurrection
+## 10. Stealth, KO and statuses
 
 ### 10.1 Stealth
 
-A fully stealthed unit is ignored by normal opposing direct targeting, effective-range calculations, nearest-target selection, and interception eligibility.
+A stealthed unit cannot be targeted by the opponent, is ignored for "nearest" (section 8.5) and never intercepts. Areas still hit it.
 
-A row containing only stealthed units is effectively empty for the opponent's range calculation. Its units still occupy their physical slots.
+- **Gaining.** Stealth comes only from skills and keystones (Vanish, Melt Away, Unseen, Vanishing Kill, Escape Artist). There is no global row restriction.
+- **Breaking.** Stealth ends when the unit **attacks or is hit**, whether or not damage gets through: area hits, hits that reach it without targeting it, hits a Ward fully absorbs and bump damage all count. An intercepted hit hits the interceptor instead and does not break it. Damage that is not a hit (Poisoned, Bleeding, ground damage) does not break it. A skill may override this (Feint keeps it). KO ends it, and reveal effects remove it (Read Tracks, Eagle Eye).
+- **Cleansing.** A cleansing skill that hits a stealthed unit removes its stealth (Dispel).
+- **Duration.** Stealth lasts until broken unless a skill adds a timer.
+- **Visibility.** Stealth is all or nothing; adjacency and alignment never reveal a unit. A stealth skill that would hide a side's last visible unit cannot be used.
+- **Presentation.** The opponent sees the unit with a clear stealth cue and its turns stay on the timeline. Stealth limits targeting, not information.
+- **Locked targets that become stealthed** (delayed and auto events): a `direct` effect still hits its slot, and whoever stands there. A `projectile` passes the stealthed unit and hits the unit behind it (section 8.4); if nothing is hit, the shot is lost. Row and area effects are unaffected.
+- **Movement** does not affect stealth.
 
-Stealth does not grant immunity to area effects. An effect covering the unit's position can still hit it. Reveal abilities may explicitly bypass or remove stealth.
+### 10.2 KO
 
-**Adopted stealth rules:**
+**0 HP means KO.** A KO unit stays in its row and position as a **body** and keeps using row capacity; normal movement cannot move it. A body never intercepts. **KO removes all statuses.** KO has no effect after the battle; there is no permanent death.
 
-- **Gaining.** Stealth comes only from skills used in battle. No unit starts a battle stealthed, and there are no natural stealth passives. There is no global row restriction; each skill states its own (for example Stalk needs the user outside the Front row).
-- **Breaking.** Stealth ends when the unit **attacks or is hit**, whether or not damage gets through. A hit includes area effects and hits that reach it without targeting it, and a hit a shield fully absorbs still breaks stealth. A hit that is intercepted hits the interceptor instead and does not break it. Damage that is not a hit, such as poison or bleeding ticks, does not break stealth. A skill may override this explicitly (for example Backstab). KO also ends it, as KO removes all statuses. Explicit reveal effects (for example Read Tracks, Flush and Scout Ahead) remove it too.
-- **Cleansing.** A cleansing skill that hits a stealthed unit removes its stealth. Because a stealthed enemy cannot be directly targeted, an enemy can only be reached this way by an effect that covers its position.
-- **Duration.** Stealth lasts until broken. A skill may add its own timer.
-- **Allies.** A stealthed unit never intercepts for its allies (it is ignored for interception eligibility, as above).
-- **Visibility.** Stealth is binary: there is no partial visibility, and adjacency or alignment does not reveal a unit. If an entire side is stealthed, a stealth skill that would hide the last visible unit cannot be used (it is not offered as legal).
-- **Presentation.** The opponent sees a normal card with a clear stealth cue, and the unit's turns remain on the timeline. A dimmed card is an acceptable presentation of that cue. Stealth limits targeting, not information.
-- **Locked targets that become stealthed.** Skills normally resolve at once, so this only concerns delayed events and auto events (section 6.2). A `direct` skill hits a specific slot (section 4.7), so it still hits the occupant after that unit becomes stealthed, and if the target has moved away it hits whatever now occupies the slot. A `projectile` passes the stealthed unit and hits the unit behind it, using the behind rule of section 8.4 (100% overlap automatically, 50% overlap with a 50% chance; if nothing is hit, the shot is lost). Row and area skills hit a position and are unaffected. A skill may state a different behavior.
-- **Forced movement.** Being pushed, pulled or swapped does not affect stealth. Bump damage (section 9.5) counts as a hit and breaks it.
+When a unit is KO, its pending auto events and delayed events are removed, unless the skill says they persist because they need nothing more from their owner.
 
-A slot is a coordinate on the half-card grid (section 7.3). If the row recenters after the cast, the coordinate stays fixed, so a delayed `direct` effect may hit a different unit than its original target.
+KO'd summons and constructs are removed at once and free their slot (section 11).
 
-If two units overlap the coordinate at 50% each, a `direct` effect hits **both**, matching the 50% overlap idea of section 8.4.
+### 10.3 Healing and revival
 
-### 10.2 Knocked-out units
+**Healing is capped at maximum HP.**
 
-A dead or incapacitated unit remains in its row and ordered position and **continues to consume row capacity**. Normal movement and displacement cannot move it. Only an explicit skill may move, remove, replace, or otherwise manipulate the body. Automatic visual recentering of a row is not a movement action and does not remove this occupancy.
+A revived unit returns to its own body's slot and is scheduled **as though the revival had been its own action**, with no free turn. The revival skill states the HP it returns. There is no limit on how often a unit can be revived; the skill's costs are the limit. Revival skills can target bodies of either side.
 
-This replaces the earlier proposal that a corpse would retain its position but leave its slot free.
+### 10.4 Burnout Heal and Bound Resurrect
 
-Slot blocking is distinct from range and protection. A row containing only knocked-out units contributes no active defenders; bodies do not preserve living interception or effective-distance protection.
+**Burnout Heal:** its healing resolves as one simultaneous block; then the Lifebinder is KO, before reactions are collected, so the Lifebinder's own reactions do not fire (Martyr is a "when KO" trigger and does).
 
-### 10.3 Healing and resurrection
+**Bound Resurrect: shared pool.** The pool's maximum is the **sum of both units' maximum HP**; it starts at the reviver's current HP plus the revived unit's revival HP. Every hit on either unit reduces the pool and healing either heals it. When the pool reaches 0, **both units are KO**. The link ends when either unit is KO.
 
-Healing and resurrection are intended parts of the system. Keeping the body's slot makes resurrection at its retained position the natural baseline. Reviving an active defender can immediately change range and protection relationships.
+### 10.5 Statuses
 
-**Healing is capped at maximum HP. There is no overheal.** Excess healing does not automatically create shields or additional health.
+**What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses and hexes, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth) and harmful ones (the named statuses, curses and hexes) are told apart for cleansing and stealing.
 
-**0 HP means KO. KO removes all statuses**, including temporary positive and negative effects. Units are not automatically removed from the battlefield.
-
-By default, resurrection returns the unit to its existing slot and schedules it **as though resurrection had been its own action**. It does not grant an immediate free turn. A particular resurrection skill may explicitly override that default. Revival HP, exact scheduling cost, and other consequences belong to the skill definition.
-
-**Adopted KO and revival rules:**
-
-- **Repeat revival.** There is no global limit on how often a unit can be revived in a battle. A revival skill's costs (for example Revive's Momentum 5 and Delay 9) are the limit.
-- **No out-of-combat consequence.** KO has no persistent effect. Permanent death is excluded, and every battle starts at full HP (section 6.7).
-- **Bodies.** A body stays in its slot until revived. The only body removal is that of KO'd summons (section 11.3), which are removed at once. A later skill may state an exception, in which case the body's slot is freed, the unit cannot be revived, and it still counts as KO for the defeat rule.
-- **Pending events.** When a unit is KO'd, its pending auto events and delayed events are removed by default. A skill may state that its events persist, when the event has already been launched and needs nothing more from its user. An event that still needs its owner, such as a turret shot tied to the Tinker's turn, is removed.
-- **Revival HP.** There are no global bounds. Each skill states the HP it returns.
-- **Automatic revival.** Effects that revive a unit automatically, such as an Emergency Revival passive or Second Wind, are allowed as explicit skill effects. They are not a default mechanic.
-- **Which bodies can be targeted.** See section 8.1: a revival skill can target allied or enemy bodies unless it states otherwise.
-
-### 10.4 Named recovery skills
-
-**Burnout Heal:** massively heals units around the user's current position and sacrifices the user. Its healing effects resolve simultaneously, then their reactions are processed. **Sacrifice timing (adopted default):** the user's KO resolves after the skill's simultaneous block and before reactions are collected, so the user's own reactions do not fire (section 6.6). Exact healing amount, affected pattern, team eligibility, and timeline cost remain to be designed; the discussion used allied area healing as its working example.
-
-**Bound Resurrect:** revives a KO unit, after which the revived unit and the reviver share one HP pool. **Shared pool (adopted):** the pool's maximum is the **sum of both units' maximum HP**. It starts at the reviver's current HP plus the revived unit's revival HP. Every hit on either unit reduces the pool, and healing either unit heals the pool. When the pool reaches zero, **both units are KO**. The link ends when either unit is KO. Its relationship to the rule that KO removes statuses and any further details are decided in the skill's definition.
-
-Other proposed recovery concepts included Life Exchange, Sacrifice, Emergency Revival, temporary Reanimate, Second Wind, and revival with Exhausted-like consequences. They are not a finalized skill roster.
-
-### 10.5 Status framework
-
-Each status has its own application chance, duration, triggering conditions, and stacking behavior as defined by its source skill and status type. There is no universal stack rule. Creature types or skill-tree choices may grant specific status immunities. The suggestion that statuses always apply after a successful hit was rejected.
-
-**Adopted status framework:**
-
-- **What a status is.** Any effect with a duration on a unit is a status: harmful effects, buffs, Orders, Ward, Dampen, marks and stealth. KO removes all of them. Purify and similar effects can remove any status from any unit, unless the status says it cannot be cleansed.
-- **Duration clocks (changed 2026-10-19, effect timing quiz).** Every duration uses the battle clock: a status lasts a stated number of time units (section 6.1). Conversion (round 2): one former turn is 10 time units ("its next 2 turns" becomes 20 time units); a skill may adjust. Kept as they are: effects that last until the caster's next turn (Orders, Ward, Braced, Shield Wall), because they end exactly when the caster can renew them; Frozen, which skips the unit's next turn; and Bleeding, which counts the unit's skills.
-- **Ticking.** Ground effect damage accumulates for every time unit a unit stands on the effect, and everything accumulated is applied whenever any unit gets a turn (Andreas, 2026-10-19). Poison and healing over time work the same way: they build up per time unit and land whenever any unit gets a turn. Build-up counts fractions; whole points land and the remainder carries over to the next turn. Everything that has built up shows as one number on the unit. A tick that KOs the unit ends its turn.
-- **Reapplication.** A unit has one instance per status type. Reapplying refreshes the duration. There is **no stacking**, and none is planned.
+- **Durations** run in time units on the battle clock (section 6.1), whatever the unit does. Exceptions: effects that last "until the caster's next turn" (Ward, Shield Dome), Frozen (skips turns) and Bleeding (counts skills).
+- **One instance per status.** Reapplying refreshes it with the new duration, even if shorter. There is no stacking. A new Stun on a Stunned unit keeps whichever time is longer.
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
-- **Limit.** There is no limit on the number of statuses per unit. The UI handles overflow.
-- **Momentum.** Periodic ticks shift Momentum by 0 (section 6.7).
-- **Damage from statuses.** Poison, Bleeding and burning ground damage is not a hit, but reductions such as Dampen apply to it like any damage (rounded down, minimum 1). Shields absorb burning ground damage; they do not absorb Poison or Bleeding.
-- **Status chances.** A skill's stated status chance is the real chance. No stat lowers it.
-- **Reapplication with a different duration.** The new duration always replaces the old one, even if it is shorter.
-- **Skipped turns.** Time-unit durations run on regardless of what the unit does. Bleeding counts only skills actually used.
-- **Immunities.** Only skills and statuses grant immunities (for example Purify's immunity for 10 time units). Creatures have no natural immunities for now (section 3.7). A summon's own definition may list immunities, since it comes from a skill (section 11.2).
-- **New statuses.** A status joins the table below only when a skill needs it.
-
-**The named statuses:**
+- **No limit** on statuses per unit; the UI handles overflow.
+- **Ticking.** Damage and healing over time build up per time unit and land whenever any unit gets a turn; fractions carry over. Everything built up shows as one number on the unit. A tick that KOs a unit ends its turn.
+- **Damage from statuses** (Poisoned, Bleeding, Withering Hex) is not a hit and moves Momentum 0. Reductions apply to it; Wards do not absorb it.
+- **Chances.** A stated chance is the real chance; no stat lowers it.
+- **Immunities** come only from skills and keystones (Sanctity, War Drums, Spell Ward, Unstoppable, Steadfast Ward). Creatures have none of their own. Every status applies to summons, constructs and totems unless their skill says otherwise.
+- **Cleansing** can remove any status unless the status says it cannot.
+- **New statuses** join the table only when a skill or attack needs one.
 
 | Status | Effect | Duration |
 |---|---|---|
-| **Blind** | All the unit's attacks have a 50% chance to miss. Source: the Rogue's flash powder (2026-10-19). A miss shifts Momentum 1 against the unit's side, per section 6.7. | 20 time units |
-| **Poison** | 1 damage per 10 time units, built up and applied whenever any unit gets a turn (5 in total). Weaker than burning ground and longer. | 50 time units |
-| **Bleeding** | 2 damage after each `melee` or `move` skill the unit uses. | The unit's next 3 such skills |
-| **Silenced** | The unit cannot use `magical` skills. | 20 time units |
-| **Chilled** (`frost`) | The unit's Speed is lowered by 2 (section 6.1). | 20 time units |
-| **Frozen** (`frost`) | The unit's next turn is skipped, at the normal skipped-turn cost (section 6.4). It cannot intercept while Frozen (2026-11-04). It ends early when fire is set on the unit's spot (2026-10-19). | The unit's next turn |
-| **Stunned** | The unit takes no actions and cannot intercept; the timeline keeps running. Each of its turns that arrives while it is Stunned is skipped, at the cost of a skipped turn (section 6.4; adopted 2026-11-08, owner decision). Any hit ends it early. A new Stun on a Stunned unit keeps whichever time is longer (an exception to the reapplication rule above). Added 2026-11-03. | As stated by the skill |
-| **Confused** | Each skill the unit uses, helpful ones included, has a 50% chance to target a random unit instead: any unit the skill could legally reach, on either side. Added 2026-11-03. | As stated by the skill |
-| **Immobilized** | The unit cannot Move and cannot be moved by any skill (replaces the Rooted and Held candidates). It cannot intercept (2026-11-04). Added 2026-11-03. | As stated by the skill |
-| **Marked** | Enemy only. Any skill that refers to a Marked enemy works on every Marked enemy, whoever placed the Mark. Each marking skill states its duration and any limit, such as one Mark at a time. Decided 2026-11-01. | As stated by the skill |
+| **Blind** | Each attack of the unit has a 50% chance to miss. A miss moves Momentum 1 against the unit's side. | As stated (Flash Powder: 20) |
+| **Poisoned** | 1 damage per 10 time units, built up and landing whenever any unit gets a turn. | As stated (usually 20) |
+| **Bleeding** | 2 damage after each `melee` or `move` skill the unit uses (Move included). | The unit's next 3 such skills |
+| **Silenced** | The unit cannot use `magical` skills or a magical attack. | As stated |
+| **Frozen** | The unit's next turn is skipped, at the skipped-turn cost (section 6.1). It cannot intercept. It ends early when fire is set on the unit's spot. | The unit's next turn |
+| **Stunned** | The unit takes no actions and cannot intercept. Each of its turns that arrives while Stunned is skipped, at the skipped-turn cost. Any hit ends it early. | As stated |
+| **Confused** | Each skill the unit uses, helpful ones included, has a 50% chance to target a random legal unit instead, on either side. | As stated |
+| **Immobilized** | The unit cannot Move and cannot be moved. It cannot intercept. | As stated |
+| **Marked** | Only enemies can be Marked. A skill that reads a Mark works on every Marked enemy, whoever placed it. The marking skill states the duration and any limit. | As stated |
 
-Silenced is adopted although no skill applies it yet. Any skill may apply any named status. **Burning is no longer a status (Andreas, 2026-10-18):** only the ground burns, never a unit; a unit takes damage from standing on burning ground (section 12.2).
+Only the ground burns, never a unit: a unit takes fire damage only from standing on burning ground (section 12.2).
 
-The status design pool (Disarmed, Weakened, Fear and others) remains below as candidates. None is added until a skill needs it.
+### 10.6 Airborne
 
-Additional welcomed design candidates (not decided) are Disarmed, Slowed/Hasted, Weakened, Enfeebled, Fear, and Bound. Stunned, Confused, Immobilized (was Rooted/Held) and Marked were adopted on 2026-11-03 (status quiz); Burning was dropped and Frozen adopted earlier. Delayed/Accelerated can be one-off timeline changes rather than persistent statuses. These are a design pool, not finalized effects. A unit with no viable action because of statuses simply loses that turn.
+Some skills make a unit **airborne** (Take Off, Lift, Sky Lord). Airborne is a state on the unit, removed by KO, by Dive and by skills that make it land.
 
-### 10.6 Airborne (adopted 2026-11-03, status quiz)
+- **Reach.** Melee cannot reach an airborne unit, Dive included. Projectile and direct skills, areas and pulses can (a pulse or breath still hits only the enemy Front row).
+- **Ground effects.** An airborne unit ignores every ground effect, including those already on its spot.
+- **Own skills.** An airborne unit uses its skills as normal, melee from its Front row included.
+- **Interception.** An airborne unit intercepts and is covered like any other unit, melee included.
+- **Curse of Weight** keeps a unit from becoming airborne.
 
-Some skills make a unit **airborne** for a stated time (for example the Flying profession's Take Off). Airborne is a state on the unit, removed by KO and by skills that make it land.
+## 11. Summons and constructs
 
-- **Reach.** Melee attacks cannot reach an airborne unit. Ranged and Magic attacks, area effects and other airborne units can.
-- **Ground effects.** An airborne unit ignores every ground effect while it is airborne (section 12.2), including effects already on its spot.
-- **Own skills.** An airborne unit uses its skills as normal; a skill may still state its own limits.
-- **Interception.** An airborne unit intercepts and is covered like any other unit (2026-11-04).
+Summons and constructs come only from skills in battle. They never count as original team members for the defeat rule.
 
-## 11. Summoning
-
-**Status: in the first-release scope. Kinds, placement, cost, limits, Momentum and status handling are adopted (2026-10-06); section 11.2's first list remains background.** Summons never count as original party members for avoiding defeat. The dedicated discussion explored a model but did not settle its global limits or approve every detail. The Hunter's traps (see [skills.md](skills.md)) are the first adopted summons: stationary constructs that take a slot, have HP, and can be targeted and intercept like any unit.
-
-### 11.1 Summon kinds (adopted 2026-10-06)
-
-| Kind | Battlefield behavior |
+| Kind | Behavior |
 |---|---|
-| Full unit | Occupies space, receives turns, uses skills, and can interact with ordinary unit systems. |
-| Temporary unit | Behaves as a unit but expires after a duration or condition. When it expires it disappears like a KO'd summon and frees its slot, but it does not count as a KO, so KO-triggered effects do not fire. |
-| Stationary construct | Occupies space and produces passive or triggered effects without ordinary turns. Has HP, can be targeted, and can intercept like any unit. |
+| **Turn-taking summon** (golems, Animate Blades, undead) | Occupies space, takes turns and acts on its own. |
+| **Construct** (turrets, barricades, traps, totems) | Occupies space and has HP, takes no turns. Can be targeted, moved and intercept like any unit. |
 
-There is **no assist kind**. A creature that appears only inside one skill (for example a raven swarm that strikes and leaves) is just that skill's effect and its animation. It takes no slot and is not a unit, and it follows the skill's tags: a swarm tagged `projectile` can be intercepted like any projectile (section 8.2).
+A creature that appears only inside one skill's animation is that skill's effect, takes no slot and follows the skill's delivery.
 
-Examples discussed include skeletons, thorn spirits, wolf spirits, healing totems, ballistae and reactive mushrooms. These are concept examples, not committed content.
+- **Placement.** The player (or the AI) puts a new summon or construct on **any free spot of its side**, between units or at either end; the row recenters. Portal places them at random instead. Raised undead follow section 11.5.
+- **Cap.** A side holds at most 18 units (6 per row). A summoning skill is unavailable when the side is full; the UI says why. Skills may add their own limits (Golem Heart, Great Totem).
+- **Cost.** Only what the skill states: Delay and Momentum. There is no summon resource.
+- **Stats.** HP and Speed are fixed in the skill (a Clay Golem has HP 25); damage and healing scale with the summoner's Power (section 5.2).
+- **Turns.** A turn-taking summon first acts `11 − Speed` time units after it appears (Quickening: at once). On each turn it attacks the **nearest legal enemy** (section 8.5) with Delay 3 and the usual Momentum shifts: golems with a melee hit, Animate Blades with a projectile hit, undead with their creature's unique attack. A summon with no legal target (a golem outside its Front row, a melee summon facing only airborne units) takes Skip Turn.
+- **Lifetime.** Until KO or the end of battle, unless the skill gives a duration. When a timed summon ends it disappears and frees its slot without counting as KO. Summons stay when their summoner is KO.
+- **KO.** A KO'd summon or construct is removed at once and frees its slot; it cannot be revived. Hits by and on summons move Momentum like any hit.
+- **Statuses** apply to summons and constructs unless their skill says otherwise.
 
-### 11.2 Proposed operating rules
+### 11.5 Undead
 
-- Persistent summons need a valid free position, block it normally, and count toward the row's capacity. They may be placed between existing units, which recenters the row.
-- Unit-like summons reuse normal stats, targeting, healing, statuses, movement, and timeline systems where applicable.
-- A summon may be player-controlled, act autonomously, or use automatic triggers.
-- Duration and the relationship to the summoner belong in the summoning skill.
-- A skill may impose its own limit on simultaneous summons.
-- Summoning is distinct from permanent collection; temporary summons disappear after combat as part of the battle-wide clean slate.
-- A separate global summon resource was not recommended, but the cost model is not finalized.
+- **Raising costs a body.** Raise Undead targets a KO body of either side. The body leaves its slot, moves to a free spot on the Necromancer's side (picked by the player or the AI) and becomes an **undead**: the creature's own art in an undead frame, its own unique attack and Speed, with HP and Power from the skill. With no free spot on that side, it cannot be used.
+- **Healing hurts.** Healing an undead damages it by that amount instead.
+- **Bodies stay.** A KO undead leaves its body on the Necromancer's side. The units a battle starts with are never removed from the field.
+- **Revival restores.** Reviving an undead, standing or KO, restores the original creature. It returns to its owner's side, into the free slot nearest its old row, and is scheduled as a new action. With no free slot on the owner's side, it cannot be targeted.
+- **Defeat.** While raised, the original counts as KO for its owner's defeat check.
 
-Possible relationships include lasting until death, lasting for a number of turns, disappearing with the summoner, surviving independently, consuming HP, consuming a body or object, replacing the summoner, or upgrading/sacrificing an existing summon.
+## 12. Ground effects and battle end
 
-Summoning before battle is **not adopted**: summoning happens only through skills in battle.
+### 12.2 Ground effects
 
-**Adopted summon rules:**
+A ground effect sits on a spot (section 7.3) and affects the unit standing there; it stays on its coordinate when rows recenter. Airborne units ignore it.
 
-- **Placement (2026-10-06).** Each summoning skill states where its summon may appear. A skill may allow free placement: the player picks any gap in the allowed rows, including between units, as when a unit moves (section 9.1), and the row recenters.
-- **Cost.** Summoning costs only what the skill states, like any skill: its Delay and any Momentum cost. There is no summon resource and no HP cost. As a design guideline, summoning skills are slow (long Delay).
-- **Per-skill limits.** By default only the side cap applies. A skill may still state its own limit.
-- **Momentum.** Hits by summons and hits on summons move Momentum exactly like any unit's hits (section 6.7).
-- **Statuses.** Each summon's definition states in detail which statuses affect it. For example, a ballista may be immune to Poison but can burn. How statuses that tick or count on a unit's own turns work on a summon without turns is defined with that summon.
-
-- **Cap.** The per-side limit is the row capacity, 6 per row and **18 in total**. It may be revisited after readability testing. A summoning skill is unavailable when the side is at its cap or has no free slot, and the UI states why.
-- **Placement.** By default the player chooses the insertion point within the rows the skill allows. A skill may fix the position.
-- **Control.** Summons that take turns act **autonomously**, following behavior defined in their own summoning skill. There is no global default behavior. Constructs such as traps take no turns.
-- **First turn.** A turn-taking summon first acts `11 − Speed` time units after it appears.
-- **Lifetime.** A summon lasts until it is KO'd or the battle ends. A skill may add a duration in time units, like every other duration (section 10.5, 2026-10-19).
-- **Summoner KO.** Summons persist when their summoner is KO'd, unless the skill says they disappear.
-- **KO'd summons.** A KO'd summon's body is **removed at once and frees its slot**. This is the first body-removal exception (section 10.3). Summons cannot be revived.
-- **Stats.** A summon's HP and Speed are fixed numbers in its skill (for example the Clay Golem's HP 25). Its damage and healing scale with the summoner's Power (section 5.2).
-- **Behavior (adopted 2026-11-08).** Turn-taking summons (golems, Animate Blades, undead) act on their own: on each turn they attack the nearest legal enemy (ties random) with Delay 3. Animate Blades shoot (Projectile, any visible enemy). An undead keeps its creature's Speed and uses its creature's Attack Type attack. Animate Mirror, traps, turrets, totems, barricades and decoys take no turns. The Bell Golem removes one random harmful status from each adjacent ally. A summon or construct whose skill states no range is placed in a free gap next to its user, chosen by its player (or the AI).
-
-**Statuses on summons (adopted 2026-11-04).** Every status applies to summons, constructs and totems unless their skill says otherwise.
-
-### 11.3 Summon capacity
-
-The intended six-member starting party does **not** fill the battlefield's total capacity. Additional row capacity primarily exists for summons and other temporary units, subject to the maximum of six normal units per row.
-
-The eighteen-unit total is adopted as the per-side cap. A separate summon budget is not planned. A skill may impose its own limit. Players are not required to leave starting party vacancies solely to make summoning possible.
-
-Multi-capacity summons remain deferred with other large units. The summon brainstorm does not override the standard card-size baseline.
-
-### 11.4 Proposed summoner archetypes
-
-Minion Master uses several smaller allies; Binder focuses on one powerful summon; Engineer/Totemist uses constructs; Sacrificer converts existing resources or units into summons. These are possible tree families rather than four additional approved classes.
-
-### 11.5 Undead (adopted 2026-11-02)
-
-The Summoner's Necromancer branch raises the dead ([skills.md](skills.md), Summoner).
-
-- **Raising costs a body.** A raise targets a KO'd body from either side. The body card leaves its slot (freeing it), moves to a free slot on the Necromancer's side and becomes an **undead**: the creature's own art in an undead frame, its own basic attack, with stats set by the skill. With no free slot on the Necromancer's side, the raise cannot be used.
-- **Healing hurts.** Healing an undead deals that amount as damage instead. Otherwise an undead takes damage and is KO'd normally.
-- **Bodies stay.** A KO'd undead leaves its body on the Necromancer's side. The 12 units a battle starts with are never removed from the field.
-- **Resurrection restores.** A resurrection on an undead, alive or KO'd, restores the original creature. It returns to its owner's side, into the free slot nearest its old row, and is scheduled as a new action (section 10.3). With no free slot on the owner's side, it cannot be targeted.
-- **Defeat.** While raised, the original still counts as KO for its owner's defeat check.
-
-## 12. Synergies, battlefield effects, and encounters
-
-### 12.1 Synergy sources
-
-Team-building should support interactions among species traits, skill trees, statuses, position, and timing.
-
-Discussed examples include:
-
-- A mark enabling focused damage or timeline delay.
-- Interception improving an ally's next turn.
-- A shield wall or neighboring defenders protecting a formation.
-- A pack benefiting from cooperation.
-- A support unit improving adjacent allies.
-- A controller moving enemies into traps or unfavorable rows.
-- HP expenditure supported by healing or life redistribution.
-- Summons interacting with ally-death, summon-entry, or creature-type effects.
-
-These examples establish design space, not finalized numerical effects. Formation synergies should be few enough to read clearly and strong enough to justify positioning decisions.
-
-### 12.2 Row and slot states
-
-Row effects such as burning ground, fog, or darkness, and slot effects such as traps, ice, or cover were welcomed as future tools.
-
-**Ground effects (adopted 2026-10-19, synergy quiz).** A ground effect sits on a spot and stays on its coordinate when rows recenter (section 7.3). It affects the unit standing there. Ground effects come from skills, so they are in the first release; they are not the terrain that section 20.1 leaves out. There are no tags: an effect reacts to the other effects named in its own text, and a skill that sets one off says so in its text (as Backdraft does). **Timing (adopted 2026-10-19, effect timing quiz):**
-
-- **Length.** An effect lasts a stated number of time units from when it is placed (section 6.1); each skill states its own, with 20 as the reference. Its end is a marker on the timeline.
-- **Damage over time.** A unit on a damaging effect accumulates its damage for every time unit it stands there. Whatever has accumulated is applied whenever any unit gets a turn, so a unit standing in fire for 20 time units is hurt for each of those 20 units. A unit pushed on or off mid-turn simply starts or stops accumulating then, since no time passes during a turn. Burning ground deals 1 per 2 time units (10 over 20 units).
-- **Placing the same effect again** restarts its length from now.
-- **Combos** (ice from frost on water, water left by steam) start the full length of the new effect.
-- **The caster is KO:** its effects stay.
+- **"The spots next to" a spot** are one card width to the left and right in the same row (coordinate ±2), within the row's width (coordinates −5 to 5). **"A whole row"** means the spot of every unit standing in that row; empty gaps get nothing.
+- **Length.** Each skill states its length; 20 time units is the reference. Placing the same effect again restarts its length. A combo starts the full length of the new effect. The effects stay when their caster is KO.
+- **Damage over time** builds up for every time unit a unit stands on the effect and lands whenever any unit gets a turn. A unit moved on or off starts or stops building up then.
 
 | Effect | What it does | Combines with | Sources |
 |---|---|---|---|
-| **Burning ground** | Damage to the unit there for every time unit it stands there (1 per 2 time units). Replaces the Burning status. | Water stops it; ice makes steam; poison ground explodes | Elementalist; Tinker (Firebomb, Flame turret) |
-| **Ice** | A unit pushed or pulled across ice slides one row further (bumps apply). | Fire makes steam | Elementalist; Primalist (Hoarfrost) |
-| **Water** | Harmless alone. | Lightning on a unit in water also reaches the units on water spots touching it, with half the Stun time (rounded down). Frost turns it to ice and the unit there is Frozen. Fire set on water does not start, and the water stays. | Elementalist; Primalist (Rain dance) |
-| **Steam** | Fire meets ice: both end, the unit there is Confused for 10 time units, and water stays on the spot. | | Elementalist (Steam Burst) |
-| **Poison ground** | A unit that has stood there for 5 time units is Poisoned, and every further 5 units there restart its Poison length. One effect for gas, puddles and spores alike (Andreas, 2026-10-19). | Poison ground and fire placed on the same row at once: every poison spot explodes: each unit on one takes 6, and the spot becomes burning ground | Tinker (Poison gas); Rogue (Poison vial) |
+| **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Water: fire set on water does not start, and the water stays. Ice: steam. Poison ground: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
+| **Ice** | A unit pushed or pulled across it slides one row further (bumps apply). | Fire: steam. | Ritualist (Hoarfrost), attack extras |
+| **Water** | Harmless alone. | A Stun from Chain Lightning on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. | Ritualist (Rain Dance), attack extras |
+| **Steam** | When fire is set on an iced spot, both end, the unit there is Confused for 10, and water stays on the spot. | | Cryomancer (Steam Burst) |
+| **Poison ground** | A unit that has stood there for 5 time units is Poisoned, and every further 5 restart its Poison. | Fire placed on the same row as poison ground at once: every poison spot in that row explodes, each unit on one takes 6 and the spot becomes burning ground. | Chemist (Poison Gas), attack extras |
 
-The lightning skills are Chain Lightning, Shock and Megavolt. Water spots touch when they are side by side in a row or overlap across neighbouring rows. Frozen, Confused and Blind are statuses (section 10.5). Which classes cause which effects, and the movement roles of Guardian, Warrior and Leader, are in [class_system.md](class_system.md) section 5. Tinker skill: Firebomb sets fire to a spot and the spots beside it; Flame turret is a construct that sets fire to one enemy spot in front of it each time the Tinker takes a turn.
+Water spots touch when they are side by side in a row or overlap across neighbouring rows.
 
-An effect may apply to a row without requiring general direct row targeting. Its placement and targeting rule must be defined by its source skill.
+### 12.3 Battle end
 
-Objects such as barricades and totems may occupy slots. They must not become a reason to require a fixed distribution of party members across rows.
+- **Defeat.** A side loses when all of its **original members** are KO at the same time; summons do not prevent it, and a revived member counts again. If both sides' last original members are KO in the same block, the battle is a **draw**. A side does not lose just because it has no attack available.
+- **Victory check** after each event's KO check and its reactions; a counter can still KO the attacker and turn a win into a draw. Once the result is decided, pending events and hits are cancelled.
+- **Draws** count as a defeat for the player in single-player modes; in local two-player and AI versus AI they are recorded as draws.
+- **Surrender** is possible at any time and counts as a defeat with no other penalty.
+- **No time limit** and no escalation; only the AI-versus-AI harness has a length cap (section 2.5).
+- **Objectives.** Every battle uses the standard defeat rule; special objectives are excluded for now.
+- **Enemy side.** Six original members by default; an encounter may use another number.
+- **Enemy behavior.** Enemies use the AI of section 2.5. The AI has three levels, **Easy, Normal and Hard**, which set only search depth and weaker picks. Difficulty comes from the enemy team and formation; there are no hidden stat multipliers. In free and random battles the player picks the level (a random battle draws from the whole unlocked roster at every level); in the campaign each encounter sets it and it rises through the chapters.
+- **Encounter exceptions.** None for now; encounters differ only in team, formation and size.
 
-### 12.3 Terrain and bosses
+## 13. Cards and combat presentation
 
-Terrain was discussed as a later encounter layer: blocked positions, restrictive spaces, water, or other positional conditions. Exact terrain rules and any reduced-capacity arenas need approval before they can override the normal formation.
+Screens, layouts and interactions are owned by [ui_spec.md](ui_spec.md); this section sets the principles.
 
-Boss concepts include pushing or pulling units, disrupting a formation, and manipulating available space. Bosses are normal-size units with higher stats (section 7.6); multi-slot or multi-row bosses are not planned. Slot destruction is a possibility rather than a current core rule.
+### 13.1 Cards
 
-**Standard defeat condition:** a team loses when all six original members are simultaneously KO. Active summons do not prevent that loss. A revived original member counts as active again. If both sides' last original members are KO'd in the same block, the battle is a **draw**. A team does not automatically lose merely because it currently lacks an offensive action.
+A card represents a team member, not something drawn or played. Its **front** shows the portrait crop of the creature's art in its frame, the four stats, and a name plate with the name and its two class names. Its **back** shows the whole creature and lists the unique attack, the six class skills and the two keystones, with the current numbers for that creature. The back is for inspection, not an action menu: players can inspect every unit, opponents included, and see exactly what it can do.
 
-**Adopted battle-end rules:**
+On the board a unit is a **round battle portrait** showing HP and KO only; statuses and details are in the inspection panel (ui_spec.md). Cosmetic frames never reduce readability, and KO is always unmistakable while the body visibly keeps its place.
 
-- **Stalemates.** The game has no time limit and no escalation. Only the AI-versus-AI harness has a technical cap on battle length. It reports battles that reach it, and they are recorded as draws in the statistics.
-- **Draws.** In single-player modes a draw counts as a defeat for the player. In local two-player and in AI-versus-AI it is a shared result, recorded as a draw.
-- **Surrender.** A player can surrender at any time. It counts as a defeat with no other penalty.
-- **Victory check.** Victory is checked after each event's KO check and after that event's reactions have fully resolved. A counter can therefore still KO the attacker and turn a win into a draw. Once the result is decided, pending events and remaining hits are cancelled.
-- **Objectives.** Every battle uses the standard defeat rule. Special objectives (boss defeat, survival, protection, positional objectives, interrupting a ritual) are **excluded for now** and may return later.
-- **Enemy side.** An enemy side has six original members by default. An encounter may use a different number, and the defeat rule then uses that side's own original members.
-- **Enemy behavior.** Enemies use the same search-based AI as AI-versus-AI testing (section 2.5). Difficulty changes how deep it searches or how often it picks a weaker action.
-- **Difficulty.** It is set through the enemy roster and formation. There are no hidden stat multipliers.
-- **Difficulty levels (adopted 2026-10-07).** The AI has three levels: **Easy, Normal and Hard**. A level sets only the AI's strength (search depth and how often it picks a weaker action). In free and random battles the player picks the level; a random battle's enemy team is drawn from the whole unlocked roster at every level. In the campaign each encounter's level is set by the designer and rises through the stages; the player cannot change it.
-- **Encounter exceptions (adopted 2026-10-06).** None for now. Encounters differ only in roster, formation and team size. Any other exception must be written into that encounter's definition and approved.
+### 13.2 Team editor
 
-## 13. Card interface and combat presentation
-
-### 13.1 Card role
-
-A card is the visual and functional representation of a battlefield unit, not a traditional object for drawing, playing, or deckbuilding. The card-game prototype uses the intended card presentation; it does not imply a later conversion to 3D gameplay.
-
-The **front** contains:
-
-- A customizable cosmetic frame and an image of the unit from the front.
-- The unit's name and the names of all its classes.
-- Relevant combat stats, including Life (current and maximum HP), Speed, Power, and Cost.
-- Clear status and KO overlays on or around the border.
-
-On the battlefield a unit is shown as a **round battle portrait** facing the enemy, showing HP and KO only (adopted 2026-11-10; it replaced the compact card; statuses are seen in the inspection panel). The full front and back appear in the inspection panel, side by side ([ui_spec.md](ui_spec.md)).
-
-Cosmetic frames must never reduce gameplay readability. KO must be unmistakable, for example through desaturation or darkening in addition to an explicit KO indication.
-
-The **back** uses the same selected cosmetic frame and shows the whole creature (there is no rear art), together with every skill it can currently use. Descriptions show the actual current versions, including all modifications and effects selected through skill trees.
-
-The card back is primarily an **inspection interface**, not an action menu. With future online PvP in mind, players must be able to inspect opposing units and understand exactly which abilities they may use. This inspection requirement does not by itself commit to an online implementation.
-
-### 13.2 Team builder
-
-Party setup uses the same battlefield interface with the enemy side absent. The player's Front, Middle, and Rear rows remain visible; available units are placed and reordered using the same centering and positioning logic as combat.
-
-Setup can provide more room for inspecting card fronts and backs, comparing builds, allocating skill-tree points, and other character-management systems if those features require it. Equipment inspection would apply only if such a system were later selected; it does not establish a general gear system. Combat prioritizes speed and readability, while setup supports deeper inspection and optimization.
-
-Teams are built in a **team editor**, in the manner of deck building: the player picks up to six creatures from the collection, within the team budget of 35 Cost (section 5.1), and their formation, and saves the team under a name. Several named teams can be saved, and the last used team is preselected. Each mode, including local two-player, starts from a saved team.
-
-Creatures are added, moved and removed **by dragging only** (adopted 2026-10-06); filters, sorting and layout are in ui_spec.md.
+Teams are built in a **team editor** like a deck builder: up to six creatures from the collection within the budget of 35 Cost, placed in rows, saved under a name. Several teams can be saved; the last used is preselected. Every mode starts from a saved team. Creatures are added, moved and removed by dragging (ui_spec.md).
 
 ### 13.3 Battle interface
 
-The interface has a clear information hierarchy:
-
-| Location | Purpose |
-|---|---|
-| Unit cards | Current unit state, stats, statuses, and KO. |
-| Formation | Positional relationships, adjacency, and covering. |
-| Bottom horizontal skill bar | The active unit's immediately available actions, similar to an MMORPG skill interface. |
-| Left vertical timeline | The shared temporal state of combat: the next 8 entries from top to bottom, scrollable for more, matching the Momentum bar's height. |
-| Right edge | The vertical Momentum meter, about 70% of the board's height, with the player's end at the bottom. |
-
-The player's side is at the bottom and the enemy's at the top, with the two Front rows facing each other in the middle. All rows use the same card size. Interaction details are in [ui_spec.md](ui_spec.md).
-
-All of the active unit's skills should be directly visible, normally 7–9 including the type-specific attack, without nested menus. The intended interaction is **select skill → highlight valid targets → select target → execute**. Invalid targets are visibly unavailable. Skills that require no target input execute directly according to section 6.3. Avoid unnecessary chained decisions and repeated confirmation prompts.
-
-During targeting, area attacks and skills affecting additional units should preview all affected cards whenever possible. Target inspection also exposes range, protection, and relevant exceptions.
-
-The timeline is permanently displayed as a vertical list on the left. Selecting a skill previews where the acting unit's next turn would move before execution. Skills that manipulate other timeline positions preview their consequences whenever practical. Already-created delayed effects, such as a future comet impact, may appear as timeline events, and auto events (such as queued shots) appear with their owner; ordinary attack animations do not. Enemy units' unchosen future attacks are not revealed.
+The battle screen shows the board (player's side left, enemy right), the timeline, the Momentum meter and the active unit's action bar, without nested menus. The interaction is **select skill → highlight legal targets → select target → execute**; skills with no target follow section 6.3. Illegal targets are visibly unavailable; areas, interception chances and timing consequences are previewed where they can be foreseen (section 8.3). Enemy units' future choices are never revealed. Layout: ui_spec.md.
 
 ### 13.4 Animation and effects
 
-Cards generally **do not physically move around the battlefield when attacking**. Attacks primarily use effects originating from the acting unit and traveling toward or appearing on the targets. Brief shakes, vibration, flashes, and other hit reactions are allowed, with stronger attacks potentially producing stronger reactions. Cards must remain spatially stable enough for the battlefield to be read immediately. Explicit repositioning skills still change formation according to their rules.
+Units do not travel across the board when attacking: effects start at the acting unit and travel to or appear on their targets. Brief shakes and flashes are allowed; the board stays spatially stable. Explicit movement skills still move units. Healing, buffs, debuffs and KO need distinct, restrained feedback. There are no critical-hit effects.
 
-Healing, buffs, debuffs, KO, and other important outcomes need distinct feedback without unreadable visual noise. The new presentation brief also names critical-hit feedback; because the current combat rules explicitly exclude separate critical hits, that feedback is conditional on a future rule change and does not introduce critical-hit mechanics here.
+### 13.5 Relationships
 
-Statuses may use icons, border effects, or other clear overlays. Gameplay information always takes priority over cosmetic frames. Visual destruction must not make a KO unit's retained position and capacity appear vacant.
-
-Earlier examples of cards being drawn or played do not establish a draw-and-hand combat system. Effects should be short, clear, and restrained: players must understand who acted, who was affected, which units remain active, and where everyone stands.
-
-### 13.5 Contextual relationships and presentation principle
-
-Unit relationships may be visualized temporarily when relevant or inspected. Hovering over an adjacency passive can highlight or connect the neighboring cards it affects; guards, auras, summons, and combos can similarly reveal their relationships. These indicators should generally not remain permanently visible.
-
-Preserve a strong distinction between **visual simplicity and mechanical depth**. Players see clean, centered card rows; internally, ordered positions use half-card-width alignment. Formation, cover, adjacency, summons, targeting, and future positional mechanics should work consistently without exposing unnecessary grids or slots.
-
-The default prototype is a six-versus-six battlefield with three rows per side, a left vertical timeline, a bottom skill bar, card fronts for combat state, card backs for inspection and current skill information, and attack effects that leave cards spatially stable. Actual prototype testing must determine whether party size or total capacity needs to be reduced as described in sections 3.1 and 7.1.
+Relationships (adjacency, cover, summoner, Marks) are shown in context when relevant or inspected, not permanently. Players see clean rows; the half-card grid stays internal.
 
 ## 14. Art direction
 
-### 14.1 Visual identity
+- **Look:** charming, colourful, varied, warm and slightly fairy-tale; strongly stylized and readable; simple shapes, strong silhouettes, broad colour zones, two to five major colour blocks with an accent.
+- **Creatures:** a clear silhouette and one or two memorable features; simple but expressive faces, not all friendly. Classes must be visible in the art (class_system §3), but there are no mandatory class outfits or colours.
+- **Size:** cards do not show creature size; every creature fills its frame.
+- **Biomes (18, all at release):** Pine and dry forest, Jungle, Wet and mixed forest, Desert, Mountain, Giant cathedral or castle (inside), Grassland and savannah, Arctic and iceberg, Swamp and bog, Coast and tide pools, Volcanic ashlands, Crystal caverns, Mushroom grotto, Lagoon and reef, Overgrown ruins, Autumn woods, Storm cliffs, Moonlit flower meadow. Every creature has one **home biome**; backgrounds stay dark (night look).
+- **UI and effects:** clean panels, modest ornament, bold icons, legible text, comfortable touch targets; effects never obscure the board.
+- **Artwork** is delivered as separate images in the card canvas, never as finished cards with baked-in UI.
 
-The selected qualities are **charming, colorful, varied, warm, and slightly fairy-tale**. Art is strongly stylized, expressive, and readable rather than realistic.
+Art files, backgrounds, sound, music and settings: production.md §1.6.
 
-The former low-poly discussion contributes simple shapes, strong silhouettes, clear color grouping, and manageable detail. These are now illustration principles. They do not require meshes, rigs, 3D environments, or 3D animation.
+## 15. World and campaign
 
-### 14.2 Character illustration
+**Setting.** The land is called **Everkin**, a gentle night fairytale where wild creatures and enchanted objects live side by side, with a hint of danger. There is **no player character** and **no story text** beyond chapter and encounter names: the campaign follows the creatures themselves. The team travels toward the castle seen in the distance on every map. Creatures test strangers, and the ones the team beats respect it and may join; they are given no further reason. Nobody rules the castle: its objects woke up on their own, and its final boss is the castle's heart, whose waking wakes the dragons that slept beyond it.
 
-- Give each creature a clear silhouette and one or two memorable visual features.
-- Keep faces simple but expressive. Do not give every creature a friendly expression: foxes and otters may look approachable, while other creatures should look suitably menacing.
-- Use slightly stylized humanoid proportions where appropriate.
-- Preserve variety among humans, animals, humanoids, floating beings, and unconventional fantasy forms.
-- Avoid mandatory class-specific outfits, colors, or silhouettes.
-- Use type-defined weapons and props when they contribute to identity.
-- Retain the distinction between color variants and separate creatures.
+**Structure.** The campaign opens on a **world map** with the chapters as regions; tapping one opens its chapter map. Locked chapters are dark and misty, their names hidden until reached. In the game a stage is called a **Chapter**.
 
-The concept-art requests for humans representing different classes explore variety; they do not reverse the rule that appearance must not rigidly encode class.
+- **Chapters 1 and 2: the wild lands.** Each battle may be in a different biome along the journey; a chapter covers 3 to 5 neighbouring biomes.
+- **Chapter 3: the castle.** Opponents are mostly the living object creatures, in the castle's halls and towers.
+- **Chapter 4: the dragons.** About five battles; dragons lead mixed teams, one per battle, each in its home biome and giving that dragon as the reward; the strongest is the final boss. Dragons are not foreshadowed before the castle.
 
-### 14.3 Size contrast
+Every encounter, boss, reward, challenge encounter and achievement is in [campaign.md](campaign.md).
 
-Not used. Cards do not communicate creature size: every creature fills its frame (production.md §1.6). Size contrast was part of the former 3D direction. There are no size tiers (section 3.7).
+## 17. Scope
 
-### 14.4 Color and detail
+**First release:** AI-versus-AI testing, single-player battles against the AI (campaign, free battles, post-story random battles and challenge encounters), local two-player and online PvP, on Windows, Android and iOS in landscape. Summons and constructs are fully in. Bosses are normal-size units.
 
-Use controlled, recognizable palettes and broad color zones. Warmth and variety should not become visual noise. Strong silhouettes and primary forms matter more than dense surface detail.
+**Excluded or deferred:** terrain and reduced-capacity arenas, large multi-slot units, special battle objectives, creature levels, equipment and loot, capture, trading, crafting, cooperative play, story events, relationships between creatures, and genetic variation.
 
-The art guide proposed two to five major color blocks with a selective accent, modest surface patterns, and subtle rather than heavy outlines. These are production guidelines, not fixed gameplay categories.
+Implementation starts with AI-versus-AI combat; the order of work is in production.md §3 and docs/implementation-plan.md.
 
-### 14.5 Biomes and environments
+## 18. Identity
 
-Visually distinct, relatively isolated biomes were accepted in the original direction. Their role in the card game may include artwork settings, encounter backgrounds, or campaign identity. Cards use a soft background tinted by the creature's home biome (production.md §1.6).
+**Everkin** is the chosen name, subject to an availability check (trademarks, store listings, domains) before any store page. All art, designs, UI, names, text, music and branding are original. Reference games (FFX for turn order, Hearthstone for card presentation and its deck builder, Siralim Ultimate and Monster Sanctuary for team building, and others) guide broad goals only; their rules are not adopted.
 
-**Biome list (adopted 2026-10-08).** Each background is a biome. Chosen so far: **Pine and dry forest, Jungle, Wet and mixed forest, Desert, Mountain, Giant cathedral or castle (inside), Grassland and savannah, Arctic and iceberg.** Also adopted: **Swamp and bog, Coast and tide pools, Volcanic ashlands, Crystal caverns, Mushroom grotto, Lagoon and reef, Overgrown ruins, Autumn woods, Storm cliffs, Moonlit flower meadow.** That makes **18 biomes, all ready at release.** Backgrounds stay dark enough that cards and UI stand out (night look; never too bright). Which biomes the four campaign stages use is decided with the campaign content.
+## 19. Open decisions
 
-**Home biomes (adopted 2026-10-08).** Every creature has one home biome from this list. Campaign creatures mostly appear in their home biome's stage.
-
-The earlier art guide (Forest, Plains/Meadow, Coast/Shore, Swamp, Desert, Snow/Frostlands, Volcanic/Ashlands, Crystal/Mystic regions, Ancient Ruins, Caves/Underground; optional fairy groves, autumn woods, high mountains, luminous wetlands, storm cliffs) is superseded by the list above.
-
-### 14.6 UI and VFX style
-
-Use clean panels, modest ornament, generous spacing, bold icons, legible text, and comfortable touch targets. Effects may have recognizable elemental identities, but should not obscure the board or create constant screen-filling spectacle.
-
-Art files, backgrounds, sound, music and settings are adopted in [production.md](production.md), section 1.6.
-
-### 14.7 Existing concept exploration
-
-The card-art discussion began with five animals and five fantasy creatures, initially excluding humans. Later requests added batches of ten animals, ten humanoid fantasy creatures, ten large extravagant fantasy creatures, ten male humans, and ten female humans.
-
-**Artwork delivery rule:** create separate artwork images in a card-friendly aspect ratio, not finished cards with baked-in UI and not a single collage. The precise numerical aspect ratio is not established in the recovered text.
-
-The browser exposes generated-image galleries, but the individual images have not been cataloged as a named creature roster in this document. The text establishes direction and requested batch sizes, not approved creature statistics. Fox and otter are explicitly referenced in the expression feedback.
-
-## 15. World and narrative
-
-**Status: story campaign required; narrative details open.** Players explore the campaign and unlock units, then continue with post-story challenge encounters and coin unlocks (section 2.2). Story presentation and the player's role are tracked in [production.md](production.md).
-
-The narrative should explain why the player encounters different beings, why they join a team, and why new combinations matter. A lightweight central conflict with local stories was proposed, with an explorer, wanderer, researcher, mercenary, or guardian-like player role rather than a required chosen-one premise.
-
-Possible narrative layers include regional conflicts and emergent party events or relationships. Reactions to party composition, recruitment stories, rivalries, and personal quests remain proposals rather than required campaign features.
-
-The suggested ten to fifteen main chapters was an example. There is no approved plot, named setting, faction roster, protagonist, or chapter count. The original free-roaming 3D world is superseded; any story structure must now suit the card game.
-
-**World and chapters (adopted 2026-10-16).** The campaign gets a **world map** that shows its chapters. Each stage or chapter of the campaign, including its conflict, is defined in detail with the campaign content; no overall conflict is set in advance. Creatures that join after a win are given no reason. The **giant cathedral or castle is the second-to-last chapter** (stage 3 of the four stages, adopted 2026-11-04) and can be seen in the distance on the stage maps. The **last chapter belongs to the dragons** (stage 4), using the dragon creature cards. Stages and encounters have short storybook names, which Claude proposes in a later quiz. **Draft content:** [campaign.md](campaign.md) holds every encounter, boss, reward, challenge encounter and achievement (adopted 2026-11-08). 
-
-**Campaign stages (adopted 2026-11-04).** In the game a stage is called a **Chapter**; the docs use both words for the same thing. The campaign opens the **world map**, with the chapters as regions; tapping one opens its chapter map. Locked chapters are dark and misty, their names hidden until reached.
-
-- **Chapters 1 and 2: the wild lands.** Each battle can be in a different biome along a journey; a chapter covers 3 to 5 neighboring biomes.
-- **Chapter 3: the castle.** Its opponents are mostly the **living object creatures** (the creatures drawn as animated items), in the castle's halls and towers.
-- **Chapter 4: the dragons.** A normal chapter of about five battles. Dragons lead mixed teams, one dragon per battle, and the strongest dragon is the final boss. Each dragon battle is in its dragon's home biome (ashlands, storm cliffs, arctic) and gives that dragon, in its normal version, as the reward. The dragons are not foreshadowed: they appear only after the castle.
-
-**Setting (adopted 2026-11-04).** There is **no player character**: the campaign follows the creatures themselves. There is **no story text** beyond chapter names. The land is called **Everkin**, a gentle night fairytale where wild creatures and enchanted objects live side by side, with a hint of danger. The team travels to reach the castle seen in the distance on every map. Creatures test strangers, and the ones the team beats respect it and may join. Nobody rules the castle: its objects woke up on their own, and its final boss is the castle's heart. Waking the castle's heart wakes the dragons that slept beyond it.
-
-## 16. Technical and production direction
-
-### 16.1 Engine and architecture
-
-Godot 4.7 with .NET is installed and the repository contains a Godot project. No code exists yet.
-
-The adopted technical foundation (language, rules core, content format, AI search, Godot app, saving) is in [production.md](production.md), section 2.
-
-The earlier proposal below is kept for context.
-
-The proposed separation is:
-
-- **Rules core:** units, builds, skills, damage, targeting, formation, timeline, triggers, and encounter state.
-- **Presentation:** cards, UI, animation, effects, sound, and input.
-- **Content definitions:** creatures, trees, skills, statuses, and encounter data.
-- **Validation:** reproducible checks for the combat rules independently of visual rendering.
-
-Chance-based mechanics still exist. Reproducibility would require controlled random inputs; an engine-independent core does not mean combat contains no randomness.
-
-A reusable card component and shared content definitions were proposed for collection, team-building, inspection, and combat. Earlier sample folders, code, engine-version claims, and platform-export claims are not frozen technical requirements.
-
-Input abstraction and a reusable card scene were proposed to support desktop and touch controls without duplicating game logic. Windows, Linux/Steam Deck, Android, and iOS were specifically discussed; the platforms are now decided in production.md §1.1. The working approach assumes substantial AI-assisted development with the owner reviewing decisions and results.
-
-### 16.2 Asset workflow
-
-The production direction is creature concept → illustrated card artwork → UI integration → lightweight animation and effects. AI-assisted artwork and code were discussed as production aids.
-
-The former Blender/model/material/rig/skin/animation pipeline is superseded. There is no requirement to build 3D characters, environments, cameras, navigation, or collision for this product. Historical triangle budgets, skeleton families, LOD guidance, and GLB export rules are not current card-art requirements.
-
-Retained production guidelines are consistent asset naming, reusable presentation components, coherent palettes, and checking each asset for identity, phone-size readability, manageable detail, and battlefield clarity before acceptance. Artwork is supplied separately from card UI so the same illustration can serve several contexts.
-
-### 16.3 Cost and delivery planning
-
-Engine costs, storefront fees, external assets, sound, fonts, and possible service costs were discussed as planning topics. This document sets no budget or commercial license conclusion. The business model, stores and other non-mechanics decisions are in [production.md](production.md). Licensing must be checked when delivery decisions are made.
-
-## 17. Playable scope and development priorities
-
-### 17.1 First playable direction
-
-Begin implementation with **AI-versus-AI combat for development testing**, before adding player-controlled modes and campaign progression. Both sides should use the same combat rules that player-controlled units will use.
-
-The first playable should exercise:
-
-- A small selection of humans, animals, and fantasy creatures.
-- Six-member formation across three rows.
-- Direct testing of active skills, passives, and modifiers on units that have all their skills; tree organization and point allocation follow later.
-- The four global stats and skill-specific damage scaling.
-- Visible turn order and a limited set of timing effects.
-- Movement, targeting, and a readable form of protection.
-- Card-based presentation and mobile-conscious controls.
-
-The order of work after the AI-versus-AI milestone is adopted in [production.md](production.md), section 3. Summons are in the first release; terrain and large multi-slot units are not (section 20.1). Online PvP is greenlit (2026-10-18) and built after post-story content.
-
-### 17.2 Content counts remain proposals
-
-Different discussions suggested around 10 recruits for an early slice or 15–20 for a combat prototype, and between 6–8, 8–12, or 10–12 initial trees. These are alternative scoping suggestions, not simultaneous targets.
-
-The class roster is 9 Attack Types and 12 Professions ([class_system.md](class_system.md) v1.5; Bard removed 2026-10-19). Creature roster size, enemy count, and final content budget remain open.
-
-### 17.3 Deferred or unselected systems
-
-Complex terrain, large multi-slot units, emergent relationships and genetic variation remain deferred. Summons are in the first release and still need full specification (section 11). Bosses are normal-size units with higher stats (section 7.6). The story campaign and post-story content are required; their detailed content remains open.
-
-Online PvP is greenlit for the first release (2026-10-18). Its rules, backend and server-held profiles are adopted (section 2.4, production.md §1.4 and §2.4); the message protocol is specified when it is built. Cooperative play, trading, crafting and an equipment economy remain unspecified. Achievement rules are adopted in [production.md](production.md) §1.2; online matchmaking uses a hidden rating (section 2.4). The business model and saving are adopted in [production.md](production.md).
-
-## 18. Identity and reference boundaries
-
-**Everkin is the chosen name** (adopted 2026-10-07), subject to an availability check (trademarks, store listings, domains) before any store page goes up. A previous naming discussion raised potential existing-name conflicts; that check must settle them. This document records that issue without treating the earlier legal commentary as clearance or a current legal assessment.
-
-All artwork, character designs, UI, names, text, music, and branding must have an independent identity. References guide broad design goals rather than supplying assets or exact presentation.
-
-Previously discussed reference games include FFX for turn-order tactics; Hearthstone for card presentation and its deck builder as the model for the team editor; Siralim Ultimate and Monster Sanctuary for team-building and build synergies; and LumenTale, World of Final Fantasy, Cassette Beasts, Dragon Quest Monsters, and Monster Hunter Stories as comparison points. Their individual rules are not adopted by default.
-
-Minecraft and Super Mario 64 were earlier references for simple geometry and readable 3D form. They no longer define a 3D asset-production requirement.
-
-Earlier naming candidates were Wildbound, Kinforge, Riftkin, Beastfall, Veyra, Tamerift, Everkin, Roamkin, Feralis, and Bondfall. They are historical alternatives, not cleared commercial names.
-
-## 19. Decisions still required
-
-| Area | Outstanding specification |
+| Area | Open |
 |---|---|
-| Party | Prototype validation of six-versus-six readability, possible four- or five-unit standard, enemy exceptions. No combat reserve swapping. Each creature at most once per player team (enemies may repeat) is adopted (section 2.2). |
-| Timeline | None open. Delay bounds (clamped to 1–10) are adopted and Turn Now was removed (section 6.1). Initial progress, ties (first on the timeline stays first, else random; 2026-11-04), Haste/Slow, Reset and skipped turns are adopted (section 6.1). Speed 1–10 (10 fastest), skill Delay 1–10 (1 quickest), and Wait = Delay + 11 − Speed are adopted (section 6.1). |
-| Momentum | None open. Non-damaging actions, payment timing, refunds and simultaneous shifts are adopted (section 6.7). Limits, snowball (none for now), periodic, reaction and multi-hit shifts are adopted (section 6.7). The scale, gain, spending, and interception rules are adopted (section 6.7). One shared meter starts at neutral zero; no per-skill Momentum Gain stat or between-battle carryover. |
-| Skills | Individual prerequisites, Momentum and other consequence costs, effect order, and delayed-event definitions. One type-specific attack plus 6–8 additional usable skills is the target, not a loadout cap; no mana or cooldowns. |
-| Damage | None open. Several Wards (the larger stays), what scales with Power (every skill number, 2026-11-08), healing scaling, roll, shield and reduction order, fixed damage, uniform rolls, no crits and round-down with a minimum of 1 are adopted (section 5.2). |
-| Interception | None open. Interception chances, the partial-hit split, `melee`/`projectile` eligibility, intercepted non-damaging effects, random defender order within a row, the nearest-target tie rule, who can intercept (not Stunned, Frozen or Immobilized; airborne units as normal; no Guardian bonus) and other defenses being defined per skill are adopted (section 8.2). |
-| Reactions | None open. Propagation, priority levels, tie-breaks, timing and KO'd owners are adopted (section 6.6). There is deliberately no chain limit or recursion safeguard for now: AI-versus-AI testing must detect endless chains. |
-| Range | None open. Per-skill ranges and deliveries are set in skills.md (2026-11-04). Own-side range (D1 adjacent, D2+ any ally, 2026-11-08), opposing distance (skips empty rows), unlimited "any visible", uncapped range bonuses and cast-time checks are adopted (section 7.4). Adjacency uses nominal rows (section 8.4). Nearest-target ties are random (section 8.5). |
-| Movement | None open. Move (any row, Delay 5, chosen gap, no swaps), movement inside skills and forced repositioning are adopted (sections 9.1 and 9.5). Skip Turn is always available (section 6.4). |
-| Statuses | Further candidates, added only when a skill needs them. The framework (clocks, ticking, reapplication, cleansing, source, limit, damage from statuses, chances, skipped turns, immunities) and Blind, Poison, Bleeding, Silenced, Chilled, Frozen, Stunned, Confused, Immobilized and Marked are adopted (Burning was dropped) (section 10.5), as are stealth rules (section 10.1). Application chances are explicit; KO removes all statuses. |
-| KO and revival | Per-skill revival HP and recovery cost. What a draw means in each mode is adopted (section 12.3). Repeat revival, no out-of-combat consequence, bodies, pending events, sacrifice timing, the shared pool, automatic revival and body targeting are adopted (sections 8.1, 10.3 and 10.4). |
-| Summons | None open. Kinds, placement, cost, limits, Momentum, statuses, cap (18), first turn, lifetime, summoner KO, KO'd bodies, stats and behavior (2026-11-08) are adopted (section 11). Undead are adopted (section 11.5). |
-| Builds | None open. The tree model (8 points, 1 per node, one parent per node, no levels; 2026-11-08), random legal builds for AI teams and default builds for new creatures (2026-11-08), modifier stacking and free respec are adopted (section 4.1). The tree editor screen is designed in a mockup (ui_spec.md). |
-| Creatures | Balance of the roster in creature-classes.md (testing). No size tiers, unit names as IDs (2026-11-08), stat ranges, no natural traits, the first human recruits and Attack Type and Profession assignments are adopted (sections 3.4 and 3.7). |
-| Team budget | Tuning Cost and the budget of 35 after AI-versus-AI testing. How Cost is set (from a power score, 2026-11-03), Cost as the fourth stat, the budget, the six-creature limit, the budget in every mode and random teams drawn within it are adopted (section 5.1). |
-| Recruitment | Individual persistence. Encounter rewards are set in campaign.md (2026-11-08). The six tutorial creatures (2026-11-04), tutorial growth (two cheap creatures, then +1, +1, +2), the automatic tutorial team, coin sources, payouts, prices from Cost (2026-11-08) and the roster split are adopted (section 2.2). One copy per creature, one fixed reward per encounter from the defeated team, rewards given once, the three-battle tutorial, post-story challenge encounters, coins, and fixed human recruits are adopted (sections 2.2 and 3.4). Other acquisition methods are not currently required. |
-| Test harness | None open: depth and weaker picks per difficulty (starting values, 2026-11-08), random legal builds, scoring weights, team drawing, formation, search, information, cap, run size, records, report and flags are adopted (section 2.5). |
-| Encounters | Tuning the rosters, boss stats and AI levels of campaign.md (adopted 2026-11-08) in testing. Three difficulty levels are adopted (section 12.3). Draws, surrender, stalemates, victory timing, objectives (excluded for now), enemy size, behavior and difficulty are adopted (section 12.3). All six original members KO means defeat. |
-| Product structure | Each chapter's conflict. Campaign content (biomes, encounters, bosses, names) is in campaign.md (adopted 2026-11-08). The setting (no player character, no story text, Everkin as the land's name) is adopted (section 15, 2026-11-04); later full campaign design, and final content. A world map, the castle as stage 3 and the dragons as stage 4 of the four stages, the chapter shapes, the world map and dragon rewards (section 15, 2026-11-04) and bosses as strengthened roster creatures are adopted (sections 7.6 and 15). Stage size (about five battles plus a boss), fixed battle order, no team restrictions beyond the team budget and no restart are adopted (section 2.2). Modes, free battles, local two-player, campaign losses, random battles (no rewards), saved teams and saving are adopted (sections 2.2, 2.4 and 13.2, and production.md). AI-versus-AI testing comes first; online implementation requires greenlight. |
-| Presentation | Mobile readability, gestures, and prototype validation of party/capacity limits. Centered rows, front/back roles, left vertical timeline, and bottom skill bar are selected. Card styling is decided (full art with corner gems, backs showing the whole creature, home-biome frame; ui_spec.md). |
-| Delivery | Technical validation and the name's availability check. Server-held profiles (replacing store cloud saves) and the name (Everkin) are adopted. Platforms, stores, business model, languages, accessibility, crash reports, save files, the technical foundation, prices, store pages and online responsibilities are adopted ([production.md](production.md)). The battle screen arrangement, interactions and layout sizes are adopted (section 13.3, ui_spec.md). |
+| Party size | Prototype check of six-versus-six readability; a smaller standard team only if it proves crowded. |
+| Cost | The power-score formula for the current classes, decided when AI-versus-AI testing starts; then Cost and the budget of 35 are recalculated and tuned. |
+| Balance | Every number in skills.md and creature-classes.md, tuned by AI-versus-AI testing. |
+| Encounters | Tuning the rosters, boss stats and AI levels of campaign.md in testing. |
+| Content | Each chapter's conflict and later full campaign design. |
+| Statuses | New statuses only when a skill needs one. |
+| Presentation | Mobile readability checks of party and capacity limits. |
+| Delivery | Technical validation and the name's availability check. |
 
-These are intentional gaps in the current design, not permission to inherit equivalent rules from Hearthstone or another reference game.
+Gaps in this design are not permission to inherit rules from Hearthstone or another reference game.
 
-## 20. Details to complete before implementation
+## 20. Before implementation
 
-### 20.1 Finished-game scope
+### 20.3 Content definitions
 
-Required scope includes AI-versus-AI development testing, single-player AI battles, local two-player, an exploratory story campaign unlocking units, and at least one post-story random-battle mode unlocking further units. Target Windows, Android, and iOS in landscape only. Online PvP is part of the first release (greenlit 2026-10-18). Select the complete roster and remaining systems. **First-release scope (adopted 2026-10-06):** summons are developed fully; bosses are normal-size units with higher stats (section 7.6); terrain and large multi-slot units are excluded.
+- **Creature:** unit name (ID), display name, art and crops, HP, Speed, Power, Cost, home biome, two classes, two keystones, unique attack (creature-classes.md), and how it is acquired (campaign.md, coin price).
+- **Skill and attack:** Delay, Momentum, delivery, target, area, ordered effects, chances and numbers at Power 5, reactions, KO and retarget behavior (skills.md, creature-classes.md, and the rules here).
+- **Status:** effect, duration, ticking, reapplication, cleansing and KO behavior (section 10.5).
+- **Encounter:** team, formation, AI level, rewards (campaign.md).
 
-For each required mode, define the full flow from launching the game through party setup, battle, results, and replay or progression. Specify AI behavior/difficulty and local handover rules. Define the online requirements and interface boundaries; online is built in its roadmap slot (production.md §3).
-
-Use illustrated locations and a four-stage line of fixed-order battles for current campaign testing, with guaranteed encounter unit rewards. Define the tutorial's creatures, specific rewards, coin sources and prices, and the completion flow; the tutorial, stage size, duplicates, loss consequences, replays, post-story challenge encounters, coins and saved teams are adopted (sections 2.2 and 13.2). Respec is free outside battle. Full campaign design and normal progression details remain for later; test units have all their skills, and skills precede trees and point allocation. Unselected systems should be explicitly excluded rather than left ambiguous.
-
-### 20.2 Exact combat details
-
-In addition to section 19, resolve these edge cases:
-
-- Timeline: none open. Overshoot, when the next Wait starts, Speed and Delay bounds, the skipped-turn cost and the time model are adopted (section 6.1).
-- Momentum: all adopted (section 6.7).
-- Damage: multiple shields on one unit (deferred to the skill revisit). Healing scaling, sampling, rounding, shield order and shared versus independent rolls are adopted.
-- Resolution: none open. The full order for using a skill and the rules for targets that change mid-skill are adopted (section 6.5). Reaction priorities, ties and the absence of a chain limit are adopted (section 6.6).
-- Statuses: none open beyond new candidates. Immunities, damage from statuses, clocks, tick timing, reapplication, cleansing, source removal and shared HP are adopted (sections 10.4 and 10.5).
-- Formation: none open. Spot-bound effects stay on their coordinate (section 7.3). Cover eligibility, defender order, Move, swaps and failed movement are adopted (sections 8.2 and 9.1).
-- Battle boundaries: none open. Encounter exceptions (none for now), persistent consequences (none), simultaneous wipes (draw), stalemates, surrender and victory timing are adopted (section 12.3). Full starting HP, neutral-zero Momentum, and cleared temporary combat states are selected.
-
-### 20.3 Complete content definitions
-
-Each included creature needs a stable ID, name, one artwork image with its portrait crop, framing, all four stats (including Cost) and growth rules, classes, its one type-specific attack, natural passives/immunities, and acquisition rules. Artwork filenames are not approved creature names or combat values.
-
-Each class needs its complete skill-tree graph (what a "class" tree is under the new Attack Types and Professions is still open, section 19): node IDs, costs, ranks, prerequisites, branches, exclusivity, effects, and respec behavior. Define how multiple modifiers combine and how the final usable skill is displayed.
-
-Each skill needs availability conditions, valid targets and range, area pattern, timing multiplier, Momentum/other costs and payment behavior, ordered effects, probabilities and formulas, reactions, KO/interruption/retargeting behavior, and presentation. Do not add a per-skill Momentum Gain field.
-
-Each status needs application, duration clock, tick/expiry order, stacking/reapplication, effects, cleansing/immunity, and KO/reset behavior. Each encounter needs its roster, builds, formation, opponent behavior, outcome conditions, and rewards or exceptions if applicable.
-
-Final content lists must be complete; examples and partially filled entries do not count as implemented content.
-
-### 20.4 Technical and delivery requirements
-
-Finalize the authoritative rules state, UI preview/execution relationship, event ordering, and build/export process for the selected platforms. Language, the rules-core split, content format and IDs, and random-number control are adopted (section 16.1).
-
-Save timing, format, versioning, corruption recovery, battle resume, supported devices and screen shapes, languages, accessibility and crash reporting are adopted in [production.md](production.md). Performance targets, the sound and music list, tutorials, settings, and loading and error behavior are adopted there too. The visual effects rules are adopted there as well (2026-10-08). Online responsibilities are adopted too (2026-10-09; production.md §2.1 and section 2.4). Detailed screen behavior belongs in [ui_spec.md](ui_spec.md).
+Final content lists must be complete; examples and partly filled entries do not count as implemented content.
 
 ### 20.5 Worked checks
 
-Use concrete examples alongside rules to verify implementation. Initial checks include:
+Concrete examples of the rules; each becomes a test. They are expected behavior, not claims that tests pass.
 
 | Situation | Expected result |
 |---|---|
@@ -1354,129 +689,101 @@ Use concrete examples alongside rules to verify implementation. Initial checks i
 | A Speed 8 unit and a Speed 5 unit start a battle | First Waits are 3 and 6, so the Speed 8 unit acts first. |
 | A unit is pushed back into a time unit that already holds another unit's turn | The unit that was there first acts first; the moved one acts after it. |
 | Every unit's first turn falls in the same time unit at battle start | A seeded roll orders them, each order equally likely, and the same seed gives the same order. |
-| A unit has no viable action at Speed 9 | It skips its turn and waits 5 + (11 − 9) = 7 time units. |
-| A status's end joined a time unit before a unit's turn moved into it | The status ends first, so the unit acts without it. |
-| After 4 of those 11 units, Haste raises Speed by 2 | Remaining 7 becomes 5; completed progress is preserved. |
-| Speed 10 with Delay 1 versus Speed 1 with Delay 10 | Waits are 2 and 20: the fast unit acts about ten times per slow turn. |
-| Three-card row opposite a two-card row | Relevant overlaps are half or zero, matching section 7.3. |
-| A unit becomes KO | Statuses clear; ordered occupancy and row capacity remain; it no longer intercepts. |
-| Partial interception with another eligible defender behind | The remainder may undergo further defense. |
-| A simultaneous effect block hits several units | Apply the block before resulting KO checks and reaction collection. |
-| Healing exceeds missing HP | HP stops at maximum without an automatic excess-healing benefit. |
-| All original members are KO while a summon survives | The party loses under the standard defeat rule. |
-| Start another battle | Every participating unit begins at full HP, the contested Momentum meter is neutral zero, and previous temporary combat states do not carry over. |
-| An interceptor takes a partial hit from 7 damage | It takes 3 and 4 continues down the chain. |
-| An interceptor takes a partial hit from 1 damage | It cannot be split; the interceptor takes 1. |
-| Dampen halves a 1-damage hit | The hit deals 1 (rounded down, minimum 1). |
-| A 9-damage hit lands on a unit with no shield | It deals 9. |
-| The same hit lands on a unit with a shield absorbing 8 | The shield takes 8 and the remaining 1 reaches HP. |
-| A 7-damage hit lands on a unit with a shield absorbing 8 | Nothing passes the shield, so no damage is dealt, and Momentum does not change. |
-| A counter deals fixed 2 damage to a unit with Dampen | It deals 1. |
-| A 9-damage hit lands on a unit with Dampen | 9 × 0.5 = 4.5, rounded down to 4. |
-| A 9-damage hit lands on a unit with Ward (8) and Dampen | Ward takes 8, and Dampen leaves the remaining 1 at 1 (minimum 1). |
-| A test counter (fixed 2 damage, `melee`) hits an attacker that has its own "when hit" test counter | The attacker's counter triggers on that hit, since reactions can trigger reactions. |
-| Two units each have a once-per-battle `melee` test counter, and one hits the other in melee | The target's counter hits the attacker, the attacker's counter answers it, and the chain ends because both are spent. |
-| A reaction is created by a `melee` skill but its own text does not say `melee` | Its hits are not `melee`. |
-| A multi-hit skill hits a unit with a once-per-hit reaction three times | The reaction triggers three times. |
-| A counter and a timeline pull trigger from the same hit | The counter (Normal) resolves before the pull (Last). |
-| A unit is KO'd by a hit and had a "when hit" counter | The counter does not fire. |
-| A Speed 6 unit uses Move | It lands in the gap its player chose and waits 5 + (11 − 6) = 10 time units. |
 | A unit chooses Skip Turn at Speed 9 | It waits 5 + (11 − 9) = 7 time units. |
-| A unit tries to Move into a full row | That row is not offered. |
-| A Warrior uses Hit and Run while the row behind it is full | The strike lands, the move back is blocked, every unit in the chain takes 1 bump damage, and the Warrior stays where it was. |
-| A `direct` heal is aimed at a unit with an ally in front of it | It cannot be intercepted. |
-| A `projectile` heal is aimed at a unit with an ally in front of it | It can be intercepted. |
-| Two units in the row in front each half-cover the target | A random one of them, each with equal chance, rolls to intercept first. |
-| A skill hits the nearest enemy and two are equally near | A seeded roll picks one, each with equal chance. |
-| A skill with Delay 9 gets +3 Delay from an effect | Its Delay is 10. |
+| A status's end joined a time unit before a unit's turn moved into it | The status ends first, so the unit acts without it. |
+| Song of Haste reaches a Speed 5 ally 4 time units into an 11-unit Wait | Its Speed is 6; the remaining 7 becomes 6; completed progress is kept. |
+| Speed 10 with Delay 1 versus Speed 1 with Delay 10 | Waits are 2 and 20. |
+| A skill with Delay 9 gets +3 Delay from Jam | Its Delay is 10. |
+| Three-card row opposite a two-card row | Relevant overlaps are 50% or 0%. |
+| A unit becomes KO | Its statuses clear; it keeps its position and row capacity; it no longer intercepts. |
+| Healing exceeds missing HP | HP stops at maximum. |
+| Start another battle | Every unit begins at full HP, Momentum is 0, and nothing carries over. |
+| A melee attack aims at an enemy in the Middle row behind a Front unit at 100% overlap | The Front unit intercepts with 75%. |
+| A projectile aims at the same enemy | The Front unit intercepts with 50%. |
+| A melee attack aims at a Rear enemy behind a Front unit (100%) and a Middle unit (50%) | The Front unit tries first at 75%; if the hit (or a remainder) continues, the Middle unit tries at 50%. |
+| An interceptor takes a partial hit of 7 | It takes 3 and 4 continues toward the target. |
+| An interceptor takes a partial hit of 1 | It cannot be split; the interceptor takes 1. |
+| Two units in the row in front each half-cover the target | A random one of them, each with equal chance, tries first. |
+| A unit in the Middle row has only a melee attack | It cannot attack; it can use its non-melee class skills, Move or Skip Turn. |
+| A side's Front row is empty | None of its units can use melee until one moves into Front. |
+| A Breath attack is used while the enemy Front row is empty | It can be used; it hits nobody, and its Delay is spent. |
+| A pulse attack is used while the enemy Front row holds three units, one of them stealthed | All three are hit (an area hits stealthed units). |
+| A Breath attack hits a Front unit that has a neighbour and a Middle unit behind it at 50% overlap | Both are adjacent and take the splash. |
+| A Breath attack hits a Front unit, the Middle row is empty and a Rear unit is behind it at 100% | The Rear unit is not adjacent and is not hit. |
+| A melee attack is aimed at an airborne enemy | It is not a legal target. |
+| An airborne unit stands in front of the target of a melee attack | It may intercept, like any unit. |
+| Dive is used from the Rear row | It is legal and cannot be intercepted; an airborne target is not legal. |
+| Phase Weapon is on a unit whose next attack is melee | The attack cannot be intercepted; the unit still needs to stand in its Front row. |
+| A Keeper in the Middle row uses Ward on an ally in the Rear row | It works: own-side targets have no range and are never intercepted. |
+| A Keeper in the Middle row tries Ward Burst | It cannot: Ward Burst needs the Keeper in its Front row. |
+| A Healing Draught (projectile) is aimed at an ally behind another ally | It cannot be intercepted, because own-side skills are never intercepted. |
+| Hunter's Shot (projectile) is aimed at an enemy and partly intercepted for 9 | The interceptor takes 4 and the rest, 5, continues. |
+| A projectile heal of 9 is aimed at an enemy and partly intercepted | The interceptor heals 4 and the target 5. |
+| Jam (projectile) is intercepted | The interceptor gets the +5 Delay; the target does not. |
+| A `direct` skill is aimed at a unit with a defender in front | It cannot be intercepted. |
+| A reaction's hit is aimed at a unit with a defender in front | The defender does not intercept: reaction hits go straight to their target. |
+| A 9-damage hit lands on a unit with no Ward | It deals 9. |
+| The same hit lands on a unit with a Ward of 8 | The Ward takes 8 and 1 reaches HP. |
+| A 7-damage hit lands on a unit with a Ward of 8 | Nothing passes; no damage is dealt and Momentum does not change. |
+| A unit with 3 Ward left gets Shield Dome's Ward 2 | It keeps the Ward with 3 left. |
+| A unit with Ward 2 left gets Ward 4 | The new Ward 4 replaces it. |
+| A Power 5 unit with a 4–5 attack hits a 20 HP critter | The critter falls on the 4th or 5th hit, never earlier. |
+| A Power 3 Mender uses Mend (8–10 at Power 5) | It heals 4–6 (8 × 3 ÷ 5 = 4.8 → 4; 10 × 3 ÷ 5 = 6). |
+| A Power 7 Keeper uses Ward (4 at Power 5) | The Ward absorbs 5 (4 × 7 ÷ 5 = 5.6 → 5). |
 | A unit uses a Momentum 2 skill with its side at +2 and the first hit lands | The cost is paid first (meter 0), then the hit moves it to +1. |
 | Every hit of a Momentum 3 skill is intercepted | The 3 Momentum is not refunded. |
 | A Silence lands on an enemy | Momentum does not change. |
-| A projectile heal of 9 is partly intercepted | The interceptor is healed by 4 and the target by 5. |
-| A projectile status is partly intercepted | The interceptor gets the status; the target does not. |
+| A unit uses its attack on its own ally | The ally takes the hit and Momentum does not change. |
+| An attack is intercepted | Momentum does not change. |
+| A Bolt Turret hits on three of the Engineer's turns | Momentum shifts three times. |
+| A pulse hits three enemies and two hits land | One shift of 1 toward the attacker's side. |
+| A Poisoned unit ticks | It takes 1 per 10 time units, landing whenever any unit gets a turn; Momentum is unchanged; a Ward does not absorb it. |
+| Poison with 30 time units left is reapplied with 20 | It now has 20 left. |
 | Burning ground damages a unit with a Ward of 8 | The Ward absorbs the damage. |
-| A Poison tick hits a unit with a Ward | It deals 1; the Ward does not absorb it. |
-| Poison with 30 time units left is reapplied by a skill giving 20 | It now has 20 left. |
-| A Blind unit chooses Skip Turn | Blind's 20 time units keep running. |
-| A Bleeding unit uses Move | It takes 2 Bleeding damage after moving. |
-| A reaction's hit is aimed at a unit with a defender in front of it | The defender does not intercept: reaction hits go directly to their target. |
-| A unit is Poisoned | It takes 1 damage per 10 time units for 50 units, 5 in total, landing whenever any unit gets a turn. |
+| A unit with Bleeding (3 skills left) uses a melee skill | It takes 2 after the skill, and 2 skills remain. |
+| A Bleeding unit uses Move | It takes 2 after moving. |
+| A Bleeding unit uses a projectile skill | It takes nothing. |
+| A Blind unit's attack misses | The miss moves Momentum 1 against its side. |
+| A Silenced unit's attack has the bolt style | It cannot use it (a bolt attack is magical). |
+| A Silenced Mender's turn arrives | It cannot use Mend, Rain of Mending or Searing Light, but can use a physical attack, Move or Skip Turn. |
 | A Frozen unit's turn arrives | The turn is skipped and Frozen ends. |
 | Fire is set on a Frozen unit's spot | Frozen ends early and the unit keeps its turn. |
-| Attacker in Front, enemy units only in Rear | Distance is 1 (both effective rows are 1). |
-| Attacker in Rear with its own Front and Middle empty, enemy fully occupied | The attacker counts as row 1, so the distance to the enemy Front is 1 and to the enemy Rear is 3. It still counts as Rear for row-dependent skills. |
-| The enemy Front contains only a stealthed unit | The row does not count for distance, so the enemy Middle counts as row 1. |
-| A Ranged unit uses Shot ("any visible enemy") on the farthest visible enemy | The shot is legal at any distance. |
-| Phase Weapon is on a unit whose next attack is a D1 Melee attack | The attack can reach any visible unit. |
-| Breath hits a target with a KO body next to it | The body is not hit. |
-| A Guardian in Front uses Ward (D2) on an ally at the far end of its Rear row | It reaches: on its own side, D2 reaches any unit. |
-| Breath hits a Front unit, the Middle row is empty and the Rear row has a unit at 100% overlap | The Rear unit is not adjacent, so it is not hit. |
-| Gust pushes a Front unit back while the Middle row is empty | The unit lands in Middle and nothing is bumped, even if the Rear row has a unit behind it. |
-| Breath hits a unit that has a neighbor on the left and a unit in the row behind at 50% overlap | Both are adjacent and take the 1–2 splash. |
-| A side has 18 units and its Hunter uses Net Trap | The skill is unavailable, and the UI states why. |
-| A trap is KO'd | It is removed at once and its slot is free. It cannot be revived. |
-| A Hunter is KO'd while its traps are on the board | The traps persist. |
-| A Speed 6 turn-taking summon appears at time 10 | It first acts at time 15 (11 − 6 = 5 time units later). |
-| Poison is applied twice | There is still one Poison instance, with its duration refreshed. |
-| A unit with Bleeding (3 skills left) uses a `melee` skill | It takes 2 damage after the skill, and 2 skills remain. |
-| A unit with Bleeding uses a `heal` skill | It takes no bleed damage. |
-| A Blind unit's attack misses | The miss shifts Momentum 1 against that unit's side. |
-| A Silenced unit has only `magical` skills and its creature attack is physical | It can still use the creature attack. |
-| The caster of Poison is KO'd | Poison keeps ticking. |
-| A unit is KO'd while a Bolt Turret of its side and an auto event it owns are on the board | The turret stays; the auto event is removed unless its skill says it persists. |
-| Both sides' last original members are KO'd in one simultaneous block | The battle is a draw. |
-| A player's last original member is KO'd by a counter after the player's attack KO'd the enemy's last member | The battle is a draw, since victory is checked after reactions resolve. |
-| A draw happens in a single-player battle | It counts as a defeat for the player. |
-| A draw happens in an AI-versus-AI test | It is recorded as a draw. |
-| A battle reaches the AI-versus-AI harness's technical cap | The harness reports it and records a draw. |
-| A player surrenders | The battle is a defeat with no other penalty. |
-| Bound Resurrect: reviver 30 HP of 40, revived unit max 20 with 25% revival HP | The pool maximum is 60 and it starts at 30 + 5 = 35. Both are KO when it reaches 0. |
-| A heal whose Reach does not restrict the target side is used on an enemy | The enemy is healed. |
-| A push whose Reach does not restrict the target side is used on an ally | The ally is moved, following section 9.5. |
-| A skill marked "Own side only" is selected | Enemies are not legal targets. |
-| A unit uses its Attack Type attack on its own ally | The ally takes the hit and Momentum does not change. |
-| A unit with a "when hit" counter takes bump damage | The counter triggers, since bump damage is a hit. |
-| A stealthed unit takes bump damage | It counts as a hit and stealth ends, but Momentum does not change. |
-| An attack is intercepted | Momentum does not change. |
-| A stealthed Rogue is hit by the splash of Breath | It is hit and its stealth ends. |
-| A stealthed unit with a shield is hit and the shield absorbs everything | Stealth still ends. Momentum does not change. |
-| A stealthed unit takes a poison tick | Stealth does not end. |
-| A stealthed unit stands in front of an ally and an attack is aimed at the ally | The stealthed unit cannot intercept. |
-| A side's last non-stealthed unit tries to use a stealth skill on itself | The skill is not legal, so a side never has zero visible units through its own stealth. |
-| A queued projectile shot's target becomes stealthed before the shot resolves | The shot hits the unit behind it under the section 8.4 behind rule. |
-| A queued `direct` effect's target becomes stealthed but has not moved | It still hits the target. |
+| A Stunned unit's turn arrives | The turn is skipped and costs 5 + (11 − Speed); the Stun keeps running. |
+| The caster of a Poison is KO | The Poison keeps ticking. |
+| A stealthed unit is hit by a pulse | It is hit and its stealth ends. |
+| A stealthed unit with a Ward is hit and the Ward absorbs everything | Stealth still ends; Momentum does not change. |
+| A stealthed unit takes a Poison tick | Stealth does not end. |
+| A stealthed unit stands in front of an ally that is attacked | It cannot intercept. |
+| A side's last visible unit tries to use Vanish | It is not offered. |
+| A queued projectile shot's target becomes stealthed | The shot hits the unit behind it under the behind rule. |
 | A queued `direct` effect's target moves away and another unit takes its slot | The effect hits the unit now in that slot. |
-| A unit is shoved back and a unit sits directly behind it at 100% overlap | That unit is shoved back too. |
-| A unit is shoved into a row where it lands at 50% overlap between two units | It is inserted between them. |
-| A shoved chain of three units has room to move | All three move and no bump damage is dealt. |
-| A shoved chain of three units is blocked by a full row | Nothing moves, and each of the units in the chain takes 1 bump damage. |
-| A trap is shoved | It moves like any unit. |
-| A Bolt Turret hits on three of the Tinker's turns | Momentum shifts three times, once per hit. |
-| Crowd Fighter makes one attack hit three enemies, and two of the hits land | One shift of 1 toward the Warrior's side. |
-| Poison ticks | Momentum is unchanged. |
-| A Power 5 unit uses Brawl Strike (4–5) on a 20 HP critter | The critter falls on the 4th or 5th hit, never earlier. |
-| A Power 3 Healer uses Mend (8–10 at Power 5) | It heals 4–6 (8 × 3 ÷ 5 = 4.8 → 4; 10 × 3 ÷ 5 = 6). |
-| A Power 7 Guardian uses Ward (4 at Power 5) | The Ward absorbs 5 (4 × 7 ÷ 5 = 5.6 → 5). |
-| A unit with 3 Ward left gets Shield Dome's Ward 2 | It keeps the Ward with 3 left. |
-| A unit with Ward 4 gets Overcharged Ward 8 | The new Ward 8 replaces it. |
-| A Silenced Healer's turn arrives | It cannot use Mend (a Healer active is `magical`) but can use its Attack Type attack unless that is Bolt. |
-| A Bleeding Hunter uses Creep Closer | It takes 2 Bleeding damage, since the skill moves its user. |
-| A Clay Golem's turn arrives with two enemies equally near | A seeded roll picks one, and the golem attacks it with Delay 3. |
+| A skill hits behind its target, the row directly behind is empty and the Rear row has a unit at 100% overlap | The Rear unit is hit. |
+| A skill hits behind its target and the next row has units, none overlapping the target | Nothing is hit behind. |
+| A skill hits the nearest enemy and two are equally near | A seeded roll picks one; a replay from the same seed picks the same one. |
+| A Speed 6 unit uses Move | It lands in the gap its player chose and waits 5 + (11 − 6) = 10. |
+| A unit tries to Move into a full row | That row is not offered. |
+| Gust pushes a Front unit back while the Middle row is empty | It lands in Middle and nothing is bumped, even with a Rear unit behind it. |
+| A unit is pushed back with a unit directly behind it at 100% overlap | That unit is pushed back too. |
+| A unit is pushed into a row where it lands at 50% overlap between two units | It is inserted between them. |
+| A pushed chain of three units is blocked by a full row | Nothing moves, and each unit in the chain takes 1 bump damage. |
+| A stealthed unit takes bump damage | Stealth ends; Momentum does not change. |
+| A unit with Static Field takes bump damage | Static Field does not trigger (bump damage is not melee). |
+| A side has 18 units and its Engineer uses Barricade | The skill is unavailable, and the UI says why. |
+| A Net Trap is KO | It is removed at once and its slot is free; it cannot be revived. |
+| An Engineer is KO while its turrets are on the board | The turrets stay; its queued shots are removed. |
+| A Speed 3 Clay Golem appears at time 10 | It first acts at time 18 (11 − 3 = 8 later). |
+| A Clay Golem stands in the Middle row on its turn | It has no legal target and takes Skip Turn. |
+| Raise Undead is used with no free spot on the Necromancer's side | It cannot be used. |
+| An undead is healed for 6 | It takes 6 damage. |
+| Bound Resurrect: reviver 30 HP of 40, revived unit max 20 with 25% revival HP | The pool maximum is 60 and it starts at 30 + 5 = 35; both are KO when it reaches 0. |
+| All original members are KO while a summon stands | That side loses. |
+| Both sides' last original members are KO in one block | Draw. |
+| A player's last original member is KO by a counter after the player's attack KO'd the enemy's last member | Draw, since victory is checked after reactions. |
+| A draw in a single-player battle | It counts as a defeat for the player. |
+| A battle reaches the harness's cap | The harness reports it and records a draw. |
+| A player surrenders | Defeat with no other penalty. |
 | A coin creature has Cost 6 | It costs 50 + 25 × 6 = 200 coins. |
-| Two equally near targets are tied in a battle replayed from its seed | The same one is picked again. |
-| A Stunned unit's turn arrives | The turn is skipped and costs 5 + (11 − Speed) time units; the Stun keeps running its own time. |
-| An attacker in the Front row, the enemy has units in Front and Middle | Brawl Strike (D1) reaches only the Front row; Polearm Thrust (D2) also reaches the Middle row. |
-| A skill hits the unit behind its target, the row directly behind is empty and the Rear row has a unit at 100% overlap | The Rear unit is the one behind: it is hit automatically. |
-| A skill hits behind its target, the next row has units but none overlaps the target | Nothing is hit behind. |
-
-Expand these examples when numerical and mode-specific rules are decided. They are expected behavior, not claims that tests have passed.
 
 ## 21. Definition of done
 
-The specification is ready when every included feature has concrete rules, content, numerical values, UI behavior, and observable completion criteria, with no unresolved contradictions or required decisions. Provisional values must be explicitly adopted as the current implementation values; the agent must not guess them.
-
-**Implementation is done when everything required by the final versions of this game design document and the UI specification is implemented and verified.** This includes all selected modes, complete content, working play flows, saving, presentation, and required platform builds. No required feature may be silently omitted or replaced by an unapproved placeholder.
-
-Online PvP was greenlit on 2026-10-18, so its agreed implementation requirements are part of the completion scope.
-
-A prototype is an intermediate validation milestone, not the finished game. Readability testing may lead to documented changes, but finishing only the first playable does not satisfy this definition.
+The specification is ready when every included feature has concrete rules, content, numbers, UI behavior and completion criteria, with no contradictions or open decisions it depends on. Implementation is done when everything in the final versions of this document and the UI specification is implemented and verified: all modes, complete content, working play flows, saving, presentation, online and the platform builds. No required feature may be silently left out or replaced by an unapproved placeholder. A prototype is a milestone, not the finished game.

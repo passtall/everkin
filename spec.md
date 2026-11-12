@@ -8,7 +8,7 @@
 2. Every unit gets a separate, smaller **round battle portrait**. It needs new art with the creature **facing right**; the enemy side shows it mirrored.
 3. **Ground effects** (game_system.md §12.2) become actual visual effects on the board.
 
-No rule changes. Rows, coordinates, distances, adjacency, interception and ground effects work exactly as in game_system.md; only how they are drawn changes.
+No rule changes. Rows, coordinates, adjacency, interception and ground effects work exactly as in game_system.md; only how they are drawn changes.
 
 ## 1. Left/right board
 

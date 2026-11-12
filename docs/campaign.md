@@ -1,15 +1,15 @@
 # Everkin — Campaign content
 
-**Status: adopted 2026-11-08.** Drafted by Claude (implementation dry run b1 and b2) and accepted by Andreas as written, including the proposals in the last section. Numbers (team Cost, boss stats, AI levels) are starting values for testing. Rules this follows: game_system.md §2.2 (tutorial, rewards, challenge encounters, coins), §12.3 (difficulty levels, enemy sides, bosses as normal-size units), §15 (chapters, setting, dragons) and production.md §1.2 (achievements). The rules themselves stay in those documents; this file holds only content.
+Every encounter, boss, reward, challenge encounter and achievement. Numbers (team Cost, boss stats, AI levels) are starting values for testing. The rules are in game_system.md §2.2 (tutorial, rewards, challenge encounters, coins), §7.6 and §12.3 (bosses, difficulty, enemy sides), §15 (chapters, setting) and production.md §1.2 (achievements); this file holds only content.
 
-## How the draft was built
+## How the campaign is built
 
 - **One reward per encounter**, always a member of the defeated team, never repeated. The tutorial follows the adopted tutorial creatures (Tailwind Kite, Ripplequill, then Hornpip and Potionpaw), so those creatures appear in the tutorial enemy teams.
 - **Chapters 1 and 2** walk through neighboring wild biomes; each battle uses creatures from its own biome. **Chapter 3** is the castle: the Ruins as its outer walls, the Cathedral as its halls and towers, with mostly living objects. **Chapter 4** has one dragon per battle in its home biome, and the strongest dragon, the Obsidian Elder, is the final boss.
-- **Human recruits** as adopted: Tom Reed (chapter 1), Kofi Mensah (chapter 2), Edwin Marsh (chapter 3). Ragnhild Eriksen moves to a challenge encounter (see question 1).
+- **Human recruits:** Tom Reed (chapter 1), Kofi Mensah (chapter 2), Edwin Marsh (chapter 3), and Ragnhild Eriksen as the reward of challenge C4, because every chapter 4 battle gives its dragon.
 - **Difficulty** rises through the enemy rosters (team Cost from 14 to 51; enemy teams are not bound by the budget of 35) and the AI level: Easy in the tutorial and chapter 1, Normal in chapter 2 and the first half of chapter 3, Hard from then on. The tutorial's enemy sides have 2, 3 and 4 members, matching the player's growing team.
-- **Formations** are a starting proposal: Guardians, Warriors and short melee in Front, Polearm and Whip in the Middle, Ranged, Magic and Healers in the Rear. Each enemy uses a default build (game_system §4.1). Both are tuned once the campaign is playable.
-- **Bosses** are the strengthened version of a creature from their chapter: HP × 1.5 (rounded down to a multiple of 5) and Power + 2, everything else unchanged (question 4). Winning gives the normal version.
+- **Formations** by role: Bulwark, Keeper and every creature with a melee or melee-reach attack in Front (melee needs the Front row, game_system §8.1); projectile and direct attackers and healers behind them. Tuned once the campaign is playable.
+- **Bosses** are the strengthened version of a creature from their chapter: HP × 1.5 (rounded down to a multiple of 5) and Power + 2, everything else unchanged. Winning gives the normal version.
 - **Names** are short storybook names. Chapter names are the only text the game shows besides encounter names (§15: no story text).
 
 ## Encounters
@@ -114,7 +114,7 @@ About 30, all earnable offline, none hidden, no goal above 100 wins (production.
 | 9 | A Growing Band | Own 20 creatures. |
 | 10 | A Full Lantern | Own 30 creatures. |
 | 11 | Dragon Keeper | Own all four dragons. |
-| 12 | Every Calling | Own at least one creature of each of the 12 professions. |
+| 12 | Every Calling | Own at least one creature of each of the 28 classes. |
 | 13 | Sparring | Win 10 free or random battles. |
 | 14 | Seasoned | Win 50 free or random battles. |
 | 15 | Veteran | Win 100 free or random battles. |
@@ -130,16 +130,12 @@ About 30, all earnable offline, none hidden, no goal above 100 wins (production.
 | 25 | Unseen | KO an enemy with an attack made from stealth. |
 | 26 | Domino | Push or pull an enemy into another unit so that it bumps. |
 | 27 | Chain Reaction | Make poison ground explode with fire. |
-| 28 | Nine Ways | Win a battle with six creatures of six different Attack Types. |
-| 29 | Keystones | Win a battle in which every creature on your team has a keystone in its build. |
-| 30 | Tinkerer | Change the skill tree of 10 different creatures. |
+| 28 | Nine Ways | Win a battle with 12 different classes on your team. |
 
 When earned frames return (production.md §1.2, postponed), the harder ones (6, 7, 15, 17, 21) are the candidates to give one.
 
-## Decisions taken with the draft (adopted 2026-11-08)
+## Notes
 
-1. **Ragnhild Eriksen.** Chapter 4 has four battles, and each gives its dragon, so there is no chapter 4 reward left for her. The draft makes her the reward of challenge C4 instead. The alternative is a fifth chapter 4 battle without a dragon, which breaks "one dragon per battle".
-2. **Chapter 4 length.** Four battles instead of "about five", because there are four dragons.
-3. **Unused biomes.** Lagoon, Coast, Crystal caverns and Mountain appear only in the challenge encounters. Free battles use biomes the player has reached, so their backgrounds show up only after those challenges. The alternative is to route chapter 2 along the coast instead of the desert.
-4. **Boss strength.** HP × 1.5 and Power + 2 is a starting value for AI-versus-AI testing.
-5. **Coin creatures.** 287 of 319 creatures are coin creatures. That follows the adopted roster split (the rest is bought with coins), but it means an offline player sees 32 creatures at most.
+- **Chapter 4** has four battles instead of "about five", because there are four dragons.
+- **Lagoon, Coast, Crystal caverns and Mountain** appear only in the challenge encounters. Free battles use biomes the player has reached, so their backgrounds show up only after those challenges.
+- **Coin creatures.** 287 of 319 creatures are coin creatures, following the roster split, so an offline player sees 32 creatures at most.

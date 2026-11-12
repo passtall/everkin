@@ -27,9 +27,9 @@ Never use `docs/archive/` as a source; it is history only.
 
 | Topic | Owner document |
 |---|---|
-| Game rules: timeline, Momentum, damage, ranges, interception, movement, statuses, summons, ground effects, battle end, AI harness | docs/game_system.md |
-| Attack Types and Professions | docs/class_system.md |
-| Every skill: Delay, Momentum, delivery, range, effect (numbers at Power 5) | docs/skills.md |
+| Game rules: timeline, Momentum, damage, rows and melee reach, interception, movement, statuses, summons, ground effects, battle end, AI harness | docs/game_system.md |
+| The 28 classes and unique attacks | docs/class_system.md |
+| Every class skill and keystone: Delay, Momentum, delivery, effect (numbers at Power 5) | docs/skills.md |
 | Creature roster: unit name (= ID), display name, classes, biome, stats, Cost, art file, card crops | docs/creature-classes.md |
 | Screens, layouts, interactions | docs/ui_spec.md (mockups are reference only) |
 | Platforms, technology, saving, online backend, art and audio formats, roadmap | docs/production.md |
@@ -51,7 +51,7 @@ The solution is `Everkin.sln` (net10.0): `src/Everkin.Core`, `src/Everkin.Runner
 
 - Build: `dotnet build`
 - Tests: `dotnet test`
-- Runner: `dotnet run --project src/Everkin.Runner -c Release -- --help`. `default-builds` makes `content/default_builds.json` (keeps stored builds, adds missing creatures). The AI-versus-AI batch commands arrive in M2.2.
+- Runner: `dotnet run --project src/Everkin.Runner -c Release -- --help`. `default-builds` makes `content/default_builds.json` (removed with the skill trees in M5.6). The AI-versus-AI batch commands arrive in M2.2.
 - Godot editor: open the project at the root in Godot 4.7.2 .NET (`E:\Downloads\Neuer Ordner\Godot_v4.7.2-stable_mono_win64\Godot_v4.7.2-stable_mono_win64.exe`); the renderer is Compatibility on every platform.
 - Godot headless (use the `_console.exe`; always pass `--quit`, otherwise the process hangs):
   - Import assets and build C#: `--headless --path . --build-solutions --quit`
