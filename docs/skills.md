@@ -18,7 +18,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Vanish | A | 4 / 3 | — | The Assassin gains stealth, wherever it stands. |
+| Vanish | A | 4 / 3 | — | The Assassin gains stealth and loses every harmful status. |
 | Feint | A | 3 / 0 | Melee | Only from stealth: a unit is Confused for 10. The Assassin stays stealthed. |
 | Backstab | A | 5 / 2 | Melee | Only from stealth: hit for 8–10 and the target Bleeds. Breaks stealth. |
 | Unseen | K | | | The Assassin starts every battle stealthed. |
@@ -86,6 +86,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Purifying Aura | K | | | Harmful statuses on allies next to the Cleric last half as long. |
 | Judgment | K | | | Each status the Cleric's Dispel removes deals 4 to that unit. |
 
+- **Purifying Aura** works while an ally stands next to the Cleric: the time of its harmful statuses runs down twice as fast there.
 - **Turn Back:** if the unit has several harmful statuses whose applier is still standing, the seeded roll picks one, each with equal chance.
 
 ## Lifebinder
@@ -117,7 +118,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Transmute | A | 4 / 0 | Direct | A unit's Power and Speed swap values for 20. |
-| Glass Body | A | 4 / 0 | Direct | The next hit on a unit deals 50% more damage. |
+| Glass Body | A | 4 / 0 | Direct | The next hit on a unit deals 50% more damage. It has no time limit: it waits for that hit. |
 | Petrify | A | 7 / 4 | Direct | A unit turns to stone: it is Stunned for 10. |
 | Lasting Change | K | | | Transmute lasts until the end of battle, but only one unit can be transmuted by the Transmuter at a time. |
 | Brittle Glass | K | | | Glass Body makes the next hit deal double instead of 50% more. |
@@ -258,14 +259,14 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Melt Away | A | 4 / 2 | — | The Thief gains stealth, even in the Front row. |
+| Melt Away | A | 4 / 2 | — | The Thief gains stealth. |
 | Lift a Skill | A | 6 / 3 | Direct | Use a copy of the last active skill the target used, with the Thief's own Power. |
 | Snatch | A | 4 / 0 | Melee | Hit for 5–6 and steal one helpful status from the target. |
 | Escape Artist | K | | | The first time the Thief drops below half HP, it gains stealth. |
 | Master Thief | K | | | Snatch steals every helpful status from the target, not just one. |
 | Shadow Purse | K | | | Each time the Thief steals a status, Momentum moves 1 toward your side. |
 
-- **Lift a Skill:** the player picks the enemy and, if the copy needs a target, a legal target. The copy is free and uses the Thief's Power. Any skill used with a turn action counts, unique attacks included; Move, Skip Turn, keystones and Lift a Skill itself never do. Only copies that need no target or one unit target are possible. A magical copy cannot be made while the Thief is Silenced. A melee copy follows the Front-row rule.
+- **Lift a Skill:** the player picks any unit, ally or enemy, and, if the copy needs a target, a legal target. The copy is free and uses the Thief's Power. Any skill used with a turn action counts, unique attacks included; Move, Skip Turn, keystones and Lift a Skill itself never do. Only copies that need no target or one unit target are possible. A magical copy cannot be made while the Thief is Silenced. A melee copy follows the Front-row rule.
 - **Stealing:** a stolen status moves to the Thief with its remaining time; the seeded roll picks which. Stealth cannot be stolen. Snatch steals only if its hit reaches the target itself (landed or absorbed by a Ward, not taken by an interceptor).
 
 ## Saboteur
@@ -303,11 +304,10 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Poison Gas | A | 4 / 0 | Direct | Poison ground on a unit's spot and the spots next to it, for 20. |
 | Firebomb | A | 5 / 2 | Projectile | Fire on a unit's spot and the spots next to it, for 20. |
 | Healing Draught | A | 3 / 0 | Projectile | A unit heals 6–7. |
-| Showman | K | | | Blind and Stunned from the Chemist last twice as long, but its skills that deal damage have +2 Delay. |
+| Big Finish | K | | | Firebomb and Poison Gas also cover the spots next to those spots (five spots in all), but both have +2 Delay. |
 | Potent Brew | K | | | Healing Draught also removes one harmful status. |
 | Volatile | K | | | The Chemist's fire and poison ground last twice as long. |
 
-- **Showman** covers every skill and the attack of the creature; Delay is clamped to 10.
 - An intercepted Firebomb lands on the interceptor's spot.
 
 ## Necromancer
@@ -392,6 +392,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Eagle Eye | K | | | While airborne, the Skyborne reveals stealthed enemies. |
 | Lift | K | | | Take Off also makes one ally next to the Skyborne airborne for the same time. |
 
+- **Eagle Eye:** while the Skyborne is airborne, every enemy loses its stealth, and an enemy that gains stealth loses it at once.
 - **Take Off** again while airborne restarts the timer. A unit under Curse of Weight cannot use it.
 - **Dive** works from any row and cannot be intercepted; it cannot hit an airborne unit.
 - **Sky Lord:** at battle start max HP and HP become 70% (rounded down, minimum 1) and the unit is airborne with no end. If something makes it land, it takes to the air again at once unless Curse of Weight forbids it.

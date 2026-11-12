@@ -30,7 +30,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `accordion-warlord` | Wheezewarden | Bard, Berserker | Grand Chorus, Reckless Swing | Accordion Slam | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Confused for 5 time units. | `accordion-01.png` | — |
 | `anchor-sentinel` | Barnacle Bulwark | Bulwark, Keeper | Shield Wall, Thorned Ward | Anchor Bash | Melee | 4 / 0 | swing | Hit for 4–5; 20%: the target is Stunned for 5 time units. | `anchor-01.png` | — |
 | `ankylosaur-guardian-club` | Clubtail Grumbleback | Bulwark, Berserker | Hold Position, Last Stand | Club Clobber | Melee | 4 / 0 | swing | Hit for 4–5; 20%: the target is Stunned for 5 time units. | `ankylosaur-01.png` | — |
-| `ant-engineer-gear` | Cogmarch Ant | Engineer, Chemist | Reinforced, Showman | Gear Fling | Projectile | 3 / 0 | shot | Hit for 3–4. | `ant-01.png` | — |
+| `ant-engineer-gear` | Cogmarch Ant | Engineer, Chemist | Reinforced, Big Finish | Gear Fling | Projectile | 3 / 0 | shot | Hit for 3–4. | `ant-01.png` | — |
 | `armadillo-knight-2` | Armadillo Recruit | Bulwark, Keeper | Unbreakable, Steadfast Ward | Armadillo Thump | Melee | 4 / 0 | swing | Hit for 5–6. | `armadillo-01.png` | `armadillo-knight-2.png` |
 | `armadillo-knight` | Armadillo Knight | Bulwark, Keeper | Shield Wall, Twin Wards | Armadillo Clobber | Melee | 4 / 0 | swing | Hit for 5–6. | `armadillo-02.png` | `armadillo-knight.png` |
 | `astrolabe-judge` | Starwright Judge | Enchanter, Commander | Twin Enchant, Rally | Astrolabe Glow | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3. | `astrolabe-01.png` | — |
@@ -83,7 +83,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `compass-hunter-needle` | Northneedle | Assassin, Engineer | Venom Blades, Self-Repair | Needle Cut | Melee | 3 / 0 | swing | Hit for 3–4; 30%: the target Bleeds. | `compass-02.png` | — |
 | `conchphone-bard-horn` | Conchhorn | Bard, Commander | Grand Chorus, Drill | Horn Spray | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units. | `conchphone-01.png` | — |
 | `corkscrew-stalker` | Twistcork | Assassin, Engineer | Unseen, Rapid Fire | Corkscrew Cut | Melee | 3 / 0 | swing | Hit for 4–5. | `corkscrew-01.png` | — |
-| `crab-alchemist` | Crab Alchemist | Chemist, Engineer | Showman, Reinforced | Crab Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `crab-01.png` | `crab-alchemist.png` |
+| `crab-alchemist` | Crab Alchemist | Chemist, Engineer | Big Finish, Reinforced | Crab Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `crab-01.png` | `crab-alchemist.png` |
 | `crab-smith` | Crab Smith | Engineer, Berserker | Self-Repair, Last Stand | Crab Crush | Melee | 4 / 0 | swing | Hit for 5–6. | `crab-02.png` | `crab-smith.png` |
 | `crab-guard-decoy` | Decoy Crab | Bulwark, Keeper | Unbreakable, Twin Wards | Decoy Headbutt | Melee | 3 / 0 | lunge | Hit for 4–5. | `crab-03.png` | — |
 | `crane-hoist-titan` | Hoist Titan | Mender, Engineer | Triage, Rapid Fire | Titan Rake | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `crane-01.png` | — |
@@ -139,7 +139,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `hourglass-hexer-sand` | Sandhex Glass | Hexer, Commander | Spreading Curse, Vanguard | Sand Pulse | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3; heals the attacker for 1. | `hourglass-01.png` | — |
 | `howlermonkey-bard-roar` | Roarleaf | Bard, Commander | Grand Chorus, Drill | Roar Spray | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Immobilized for 5 time units. | `howlermonkey-01.png` | — |
 | `human-alchemist-shield` | Gerald Hollins | Chemist, Bulwark | Potent Brew, Unbreakable | Shield Fling | Projectile | 3 / 0 | shot | Hit for 3–4. | `human-01.png` | `human-alchemist-shield.png` |
-| `human-alchemist` | Maggie Wren | Chemist, Thief | Showman, Shadow Purse | Alchemist Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `human-02.png` | `human-alchemist.png` |
+| `human-alchemist` | Maggie Wren | Chemist, Thief | Big Finish, Shadow Purse | Alchemist Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `human-02.png` | `human-alchemist.png` |
 | `human-archer-crystal` | Mira Castell | Tracker, Transmuter | Relentless, Brittle Glass | Crystal Flick | Projectile | 3 / 0 | shot | Hit for 3–4. | `human-03.png` | `human-archer-crystal.png` |
 | `human-archer-frost` | Sigrid Halvorsen | Tracker, Cryomancer | Sniff the Air, Cold Heart | Frost Toss | Projectile | 3 / 0 | shot | Hit for 2–3; the target's next turn comes 2 time units later. | `human-04.png` | `human-archer-frost.png` |
 | `human-archer-gear` | Otto Brenner | Tracker, Engineer | Scent of Blood, Reinforced | Gear Throw | Projectile | 3 / 0 | shot | Hit for 3–4. | `human-05.png` | `human-archer-gear.png` |
@@ -213,7 +213,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `lizardfolk-barbarian-axe` | Axejaw Lizardfolk | Berserker, Champion | Unstoppable, Duelist | Axe Hack | Melee | 3 / 0 | swing | Hit for 4–5. | `lizardfolk-03.png` | — |
 | `lizardfolk-ninja-kunai` | Kunai Lizardfolk | Assassin, Thief | Unseen, Shadow Purse | Kunai Volley | Projectile | 3 / 0 | shot | Hit for 3–4. | `lizardfolk-04.png` | — |
 | `lobster-bard-castanet` | Castanet Lobster | Bard, Commander | Crescendo, Drill | Castanet Bite | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Confused for 5 time units. | `lobster-01.png` | — |
-| `lobster-engineer-rivet` | Rivetclaw | Engineer, Chemist | Self-Repair, Showman | Rivet Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `lobster-02.png` | — |
+| `lobster-engineer-rivet` | Rivetclaw | Engineer, Chemist | Self-Repair, Big Finish | Rivet Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `lobster-02.png` | — |
 | `lockbox-dreadnought` | Lockbox Dreadnought | Bulwark, Keeper | Shield Wall, Twin Wards | Lockbox Jab | Melee | 3 / 0 | lunge | Hit for 4–5. | `lockbox-01.png` | — |
 | `loom-binder` | Threadbinder Loom | Engineer, Commander | Rapid Fire, Rally | Loom Lash | Melee | 3 / 0 | swing | Hit for 3–4. | `loom-01.png` | — |
 | `lyrebird-bard-plume` | Plumesong | Bard, Skyborne | Grand Chorus, Lift | Plume Spray | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units. | `lyrebird-01.png` | — |
@@ -259,7 +259,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `peacock-bard-feather` | Plumecrown | Bard, Skyborne | Rhythm, Lift | Feather Bolt | Projectile | 4 / 0 | bolt | Hit for 2–3; 20%: the target is Confused for 5 time units. | `peacock-01.png` | — |
 | `phoenix-titan-solar` | Solar Phoenix | Mender, Pyromancer | Regrowth, Ashwalker | Solar Hum | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 1–2; 20%: the target is Stunned for 5 time units. | `phoenix-01.png` | — |
 | `pika-summoner-horn` | Hornpip | Bard, Summoner | Crescendo, Portal | Horn Gust | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units. | `pika-01.png` | — |
-| `platypus-alchemist-rune` | Runebill | Chemist, Engineer | Showman, Rapid Fire | Rune Plume | Direct, melee reach | 4 / 0 | breath | Hit the target for 3–4 and every unit next to it for 1–2. | `platypus-01.png` | — |
+| `platypus-alchemist-rune` | Runebill | Chemist, Engineer | Big Finish, Rapid Fire | Rune Plume | Direct, melee reach | 4 / 0 | breath | Hit the target for 3–4 and every unit next to it for 1–2. | `platypus-01.png` | — |
 | `plough-ravager` | Furrow Ravager | Champion, Summoner | Duelist, Quickening | Plough Slash | Melee | 3 / 0 | swing | Hit for 4–5. | `plough-01.png` | — |
 | `pocketwatch-warden` | Tickwarden | Keeper, Commander | Steadfast Ward, Drill | Pocketwatch Wave | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3. | `pocketwatch-01.png` | — |
 | `porcupine-alchemist-shield` | Quillflask | Chemist, Bulwark | Potent Brew, Hold Position | Shield Flick | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `porcupine-01.png` | — |
@@ -273,7 +273,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `ram-paladin-sun` | Sunhorn Paladin | Bard, Keeper | Rhythm, Steadfast Ward | Sun Slam | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: burning ground on the target's spot. | `ram-01.png` | `ram-paladin-sun.png` |
 | `ram-bard-bellows` | Bellows Ram | Bard, Engineer | Grand Chorus, Self-Repair | Bellows Gust | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units. | `ram-02.png` | — |
 | `reliquary-summoner-seal` | Sealed Reliquary | Summoner, Enchanter | Quickening, Twin Enchant | Seal Spark | Projectile | 4 / 0 | bolt | Hit for 3–4. | `reliquary-01.png` | — |
-| `retort-alchemist` | Bubblehex Retort | Chemist, Bulwark | Showman, Hold Position | Retort Spray | Direct, melee reach | 4 / 0 | breath | Hit the target for 3–4 and every unit next to it for 1–2; heals the attacker for 1. | `retort-01.png` | — |
+| `retort-alchemist` | Bubblehex Retort | Chemist, Bulwark | Big Finish, Hold Position | Retort Spray | Direct, melee reach | 4 / 0 | breath | Hit the target for 3–4 and every unit next to it for 1–2; heals the attacker for 1. | `retort-01.png` | — |
 | `rhinoceros-guard-shadow` | Shadowhorn | Assassin, Champion | Vanishing Kill, Glory | Shadow Slash | Melee | 3 / 0 | swing | Hit for 3–4; cannot be intercepted. | `rhinoceros-01.png` | — |
 | `roadrunner-hunter-whistle` | Whistledash | Tracker, Skyborne | Sniff the Air, Sky Lord | Whistle Toss | Projectile | 3 / 0 | shot | Hit for 2–3; 20%: burning ground on the target's spot. | `roadrunner-01.png` | — |
 | `roc-colossus-thunder` | Thunder Roc | Tracker, Skyborne | Scent of Blood, Eagle Eye | Thunder Pounce | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `roc-01.png` | — |
@@ -312,7 +312,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `sundrum-hexer` | Sunhex Drum | Engineer, Keeper | Self-Repair, Steadfast Ward | Sundrum Glow | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 1–2; 20%: burning ground on the target's spot. | `sundrum-01.png` | — |
 | `tapestry-summoner` | Woven Host | Summoner, Bulwark | Quickening, Shield Wall | Tapestry Glow | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3. | `tapestry-01.png` | — |
 | `tarsier-hexer-mask` | Maskeye | Thief, Hexer | Escape Artist, Spreading Curse | Mask Swipe | Melee | 3 / 0 | lunge | Hit for 3–4; cannot be intercepted. | `tarsier-01.png` | — |
-| `teapot-alchemist-volcano` | Volcano Teapot | Chemist, Pyromancer | Showman, Wildfire | Volcano Gust | Direct, melee reach | 4 / 0 | breath | Hit the target for 3–4 and every unit next to it for 1–2. | `teapot-01.png` | — |
+| `teapot-alchemist-volcano` | Volcano Teapot | Chemist, Pyromancer | Big Finish, Wildfire | Volcano Gust | Direct, melee reach | 4 / 0 | breath | Hit the target for 3–4 and every unit next to it for 1–2. | `teapot-01.png` | — |
 | `termite-engineer-drill` | Drillmite | Engineer, Bulwark | Rapid Fire, Hold Position | Drill Volley | Projectile | 3 / 0 | shot | Hit for 3–4. | `termite-01.png` | — |
 | `termite-summoner-clockwork` | Clockmite | Engineer, Summoner | Reinforced, Golem Heart | Clockwork Volley | Projectile | 3 / 0 | shot | Hit for 3–4. | `termite-02.png` | — |
 | `thorntreant-primalist-bramble` | Bramblestalker | Spiritwalker, Assassin | Haunting, Vanishing Kill | Bramble Hum | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 1–2; 30%: the target Bleeds. | `thorntreant-01.png` | — |
@@ -335,7 +335,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `vulture-healer-cinder` | Cinderbeak | Skyborne, Stormcaller | Eagle Eye, Static Field | Cinder Throb | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3. | `vulture-01.png` | — |
 | `walrus-bard-horn` | Tuskhorn Walrus | Bard, Commander | Crescendo, Vanguard | Horn Plume | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units. | `walrus-01.png` | — |
 | `warthog-engineer-cannon` | Cannon Warthog | Engineer, Chemist | Rapid Fire, Volatile | Cannon Fling | Projectile | 3 / 0 | shot | Hit for 3–4. | `warthog-01.png` | — |
-| `wasp-alchemist-potion` | Stingflask | Chemist, Skyborne | Showman, Lift | Potion Toss | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `wasp-01.png` | — |
+| `wasp-alchemist-potion` | Stingflask | Chemist, Skyborne | Big Finish, Lift | Potion Toss | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `wasp-01.png` | — |
 | `weasel-rogue-dagger` | Daggerwhisk | Assassin, Thief | Venom Blades, Shadow Purse | Dagger Carve | Melee | 3 / 0 | swing | Hit for 3–4; 30%: the target Bleeds. | `weasel-01.png` | — |
 | `weathervane-summoner-arrow` | Gustarrow | Summoner, Skyborne | Golem Heart, Sky Lord | Arrow Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `weathervane-01.png` | — |
 | `weaverbird-summoner-banner` | Bannerweave | Commander, Summoner | Drill, Portal | Banner Ray | Projectile | 4 / 0 | bolt | Hit for 3–4. | `weaverbird-01.png` | — |

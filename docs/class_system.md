@@ -36,7 +36,7 @@ A skill or keystone text that names its class ("the Bard", "the Engineer") means
 | **Thief** | Steals statuses and skills. | Melt Away, Lift a Skill, Snatch | Escape Artist, Master Thief, Shadow Purse |
 | **Saboteur** | Blinds, delays and breaks plans. | Flash Powder, Cut the Strings, Jam | Wrecker, Chaos Agent, Disarm Trap |
 | **Engineer** | Turrets, barricades and traps. | Bolt Turret, Barricade, Net Trap | Reinforced, Self-Repair, Rapid Fire |
-| **Chemist** | Poison and fire on the ground, potions. | Poison Gas, Firebomb, Healing Draught | Showman, Potent Brew, Volatile |
+| **Chemist** | Poison and fire on the ground, potions. | Poison Gas, Firebomb, Healing Draught | Big Finish, Potent Brew, Volatile |
 | **Necromancer** | Raises and uses the dead. | Raise Undead, Corpse Explosion, Desecrate | Lich Form, Bone Armor, Death's Bounty |
 | **Summoner** | Golems and animated blades. | Clay Golem, Rune Golem, Animate Blades | Golem Heart, Portal, Quickening |
 | **Totemist** | Totems that protect a row. | Healing Totem, Spirit Link Totem, Totem of Return | Great Totem, Sturdy Totems, Spirit Shield |

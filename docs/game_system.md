@@ -381,6 +381,7 @@ Every unit uses one card width and one unit of row capacity. **Bosses are normal
 - **Airborne.** Melee cannot target an airborne unit (section 10.6).
 - **Stealth.** A stealthed enemy cannot be targeted (section 10.1).
 - **No empty spots.** No skill targets an empty spot: a ground effect goes on a target unit's spot or on a row. Placing a summon, construct, turret, trap, totem or barricade on a free spot is placement, not targeting (section 11).
+- **Picks.** A skill asks the player (or the AI) for at most one unit and one target. Any further unit a skill needs ("one ally next to the target": Twin Wards, Twin Enchant, Lift) is picked by the seeded roll, each with equal chance.
 - **Areas.** An area skill hits every unit in its area; areas built from a target affect that target's side. Skills that pick targets themselves (random picks, chain jumps, "every enemy") state their side.
 - **Keystones** that react to an enemy or an ally are triggers, not targets.
 
