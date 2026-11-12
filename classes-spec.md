@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 9 and the creature assignment applied; round 10 posted; doc rewrite waits for the owner's go). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (all rounds applied, 2026-11-12; work order in section 3; doc rewrite waits for the owner's go). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -283,6 +283,28 @@ All 319 creatures have two classes, two keystones and a unique attack in [classe
 - **Cost formula:** decided when AI testing starts (the Attack Type factor and the Flying and two-Profession bonuses need replacing then).
 - **Elements (fire, frost, storm):** asked again in round 10.
 
+## 1j. Last checks (round 10, answered 2026-11-12)
+
+- **No element tags.** `fire`, `frost` and `storm` are dropped. Skills already say what they cause (burning ground, ice, Frozen and so on), and the ground combos in game_system §12.2 react to those effects only.
+- **Achievement Every Calling:** own one creature of each of the 28 classes.
+- **Achievement Nine Ways:** win a battle with 12 different classes on your team.
+- **Card front plate:** name and the two class names; the attack is on the card back with the skills and keystones.
+- **When:** built right after M5.5 (battle UI), before M6.
+- **Saved profiles and builds** from testing are reset when the change ships.
+
 ## 2. Open questions
 
 - **Doc rewrite:** class_system.md, skills.md, game_system.md (§4.1 trees, §4.4 attacks, §19 Builds), creature-classes.md, ui_spec.md (tree editor, action bar), implementation plan and code (default builds, tree editor). Not started: the owner confirms first (2026-11-11).
+
+## 3. Work order (milestone M5.6, after M5.5)
+
+Nothing here starts before the owner confirms the doc rewrite. Order:
+
+1. **Docs** (owner's go first). class_system.md: 28 classes, no Attack Types, 2 classes and 2 keystones per creature. skills.md: per class 3 actives and 3 keystones with Delay, Momentum, delivery and range; Attack Type attacks and branch tables removed. game_system.md: §4 (no trees, points, builds or respec; all skills unlocked; unique attacks), §4.7 tags (magical from §1i, no element tags), §2.5 harness (no random builds), §5.1 Cost note (formula decided at AI testing), §10.6 airborne reach, §11 summons (dropped kinds, undead use the creature's attack), §19 open list, §20.5 worked checks rewritten with current skills. creature-classes.md: Classes, Keystones and Attack columns instead of Attack type and Professions (data from classes-creatures.md). ui_spec.md: tree editor removed, team editor filter by class, card front plate, card back keystones, action bar order (§1g). campaign.md: formations by role, no builds, achievements Every Calling and Nine Ways changed, #29 and #30 removed. implementation-plan.md: this milestone; M7.2 achievement count.
+2. **Content:** `classes.json` (28 classes), `skills.json` (84 actives, 84 keystones, 319 unique attacks), `creatures.json` (classes, keystones, attack per creature); delete `default_builds.json`; remove enemy builds from `campaign.json`; drop Clockwork Golem, Bell Golem, Animate Mirror, Flame Turret, Cage and the Hunter decoy (keep their art).
+3. **Core:** regroup `Skills/*Skills.cs` by class and add the new skills; keystones as passives fixed per creature; a parametric unique attack (delivery, range, damage, one extra); remove `SkillBuild.cs` and the nine shared attacks; magical tag per §1i; drop element tags; airborne reach per §1i; Coordinated Strike, songs and Hunt Down per §1g and §1h; content check test against the doc tables.
+4. **AI:** remove random builds; make sure the AI scores every new skill and keystone.
+5. **UI:** remove `SkillTreeEditor.cs` and its entry points; team editor class filter; action bar order; card front plate and card back keystones; inspection panel keystones.
+6. **Saving:** bump the save version and reset older profiles.
+7. **Icons:** placeholder icons per skill and attack until the art exists (one icon per skill and attack, §1h).
+8. **Then:** rerun the AI-versus-AI harness, decide the Cost formula (§1i) and recalculate Cost.
