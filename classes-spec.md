@@ -299,9 +299,9 @@ Owner's idea (2026-11-12): drop distance for skills; any skill reaches any legal
 - **No range at all (R1).** Every skill reaches every legal unit on either side. The opposing-distance table, empty-row skipping and "range checked at cast" (game_system §7.4) are removed. Rows matter for interception, area shapes, movement and the melee row rule below. The Delivery · Range column becomes Delivery.
 - **Melee interception (R2).** A covering unit intercepts melee at **75%** (full overlap) or **50%** (half overlap). Projectiles keep 50% / 25%. Every covering row tries in turn, nearest first, as today.
 - **Full or partial (R3).** Unchanged: an interceptor takes the full hit or a partial hit, 50/50, for melee and projectiles.
-- **Melee only from the Front row (R4).** A unit can use melee skills and melee attacks only while it stands in its Front row. Projectile and Direct skills work from any row. Details in round 12.
+- **Melee only from the Front row (R4).** A unit can use melee skills and melee attacks only while it stands in its Front row. Projectile and Direct skills work from any row (round 12 below).
 - **Direct skills (R5)** stay Direct and are never intercepted; AI testing shows if direct damage is too strong.
-- **Melee reach (A1)** = every enemy in the nearest enemy row that has a visible unit. Used by Frost Nova, Sweeping Kick, Battle Roar, Flash Powder, Ward Burst, Crowd Fighter, Wingbeat and every Breath and Aura attack. Burnout Heal ("around the Healer") = the Healer and its adjacent allies.
+- **Melee reach (A1, changed in round 12)** = every enemy in the enemy's real Front row; if that row is empty, the skill hits nobody. Used by Frost Nova, Sweeping Kick, Battle Roar, Flash Powder, Ward Burst, Crowd Fighter, Wingbeat and every Breath and Aura attack. Burnout Heal ("around the Healer") = the Healer and its adjacent allies.
 - **Placement (A2).** Summons, constructs, totems and barricades go on any empty spot on the user's side.
 - **Unique attacks (A3).** The D1 / D2 difference is gone: every melee attack is plain melee (the 36 Melee D2 attacks too). Attacks are Melee, Projectile or Direct with no range.
 - **Phase Weapon (A4):** "A unit's next attack cannot be intercepted." Unlimited range removed.
@@ -312,6 +312,14 @@ Owner's idea (2026-11-12): drop distance for skills; any skill reaches any legal
 - **Costs (O1).** Delay and Momentum stay; retuned after AI testing with Cost.
 - **Target preview (O2).** Every legal target shows its chance to be hit directly (after interception); no range text.
 - **Where (O3).** Part of this spec and milestone M5.6.
+
+**Round 12 (answered 2026-11-12):**
+
+- **Front means the real Front row (F1).** No fallback: if a side's Front row is empty, no unit of that side can use melee until someone moves forward. The same holds for the enemy side in melee reach: an empty enemy Front row means melee reach hits nobody (owner's note).
+- **Melee creatures outside Front (F2)** can use only their class skills that are not melee. Formation matters; the AI and team editor should show it.
+- **Dive (F3)** works from any row while airborne.
+- **Melee reach skills (F4)** all need the user in the Front row, whatever their delivery: Frost Nova, Sweeping Kick, Battle Roar, Flash Powder, Ward Burst, Crowd Fighter, Wingbeat and every Breath and Aura attack.
+- **Own-side targets (F5)** are never intercepted.
 
 ## 2. Open questions
 
