@@ -322,6 +322,16 @@ Owner's idea (2026-11-12): drop distance for skills; any skill reaches any legal
 - **Own-side targets (F5)** are never intercepted.
 - **Coordinated Strike** picks among allies whose attack can be used now: a melee attack needs the ally in Front and a non-airborne target.
 
+**Round 13 (answered 2026-11-12):**
+
+- **Golems (S1)** go on any free spot of your side, the player's choice; a golem behind the Front row cannot attack.
+- **Portal (S2)** puts every summon on a random free spot anywhere on your side, golems included.
+- **Raised undead (S3)** go on a free spot of the Necromancer's side picked by the player (or the AI).
+- **Puppet Soul (S4)** ignores the Front-row rule: the forced hit happens whenever the attack can hit the neighbour (melee still not against airborne units).
+- **Ward Burst (E1)** needs the Keeper in its Front row; the warded unit may stand anywhere. The burst hits the enemy Front row.
+- **Empty enemy Front row (E2):** melee-reach skills stay usable but hit nobody; the turn and cost are spent.
+- **Airborne interceptors (E3):** an airborne unit can intercept melee aimed behind it, like any other unit; melee still cannot target it.
+
 ## 2. Open questions
 
 - **Doc rewrite:** class_system.md, skills.md, game_system.md (§4.1 trees, §4.4 attacks, §19 Builds), creature-classes.md, ui_spec.md (tree editor, action bar), implementation plan and code (default builds, tree editor). Not started: the owner confirms first (2026-11-11).
