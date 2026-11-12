@@ -163,7 +163,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Eye of the Storm | K | | | The Stormcaller cannot be pushed, pulled or Stunned. |
 
 - **Chain Lightning** jumps to a random adjacent living unit (game_system §8.4) that this chain has not hit yet, and ends early when none is left.
-- **Tempest** picks any row of either side that has a living unit. Units in the Rear row stay. The row moves together: each unit keeps its coordinate, so units side by side stay side by side.
+- **Tempest** picks any row of either side (game_system §8.1). Units in the Rear row stay. The row moves together: each unit keeps its coordinate, so units side by side stay side by side.
 
 ## Cryomancer
 

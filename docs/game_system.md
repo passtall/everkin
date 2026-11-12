@@ -381,6 +381,7 @@ Every unit uses one card width and one unit of row capacity. **Bosses are normal
 - **Airborne.** Melee cannot target an airborne unit (section 10.6).
 - **Stealth.** A stealthed enemy cannot be targeted (section 10.1).
 - **No empty spots.** No skill targets an empty spot: a ground effect goes on a target unit's spot or on a row. Placing a summon, construct, turret, trap, totem or barricade on a free spot is placement, not targeting (section 11).
+- **Rows.** A skill that selects a row may pick any row of either side, even one that looks empty; if nothing is there, its turn and cost are still spent. This way a row with only stealthed units is never given away.
 - **Picks.** A skill asks the player (or the AI) for at most one unit and one target. Any further unit a skill needs ("one ally next to the target": Twin Wards, Twin Enchant, Lift) is picked by the seeded roll, each with equal chance.
 - **Areas.** An area skill hits every unit in its area; areas built from a target affect that target's side. Skills that pick targets themselves (random picks, chain jumps, "every enemy") state their side.
 - **Keystones** that react to an enemy or an ally are triggers, not targets.
@@ -469,7 +470,7 @@ A stealthed unit cannot be targeted by the opponent, is ignored for "nearest" (s
 - **Breaking.** Stealth ends when the unit **attacks or is hit**, whether or not damage gets through: area hits, hits that reach it without targeting it, hits a Ward fully absorbs and bump damage all count. An intercepted hit hits the interceptor instead and does not break it. Damage that is not a hit (Poisoned, Bleeding, ground damage) does not break it. A skill may override this (Feint keeps it). KO ends it, and reveal effects remove it (Read Tracks, Eagle Eye).
 - **Cleansing.** A cleansing skill that hits a stealthed unit removes its stealth (Dispel).
 - **Duration.** Stealth lasts until broken unless a skill adds a timer.
-- **Visibility.** Stealth is all or nothing; adjacency and alignment never reveal a unit. A stealth skill that would hide a side's last visible unit cannot be used. The Unseen keystone is not a skill used in battle: every unit with it starts stealthed, even if that hides a whole side; areas and melee reach still hit them.
+- **Visibility.** Stealth is all or nothing; adjacency and alignment never reveal a unit. A stealth skill that would hide a side's last visible unit cannot be used. Keystones (Unseen, Vanishing Kill, Escape Artist) are not bound by this: they give stealth even if that hides a whole side; areas and melee reach still hit such units.
 - **Presentation.** The opponent sees the unit with a clear stealth cue and its turns stay on the timeline. Stealth limits targeting, not information.
 - **Locked targets that become stealthed** (delayed and auto events): a `direct` effect still hits its slot, and whoever stands there. A `projectile` passes the stealthed unit and hits the unit behind it (section 8.4); if nothing is hit, the shot is lost. Row and area effects are unaffected.
 - **Movement** does not affect stealth.
@@ -498,7 +499,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 
 **What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth) and harmful ones (the named statuses, curses and hexes) are told apart for cleansing and stealing.
 
-- **Durations** run in time units on the battle clock (section 6.1), whatever the unit does. Exceptions: effects that last "until the caster's next turn" (Ward, Shield Dome), Frozen (skips turns) and Bleeding (counts skills).
+- **Durations** run in time units on the battle clock (section 6.1), whatever the unit does. Exceptions: effects that last "until the caster's next turn" (Ward, Shield Dome; they also end when the caster is KO), Frozen (skips turns) and Bleeding (counts skills).
 - **One instance per status.** Reapplying refreshes it with the new duration, even if shorter. There is no stacking. A new Stun on a Stunned unit keeps whichever time is longer.
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
 - **No limit** on statuses per unit; the UI handles overflow.
@@ -573,9 +574,9 @@ A ground effect sits on a spot (section 7.3) and affects the unit standing there
 
 | Effect | What it does | Combines with | Sources |
 |---|---|---|---|
-| **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Ice: the fire burns there for 10, then both end and the spot holds water. Water: the fire burns there for 10, then both end and the water becomes steam. Poison ground: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
+| **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Ice: the fire burns there for 10, then both end and the spot holds water, whichever came first. Water: fire set on water burns there for 10, then both end and the water becomes steam; water placed on fire ends the fire at once and stays. Poison ground: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
 | **Ice** | A unit pushed or pulled across it slides one row further (bumps apply). | Fire: water after 10. | Ritualist (Hoarfrost), Cryomancer (Deep Chill), attack extras |
-| **Water** | Harmless alone. | Any Stun on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. Fire: steam after 10. | Ritualist (Rain Dance), attack extras |
+| **Water** | Harmless alone. | Any Stun on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. Fire set on water: steam after 10. Water placed on fire: the fire ends. | Ritualist (Rain Dance), attack extras |
 | **Steam** | Not a lasting effect: when fire turns water to steam, the unit there is Confused for 10 and the spot is left clear. | | Fire on water |
 | **Poison ground** | A unit that has stood there for 5 time units is Poisoned for 20, and every further 5 restart its Poison. | Fire placed on the same row as poison ground at once: every poison spot in that row explodes, each unit on one takes 6 and the spot becomes burning ground. | Chemist (Poison Gas), attack extras |
 
