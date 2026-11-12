@@ -292,6 +292,27 @@ All 319 creatures have two classes, two keystones and a unique attack in [classe
 - **When:** built right after M5.5 (battle UI), before M6.
 - **Saved profiles and builds** from testing are reset when the change ships.
 
+## 1k. No skill distance (round 11, answered 2026-11-12)
+
+Owner's idea (2026-11-12): drop distance for skills; any skill reaches any legal target; melee may target the back rows but rarely gets through; melee still cannot hit airborne units. This replaces every range in §1d and §1g and in skills.md.
+
+- **No range at all (R1).** Every skill reaches every legal unit on either side. The opposing-distance table, empty-row skipping and "range checked at cast" (game_system §7.4) are removed. Rows matter for interception, area shapes, movement and the melee row rule below. The Delivery · Range column becomes Delivery.
+- **Melee interception (R2).** A covering unit intercepts melee at **75%** (full overlap) or **50%** (half overlap). Projectiles keep 50% / 25%. Every covering row tries in turn, nearest first, as today.
+- **Full or partial (R3).** Unchanged: an interceptor takes the full hit or a partial hit, 50/50, for melee and projectiles.
+- **Melee only from the Front row (R4).** A unit can use melee skills and melee attacks only while it stands in its Front row. Projectile and Direct skills work from any row. Details in round 12.
+- **Direct skills (R5)** stay Direct and are never intercepted; AI testing shows if direct damage is too strong.
+- **Melee reach (A1)** = every enemy in the nearest enemy row that has a visible unit. Used by Frost Nova, Sweeping Kick, Battle Roar, Flash Powder, Ward Burst, Crowd Fighter, Wingbeat and every Breath and Aura attack. Burnout Heal ("around the Healer") = the Healer and its adjacent allies.
+- **Placement (A2).** Summons, constructs, totems and barricades go on any empty spot on the user's side.
+- **Unique attacks (A3).** The D1 / D2 difference is gone: every melee attack is plain melee (the 36 Melee D2 attacks too). Attacks are Melee, Projectile or Direct with no range.
+- **Phase Weapon (A4):** "A unit's next attack cannot be intercepted." Unlimited range removed.
+- **Dive (A5)** cannot be intercepted; it still cannot hit airborne units.
+- **Own side (P1).** Ward, Rescue, Dispel, Leap to Defend and every other own-side skill reach any ally; a text that says "adjacent" keeps it.
+- **Movement skills (P2)** stay as they are; they now change cover and who can use melee. AI testing shows if they are weak.
+- **Nearest (P3)** = fewest rows away on that side, Front before Middle before Rear, empty rows ignored; a tie is random (§6.5). Used by Bolt Turret, Spreading Curse and attacks that say "nearest".
+- **Costs (O1).** Delay and Momentum stay; retuned after AI testing with Cost.
+- **Target preview (O2).** Every legal target shows its chance to be hit directly (after interception); no range text.
+- **Where (O3).** Part of this spec and milestone M5.6.
+
 ## 2. Open questions
 
 - **Doc rewrite:** class_system.md, skills.md, game_system.md (§4.1 trees, §4.4 attacks, §19 Builds), creature-classes.md, ui_spec.md (tree editor, action bar), implementation plan and code (default builds, tree editor). Not started: the owner confirms first (2026-11-11).
@@ -300,9 +321,9 @@ All 319 creatures have two classes, two keystones and a unique attack in [classe
 
 Nothing here starts before the owner confirms the doc rewrite. Order:
 
-1. **Docs** (owner's go first). class_system.md: 28 classes, no Attack Types, 2 classes and 2 keystones per creature. skills.md: per class 3 actives and 3 keystones with Delay, Momentum, delivery and range; Attack Type attacks and branch tables removed. game_system.md: §4 (no trees, points, builds or respec; all skills unlocked; unique attacks), §4.7 tags (magical from §1i, no element tags), §2.5 harness (no random builds), §5.1 Cost note (formula decided at AI testing), §10.6 airborne reach, §11 summons (dropped kinds, undead use the creature's attack), §19 open list, §20.5 worked checks rewritten with current skills. creature-classes.md: Classes, Keystones and Attack columns instead of Attack type and Professions (data from classes-creatures.md). ui_spec.md: tree editor removed, team editor filter by class, card front plate, card back keystones, action bar order (§1g). campaign.md: formations by role, no builds, achievements Every Calling and Nine Ways changed, #29 and #30 removed. implementation-plan.md: this milestone; M7.2 achievement count.
+1. **Docs** (owner's go first). class_system.md: 28 classes, no Attack Types, 2 classes and 2 keystones per creature. skills.md: per class 3 actives and 3 keystones with Delay, Momentum, delivery and range; Attack Type attacks and branch tables removed. game_system.md: §4 (no trees, points, builds or respec; all skills unlocked; unique attacks), §4.7 tags (magical from §1i, no element tags), §2.5 harness (no random builds), §5.1 Cost note (formula decided at AI testing), §7.4 and §8.1 no range (§1k), §8.2 melee chances and the Front-row melee rule, §8.3 target preview, §10.6 airborne reach, §11 summons (dropped kinds, undead use the creature's attack), §19 open list, §20.5 worked checks rewritten with current skills. creature-classes.md: Classes, Keystones and Attack columns instead of Attack type and Professions (data from classes-creatures.md). ui_spec.md: tree editor removed, team editor filter by class, card front plate, card back keystones, action bar order (§1g). campaign.md: formations by role, no builds, achievements Every Calling and Nine Ways changed, #29 and #30 removed. implementation-plan.md: this milestone; M7.2 achievement count.
 2. **Content:** `classes.json` (28 classes), `skills.json` (84 actives, 84 keystones, 319 unique attacks), `creatures.json` (classes, keystones, attack per creature); delete `default_builds.json`; remove enemy builds from `campaign.json`; drop Clockwork Golem, Bell Golem, Animate Mirror, Flame Turret, Cage and the Hunter decoy (keep their art).
-3. **Core:** regroup `Skills/*Skills.cs` by class and add the new skills; keystones as passives fixed per creature; a parametric unique attack (delivery, range, damage, one extra); remove `SkillBuild.cs` and the nine shared attacks; magical tag per §1i; drop element tags; airborne reach per §1i; Coordinated Strike, songs and Hunt Down per §1g and §1h; content check test against the doc tables.
+3. **Core:** regroup `Skills/*Skills.cs` by class and add the new skills; keystones as passives fixed per creature; a parametric unique attack (delivery, damage, one extra; no range per §1k); remove `SkillBuild.cs` and the nine shared attacks; magical tag per §1i; drop element tags; airborne reach per §1i; no range, melee interception chances, Front-row melee and melee reach per §1k (`Targeting.cs`, `Interception.cs`); Coordinated Strike, songs and Hunt Down per §1g and §1h; content check test against the doc tables.
 4. **AI:** remove random builds; make sure the AI scores every new skill and keystone.
 5. **UI:** remove `SkillTreeEditor.cs` and its entry points; team editor class filter; action bar order; card front plate and card back keystones; inspection panel keystones.
 6. **Saving:** bump the save version and reset older profiles.
