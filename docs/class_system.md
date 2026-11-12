@@ -24,10 +24,10 @@ A skill or keystone text that names its class ("the Bard", "the Engineer") means
 | **Lifebinder** | Revives, paid for with its own life. | Burnout Heal, Life for Life, Bound Resurrect | Martyr, Phoenix, Lifeblood |
 | **Enchanter** | Enchants an ally's next attack or skill. | Echo Enchant, Phase Weapon, Piercing Enchant | Twin Enchant, Lingering Magic, Spell Ward |
 | **Transmuter** | Changes what a unit is: stats, glass, stone. | Transmute, Glass Body, Petrify | Lasting Change, Brittle Glass, Mirror Form |
-| **Hexer** | Curses and hexes. | Curse of Betrayal, Curse of Weight, Withering Hex | Witch's Patience, Lingering Malice, Spreading Curse |
+| **Hexer** | Curses. | Curse of Betrayal, Curse of Weight, Withering Curse | Witch's Patience, Lingering Malice, Spreading Curse |
 | **Pyromancer** | Fire damage and burning ground. | Fireball, Kindle, Row of Fire | Wildfire, Inferno, Ashwalker |
 | **Stormcaller** | Lightning, Stuns and wind. | Lightning Bolt, Chain Lightning, Tempest | Conductor, Static Field, Eye of the Storm |
-| **Cryomancer** | Frost: Frozen and ice. | Ice Lance, Freeze, Frost Nova | Cold Heart, Brittle, Steam Burst |
+| **Cryomancer** | Frost: Frozen and ice. | Ice Lance, Freeze, Frost Nova | Cold Heart, Brittle, Deep Chill |
 | **Berserker** | Raw melee damage and pushing the enemy Front row. | Rampage, Sweeping Kick, Battle Roar | Reckless Swing, Last Stand, Unstoppable |
 | **Champion** | Marks one enemy and duels it. | Challenge, Single Combat, Execution | Hunt Down, Duelist, Glory |
 | **Tactician** | The timeline and Momentum. | Swap Turns, Press the Advantage, Coordinated Strike | All In, Inspiring Presence, Initiative |

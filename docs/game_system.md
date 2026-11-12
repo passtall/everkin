@@ -495,14 +495,14 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 
 ### 10.5 Statuses
 
-**What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses and hexes, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth) and harmful ones (the named statuses, curses and hexes) are told apart for cleansing and stealing.
+**What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth) and harmful ones (the named statuses, curses and hexes) are told apart for cleansing and stealing.
 
 - **Durations** run in time units on the battle clock (section 6.1), whatever the unit does. Exceptions: effects that last "until the caster's next turn" (Ward, Shield Dome), Frozen (skips turns) and Bleeding (counts skills).
 - **One instance per status.** Reapplying refreshes it with the new duration, even if shorter. There is no stacking. A new Stun on a Stunned unit keeps whichever time is longer.
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
 - **No limit** on statuses per unit; the UI handles overflow.
 - **Ticking.** Damage and healing over time build up per time unit and land whenever any unit gets a turn; fractions carry over. Everything built up shows as one number on the unit. A tick that KOs a unit ends its turn.
-- **Damage from statuses** (Poisoned, Bleeding, Withering Hex) is not a hit and moves Momentum 0. Reductions apply to it; Wards do not absorb it.
+- **Damage from statuses** (Poisoned, Bleeding, Withering Curse) is not a hit and moves Momentum 0. Reductions apply to it; Wards do not absorb it.
 - **Chances.** A stated chance is the real chance; no stat lowers it.
 - **Several units hit.** When a skill or attack hits several units, its damage and every chance are rolled separately for each unit, unless the skill says otherwise.
 - **Immunities** come only from skills and keystones (Sanctity, War Drums, Spell Ward, Unstoppable, Steadfast Ward). Creatures have none of their own. Every status applies to summons, constructs and totems unless their skill says otherwise.
@@ -573,10 +573,10 @@ A ground effect sits on a spot (section 7.3) and affects the unit standing there
 
 | Effect | What it does | Combines with | Sources |
 |---|---|---|---|
-| **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Water: fire set on water does not start, and the water stays. Ice: steam. Poison ground: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
-| **Ice** | A unit pushed or pulled across it slides one row further (bumps apply). | Fire: steam. | Ritualist (Hoarfrost), attack extras |
-| **Water** | Harmless alone. | Any Stun on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. | Ritualist (Rain Dance), attack extras |
-| **Steam** | When fire is set on an iced spot, both end, the unit there is Confused for 10, and water stays on the spot. | | Cryomancer (Steam Burst) |
+| **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Ice: the fire burns there for 10, then both end and the spot holds water. Water: the fire burns there for 10, then both end and the water becomes steam. Poison ground: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
+| **Ice** | A unit pushed or pulled across it slides one row further (bumps apply). | Fire: water after 10. | Ritualist (Hoarfrost), Cryomancer (Deep Chill), attack extras |
+| **Water** | Harmless alone. | Any Stun on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. Fire: steam after 10. | Ritualist (Rain Dance), attack extras |
+| **Steam** | Not a lasting effect: when fire turns water to steam, the unit there is Confused for 10 and the spot is left clear. | | Fire on water |
 | **Poison ground** | A unit that has stood there for 5 time units is Poisoned for 20, and every further 5 restart its Poison. | Fire placed on the same row as poison ground at once: every poison spot in that row explodes, each unit on one takes 6 and the spot becomes burning ground. | Chemist (Poison Gas), attack extras |
 
 Water spots touch when they are side by side in a row or overlap across neighbouring rows.

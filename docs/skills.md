@@ -29,7 +29,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Target | A | 2 / 0 | Direct | Mark a unit. A Tracker has one Mark from Target at a time; marking another moves it. |
+| Target | A | 2 / 0 | Direct | Mark a unit. A Tracker has one Mark at a time; marking another moves it. |
 | Read Tracks | A | 2 / 0 | Direct | Pick a row. Every stealthed unit in it is revealed. |
 | Hunter's Shot | A | 4 / 2 | Projectile | Hit a Marked unit for 9–11. |
 | Sniff the Air | K | | | At battle start, the enemy with the highest Power becomes Marked. |
@@ -37,6 +37,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Relentless | K | | | The Tracker's Marks have no time limit: they last until their target is KO and cannot be removed. |
 
 - A skill that reads a Mark (Hunter's Shot, the Champion's skills) works on any Marked unit, whoever placed the Mark (game_system §10.5).
+- **One Mark per Tracker:** any new Mark from the Tracker, from Target, Sniff the Air or Scent of Blood, removes its earlier Mark.
 
 ## Bulwark
 
@@ -128,12 +129,12 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 |---|---|---|---|---|
 | Curse of Betrayal | A | 6 / 3 | Direct | For 20, healing the unit would receive goes to the Hexer's unit with the lowest HP instead. |
 | Curse of Weight | A | 4 / 0 | Direct | For 20, a unit cannot Move or become airborne. |
-| Withering Hex | A | 4 / 0 | Direct | A unit takes 3 every 10 for 40. |
+| Withering Curse | A | 4 / 0 | Direct | A unit takes 3 every 10 for 40. |
 | Witch's Patience | K | | | The Hexer's curses last until removed, but it can keep only one curse at a time. |
-| Lingering Malice | K | | | When an enemy removes one of the Hexer's curses or hexes, the remover is Silenced for 10. |
+| Lingering Malice | K | | | When an enemy removes one of the Hexer's curses, the remover is Silenced for 10. |
 | Spreading Curse | K | | | When a cursed unit is KO, its curse jumps to the nearest enemy. |
 
-- **Curses** are Curse of Betrayal and Curse of Weight; Withering Hex is a hex. With Witch's Patience a new curse removes the Hexer's earlier one (on any unit).
+- **Curses** are Curse of Betrayal, Curse of Weight and Withering Curse; Witch's Patience and Spreading Curse cover all three. With Witch's Patience a new curse removes the Hexer's earlier one (on any unit).
 - **Curse of Betrayal:** ties for lowest HP go to the seeded roll. If the Hexer's side has no unit that can be healed, the cursed unit is healed as usual.
 
 ## Pyromancer
@@ -154,13 +155,13 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Lightning Bolt | A | 5 / 2 | Direct | Hit for 9–10. |
-| Chain Lightning | A | 5 / 3 | Direct | Hit a unit for 1–2 and Stun it for 5, then jump to an adjacent unit and do the same, three more times. |
+| Chain Lightning | A | 5 / 3 | Direct | Hit a unit for 1–2, then jump to an adjacent unit and do the same, three more times. |
 | Tempest | A | 8 / 5 | Direct | Push every unit in one row one row back (bumps apply). |
 | Conductor | K | | | Stuns from the Stormcaller last 5 longer. |
 | Static Field | K | | | A unit that hits the Stormcaller in melee is Stunned for 5. |
 | Eye of the Storm | K | | | The Stormcaller cannot be pushed, pulled or Stunned. |
 
-- **Chain Lightning** jumps to a random adjacent living unit (game_system §8.4) that this chain has not hit yet, and ends early when none is left. Its Stuns spread through water like any Stun (game_system §12.2).
+- **Chain Lightning** jumps to a random adjacent living unit (game_system §8.4) that this chain has not hit yet, and ends early when none is left.
 - **Tempest** picks any row of either side that has a living unit. Units in the Rear row stay. The row moves together: each unit keeps its coordinate, so units side by side stay side by side.
 
 ## Cryomancer
@@ -172,7 +173,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Frost Nova | A | 6 / 3 | Direct | Every enemy in melee reach takes 1–2 and is Frozen. |
 | Cold Heart | K | | | Frozen from the Cryomancer lasts 1 more turn, but it can keep only one unit Frozen at a time. |
 | Brittle | K | | | Frozen enemies take 50% more damage. |
-| Steam Burst | K | | | When fire is set on an iced spot, both end and the unit there is Confused for 10. |
+| Deep Chill | K | | | A unit the Cryomancer Freezes also gets ice on its spot for 20. |
 
 - **Cold Heart:** Frozen from the Cryomancer skips the unit's next 2 turns. Freezing another unit thaws the earlier one; when one skill freezes several units, the seeded roll keeps one.
 - **Brittle:** a Frozen enemy takes the hit's damage × 3 ÷ 2, rounded down, before Ward.
