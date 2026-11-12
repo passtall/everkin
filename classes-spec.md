@@ -269,7 +269,7 @@ All 319 creatures have two classes, two keystones and a unique attack in [classe
 - **Undead, Puppet Soul and Coordinated Strike** use the creature's own unique attack.
 - **Dropped content:** Clockwork Golem, Bell Golem, Animate Mirror, Flame Turret, Cage and the Hunter decoy leave the game; their art files are kept for later.
 - **Achievements #29 Keystones and #30 Tinkerer are removed.**
-- **Campaign:** enemies have no builds. Formations by role: Bulwark, Keeper and creatures with a melee D1 attack in Front, D2 attacks in the Middle, projectile and direct attacks and healers in the Rear.
+- **Campaign:** enemies have no builds. Formations by role: Bulwark, Keeper and creatures with a melee attack or a melee-reach attack (Breath, Aura) in Front (§1k), projectile and direct attacks and healers behind them.
 - **Team editor** filters by class only.
 - **Skill icons:** one icon per skill (84 actives) plus one per unique attack.
 - **Hunt Down** also triggers when the Marked enemy moves by itself.
@@ -320,6 +320,7 @@ Owner's idea (2026-11-12): drop distance for skills; any skill reaches any legal
 - **Dive (F3)** works from any row while airborne.
 - **Melee reach skills (F4)** all need the user in the Front row, whatever their delivery: Frost Nova, Sweeping Kick, Battle Roar, Flash Powder, Ward Burst, Crowd Fighter, Wingbeat and every Breath and Aura attack.
 - **Own-side targets (F5)** are never intercepted.
+- **Coordinated Strike** picks among allies whose attack can be used now: a melee attack needs the ally in Front and a non-airborne target.
 
 ## 2. Open questions
 
