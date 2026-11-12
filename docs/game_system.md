@@ -470,7 +470,7 @@ A stealthed unit cannot be targeted by the opponent, is ignored for "nearest" (s
 - **Breaking.** Stealth ends when the unit **attacks or is hit**, whether or not damage gets through: area hits, hits that reach it without targeting it, hits a Ward fully absorbs and bump damage all count. An intercepted hit hits the interceptor instead and does not break it. Damage that is not a hit (Poisoned, Bleeding, ground damage) does not break it. A skill may override this (Feint keeps it). KO ends it, and reveal effects remove it (Read Tracks, Eagle Eye).
 - **Cleansing.** A cleansing skill that hits a stealthed unit removes its stealth (Dispel).
 - **Duration.** Stealth lasts until broken unless a skill adds a timer.
-- **Visibility.** Stealth is all or nothing; adjacency and alignment never reveal a unit. A stealth skill that would hide a side's last visible unit cannot be used. Keystones (Unseen, Vanishing Kill, Escape Artist) are not bound by this: they give stealth even if that hides a whole side; areas and melee reach still hit such units.
+- **Visibility.** Stealth is all or nothing; adjacency and alignment never reveal a unit. Any stealth may hide a whole side; areas and melee reach still hit stealthed units.
 - **Presentation.** The opponent sees the unit with a clear stealth cue and its turns stay on the timeline. Stealth limits targeting, not information.
 - **Locked targets that become stealthed** (delayed and auto events): a `direct` effect still hits its slot, and whoever stands there. A `projectile` passes the stealthed unit and hits the unit behind it (section 8.4); if nothing is hit, the shot is lost. Row and area effects are unaffected.
 - **Movement** does not affect stealth.
@@ -756,7 +756,7 @@ Concrete examples of the rules; each becomes a test. They are expected behavior,
 | A stealthed unit with a Ward is hit and the Ward absorbs everything | Stealth still ends; Momentum does not change. |
 | A stealthed unit takes a Poison tick | Stealth does not end. |
 | A stealthed unit stands in front of an ally that is attacked | It cannot intercept. |
-| A side's last visible unit tries to use Vanish | It is not offered. |
+| A side's last visible unit uses Vanish | It works; the enemy can still hit it with areas and melee reach. |
 | A queued projectile shot's target becomes stealthed | The shot hits the unit behind it under the behind rule. |
 | A queued `direct` effect's target moves away and another unit takes its slot | The effect hits the unit now in that slot. |
 | A skill hits behind its target, the row directly behind is empty and the Rear row has a unit at 100% overlap | The Rear unit is hit. |
