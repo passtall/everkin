@@ -187,7 +187,7 @@ There is no Defense, accuracy, evasion, critical hit, mana, resistance or healin
 
 **Scaling.** skills.md and creature-classes.md write every number for **Power 5**. Every damage, healing and Ward number of a skill is multiplied by its user's **Power ÷ 5**, rounded down, minimum 1; a range scales at both ends (4–5 at Power 3 is 2–3). Internally each number is a hidden coefficient (hit for 5–6 at Power 5 is 100–120%). A skill may scale from something else only if its text says so. Summons and constructs scale with their summoner's Power; their HP and Speed are fixed. Rule numbers never scale: bump damage, Bleeding, Poisoned, ground-effect damage and the poison explosion.
 
-**Rolls.** Damage and healing are rolled **uniformly** as a whole number within the range; the displayed range already includes the user's modifiers and is rounded down. There are no critical hits. Whether several targets share one roll or roll separately is open for skills that do not say (section 19).
+**Rolls.** Damage and healing are rolled **uniformly** as a whole number within the range; the displayed range already includes the user's modifiers and is rounded down. There are no critical hits. When a skill or attack hits several units, its damage and every chance are rolled separately for each unit, unless the skill says otherwise.
 
 **Damage order.**
 
@@ -505,8 +505,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 - **Ticking.** Damage and healing over time build up per time unit and land whenever any unit gets a turn; fractions carry over. Everything built up shows as one number on the unit. A tick that KOs a unit ends its turn.
 - **Damage from statuses** (Poisoned, Bleeding, Withering Curse) is not a hit and moves Momentum 0. Reductions apply to it; Wards do not absorb it.
 - **Chances.** A stated chance is the real chance; no stat lowers it.
-- **Several units hit.** When a skill or attack hits several units, its damage and every chance are rolled separately for each unit, unless the skill says otherwise.
-- **Immunities** come only from skills and keystones (Sanctity, War Drums, Spell Ward, Unstoppable, Steadfast Ward). Creatures have none of their own. Every status applies to summons, constructs and totems unless their skill says otherwise.
+- **Immunities** come only from skills and keystones (Sanctity, War Drums, Spell Ward, Unstoppable, Steadfast Ward, Eye of the Storm). Creatures have none of their own. Every status applies to summons, constructs and totems unless their skill says otherwise.
 - **Cleansing** can remove any status unless the status says it cannot.
 - **New statuses** join the table only when a skill or attack needs one.
 
@@ -719,7 +718,7 @@ Concrete examples of the rules; each becomes a test. They are expected behavior,
 | A Keeper in the Middle row uses Ward on an ally in the Rear row | It works: own-side targets have no range and are never intercepted. |
 | A Keeper in the Middle row tries Ward Burst | It cannot: Ward Burst needs the Keeper in its Front row. |
 | A Healing Draught (projectile) is aimed at an ally behind another ally | It cannot be intercepted, because own-side skills are never intercepted. |
-| Hunter's Shot (projectile) is aimed at an enemy and partly intercepted for 9 | The interceptor takes 4 and the rest, 5, continues. |
+| Hunter's Shot (projectile, Tracker) is aimed at an enemy and partly intercepted for 9 | The interceptor takes 4 and the rest, 5, continues. |
 | A projectile heal of 9 is aimed at an enemy and partly intercepted | The interceptor heals 4 and the target 5. |
 | Jam (projectile) is intercepted | The interceptor gets the +5 Delay; the target does not. |
 | A `direct` skill is aimed at a unit with a defender in front | It cannot be intercepted. |
