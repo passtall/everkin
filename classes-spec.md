@@ -1,6 +1,6 @@
 # Spec: branches become classes
 
-**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 8 and the creature assignment applied; doc rewrite waits for the owner's go). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
+**Status:** DRAFT 2026-11-11, being decided in quiz rounds (rounds 1 to 9 and the creature assignment applied; round 10 posted; doc rewrite waits for the owner's go). Separate from [spec.md](spec.md) (battle UI work order). Until this spec is final, the current rules in docs/ stay valid; when it is final, its decisions are written into class_system.md, skills.md, game_system.md, creature-classes.md and ui_spec.md, and this file becomes the work order for the code.
 
 ## 0. Owner's request (2026-11-11)
 
@@ -273,6 +273,15 @@ All 319 creatures have two classes, two keystones and a unique attack in [classe
 - **Team editor** filters by class only.
 - **Skill icons:** one icon per skill (84 actives) plus one per unique attack.
 - **Hunt Down** also triggers when the Marked enemy moves by itself.
+
+## 1i. Rule sources (round 9, answered 2026-11-12)
+
+- **Magical skills** (blocked by Silenced): every active of Mender, Cleric, Lifebinder, Enchanter, Transmuter, Hexer, Pyromancer, Stormcaller, Cryomancer, Necromancer, Summoner, Totemist, Ritualist and Spiritwalker, plus the Bard's songs. Everything else is physical.
+- **Magical attacks:** a unique attack is magical if its creature's old Attack Type was Magic or Aura (bolt and pulse animations).
+- **Airborne:** projectile and direct skills reach an airborne unit, melee does not; Dive cannot hit an airborne unit.
+- **Keystones on the card:** on the card back, below the attack and the 6 skills; cards otherwise look as they do now.
+- **Cost formula:** decided when AI testing starts (the Attack Type factor and the Flying and two-Profession bonuses need replacing then).
+- **Elements (fire, frost, storm):** asked again in round 10.
 
 ## 2. Open questions
 
