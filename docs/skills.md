@@ -157,7 +157,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Lightning Bolt | A | 5 / 2 | Direct | Hit for 9–10. |
 | Chain Lightning | A | 5 / 3 | Direct | Hit a unit for 1–2, then jump to an adjacent unit and do the same, three more times. |
 | Tempest | A | 8 / 5 | Direct | Push every unit in one row one row back (bumps apply). |
-| Conductor | K | | | Stuns from the Stormcaller last 5 longer. |
+| Overcharge | K | | | The Stormcaller's Chain Lightning jumps two more times (six units in all). |
 | Static Field | K | | | A unit that hits the Stormcaller in melee is Stunned for 5. |
 | Eye of the Storm | K | | | The Stormcaller cannot be pushed, pulled or Stunned. |
 

@@ -50,7 +50,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `beetle-2` | Beetle Recruit | Bulwark, Berserker | Unbreakable, Last Stand | Beetle Butt | Melee | 3 / 0 | lunge | Hit for 4–5. | `beetle-01.png` | `beetle-2.png` |
 | `beetle-knight-shield` | Beetle Guardian | Bulwark, Champion | Shield Wall, Duelist | Shield Bash | Melee | 4 / 0 | swing | Hit for 5–6. | `beetle-02.png` | `beetle-knight-shield.png` |
 | `beetle-engineer-seed` | Seedshot Scarab | Chemist, Ritualist | Potent Brew, Deluge | Seed Volley | Projectile | 3 / 0 | shot | Hit for 2–3; 20%: the target is Immobilized for 5 time units. | `beetle-04.png` | — |
-| `behemoth-titan-iron` | Ironbound Behemoth | Bulwark, Stormcaller | Hold Position, Conductor | Iron Kick | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `behemoth-01.png` | — |
+| `behemoth-titan-iron` | Ironbound Behemoth | Bulwark, Stormcaller | Hold Position, Overcharge | Iron Kick | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `behemoth-01.png` | — |
 | `bell-guardian-clapper` | Clapperward | Bard, Summoner | Grand Chorus, Golem Heart | Clapper Clobber | Melee | 4 / 0 | swing | Hit for 4–5; 20%: the target is Confused for 5 time units. | `bell-01.png` | — |
 | `bellows-drake` | Puffing Forgedrake | Engineer, Champion | Rapid Fire, Glory | Bellows Spit | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units. | `bellows-01.png` | — |
 | `binturong-bard-vine` | Vinelilt | Bard, Ritualist | Rhythm, Tidecaller | Vine Lash | Melee | 3 / 0 | swing | Hit for 2–3; 20%: pull the target one row toward the battle line. | `binturong-01.png` | — |
@@ -103,7 +103,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `drake-titan-crystal` | Crystalback Drake | Stormcaller, Transmuter | Eye of the Storm, Brittle Glass | Crystal Bite | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `drake-01.png` | — |
 | `drawbridge-bodyguard-chain` | Chaingate | Bulwark, Keeper | Unbreakable, Thorned Ward | Chain Bite | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: pull the target one row toward the battle line. | `drawbridge-01.png` | — |
 | `drum-summoner-war` | Wardrum | Bard, Berserker | Crescendo, Reckless Swing | War Throb | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units. | `drum-01.png` | — |
-| `dugong-guard-crystal` | Crystalfin Dugong | Transmuter, Stormcaller | Mirror Form, Conductor | Crystal Hum | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3. | `dugong-02.png` | — |
+| `dugong-guard-crystal` | Crystalfin Dugong | Transmuter, Stormcaller | Mirror Form, Overcharge | Crystal Hum | Direct, melee reach | 4 / 0 | pulse | Every enemy in melee reach takes 2–3. | `dugong-02.png` | — |
 | `elephant-summoner-idol` | Idolbearer | Summoner, Totemist | Portal, Spirit Shield | Idol Bite | Melee | 3 / 0 | lunge | Hit for 4–5. | `elephant-01.png` | — |
 | `ferret-summoner-mask` | Maskwhisk | Thief, Summoner | Master Thief, Quickening | Mask Bite | Melee | 3 / 0 | lunge | Hit for 3–4; cannot be intercepted. | `ferret-01.png` | — |
 | `fiddlercrab-trickster-coin` | Coinclaw | Saboteur, Engineer | Chaos Agent, Reinforced | Coin Slam | Melee | 3 / 0 | lunge | Hit for 3–4; 20%: the target is Confused for 5 time units. | `fiddlercrab-01.png` | — |
@@ -159,7 +159,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `human-druid-leaf` | Fiona Ashby | Ritualist, Lifebinder | Tidecaller, Martyr | Leaf Ray | Projectile | 4 / 0 | bolt | Hit for 2–3; 20%: burning ground on the target's spot. | `human-19.png` | `human-druid-leaf.png` |
 | `human-druid` | Ivy Calloway | Ritualist, Lifebinder | Deluge, Lifeblood | Druid Spark | Projectile | 4 / 0 | bolt | Hit for 3–4. | `human-20.png` | `human-druid.png` |
 | `human-duelist-rapier` | Camille Moreau | Champion, Thief | Glory, Escape Artist | Rapier Carve | Melee | 3 / 0 | swing | Hit for 3–4; 30%: the target Bleeds. | `human-21.png` | `human-duelist-rapier.png` |
-| `human-engineer-crystal` | Lukas Weiss | Engineer, Stormcaller | Rapid Fire, Conductor | Crystal Spark | Projectile | 4 / 0 | bolt | Hit for 3–4. | `human-22.png` | `human-engineer-crystal.png` |
+| `human-engineer-crystal` | Lukas Weiss | Engineer, Stormcaller | Rapid Fire, Overcharge | Crystal Spark | Projectile | 4 / 0 | bolt | Hit for 3–4. | `human-22.png` | `human-engineer-crystal.png` |
 | `human-engineer-hook` | Max Hooper | Saboteur, Tracker | Disarm Trap, Relentless | Hook Shot | Projectile | 3 / 0 | shot | Hit for 2–3; 20%: pull the target one row toward the battle line. | `human-23.png` | `human-engineer-hook.png` |
 | `human-guard-frost` | Ingrid Lund | Champion, Enchanter | Duelist, Lingering Magic | Frost Skewer | Melee | 3 / 0 | lunge | Hit for 3–4; the target's next turn comes 2 time units later. | `human-24.png` | `human-guard-frost.png` |
 | `human-guard-stone` | Leo Stone | Stormcaller, Champion | Static Field, Glory | Stone Slash | Melee | 3 / 0 | swing | Hit for 3–4; 20%: the target is Stunned for 5 time units. | `human-25.png` | `human-guard-stone.png` |
@@ -172,7 +172,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `human-mage-crystal` | Kai Lindqvist | Stormcaller, Transmuter | Eye of the Storm, Mirror Form | Crystal Ray | Projectile | 4 / 0 | bolt | Hit for 3–4. | `human-32.png` | `human-mage-crystal.png` |
 | `human-mage-fire` | Carmen Costa | Pyromancer, Thief | Inferno, Master Thief | Fire Spark | Projectile | 4 / 0 | bolt | Hit for 2–3; 20%: burning ground on the target's spot. | `human-33.png` | `human-mage-fire.png` |
 | `human-mage-frost` | Astor Nilsen | Cryomancer, Enchanter | Brittle, Spell Ward | Frost Spark | Projectile | 4 / 0 | bolt | Hit for 2–3; the target's next turn comes 2 time units later. | `human-34.png` | `human-mage-frost.png` |
-| `human-mage-stone` | Henrik Berg | Stormcaller, Commander | Conductor, Drill | Stone Bolt | Projectile | 4 / 0 | bolt | Hit for 2–3; 20%: the target is Stunned for 5 time units. | `human-35.png` | `human-mage-stone.png` |
+| `human-mage-stone` | Henrik Berg | Stormcaller, Commander | Overcharge, Drill | Stone Bolt | Projectile | 4 / 0 | bolt | Hit for 2–3; 20%: the target is Stunned for 5 time units. | `human-35.png` | `human-mage-stone.png` |
 | `human-mage-water` | Mateo Santos | Cryomancer, Tracker | Deep Chill, Sniff the Air | Water Missile | Projectile | 4 / 0 | bolt | Hit for 2–3; 20%: push the target one row back. | `human-36.png` | `human-mage-water.png` |
 | `human-monk-hammer` | Kenji Mori | Berserker, Champion | Unstoppable, Duelist | Hammer Thump | Melee | 4 / 0 | swing | Hit for 4–5; 20%: the target is Stunned for 5 time units. | `human-37.png` | `human-monk-hammer.png` |
 | `human-necromancer-skull` | Viktor Graves | Necromancer, Champion | Lich Form, Glory | Skull Slice | Melee | 3 / 0 | swing | Hit for 4–5; heals the attacker for 1. | `human-38.png` | `human-necromancer-skull.png` |
@@ -328,7 +328,7 @@ Every creature that has art: its unit name, display name, two classes, two keyst
 | `turbine-skyguard` | Skyturbine | Skyborne, Champion | Lift, Glory | Turbine Shot | Projectile | 3 / 0 | shot | Hit for 3–4. | `turbine-01.png` | — |
 | `turtle-monk` | Shellmonk | Cleric, Bulwark | Sanctity, Hold Position | Turtle Thump | Melee | 4 / 0 | swing | Hit for 5–6. | `turtle-02.png` | `turtle-monk.png` |
 | `turtle-bard-frost` | Frostshell Bard | Bulwark, Enchanter | Shield Wall, Twin Enchant | Frost Breath | Direct, melee reach | 4 / 0 | breath | Hit the target for 2–3 and every unit next to it for 1–2; the target's next turn comes 2 time units later. | `turtle-03.png` | — |
-| `umbrella-guardian-fan` | Fanbrella | Skyborne, Stormcaller | Sky Lord, Conductor | Fan Smash | Melee | 4 / 0 | swing | Hit for 5–6. | `umbrella-01.png` | — |
+| `umbrella-guardian-fan` | Fanbrella | Skyborne, Stormcaller | Sky Lord, Overcharge | Fan Smash | Melee | 4 / 0 | swing | Hit for 5–6. | `umbrella-01.png` | — |
 | `velvetworm-hexer-rune` | Runevelvet | Thief, Spiritwalker | Master Thief, Haunting | Rune Lash | Melee | 3 / 0 | swing | Hit for 3–4; heals the attacker for 1. | `velvetworm-01.png` | — |
 | `vinegaroon-alchemist-flask` | Vinegar Flask | Chemist, Tracker | Potent Brew, Relentless | Flask Throw | Projectile | 3 / 0 | shot | Hit for 2–3; 30%: the target is Poisoned for 20 time units. | `vinegaroon-01.png` | — |
 | `vise-enforcer` | Vise Enforcer | Bulwark, Engineer | Unbreakable, Self-Repair | Vise Slam | Melee | 3 / 0 | lunge | Hit for 4–5. | `vise-01.png` | — |
