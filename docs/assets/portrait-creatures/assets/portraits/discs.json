@@ -319,6 +319,10 @@
     "edge_brightness": 114.64,
     "disc": "dark-plum"
   },
+  "fiddlercrab-01.png": {
+    "edge_brightness": 107.19,
+    "disc": "dark-plum"
+  },
   "firefly-01.png": {
     "edge_brightness": 142.87,
     "disc": "dark-plum"
@@ -791,6 +795,26 @@
     "edge_brightness": 87.02,
     "disc": "dark-plum"
   },
+  "maskrack-01.png": {
+    "edge_brightness": 73.67,
+    "disc": "lighter-plum"
+  },
+  "mastiff-01.png": {
+    "edge_brightness": 125.97,
+    "disc": "dark-plum"
+  },
+  "meerkat-01.png": {
+    "edge_brightness": 113.0,
+    "disc": "dark-plum"
+  },
+  "millstone-01.png": {
+    "edge_brightness": 103.63,
+    "disc": "dark-plum"
+  },
+  "mirror-01.png": {
+    "edge_brightness": 72.73,
+    "disc": "lighter-plum"
+  },
   "mole-01.png": {
     "edge_brightness": 108.33,
     "disc": "dark-plum"
@@ -807,8 +831,448 @@
     "edge_brightness": 97.26,
     "disc": "dark-plum"
   },
+  "monkey-01.png": {
+    "edge_brightness": 114.03,
+    "disc": "dark-plum"
+  },
+  "moray-01.png": {
+    "edge_brightness": 82.97,
+    "disc": "dark-plum"
+  },
+  "mortar-01.png": {
+    "edge_brightness": 112.29,
+    "disc": "dark-plum"
+  },
+  "moth-02.png": {
+    "edge_brightness": 166.71,
+    "disc": "dark-plum"
+  },
   "mushroom-01.png": {
     "edge_brightness": 121.67,
+    "disc": "dark-plum"
+  },
+  "mushroom-03.png": {
+    "edge_brightness": 146.98,
+    "disc": "dark-plum"
+  },
+  "musicbox-01.png": {
+    "edge_brightness": 91.04,
+    "disc": "dark-plum"
+  },
+  "muskox-01.png": {
+    "edge_brightness": 118.79,
+    "disc": "dark-plum"
+  },
+  "newt-01.png": {
+    "edge_brightness": 126.3,
+    "disc": "dark-plum"
+  },
+  "olm-01.png": {
+    "edge_brightness": 103.21,
+    "disc": "dark-plum"
+  },
+  "opossum-01.png": {
+    "edge_brightness": 112.49,
+    "disc": "dark-plum"
+  },
+  "orc-01.png": {
+    "edge_brightness": 106.45,
+    "disc": "dark-plum"
+  },
+  "orchidmantis-01.png": {
+    "edge_brightness": 159.43,
+    "disc": "dark-plum"
+  },
+  "organ-01.png": {
+    "edge_brightness": 77.16,
+    "disc": "dark-plum"
+  },
+  "orrery-01.png": {
+    "edge_brightness": 120.91,
+    "disc": "dark-plum"
+  },
+  "ossuary-01.png": {
+    "edge_brightness": 67.93,
+    "disc": "lighter-plum"
+  },
+  "otter-01.png": {
+    "edge_brightness": 101.41,
+    "disc": "dark-plum"
+  },
+  "owl-01.png": {
+    "edge_brightness": 124.0,
+    "disc": "dark-plum"
+  },
+  "panda-01.png": {
+    "edge_brightness": 108.73,
+    "disc": "dark-plum"
+  },
+  "pangolin-01.png": {
+    "edge_brightness": 115.96,
+    "disc": "dark-plum"
+  },
+  "pangolin-02.png": {
+    "edge_brightness": 84.42,
+    "disc": "dark-plum"
+  },
+  "panpipe-01.png": {
+    "edge_brightness": 82.65,
+    "disc": "dark-plum"
+  },
+  "peacock-01.png": {
+    "edge_brightness": 112.72,
+    "disc": "dark-plum"
+  },
+  "phoenix-01.png": {
+    "edge_brightness": 123.71,
+    "disc": "dark-plum"
+  },
+  "pika-01.png": {
+    "edge_brightness": 133.71,
+    "disc": "dark-plum"
+  },
+  "platypus-01.png": {
+    "edge_brightness": 107.28,
+    "disc": "dark-plum"
+  },
+  "plough-01.png": {
+    "edge_brightness": 79.52,
+    "disc": "dark-plum"
+  },
+  "pocketwatch-01.png": {
+    "edge_brightness": 75.95,
+    "disc": "dark-plum"
+  },
+  "porcupine-01.png": {
+    "edge_brightness": 137.82,
+    "disc": "dark-plum"
+  },
+  "portcullis-01.png": {
+    "edge_brightness": 97.07,
+    "disc": "dark-plum"
+  },
+  "printingpress-01.png": {
+    "edge_brightness": 80.58,
+    "disc": "dark-plum"
+  },
+  "prism-01.png": {
+    "edge_brightness": 60.49,
+    "disc": "lighter-plum"
+  },
+  "puffin-01.png": {
+    "edge_brightness": 125.9,
+    "disc": "dark-plum"
+  },
+  "quern-01.png": {
+    "edge_brightness": 134.25,
+    "disc": "dark-plum"
+  },
+  "quokka-01.png": {
+    "edge_brightness": 145.95,
+    "disc": "dark-plum"
+  },
+  "raccoon-01.png": {
+    "edge_brightness": 102.84,
+    "disc": "dark-plum"
+  },
+  "ram-01.png": {
+    "edge_brightness": 163.53,
+    "disc": "dark-plum"
+  },
+  "ram-02.png": {
+    "edge_brightness": 117.7,
+    "disc": "dark-plum"
+  },
+  "reliquary-01.png": {
+    "edge_brightness": 80.25,
+    "disc": "dark-plum"
+  },
+  "retort-01.png": {
+    "edge_brightness": 69.67,
+    "disc": "lighter-plum"
+  },
+  "rhinoceros-01.png": {
+    "edge_brightness": 96.56,
+    "disc": "dark-plum"
+  },
+  "roadrunner-01.png": {
+    "edge_brightness": 103.09,
+    "disc": "dark-plum"
+  },
+  "roc-01.png": {
+    "edge_brightness": 96.48,
+    "disc": "dark-plum"
+  },
+  "rooster-01.png": {
+    "edge_brightness": 85.55,
+    "disc": "dark-plum"
+  },
+  "sableantelope-01.png": {
+    "edge_brightness": 89.11,
+    "disc": "dark-plum"
+  },
+  "safe-01.png": {
+    "edge_brightness": 67.18,
+    "disc": "lighter-plum"
+  },
+  "sail-01.png": {
+    "edge_brightness": 76.23,
+    "disc": "dark-plum"
+  },
+  "salamander-01.png": {
+    "edge_brightness": 93.49,
+    "disc": "dark-plum"
+  },
+  "salamander-02.png": {
+    "edge_brightness": 149.52,
+    "disc": "dark-plum"
+  },
+  "sarcophagus-01.png": {
+    "edge_brightness": 80.92,
+    "disc": "dark-plum"
+  },
+  "scarab-01.png": {
+    "edge_brightness": 103.42,
+    "disc": "dark-plum"
+  },
+  "scorpion-01.png": {
+    "edge_brightness": 108.35,
+    "disc": "dark-plum"
+  },
+  "scorpion-02.png": {
+    "edge_brightness": 160.13,
+    "disc": "dark-plum"
+  },
+  "seal-01.png": {
+    "edge_brightness": 149.8,
+    "disc": "dark-plum"
+  },
+  "sealpress-01.png": {
+    "edge_brightness": 71.43,
+    "disc": "lighter-plum"
+  },
+  "secretarybird-01.png": {
+    "edge_brightness": 104.17,
+    "disc": "dark-plum"
+  },
+  "serpent-01.png": {
+    "edge_brightness": 116.5,
+    "disc": "dark-plum"
+  },
+  "serval-01.png": {
+    "edge_brightness": 105.3,
+    "disc": "dark-plum"
+  },
+  "sewingbox-01.png": {
+    "edge_brightness": 138.73,
+    "disc": "dark-plum"
+  },
+  "sextant-01.png": {
+    "edge_brightness": 82.85,
+    "disc": "dark-plum"
+  },
+  "shield-01.png": {
+    "edge_brightness": 105.68,
+    "disc": "dark-plum"
+  },
+  "shoebill-01.png": {
+    "edge_brightness": 86.1,
+    "disc": "dark-plum"
+  },
+  "shrew-01.png": {
+    "edge_brightness": 166.09,
+    "disc": "dark-plum"
+  },
+  "siphon-01.png": {
+    "edge_brightness": 88.44,
+    "disc": "dark-plum"
+  },
+  "sistrum-01.png": {
+    "edge_brightness": 94.84,
+    "disc": "dark-plum"
+  },
+  "sledgehammer-01.png": {
+    "edge_brightness": 109.7,
+    "disc": "dark-plum"
+  },
+  "sloth-01.png": {
+    "edge_brightness": 111.9,
+    "disc": "dark-plum"
+  },
+  "snail-01.png": {
+    "edge_brightness": 137.55,
+    "disc": "dark-plum"
+  },
+  "snail-05.png": {
+    "edge_brightness": 153.13,
+    "disc": "dark-plum"
+  },
+  "spikeback-01.png": {
+    "edge_brightness": 83.96,
+    "disc": "dark-plum"
+  },
+  "spindle-01.png": {
+    "edge_brightness": 82.34,
+    "disc": "dark-plum"
+  },
+  "stag-01.png": {
+    "edge_brightness": 118.68,
+    "disc": "dark-plum"
+  },
+  "stoat-01.png": {
+    "edge_brightness": 161.65,
+    "disc": "dark-plum"
+  },
+  "sugarglider-01.png": {
+    "edge_brightness": 146.04,
+    "disc": "dark-plum"
+  },
+  "sundial-01.png": {
+    "edge_brightness": 94.36,
+    "disc": "dark-plum"
+  },
+  "sundrum-01.png": {
+    "edge_brightness": 72.41,
+    "disc": "lighter-plum"
+  },
+  "tapestry-01.png": {
+    "edge_brightness": 95.26,
+    "disc": "dark-plum"
+  },
+  "tarsier-01.png": {
+    "edge_brightness": 71.4,
+    "disc": "lighter-plum"
+  },
+  "teapot-01.png": {
+    "edge_brightness": 141.09,
+    "disc": "dark-plum"
+  },
+  "termite-01.png": {
+    "edge_brightness": 123.41,
+    "disc": "dark-plum"
+  },
+  "termite-02.png": {
+    "edge_brightness": 144.64,
+    "disc": "dark-plum"
+  },
+  "thorntreant-01.png": {
+    "edge_brightness": 69.2,
+    "disc": "lighter-plum"
+  },
+  "toad-01.png": {
+    "edge_brightness": 80.35,
+    "disc": "dark-plum"
+  },
+  "toad-02.png": {
+    "edge_brightness": 108.51,
+    "disc": "dark-plum"
+  },
+  "toad-03.png": {
+    "edge_brightness": 99.38,
+    "disc": "dark-plum"
+  },
+  "tortoise-01.png": {
+    "edge_brightness": 112.67,
+    "disc": "dark-plum"
+  },
+  "tortoise-02.png": {
+    "edge_brightness": 83.17,
+    "disc": "dark-plum"
+  },
+  "treant-01.png": {
+    "edge_brightness": 114.41,
+    "disc": "dark-plum"
+  },
+  "treant-02.png": {
+    "edge_brightness": 118.67,
+    "disc": "dark-plum"
+  },
+  "trowel-01.png": {
+    "edge_brightness": 105.11,
+    "disc": "dark-plum"
+  },
+  "tuningfork-01.png": {
+    "edge_brightness": 79.09,
+    "disc": "dark-plum"
+  },
+  "turbine-01.png": {
+    "edge_brightness": 113.02,
+    "disc": "dark-plum"
+  },
+  "turtle-02.png": {
+    "edge_brightness": 106.25,
+    "disc": "dark-plum"
+  },
+  "turtle-03.png": {
+    "edge_brightness": 151.83,
+    "disc": "dark-plum"
+  },
+  "umbrella-01.png": {
+    "edge_brightness": 127.82,
+    "disc": "dark-plum"
+  },
+  "velvetworm-01.png": {
+    "edge_brightness": 118.31,
+    "disc": "dark-plum"
+  },
+  "vinegaroon-01.png": {
+    "edge_brightness": 58.92,
+    "disc": "lighter-plum"
+  },
+  "vise-01.png": {
+    "edge_brightness": 88.48,
+    "disc": "dark-plum"
+  },
+  "vulture-01.png": {
+    "edge_brightness": 90.31,
+    "disc": "dark-plum"
+  },
+  "walrus-01.png": {
+    "edge_brightness": 128.85,
+    "disc": "dark-plum"
+  },
+  "warthog-01.png": {
+    "edge_brightness": 83.32,
+    "disc": "dark-plum"
+  },
+  "wasp-01.png": {
+    "edge_brightness": 127.68,
+    "disc": "dark-plum"
+  },
+  "weasel-01.png": {
+    "edge_brightness": 105.08,
+    "disc": "dark-plum"
+  },
+  "weathervane-01.png": {
+    "edge_brightness": 103.89,
+    "disc": "dark-plum"
+  },
+  "weaverbird-01.png": {
+    "edge_brightness": 98.84,
+    "disc": "dark-plum"
+  },
+  "werewolf-01.png": {
+    "edge_brightness": 104.39,
+    "disc": "dark-plum"
+  },
+  "wisp-01.png": {
+    "edge_brightness": 122.55,
+    "disc": "dark-plum"
+  },
+  "wolf-01.png": {
+    "edge_brightness": 144.57,
+    "disc": "dark-plum"
+  },
+  "wolverine-01.png": {
+    "edge_brightness": 77.57,
+    "disc": "dark-plum"
+  },
+  "wyvern-01.png": {
+    "edge_brightness": 87.91,
+    "disc": "dark-plum"
+  },
+  "yak-01.png": {
+    "edge_brightness": 108.84,
     "disc": "dark-plum"
   }
 }
