@@ -466,7 +466,7 @@ Pushes, pulls and swaps of a unit other than the user follow these rules. Each s
 
 A stealthed unit cannot be targeted by the opponent, is ignored for "nearest" (section 8.5) and never intercepts. Areas still hit it.
 
-- **Gaining.** Stealth comes only from skills and keystones (Vanish, Melt Away, Unseen, Vanishing Kill, Escape Artist). There is no global row restriction.
+- **Gaining.** Stealth comes only from skills and keystones (Vanish, Melt Away, Unseen, Vanishing Kill, Escape Artist) and from one unique attack (Shiftscale's Snag and Vanish: the attacker gains stealth after its hit). There is no global row restriction.
 - **Breaking.** Stealth ends when the unit **attacks or is hit**, whether or not damage gets through: area hits, hits that reach it without targeting it, hits a Ward fully absorbs and bump damage all count. An intercepted hit hits the interceptor instead and does not break it. Damage that is not a hit (Poisoned, Bleeding, ground damage) does not break it. A skill may override this (Feint keeps it). KO ends it, and reveal effects remove it (Read Tracks, Eagle Eye).
 - **Cleansing.** A cleansing skill that hits a stealthed unit removes its stealth (Dispel).
 - **Duration.** Stealth lasts until broken unless a skill adds a timer.
