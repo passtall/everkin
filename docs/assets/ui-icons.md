@@ -38,11 +38,6 @@ STYLE
 | `status-link.png` | Two linked rings (Bound Resurrect's shared HP pool) | Teal |
 | `status-enchanted.png` | A sparkle on a blade (Enchanter enchantments, Press the Advantage) | Violet |
 | `status-cursed.png` | A small hex sigil (Hexer curses) | Dark purple |
-| `status-song.png` | Two music notes (Bard songs) | Magenta |
-| `status-glass.png` | A cracked glass shard (Glass Body) | Pale cyan |
-| `status-transmuted.png` | Two swirling orbs trading places (Transmute) | Amethyst |
-| `status-duel.png` | Two crossed swords in a ring (Single Combat) | Silver |
-| `status-delayed.png` | A small hourglass with a weight (Jam, Net Trap: extra Delay on the next skill) | Soot grey |
 
 ## Markers and HUD
 
@@ -60,6 +55,6 @@ STYLE
 
 ## Unused (kept)
 
-These were made but are no longer needed (2026-11-13): `ground-fire`, `ground-ice`, `ground-water`, `ground-steam`, `ground-poison` (ground effects are drawn by shaders with no icon, ui_spec Battle screen) and `status-chilled`, `status-stone-shell`, `status-charge` (statuses that no longer exist). New: `status-song`, `status-glass`, `status-transmuted`, `status-duel`, `status-delayed` are not made yet.
+These were made but are no longer needed (2026-11-13): `ground-fire`, `ground-ice`, `ground-water`, `ground-steam`, `ground-poison` (ground effects are drawn by shaders with no icon, ui_spec Battle screen) and `status-chilled`, `status-stone-shell`, `status-charge` (statuses that no longer exist). Five more status icons are needed; their prompts are in [status-icons-new.md](status-icons-new.md).
 
 Save to `assets/icons/ui/<file>`.

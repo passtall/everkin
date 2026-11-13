@@ -19,5 +19,5 @@ The owner turned the old profession branches into 28 classes (2026-11-11) and dr
 4. **AI.** Remove random builds; make sure the AI scores every new skill and keystone.
 5. **UI.** Remove `SkillTreeEditor.cs` and its entry points; team editor class filter; action bar order; card front plate and card back keystones; inspection panel keystones; target preview with the direct-hit chance.
 6. **Saving.** Bump the save version and reset older profiles.
-7. **Icons.** One icon per class active and unique attack, named by skill ID (prompts in docs/assets/skill-icons.md); placeholders until the art exists, then delete the 47 old profession and Attack Type icons. Five new status icons (docs/assets/ui-icons.md). The five unused summon cards are not loaded.
+7. **Icons.** One icon per class active and unique attack, named by skill ID (prompts in docs/assets/skill-icons-classes.md and skill-icons-attacks.md); placeholders until the art exists, then delete the 47 old profession and Attack Type icons. Five new status icons (docs/assets/status-icons-new.md). The five unused summon cards are not loaded.
 8. **Then.** Rerun the AI-versus-AI harness, decide the Cost formula (game_system §5.1) and recalculate Cost.
