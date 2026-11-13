@@ -1,0 +1,436 @@
+{
+  "generator": "Built-in image generation",
+  "date": "2026-11-13",
+  "format": "PNG",
+  "size": [
+    512,
+    512
+  ],
+  "reviewed_at": [
+    64,
+    64
+  ],
+  "shared_prompt": "Make ONE separate square game icon, PNG 512x512, for the action bar of Everkin, a night fairytale creature card battler. One bold central symbol readable at 64x64. Chunky low-poly faceted 3D storybook style: broad flat facets, matte colors, soft light upper left. Same full-bleed opaque dark plum-to-midnight-blue gradient background with faint vignette on every icon. Given main class color plus brighter accent glow, high contrast. No frame, no transparent border, no rounded corners. No text, letters, numbers, logos. Musical note pictograms allowed where requested, never alphabetic letters. Ages 7+, no blood, gore, or dripping skulls.",
+  "icons": [
+    {
+      "skill": "Vanish (Assassin)",
+      "file": "vanish.png",
+      "subject": "A hooded silhouette dissolving into teal smoke wisps. Charcoal with teal accent."
+    },
+    {
+      "skill": "Feint (Assassin)",
+      "file": "feint.png",
+      "subject": "A dagger tip making a fake curl, a dizzy spiral beside it. Charcoal with teal accent."
+    },
+    {
+      "skill": "Backstab (Assassin)",
+      "file": "backstab.png",
+      "subject": "A dagger striking from behind a dark crescent of shadow. Charcoal with teal accent."
+    },
+    {
+      "skill": "Target (Tracker)",
+      "file": "target.png",
+      "subject": "A paw print inside a glowing target ring. Forest green with amber accent."
+    },
+    {
+      "skill": "Read Tracks (Tracker)",
+      "file": "read_tracks.png",
+      "subject": "A row of paw prints with a magnifying eye glowing above them. Forest green with amber accent."
+    },
+    {
+      "skill": "Hunter's Shot (Tracker)",
+      "file": "hunters_shot.png",
+      "subject": "An arrow flying straight into the centre of a target ring. Forest green with amber accent."
+    },
+    {
+      "skill": "Leap to Defend (Bulwark)",
+      "file": "leap_to_defend.png",
+      "subject": "A tower shield leaping forward in an arc with motion lines. Steel blue with white accent."
+    },
+    {
+      "skill": "Rescue (Bulwark)",
+      "file": "rescue.png",
+      "subject": "Two shields swapping places along a curved double arrow. Steel blue with white accent."
+    },
+    {
+      "skill": "Shield Bash (Bulwark)",
+      "file": "shield_bash.png",
+      "subject": "A shield rim slamming forward with a backward-pushing shock wave. Steel blue with white accent."
+    },
+    {
+      "skill": "Ward (Keeper)",
+      "file": "ward.png",
+      "subject": "A single glowing hexagonal ward bubble. Pale cyan with white accent."
+    },
+    {
+      "skill": "Shield Dome (Keeper)",
+      "file": "shield_dome.png",
+      "subject": "A wide dome of small hexagon panels. Pale cyan with white accent."
+    },
+    {
+      "skill": "Ward Burst (Keeper)",
+      "file": "ward_burst.png",
+      "subject": "A hexagon ward shattering outward into bright shards. Pale cyan with white accent."
+    },
+    {
+      "skill": "Mend (Mender)",
+      "file": "mend.png",
+      "subject": "Cupped hands holding a warm glowing droplet. Warm gold with soft green accent."
+    },
+    {
+      "skill": "Rain of Mending (Mender)",
+      "file": "rain_of_mending.png",
+      "subject": "Golden drops falling from a small cloud. Warm gold with soft green accent."
+    },
+    {
+      "skill": "Searing Light (Mender)",
+      "file": "searing_light.png",
+      "subject": "A beam of hard white-gold light striking down. Warm gold with soft green accent."
+    },
+    {
+      "skill": "Absolve (Cleric)",
+      "file": "absolve.png",
+      "subject": "A dark chain breaking apart in a gentle golden glow. White and gold with sky blue accent."
+    },
+    {
+      "skill": "Dispel (Cleric)",
+      "file": "dispel.png",
+      "subject": "A sparkle being wiped away by an open palm. White and gold with sky blue accent."
+    },
+    {
+      "skill": "Turn Back (Cleric)",
+      "file": "turn_back.png",
+      "subject": "A dark sigil bouncing back along a curved return arrow. White and gold with sky blue accent."
+    },
+    {
+      "skill": "Burnout Heal (Lifebinder)",
+      "file": "burnout_heal.png",
+      "subject": "A heart-shaped flame burning out into warm sparks. Rose with gold accent."
+    },
+    {
+      "skill": "Life for Life (Lifebinder)",
+      "file": "life_for_life.png",
+      "subject": "A heart split in two, one half flowing into a faded heart. Rose with gold accent."
+    },
+    {
+      "skill": "Bound Resurrect (Lifebinder)",
+      "file": "bound_resurrect.png",
+      "subject": "Two hearts tied by a glowing thread, one rising. Rose with gold accent."
+    },
+    {
+      "skill": "Echo Enchant (Enchanter)",
+      "file": "echo_enchant.png",
+      "subject": "A sword with a glowing double echo outline behind it. Violet with pink accent."
+    },
+    {
+      "skill": "Phase Weapon (Enchanter)",
+      "file": "phase_weapon.png",
+      "subject": "A ghostly translucent blade passing through a small shield. Violet with pink accent."
+    },
+    {
+      "skill": "Piercing Enchant (Enchanter)",
+      "file": "piercing_enchant.png",
+      "subject": "A glowing arrow piercing through two stacked rings. Violet with pink accent."
+    },
+    {
+      "skill": "Transmute (Transmuter)",
+      "file": "transmute.png",
+      "subject": "Two swirling orbs trading places in a figure-eight. Amethyst with stone grey accent."
+    },
+    {
+      "skill": "Glass Body (Transmuter)",
+      "file": "glass_body.png",
+      "subject": "A cracked glass figure silhouette with a glint. Amethyst with stone grey accent."
+    },
+    {
+      "skill": "Petrify (Transmuter)",
+      "file": "petrify.png",
+      "subject": "A paw turning to grey stone from the tip. Amethyst with stone grey accent."
+    },
+    {
+      "skill": "Curse of Betrayal (Hexer)",
+      "file": "curse_of_betrayal.png",
+      "subject": "A small heart pulled away by a hooked hex thread. Dark purple with green accent."
+    },
+    {
+      "skill": "Curse of Weight (Hexer)",
+      "file": "curse_of_weight.png",
+      "subject": "A heavy iron weight with a violet hex sigil on it. Dark purple with green accent."
+    },
+    {
+      "skill": "Withering Curse (Hexer)",
+      "file": "withering_curse.png",
+      "subject": "A wilting leaf wrapped in a curling hex sigil. Dark purple with green accent."
+    },
+    {
+      "skill": "Fireball (Pyromancer)",
+      "file": "fireball.png",
+      "subject": "A roaring fireball with a short flame tail. Orange and red with yellow core."
+    },
+    {
+      "skill": "Kindle (Pyromancer)",
+      "file": "kindle.png",
+      "subject": "A small flame catching on a spot of cracked ground. Orange and red with yellow core."
+    },
+    {
+      "skill": "Row of Fire (Pyromancer)",
+      "file": "row_of_fire.png",
+      "subject": "A low wall of flames in one straight line. Orange and red with yellow core."
+    },
+    {
+      "skill": "Lightning Bolt (Stormcaller)",
+      "file": "lightning_bolt.png",
+      "subject": "A single forked lightning bolt striking down. Yellow and slate with white accent."
+    },
+    {
+      "skill": "Chain Lightning (Stormcaller)",
+      "file": "chain_lightning.png",
+      "subject": "A lightning arc jumping between three small orbs. Yellow and slate with white accent."
+    },
+    {
+      "skill": "Tempest (Stormcaller)",
+      "file": "tempest.png",
+      "subject": "A swirling storm gust with a backward arrow. Yellow and slate with white accent."
+    },
+    {
+      "skill": "Ice Lance (Cryomancer)",
+      "file": "ice_lance.png",
+      "subject": "A long sharp shard of ice flying diagonally. Ice blue with white glow."
+    },
+    {
+      "skill": "Freeze (Cryomancer)",
+      "file": "freeze.png",
+      "subject": "A solid ice block with a snowflake inside. Ice blue with white glow."
+    },
+    {
+      "skill": "Frost Nova (Cryomancer)",
+      "file": "frost_nova.png",
+      "subject": "A ring of ice spikes bursting outward. Ice blue with white glow."
+    },
+    {
+      "skill": "Rampage (Berserker)",
+      "file": "rampage.png",
+      "subject": "A huge axe smashing down with a red fury aura. Crimson with orange accent."
+    },
+    {
+      "skill": "Sweeping Kick (Berserker)",
+      "file": "sweeping_kick.png",
+      "subject": "A clawed foot sweeping in a wide arc, a push-back arrow. Crimson with orange accent."
+    },
+    {
+      "skill": "Battle Roar (Berserker)",
+      "file": "battle_roar.png",
+      "subject": "An open roaring maw with shock rings. Crimson with orange accent."
+    },
+    {
+      "skill": "Challenge (Champion)",
+      "file": "challenge.png",
+      "subject": "A gauntlet thrown down before a target mark. Silver with red accent."
+    },
+    {
+      "skill": "Single Combat (Champion)",
+      "file": "single_combat.png",
+      "subject": "Two crossed swords inside a ring. Silver with red accent."
+    },
+    {
+      "skill": "Execution (Champion)",
+      "file": "execution.png",
+      "subject": "A great sword coming down on a target mark. Silver with red accent."
+    },
+    {
+      "skill": "Swap Turns (Tactician)",
+      "file": "swap_turns.png",
+      "subject": "An hourglass with two crossing arrows. Royal blue with gold accent."
+    },
+    {
+      "skill": "Press the Advantage (Tactician)",
+      "file": "press_the_advantage.png",
+      "subject": "A chess knight leaping forward with a golden spark. Royal blue with gold accent."
+    },
+    {
+      "skill": "Coordinated Strike (Tactician)",
+      "file": "coordinated_strike.png",
+      "subject": "Two arrows converging on one target point. Royal blue with gold accent."
+    },
+    {
+      "skill": "Advance (Commander)",
+      "file": "advance.png",
+      "subject": "A pennant banner with a forward arrow. Royal blue with bronze accent."
+    },
+    {
+      "skill": "Switch Places (Commander)",
+      "file": "switch_places.png",
+      "subject": "Two small banners swapping along a double arrow. Royal blue with bronze accent."
+    },
+    {
+      "skill": "Rotation (Commander)",
+      "file": "rotation.png",
+      "subject": "Three small banners on a circular arrow. Royal blue with bronze accent."
+    },
+    {
+      "skill": "Song of Haste (Bard)",
+      "file": "song_of_haste.png",
+      "subject": "A lute with quick swirling notes and speed lines. Magenta with gold accent."
+    },
+    {
+      "skill": "War Drums (Bard)",
+      "file": "war_drums.png",
+      "subject": "A war drum with two sticks and bold sound rings. Magenta with gold accent."
+    },
+    {
+      "skill": "Lullaby (Bard)",
+      "file": "lullaby.png",
+      "subject": "A crescent moon with soft floating notes and a \"z\" curl shape (no letters). Magenta with gold accent."
+    },
+    {
+      "skill": "Melt Away (Thief)",
+      "file": "melt_away.png",
+      "subject": "A hooded figure melting into a dark puddle of shadow. Charcoal with gold accent."
+    },
+    {
+      "skill": "Lift a Skill (Thief)",
+      "file": "lift_a_skill.png",
+      "subject": "A gloved hand plucking a glowing spark from the air. Charcoal with gold accent."
+    },
+    {
+      "skill": "Snatch (Thief)",
+      "file": "snatch.png",
+      "subject": "A quick grabbing claw holding a small gold pouch. Charcoal with gold accent."
+    },
+    {
+      "skill": "Flash Powder (Saboteur)",
+      "file": "flash_powder.png",
+      "subject": "A bright burst of powder with a closed eye. Soot grey with yellow accent."
+    },
+    {
+      "skill": "Cut the Strings (Saboteur)",
+      "file": "cut_the_strings.png",
+      "subject": "Scissors snipping a taut glowing string. Soot grey with yellow accent."
+    },
+    {
+      "skill": "Jam (Saboteur)",
+      "file": "jam.png",
+      "subject": "A gear jammed by a wedge, sparks flying. Soot grey with yellow accent."
+    },
+    {
+      "skill": "Bolt Turret (Engineer)",
+      "file": "bolt_turret.png",
+      "subject": "A small crossbow turret on a tripod. Brass with green lens accent."
+    },
+    {
+      "skill": "Barricade (Engineer)",
+      "file": "barricade.png",
+      "subject": "Crossed timber planks with an iron-banded board. Brass with green lens accent."
+    },
+    {
+      "skill": "Net Trap (Engineer)",
+      "file": "net_trap.png",
+      "subject": "A coiled rope net with a small bell. Brass with green lens accent."
+    },
+    {
+      "skill": "Poison Gas (Chemist)",
+      "file": "poison_gas.png",
+      "subject": "A cracked flask releasing a green gas cloud. Lime green and glass with orange accent."
+    },
+    {
+      "skill": "Firebomb (Chemist)",
+      "file": "firebomb.png",
+      "subject": "A round flask with a lit fuse bursting into flame. Lime green and glass with orange accent."
+    },
+    {
+      "skill": "Healing Draught (Chemist)",
+      "file": "healing_draught.png",
+      "subject": "A corked bottle of glowing red-pink potion with a heart bubble. Lime green and glass with orange accent."
+    },
+    {
+      "skill": "Raise Undead (Necromancer)",
+      "file": "raise_undead.png",
+      "subject": "A pale green spirit flame rising from a small grave mound. Bone white with sickly green accent."
+    },
+    {
+      "skill": "Corpse Explosion (Necromancer)",
+      "file": "corpse_explosion.png",
+      "subject": "A green gas cloud bursting from a cracked bone. Bone white with sickly green accent."
+    },
+    {
+      "skill": "Desecrate (Necromancer)",
+      "file": "desecrate.png",
+      "subject": "A small grave stone with a dark sealing sigil. Bone white with sickly green accent."
+    },
+    {
+      "skill": "Clay Golem (Summoner)",
+      "file": "clay_golem.png",
+      "subject": "A stout clay golem fist rising from a summoning circle. Stone grey with purple runes."
+    },
+    {
+      "skill": "Rune Golem (Summoner)",
+      "file": "rune_golem.png",
+      "subject": "A stone golem head with glowing purple runes. Stone grey with purple runes."
+    },
+    {
+      "skill": "Animate Blades (Summoner)",
+      "file": "animate_blades.png",
+      "subject": "Two floating blades circling a glowing ring. Stone grey with purple runes."
+    },
+    {
+      "skill": "Healing Totem (Totemist)",
+      "file": "healing_totem.png",
+      "subject": "A smiling totem top with a green glowing crystal. Wood brown with green accent."
+    },
+    {
+      "skill": "Spirit Link Totem (Totemist)",
+      "file": "spirit_link_totem.png",
+      "subject": "A stone totem with two faces joined by a carved chain. Wood brown with green accent."
+    },
+    {
+      "skill": "Totem of Return (Totemist)",
+      "file": "totem_of_return.png",
+      "subject": "An owl-shaped totem with an hourglass carved in its chest. Wood brown with green accent."
+    },
+    {
+      "skill": "Rain Dance (Ritualist)",
+      "file": "rain_dance.png",
+      "subject": "Rain falling from a cloud over a small ritual circle of stones. Sea blue with white accent."
+    },
+    {
+      "skill": "Hoarfrost (Ritualist)",
+      "file": "hoarfrost.png",
+      "subject": "Frost crystals spreading over a stone. Sea blue with white accent."
+    },
+    {
+      "skill": "Rite of Mists (Ritualist)",
+      "file": "rite_of_mists.png",
+      "subject": "Swirling mist over a still pool. Sea blue with white accent."
+    },
+    {
+      "skill": "Puppet Soul (Spiritwalker)",
+      "file": "puppet_soul.png",
+      "subject": "A ghostly hand with spirit strings pulling a small figure. Turquoise with pale accent."
+    },
+    {
+      "skill": "Life Swap (Spiritwalker)",
+      "file": "life_swap.png",
+      "subject": "Two hearts trading places along a looping arrow. Turquoise with pale accent."
+    },
+    {
+      "skill": "Forced Step (Spiritwalker)",
+      "file": "forced_step.png",
+      "subject": "A footprint pushed by a ghostly hand. Turquoise with pale accent."
+    },
+    {
+      "skill": "Take Off (Skyborne)",
+      "file": "take_off.png",
+      "subject": "A spread pair of wings lifting off with an up arrow. Sky blue and white with gold accent."
+    },
+    {
+      "skill": "Gust (Skyborne)",
+      "file": "gust.png",
+      "subject": "A gust of wind swirls blowing sideways. Sky blue and white with gold accent."
+    },
+    {
+      "skill": "Dive (Skyborne)",
+      "file": "dive.png",
+      "subject": "A diving bird silhouette plunging down with speed lines. Sky blue and white with gold accent."
+    }
+  ]
+}
