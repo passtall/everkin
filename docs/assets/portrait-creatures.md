@@ -34,5 +34,5 @@ TONE
 ## Checks
 
 - Clean like the card art (`tools/art/clean_creatures.py` as a model): real alpha, no fringe, the creature's extent inside the 860 px circle, centred. Do not apply the card's ground line; portraits are centred.
-- Check every portrait against its card at 130 px: same creature, faces right, profession prop still visible.
+- Check every portrait against its card at 130 px: same creature, faces right, the prop that shows its classes still visible.
 - **Disc colour.** The game draws a plain dark plum disc (the UI's panel colour) behind each portrait. The cleaning step measures each portrait's edge brightness once and marks those too dark for it; they get a lighter plum disc. The result is stored with the portraits (for example `assets/portraits/discs.json`), not chosen by hand.
