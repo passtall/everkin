@@ -59,9 +59,10 @@ Every creature has one attack of its own, listed in [creature-classes.md](creatu
 - **Parts:** a name, a delivery (Melee, Projectile or Direct), damage, at most one small extra, Delay and Momentum, and an animation style.
 - **Strength:** 3 to 6 damage at Power 5, Delay 3 or 4, no Momentum cost. An extra is paid for with less damage.
 - **Every attack has one extra.** Extras are small: a low chance of a status (Bleeding, Poisoned, Stunned, Confused, Immobilized, Blind, Silenced, Marked), a push or pull, a ground effect on the target's spot, stealing a helpful status, a later next turn, or anything similar that fits the art and is not too strong. Splash alone is not an extra. No attack heals, and none says "cannot be intercepted".
+- **Several hits:** an attack that hits more than one enemy (pulse, breath, or splash on the units next to the target) applies its extra to, and rolls it for, each enemy it hits; "the target" in its text means each of them.
 - **Chances:** a ground effect of water is placed with 50%; other chance extras are 20% (Bleeding and Poisoned usually 30%). A later next turn is certain on a single-target attack and a 20% chance on an attack that hits more than one enemy.
 - **Always hostile:** an attack always hits an enemy; healing and support stay in class skills.
-- **Breath and pulse attacks** (Direct) work in melee reach (game_system §8.1): a breath hits one enemy there and splashes the units next to it, a pulse hits every enemy there. A pulse has no single target: its extra ("the target…") applies to, and rolls for, each enemy it hits. A breath's extra likewise applies to, and rolls for, every unit it hits, the target and each unit next to it.
+- **Breath and pulse attacks** (Direct) work in melee reach (game_system §8.1): a breath hits one enemy there and splashes the units next to it, a pulse hits every enemy there. A pulse has no single target.
 - **Magical attacks:** an attack with the bolt or pulse animation is magical; every other attack is physical.
 - **Animation:** one of the shared styles lunge, swing, shot, throw, bolt, breath or pulse, with a colour.
 - **Used by others:** raised undead, Puppet Soul and Coordinated Strike use the creature's own unique attack.
