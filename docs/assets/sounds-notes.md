@@ -1,9 +1,9 @@
 # Everkin procedural sound pack
 
-106 original, synthesized game-audio assets, built from the supplied sound list.
+109 original, synthesized game-audio assets, built from the supplied sound list.
 
 - `audio/ui/`: 11 mono interface effects.
-- `audio/battle/`: 25 mono battle effects, each with `_1`, `_2`, `_3` variants.
+- `audio/battle/`: 26 mono battle effects, each with `_1`, `_2`, `_3` variants.
 - `audio/result/`: 2 mono, 2-second result stings.
 - `audio/ambient/`: 18 stereo, 60-second circular ambient loops.
 - All game assets: OGG Vorbis, 48,000 Hz, quality 5.
@@ -30,3 +30,7 @@ Battle variants change timbre, event placement, and randomized texture, dependin
 ## Provenance and tool licenses
 
 See `PROVENANCE.md` and `tool_license_metadata.json`. No third-party samples or generation-service assets are included. The build source and pinned package versions are supplied in `tools/`.
+
+## Gas explosion addition (2026-11-13)
+
+Three additional `gas_explode_1`–`_3` variants in `assets/audio/battle/`, bringing the set to 109 assets and 26 battle effects. Rebuild only this addition with `python tools/audio/build_gas_explode.py`; it reuses `build_audio.py` noise, envelopes, mixing, normalization and Vorbis encoding. A low filtered-noise whump is followed by short cushioned crackles, with independent deterministic seeds and no tonal layer or reverb. Measurements of decoded files are in `tools/audio/report/gas_explode-manifest.json`. Each file is 0.6 seconds, 48 kHz mono, −16.3 to −16.5 LUFS, with true peak below −1 dBTP. Loudness uses the existing repeated-clip measurement method. In-game listening and mix review remain necessary.

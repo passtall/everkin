@@ -48,6 +48,7 @@ Style: soft storybook fantasy game sound, gentle and clean, no music, no melody,
 | `ground_water` | 0.5 s | A gentle splash spreading into a puddle. |
 | `ground_steam` | 0.6 s | A hiss of steam rising. |
 | `ground_poison` | 0.6 s | Poison gas spreading: a soft hiss with a few slow bubbles popping. |
+| `gas_explode` | 0.6 s | A soft muffled whump of gas going up, a short crackle. |
 | `turn_chime` | 0.4 s | A single soft high bell, warm and short (played when the player's unit gets its turn). |
 | `momentum_threshold` | 0.5 s | A rising soft spark whoosh. |
 | `momentum_max` | 0.8 s | A bright swelling shimmer reaching a soft peak. |

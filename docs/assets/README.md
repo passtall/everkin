@@ -15,7 +15,7 @@ How every generated asset in `assets/` was made, so it can be extended or remade
 | Status, marker and HUD icons (24 in use; 8 unused kept) | [ui-icons.md](ui-icons.md) | — |
 | New status icons (5, **not made**) | [status-icons-new.md](status-icons-new.md) | — |
 | Emblem, wordmark, app icon | [brand.md](brand.md) | — |
-| Sounds (36 effects, 2 stings, 18 ambient loops; 106 files) | [sounds.md](sounds.md); gas explosion (**not made**): [sound-gas-explode.md](sound-gas-explode.md) | synthesized by `tools/audio/build_audio.py`, not by an audio model: [sounds-notes.md](sounds-notes.md), [sounds-provenance.md](sounds-provenance.md), measurements in `tools/audio/report/` |
+| Sounds (37 effects, 2 stings, 18 ambient loops; 109 files) | [sounds.md](sounds.md); gas explosion (made 2026-11-13): [sound-gas-explode.md](sound-gas-explode.md) | synthesized by `tools/audio/build_audio.py`, not by an audio model: [sounds-notes.md](sounds-notes.md), [sounds-provenance.md](sounds-provenance.md), measurements in `tools/audio/report/` |
 | Biome backgrounds | `assets/backgrounds/README.md`; card backgrounds by `tools/backgrounds/gen_backgrounds.py` | — |
 
-Missing: the battle portraits and rings (2026-11-10), the 403 new skill and attack icons, 5 new status icons and the `gas_explode` sound (2026-11-13). Fonts are Alegreya and Alegreya Sans, downloaded from Google Fonts into `assets/fonts/` (2026-11-08). The brand PNGs are final; there are no SVG redraws (2026-11-08).
+Missing: the battle portraits and rings (2026-11-10), the 403 new skill and attack icons, 5 new status icons (2026-11-13). Fonts are Alegreya and Alegreya Sans, downloaded from Google Fonts into `assets/fonts/` (2026-11-08). The brand PNGs are final; there are no SVG redraws (2026-11-08).

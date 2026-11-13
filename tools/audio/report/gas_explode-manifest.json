@@ -1,0 +1,35 @@
+[
+  {
+    "file": "audio/battle/gas_explode_1.ogg",
+    "duration_s": 0.6,
+    "sample_rate": 48000,
+    "channels": 1,
+    "lufs": -16.26,
+    "target_lufs": -16,
+    "true_peak_dbtp": -1.49,
+    "loop": false,
+    "sha256": "b76aaa7321b9c1ed037b0887e00479c572521d72674c201c0ae99270239a0810"
+  },
+  {
+    "file": "audio/battle/gas_explode_2.ogg",
+    "duration_s": 0.6,
+    "sample_rate": 48000,
+    "channels": 1,
+    "lufs": -16.47,
+    "target_lufs": -16,
+    "true_peak_dbtp": -1.48,
+    "loop": false,
+    "sha256": "c53241362a4a451aec3e025d801847a48a59d3764a0d256db644e76a75057762"
+  },
+  {
+    "file": "audio/battle/gas_explode_3.ogg",
+    "duration_s": 0.6,
+    "sample_rate": 48000,
+    "channels": 1,
+    "lufs": -16.3,
+    "target_lufs": -16,
+    "true_peak_dbtp": -1.31,
+    "loop": false,
+    "sha256": "8f853049c7ebeef8ec6027165b7a6d95e446e5f13da4c9c97ff6d024a1af9606"
+  }
+]
