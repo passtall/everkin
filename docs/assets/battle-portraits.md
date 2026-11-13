@@ -2,14 +2,14 @@
 
 Written 2026-11-10 from the owner's answers on the battle UI quiz (https://claude.ai/artifact/EcyT2Qns9duAcZpDbMmmJq; log `battle-ui-decisions-2.md` in the project files). Where the portraits are used: [ui_spec.md](../ui_spec.md), Battle screen, Battle portraits; the change spec is [spec.md](../../spec.md).
 
-Every creature (319 in `assets/creatures/`) and every summon card (14 in `assets/summons/`) gets one round battle portrait, facing **right**. The enemy side shows the same image mirrored, so there is no left-facing version. Undead reuse their creature's portrait inside the undead ring; summons sit in a silver summon ring. The card art is not changed; portraits are new, separate files.
+Every creature (319 in `assets/creatures/`) and every summon card in use (9 of the 14 in `assets/summons/`) gets one round battle portrait, facing **right**. The enemy side shows the same image mirrored, so there is no left-facing version. Undead reuse their creature's portrait inside the undead ring; summons sit in a silver summon ring. The card art is not changed; portraits are new, separate files.
 
 ## What gets made
 
 | Asset | Count | Source file | Result |
 |---|---|---|---|
 | Creature portrait | 319 | the creature's card art, `assets/creatures/<art file>.png`, attached as identity reference | `source-art/portraits/<art file>.png` (original, never changed), cleaned copy in `assets/portraits/<art file>.png` |
-| Summon portrait | 14 | `assets/summons/<id>.png` attached | `source-art/portraits/summons/<id>.png`, `assets/portraits/summons/<id>.png` |
+| Summon portrait | 9 | `assets/summons/<id>.png` attached | `source-art/portraits/summons/<id>.png`, `assets/portraits/summons/<id>.png` |
 | Ring | 1 | — | `assets/frames/portrait-ring.png` |
 | Undead ring | 1 | `assets/frames/undead.png` attached as style reference | `assets/frames/portrait-ring-undead.png` |
 | Summon ring | 1 | `assets/frames/portrait-ring.png` attached | `assets/frames/portrait-ring-summon.png` |
@@ -25,7 +25,7 @@ All files are 1024 × 1024. The ring's open window is a circle of about **860 px
 | Topic | File |
 |---|---|
 | Creature portraits (319) | [portrait-creatures.md](portrait-creatures.md) |
-| Summon portraits (14) | [portrait-summons.md](portrait-summons.md) |
+| Summon portraits (9) | [portrait-summons.md](portrait-summons.md) |
 | Gold ring | [portrait-ring.md](portrait-ring.md) |
 | Silver summon ring | [portrait-ring-summon.md](portrait-ring-summon.md) |
 | Undead ring | [portrait-ring-undead.md](portrait-ring-undead.md) |

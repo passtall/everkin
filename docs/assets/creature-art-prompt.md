@@ -1,6 +1,6 @@
 # Creature art prompt v2 (more classes, more variety)
 
-Written 2026-10-11. The class names in the briefs below are from before the 2026-10-14 merges; current classes are in class_system.md v1.3. The v1 template is in `docs/archive/creature-art-prompt-v1.md`. v2 exists because the first 143 creatures lean heavily on Feral / Guardian / Warrior. This file has
+Written 2026-10-11. The professions and attack types in the briefs below are history: since 2026-11-12 every creature has two of the 28 classes and its own unique attack, listed in creature-classes.md. The briefs still work as art briefs. The v1 template is in `docs/archive/creature-art-prompt-v1.md`. v2 exists because the first 143 creatures lean heavily on Feral / Guardian / Warrior. This file has
 
 1. a **style block** to paste after each creature brief (two variants: with reference images, or text only),
 2. **design rules** for variety and class readability,

@@ -19,7 +19,7 @@ STYLE
 - Storybook tone for ages 7 and up.
 ```
 
-## Statuses and states (game_system §10.5, §10.6)
+## Statuses and states (game_system §10.5, §10.6; helpful and harmful effects of skills.md)
 
 | File | Subject | Fill color |
 |---|---|---|
@@ -27,7 +27,6 @@ STYLE
 | `status-poison.png` | A drop with small bubbles | Toxic green |
 | `status-bleeding.png` | A single dripping drop shape (stylised, not gore) | Dark red |
 | `status-silenced.png` | A mouth shape crossed by a stitched line | Indigo |
-| `status-chilled.png` | A snowflake with a down arrow | Pale blue |
 | `status-frozen.png` | A solid ice block | Ice blue |
 | `status-stunned.png` | Three little stars circling | Yellow |
 | `status-confused.png` | A spiral with a question curl | Pink |
@@ -36,23 +35,14 @@ STYLE
 | `status-stealth.png` | A half-faded hooded silhouette | Dark teal |
 | `status-airborne.png` | A wing with an up arrow | Sky blue |
 | `status-ward.png` | A hexagon shield bubble | Steel blue |
-| `status-stone-shell.png` | A shell of cracked stone | Stone grey |
-| `status-link.png` | Two linked rings (Life Link, Linked and Shared Fate, Bound Resurrect) | Teal |
-| `status-enchanted.png` | A sparkle on a blade (Sorcerer enchantments) | Violet |
-| `status-cursed.png` | A small hex sigil (Sorcerer curses) | Dark purple |
-| `status-charge.png` | A small shield with a heart (Guardian's Charge) | Gold |
-
-## Ground effects (game_system §12.2)
-
-These show on a spot, under the card. Make them as round badges too; the game also draws an effect on the spot.
-
-| File | Subject | Fill color |
-|---|---|---|
-| `ground-fire.png` | Flames on cracked ground | Orange |
-| `ground-ice.png` | A slick ice patch with a glint | Pale blue |
-| `ground-water.png` | A puddle with ripples | Blue |
-| `ground-steam.png` | Rising steam curls | White-grey |
-| `ground-poison.png` | A bubbling green puddle with spores | Toxic green |
+| `status-link.png` | Two linked rings (Bound Resurrect's shared HP pool) | Teal |
+| `status-enchanted.png` | A sparkle on a blade (Enchanter enchantments, Press the Advantage) | Violet |
+| `status-cursed.png` | A small hex sigil (Hexer curses) | Dark purple |
+| `status-song.png` | Two music notes (Bard songs) | Magenta |
+| `status-glass.png` | A cracked glass shard (Glass Body) | Pale cyan |
+| `status-transmuted.png` | Two swirling orbs trading places (Transmute) | Amethyst |
+| `status-duel.png` | Two crossed swords in a ring (Single Combat) | Silver |
+| `status-delayed.png` | A small hourglass with a weight (Jam, Net Trap: extra Delay on the next skill) | Soot grey |
 
 ## Markers and HUD
 
@@ -67,5 +57,9 @@ These show on a spot, under the card. Make them as round badges too; the game al
 | `hud-view-side.png` | One card row with an up/down arrow | Cream symbol, plum fill |
 | `hud-emote.png` | A speech bubble | Cream symbol, plum fill |
 | `hud-offline.png` | A small broken link | Grey |
+
+## Unused (kept)
+
+These were made but are no longer needed (2026-11-13): `ground-fire`, `ground-ice`, `ground-water`, `ground-steam`, `ground-poison` (ground effects are drawn by shaders with no icon, ui_spec Battle screen) and `status-chilled`, `status-stone-shell`, `status-charge` (statuses that no longer exist). New: `status-song`, `status-glass`, `status-transmuted`, `status-duel`, `status-delayed` are not made yet.
 
 Save to `assets/icons/ui/<file>`.

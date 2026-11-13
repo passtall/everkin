@@ -2,7 +2,7 @@
 
 Part of the battle portrait set; overview, geometry, workflow and file names in [battle-portraits.md](battle-portraits.md). Written 2026-11-10 from the owner's battle UI quiz answers.
 
-One image per summon card: `clay-golem`, `rune-golem`, `clockwork-golem`, `bell-golem`, `animated-blades`, `animated-mirror`, `bolt-turret`, `flame-turret`, `barricade`, `healing-totem`, `spirit-link-totem`, `totem-of-return`, `net-trap`, `hunter-decoy`. Result: `source-art/portraits/summons/<id>.png`, cleaned copy in `assets/portraits/summons/<id>.png`. Raised undead are not here: they use their creature's portrait in the undead ring.
+One image per summon card: `clay-golem`, `rune-golem`, `animated-blades`, `bolt-turret`, `barricade`, `net-trap`, `healing-totem`, `spirit-link-totem`, `totem-of-return` (the 9 in use; the unused summon cards get no portrait). Result: `source-art/portraits/summons/<id>.png`, cleaned copy in `assets/portraits/summons/<id>.png`. Raised undead are not here: they use their creature's portrait in the undead ring.
 
 ## Prompt
 

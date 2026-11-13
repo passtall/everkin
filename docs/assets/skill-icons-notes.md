@@ -1,7 +1,5 @@
-# Everkin action bar icons
+# Everkin action bar icons: notes on the first run
 
-49 opaque, full-bleed PNG assets, 512 × 512 pixels. UI frames, names, key numbers, Delay indicators and Momentum gems are drawn by the game.
+The first run (2026-11-08) made 49 opaque, full-bleed PNG icons, 512 × 512 pixels, for the old professions and Attack Types: one per profession branch, one per Attack Type, plus Move and Skip. Generated with the built-in image generation tool; the prompts are in [skill-icons-prompts-used.json](skill-icons-prompts-used.json); generated originals were downsampled with Lanczos.
 
-Generated with the built-in image generation tool. Exact per-asset prompts are recorded in `prompts.json`. Generated originals are retained separately; delivered images are downsampled with Lanczos to the requested resolution.
-
-Skills use `<profession>-<branch>.png`; creature attacks use `attack-<type>.png`. Move and Skip use `action-move.png` and `action-skip.png`. Future skill-specific overrides use their snake_case skill ID.
+Since the 28 classes and unique attacks (2026-11-12), every skill and every unique attack gets its own icon named by its skill ID ([skill-icons.md](skill-icons.md)). Of the first run only `action-move.png` and `action-skip.png` stay; the other 47 stand in until the new set exists.

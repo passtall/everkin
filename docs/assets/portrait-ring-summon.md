@@ -2,7 +2,7 @@
 
 Part of the battle portrait set; overview, geometry, workflow and file names in [battle-portraits.md](battle-portraits.md). Written 2026-11-10 from the owner's battle UI quiz answers.
 
-The ring for every summon portrait (golems, blades, mirror, turrets, barricade, totems, net trap, decoy). Make it after the gold ring. Result: `assets/frames/portrait-ring-summon.png`.
+The ring for every summon portrait (golems, blades, turret, barricade, net trap, totems). Make it after the gold ring. Result: `assets/frames/portrait-ring-summon.png`.
 
 ## Prompt
 

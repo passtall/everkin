@@ -1,6 +1,6 @@
 # Summon and construct card art
 
-14 cards for things that skills put on the battlefield (skills.md). They use the same card as creatures (ui_spec: 2:3, 1024 × 1536, home frame plus a summon marker), so they are made exactly like creature art. Undead need no art: they reuse the raised creature's art in the undead frame.
+9 cards for things that skills put on the battlefield (skills.md), plus 5 made for skills that no longer exist (marked unused below; their files stay in `assets/summons/` but the game does not load them). They use the same card as creatures (ui_spec: 2:3, 1024 × 1536, home frame plus a summon marker), so they are made exactly like creature art. Undead need no art: they reuse the raised creature's art in the undead frame.
 
 ## How to use
 
@@ -33,19 +33,19 @@ TONE
 
 ## Briefs
 
-| File | Skill (profession) | Brief |
+| File | Skill (class) | Brief |
 |---|---|---|
 | `clay-golem.png` | Clay Golem (Summoner) | [hulking] A plain, sturdy golem of reddish fired clay, thick round arms and stubby legs, finger marks pressed into its body, two warm amber eye holes. Simple and solid. |
 | `rune-golem.png` | Rune Golem (Summoner) | [tall] A slate-grey stone golem with glowing blue runes carved over its chest and arms, a narrow head with one rune for a face. It looks like it hushes magic. |
-| `clockwork-golem.png` | Clockwork Golem (Summoner) | [medium, upright] A brass and copper clockwork golem with visible turning gears in its chest, a wind-up key in its back and round lens eyes glowing soft green. |
-| `bell-golem.png` | Bell Golem (Summoner) | [round, wide] A golem whose body is a big bronze temple bell with short stone legs and arms, a clapper hanging inside like a heart, a calm face engraved on the bell, faint golden sound rings. |
+| `clockwork-golem.png` | Unused (Clockwork Golem was removed) | [medium, upright] A brass and copper clockwork golem with visible turning gears in its chest, a wind-up key in its back and round lens eyes glowing soft green. |
+| `bell-golem.png` | Unused (Bell Golem was removed) | [round, wide] A golem whose body is a big bronze temple bell with short stone legs and arms, a clapper hanging inside like a heart, a calm face engraved on the bell, faint golden sound rings. |
 | `animated-blades.png` | Animate Blades (Summoner) | [floating] Three short enchanted swords hovering in a loose fan, points forward, linked by a faint violet glow, with a ribbon on one hilt. No hands holding them. |
-| `animated-mirror.png` | Animate Mirror (Summoner) | [floating] A tall oval standing mirror in a dark wooden frame with small clawed feet, its glass showing a swirl of pale silver light instead of a reflection, and two little eyes in the frame's crest. |
-| `bolt-turret.png` | Bolt Turret (Tinker) | [small, mechanical] A small wooden and brass crossbow turret on a three-legged stand, a loaded bolt, a crank handle and a round sighting lens glowing orange. |
-| `flame-turret.png` | Flame Turret (Tinker) | [small, mechanical] A squat iron turret with a stubby flared nozzle, a pressure gauge and copper tank, a little pilot flame at the nozzle tip as its accent. |
-| `barricade.png` | Barricade (Tinker) | [wide, low] A sturdy field barricade of crossed timber planks, an iron-banded shield board in front and a few sandbags, with one small brass plate as the accent. No creature. |
-| `healing-totem.png` | Healing Totem (Primalist) | [tall, thin] A carved wooden totem pole with a gentle smiling top face, leaves and green feathers tied around it, and a soft green glowing crystal set in the middle. |
-| `spirit-link-totem.png` | Spirit Link Totem (Primalist) | [tall, thin] A pale stone totem with two faces back to back joined by a carved chain, a turquoise spirit wisp circling it. |
-| `totem-of-return.png` | Totem of Return (Primalist) | [tall, thin] A weathered wooden totem shaped like an owl with folded wings, an hourglass carved in its chest and a warm white glow in its eyes. |
-| `net-trap.png` | Net Trap (Hunter) | [wide, low] A coiled hunter's net trap: a rope net piled over a bent sapling spring, wooden stakes and a small bell on a cord as the accent. |
-| `hunter-decoy.png` | Decoy (Hunter) | [medium] A scruffy decoy dummy of straw and bark wrapped in a hooded green cloak, stick arms, a carved wooden face with button eyes, propped on a stake. |
+| `animated-mirror.png` | Unused (Animate Mirror was removed) | [floating] A tall oval standing mirror in a dark wooden frame with small clawed feet, its glass showing a swirl of pale silver light instead of a reflection, and two little eyes in the frame's crest. |
+| `bolt-turret.png` | Bolt Turret (Engineer) | [small, mechanical] A small wooden and brass crossbow turret on a three-legged stand, a loaded bolt, a crank handle and a round sighting lens glowing orange. |
+| `flame-turret.png` | Unused (Flame Turret was removed) | [small, mechanical] A squat iron turret with a stubby flared nozzle, a pressure gauge and copper tank, a little pilot flame at the nozzle tip as its accent. |
+| `barricade.png` | Barricade (Engineer) | [wide, low] A sturdy field barricade of crossed timber planks, an iron-banded shield board in front and a few sandbags, with one small brass plate as the accent. No creature. |
+| `healing-totem.png` | Healing Totem (Totemist) | [tall, thin] A carved wooden totem pole with a gentle smiling top face, leaves and green feathers tied around it, and a soft green glowing crystal set in the middle. |
+| `spirit-link-totem.png` | Spirit Link Totem (Totemist) | [tall, thin] A pale stone totem with two faces back to back joined by a carved chain, a turquoise spirit wisp circling it. |
+| `totem-of-return.png` | Totem of Return (Totemist) | [tall, thin] A weathered wooden totem shaped like an owl with folded wings, an hourglass carved in its chest and a warm white glow in its eyes. |
+| `net-trap.png` | Net Trap (Engineer) | [wide, low] A coiled hunter's net trap: a rope net piled over a bent sapling spring, wooden stakes and a small bell on a cord as the accent. |
+| `hunter-decoy.png` | Unused (the Decoy was removed) | [medium] A scruffy decoy dummy of straw and bark wrapped in a hooded green cloak, stick arms, a carved wooden face with button eyes, propped on a stake. |
