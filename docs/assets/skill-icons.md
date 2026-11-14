@@ -4,7 +4,7 @@ The action bar (ui_spec, Battle screen) shows each skill as a square icon slot w
 
 Every slot has its own icon (ui_spec): **84 class actives**, **319 unique attacks** and Move and Skip Turn, **405 icons**. Keystones never sit on the bar and have no icon. Each file is named after the skill ID: the skill or attack name in snake case, apostrophes and punctuation dropped (`hunters_shot.png`, `spotted.png`). Save to `assets/icons/skills/<file>`.
 
-**Status (2026-11-13).** The 84 class active icons are complete in [class-skill-icons/](class-skill-icons/), generated as 512 × 512 PNGs and visually reviewed at 64 × 64 px. `action-move.png` and `action-skip.png` are also final. The 47 old `attack-<type>.png` and `<profession>-<branch>.png` icons stand in until the new set exists and are deleted then (milestone M5.6). The prompts of the old run are kept in [skill-icons-prompts-used.json](skill-icons-prompts-used.json).
+**Status (2026-11-14).** The 319 unique attack icons are complete in [skill-icons-attacks/](skill-icons-attacks/), generated as opaque 512 × 512 PNGs and visually reviewed at 64 × 64 px. [Download ZIP](everkin-unique-attack-icons.zip). The 84 class active icons are complete in [class-skill-icons/](class-skill-icons/), generated as 512 × 512 PNGs and visually reviewed at 64 × 64 px. `action-move.png` and `action-skip.png` are also final. The 47 old `attack-<type>.png` and `<profession>-<branch>.png` icons stand in until the new set exists and are deleted then (milestone M5.6). The prompts of the old run are kept in [skill-icons-prompts-used.json](skill-icons-prompts-used.json).
 
 ## Move and Skip Turn (final)
 
@@ -19,4 +19,4 @@ Every slot has its own icon (ui_spec): **84 class actives**, **319 unique attack
 |---|---|---|---|
 | Move, Skip Turn | 2 | this file (style block in the class file) | yes |
 | Class actives | 84 | [skill-icons-classes.md](skill-icons-classes.md) | yes |
-| Unique attacks | 319 | [skill-icons-attacks.md](skill-icons-attacks.md) | no |
+| Unique attacks | 319 | [skill-icons-attacks.md](skill-icons-attacks.md) | yes |
