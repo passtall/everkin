@@ -31,6 +31,7 @@ public static class Evaluator
             if (u.Side != side || u.IsKnockedOut) continue;
             var weight = original ? 100 : u.Kind == UnitKind.Construct ? level.ConstructPercent : level.SummonPercent;
             num += weight * (4L * u.Hp + u.MaxHp);
+            if (u.Kind == UnitKind.Construct) continue;                       // a construct's statuses count nothing either
             foreach (var s in u.StatusInstances.Values)
             {
                 var polarity = StatusRules.PolarityOf(s.Id);
@@ -39,7 +40,7 @@ public static class Evaluator
         }
         // Harmful statuses on the other side's units count for this side.
         foreach (var u in state.Units)
-            if (!u.IsRemoved && !u.IsKnockedOut && u.Side != side)
+            if (!u.IsRemoved && !u.IsKnockedOut && u.Side != side && u.Kind != UnitKind.Construct)
                 foreach (var s in u.StatusInstances.Values)
                     if (StatusRules.PolarityOf(s.Id) == Polarity.Harmful) statuses += Remaining(s, state);
         var share = den == 0 ? 0 : (int)(num * 10000 / den);
