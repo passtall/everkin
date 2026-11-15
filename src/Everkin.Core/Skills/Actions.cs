@@ -74,7 +74,7 @@ public static class Actions
                 var options = skill.Options with { Delivery = skill.Delivery };
                 if (!Targeting.IsLegalTarget(state, use.UserId, target, options)) return "not a legal target";
                 if (!skill.TargetFilter(state, use.UserId, target)) return "not a valid target for this skill";
-                return DistractedFrom(state, use.UserId, skill, target);
+                return null;
         }
     }
 
@@ -124,20 +124,7 @@ public static class Actions
         var skill = catalog.Get(skillId);
         if (skill.Target != TargetKind.Unit) return Array.Empty<int>();
         return Targeting.LegalTargets(state, userId, skill.Options with { Delivery = skill.Delivery })
-            .Where(id => skill.TargetFilter(state, userId, id) && DistractedFrom(state, userId, skill, id) is null).ToArray();
-    }
-
-    /// <summary>
-    /// Distract: for the Distracted unit's next attack that takes a target, the Guardian is the only legal target if it is a legal
-    /// target of that skill; otherwise nothing changes. Returns the reason a target is refused, or null.
-    /// </summary>
-    private static string? DistractedFrom(BattleState state, int userId, Skill skill, int targetId)
-    {
-        if (!skill.IsAttack || Statuses.Get(state.GetUnit(userId), StatusIds.Distracted)?.SourceUnitId is not { } guardian) return null;
-        if (guardian == targetId || state.GetUnit(guardian).IsKnockedOut) return null;
-        var options = skill.Options with { Delivery = skill.Delivery };
-        return Targeting.IsLegalTarget(state, userId, guardian, options) && skill.TargetFilter(state, userId, guardian)
-            ? "Distracted: must target the Guardian" : null;
+            .Where(id => skill.TargetFilter(state, userId, id)).ToArray();
     }
 
     /// <summary>
@@ -171,42 +158,29 @@ public static class Actions
         ScheduleNextTurn(state, use.UserId, Math.Clamp(skill.Delay + Statuses.ConsumeNextSkillDelay(state, use.UserId) - boundStrength - rhythm
             + state.SkillDelayModifiers.Sum(m => m(state, use.UserId, skill.Id)), 1, 10));
 
-        if (Statuses.Get(user, StatusIds.LieInWait) is { } lie)
-        {
-            // Lie in Wait: the Stun lands first and the skill is lost; its cost and Delay were paid (decided 2026-11-08).
-            Statuses.Remove(state, use.UserId, StatusIds.LieInWait, StatusEndCause.Consumed);
-            Statuses.Apply(state, new StatusApplication(use.UserId, StatusIds.Stunned, Duration: 10, SourceUnitId: lie.SourceUnitId));
-            if (lie.SourceUnitId is { } hunter) Stealth.Break(state, hunter, StealthCause.Attacked);
-            state.Emit(new SkillLost(use.UserId, use.SkillId));
-            Settle(state, lie.SourceUnitId);
-        }
-        else
-        {
-            if (skill.IsAttack && Statuses.Has(user, StatusIds.Distracted))
-                Statuses.Remove(state, use.UserId, StatusIds.Distracted, StatusEndCause.Consumed);   // it counted: this was its next attack
-            // The Sorcerer's enchantments on the user are used up by this skill: Phase Weapon and Piercing Enchant by an attack, Echo Enchant by any skill.
-            var phased = skill.IsAttack ? Statuses.Get(user, StatusIds.Phased) : null;
-            var piercing = skill.IsAttack ? Statuses.Get(user, StatusIds.Piercing) : null;
-            var echo = Statuses.Get(user, StatusIds.Echo);
-            foreach (var used in new[] { phased, piercing, echo })
-                if (used is not null) Statuses.ConsumeUse(state, use.UserId, used.Id);                 // Lingering Magic: two uses
+        // The Sorcerer's enchantments on the user are used up by this skill: Phase Weapon and Piercing Enchant by an attack, Echo Enchant by any skill.
+        var phased = skill.IsAttack ? Statuses.Get(user, StatusIds.Phased) : null;
+        var piercing = skill.IsAttack ? Statuses.Get(user, StatusIds.Piercing) : null;
+        var echo = Statuses.Get(user, StatusIds.Echo);
+        foreach (var used in new[] { phased, piercing, echo })
+            if (used is not null) Statuses.ConsumeUse(state, use.UserId, used.Id);                 // Lingering Magic: two uses
 
-            var context = new SkillContext(state, skill, use.UserId, use, target)
-            {
-                Catalog = catalog,
-                IgnoresInterception = phased is not null,   // Phase Weapon: this attack cannot be intercepted
-                PierceBehind = piercing is not null,
-            };
-            skill.Resolve(context);
-            AfterSkill(state, use.UserId, skill.Tags.HasFlag(EffectTags.Melee), skill.Tags.HasFlag(EffectTags.Move));
+        var context = new SkillContext(state, skill, use.UserId, use, target)
+        {
+            Catalog = catalog,
+            IgnoresInterception = phased is not null,   // Phase Weapon: this attack cannot be intercepted
+            PierceBehind = piercing is not null,
+        };
+        skill.Resolve(context);
+        AfterSkill(state, use.UserId, skill.Tags.HasFlag(EffectTags.Melee), skill.Tags.HasFlag(EffectTags.Move));
 
-            // Echo Enchant: the skill happens a second time at the same target, free (no Delay, no Momentum). Skills that place something do not echo.
-            if (echo is not null && CanEcho(state, skill, use, target))
-            {
-                state.Emit(new SkillUsed(use.UserId, use.SkillId, target));
-                skill.Resolve(new SkillContext(state, skill, use.UserId, use, target) { IgnoresInterception = context.IgnoresInterception, Catalog = catalog });
-            }
+        // Echo Enchant: the skill happens a second time at the same target, free (no Delay, no Momentum). Skills that place something do not echo.
+        if (echo is not null && CanEcho(state, skill, use, target))
+        {
+            state.Emit(new SkillUsed(use.UserId, use.SkillId, target));
+            skill.Resolve(new SkillContext(state, skill, use.UserId, use, target) { IgnoresInterception = context.IgnoresInterception, Catalog = catalog });
         }
+    
         user.LastActionIndex = state.ActionCounter;
         user.LastSkillId = skill.Id;
         if (skill.Id != "lift_a_skill") user.LastActiveSkillId = skill.Id;          // Lift a Skill is never copied

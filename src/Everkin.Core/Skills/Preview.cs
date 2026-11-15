@@ -74,11 +74,7 @@ public static class Preview
                 interceptors.Add(new InterceptorPreview(defender, Interception.ChanceFor(state.Formation.UnitOverlapPercent(defender, target), delivery)));
 
         var success = 100;
-        if (skill.IsAttack)
-        {
-            success -= Statuses.AttackMissChance(user) * success / 100;
-            if (use.TargetUnitId is { } t && Statuses.Has(state.GetUnit(t), StatusIds.Sidestep)) success = 0;
-        }
+        if (skill.IsAttack) success -= Statuses.AttackMissChance(user) * success / 100;
 
         var cost = Actions.CostOf(state, use.UserId, skill);
         var after = low.OfType<MomentumChanged>().FirstOrDefault(m => m.Cause == MomentumCause.Cost)?.After ?? state.Momentum.Value;

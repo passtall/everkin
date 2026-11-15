@@ -719,13 +719,6 @@ public sealed class BattleState
     {
         var target = GetUnit(targetId);
         if (target.IsKnockedOut) throw new InvalidOperationException($"Unit {targetId} is KO and cannot take damage.");
-        if (Statuses.Has(target, StatusIds.StoneShell))
-        {
-            // Stone Shell: the unit cannot be damaged. Nothing reaches the shield or HP.
-            var none = new DamageResult(amount, 0, 0, target.Ward);
-            Emit(new DamageDealt(sourceUnitId, targetId, source, none, target.Hp));
-            return none;
-        }
         if (!secondary && source == DamageSource.Hit && Statuses.Has(target, StatusIds.GlassBody))
         {
             // Glass Body: the next hit on the unit deals 50% more (double with Brittle Glass: the status magnitude is the bonus in percent), then the status is used up.
@@ -794,12 +787,6 @@ public sealed class BattleState
             foreach (var hook in _wardHitHooks.ToArray()) hook(this, sourceUnitId, targetId, result.AbsorbedByWard);
         if (result.AbsorbedByWard > 0 && target.Ward == 0) Statuses.Remove(this, targetId, StatusIds.Ward, StatusEndCause.Broken);
 
-        // Linked Fates / Shared Fate: the linked unit loses half of the HP this unit lost, unreducibly, and that never echoes again.
-        if (!secondary && result.HpLost >= 2 && Statuses.Get(target, StatusIds.FateLink) is { } link)
-        {
-            var other = GetUnit(link.Magnitude);
-            if (!other.IsKnockedOut && !other.IsRemoved) DealDamageCore(sourceUnitId, other.Id, result.HpLost / 2, DamageSource.Unreducible, secondary: true);
-        }
         return result;
     }
 
@@ -842,12 +829,6 @@ public sealed class BattleState
         }
         Emit(new Healed(sourceUnitId, targetId, healed, target.Hp));
 
-        // Life Link: healing on one also heals the other for half (no further link from that second heal).
-        if (allowLink && healed > 0 && Statuses.Get(target, StatusIds.LifeLink) is { } link)
-        {
-            var partner = GetUnit(link.Magnitude);
-            if (!partner.IsKnockedOut && !partner.IsRemoved) HealCore(sourceUnitId, partner.Id, Math.Max(1, healed / 2), allowLink: false);
-        }
         return healed;
     }
 

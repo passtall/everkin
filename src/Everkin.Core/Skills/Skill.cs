@@ -221,7 +221,7 @@ public sealed class SkillContext
 
         if (_skill.IsArea)
         {
-            // An area effect that would hit a protected unit hits its protector instead, once (Pledge).
+            // An area effect that would hit a protected unit hits its protector instead, once.
             var redirected = new List<HitSpec>();
             foreach (var spec in hits)
             {
@@ -284,13 +284,6 @@ public sealed class SkillContext
             && State.Ground.Has(State.Ground.SpotOf(UserId), GroundKind.Water) && State.Ground.Affected(State.Ground.SpotOf(UserId)).Contains(UserId))
             rolled = Math.Max(1, rolled / 2);
 
-        // Sidestep: the next attack on the unit misses and the status is spent.
-        if (_skill.IsAttack && Statuses.Has(target, StatusIds.Sidestep))
-        {
-            Statuses.Remove(State, spec.TargetId, StatusIds.Sidestep, StatusEndCause.Consumed);
-            return Missed(spec, rolled);
-        }
-
         // Blind: all of the unit's attacks have a 50% chance to miss.
         var miss = Statuses.AttackMissChance(User);
         if (miss > 0 && State.Random.Chance(miss)) return Missed(spec, rolled);
@@ -316,7 +309,7 @@ public sealed class SkillContext
             if (!friendly) foreach (var hook in State.TargetHitHooks.ToArray()) hook(State, UserId, spec.TargetId);
             WasHit(spec.TargetId, triggers, tags);
             outcome = friendly ? HitOutcome.OnActingSide
-                : result.FullyAbsorbed || Statuses.Has(target, StatusIds.StoneShell) ? HitOutcome.FullyAbsorbed   // Stone Shell takes nothing, like a full shield
+                : result.FullyAbsorbed ? HitOutcome.FullyAbsorbed
                 : HitOutcome.Landed;
         }
         else if (friendly && !interception.Intercepted) outcome = HitOutcome.OnActingSide;

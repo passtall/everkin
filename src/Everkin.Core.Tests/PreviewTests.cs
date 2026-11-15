@@ -106,14 +106,12 @@ public class PreviewTests
     }
 
     [Fact]
-    public void TheSuccessChanceFallsWithBlindAndIsZeroAgainstSidestep()
+    public void TheSuccessChanceFallsWithBlind()
     {
         var s = Board(1, out var a, out var t, "tail_club");
         Assert.Equal(100, Preview.Skill(s, World.Catalog, Use(a, "tail_club", t)).SuccessChance);
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Blind, Duration: 20));
         Assert.Equal(50, Preview.Skill(s, World.Catalog, Use(a, "tail_club", t)).SuccessChance);
-        Statuses.Apply(s, new StatusApplication(t, StatusIds.Sidestep));
-        Assert.Equal(0, Preview.Skill(s, World.Catalog, Use(a, "tail_club", t)).SuccessChance);
     }
 
     [Fact]
