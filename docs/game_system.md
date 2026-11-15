@@ -497,7 +497,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 
 ### 10.5 Statuses
 
-**What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth) and harmful ones (the named statuses, curses and hexes) are told apart for cleansing and stealing.
+**What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth, Press the Advantage) and harmful ones (the named statuses, curses, hexes and Glass Body) are told apart for cleansing and stealing. Transmute, Single Combat, the Leap to Defend guard and airborne are neither: nothing cleanses, dispels or steals them.
 
 - **Durations** run in time units on the battle clock (section 6.1), whatever the unit does. Exceptions: effects that last "until the caster's next turn" (Ward, Shield Dome; they also end when the caster is KO), Frozen (skips turns) and Bleeding (counts skills).
 - **One instance per status.** Reapplying refreshes it with the new duration, even if shorter. There is no stacking. A new Stun on a Stunned unit keeps whichever time is longer.
@@ -508,6 +508,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 - **Chances.** A stated chance is the real chance; no stat lowers it.
 - **Immunities** come only from skills and keystones (Sanctity, War Drums, Spell Ward, Unstoppable, Steadfast Ward, Eye of the Storm). Creatures have none of their own. Every status applies to summons, constructs and totems unless their skill says otherwise.
 - **Cleansing** can remove any status unless the status says it cannot.
+- **Stealing** (Snatch and every attack that steals) moves a helpful status to the stealer with its remaining time; the seeded roll picks which. Stealth cannot be stolen. A steal happens only if the hit reaches the target itself (landed or absorbed by a Ward, not taken by an interceptor).
 - **New statuses** join the table only when a skill or attack needs one.
 
 | Status | Effect | Duration |

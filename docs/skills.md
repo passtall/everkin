@@ -263,11 +263,11 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Lift a Skill | A | 6 / 3 | Direct | Use a copy of the last active skill the target used, with the Thief's own Power. |
 | Snatch | A | 4 / 0 | Melee | Hit for 5–6 and steal one helpful status from the target. |
 | Escape Artist | K | | | The first time the Thief drops below half HP, it gains stealth. |
-| Master Thief | K | | | Snatch steals every helpful status from the target, not just one. |
+| Master Thief | K | | | Snatch and the Thief's own attack steal every helpful status from the target, not just one. |
 | Shadow Purse | K | | | Each time the Thief steals a status, Momentum moves 1 toward your side. |
 
 - **Lift a Skill:** the player picks any unit, ally or enemy, and, if the copy needs a target, a legal target. The copy is free and uses the Thief's Power. Any skill used with a turn action counts, unique attacks included; Move, Skip Turn, keystones and Lift a Skill itself never do. Only copies that need no target or one unit target are possible. A magical copy cannot be made while the Thief is Silenced. A melee copy follows the Front-row rule.
-- **Stealing:** a stolen status moves to the Thief with its remaining time; the seeded roll picks which. Stealth cannot be stolen. Snatch steals only if its hit reaches the target itself (landed or absorbed by a Ward, not taken by an interceptor).
+- **Stealing** follows game_system §10.5. Shadow Purse counts every steal by the Thief, its own attack included.
 
 ## Saboteur
 
