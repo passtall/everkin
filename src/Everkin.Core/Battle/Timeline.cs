@@ -163,6 +163,14 @@ public sealed class Timeline
     /// Puts an auto event on the timeline due in the current time unit, behind the entries already there (turret shots that resolve
     /// right after the Tinker's action). The only entry that may have no Wait.
     /// </summary>
+    /// <summary>A unit's turn due right now (Quickening: a summon takes its first turn at once).</summary>
+    public TimelineEntry AddTurnNow(int unitId)
+    {
+        var entry = new TimelineEntry(_nextId++, TimelineKind.UnitTurn, Now, _nextOrder++, unitId, null, false, 0);
+        _entries.Add(entry);
+        return entry;
+    }
+
     public TimelineEntry AddNow(int ownerUnitId, string tag)
     {
         var entry = new TimelineEntry(_nextId++, TimelineKind.AutoEvent, Now, _nextOrder++, ownerUnitId, tag, false, 0);

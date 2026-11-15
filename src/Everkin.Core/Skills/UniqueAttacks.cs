@@ -45,10 +45,15 @@ public sealed class UniqueAttackSkill : Skill
     public override bool TargetFilter(BattleState state, int userId, int targetId) =>
         _def.Delivery != "direct" || Targeting.EnemiesInMeleeReach(state, userId).Contains(targetId);
 
-    public override void Resolve(SkillContext context)
+    public override void Resolve(SkillContext context) => ResolveShape(context, context.TargetId, pulseAsSingle: false);
+
+    /// <summary>The hit on one chosen unit with the attack's damage and extra, a pulse counting as a single hit (Puppet Soul: a unit hits a unit next to it).</summary>
+    public void ResolveOn(SkillContext context, int target) => ResolveShape(context, target, pulseAsSingle: true);
+
+    private void ResolveShape(SkillContext context, int? chosen, bool pulseAsSingle)
     {
         IReadOnlyList<SkillContext.HitReport> reports;
-        switch (_def.Shape)
+        switch (pulseAsSingle && _def.Shape == "pulse" ? "single" : _def.Shape)
         {
             case "pulse":
                 reports = context.HitBlock(Targeting.EnemiesInMeleeReach(context.State, context.UserId)
@@ -56,7 +61,7 @@ public sealed class UniqueAttackSkill : Skill
                 break;
             case "splash":
             {
-                var target = context.TargetId!.Value;
+                var target = chosen!.Value;
                 var hits = new List<SkillContext.HitSpec> { new(target, new IntRange(_def.Min, _def.Max)) };
                 foreach (var id in AreaPatterns.Circular(context.State, target).Skip(1))
                     hits.Add(new SkillContext.HitSpec(id, new IntRange(_def.SplashMin, _def.SplashMax)));
@@ -64,7 +69,7 @@ public sealed class UniqueAttackSkill : Skill
                 break;
             }
             default:
-                reports = new[] { context.Hit(context.TargetId!.Value, new IntRange(_def.Min, _def.Max)) };
+                reports = new[] { context.Hit(chosen!.Value, new IntRange(_def.Min, _def.Max)) };
                 break;
         }
 

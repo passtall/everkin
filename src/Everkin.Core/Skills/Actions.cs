@@ -82,7 +82,7 @@ public static class Actions
     /// Whether a unit can make a free attack right now (Coordinated Strike, Puppet Soul): it stands, the skill is not blocked by Silenced, the target is a legal
     /// target of it (melee needs the Front row and a target that is not airborne; melee reach needs the target in the enemy Front row) and its own requirements hold.
     /// </summary>
-    public static bool CanUseFree(BattleState state, SkillCatalog catalog, SkillUse use, bool anyRow = false)
+    public static bool CanUseFree(BattleState state, SkillCatalog catalog, SkillUse use, bool anyRow = false, bool anySide = false)
     {
         if (state.IsOver || use.UserId < 0 || use.UserId >= state.Units.Count || !catalog.TryGet(use.SkillId, out var skill)) return false;
         var user = state.GetUnit(use.UserId);
@@ -93,6 +93,7 @@ public static class Actions
             return skill is not UniqueAttackSkill || (use.TargetUnitId is { } t && Targeting.EnemiesInMeleeReach(state, use.UserId).Contains(t));
         if (use.TargetUnitId is not { } target || target < 0 || target >= state.Units.Count) return false;
         var options = skill.Options with { Delivery = skill.Delivery, AnyRow = anyRow };
+        if (anySide) options = options with { Side = TargetSide.Any };
         if (!Targeting.IsLegalTarget(state, use.UserId, target, options) || !skill.TargetFilter(state, use.UserId, target)) return false;
         return !(skill.NeedsFrontRow && !anyRow && !Targeting.InFrontRow(state, use.UserId));
     }

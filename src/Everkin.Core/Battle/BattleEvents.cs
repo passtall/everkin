@@ -113,6 +113,9 @@ public enum RemovalCause
     /// <summary>A temporary unit's time ran out. It is not a KO: no KO-triggered effects fire.</summary>
     Expired,
 
+    /// <summary>A new summon replaced it (Golem Heart, Great Totem): it did not break.</summary>
+    Replaced,
+
     /// <summary>Its summoner was KO'd and its skill says it disappears with it.</summary>
     SummonerGone,
 }

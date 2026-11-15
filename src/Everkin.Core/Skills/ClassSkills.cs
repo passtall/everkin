@@ -69,7 +69,13 @@ public static class ClassSkills
             .Concat(ThiefSkills.All(content))
             .Concat(SaboteurSkills.All(content))
             .Concat(EngineerSkills.All(content))
-            .Concat(ChemistSkills.All(content));
+            .Concat(ChemistSkills.All(content))
+            .Concat(SkyborneSkills.All(content))
+            .Concat(SpiritwalkerSkills.All(content))
+            .Concat(RitualistSkills.All(content))
+            .Concat(NecromancerSkills.All(content))
+            .Concat(SummonerSkills.All(content))
+            .Concat(TotemistSkills.All(content));
 }
 
 /// <summary>Small helpers the class skills share.</summary>

@@ -291,6 +291,8 @@ public sealed class BattleState
     private readonly CowList<DamageSharing> _damageSharings = new();
     private readonly CowList<LethalGuard> _lethalGuards = new();
     private readonly CowList<LethalSave> _lethalSaves = new();
+    private readonly CowList<TurnStartHook> _turnStartHooks = new();
+    private readonly CowList<RemovalHook> _removalHooks = new();
     private readonly CowList<StealHook> _stealHooks = new();
     private readonly CowList<AfterDamageHook> _afterDamageHooks = new();
     private readonly CowList<StatusRemovalVeto> _removalVetoes = new();
@@ -355,6 +357,9 @@ public sealed class BattleState
         _damageSharings = other._damageSharings.Share();
         _lethalGuards = other._lethalGuards.Share();
         _lethalSaves = other._lethalSaves.Share();
+        _turnStartHooks = other._turnStartHooks.Share();
+        _removalHooks = other._removalHooks.Share();
+        PuppeteerId = other.PuppeteerId;
         _stealHooks = other._stealHooks.Share();
         _afterDamageHooks = other._afterDamageHooks.Share();
         _removalVetoes = other._removalVetoes.Share();
@@ -500,6 +505,15 @@ public sealed class BattleState
 
     public IReadOnlyList<LethalSave> LethalSaves => _lethalSaves;
     public void AddLethalSave(LethalSave hook) => _lethalSaves.Add(hook);
+
+    public IReadOnlyList<TurnStartHook> TurnStartHooks => _turnStartHooks;
+    public void AddTurnStartHook(TurnStartHook hook) => _turnStartHooks.Add(hook);
+
+    public IReadOnlyList<RemovalHook> RemovalHooks => _removalHooks;
+    public void AddRemovalHook(RemovalHook hook) => _removalHooks.Add(hook);
+
+    /// <summary>The Spiritwalker whose Puppet Soul hit is being resolved right now (Puppeteer doubles its damage), or null.</summary>
+    public int? PuppeteerId { get; set; }
 
     public IReadOnlyList<StealHook> StealHooks => _stealHooks;
     public void AddStealHook(StealHook hook) => _stealHooks.Add(hook);
@@ -660,7 +674,10 @@ public sealed class BattleState
     public int PowerOf(int unitId)
     {
         var unit = GetUnit(unitId);
-        return unit.IsSummoned && unit.SummonerId is { } summoner ? PowerOf(summoner) : unit.EffectivePower;
+        // Summons and raised undead use their summoner's current Power; Lich Form gives the Necromancer's undead +2 (game_system.md sections 5.2, 11.5).
+        if ((unit.IsSummoned || unit.IsUndead) && unit.SummonerId is { } summoner)
+            return PowerOf(summoner) + (unit.IsUndead && GetUnit(summoner).KnownSkills.Contains("lich_form") ? 2 : 0);
+        return unit.EffectivePower;
     }
 
     /// <summary>Adds a unit with the stats of a roster creature at full HP.</summary>

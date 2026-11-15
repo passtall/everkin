@@ -55,7 +55,7 @@ public static class BattleDriver
                         AutonomousTurns.Play(state, catalog, unitId);      // summons and undead play themselves
                         break;
                     }
-                    unit.SneakReady = true;
+                    foreach (var hook in state.TurnStartHooks.ToArray()) hook(state, unitId);
                     return unitId;
 
                 case TimelineKind.AutoEvent:

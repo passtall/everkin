@@ -62,9 +62,12 @@ public sealed class LiftASkill : ClassSkill
 
     public override void Resolve(SkillContext context)
     {
-        var copy = Copied(context.State, context.Catalog!, context.TargetId!.Value)!;
+        // Confusion may have aimed the skill at another unit than the one that was checked: then there may be nothing to copy (the skill is spent).
+        if (Copied(context.State, context.Catalog!, context.TargetId!.Value) is not { } copy) { context.Settle(); return; }
         var second = copy.Target == TargetKind.Unit ? context.SecondTargetId : null;
-        Actions.UseFree(context.State, context.Catalog!, new SkillUse(context.UserId, copy.Id, second));
+        var use = new SkillUse(context.UserId, copy.Id, second);
+        if (copy.Target == TargetKind.Unit && second is null || !Actions.CanUseFree(context.State, context.Catalog!, use)) { context.Settle(); return; }
+        Actions.UseFree(context.State, context.Catalog!, use);
     }
 }
 

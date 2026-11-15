@@ -139,3 +139,9 @@ public delegate bool StatusRemovalVeto(BattleState state, int unitId, StatusInst
 
 /// <summary>A unit stole statuses (Snatch, an attack that steals): who stole, from whom and how many (Shadow Purse).</summary>
 public delegate void StealHook(BattleState state, int thiefId, int fromId, int count);
+
+/// <summary>A unit's turn has just started and it will act (Bone Armor renews its Ward).</summary>
+public delegate void TurnStartHook(BattleState state, int unitId);
+
+/// <summary>A summon or construct left the board for good, with the position it had (Spirit Shield: a totem broke).</summary>
+public delegate void RemovalHook(BattleState state, int unitId, RemovalCause cause, Position from);

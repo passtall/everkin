@@ -107,6 +107,7 @@ public static class Summons
         unit.KoProcessed = true;
         unit.Hp = 0;
         state.Emit(new UnitRemoved(unitId, cause, from));
+        foreach (var hook in state.RemovalHooks.ToArray()) hook(state, unitId, cause, from);
     }
 }
 
