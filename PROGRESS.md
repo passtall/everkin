@@ -32,6 +32,7 @@ None open. All earlier questions are answered and written into the docs. Code th
 - Haste and Slow statuses go: the only Speed change is Song of Haste, a helpful song.
 - Status polarity, stealing and Master Thief (§10.5, skills.md Thief): Glass Body harmful, Press the Advantage helpful, Transmute, Single Combat, the Leap to Defend guard and airborne neither; every steal follows the Snatch rule; Shadow Purse counts attack steals; Master Thief also covers the Thief's own attack.
 - Unique attacks are data parsed from their effect text; class skill numbers stay in code (production §2.1).
+- Skill rulings from the M5.6 dry run (skills.md, game_system §5.2, §6.7): keystone numbers scale with the owner's Power; free attacks inside a skill each shift Momentum; Ward Burst is unscaled and a hit; Raise Undead has no Power of its own; Mirror Form trades both values; Execution only targets a Marked unit below 25%; Coordinated Strike picks allies other than the Tactician, golems and blades included; Relentless Marks still move; song reach is fixed at cast; Bone Armor is one Ward of 2 per undead; ground-effect statuses can be turned back onto the placer; Life for Life needs at least 1 HP to give; Spreading Curse keeps the remaining time; Chaos Agent counts attacks only; Advance cannot pick the Front row; Regrowth is helpful.
 - AI test run: 10,000 battles at the harness level (§2.5). The summon flood (18 Animate Blades) and the draws at the 500-turn cap are balance findings for the report, not AI fixes.
 
 ## Notes

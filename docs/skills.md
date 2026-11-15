@@ -8,7 +8,7 @@ Every active skill and keystone of the 28 classes in [class_system.md](class_sys
 - **D / M:** Delay (1 is quickest) and Momentum cost.
 - **Delivery:** `Melee` or `Projectile` (both can be intercepted) or `Direct` (cannot). **—** means the skill takes no target. A melee skill can be used only while its user stands in its own Front row (game_system §8.1).
 - **Melee reach** in a text means every enemy in the enemy's Front row; the user must stand in its own Front row, whatever the delivery (game_system §8.1).
-- **Numbers** are written for Power 5. Every damage, healing and Ward number is multiplied by the user's Power ÷ 5, rounded down, minimum 1 (game_system §5.2). Rule numbers (bump, Bleeding, Poisoned and ground damage) do not scale. Durations are in time units; 10 is about one turn.
+- **Numbers** are written for Power 5. Every damage, healing and Ward number of a skill or keystone is multiplied by the user's (or keystone owner's) Power ÷ 5, rounded down, minimum 1 (game_system §5.2). Rule numbers (bump, Bleeding, Poisoned and ground damage) do not scale. Durations are in time units; 10 is about one turn.
 - **Targets:** a targeted skill works on any legal unit on either side; "own side only" marks the exceptions. No skill targets an empty spot: ground effects go on a unit's spot or on a row (game_system §8.1).
 - **Magical:** the actives of the magical classes and the Bard's songs (class_system §2) are magical; everything else is physical.
 
@@ -37,7 +37,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Relentless | K | | | The Tracker's Marks have no time limit: they last until their target is KO and cannot be removed. |
 
 - A skill that reads a Mark (Hunter's Shot, the Champion's skills) works on any Marked unit, whoever placed the Mark (game_system §10.5).
-- **One Mark per Tracker:** any new Mark from the Tracker, from Target, Sniff the Air or Scent of Blood, removes its earlier Mark.
+- **One Mark per Tracker:** any new Mark from the Tracker, from Target, Sniff the Air or Scent of Blood, removes its earlier Mark, also with Relentless (Relentless only stops the time limit and removal by others).
 
 ## Bulwark
 
@@ -64,6 +64,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Twin Wards | K | | | Ward also gives the same Ward to one ally next to the target. |
 | Steadfast Ward | K | | | While a unit has a Ward from the Keeper, it cannot be Stunned or moved by enemies. |
 
+- **Ward Burst** deals the Ward's remaining value as it is (already scaled when cast, not scaled again). Each is a hit: it breaks stealth and moves Momentum.
+
 ## Mender
 
 | Skill | Kind | D / M | Delivery | Effect |
@@ -87,7 +89,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Judgment | K | | | Each status the Cleric's Dispel removes deals 4 to that unit. |
 
 - **Purifying Aura** works while an ally stands next to the Cleric: the time of its harmful statuses runs down twice as fast there.
-- **Turn Back:** if the unit has several harmful statuses whose applier is still standing, the seeded roll picks one, each with equal chance.
+- **Turn Back:** if the unit has several harmful statuses whose applier is still standing, the seeded roll picks one, each with equal chance. For a status from a ground effect, the unit that placed the effect is the applier.
 
 ## Lifebinder
 
@@ -99,6 +101,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Martyr | K | | | When the Lifebinder is KO, every ally heals 6–8. |
 | Phoenix | K | | | Life for Life costs only a quarter of the Lifebinder's current HP. |
 | Lifeblood | K | | | When an ally is KO, the Lifebinder heals 5. |
+
+- **Life for Life** gives half (Phoenix: a quarter) of the Lifebinder's current HP, rounded down. It can be used only if that is at least 1.
 
 ## Enchanter
 
@@ -122,7 +126,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Petrify | A | 7 / 4 | Direct | A unit turns to stone: it is Stunned for 10. |
 | Lasting Change | K | | | Transmute lasts until the end of battle, but only one unit can be transmuted by the Transmuter at a time. |
 | Brittle Glass | K | | | Glass Body makes the next hit deal double instead of 50% more. |
-| Mirror Form | K | | | Transmute can instead swap Power and Speed between two units. |
+| Mirror Form | K | | | Transmute can instead make two units trade their Power and Speed: each takes the other's Power and the other's Speed. |
 
 ## Hexer
 
@@ -136,6 +140,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Spreading Curse | K | | | When a cursed unit is KO, its curse jumps to the nearest enemy. |
 
 - **Curses** are Curse of Betrayal, Curse of Weight and Withering Curse; Witch's Patience and Spreading Curse cover all three. With Witch's Patience a new curse removes the Hexer's earlier one (on any unit).
+- **Spreading Curse:** the curse keeps its remaining time.
 - **Curse of Betrayal:** ties for lowest HP go to the seeded roll. If the Hexer's side has no unit that can be healed, the cursed unit is healed as usual.
 
 ## Pyromancer
@@ -208,7 +213,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Glory | K | | | When the Champion KOs its Marked unit, it heals a quarter of its max HP. |
 
 - **Single Combat:** no other unit can target either duellist (helpful skills included); each may still target itself and others. It ends if either is KO.
-- **Execution** cannot be intercepted and ignores Wards: the unit's HP goes to 0.
+- **Execution** can only target a Marked unit below 25% HP. It cannot be intercepted and ignores Wards: the unit's HP goes to 0.
 - **Hunt Down** reacts to any movement of a Marked enemy, its own Move included, whoever marked it.
 
 ## Tactician
@@ -224,7 +229,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 - **Swap Turns:** the two allies exchange the due times (and tie order) of their next turns.
 - **Press the Advantage** has no time limit; the unit's next skill costs 0 Momentum and needs no lead.
-- **Coordinated Strike:** the two allies are picked at random among those whose attack can hit the enemy now (a melee attack needs the ally in its Front row and a target that is not airborne). If only one can, only it attacks; if none can, nothing happens. The attacks are free.
+- **Coordinated Strike:** the two allies are picked at random among the Tactician's allies (not the Tactician itself) whose attack can hit the enemy now; undead use their unique attack, golems and blades their own hit (a melee attack needs the ally in its Front row and a target that is not airborne). If only one can, only it attacks; if none can, nothing happens. The attacks are free.
 - **All In** halves the cost of every skill of the Tactician, including the lead it needs.
 
 ## Commander
@@ -239,6 +244,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Vanguard | K | | | An ally the Commander moves into the Front row gains a Ward of 3. |
 
 - **Rotation** turns the three rows: Front to Middle, Middle to Rear, Rear to Front. KO bodies, Immobilized units and units immune to being moved stay. Movers keep their left-to-right order and coordinates and are placed among the units that stayed. If a row would hold more than 6 units, nothing moves.
+- **Advance** cannot pick the Front row.
 - **Drill** also applies to the Commander when its own skill moves it.
 
 ## Bard
@@ -252,7 +258,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Rhythm | K | | | When an ally uses the same skill twice in a row, the second use has 1 less Delay. |
 | Crescendo | K | | | The Bard's songs last 10 longer. |
 
-- **Songs** are magical. Song of Haste and War Drums count the Bard as an ally and last 20; casting one again restarts it. The same song from several Bards does not add up: the strongest applies. Lullaby is instant, so Crescendo and the one-song limit of Grand Chorus do not touch it.
+- **Songs** are magical. Song of Haste and War Drums count the Bard as an ally and last 20; casting one again restarts it. The same song from several Bards does not add up: the strongest applies. Lullaby is instant, so Crescendo and the one-song limit of Grand Chorus do not touch it. Who a song reaches is fixed when it is cast: a unit that leaves keeps it, a unit that arrives does not get it.
 - **Rhythm:** a Move or Skip Turn between the two uses breaks the streak.
 
 ## Thief
@@ -281,6 +287,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Disarm Trap | K | | | The Saboteur sets off enemy traps without taking their effect. |
 
 - **Jam:** an interceptor takes the Delay instead.
+- **Chaos Agent** counts only attacks, skills that deal damage (game_system §4.7); Flash Powder and Jam do not.
 - **Disarm Trap:** when the Saboteur hits an enemy trap, the trap goes off and is removed, but its effect does not reach the Saboteur.
 
 ## Engineer
@@ -314,7 +321,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Raise Undead | A | 8 / 4 | Direct | Turn a KO'd body of either side into an undead of yours (HP 12, Power 4), and raise one more random body. |
+| Raise Undead | A | 8 / 4 | Direct | Turn a KO'd body of either side into an undead of yours (HP 12), and raise one more random body. |
 | Corpse Explosion | A | 5 / 2 | Direct | A body or an undead of the Necromancer bursts into poison gas on its spot and the spots next to it. |
 | Desecrate | A | 5 / 2 | Direct | A KO'd body cannot be revived for 40. |
 | Lich Form | K | | | Healing hurts the Necromancer, but its undead have +2 Power. |
@@ -323,6 +330,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 - **Raise Undead:** the player picks the body and a free spot on your side for it. The second body is picked by the seeded roll among the remaining KO bodies of either side and goes on a random free spot; it is skipped when there is no body or no room. Undead follow game_system §11.5.
 - **Corpse Explosion:** "the spots next to" are as in game_system §12.2. The body or undead stays where it is and takes no damage.
+- **Bone Armor:** one Ward of 2 per undead (3 undead: a Ward of 6), reset to that amount at each of the Necromancer's turns.
 - **Desecrate** blocks every revive (Life for Life, Bound Resurrect, restoring an undead); Raise Undead still works.
 
 ## Summoner

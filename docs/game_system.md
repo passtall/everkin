@@ -185,7 +185,7 @@ There is no Defense, accuracy, evasion, critical hit, mana, resistance or healin
 
 ### 5.2 Damage and healing
 
-**Scaling.** skills.md and creature-classes.md write every number for **Power 5**. Every damage, healing and Ward number of a skill is multiplied by its user's **Power ÷ 5**, rounded down, minimum 1; a range scales at both ends (4–5 at Power 3 is 2–3). Internally each number is a hidden coefficient (hit for 5–6 at Power 5 is 100–120%). A skill may scale from something else only if its text says so. Summons and constructs scale with their summoner's current Power; their HP and Speed are fixed. Rule numbers never scale: bump damage, Bleeding, Poisoned, ground-effect damage and the poison explosion.
+**Scaling.** skills.md and creature-classes.md write every number for **Power 5**. Every damage, healing and Ward number of a skill or keystone is multiplied by its user's (for a keystone, its owner's) **Power ÷ 5**, rounded down, minimum 1; a range scales at both ends (4–5 at Power 3 is 2–3). Internally each number is a hidden coefficient (hit for 5–6 at Power 5 is 100–120%). A skill may scale from something else only if its text says so. Summons and constructs scale with their summoner's current Power; their HP and Speed are fixed. Rule numbers never scale: bump damage, Bleeding, Poisoned, ground-effect damage and the poison explosion.
 
 **Rolls.** Damage and healing are rolled **uniformly** as a whole number within the range; the displayed range already includes the user's modifiers and is rounded down. There are no critical hits. When a skill or attack hits several units, its damage and every chance are rolled separately for each unit, unless the skill says otherwise.
 
@@ -315,6 +315,7 @@ Reactions are effects, not turns; they change the timeline only when they say so
 - Skills that deal no damage, healing, Move and Skip Turn move it 0, even when they land something harmful.
 - Status ticks and ground damage move it 0. Bump damage moves it 0.
 - **One shift per action:** a multi-hit or area action moves it 1 toward its side if any hit lands, otherwise 1 against if it missed, and 0 if everything was intercepted, unless the skill says otherwise.
+- **Free attacks inside a skill** (Coordinated Strike's two attacks, Puppet Soul's hit, Echo Enchant's second use, Lift a Skill's copy) each move Momentum like a separate action, as turret shots do.
 - Reactions and counters follow the same rules. Each **auto event** shifts the meter when it resolves, like a separate action (each turret shot shifts it).
 - Several shifts in one simultaneous block apply one by one in event order, clamped after each.
 - The meter clamps at −10 and +10; excess is lost. There is no snowball safeguard for now.
@@ -501,7 +502,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 
 ### 10.5 Statuses
 
-**What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth, Press the Advantage) and harmful ones (the named statuses, curses, hexes and Glass Body) are told apart for cleansing and stealing. Transmute, Single Combat, the Leap to Defend guard and airborne are neither: nothing cleanses, dispels or steals them.
+**What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth, Press the Advantage, Regrowth) and harmful ones (the named statuses, curses, hexes and Glass Body) are told apart for cleansing and stealing. Transmute, Single Combat, the Leap to Defend guard and airborne are neither: nothing cleanses, dispels or steals them.
 
 - **Durations** run in time units on the battle clock (section 6.1), whatever the unit does. Exceptions: effects that last "until the caster's next turn" (Ward, Shield Dome; they also end when the caster is KO), Frozen (skips turns) and Bleeding (counts skills).
 - **One instance per status.** Reapplying refreshes it with the new duration, even if shorter. There is no stacking. A new Stun on a Stunned unit keeps whichever time is longer.
