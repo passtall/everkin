@@ -262,28 +262,33 @@ public class StealthTests
     }
 
     [Fact]
-    public void ASidesLastVisibleUnitCannotHideItself()
+    public void ASidesLastVisibleUnitCanHideItself()
     {
-        // 20.5: not legal, so a side never has zero visible units through its own stealth.
+        // 20.5: a side's last visible unit uses Vanish: it works; the enemy can still hit it with areas and melee reach.
         var s = new BattleState(1);
         var alone = Place.Unit(s, Side.A, Row.Front);
-        Assert.False(Stealth.CanGain(s, alone));
-        Assert.Throws<InvalidOperationException>(() => Stealth.Gain(s, alone));
-
-        var other = Place.Unit(s, Side.A, Row.Middle);
-        s.GetUnit(other).IsStealthed = true;
-        Assert.False(Stealth.CanGain(s, alone)); // the only other unit is already hidden
+        Assert.True(Stealth.CanGain(s, alone));
+        Stealth.Gain(s, alone);
+        Assert.True(s.GetUnit(alone).IsStealthed);
+        Assert.Contains(alone, AreaPatterns.Row(s, Side.A, Row.Front));
     }
 
     [Fact]
-    public void KoBodiesAndTheOtherSideDoNotCountAsVisibleUnits()
+    public void StealthLastsFortyTimeUnitsUnlessBrokenFirst()
     {
         var s = new BattleState(1);
         var a = Place.Unit(s, Side.A, Row.Front);
-        var body = Place.Unit(s, Side.A, Row.Front);
-        Place.Unit(s, Side.B, Row.Front);
-        s.GetUnit(body).Hp = 0;
-        Assert.False(Stealth.CanGain(s, a));
+        Stealth.Gain(s, a);
+        var marker = s.Timeline.Find(s.GetUnit(a).StealthMarkerId!.Value)!;
+        Assert.Equal(40, s.Timeline.Remaining(marker));
+        while (s.Timeline.Pop() is { } e) { Statuses.HandleExpiry(s, e); if (e.Id == marker.Id) break; }
+        Assert.False(s.GetUnit(a).IsStealthed);
+        Assert.Equal(new StealthChanged(a, false, StealthCause.Expired), s.DrainEvents().Last());
+
+        Stealth.Gain(s, a, 5);
+        Stealth.Break(s, a, StealthCause.Revealed);
+        Assert.Null(s.GetUnit(a).StealthMarkerId);
+        Assert.Null(s.Timeline.Pop());                                                        // the marker left the timeline
     }
 
     [Fact]

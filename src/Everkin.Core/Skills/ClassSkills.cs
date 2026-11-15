@@ -53,7 +53,9 @@ public static class ClassSkills
             .Concat(BulwarkSkills.All(content))
             .Concat(KeeperSkills.All(content))
             .Concat(MenderSkills.All(content))
-            .Concat(ClericSkills.All(content));
+            .Concat(ClericSkills.All(content))
+            .Concat(AssassinSkills.All(content))
+            .Concat(TrackerSkills.All(content));
 }
 
 /// <summary>Small helpers the class skills share.</summary>
@@ -82,6 +84,7 @@ public static class Marks
     /// <summary>Marks a unit for the marker. The marker has one Mark from its skills at a time: an earlier one is removed. A null duration is no time limit (Relentless).</summary>
     public static void Place(BattleState state, int markerId, int targetId, int? duration = Statuses.MarkLength)
     {
+        if (state.GetUnit(markerId).KnownSkills.Contains("relentless")) duration = null;     // Relentless: the Tracker's Marks have no time limit
         foreach (var unit in state.Units.ToArray())
             if (unit.Id != targetId && Statuses.Get(unit, StatusIds.Marked) is { } m && m.SourceUnitId == markerId)
                 Statuses.Remove(state, unit.Id, StatusIds.Marked, StatusEndCause.Consumed);

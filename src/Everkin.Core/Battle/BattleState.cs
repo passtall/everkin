@@ -60,6 +60,7 @@ public sealed class Unit
         Speed = other.Speed;
         Power = other.Power;
         IsStealthed = other.IsStealthed;
+        StealthMarkerId = other.StealthMarkerId;
         Ward = other.Ward;
         Dampen = other.Dampen;
         InterceptionBlocked = other.InterceptionBlocked;
@@ -186,6 +187,9 @@ public sealed class Unit
     /// </summary>
     public bool IsStealthed { get; set; }
 
+    /// <summary>The timeline marker that ends the stealth (it lasts 40 time units unless broken).</summary>
+    public int? StealthMarkerId { get; set; }
+
     /// <summary>
     /// What the unit's Ward still absorbs, 0 for none (section 5.2). The status layer (M1.11) will add its duration and
     /// removal; the damage rules only read and spend this number.
@@ -278,6 +282,8 @@ public sealed class BattleState
     private readonly CowList<DamageSharing> _damageSharings = new();
     private readonly CowList<LethalGuard> _lethalGuards = new();
     private readonly CowList<LethalSave> _lethalSaves = new();
+    private readonly CowList<AfterDamageHook> _afterDamageHooks = new();
+    private readonly CowList<StatusRemovalVeto> _removalVetoes = new();
     private readonly CowList<WardHitHook> _wardHitHooks = new();
     private readonly HashSet<string> _onceKeys = new();
     private readonly CowList<StatusApplicationModifier> _statusApplicationModifiers = new();
@@ -338,6 +344,8 @@ public sealed class BattleState
         _damageSharings = other._damageSharings.Share();
         _lethalGuards = other._lethalGuards.Share();
         _lethalSaves = other._lethalSaves.Share();
+        _afterDamageHooks = other._afterDamageHooks.Share();
+        _removalVetoes = other._removalVetoes.Share();
         _wardHitHooks = other._wardHitHooks.Share();
         foreach (var key in other._onceKeys) _onceKeys.Add(key);
         MistsUntil = other.MistsUntil;
@@ -480,6 +488,12 @@ public sealed class BattleState
 
     public IReadOnlyList<LethalSave> LethalSaves => _lethalSaves;
     public void AddLethalSave(LethalSave hook) => _lethalSaves.Add(hook);
+
+    public IReadOnlyList<AfterDamageHook> AfterDamageHooks => _afterDamageHooks;
+    public void AddAfterDamageHook(AfterDamageHook hook) => _afterDamageHooks.Add(hook);
+
+    public IReadOnlyList<StatusRemovalVeto> StatusRemovalVetoes => _removalVetoes;
+    public void AddStatusRemovalVeto(StatusRemovalVeto hook) => _removalVetoes.Add(hook);
 
     public IReadOnlyList<WardHitHook> WardHitHooks => _wardHitHooks;
     public void AddWardHitHook(WardHitHook hook) => _wardHitHooks.Add(hook);
@@ -717,6 +731,7 @@ public sealed class BattleState
                     break;
                 }
         }
+        var hpBefore = target.Hp;
         target.Ward = result.WardLeft;
         target.Hp = Math.Max(0, target.Hp - result.HpLost);
         if (result.HpLost > 0 && SharedPoolOf(targetId) is { } pool)
@@ -725,6 +740,8 @@ public sealed class BattleState
             SyncPool(pool);
         }
         Emit(new DamageDealt(sourceUnitId, targetId, source, result, target.Hp));
+        if (result.HpLost > 0)
+            foreach (var hook in _afterDamageHooks.ToArray()) hook(this, targetId, hpBefore, target.Hp);
         if (result.AbsorbedByWard > 0 && source == DamageSource.Hit && sourceUnitId is not null)
             foreach (var hook in _wardHitHooks.ToArray()) hook(this, sourceUnitId, targetId, result.AbsorbedByWard);
         if (result.AbsorbedByWard > 0 && target.Ward == 0) Statuses.Remove(this, targetId, StatusIds.Ward, StatusEndCause.Broken);

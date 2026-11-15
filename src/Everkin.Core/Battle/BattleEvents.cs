@@ -72,6 +72,7 @@ public enum StealthCause
     Hit,
     Revealed,
     KnockedOut,
+    Expired,
 }
 
 /// <summary>A unit gained or lost stealth.</summary>

@@ -318,6 +318,7 @@ public static class Statuses
     {
         var unit = state.GetUnit(unitId);
         if (!unit.StatusStore.TryGetValue(statusId, out var instance)) return false;
+        if (cause == StatusEndCause.Cleansed && state.StatusRemovalVetoes.Any(v => v(state, unitId, instance, byUnitId))) return false;   // Relentless
         if (statusId == StatusIds.Airborne) state.Ground.Accrue();
         var oldSpeed = unit.EffectiveSpeed;
         if (instance.MarkerEntryId is { } marker) state.Timeline.Remove(marker);
@@ -423,6 +424,7 @@ public static class Statuses
         }
         if (entry.Kind != TimelineKind.EffectEnd || entry.OwnerUnitId is not { } unitId || entry.Tag is not { } statusId) return;
         if (statusId == Summons.ExpiryTag) { Summons.HandleExpiry(state, entry); return; }
+        if (statusId == Stealth.ExpiryTag) { Stealth.HandleExpiry(state, entry); return; }
         var unit = state.GetUnit(unitId);
         var instance = Get(unit, statusId);
         if (instance is null || instance.MarkerEntryId != entry.Id) return;

@@ -130,3 +130,9 @@ public delegate bool LethalSave(BattleState state, int targetId);
 
 /// <summary>A hit (damage from a skill, not from a status) was partly or fully absorbed by the target's Ward (Thorned Ward).</summary>
 public delegate void WardHitHook(BattleState state, int? sourceUnitId, int targetId, int absorbed);
+
+/// <summary>A unit lost HP from any damage (a hit, Poisoned, Bleeding, ground damage): its HP before and after (Scent of Blood).</summary>
+public delegate void AfterDamageHook(BattleState state, int targetId, int hpBefore, int hpAfter);
+
+/// <summary>True when a cleansing skill cannot remove this status instance (Relentless: the Tracker's Marks).</summary>
+public delegate bool StatusRemovalVeto(BattleState state, int unitId, StatusInstance status, int? byUnitId);

@@ -7,31 +7,39 @@ namespace Everkin.Core.Battle;
 /// </summary>
 public static class Stealth
 {
+    /// <summary>Stealth lasts 40 time units unless it is broken first or a skill states another length (section 10.1).</summary>
+    public const int DefaultLength = 40;
+
     /// <summary>
-    /// Whether a stealth skill may be used on this unit: it is alive and not already stealthed, and the side keeps at least
-    /// one other visible unit, so a side never has zero visible units through its own stealth (section 10.1). Skills add
-    /// their own conditions (Stalk needs the Hunter outside the Front row).
+    /// Whether the unit may gain stealth: it is alive, on the board, not already stealthed and not stopped by a passive (Scent). There is no restriction by
+    /// row or by the other units of the side: a side's last visible unit can hide (section 10.1, 20.5).
     /// </summary>
     public static bool CanGain(BattleState state, int unitId)
     {
         var unit = state.GetUnit(unitId);
         if (unit.IsKnockedOut || unit.IsStealthed || !state.Formation.Contains(unitId)) return false;
-        if (state.StealthBlockers.Any(b => b(state, unitId))) return false;   // Scent: Marked enemies cannot gain stealth
-        var side = state.Formation.PositionOf(unitId).Side;
-        return state.Formation.Units(side).Any(id =>
-        {
-            if (id == unitId) return false;
-            var other = state.GetUnit(id);
-            return !other.IsKnockedOut && !other.IsStealthed;
-        });
+        return !state.StealthBlockers.Any(b => b(state, unitId));
     }
 
-    /// <summary>Gives the unit stealth. Throws if <see cref="CanGain"/> is false.</summary>
-    public static void Gain(BattleState state, int unitId)
+    /// <summary>Gives the unit stealth for <paramref name="length"/> time units (40 by default). Throws if <see cref="CanGain"/> is false.</summary>
+    public static void Gain(BattleState state, int unitId, int length = DefaultLength)
     {
         if (!CanGain(state, unitId)) throw new InvalidOperationException($"Unit {unitId} cannot gain stealth.");
-        state.GetUnit(unitId).IsStealthed = true;
+        var unit = state.GetUnit(unitId);
+        unit.IsStealthed = true;
+        unit.StealthMarkerId = state.Timeline.Add(TimelineKind.EffectEnd, length, unitId, ExpiryTag).Id;
         state.Emit(new StealthChanged(unitId, true, StealthCause.Gained));
+    }
+
+    /// <summary>The tag of the timeline marker that ends a unit's stealth.</summary>
+    public const string ExpiryTag = "stealth";
+
+    /// <summary>The marker of a unit's stealth reached its time.</summary>
+    public static void HandleExpiry(BattleState state, TimelineEntry entry)
+    {
+        if (entry.OwnerUnitId is not { } unitId) return;
+        var unit = state.GetUnit(unitId);
+        if (unit.StealthMarkerId == entry.Id) Break(state, unitId, StealthCause.Expired);
     }
 
     /// <summary>
@@ -47,6 +55,7 @@ public static class Stealth
         if (!unit.IsStealthed) return false;
         if (cause == StealthCause.Hit && state.StealthBreakVetoes.Any(v => v(state, unitId, cause, area))) return false;   // Freeze in Place
         unit.IsStealthed = false;
+        if (unit.StealthMarkerId is { } marker) { state.Timeline.Remove(marker); unit.StealthMarkerId = null; }
         state.Emit(new StealthChanged(unitId, false, cause));
         return true;
     }
