@@ -345,14 +345,16 @@ public sealed class SkillContext
         var moved = new List<int>();
         var group = unitIds.Where(id => State.Formation.Contains(id) && !State.GetUnit(id).IsKnockedOut)
             .Select(id => (Id: id, Position: State.Formation.PositionOf(id), Coordinate: State.Formation.CenterOf(State.Formation.PositionOf(id)))).ToArray();
+        var landed = new List<int>();
         foreach (var (id, start, coordinate) in group)
         {
             if (direction > 0 ? start.Row == Battle.Row.Rear : start.Row == Battle.Row.Front) continue;
             if (!State.Formation.Contains(id) || State.GetUnit(id).IsKnockedOut) continue;
             var position = State.Formation.PositionOf(id);
             if (position.Side != start.Side || position.Row != start.Row) continue;      // an earlier push bumped it elsewhere
-            var result = Movement.ForceMove(State, id, (Battle.Row)((int)start.Row + direction), UserSide, coordinate);
+            var result = Movement.ForceMove(State, id, (Battle.Row)((int)start.Row + direction), UserSide, coordinate, landed);
             moved.AddRange(result.Moves.Select(m => m.UnitId));
+            if (result.Moves.Any(m => m.UnitId == id)) landed.Add(id);
             AfterForcedMove(result);
             if (Over) return moved;
         }

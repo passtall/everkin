@@ -82,6 +82,7 @@ public sealed class Unit
         LastSkillId = other.LastSkillId;
         LastActiveSkillId = other.LastActiveSkillId;
         MarkedAtKo = other.MarkedAtKo;
+        MarkedByAtKo = other.MarkedByAtKo;
         SneakReady = other.SneakReady;
         AutoSkillId = other.AutoSkillId;
         NoReviveUntil = other.NoReviveUntil;
@@ -157,6 +158,9 @@ public sealed class Unit
 
     /// <summary>It was Marked when it was KO'd (the KO clears statuses): Deathmark Bloom.</summary>
     public bool MarkedAtKo { get; set; }
+
+    /// <summary>Who had Marked it when it was KO'd (Glory: the Champion's Mark).</summary>
+    public int? MarkedByAtKo { get; set; }
 
     /// <summary>The turn has just started and the unit has not acted yet: Sneak's extra move is allowed.</summary>
     public bool SneakReady { get; set; }

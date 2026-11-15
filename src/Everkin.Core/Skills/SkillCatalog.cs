@@ -22,7 +22,7 @@ public sealed class SkillCatalog
 
     /// <summary>The unique attack of every creature, then the classes implemented so far.</summary>
     public static SkillCatalog Create(ContentSet content) =>
-        new(content, content.Attacks.Select(a => (Skill)new UniqueAttackSkill(a)));
+        new(content, content.Attacks.Select(a => (Skill)new UniqueAttackSkill(a)).Concat(ClassSkills.All(content)));
 
     public bool Has(string skillId) => _skills.ContainsKey(skillId);
 

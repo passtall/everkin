@@ -95,8 +95,10 @@ public static class Movement
     /// completes or does not: if some unit has nowhere to go, nothing moves and each unit in the chain, the moved unit,
     /// every unit pressed along and the blocker, takes bump damage of 1 (a hit: stealth ends). Bump damage does not move
     /// Momentum. A KO body or an Immobilized unit cannot be moved, so meeting one blocks the chain.
+    /// A group move (Tempest, Sweeping Kick) passes <paramref name="groupMoved"/>, the units of the group that have already landed: they are left out
+    /// when the landing of the next unit is worked out, so a row moves together and keeps its shape (each unit keeps its coordinate).
     /// </summary>
-    public static ForcedMoveResult ForceMove(BattleState state, int unitId, Row destination, Side? causedBy = null, int? landingCoordinate = null)
+    public static ForcedMoveResult ForceMove(BattleState state, int unitId, Row destination, Side? causedBy = null, int? landingCoordinate = null, IReadOnlyCollection<int>? groupMoved = null)
     {
         var f = state.Formation;
         var mover = state.GetUnit(unitId);
@@ -120,7 +122,8 @@ public static class Movement
         while (true)
         {
             if (row < 0 || row >= Formation.RowCount) { blockers = new List<int>(); break; } // formation boundary
-            var list = f.Units(side, (Row)row);
+            var full = f.Units(side, (Row)row);
+            var list = groupMoved is { Count: > 0 } && row == (int)destination ? full.Where(id => !groupMoved.Contains(id)).ToList() : full;
             var n = list.Count;
 
             // Is there a unit at 100% overlap (the same center)?
@@ -131,7 +134,7 @@ public static class Movement
             if (at >= 0)
             {
                 var occupant = list[at];
-                landings.Add((current, (Row)row, at));
+                landings.Add((current, (Row)row, IndexOfUnit(full, occupant)));
                 if (!IsMovable(state.GetUnit(occupant)) || IsImmune(state, occupant, causedBy)) { blockers = new List<int> { occupant }; break; }
                 chain.Add(occupant);
                 current = occupant;
@@ -144,14 +147,14 @@ public static class Movement
             var index = 0;
             for (var i = 0; i < n; i++)
                 if (Formation.Center(n, i) < coordinate) index = i + 1;
-            if (n >= Formation.RowCapacity)
+            if (full.Count >= Formation.RowCapacity)
             {
                 blockers = new List<int>();
                 if (index > 0) blockers.Add(list[index - 1]);
                 if (index < n) blockers.Add(list[index]);
                 break;
             }
-            landings.Add((current, (Row)row, index));
+            landings.Add((current, (Row)row, index < n ? IndexOfUnit(full, list[index]) : full.Count));
             break;
         }
 
@@ -185,6 +188,13 @@ public static class Movement
         foreach (var m in moves)
             foreach (var hook in state.AfterMoveHooks.ToArray()) hook(state, m.UnitId);
         return new ForcedMoveResult(ForcedMoveStatus.Moved, moves, Array.Empty<int>());
+    }
+
+    private static int IndexOfUnit(IReadOnlyList<int> row, int unitId)
+    {
+        for (var i = 0; i < row.Count; i++)
+            if (row[i] == unitId) return i;
+        return -1;
     }
 
     // ------------------------------------------------------------------ swaps
