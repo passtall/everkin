@@ -4,7 +4,7 @@ Every encounter, boss, reward, challenge encounter and achievement. Numbers (tea
 
 ## How the campaign is built
 
-- **One reward per encounter**, always a member of the defeated team, never repeated. The tutorial follows the adopted tutorial creatures (Tailwind Kite, Ripplequill, then Hornpip and Potionpaw), so those creatures appear in the tutorial enemy teams.
+- **One reward per encounter**, always a member of the defeated team, never repeated. The tutorial rewards are Tailwind Kite, Ripplequill, then Hornpip and Potionpaw (game_system §2.2), so they appear in the tutorial enemy teams.
 - **Chapters 1 and 2** walk through neighboring wild biomes; each battle uses creatures from its own biome. **Chapter 3** is the castle: the Ruins as its outer walls, the Cathedral as its halls and towers, with mostly living objects. **Chapter 4** has one dragon per battle in its home biome, and the strongest dragon, the Obsidian Elder, is the final boss.
 - **Human recruits:** Tom Reed (chapter 1), Kofi Mensah (chapter 2), Edwin Marsh (chapter 3), and Ragnhild Eriksen as the reward of challenge C4, because every chapter 4 battle gives its dragon.
 - **Difficulty** rises through the enemy rosters (team Cost from 14 to 51; enemy teams are not bound by the budget of 35) and the AI level: Easy in the tutorial and chapter 1, Normal in chapter 2 and the first half of chapter 3, Hard from then on. The tutorial's enemy sides have 2, 3 and 4 members, matching the player's growing team.

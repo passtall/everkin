@@ -9,19 +9,16 @@ Everkin is a turn-based tactical creature card battler (Godot 4.7 .NET, C#). The
 - **Plan and progress.** [docs/implementation-plan.md](docs/implementation-plan.md) is your prompt: the milestones, the tasks and how to start or resume a session. [PROGRESS.md](PROGRESS.md) is the live state: current task, next step, uncommitted work, questions, notes. Update PROGRESS.md after every meaningful step and commit it with the work, so a session that stops at any moment can be continued by the next one.
 - **Never invent a rule.** If the docs leave a rule open, contradict each other or do not cover a case, stop and ask the owner. Do not pick a "sensible default" in code. Write the question down in PROGRESS.md's "Questions for the owner" list if the owner is not around, and work on something else.
 - **The docs win.** When code and docs disagree, the docs are right unless the owner says otherwise; a rule change is written into the docs first (see the everkin-design skill), then coded.
-- **Original art is never changed.** `source-art/` is read-only. Asset scripts write to `assets/`.
 
 ## Reading order
 
 0. [docs/implementation-plan.md](docs/implementation-plan.md) and [PROGRESS.md](PROGRESS.md), every session, first.
 1. [README.md](README.md): repository layout.
 2. [docs/production.md](docs/production.md) §2 and §3: technology, code layout, tests, online backend, roadmap.
-3. [docs/game_system.md](docs/game_system.md): every rule. It is about 1500 lines; read the section you need. §2.5 is the AI-versus-AI harness, §19 lists what is still open, §20.5 lists the worked checks that become tests.
+3. [docs/game_system.md](docs/game_system.md): every rule. It is long; read the section you need. §2.5 is the AI-versus-AI harness, §19 lists what is still open, §20.5 lists the worked checks that become tests.
 4. [docs/class_system.md](docs/class_system.md), [docs/skills.md](docs/skills.md), [docs/creature-classes.md](docs/creature-classes.md): content.
-5. [docs/ui_spec.md](docs/ui_spec.md) and [docs/mockups/](docs/mockups/README.md) once UI work starts.
+5. [docs/ui_spec.md](docs/ui_spec.md) once UI work starts.
 6. [assets/README.md](assets/README.md) for every asset file and its format.
-
-Never use `docs/archive/` as a source; it is history only.
 
 ## Source of truth
 
@@ -31,9 +28,9 @@ Never use `docs/archive/` as a source; it is history only.
 | The 28 classes and unique attacks | docs/class_system.md |
 | Every class skill and keystone: Delay, Momentum, delivery, effect (numbers at Power 5) | docs/skills.md |
 | Creature roster: unit name (= ID), display name, classes, biome, stats, Cost, art file, card crops | docs/creature-classes.md |
-| Screens, layouts, interactions | docs/ui_spec.md (mockups are reference only) |
+| Screens, layouts, interactions | docs/ui_spec.md |
 | Platforms, technology, saving, online backend, art and audio formats, roadmap | docs/production.md |
-| Asset files and formats | assets/README.md; prompts in docs/assets/ |
+| Asset files and formats | assets/README.md |
 
 ## Code layout and conventions (production.md §2)
 

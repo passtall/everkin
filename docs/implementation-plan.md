@@ -12,7 +12,6 @@ How you work (details in [CLAUDE.md](../CLAUDE.md)):
 - Commit and push straight to `main`, in small working steps. No branches, no pull requests, no CI.
 - **Never invent a rule.** When the docs leave something open, contradict each other or do not cover a case, do not guess. Write the question into PROGRESS.md under "Questions for the owner", ask the owner if he is around, and continue with a task that does not depend on it.
 - The docs win over code. A rule change goes into the docs first (everkin-design skill), then into code, and only when the owner agreed.
-- `source-art/` is never changed. `docs/archive/` is never a source.
 
 ## Starting or resuming a session
 
@@ -33,9 +32,9 @@ PROGRESS.md is the only memory between sessions. Treat updating it as part of ev
 - **Before starting a task:** set **Current task** (its ID and name from this plan) and write the first **Next step**.
 - **After every meaningful step** (a class compiles, a test passes, a screen works): update **Next step** and **In flight** (files touched but not committed, half-done parts, what is known to be broken), and commit together with the work when it builds.
 - **Commit often.** Commit whenever the build is green and tests pass, at least every 30 to 60 minutes of work. A commit may finish only part of a task; say so in the message and in PROGRESS.md. Never commit a broken build; if you must stop with a broken build, leave the changes uncommitted and describe them precisely under **In flight**.
-- **When a task is done:** tick it in the task list, add one line to the **Session log** (date, task, commit), clear **In flight**, set the next task.
+- **When a task is done:** tick it in the task list, clear **In flight**, set the next task.
 - **Anything the next session needs** (a decision the owner made in chat, a gotcha, a workaround, a test that is slow) goes under **Notes**. Owner decisions that change rules go into the docs as well.
-- Keep PROGRESS.md short enough to read in a minute: the session log keeps one line per task, and notes that no longer matter are removed.
+- Keep PROGRESS.md short enough to read in a minute: no history (git log has it), and notes that no longer matter are removed.
 
 ## Definition of done for every task
 
@@ -65,12 +64,12 @@ Each task names the doc sections it implements. Read those sections before codin
 
 ### M1 Rules core
 
-- **M1.1** Content pipeline: `tools/content/` script that reads creature-classes.md, class_system.md and skills.md (including the Needs column) and writes `content/*.json`; a test that the JSON matches the docs; load-time validation that stops with file and ID on any error (production §2.1, §2.2). IDs: unit names, snake_case skill names, biome IDs.
+- **M1.1** Content pipeline: `tools/content/` script that reads creature-classes.md, class_system.md and skills.md and writes `content/*.json`; a test that the JSON matches the docs; load-time validation that stops with file and ID on any error (production §2.1, §2.2). IDs: unit names, snake_case skill names, biome IDs.
 - **M1.2** Battle state with fast `Clone()`, the per-battle seeded random generator, the event list returned by every action, integer-only numbers (production §2.2).
 - **M1.3** Formation: rows, capacity, ordered positions, alignment, adjacency (game_system §7, §8.4 adjacency).
 - **M1.4** Timeline: Delay, Speed, ties, auto events, delayed events, skipped turns (§6.1 to §6.5).
 - **M1.5** Momentum: scale, gains, costs, refunds, shifts (§6.7).
-- **M1.6** Ranges and targeting: opposing distance, own-side range, either-side rule, Own side only, empty rows (§7.4, §8.1). Range was removed on 2026-11-12; M5.6 replaces it with the Front-row melee rule and melee reach.
+- **M1.6** Targeting: either-side rule, Own side only, empty rows (§7.4, §8.1); M5.6 adds the Front-row melee rule and melee reach.
 - **M1.7** Damage, healing and shields: rolls, Power scaling ×Power÷5, Ward and Dampen, minimum 1 (§5.2).
 - **M1.8** Interception and area patterns (§8.2 to §8.5).
 - **M1.9** Movement: Move, movement inside skills, forced repositioning and bumps (§9).
@@ -79,8 +78,8 @@ Each task names the doc sections it implements. Read those sections before codin
 - **M1.12** Reactions (§6.6).
 - **M1.13** Summons, constructs, totems, traps, undead (§11).
 - **M1.14** Ground effects (§12.2) and battle end (§12.3).
-- **M1.15** Skill trees and builds: 8 points, one parent per node, random legal builds, default builds. Superseded: M5.6 removes trees and builds.
-- **M1.16** The nine Attack Type attacks, then every profession skill in skills.md, one profession at a time, one class per skill built from shared building blocks (production §2.2). One task per profession: M1.16a Hunter, b Guardian, c Healer, d Sorcerer, e Elementalist, f Warrior, g Leader, h Rogue, i Tinker, j Summoner, k Primalist, l Flying. Superseded: M5.6 replaces Attack Types and professions with the 28 classes and the creatures' unique attacks.
+- **M1.15** (done, removed again by M5.6: skill trees and builds).
+- **M1.16** (done: the old attacks and profession skills, built from shared building blocks, production §2.2; M5.6 replaces them with the 28 classes and unique attacks).
 - **M1.17** Every worked check in §20.5 is a passing test.
 - **M1.18** Preview queries: damage range, interception chance, timeline position, forced movement (production §2.2).
 
@@ -93,7 +92,7 @@ Each task names the doc sections it implements. Read those sections before codin
 ### M3 Battle viewer
 
 - **M3.1** Card scene with its display modes: full front, back, compact board card; frames, card backgrounds, stat gems, crops from creature-classes.md (ui_spec card styling, production §1.6, assets/README.md).
-- **M3.2** Battle screen layout: board, timeline left, Momentum meter right, action bar bottom, phone one-side view and view button (ui_spec battle screen, docs/mockups).
+- **M3.2** Battle screen layout: board, timeline left, Momentum meter right, action bar bottom, phone one-side view and view button (ui_spec battle screen).
 - **M3.3** Event queue animation of core events, effects and sounds (production §1.6 visual effects and sounds).
 - **M3.4** Viewer controls: pause, step, speed, inspect, start from a recorded setup (production §2.3, game_system §2.5).
 
@@ -101,7 +100,7 @@ Each task names the doc sections it implements. Read those sections before codin
 
 - **M4.1** Player turn: action bar, targeting, previews, Move, Skip Turn, surrender (ui_spec).
 - **M4.2** Team editor and collection (ui_spec party setup and collection).
-- **M4.3** Skill tree editor. Superseded: M5.6 removes it.
+- **M4.3** (done, removed again by M5.6: skill tree editor).
 - **M4.4** Free battle setup, difficulty choice and result screen.
 
 ### M5 Tutorial and chapter 1
@@ -111,9 +110,21 @@ Each task names the doc sections it implements. Read those sections before codin
 - **M5.3** Encounters and rewards from campaign.md as content; tutorial with the automatic tutorial team (game_system §2.2, campaign.md).
 - **M5.4** Chapter 1 playable start to boss.
 
-- **M5.5** Battle UI left/right with round portraits and visible ground effects ([spec.md](../spec.md), ui_spec battle screen). First the art: extend `tools/art/generate_creatures.py` for the portraits and three rings (docs/assets/battle-portraits.md), 4 test portraits for the owner, the batch, a contact sheet for the owner, cleaning; then the board, portraits, ground layer, timeline, log and preview.
+- **M5.5** Battle board left/right with round portraits and visible ground effects (ui_spec Battle screen: Board, Phones, Timeline). The art is done: `assets/portraits/` (with `discs.json`) and the three rings in `assets/frames/`. Rules do not change; only drawing does.
+  - `scripts/App/BattleBoard.cs`: rows become columns, coordinates map to Y; shared portrait size; one-side view and flyover horizontal, side button arrows left/right; gap markers and previews in the new mapping; a ground layer driven by `GroundEffectPlaced` and the effects' end and combo events (add core events if any are missing). Merge touching pools of one effect, for example by drawing soft discs into a `SubViewport` and thresholding them in the effect's shader.
+  - A portrait view (in `CardView.cs` or a new `PortraitView`): disc, masked art, mirroring, ring (normal, undead, summon), HP badge, KO crack and grey, stealth, airborne, active-unit glow, target highlights.
+  - Timeline, battle log and target preview use the portrait.
+  - Checks: every unit, body and summon sits where its row and coordinate say, and the movement, gap and delayed `direct` markers match; player portraits face right, enemy portraits left, in both views; one shared size set by the fullest column, so a sixth unit in a column shrinks all; the one-side view switches by button and by itself when a skill targets the enemy, and reduced motion cuts instead of flying; a ground pool stays on its coordinate, shows on an empty spot, merges with the same effect on touching spots and matches `GroundField` after every event; rings, discs and pools never hide HP, KO or target highlights.
 
-- **M5.6** Classes rework (owner 2026-11-11 and 2026-11-12, [classes-spec.md](../classes-spec.md) work order). The rules are in the docs: class_system.md (28 classes, unique attacks), skills.md (one table per class), creature-classes.md (each creature's 2 classes, 2 keystones and attack), game_system.md (no range, Front-row melee, melee reach, interception 75/50 and 50/25, nearest, summon placement) and ui_spec.md (card, action bar, team editor). Replace Attack Types, professions, trees, builds and range in the core, content JSON, AI, runner and UI; rewrite the §20.5 tests; then rerun the AI-versus-AI batch.
+- **M5.6** Classes rework: replace Attack Types, professions, skill trees, builds and range with the 28 classes and unique attacks. The rules are in class_system.md, skills.md, creature-classes.md, game_system.md (§7.4, §8.1 to §8.5, §10.6, §11), ui_spec.md and campaign.md. Order:
+  1. Content: rewrite `tools/content/build_content.py` for the current doc tables, then `classes.json` (28 classes), `skills.json` (84 actives, 84 keystones, 319 unique attacks), `creatures.json` (classes, keystones and attack per creature) from the doc tables; delete `default_builds.json` and the `default-builds` runner command; remove enemy builds from `campaign.json`; drop Clockwork Golem, Bell Golem, Animate Mirror, Flame Turret, Cage and the Decoy.
+  2. Core: regroup `Skills/*Skills.cs` by class and add the new skills; keystones are passives fixed per creature; one parametric unique attack (delivery, damage, one extra); remove `SkillBuild.cs` and the nine shared attacks; magical tag from class_system.md, no element tags; no range: Front-row melee, melee reach, melee interception 75/50 and own-side hits never intercepted (`Targeting.cs`, `Interception.cs`); "nearest" per game_system §8.5; summon placement on any free spot.
+  3. Tests: rewrite the game_system §20.5 worked checks.
+  4. AI: remove random builds; the AI scores every new skill and keystone.
+  5. UI: remove `SkillTreeEditor.cs` and its entry points; team editor class filter; action bar order; card front plate and card back keystones; inspection panel keystones; target preview with the direct-hit chance.
+  6. Icons: every class active and unique attack has `assets/icons/skills/<skill_id>.png`; delete the 47 old `attack-<type>` and `<profession>-<branch>` icons and the code that maps to them.
+  7. Saving: bump the save version and reset older profiles.
+  8. Then rerun the AI-versus-AI harness, decide the Cost formula (game_system §5.1) and recalculate Cost.
 
 ### M6 Local two-player
 

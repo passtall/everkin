@@ -1,218 +1,155 @@
-# Production decisions
+# Production
 
-**Status:** Decisions that do not concern game mechanics: platforms, release, business model, technology, saving, languages and accessibility.
-**Game rules:** [game_system.md](game_system.md). **Screens and interactions:** [ui_spec.md](ui_spec.md).
-
-Game mechanics stay in game_system.md, class_system.md and skills.md. Every new decision that is not a game mechanic goes here.
+Everything that is not a game mechanic: platforms, business model, saving, presentation, technology, online backend and the order of work. Game rules: [game_system.md](game_system.md). Screens and interactions: [ui_spec.md](ui_spec.md). Asset files: [assets/README.md](../assets/README.md).
 
 ## 1. Platforms, release and business model
 
-Adopted 2026-10-06.
-
 ### 1.1 Platforms
 
-- **Release order.** Android and iOS release first; Windows follows.
-- **Stores.** The Windows version is sold on Steam.
-- **Minimum devices.** Godot's own minimum OS versions. The game is tested on a mid-range phone from about 2020 and runs on phones and tablets.
-- **Screen shapes.** Everything from 4:3 tablets to 21:9 phones. The board stays 16:9 and extra space goes to margins. Phone notches and other unsafe areas are kept clear.
-- **Renderer.** Godot's Compatibility renderer (OpenGL) on every platform. project.godot is switched to it as the first implementation step (2026-11-08).
-- **Build order (adopted 2026-11-08).** Development builds and tests Windows and Android first. An Android export of the C# project is tried early, since C# export to mobile has been experimental in Godot. iOS waits until a Mac with Xcode is available. Platform plugins for sign-in and purchases are picked when online play and purchases are built.
-- **Controllers.** Supported on Windows from the first Steam release. The Windows release aims for Steam Deck Verified (ui_spec.md, Controls).
+- **Release order.** Android and iOS first; Windows follows, sold on Steam.
+- **Development order.** Windows and Android are built and tested first. iOS waits until a Mac with Xcode is available. Platform plugins for sign-in and purchases are picked when online play and purchases are built.
+- **Minimum devices.** Godot's own minimum OS versions. The test device is a mid-range phone from about 2020; the game runs on phones and tablets.
+- **Screen shapes.** 4:3 tablets to 21:9 phones. The board stays 16:9 and extra space goes to margins. Notches and other unsafe areas are kept clear.
+- **Renderer.** Godot's Compatibility renderer (OpenGL) on every platform.
+- **Controllers.** Supported on Windows; the Windows release aims for Steam Deck Verified (ui_spec.md, Controls).
 
 ### 1.2 Business model
 
-- **Price.** One-time purchase on every platform. On mobile this is a free download with the demo content and one purchase that unlocks the full game. **Prices** (adopted 2026-10-08): **4.99** on Steam and the same 4.99 for the mobile unlock, with each store's suggested regional prices, and no launch discount. No ads, ever. No booster packs, paid random draws, trading or duplicate conversion (game_system.md §2.2).
-- **Coins.** Coins are earned in play (game_system.md §2.2) and **can also be bought**. They unlock specific creatures, never random ones. **Coin packs** (adopted 2026-10-07): three packs of 500, 1,200 and 2,500 coins, kept generous compared with creature prices (game_system.md §2.2). **Pack prices** (adopted 2026-10-08): **1.99, 3.99 and 6.99**. Coin packs are sold only after buying the full game, never in the demo.
-- **Cosmetic frames.** Earned by playing, through campaign milestones and achievements. Never sold. Every card wears its home biome's frame by default (`assets/frames/<biome_id>.png`, adopted 2026-10-08; this replaced the plain gold frame); an earned frame can replace it on creatures the player chooses (confirmed 2026-10-08). Frames never mark tier or class. **Earned frames are postponed** (2026-10-09): for now cards wear only their biome frame. When earned frames come, each campaign stage boss gives one and a few harder achievements give one.
-- **Achievements** (adopted 2026-10-09). An in-game list, mirrored to the platform achievements (Steam, Google Play Games, Apple Game Center). **About 30** at release. Repetition goals stay moderate, nothing beyond about 100 wins. None are hidden. None need online play; every achievement can be earned offline. The list of 30 is in [campaign.md](campaign.md) (adopted 2026-11-08).
-- **Demo.** A free demo with the tutorial and the first campaign stage. Progress carries over on purchase. On mobile the demo is the free download itself; on Steam it is a separate demo. The demo comes out **at release**, next to the full game (adopted 2026-10-08). Online play is **full game only** (adopted 2026-10-18).
-- **Store pages** (adopted 2026-10-08). The Steam page goes up only **shortly before release**, after the name check. It leads with a **short gameplay trailer** of about 60 seconds made from real battle footage. Store text (adopted 2026-10-09):
+- **Price.** One-time purchase: **4.99** on Steam, and on mobile a free download with the demo content plus a 4.99 unlock of the full game. Each store's suggested regional prices, no launch discount, no ads. No booster packs, paid random draws, trading or duplicate conversion.
+- **Coins.** Earned in play (game_system.md §2.2) and also sold in three packs: **500, 1,200 and 2,500 coins for 1.99, 3.99 and 6.99**. They unlock specific creatures, never random ones. Packs are sold only after buying the full game, never in the demo.
+- **Frames.** Every card wears its home biome's frame (`assets/frames/<biome_id>.png`). Frames never mark tier or class. Earned cosmetic frames are postponed; when they come, each chapter boss and a few harder achievements give one, they are never sold, and the player picks which creatures wear them.
+- **Achievements.** About 30, listed in [campaign.md](campaign.md), in an in-game list mirrored to Steam, Google Play Games and Apple Game Center. None hidden, none need online play, no goal beyond about 100 wins.
+- **Demo.** The tutorial and chapter 1, released together with the full game. On mobile the demo is the free download itself; on Steam a separate demo. Progress carries over on purchase. Online play needs the full game.
+- **Store pages.** The Steam page goes up shortly before release, after the name check, led by a gameplay trailer of about 60 seconds from real battle footage.
   - *Genre line:* "A turn-based tactical creature card battler."
   - *Tagline:* "Gather your kin. Outthink the timeline."
-  - *Main Steam tags:* Turn-Based Tactics, Card Battler, Creature Collector. Avoid "Collectible Card Game", which suggests booster packs.
-  - *Description:* a short, warm storybook paragraph, then a feature list. It leads with the tactics (timeline, formation, interception).
-  - *Age rating target:* PEGI 7 / ESRB Everyone 10+, with mild fantasy violence and no blood. Effects stay within that.
-  - *Screenshots:* battles first (about five), then the team editor, the campaign map and the collection.
+  - *Main Steam tags:* Turn-Based Tactics, Card Battler, Creature Collector (not "Collectible Card Game").
+  - *Description:* a short, warm storybook paragraph, then a feature list led by the tactics (timeline, formation, interception).
+  - *Age rating target:* PEGI 7 / ESRB Everyone 10+: mild fantasy violence, no blood.
+  - *Screenshots:* about five battles, then the team editor, the campaign map and the collection.
+- **Playtesting.** A closed test with friends through TestFlight and Google Play internal testing before release.
 
 ### 1.3 Languages, accessibility and data
 
-- **Languages.** English only at release; more languages after release. All text already goes through translation keys (section 2.3).
-- **Accessibility.** Statuses are always readable without color (icons and short labels). A reduced-motion setting and a UI text size setting.
-- **Reporting.** Opt-in crash reports only. No gameplay tracking. Crash reports go through Sentry's free plan (adopted 2026-11-08).
+- **Languages.** English at release, more later. All text goes through translation keys.
+- **Accessibility.** Statuses are readable without colour (icons with letters or short labels). Settings for reduced motion and UI text size.
+- **Reporting.** Opt-in crash reports through Sentry's free plan. No gameplay tracking.
 
 ### 1.4 Saving
 
-- **Profiles and timing.** One profile per device, stored locally. The game saves automatically after every battle and campaign step, and after every action in a battle, so a battle closed by the device resumes where it was. No manual save slots.
-- **Profiles on the server (adopted 2026-10-18).** Every player's profile also lives on the online server, tied to their platform account, and the server is the authority for the collection, coins and purchases. The device keeps a copy so offline play works, and it syncs with the server when online. **Offline and sync (adopted 2026-10-18):**
+- **Profile.** One profile per device, stored locally, saved automatically after every battle, campaign step and battle action, so a closed battle resumes where it was. No manual save slots.
+- **Format.** JSON with a version number; older saves are upgraded step by step when loaded.
+- **Safety.** The game writes to a temporary file and swaps it in, and keeps the last three saves as backups. A damaged save loads the newest good backup with a short note.
+- **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change; otherwise it is dropped with a short note.
+- **Server profile.** Every profile also lives on the online server, tied to the platform account; the server is the authority for the collection, coins and purchases. The device copy keeps offline play working and syncs when online:
   - The game starts and plays offline, even on first launch; the server profile is created at the first connection.
-  - Campaign progress and creatures won offline are accepted when the device syncs. **Coins** exist only on the server: they are earned, spent and bought only while connected, so a random battle played offline pays nothing and coin creatures cannot be bought offline.
-  - When two devices on the same account differ, the server merges them: every creature from both and the furthest campaign progress. Coins never need merging.
-  - Coin pack purchases are checked by the server against the store receipt, and the server adds the coins.
-  - "Delete my online data" removes the server profile, rating and battle records. The device copy stays and becomes a fresh server profile if the player goes online again.
-  - If the online service ever shuts down, the game keeps working offline from the device copy with everything the player owns.
-- **Format.** JSON with a version number. Older saves are upgraded step by step when loaded.
-- **Damaged saves.** The game writes to a temporary file and then swaps it in, and keeps the previous save as a backup that loads automatically if the newest one is damaged.
-- **Battles and updates.** A battle in progress resumes after an update only if the content it uses did not change. Otherwise it is dropped, and a short note says so (changed 2026-10-07; it used to restart from its setup).
-- **Backups (adopted 2026-10-08).** The device keeps the last three automatic save backups. If the save is damaged, the game loads the newest good backup and shows a short note.
-- **Cloud saves.** Store cloud saves (Steam Cloud, Google Play saved games, iCloud) are **not used**; the server profile is the backup (changed 2026-10-18, replacing the 2026-10-07 decision). Profiles still never move between platform families.
+  - Campaign progress and creatures won offline are accepted when the device syncs.
+  - **Coins** exist only on the server: they are earned, spent and bought only while connected, so an offline random battle pays nothing and coin creatures cannot be bought offline.
+  - Two devices on one account merge: every creature from both and the furthest campaign progress.
+  - Coin purchases are checked by the server against the store receipt, and the server adds the coins.
+  - "Delete my online data" removes the server profile, rating and battle records; the device copy stays and becomes a fresh server profile when the player goes online again.
+  - If the online service shuts down, the game keeps working offline with everything the player owns.
+- **No store cloud saves** (Steam Cloud, Google Play saved games, iCloud): the server profile is the backup. Profiles never move between platform families.
 
 ### 1.5 Story presentation
 
-Adopted 2026-10-06.
-
-- **Format.** No story text for now. Campaign locations show their illustrations only; story scenes may come with the full campaign design.
-- **Player role.** None: there is no player character; the campaign follows the creatures, with no story text beyond chapter names (game_system.md §15, adopted 2026-11-04).
-- **Joining creatures** (adopted 2026-10-16). No reason is given for why a beaten creature joins the team.
-- **Names** (adopted 2026-10-16). Stages and encounters get short storybook names on the map; these are labels, not story text.
+No story text and no player character: campaign locations show their illustrations, and chapters and encounters have short storybook names on the map as labels (game_system.md §15). No reason is given for why a beaten creature joins.
 
 ### 1.6 Art, audio and settings
 
-Adopted 2026-10-06.
-
-- **Art style.** The current faceted creature art is the final style. It is cleaned up and made consistent, but **the original files are never changed**: cleanup works on copies.
-- **Art files.** Cleaned copies use one canvas of 1024 × 1536 (2:3) with a transparent background, and every creature stands on a shared ground line.
-- **Creature size.** Cards do not show creature size: every creature fills its frame, with no size scaling or size icon. Size contrast was a leftover from the 3D direction (game_system.md §14.3).
-- **Card backgrounds.** A soft background behind the creature from its home biome: one card background design per biome (adopted 2026-10-08, biome list in game_system.md §14.5).
-- **Background art.** `assets/backgrounds/` holds one card and one battle background per biome. Card backgrounds are generated by `tools/backgrounds/gen_backgrounds.py` and faceted like the creature art (accepted 2026-10-08). **Battle backgrounds are photo-real** (adopted 2026-10-08): night or dusk nature photos, 16:9 at 1920×1080 or larger, dark and calm in the centre, top and bottom 8% kept free. All 18 are in `assets/backgrounds/battle/<biome_id>.png`. Files smaller than 1920 × 1080 are scaled up to it on import (adopted 2026-11-08); dimmed and behind cards, the difference does not show.
-- **Battle backgrounds.** An illustrated, dimmed background per biome. Campaign battles use their stage's biome; free and random battles use a random biome the player has reached in the campaign (adopted 2026-10-08).
-- **UI look.** Night fairytale (a daytime version was rejected): menus and screens use an illustrated fairytale background, and the UI colors, panels and buttons are styled to fit it (adopted 2026-10-06 from the mockup review).
-- **Logo and icon** (adopted 2026-10-09). A hand-lettered gold storybook wordmark "Everkin" with a small emblem. The app and store icon is that emblem in gold on a plum night sky, readable at small sizes. The logo is generated with ChatGPT from one prompt. The PNGs in `assets/brand/` (emblem, wordmark, app icon) are large enough for every screen and store; there is no vector version (adopted 2026-11-08).
-- **Splash and title** (adopted 2026-10-09). A short splash with the Everkin logo while the game loads, then the main menu, which doubles as the title screen: the logo sits above the menu on the fairytale background. No Godot logo, no animated intro.
-- **Fonts** (adopted 2026-10-09). A storybook serif for headings and names, and a clear sans-serif for body text and numbers. Free open-licence fonts only (SIL Open Font License); their licence files ship with the game. **Alegreya** for headings and names, **Alegreya Sans** for body text and numbers (adopted 2026-11-08), in `assets/fonts/` with OFL.txt.
-- **Credits.** None in the game (adopted 2026-10-09).
-- **Idle motion.** None. Cards only react to hits and effects.
-- **Music.** Quiet ambient sound only; no melodic soundtrack.
-- **Sound effects.** One set per kind of effect (melee, projectile, magic, heal, status, KO; full list below). No creature cries.
-- **Sound list** (adopted 2026-10-08):
-  - *Interface:* confirm, cancel, invalid action, panel open and close, hover, tab switch, drag pickup and drop, card flip.
-  - *Coins:* a soft coin sound when coins are gained or spent.
-  - *Battle:* three variants of each battle sound, picked at random with a small random pitch change. A soft chime when one of the player's units gets its turn (no cue for enemy turns). Momentum sounds only when it crosses a big threshold or reaches the end of the bar. Statuses: one sound for a helpful status, one for a harmful status, one for a status ending. KO: a glassy crack, then a soft card-flip thud, matching the crack animation.
-  - *Result:* a short non-melodic sting (a swell or chime, about 2 seconds) for victory and one for defeat.
-  - *Ambient:* one loop per biome. Made only once the biome list is final. The campaign map plays the current stage's biome loop; the other menus play the loop of a random biome.
-  - *Format:* OGG Vorbis at 48 kHz, effects mono, ambient stereo, all levelled to the same loudness.
-- **Visual effects** (adopted 2026-10-08):
-  - *Style:* faceted shards and triangle sparks for physical hits; soft glow and light for magic and healing.
-  - *Length:* each skill gets the time it needs to read clearly, but never more than 3 seconds, and it must not feel slow. Skill effects visibly travel from attacker to target, or are otherwise shown in the way that suits the skill.
-  - *Making:* in the engine with particles and shaders; drawn sprites only where they are a real improvement.
-  - *Melee:* no card motion; a slash or impact on the target.
+- **Art.** One image per creature in `assets/creatures/`, 1024 × 1536 (2:3), transparent, standing on a shared ground line, named by the Art file column of creature-classes.md. Cards do not show creature size: every creature fills its frame. The card front shows the Front frame crop, the back the Rear frame crop (creature-classes.md, Card details).
+- **Card backgrounds.** One faceted background per biome behind the creature.
+- **Battle backgrounds.** One photo-real, dimmed night scene per biome, 16:9, calm in the centre. Campaign battles use their encounter's biome; free and random battles a random biome the player has reached.
+- **UI look.** Night fairytale: menus on an illustrated fairytale background, with colours, panels and buttons styled to fit.
+- **Logo and icon.** A hand-lettered gold storybook wordmark with a small emblem; the app icon is the emblem in gold on a plum night sky (`assets/brand/`).
+- **Splash and title.** A short splash with the logo while loading, then the main menu as title screen, with the logo above the menu. No Godot logo, no animated intro.
+- **Fonts.** **Alegreya** for headings and names, **Alegreya Sans** for body text and numbers (SIL Open Font License; the licence files ship with the game).
+- **Credits.** None in the game.
+- **Idle motion.** None. Portraits and cards react only to hits and effects.
+- **Music.** Quiet ambient loops only, no melodic soundtrack.
+- **Sounds.** One set per kind of effect, no creature cries:
+  - *Interface:* confirm, cancel, invalid action, panel open and close, hover, tab switch, drag pickup and drop, card flip; a soft coin sound when coins are gained or spent.
+  - *Battle:* three variants of each, picked at random with a small random pitch change: melee, projectile, magic, heal, statuses (helpful, harmful, ending), interception, Ward absorb, bump, stealth on and off, summon, each ground effect and the gas explosion. A soft chime when one of the player's units gets its turn (none for enemy turns). Momentum sounds only at a threshold and at the end of the bar. KO: a glassy crack, then a soft thud.
+  - *Result:* a short non-melodic sting (about 2 seconds) for victory and one for defeat.
+  - *Ambient:* one loop per biome; the campaign map plays the current chapter's loop, other menus a random biome's.
+  - *Format:* OGG Vorbis 48 kHz, effects mono, ambient stereo, levelled to the same loudness.
+- **Visual effects.**
+  - *Style:* faceted shards and triangle sparks for physical hits; soft glow and light for magic and healing. Made in the engine with particles and shaders; drawn sprites only where they are clearly better.
+  - *Length:* each skill takes the time it needs to read clearly, never more than 3 seconds.
+  - *Melee:* no unit motion; a slash or impact on the target.
   - *Projectile:* a visible shot travels from attacker to target along a short arc.
-  - *Direct:* by default a glow gathers on the caster, then the effect bursts on the target with nothing traveling between; each skill may show it differently where that suits it better.
-  - *Interception:* the defender's card flashes and slides briefly in front of the target as it takes the hit (an exception to cards staying in place).
-  - *Healing:* small motes rise from the bottom of the card and it glows softly once.
-  - *Statuses:* a short effect for each status (poison bubbles, flames, ice) before its icon appears. While it lasts, only the icon shows; the card stays clean.
-  - *Summons:* the card assembles from shards on its spot, with no line to the summoner.
-  - *Active unit:* a steady gold glow, no pulse.
+  - *Direct:* by default a glow gathers on the caster, then the effect bursts on the target; a skill may show it differently where that suits it.
+  - *Interception:* the defender flashes and slides briefly in front of the target as it takes the hit.
+  - *Healing:* small motes rise and the portrait glows softly once.
+  - *Statuses:* a short effect when a status is applied (poison bubbles, ice and so on).
+  - *Summons:* the portrait assembles from shards on its spot.
   - *Momentum:* the marker slides with a short spark trail, with a bigger flare at the thresholds.
-- **Audio source.** The first pass of every sound is synthesized by `tools/audio/build_audio.py` (adopted 2026-11-08) and checked by listening in the game. Any sound that feels wrong is remade later, synthesized or AI-generated with licensing checked for each tool used.
 - **Vibration.** Light vibration on hits and KOs on phones, with a setting to turn it off.
-- **Settings menu.** Music and sound volume, reduced motion, text size, vibration, language, crash reports, and key and controller bindings on Windows. There is no battle speed setting anywhere in the game (adopted 2026-10-08); only the development battle viewer has speed controls.
-- **Performance.** No hard numbers: the game must feel smooth. As orientation, about 30 frames per second on the test phone and 60 on Windows, and the AI deciding within about 2 seconds.
-- **Download size.** The mobile download stays under 200 MB, with art compressed for phones. Godot imports creature and summon art as lossy WebP, and mobile builds use 768 × 1152 copies; Windows keeps full size (adopted 2026-11-08).
-- **Art pipeline.** `tools/art/clean_creatures.py` reads the originals in `source-art/creatures/` (never changed) and writes the cleaned 1024 × 1536 copies to `assets/creatures/`, named by the **Art file** column of `docs/creature-classes.md` (`{species}-{nn}.png`). Each creature's portrait crop (card front) and full-card crop (card back) are the **Front frame** and **Rear frame** columns of that file's Card details table. The script can be re-run at any time. Where every other asset lives: [assets/README.md](../assets/README.md).
+- **Settings.** Music and sound volume, reduced motion, text size, vibration, language, crash reports, and key and controller bindings on Windows. No battle speed setting; only the development battle viewer has speed controls.
+- **Performance.** The game must feel smooth: about 30 frames per second on the test phone and 60 on Windows, and the AI deciding within about 2 seconds.
+- **Download size.** The mobile download stays under 200 MB. Creature and summon art is imported as lossy WebP, and mobile builds use 768 × 1152 copies; Windows keeps full size.
 
-### 1.7 Playtesting
+## 2. Technology
 
-- A closed test with friends through TestFlight and Google Play internal testing before release.
+### 2.1 Foundation
 
-## 2. Technical foundation
+- **Engine and language.** Godot 4.7 .NET, C# everywhere, including the UI.
+- **Rules core.** A plain C# library with no Godot dependency, used by the game, the batch runner and the online battle service.
+- **Batch runner.** A .NET command-line program on the rules core that runs AI-versus-AI batches (game_system.md §2.5).
+- **Code location.** One repository: the core, the runner and the battle service in `src/`, the Spring server in `server/`, the Godot project at the root.
+- **Content.** JSON files in `content/`, one per creature list, class and status set, using stable text IDs (unit names; skill names in snake case, Heavy Blow → `heavy_blow`; biome IDs from assets/README.md). They are generated from the document tables by `tools/content/build_content.py`, and a test checks that they match. Numbers and delivery live in JSON; each skill's mechanic is C# code.
+- **Randomness.** One seeded random generator per battle, in the core (never the platform's). The AI uses its own seeded generator for weaker picks and never draws from the battle's.
+- **Tests.** xUnit. Every worked check in game_system.md §20.5 is an automated test, plus unit tests per rule.
+- **Where it runs.** Builds, tests and batches run on the owner's PC; implementing sessions work there through Remote Control. No GitHub CI, nothing built in cloud sessions.
+- **.NET version.** The newest LTS .NET that Godot 4.7 supports, shared by all projects. Nullable reference types and warnings as errors in the core and the runner; relaxed in the Godot project.
 
-Godot 4.7 with .NET is installed and the repository contains a Godot project. No code exists yet. Background and the earlier proposal are in game_system.md §16.
+### 2.2 Rules core
 
-### 2.1 Foundation (adopted 2026-10-05)
-
-- **Language.** C# everywhere, including the Godot UI.
-- **Rules core.** A plain C# library with no Godot dependency. The game and the test runner both use it.
-- **Batch runner.** A small .NET command-line program built on the rules core runs AI-versus-AI batches (game_system.md §2.5).
-- **Code location.** The same repository: the core and the runner in a `src` folder, the Godot project stays at the root.
-- **Content format.** JSON files in the repository, one per creature list, class and status set, using the stable text IDs (game_system.md §3.7).
-- **Skill mechanics.** Numbers, tags and reach live in JSON. Each skill's mechanic is C# code built from shared building blocks (hit, heal, move, apply status).
-- **Source of truth.** The design documents stay the specification. A test checks that the JSON content matches the document tables.
-- **Randomness.** One seeded random generator per battle, implemented in the core (never the platform's own random). The AI's search never draws from it.
-- **Tests.** Every worked check in game_system.md §20.5 becomes an automated test, plus unit tests per rule.
-- **Where tests and batches run.** Locally on the owner's PC. There is no GitHub CI. Every implementation session works on the owner's PC through Remote Control, so it can build, run tests and batches and use the Godot editor there; nothing is built or run in cloud sessions (adopted 2026-11-08).
-- **Online backend.** Online play is in the first release (greenlit 2026-10-18, game_system.md §2.4). Its backend is a **Spring Boot (Java)** application. Responsibilities (adopted 2026-10-09): the **server runs the rules core and decides every result**; clients only send their chosen actions and play the events the server returns. Together with a C# battle service that runs the rules core (section 2.4, adopted 2026-10-18). Players sign in **automatically with their platform account** (Steam, Google Play, Apple) and there are no Everkin accounts. Play is **cross-platform** in one shared pool. Online rules are in game_system.md §2.4.
-
-### 2.2 Rules core internals (adopted 2026-10-05)
-
-- **Battle state and search.** The battle state is mutable with a fast `Clone()`. The AI search clones before trying an action.
-- **Events.** Every action returns an ordered list of events (hit, intercept, move, status applied, Momentum shift, KO). The UI animates them.
-- **Authority.** Only the core changes battle state. Godot sends chosen actions in and only reads state and events out.
+- **State.** A mutable battle state with a fast `Clone()`; the AI search clones before trying an action.
+- **Events.** Every action returns an ordered list of events (hit, intercept, move, status applied, Momentum shift, KO), which the UI plays.
+- **Authority.** Only the core changes battle state. Godot sends chosen actions in and reads state and events out.
 - **Previews.** The core answers preview queries (damage ranges, interception chances, timeline position, forced movement) with the same code that resolves actions, without changing state.
-- **Numbers.** The core uses integers only: percentages as whole numbers, coefficients in hundredths, explicit rounding down. No floating point in rules code. Damage that builds up in fractions (Poison, ground effects) is stored in hundredths of HP and taken as whole points (adopted 2026-11-08).
-- **Online checking.** The server runs the core and decides every result (§2.1); nothing in the core depends on how it is hosted. Battles run over SignalR, which uses WebSockets (section 2.4).
-- **.NET version.** The newest long-term-support .NET that Godot 4.7 supports, shared by the core, the runner and the Godot project.
-- **Skill code.** One small C# class per skill, found by its skill ID. A skill ID is the skill name in snake case (Heavy Blow → `heavy_blow`; adopted 2026-11-08). Shared behavior lives in reusable, specialized classes per tag or mechanic (for example interception, area shapes, forced movement), and skill classes delegate to them, so no rule is written twice.
-- **Broken content.** Content is validated at load. Any error stops the program with a clear message naming the file and ID.
-- **Tests.** xUnit.
-- **Compiler.** Nullable reference types on and warnings as errors in the core and the runner; relaxed in the Godot project.
-- **Parallel runs.** The runner plays battles in parallel on all CPU cores. Each battle is single-threaded and deterministic.
+- **Numbers.** Integers only: percentages as whole numbers, coefficients in hundredths, explicit rounding down. Damage that builds up in fractions (Poisoned, ground effects) is kept in hundredths of HP and taken as whole points.
+- **Skill code.** One small C# class per skill, found by its skill ID. Shared behaviour (interception, area shapes, forced movement and so on) lives in reusable classes that skills delegate to, so no rule is written twice.
+- **Broken content.** Content is validated at load; any error stops with a message naming the file and ID.
+- **Parallel runs.** The runner plays battles in parallel on all CPU cores; each battle is single-threaded and deterministic.
 - **Run output.** One folder per run: a snapshot (content JSON, git commit, AI settings), one CSV row per battle, and a Markdown report.
 
-### 2.3 AI search and Godot app (adopted 2026-10-05)
+### 2.3 AI search and Godot app
 
-- **Search algorithm.** Alpha-beta minimax with iterative deepening (depth 1, then 2, and so on up to the difficulty's limit).
-- **Candidate actions.** All legal actions are considered at the top of the search. Deeper down, only the best few candidates (for example 8) by a quick score are searched. Leaving Move and Skip Turn out of the deeper search is an option to try in testing.
-- **Weaker picks.** A lower difficulty sometimes picks among its top few actions instead of the best, using the AI's own seeded generator, separate from the battle's.
-- **Thinking time.** Fixed depth only, no time cap. Difficulty levels are tuned so the hardest stays quick on a mid-range phone.
-- **Cards.** One reusable Card scene with display modes, used in every screen.
-- **Input.** Godot input actions: mouse, touch and keyboard map to the same commands (select, confirm, inspect, cancel).
+- **Search.** Alpha-beta minimax with iterative deepening up to the difficulty's depth. All legal actions at the top; deeper down only the best few candidates (about 8) by a quick score. Fixed depth, no time cap; levels are tuned so the hardest stays quick on a mid-range phone.
+- **Cards.** One reusable Card scene with display modes, used on every screen.
+- **Input.** Godot input actions: mouse, touch, keyboard and controller map to the same commands (select, confirm, inspect, cancel).
 - **Animation.** Battle events play one after another from a queue, each with its own duration, always at one speed (the battle viewer can speed it up).
-- **Resolution.** The UI is designed for 1920 × 1080 and scaled down for phones.
-- **Creature art.** The game loads **one image per creature** from `assets/creatures/`, found through its row in `docs/creature-classes.md` (for example `weasel-rogue-dagger` → `weasel-01.png`); there is no rear art (adopted 2026-10-09). The card front shows a portrait crop of it, and the back shows the whole creature. Each creature has its own crop rectangles (Front frame and Rear frame columns in creature-classes.md), so the crop can be tuned per creature. The original files in `source-art/creatures/` are never changed; cleaned and renamed copies are produced from them (section 1.6).
-- **Text.** All UI and content text goes through translation keys from day one. English only at first.
-- **Battle viewer controls.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and pick a recorded setup to start from.
+- **Resolution.** Designed for 1920 × 1080 and scaled for phones.
+- **Text.** All UI and content text through translation keys, English only at first.
+- **Battle viewer.** Pause, step one action, speed (1x, 2x, instant), inspect any unit, and start from a recorded setup.
 
-### 2.4 Online backend (adopted 2026-10-18)
+### 2.4 Online backend
 
-- **Two services.** A **Spring Boot (Java)** server handles sign-in, profiles, collections, coins, purchases, matchmaking and ratings. A small **ASP.NET Core (C#) battle service** runs the rules core library directly and plays every online battle. Spring Boot hands both players a match ticket; the game then connects to the battle service for the battle and reports the result back to Spring Boot. The rules exist only once, in C#.
-- **Connections.** The game talks to Spring Boot over HTTPS. During a battle it holds a **SignalR** connection (WebSockets underneath) to the battle service, which handles reconnecting and the turn timer.
-- **Database.** PostgreSQL.
-- **Hosting.** One rented server in Europe running both services in Docker containers; moved to bigger hosting only when needed.
-- **Restarts.** Each online battle's seed, teams and every action are stored as they happen. After a server restart, running battles are rebuilt by replaying them and continue where they were.
-- **Trust.** The server holds every profile (section 1.4), so it checks that a player owns every creature in their team and keeps the coin balance itself. A player caught cheating is **banned from online play**; offline play keeps working.
-- **Versions.** Only players on the same game version are matched. During a rollout the battle service runs the old and the new version side by side for about two weeks; after that the old version must update before playing online.
-- **Rating.** The hidden matchmaking rating uses Glicko-2.
-- **Battle records.** Finished online battles are kept for 30 days for bug hunting and cheat checks. Players do not see them.
-- **Deleting data.** Settings has a "Delete my online data" button.
+- **Two services.** A **Spring Boot (Java)** server for sign-in, profiles, collections, coins, purchases, matchmaking and ratings, and an **ASP.NET Core (C#) battle service** that runs the rules core and plays every online battle. The server decides every result; clients send their chosen actions and play the returned events. Spring hands both players a signed match ticket; the game connects to the battle service, which checks the ticket with a shared key and reports the result back to Spring over internal HTTP.
+- **Connections.** HTTPS to Spring; during a battle a **SignalR** connection (WebSockets) to the battle service, which handles reconnecting and the turn timer.
+- **Sign-in.** Automatic with the platform account (Steam, Google Play Games, Apple Game Center); no Everkin accounts. The game sends its platform proof once; Spring checks it and hands out a short-lived access token plus a refresh token. Play is cross-platform in one pool.
+- **Spring.** Newest Java LTS and Spring Boot, Maven, Spring MVC on virtual threads, Spring Data JPA (Hibernate), Flyway migrations. It reads the same JSON content as the game, bundled at build time.
+- **Database.** PostgreSQL; battle records in the battle service's own schema.
+- **Matchmaking.** An in-memory queue in Spring; after a restart, waiting players queue again. Hidden rating with Glicko-2. Only players on the same game version are matched; during a rollout the battle service runs the old and the new version side by side for about two weeks.
+- **Restarts.** Each online battle's seed, teams and actions are stored as they happen; after a restart running battles are rebuilt by replay and continue.
+- **Trust.** The server checks that a player owns every creature in their team and keeps the coin balance. A cheater is banned from online play; offline play keeps working.
+- **Profile sync.** The device sends what changed since its last sync; the server answers with the whole merged profile.
+- **Battle records.** Finished online battles are kept 30 days for bug hunting and cheat checks; players do not see them.
+- **API versions.** The game sends its version with every request; Spring keeps old behaviour until that version is retired.
+- **Request limits.** Per player in Spring, per address in Caddy.
+- **Hosting.** One Hetzner server in Europe with both services in Docker Compose behind Caddy (automatic HTTPS), plus a staging setup with its own database for development builds. A script on the owner's PC builds and deploys. Budget up to about 30 euros a month.
+- **Secrets.** In an env file on the server only, never in the repository; the owner's PC keeps an encrypted copy.
+- **Operations.** Nightly database dump copied off the server, kept 30 days; server logs kept 14 days; health endpoints and an external uptime check that alerts the owner. Tests with JUnit 5 and Testcontainers.
+- **Privacy.** A short privacy policy page on the game's website before release; "Delete my online data" in Settings.
 
-**Backend details (adopted 2026-10-18).**
+## 3. Order of work
 
-- **Versions and build.** The newest Java LTS and the newest Spring Boot release when work starts, built with Maven.
-- **Code location.** The same repository: the Spring server in `server/`, the C# battle service in `src/` next to the rules core.
-- **Spring style.** Spring MVC (ordinary blocking code) on virtual threads. Database access with Spring Data JPA (Hibernate); schema changes as versioned Flyway migrations.
-- **Content.** The Spring server reads the same JSON content files as the game (creature IDs, prices), bundled at build time.
-- **Sign-in sessions.** The game sends its platform proof (Steam, Google Play Games, Apple Game Center) once; Spring checks it with the platform and hands out its own short-lived access token plus a refresh token.
-- **Between the services.** Plain internal HTTP calls both ways. Spring gives each matched player a **signed match ticket**, and the battle service checks the signature with a shared key before letting them in.
-- **Matchmaking queue.** In memory inside Spring; after a restart, waiting players queue again.
-- **Profile sync.** The device sends what changed since its last sync (wins, new creatures); the server answers with the whole merged profile.
-- **Battle records.** In the same PostgreSQL, in the battle service's own schema.
-- **Deploying.** Docker Compose on the server behind Caddy (automatic HTTPS). A script on the owner's PC builds the images and deploys; there is still no GitHub CI.
-- **Staging.** A second setup on the same server with its own database; development builds of the game use it.
-- **Backups.** A nightly database dump copied off the server, kept 30 days.
-- **Tests and monitoring.** JUnit 5 with Testcontainers (a real PostgreSQL in tests). Health endpoints, an external uptime check that alerts the owner, and logs on the server.
+The specification is finished before implementation. The tasks are in [implementation-plan.md](implementation-plan.md), the live state in [PROGRESS.md](../PROGRESS.md), and how a session works in [CLAUDE.md](../CLAUDE.md). After the AI-versus-AI milestone: battle viewer, free battle against the AI, tutorial and chapter 1, local two-player, the rest of the campaign, post-story content, online play, release. Online play ships in the first release. Code and docs go straight to `main`, without pull requests.
 
-**Backend operations (adopted 2026-10-19).**
+## 4. Open
 
-- **Hosting provider.** Hetzner.
-- **Secrets.** Database password, signing keys and platform API keys live in an env file on the server only, never in the repository; the owner's PC keeps an encrypted copy.
-- **API versions.** The game sends its version with every request; Spring keeps the old behaviour until that version is retired.
-- **Request limits.** A simple per-player limit in Spring, plus a per-address limit in Caddy.
-- **Server logs.** Kept 14 days.
-- **Privacy policy.** A short privacy policy page on the game's website, written before release.
-- **Budget.** Up to about 30 euros a month; the setup grows only when player numbers need it.
-
-## 3. Roadmap
-
-Adopted 2026-10-06.
-
-- **Specification first.** The specification is finished completely before implementation starts.
-- **Progress (adopted 2026-11-08).** The tasks are in [implementation-plan.md](implementation-plan.md), which is also the prompt for every implementing session; the live state is in [PROGRESS.md](../PROGRESS.md), updated after every step so a session can stop at any time and the next one continues. How an implementing session works is in [CLAUDE.md](../CLAUDE.md).
-- **Order after the AI-versus-AI milestone.** Battle viewer on the real cards, then free battle against the AI, then the tutorial and stage 1, then local two-player, then the rest of the campaign, then post-story content, then online play, then release. **Online play ships in the first release** (adopted 2026-10-18); the owner greenlit it on 2026-10-18.
-- **Code changes.** Code goes straight to main, like the docs. There are no pull requests.
-
-## 4. Still open
-
-- The online server's address (domain). Deferred by the owner (2026-10-19); everkin.com is taken.
-- The exact message format between the game and the servers, written when online play is built.
-
-- Availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18). Deferred by the owner (2026-10-09). A first pass found no US trademark for games, but "Grow: Song of the Evertree" (2021) calls its villagers "the Everkin" and everkin.com belongs to a Shenzhen electronics maker.
+- The online server's domain (everkin.com is taken).
+- The message format between the game and the servers, written when online play is built.
+- The availability check for the name Everkin (trademarks, stores, domains) before a store page goes up (game_system.md §18).

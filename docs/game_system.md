@@ -115,7 +115,7 @@ The roster is [creature-classes.md](creature-classes.md).
 
 - **HP** 20 to 80 in steps of 5; **Speed** 1 to 10 (small creatures are usually fast, big ones slow); **Power** 1 to 10, the reference human at 5; **Cost** 1 to 10 (section 5.1).
 - **No size tiers** and **no natural traits or immunities**. A creature's identity comes from its stats, classes, keystones and attack.
-- **IDs** are the unit names (`weasel-rogue-dagger`), stable once released. The game loads one image per creature by ID from the cleaned copies; the front shows a portrait crop, the back the whole creature. The original art is never changed (production.md §1.6).
+- **IDs** are the unit names (`weasel-rogue-dagger`), stable once released. The game loads one image per creature through its roster row; the card front shows a portrait crop, the back the whole creature (production.md §1.6).
 
 ## 4. Classes and skills
 
@@ -181,7 +181,7 @@ There is no Defense, accuracy, evasion, critical hit, mana, resistance or healin
 
 **Team budget.** A team holds **up to six creatures** whose total Cost must not exceed **35**, in every mode including the campaign. Campaign enemy teams are not bound by it. Randomly drawn teams (random battles, free battles with a random enemy, AI-versus-AI tests) are drawn within it.
 
-**How Cost is set.** Each creature gets a power score from its offense and durability; the roster is ranked by score and split into Cost 1–10 in the shares 3, 6, 10, 14, 17, 17, 14, 10, 6 and 3 percent, equal scores getting equal Cost. The current Costs come from a formula built on the old classes; the formula for the current classes is decided when AI-versus-AI testing starts, and Cost is recalculated then (section 19).
+**How Cost is set.** Each creature gets a power score from its offense and durability; the roster is ranked by score and split into Cost 1–10 in the shares 3, 6, 10, 14, 17, 17, 14, 10, 6 and 3 percent, equal scores getting equal Cost. The formula for the score is set when AI-versus-AI testing starts, and Cost is recalculated then (section 19).
 
 ### 5.2 Damage and healing
 
@@ -604,13 +604,9 @@ A card represents a team member, not something drawn or played. Its **front** sh
 
 On the board a unit is a **round battle portrait** showing HP and KO only; statuses and details are in the inspection panel (ui_spec.md). Cosmetic frames never reduce readability, and KO is always unmistakable while the body visibly keeps its place.
 
-### 13.2 Team editor
-
-Teams are built in a **team editor** like a deck builder: up to six creatures from the collection within the budget of 35 Cost, placed in rows, saved under a name. Several teams can be saved; the last used is preselected. Every mode starts from a saved team. Creatures are added, moved and removed by dragging (ui_spec.md).
-
 ### 13.3 Battle interface
 
-The battle screen shows the board (player's side left, enemy right), the timeline, the Momentum meter and the active unit's action bar, without nested menus. The interaction is **select skill → highlight legal targets → select target → execute**; skills with no target follow section 6.3. Illegal targets are visibly unavailable; areas, interception chances and timing consequences are previewed where they can be foreseen (section 8.3). Enemy units' future choices are never revealed. Layout: ui_spec.md.
+The interaction is **select skill → highlight legal targets → select target → execute** (section 6.3), without nested menus. Areas, interception chances and timing consequences are previewed where they can be foreseen (section 8.3); enemy units' future choices are never revealed. Teams are built and saved in the team editor. Layouts: ui_spec.md.
 
 ### 13.4 Animation and effects
 
@@ -624,7 +620,6 @@ Relationships (adjacency, cover, summoner, Marks) are shown in context when rele
 
 - **Look:** charming, colourful, varied, warm and slightly fairy-tale; strongly stylized and readable; simple shapes, strong silhouettes, broad colour zones, two to five major colour blocks with an accent.
 - **Creatures:** a clear silhouette and one or two memorable features; simple but expressive faces, not all friendly. Classes must be visible in the art (class_system §3), but there are no mandatory class outfits or colours.
-- **Size:** cards do not show creature size; every creature fills its frame.
 - **Biomes (18, all at release):** Pine and dry forest, Jungle, Wet and mixed forest, Desert, Mountain, Giant cathedral or castle (inside), Grassland and savannah, Arctic and iceberg, Swamp and bog, Coast and tide pools, Volcanic ashlands, Crystal caverns, Mushroom grotto, Lagoon and reef, Overgrown ruins, Autumn woods, Storm cliffs, Moonlit flower meadow. Every creature has one **home biome**; backgrounds stay dark (night look).
 - **UI and effects:** clean panels, modest ornament, bold icons, legible text, comfortable touch targets; effects never obscure the board.
 - **Artwork** is delivered as separate images in the card canvas, never as finished cards with baked-in UI.
@@ -649,7 +644,7 @@ Every encounter, boss, reward, challenge encounter and achievement is in [campai
 
 **Excluded or deferred:** terrain and reduced-capacity arenas, large multi-slot units, special battle objectives, creature levels, equipment and loot, capture, trading, crafting, cooperative play, story events, relationships between creatures, and genetic variation.
 
-Implementation starts with AI-versus-AI combat; the order of work is in production.md §3 and docs/implementation-plan.md.
+The order of work is in production.md §3 and implementation-plan.md.
 
 ## 18. Identity
 
@@ -670,7 +665,7 @@ Implementation starts with AI-versus-AI combat; the order of work is in producti
 
 Gaps in this design are not permission to inherit rules from Hearthstone or another reference game.
 
-## 20. Before implementation
+## 20. Content and worked checks
 
 ### 20.3 Content definitions
 

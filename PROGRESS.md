@@ -2,19 +2,19 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-10, M5 (tutorial and chapter 1) is built; the M2.3 run is still going in the background.
+**Last updated:** 2026-11-15. M5 (tutorial and chapter 1) is built; the docs were cleaned up and the asset art for M5.5 and M5.6 is in `assets/`.
 
 ## Current task
 
-**M5 is done** (M5.1 profile and saving, M5.2 world and chapter maps, M5.3 encounters, rewards and tutorial, M5.4 chapter 1). The campaign is playable from the tutorial to the Chapter 1 boss and on to chapters 2 to 4 and the challenge encounters, because all encounters come from `docs/campaign.md`. The owner asked to continue until the end of M5; the next task is **M5.5 battle UI left/right** (added by the owner 2026-11-10, spec.md), then M6.1 local two-player. M2.3 (the 10,000-battle run) is still running; see Next step 1.
+**M5 is done** (M5.1 profile and saving, M5.2 world and chapter maps, M5.3 encounters, rewards and tutorial, M5.4 chapter 1). The campaign is playable from the tutorial to the Chapter 1 boss and on to chapters 2 to 4 and the challenge encounters, because all encounters come from `docs/campaign.md`. The owner asked to continue until the end of M5; the next task is **M5.5 battle UI left/right**, then M5.6 and M6.1. M2.3 (the 10,000-battle run) is still running; see Next step 1.
 
 ## Next step
 
 1. **M2.3, the owner reviews the first run** (unchanged): see the earlier text in this list: run `runs/20261110-190808-harness`, started 2026-11-10 19:08, about 12 hours; resume with `dotnet src/Everkin.Runner/bin/Release/net10.0/Everkin.Runner.dll run --resume 20261110-190808-harness --level harness --battles 10000`, or `report --run <id>` for what exists. Summarize `report.md` and ask the owner to review it. Ask question 16 first (the run level).
 2. **Play-test chapter 1 with the owner** (nobody has played the campaign by hand yet; I checked the screens by screenshots and played battles with the AI standing in for the player). The AI-played tutorial and 1-1 battles were lost, because the AI is weak on a 2 to 6 creature team and the enemy side spams constructs (see question 17). If tutorial and chapter 1 are too hard for a person, the numbers to tune are the team formations and `ai_settings.json` (`summonPercent` of Easy was lowered from 50 to 20 on 2026-11-10 for this; the adopted 50 still stands for Normal and Hard).
-3. **M5.5 battle UI left/right** (owner 2026-11-10, before M6.1): read spec.md and docs/assets/battle-portraits.md. Portraits and rings first (generate, owner checks 4 tests and a contact sheet), then the board. **M6.1 local two-player** (game_system §2.4) follows: hot-seat battles with the board flipped so the acting player's side is on the left; player 1 picks a saved team, then player 2; both teams side by side, then Fight. The battle screen is `PlayScreen` (player side A vs AI): a second human needs a `Bottom` side switch in `BattleBoard` (`Setup(state, bottom)` exists) and a controller for side B that reuses `AskPlayer`.
+3. **M5.5 battle UI left/right** (before M6.1): the portraits and rings are made (`assets/portraits/`, `assets/frames/portrait-ring*.png`); build the board as the plan's M5.5 says. **M6.1 local two-player** (game_system §2.4) follows: hot-seat battles with the board flipped so the acting player's side is on the left; player 1 picks a saved team, then player 2; both teams side by side, then Fight. The battle screen is `PlayScreen` (player side A vs AI): a second human needs a side switch in `BattleBoard` (`Setup(state, bottom)` exists) and a controller for side B that reuses `AskPlayer`.
 
-4. **M5.6 classes rework** (owner 2026-11-11/12, after M5.5): the docs were rewritten on 2026-11-12 for the 28 classes, unique attacks and no skill distance; [classes-spec.md](classes-spec.md) is the work order. Questions 1, 10 and 12 to 15 above refer to the old trees and professions and lapse with M5.6.
+4. **M5.6 classes rework** (after M5.5): the docs describe the 28 classes, unique attacks and no skill distance; the plan's M5.6 lists the order of work. `tools/content/build_content.py` still parses the old roster columns (Attack type, Professions, Source, Status, Notes) and must be rewritten for the current tables first, so `JsonMatchesTheDocs` fails until then.
 
 ## In flight
 
@@ -22,23 +22,16 @@ Nothing.
 
 ## Questions for the owner
 
-Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm Thrust and Lash D2, Breath D1 (skills.md); the behind rule uses the next row that has a hittable unit (game_system §8.4); a Stunned unit's turns are skipped at the Delay 5 cost (§10.5). Questions 3, 4 and 6 are closed; the other numbers stay as they were.
 
-1. **Stale text, no task blocked (game_system §2.5, line "Each unit gets a random legal build: its 10 skill points").** §4.1 says 8 skill points (changed 2026-11-08), and skills.md and the plan say 8. I use 8; please fix §2.5 (or tell me 10 is meant).
 2. **Timeline gaps, no task blocked (game_system §6.1).** I filled these with the most literal reading; tell me if any is wrong: (a) Haste or Slow that would take the remaining Wait below 0 makes the turn arrive now, like the Pull Forward overshoot rule; (b) Speed changes move the remaining Wait by the change in Speed as the formula sees it (clamped to 1-10), so Haste +2 at Speed 9 shortens it by 1; (c) Reset uses the Wait the entry was scheduled with and ignores later Haste or Slow; (d) an entry that is pulled or pushed but stays in the same time unit keeps its place in the tie order; (e) a new Wait (turn, auto event, delayed event, effect end) is at least 1.
 5. **Movement edges, no task blocked (game_system §9.5).** Read literally and implemented; tell me if any is wrong: (a) a moved unit that overlaps one end unit of the destination row by 50% (no unit on the other side) is inserted at that end, like any 50% case; (b) a pull bumps along the direction of the pull (toward the Front), so a pulled unit landing on a Front unit at 100% overlap is blocked at the formation boundary and everyone in the chain takes 1; (c) a KO body in a chain blocks it but takes no bump damage (it has 0 HP); an Immobilized unit blocks it and does take the damage; (d) a forced move of several rows only runs the bump chain in the destination row and beyond, not in the rows it passes; (e) a unit that cannot be moved at all (KO body, Immobilized) is not a legal target: nothing happens and no damage is dealt.
 7. **Small status gaps, none block a task.** (a) Airborne has no polarity in the docs, so Absolve / Dispel do not touch it (`Polarity.Unclassified`); (b) Poison that has built up but not landed at the moment it expires lands its whole points at that moment and drops the fraction (so 50 time units give 5 in total); (c) Haste and Slow are statuses `haste` / `slow` with a Speed-step magnitude (the table has none; §6.1 needs them for expiry); (d) Stealth stays a plain flag with no duration unless a skill adds a timer.
 8. **Summon and undead gaps, none block a task (game_system §11).** Implemented as literally as possible; tell me if wrong: (a) a summon's damage and healing use its summoner's CURRENT Power (`BattleState.PowerOf`), not the Power at the moment it appeared; (b) when a resurrection restores an undead, the free slot is in the row nearest its old row (rows equally near: the seeded roll picks one) and at the END of that row; the docs give no position inside the row; (c) the raised undead's Power stays its own unless the skill passes one ("stats set by the skill" lists HP only for Speed-keeping undead); (d) nothing stops a necromancer from raising a body that is already a KO undead; (e) a resurrection on a living undead sets its HP to the revival HP the skill states.
 9. **Ground effect gaps, none block a task (game_system §12.2).** Implemented literally; tell me if wrong: (a) a spot is a coordinate of a row (side, row, half-card coordinate); "every spot of a row" and "the spots beside it" are for the skills to build from `GroundField.SpotOf`, `UnitsCovering` and the row's unit coordinates; (b) steam happens whenever fire meets ice, with no need for the Steam Burst passive (burning ground's and ice's own texts name each other); the water it leaves and any combo result start with the 20 reference length; (c) water set on burning ground puts the fire out and the water is placed too; (d) fire placed anywhere on a row explodes every poison spot of that row (6 to each unit on it, shields absorb it like burning ground damage, the spot becomes burning ground); (e) a unit pushed onto ice slides one row further only if that row exists (no slide off the formation, no bump damage for it), and only the pushed unit slides, not bumped units; (f) "water spots touching" for lightning is one step (direct neighbours), not a connected patch; (g) Poison ground applies Poison (50 time units) when the standing time reaches 5 and again at every further multiple of 5, counted when time is counted (turn start or before a formation change).
-10. **Stale text, no task blocked (game_system §4.6).** "Node costs and prerequisites" still says a keystone needs 3 other nodes from its branch; §4.1 (2026-11-08) replaced that rule (every node needs exactly one parent; keystones need only their parent and the budget). I follow §4.1. Please fix §4.6.
 11. **Skill framework choices, none block a task (production §2.1, game_system §5.2, §6.7).** (a) Skill numbers (damage ranges, durations, chances) live in the skill classes beside the Delay / Momentum / reach that come from `content/skills.json`; production §2.1 says numbers live in JSON, but parsing prose effects would be guesswork, so tell me if you want the JSON to carry them (then I would add structured fields to the docs' tables); (b) an area attack (Breath, Pulse) rolls each unit's damage independently, since the docs do not say 'one shared roll'; (c) any interception, even a partial one, counts as an intercepted hit for Momentum (0); (d) a status that rides on a hit (Bleeding, Stun) goes to the first interceptor if the hit was intercepted, else to the target, and is rolled once, after the hit; it is not applied if the hit missed.
-12. **Hunter readings, none block a task (skills.md Hunter).** (a) Target marks enemies only (the status table says Marked is enemy-only; the skill text says 'any visible unit') and the Mark has no clock of its own: it lasts until moved, the unit is KO'd or the battle ends; (b) Net Trap is placed in a free gap next to the Hunter (no range is stated), and because a 4 HP trap usually dies to one hit, its +3 Delay also fires when the hit that destroys it is the trigger ('when KO'd'), exactly once; (c) Scent of Blood reacts to hits only (a Poison tick that takes an enemy under 20% does not Mark it); (d) Flush's 'loses stealth' cannot happen to a stealthed target (a stealthed unit is not a legal target) and is kept for completeness; (e) Read Tracks may pick any row of either side that has a living unit within distance 3; (f) Creep Closer's destination row is the player's choice of the row in front or behind, and a blocked move bumps like any forced move; (g) the Decoy needs room: it does not trigger if the Hunter's move back would be blocked or the side is at its 18-unit cap.
-13. **Guardian readings, none block a task (skills.md Guardian).** (a) Leap to Defend lands the Guardian in a chosen gap next to the ally in the ally's row (placement, needs room), not by the coordinate-based forced landing of section 9.5 (skills.md says 'any gap'; section 9.1 says a skill that moves its user follows forced repositioning, which cannot promise adjacency); in the ally's own row it only works if the Guardian already stands next to it; (b) the wall of Shield Wall is every living unit in the Guardian's row at the moment of use (3 or more needed), evaluated when an attack comes, for 10 time units; (c) Distract and Pledge need a Charge; a Distract is spent by the enemy's next attack skill even if the Guardian could not be targeted (then nothing changes); (d) Follow the Charge refuses to move when the row in front is full or a unit already stands exactly at the Charge's coordinate (it counts as already lined up), and does nothing when the Charge is in the Front row; (e) Keeper of the Gate only stops the Guardian from intercepting; the double barricade HP is applied when the Tinker's Barricade is written (M1.16i); (f) Living Wall and Shield Wall go before the normal interception roll and then the hit is full or partial as usual (Full Cover forces full).
-14. **Healer readings, none block a task (skills.md Healer).** (a) Life Link: the second unit gets half of the HP actually restored on the first, rounded down, minimum 1 when something was restored, with no echo back; a unit has one link, so re-linking breaks its old partner's side; (b) Bound Resurrect's pool: each sharer's HP shows the pool capped at its own maximum (so a revived unit with maximum 20 shows 20 while the pool is 35 of 60); hits and heals on either change the pool; at zero both are KO; the link ends when either is KO; the Healer cannot start a second pool; (c) Downpour's half is the range 3–4 halved to 1–2 (then scaled by Power); (d) Revive and Life for Life schedule the revived unit with the reviving skill's own Delay (9 and 6) and the unit's Speed; Life for Life needs at least 2 HP and the HP given up cannot be reduced by a Ward; (e) Revive on a unit that is a KO or an undead (alive or KO'd) works; on an undead it restores the original creature at 25% of its original maximum; (f) Dispel and Absolve also end stealth (a cleansing skill hits a stealthed unit); Steal Blessing does not move stealth (it is a flag, not a status); Airborne is untouched by all of them (unclassified); (g) Burnout Heal heals the units adjacent to the Healer on its own side (adjacency never crosses the battle line) and the Healer's HP goes to 0 as unreducible damage after the heal block.
 16. **AI speed and the run level (blocks the "highest level" run of §2.5, nothing else).** The adopted levels are depth 2 / 4 / 6 (Easy / Normal / Hard) with the top 8 candidates below the first move. With the real rules the cost is about 20 microseconds per position (clone plus applying a skill) and 40 to 60 legal moves per turn, so Easy (depth 2) already takes 5 to 25 seconds per battle and Hard (depth 6) minutes per decision. For the first run I added a level `harness` in content/ai_settings.json (depth 2, only the 8 best first moves are refined in round two, 6 candidates below, at most 4 places per placement skill and 20 pairs per two-target skill) which takes about 4 to 8 seconds per battle on one core. Do you want (a) the first run at `harness` (what is running now), (b) Easy / Normal as adopted but fewer than 10,000 battles, or (c) a cheaper way to rank candidates below the first move (a static score without playing the move) so that deeper levels become affordable (it changes the search design, not the rules)?
 17. **AI behaviours seen in the first battles (for the report, nothing blocked).** (a) The AI fills its side with Animate Blades (18 units) because the score counts a summon at half value; (b) about 30% of 500-turn battles end in a draw at the cap. Tell me whether to treat (a) and (b) as balance findings (report) or AI weaknesses to fix first (change the scoring weights in ai_settings.json, which the spec allows per level).
 
-15. **Sorcerer readings, none block a task (skills.md Sorcerer; the owner's three answers of 2026-11-10 are in skills.md).** (a) "Next attack" for Phase Weapon and Piercing Enchant means the unit's next skill with `IsAttack`; Echo Enchant is used by its next skill of any kind; Echo does not repeat a placement skill, and not if the target is KO or the battle is over. (b) Piercing's extra hit is a separate roll of the same range and cannot be intercepted; it only follows the skill's own declared target. (c) Stone Shell also stops the unit from intercepting (Stunned-like) and counts as a fully absorbed hit for Momentum; it blocks every damage source, bump damage and Poison included. Absolve cleanses it (Harmful polarity). (d) Glass Body doubles the next `DamageSource.Hit` the unit takes, before Ward; an interceptor with Glass Body takes its own double. (e) Curse of Weight only stops the Move action (`Movement.LegalMoves`, `Actions.Move`) and new Airborne; a unit that is already airborne stays so, and skills that move their user are not stopped. (f) Curse of Stagnation holds the end marker of every timed status (`StatusInstance.Held`); statuses "until the next turn" are not held; held Poison does not build up. (g) Betrayal redirects only the primary heal (not the Life Link echo); the recipient is the Sorcerer's living, non-undead unit with the lowest HP. (h) Lingering Malice counts curses removed by a cleansing skill of an enemy (Absolve, Turn Back); it needs the Sorcerer alive. "Hexes" in its text have no other meaning in the docs, so only the three curses count.
 
 ## Notes
 
@@ -142,6 +135,7 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - [x] M5.3 Encounters, rewards, tutorial
 - [x] M5.4 Chapter 1
 - [ ] M5.5 Battle UI left/right, round portraits, visible ground effects
+- [ ] M5.6 Classes rework
 - [ ] M6.1 Local two-player
 - [ ] M7.1 Chapters 2 to 4
 - [ ] M7.2 Achievements
@@ -156,48 +150,3 @@ Resolved 2026-11-08 (owner decisions, now in the docs): melee reach D1, Polearm 
 - [ ] M10.2 Crash reports
 - [ ] M10.3 Mobile art and download size
 - [ ] M10.4 Store builds and demo
-
-## Session log
-
-One line per finished task: date, task, commit.
-2026-11-08 M0.1 Solution and projects (see git log)
-2026-11-08 M0.2 Godot C# project (see git log)
-2026-11-08 M0.3 Export test, M0.4 Commands in CLAUDE.md (see git log)
-2026-11-08 M1.1 Content pipeline and validation (see git log)
-2026-11-08 M1.2 Battle state, random generator, events (see git log)
-2026-11-08 M1.3 Formation (see git log)
-2026-11-08 M1.4 Timeline (see git log)
-2026-11-08 M1.5 Momentum (see git log)
-2026-11-08 M1.6 Ranges and targeting (see git log)
-2026-11-08 M1.7 Damage, healing and shields (see git log)
-2026-11-08 M1.8 Interception and area patterns (see git log)
-2026-11-08 M1.9 Movement (see git log)
-2026-11-08 M1.10 Stealth, KO, bodies, revival (see git log)
-2026-11-08 M1.11 Statuses and airborne (see git log)
-2026-11-08 M1.12 Reactions (see git log)
-2026-11-08 M1.13 Summons, constructs, totems, traps, undead (see git log)
-2026-11-08 M1.14 Ground effects and battle end (see git log)
-2026-11-08 M1.15 Skill trees and builds (see git log)
-2026-11-08 M1.16 Attack Type attacks and the skill framework (see git log)
-2026-11-08 M1.16a Hunter skills (see git log)
-2026-11-08 M1.16b Guardian skills (see git log)
-2026-11-08 M1.16c Healer skills (see git log)
-2026-11-10 M1.16d Sorcerer skills (see git log)
-2026-11-10 M1.16e Elementalist skills (see git log)
-2026-11-10 M1.16f Warrior skills (see git log)
-2026-11-10 M1.16g Leader skills (see git log)
-2026-11-10 M1.16h Rogue skills (see git log)
-2026-11-10 M1.16i Tinker skills (see git log)
-2026-11-10 M1.16j Summoner skills (see git log)
-2026-11-10 M1.16k Primalist skills (see git log)
-2026-11-10 M1.16l Flying skills (see git log)
-2026-11-10 M1.17 All §20.5 worked checks pass (see git log)
-2026-11-10 M1.18 Preview queries (see git log)
-2026-11-10 M2.1 AI search, M2.2 Batch runner (see git log); M2.3 run started
-2026-11-10 M3.1 to M3.4 card, board, animation, viewer (see git log)
-2026-11-10 M4.1 to M4.4 player turn, team editor, skill tree editor, free battle (see git log)
-2026-11-10 M5.1 to M5.4 profile and saving, campaign maps, encounters, tutorial, chapter 1 (see git log)
-
-## Battle portrait assets — 2026-11-11 (moved 2026-11-15)
-
-All 319 creature portraits, 14 summon portraits and the three rings are made. They now live in `assets/portraits/`, `assets/portraits/summons/` and `assets/frames/`, originals in `source-art/portraits/`; `discs.json` sits beside the portraits. Card-by-card visual review is incomplete; the heron is near profile with only one eye clearly visible. Game asset integration has not been performed.
