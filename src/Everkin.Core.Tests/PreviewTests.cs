@@ -54,7 +54,7 @@ public class PreviewTests
         Assert.Equal((0, 1), (unit.HpLostMin, unit.HpLostMax));
     }
 
-    [Fact(Skip = "needs class skills (M5.6 step 4)")]
+    [Fact]
     public void AHealRangeAndAnAreaOfSeveralUnitsArePreviewedPerUnit()
     {
         var s = new BattleState(1);
@@ -116,7 +116,7 @@ public class PreviewTests
         Assert.Equal(0, Preview.Skill(s, World.Catalog, Use(a, "tail_club", t)).SuccessChance);
     }
 
-    [Fact(Skip = "needs class skills (M5.6 step 4)")]
+    [Fact]
     public void TheMomentumGhostShowsTheMeterAfterTheCost()
     {
         var s = new BattleState(1);
@@ -146,7 +146,7 @@ public class PreviewTests
         Assert.Equal(s.Timeline.Now + Timeline.SkippedTurnWait(5), skip.Due);
     }
 
-    [Fact(Skip = "needs class skills (M5.6 step 4)")]
+    [Fact]
     public void OtherTimelineChangesAreListed()
     {
         var s = new BattleState(1);
@@ -163,7 +163,7 @@ public class PreviewTests
         Assert.Contains(p.TimelineShifts, x => x.UnitId == b && x.To < x.From);
     }
 
-    [Fact(Skip = "needs class skills (M5.6 step 4)")]
+    [Fact]
     public void AForcedMovePreviewShowsTheLandingAndABlockedChainShowsNothingMovingAndTheBumpDamage()
     {
         var s = Board(1, out var a, out var t, "gust");

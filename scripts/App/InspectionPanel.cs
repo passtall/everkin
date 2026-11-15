@@ -47,7 +47,7 @@ public partial class InspectionPanel : Control
         side.AddChild(Ui.Label($"HP {u.Hp}/{u.MaxHp}   Power {state.PowerOf(u.Id)}   Speed {u.EffectiveSpeed}" + (u.EffectiveSpeed != u.Speed ? $" (base {u.Speed})" : ""), 22));
         if (u.IsStealthed) side.AddChild(Ui.Label("Stealthed", 22, new Color("9fc7e8")));
         if (u.Ward > 0) side.AddChild(Ui.Label($"Ward {u.Ward}", 22, new Color("8fb8e8")));
-        foreach (var s in u.StatusInstances.Values.Where(s => s.Id is not (StatusIds.SongHaste or StatusIds.FreeMomentum)))
+        foreach (var s in u.StatusInstances.Values.Where(s => s.Id is not (StatusIds.SongHaste or StatusIds.FreeMomentum or StatusIds.AshSpeed)))
         {
             var left = s.TimeLeft(state.Timeline.Now);
             var from = s.SourceUnitId is { } src ? $" · from {state.GetUnit(src).Name}" : "";

@@ -8,7 +8,7 @@ namespace Everkin.Core.Skills;
 /// <param name="HealMin">HP restored.</param>
 public sealed record UnitPreview(int UnitId, int DamageMin, int DamageMax, int HpLostMin, int HpLostMax, int HealMin, int HealMax);
 
-/// <summary>A unit that may step in for the target and the chance that it does (50 or 25).</summary>
+/// <summary>A unit that may step in for the target and the chance that it does (melee 75 or 50, projectile 50 or 25).</summary>
 public sealed record InterceptorPreview(int UnitId, int Percent);
 
 /// <summary>An entry of the timeline whose time would change (a pull, a push, Haste, Swap Turns).</summary>
@@ -38,6 +38,12 @@ public sealed record SkillPreview(
     IReadOnlyList<BattleEvent> LowEvents)
 {
     public bool IsLegal => IllegalReason is null;
+
+    /// <summary>
+    /// The chance, in percent, that the skill reaches its target directly: that no defender steps in (the defenders try one after another, each with the chance
+    /// listed). A defender that does step in takes the whole hit or half of it (game_system.md section 8.3).
+    /// </summary>
+    public int DirectChance => (int)Interceptors.Aggregate(100.0, (chance, i) => chance * (100 - i.Percent) / 100.0);
 }
 
 /// <summary>Preview queries (M1.18): read-only answers computed with the same code that resolves actions.</summary>
@@ -62,9 +68,10 @@ public static class Preview
 
         var interceptors = new List<InterceptorPreview>();
         if (skill.Delivery is { } delivery && Interception.CanBeIntercepted(delivery) && use.TargetUnitId is { } target
-            && !(skill.IsAttack && Statuses.Get(user, StatusIds.Phased) is { Magnitude: > 0 }))
+            && state.GetUnit(target).Side != user.Side                                              // a skill aimed at the user's own side is never intercepted
+            && !(skill.IsAttack && Statuses.Has(user, StatusIds.Phased)))
             foreach (var defender in Interception.Defenders(state, target))
-                interceptors.Add(new InterceptorPreview(defender, Interception.ChanceFor(state.Formation.UnitOverlapPercent(defender, target))));
+                interceptors.Add(new InterceptorPreview(defender, Interception.ChanceFor(state.Formation.UnitOverlapPercent(defender, target), delivery)));
 
         var success = 100;
         if (skill.IsAttack)

@@ -56,7 +56,7 @@ public static class UnitCards
         info.Stealthed = u.IsStealthed;
         info.Undead = u.IsUndead;
         info.Airborne = u.IsAirborne;
-        var statuses = u.StatusInstances.Keys.Where(k => k is not (StatusIds.SongHaste or StatusIds.FreeMomentum)).ToList();
+        var statuses = u.StatusInstances.Keys.Where(k => k is not (StatusIds.SongHaste or StatusIds.FreeMomentum or StatusIds.AshSpeed)).ToList();
         if (u.Ward > 0 && !statuses.Contains(StatusIds.Ward)) statuses.Add(StatusIds.Ward);
         info.Statuses = statuses;
         info.Skills = u.CreatureId is { } cid && u.Kind == UnitKind.Creature && Game.Content.CreaturesById.TryGetValue(cid, out var def)

@@ -473,7 +473,12 @@ public partial class PlayScreen : Control, IBackNavigable
         }
         if (p.Units.Count > 0 && lines.Count == 0) lines.Add("Affects " + string.Join(", ", p.Units.Select(u => _state.GetUnit(u.UnitId).Name)));
         if (_state.GetUnit(use.UserId) is { } user && Game.Catalog.Get(use.SkillId).IsAttack) lines.Add($"Success chance {p.SuccessChance}%");
-        if (p.Interceptors.Count > 0) lines.Add("May be intercepted by " + string.Join(", ", p.Interceptors.Select(i => $"{_state.GetUnit(i.UnitId).Name} {i.Percent}%")));
+        if (p.Interceptors.Count > 0)
+        {
+            lines.Add($"Direct hit chance {p.DirectChance}%");
+            lines.Add("May be intercepted by " + string.Join(", ", p.Interceptors.Select(i => $"{_state.GetUnit(i.UnitId).Name} {i.Percent}%")));
+        }
+        else if (Game.Catalog.Get(use.SkillId).Delivery == Everkin.Core.Battle.Delivery.Direct) lines.Add("Cannot be intercepted");
         foreach (var m in p.Moves.Where(m => m.Cause == MoveCause.Forced)) lines.Add($"{_state.GetUnit(m.UnitId).Name} moves to {m.To.Row}");
         foreach (var b in p.BlockedChains) lines.Add($"Blocked: {string.Join(", ", b.Chain.Select(c => _state.GetUnit(c).Name))} take 1 bump damage");
         if (p.MomentumCost > 0) lines.Add($"Momentum {p.MomentumBefore} → {p.MomentumAfterCost}");
