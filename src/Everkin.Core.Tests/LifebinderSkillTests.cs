@@ -165,6 +165,29 @@ public class LifebinderSkillTests
     }
 
     [Fact]
+    public void ADirectKoRemovesOnlyThatUnitFromAPoolOfThree()
+    {
+        var (s, h, ally) = Board(1, "bound_resurrect");
+        var body = World.Unit(s, Side.A, Row.Rear);
+        Ko(s, ally);
+        Run(s, Use(h, "bound_resurrect", ally));
+        Ko(s, body);
+        K.Ready(s, h);
+        s.ShiftMomentum(Side.A, 4);
+        Run(s, Use(h, "bound_resurrect", body));
+        var pool = s.SharedPoolOf(h)!;
+        var max = pool.Max;
+        var hp = pool.Pool;
+        s.GetUnit(body).Hp = 0;
+        Knockout.Resolve(s, body);
+        Assert.Same(pool, s.SharedPoolOf(h));
+        Assert.Null(s.SharedPoolOf(body));
+        Assert.Equal(max, pool.Max);
+        Assert.Equal(hp, pool.Pool);
+        Assert.Equal(2, pool.Members.Count);
+    }
+
+    [Fact]
     public void MartyrHealsEveryAllySixToEightWhenTheLifebinderIsKo()
     {
         var (s, h, ally) = Board(1, "martyr");

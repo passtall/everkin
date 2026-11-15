@@ -498,7 +498,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 
 **Burnout Heal:** its healing resolves as one simultaneous block; then the Lifebinder is KO, before reactions are collected, so the Lifebinder's own reactions do not fire (Martyr is a "when KO" trigger and does).
 
-**Bound Resurrect: shared pool.** The pool's maximum is the **sum of both units' maximum HP**; it starts at the reviver's current HP plus the revived unit's revival HP. Every hit on either unit reduces the pool and healing either heals it. When the pool reaches 0, **both units are KO**. The link ends when either unit is KO. A Lifebinder that already shares a pool can use Bound Resurrect again: the revived unit joins the same pool, whose maximum and current HP grow by that unit's maximum HP and revival HP.
+**Bound Resurrect: shared pool.** The pool's maximum is the **sum of both units' maximum HP**; it starts at the reviver's current HP plus the revived unit's revival HP. Every hit on either unit reduces the pool and healing either heals it. When the pool reaches 0, **both units are KO**. A unit that is KO without the pool reaching 0 (a direct KO such as Burnout Heal) leaves the pool; the pool's maximum and current HP stay as they are, and the link ends when fewer than two units are left in it. A Lifebinder that already shares a pool can use Bound Resurrect again: the revived unit joins the same pool, whose maximum and current HP grow by that unit's maximum HP and revival HP.
 
 ### 10.5 Statuses
 

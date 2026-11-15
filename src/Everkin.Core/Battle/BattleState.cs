@@ -473,8 +473,15 @@ public sealed class BattleState
         return p;
     }
 
-    /// <summary>The link ends when either unit is KO: the pool goes away and each keeps the HP it shows.</summary>
-    public void EndSharedPool(int unitId) => _sharedPools.RemoveAll(p => p.Members.Contains(unitId));
+    /// <summary>A KO unit leaves its pool; with fewer than two members left the pool goes away and each keeps the HP it shows.</summary>
+    public void EndSharedPool(int unitId)
+    {
+        foreach (var p in _sharedPools.Where(p => p.Members.Contains(unitId)).ToArray())
+        {
+            p.Members.Remove(unitId);                        // maximum and pool stay as they are (owner, 2026-11-15)
+            if (p.Members.Count < 2) _sharedPools.Remove(p);
+        }
+    }
 
     /// <summary>A unit joins an existing pool (Bound Resurrect while the Lifebinder already shares): the maximum grows by its maximum HP and the pool by its HP.</summary>
     public void JoinSharedPool(SharedHp pool, int unitId)
