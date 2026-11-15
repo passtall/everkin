@@ -84,6 +84,12 @@ public static class StatusIds
     /// <summary>Song of Haste: Speed raised by the magnitude while a Leader's song reaches the unit. Kept by the aura, not applied by a skill.</summary>
     public const string SongHaste = "song_haste";
 
+    /// <summary>Mirror Form: the unit has another unit's Power and Speed (Magnitude = Power x 100 + Speed). Neither helpful nor harmful.</summary>
+    public const string Traded = "traded";
+
+    /// <summary>Withering Curse: damage over time, Magnitude HP per 10 time units. A curse.</summary>
+    public const string Withering = "withering";
+
     /// <summary>Ashwalker: +1 Speed while standing on burning ground (kept by an aura sync, no clock).</summary>
     public const string AshSpeed = "ash_speed";
 
@@ -91,7 +97,7 @@ public static class StatusIds
     public const string Regrowth = "regrowth";
 
     /// <summary>The Sorcerer's curses (Lingering Malice and Witch's Patience look at these).</summary>
-    public static bool IsCurse(string statusId) => statusId is Weighted or Stagnant or Betrayed;
+    public static bool IsCurse(string statusId) => statusId is Weighted or Withering or Betrayed;
 
     /// <summary>The Sorcerer's enchantments (Enchanted Soul looks at these).</summary>
     public static bool IsEnchantment(string statusId) => statusId is Phased or Piercing or Echo;
@@ -193,7 +199,7 @@ public static class StatusRules
         StatusIds.Blind or StatusIds.Poison or StatusIds.Bleeding or StatusIds.Silenced
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
             or StatusIds.Marked or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted
-            or StatusIds.GlassBody or StatusIds.StoneShell or StatusIds.Weighted or StatusIds.Stagnant or StatusIds.Betrayed => Polarity.Harmful,
+            or StatusIds.GlassBody or StatusIds.StoneShell or StatusIds.Weighted or StatusIds.Stagnant or StatusIds.Betrayed or StatusIds.Withering => Polarity.Harmful,
         StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.Regrowth or StatusIds.Charge or StatusIds.Pledge
             or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo or StatusIds.Sidestep or StatusIds.FreeMomentum => Polarity.Helpful,
         _ => Polarity.Unclassified,
@@ -454,6 +460,7 @@ public static class Statuses
         if (instance is null || instance.MarkerEntryId != entry.Id) return;
         if (statusId == StatusIds.Poison) LandPoison(state, unit, instance);
         if (statusId == StatusIds.Regrowth) LandRegrowth(state, unit, instance);
+        if (statusId == StatusIds.Withering) LandWithering(state, unit, instance);
         Remove(state, unitId, statusId, StatusEndCause.Expired);
     }
 
@@ -469,9 +476,36 @@ public static class Statuses
         {
             if (unit.IsKnockedOut) continue;
             if (unit.StatusStore.TryGetValue(StatusIds.Poison, out var poison) && LandPoison(state, unit, poison)) damaged.Add(unit.Id);
+            if (!unit.IsKnockedOut && unit.StatusStore.TryGetValue(StatusIds.Withering, out var withering) && LandWithering(state, unit, withering)) damaged.Add(unit.Id);
             if (!unit.IsKnockedOut && unit.StatusStore.TryGetValue(StatusIds.Regrowth, out var regrowth) && LandRegrowth(state, unit, regrowth)) damaged.Add(unit.Id);   // an undead is hurt by healing
         }
         return damaged;
+    }
+
+    /// <summary>Withering Curse deals Magnitude damage per 10 time units, built up per time unit and landing whenever any unit gets a turn; reductions apply, Wards do not absorb it (section 10.5).</summary>
+    private static bool LandWithering(BattleState state, Unit unit, StatusInstance curse)
+    {
+        if (curse.Held) return false;
+        var until = Math.Min(state.Timeline.Now, curse.EndsAt ?? state.Timeline.Now);
+        curse.BuildupHundredths += Math.Max(0, until - curse.LastTickTime) * curse.Magnitude * 10;
+        curse.LastTickTime = Math.Max(curse.LastTickTime, until);
+        var whole = curse.BuildupHundredths / 100;
+        curse.BuildupHundredths %= 100;
+        if (whole <= 0) return false;
+        state.DealDamage(curse.SourceUnitId, unit.Id, whole, DamageSource.Periodic);
+        return true;
+    }
+
+    /// <summary>
+    /// A skill or attack used up one use of a status that counts uses (an enchantment): with more than one use left it only goes down, otherwise the
+    /// status ends (Lingering Magic gives the enchantments two uses).
+    /// </summary>
+    public static void ConsumeUse(BattleState state, int unitId, string statusId)
+    {
+        var instance = Get(state.GetUnit(unitId), statusId);
+        if (instance is null) return;
+        if (instance.UsesLeft is > 1) instance.UsesLeft--;
+        else Remove(state, unitId, statusId, StatusEndCause.Consumed);
     }
 
     /// <summary>Regrowth heals Magnitude HP per 10 time units, built up per time unit and landing whenever any unit gets a turn (section 10.5); the fraction carries over.</summary>
@@ -612,3 +646,7 @@ public static class Statuses
     public static void OnHit(BattleState state, int unitId) =>
         Remove(state, unitId, StatusIds.Stunned, StatusEndCause.Hit);
 }
+
+
+/// <summary>A status a unit had when it was KO'd, with its remaining time (null: no time limit), magnitude and source.</summary>
+public sealed record StatusSnapshot(string Id, int? TimeLeft, int Magnitude, int? SourceUnitId);

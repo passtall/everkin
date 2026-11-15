@@ -24,6 +24,7 @@ public static class Knockout
         if (unit.IsStealthed) Stealth.Break(state, unitId, StealthCause.KnockedOut);
         unit.MarkedAtKo = Statuses.Has(unit, StatusIds.Marked);
         unit.MarkedByAtKo = Statuses.Get(unit, StatusIds.Marked)?.SourceUnitId;
+        unit.StatusesAtKo = unit.StatusInstances.Values.Select(st => new StatusSnapshot(st.Id, st.TimeLeft(state.Timeline.Now), st.Magnitude, st.SourceUnitId)).ToArray();
         Statuses.ClearAll(state, unitId);
         unit.ClearStatuses();
 

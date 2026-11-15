@@ -58,7 +58,10 @@ public static class ClassSkills
             .Concat(TrackerSkills.All(content))
             .Concat(PyromancerSkills.All(content))
             .Concat(StormcallerSkills.All(content))
-            .Concat(CryomancerSkills.All(content));
+            .Concat(CryomancerSkills.All(content))
+            .Concat(EnchanterSkills.All(content))
+            .Concat(TransmuterSkills.All(content))
+            .Concat(HexerSkills.All(content));
 }
 
 /// <summary>Small helpers the class skills share.</summary>

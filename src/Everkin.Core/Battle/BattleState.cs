@@ -84,6 +84,7 @@ public sealed class Unit
         LastActiveSkillId = other.LastActiveSkillId;
         MarkedAtKo = other.MarkedAtKo;
         MarkedByAtKo = other.MarkedByAtKo;
+        StatusesAtKo = other.StatusesAtKo;
         SneakReady = other.SneakReady;
         AutoSkillId = other.AutoSkillId;
         NoReviveUntil = other.NoReviveUntil;
@@ -160,6 +161,9 @@ public sealed class Unit
     /// <summary>It was Marked when it was KO'd (the KO clears statuses): Deathmark Bloom.</summary>
     public bool MarkedAtKo { get; set; }
 
+    /// <summary>The timed statuses it had when it was KO'd, with the time they had left (the KO clears statuses): Spreading Curse.</summary>
+    public IReadOnlyList<StatusSnapshot> StatusesAtKo { get; set; } = Array.Empty<StatusSnapshot>();
+
     /// <summary>Who had Marked it when it was KO'd (Glory: the Champion's Mark).</summary>
     public int? MarkedByAtKo { get; set; }
 
@@ -228,10 +232,15 @@ public sealed class Unit
     /// Speed as the turn formula sees it before clamping to 1–10: the creature's Speed plus Song of Haste
     /// (section 6.1). The timeline clamps it when it computes a Wait.
     /// </summary>
-    public int EffectiveSpeed => (_statusInstances.ContainsKey(StatusIds.Transmuted) ? Power : Speed) + _statusInstances.Values.Sum(StatusRules.SpeedModifier);
+    public int EffectiveSpeed => (_statusInstances.ContainsKey(StatusIds.Transmuted) ? TradedPower : TradedSpeed) + _statusInstances.Values.Sum(StatusRules.SpeedModifier);
 
     /// <summary>Power as the damage and healing rules see it: the creature's Power, or its Speed while Transmuted (Power and Speed swap).</summary>
-    public int EffectivePower => _statusInstances.ContainsKey(StatusIds.Transmuted) ? Speed : Power;
+    public int EffectivePower => _statusInstances.ContainsKey(StatusIds.Transmuted) ? TradedSpeed : TradedPower;
+
+    /// <summary>Mirror Form: while Traded the unit has the other unit's Power and Speed (the status keeps them as Power x 100 + Speed).</summary>
+    private int TradedPower => _statusInstances.TryGetValue(StatusIds.Traded, out var t) ? t.Magnitude / 100 : Power;
+
+    private int TradedSpeed => _statusInstances.TryGetValue(StatusIds.Traded, out var t) ? t.Magnitude % 100 : Speed;
 
     /// <summary>
     /// Removes every status: KO removes all of them, helpful and harmful alike (section 10.3). Today these are Ward, Dampen,
@@ -681,8 +690,8 @@ public sealed class BattleState
         }
         if (!secondary && source == DamageSource.Hit && Statuses.Has(target, StatusIds.GlassBody))
         {
-            // Glass Body: the next hit on the unit deals double damage, then the status is used up.
-            amount *= 2;
+            // Glass Body: the next hit on the unit deals 50% more (double with Brittle Glass: the status magnitude is the bonus in percent), then the status is used up.
+            amount = amount * (100 + Math.Max(50, Statuses.Get(target, StatusIds.GlassBody)!.Magnitude)) / 100;
             Statuses.Remove(this, targetId, StatusIds.GlassBody, StatusEndCause.Consumed);
         }
         if (!secondary && source == DamageSource.Hit)

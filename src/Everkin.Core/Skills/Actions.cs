@@ -157,13 +157,13 @@ public static class Actions
             var phased = skill.IsAttack ? Statuses.Get(user, StatusIds.Phased) : null;
             var piercing = skill.IsAttack ? Statuses.Get(user, StatusIds.Piercing) : null;
             var echo = Statuses.Get(user, StatusIds.Echo);
-            foreach (var used in new[] { phased?.Id, piercing?.Id, echo?.Id })
-                if (used is not null) Statuses.Remove(state, use.UserId, used, StatusEndCause.Consumed);
+            foreach (var used in new[] { phased, piercing, echo })
+                if (used is not null) Statuses.ConsumeUse(state, use.UserId, used.Id);                 // Lingering Magic: two uses
 
             var context = new SkillContext(state, skill, use.UserId, use, target)
             {
                 Catalog = catalog,
-                IgnoresInterception = phased is { Magnitude: > 0 },   // Phasing Strike
+                IgnoresInterception = phased is not null,   // Phase Weapon: this attack cannot be intercepted
                 PierceBehind = piercing is not null,
             };
             skill.Resolve(context);
