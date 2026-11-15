@@ -195,17 +195,37 @@ public class GroundTests
     // ---- combos ----
 
     [Fact]
-    public void WaterStopsBurningGroundAndFireDoesNotStartOnWater()
+    public void WaterPlacedOnFireIsSteamAtOnceAndTheSpotIsLeftClear()
+    {
+        var s = Duel(out var a, out _);
+        s.Ground.Place(GroundKind.Burning, Front0(), 20);
+        Assert.False(s.Ground.Place(GroundKind.Water, Front0(), 20));
+        Assert.False(s.Ground.Has(Front0(), GroundKind.Burning));
+        Assert.False(s.Ground.Has(Front0(), GroundKind.Water));
+        Assert.Equal(10, Statuses.Get(s.GetUnit(a), StatusIds.Confused)!.EndsAt);
+    }
+
+    [Fact]
+    public void FireSetOnWaterBurnsForTenThenBothEndAndTheWaterBecomesSteam()
+    {
+        var s = Duel(out var a, out _);
+        s.Ground.Place(GroundKind.Water, Front0(), 40);
+        Assert.True(s.Ground.Place(GroundKind.Burning, Front0(), 20));
+        Assert.Equal(10, s.Ground.Find(Front0(), GroundKind.Burning)!.EndsAt);
+        Assert.True(s.Ground.Has(Front0(), GroundKind.Water));
+        AdvanceTo(s, 10);
+        Assert.False(s.Ground.Has(Front0(), GroundKind.Burning));
+        Assert.False(s.Ground.Has(Front0(), GroundKind.Water));
+        Assert.Equal(20, Statuses.Get(s.GetUnit(a), StatusIds.Confused)!.EndsAt);
+    }
+
+    [Fact]
+    public void FireThatWouldOutlastTheWaterEndsWithTheWaterWhicheverComesFirst()
     {
         var s = Duel(out _, out _);
+        s.Ground.Place(GroundKind.Water, Front0(), 4);
         s.Ground.Place(GroundKind.Burning, Front0(), 20);
-        s.Ground.Place(GroundKind.Water, Front0(), 20);
-        Assert.False(s.Ground.Has(Front0(), GroundKind.Burning));
-        Assert.True(s.Ground.Has(Front0(), GroundKind.Water));
-
-        Assert.False(s.Ground.Place(GroundKind.Burning, Front0(), 20));   // fire set on water does not start
-        Assert.True(s.Ground.Has(Front0(), GroundKind.Water));            // and the water stays
-        Assert.False(s.Ground.Has(Front0(), GroundKind.Burning));
+        Assert.Equal(4, s.Ground.Find(Front0(), GroundKind.Burning)!.EndsAt);
     }
 
     [Fact]
@@ -228,29 +248,32 @@ public class GroundTests
     }
 
     [Fact]
-    public void FireMeetingIceMakesSteamBothEndTheUnitIsConfusedAndWaterStays()
+    public void FireMeetingIceBurnsForTenThenBothEndAndTheSpotHoldsWater()
     {
         var s = Duel(out var a, out _);
         s.Ground.Place(GroundKind.Ice, Front0(), 20);
         s.DrainEvents();
-        Assert.False(s.Ground.Place(GroundKind.Burning, Front0(), 20));
+        Assert.True(s.Ground.Place(GroundKind.Burning, Front0(), 20));
+        Assert.True(s.Ground.Has(Front0(), GroundKind.Ice));
+        Assert.Equal(10, s.Ground.Find(Front0(), GroundKind.Burning)!.EndsAt);
+        AdvanceTo(s, 10);
         Assert.False(s.Ground.Has(Front0(), GroundKind.Ice));
         Assert.False(s.Ground.Has(Front0(), GroundKind.Burning));
-        Assert.True(s.Ground.Has(Front0(), GroundKind.Water));
-        var confused = Statuses.Get(s.GetUnit(a), StatusIds.Confused)!;
-        Assert.Equal(10, confused.EndsAt);
-        Assert.Equal(20, s.Ground.Find(Front0(), GroundKind.Water)!.EndsAt); // the water starts its full length
+        Assert.Equal(30, s.Ground.Find(Front0(), GroundKind.Water)!.EndsAt);                  // the water starts its full length
+        Assert.False(Statuses.Has(s.GetUnit(a), StatusIds.Confused));                         // no steam from fire on ice
     }
 
     [Fact]
-    public void IceSetOnBurningGroundMakesSteamToo()
+    public void IceSetOnBurningGroundMeetsItTheSameWay()
     {
         var s = Duel(out var a, out _);
         s.Ground.Place(GroundKind.Burning, Front0(), 20);
-        s.Ground.Place(GroundKind.Ice, Front0(), 20);
-        Assert.True(Statuses.Has(s.GetUnit(a), StatusIds.Confused));
+        Assert.True(s.Ground.Place(GroundKind.Ice, Front0(), 20));
+        Assert.True(s.Ground.Has(Front0(), GroundKind.Ice));
+        AdvanceTo(s, 10);
         Assert.True(s.Ground.Has(Front0(), GroundKind.Water));
         Assert.False(s.Ground.Has(Front0(), GroundKind.Ice));
+        Assert.False(s.Ground.Has(Front0(), GroundKind.Burning));
     }
 
     [Fact]
@@ -279,66 +302,107 @@ public class GroundTests
     }
 
     [Fact]
-    public void AUnitThatHasStoodOnPoisonGroundForFiveTimeUnitsIsPoisonedAndEveryFurtherFiveRestartsIt()
+    public void AUnitInNewPoisonGasIsPoisonedForTwentyAtOnceAndAgainEveryFiveWhileItStays()
     {
         var s = Duel(out var a, out _);
         s.Ground.Place(GroundKind.Poison, Front0(), 30);
+        Assert.Equal(20, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.EndsAt);
         AdvanceTo(s, 4);
         s.Ground.Accrue();
-        Assert.False(Statuses.Has(s.GetUnit(a), StatusIds.Poison));
+        Assert.Equal(20, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.EndsAt);
         AdvanceTo(s, 5);
         s.Ground.Accrue();
-        Assert.True(Statuses.Has(s.GetUnit(a), StatusIds.Poison));
-        Assert.Equal(55, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.EndsAt);
+        Assert.Equal(25, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.EndsAt);               // refreshed to 20 more
         AdvanceTo(s, 11);
-        s.Ground.Accrue();                                   // crossed 10: the Poison length restarts
-        Assert.Equal(61, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.EndsAt);
+        s.Ground.Accrue();
+        Assert.Equal(31, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.EndsAt);
     }
 
     [Fact]
-    public void LeavingPoisonGroundResetsTheStandingTime()
+    public void AUnitMovedIntoPoisonGasIsPoisonedAtOnceAndALeavingUnitStartsCountingAgain()
     {
         var s = Duel(out var a, out _);
         Place.Unit(s, Side.A, Row.Middle);
-        s.Ground.Place(GroundKind.Poison, Front0(), 30);
-        AdvanceTo(s, 3);
-        s.Ground.Accrue();
-        Movement.Move(s, a, Row.Rear, 0);                    // steps off
-        AdvanceTo(s, 4);
-        s.Ground.Accrue();                                   // counted: not covered any more
-        Movement.Move(s, a, Row.Front, 0);                   // steps back on
-        AdvanceTo(s, 8);
-        s.Ground.Accrue();                                   // 4 time units since: still under 5
+        s.Ground.Place(GroundKind.Poison, new Spot(Side.A, Row.Rear, 0), 30);
         Assert.False(Statuses.Has(s.GetUnit(a), StatusIds.Poison));
+        Movement.Move(s, a, Row.Rear, 0);                                                       // steps in
+        Assert.Equal(20, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.EndsAt);
+        AdvanceTo(s, 3);
+        Movement.Move(s, a, Row.Front, 0);                                                      // steps off: the count starts over
+        AdvanceTo(s, 6);
+        s.Ground.Accrue();
+        Assert.Equal(20, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.EndsAt);                 // no refresh: it did not stay five
     }
 
     [Fact]
-    public void FireOnARowWithPoisonGroundExplodesEveryPoisonSpotOfThatRow()
+    public void FireOnPoisonGasExplodesThatSpotAndTheGasSpotsTouchingItOnly()
     {
         var s = new BattleState(1);
-        var u1 = Place.Unit(s, Side.A, Row.Front);
-        var u2 = Place.Unit(s, Side.A, Row.Front);           // centers -1, 1
-        var mid = Place.Unit(s, Side.A, Row.Middle);
-        s.GetUnit(u2).Ward = 8;
-        s.Ground.Place(GroundKind.Poison, new Spot(Side.A, Row.Front, -1), 20);
-        s.Ground.Place(GroundKind.Poison, new Spot(Side.A, Row.Front, 1), 20);
-        s.Ground.Place(GroundKind.Poison, new Spot(Side.A, Row.Middle, 0), 20);
+        var units = Enumerable.Range(0, 6).Select(_ => Place.Unit(s, Side.A, Row.Front)).ToArray();   // centres -5 -3 -1 1 3 5
+        s.GetUnit(units[1]).Ward = 8;
+        foreach (var x in new[] { -5, -3, 3 }) s.Ground.Place(GroundKind.Poison, new Spot(Side.A, Row.Front, x), 20);
+        foreach (var u in units) Statuses.Remove(s, u, StatusIds.Poison, StatusEndCause.Cleansed);
         s.DrainEvents();
 
-        s.Ground.Place(GroundKind.Burning, new Spot(Side.A, Row.Front, -1), 20);
+        s.Ground.Place(GroundKind.Burning, new Spot(Side.A, Row.Front, -5), 20);
 
-        Assert.Equal(34, s.GetUnit(u1).Hp);                  // 6 damage
-        Assert.Equal(2, s.GetUnit(u2).Ward);                 // a Ward absorbs the explosion like any ground damage
-        Assert.Equal(40, s.GetUnit(u2).Hp);
-        Assert.Equal(40, s.GetUnit(mid).Hp);                 // another row: not exploded
-        Assert.True(s.Ground.Has(new Spot(Side.A, Row.Middle, 0), GroundKind.Poison));
-        Assert.False(s.Ground.Has(new Spot(Side.A, Row.Front, -1), GroundKind.Poison));
-        Assert.True(s.Ground.Has(new Spot(Side.A, Row.Front, -1), GroundKind.Burning));   // the spot becomes burning ground
-        Assert.True(s.Ground.Has(new Spot(Side.A, Row.Front, 1), GroundKind.Burning));
+        Assert.Equal(34, s.GetUnit(units[0]).Hp);                                               // 6 damage
+        Assert.Equal(2, s.GetUnit(units[1]).Ward);                                              // a Ward absorbs the explosion like any hit
+        Assert.Equal(40, s.GetUnit(units[1]).Hp);
+        Assert.Equal(40, s.GetUnit(units[4]).Hp);                                               // a gas spot that does not touch: not exploded
+        Assert.True(s.Ground.Has(new Spot(Side.A, Row.Front, 3), GroundKind.Poison));
+        Assert.False(s.Ground.Has(new Spot(Side.A, Row.Front, -5), GroundKind.Poison));         // the gas spots are left clear
+        Assert.False(s.Ground.Has(new Spot(Side.A, Row.Front, -3), GroundKind.Poison));
+        Assert.True(s.Ground.Has(new Spot(Side.A, Row.Front, -5), GroundKind.Burning));
         Assert.Equal(2, s.DrainEvents().OfType<PoisonGroundExploded>().Count());
     }
 
-    // ---- ice and water ----
+    [Fact]
+    public void WhenBurningGroundEndsItsBuiltUpWholePointsLandAtOnceAndTheFractionIsDropped()
+    {
+        var s = Duel(out var a, out _);
+        s.Ground.Place(GroundKind.Burning, Front0(), 7);                                        // 7 x 0.5 = 3.5
+        AdvanceTo(s, 7);
+        Assert.Equal(37, s.GetUnit(a).Hp);
+        Assert.Equal(0, s.Ground.BuildupOf(a));
+    }
+
+    [Fact]
+    public void GasPlacedOnBurningGroundGoesOffAtOnce()
+    {
+        var s = Duel(out var a, out _);
+        s.Ground.Place(GroundKind.Burning, Front0(), 20);
+        s.Ground.Place(GroundKind.Poison, new Spot(Side.A, Row.Front, 2), 20);                 // empty spot beside: no fire there, the gas stays
+        Assert.True(s.Ground.Has(new Spot(Side.A, Row.Front, 2), GroundKind.Poison));
+    }
+
+    [Fact]
+    public void AStunOnAUnitStandingOnWaterAlsoStunsTheUnitsOnTouchingWaterForHalfTheTime()
+    {
+        var s = new BattleState(1);
+        var l = Place.Unit(s, Side.A, Row.Front);
+        var m = Place.Unit(s, Side.A, Row.Front);
+        var r = Place.Unit(s, Side.A, Row.Front);                                               // centres -2, 0, 2
+        var dry = Place.Unit(s, Side.A, Row.Rear);
+        foreach (var x in new[] { -2, 0 }) s.Ground.Place(GroundKind.Water, new Spot(Side.A, Row.Front, x), 40);
+        Statuses.Apply(s, new StatusApplication(l, StatusIds.Stunned, Duration: 10));
+        Assert.Equal(10, Statuses.Get(s.GetUnit(l), StatusIds.Stunned)!.TimeLeft(s.Timeline.Now));
+        Assert.Equal(5, Statuses.Get(s.GetUnit(m), StatusIds.Stunned)!.TimeLeft(s.Timeline.Now));
+        Assert.False(Statuses.Has(s.GetUnit(r), StatusIds.Stunned));                            // no water there
+        Assert.False(Statuses.Has(s.GetUnit(dry), StatusIds.Stunned));
+    }
+
+    [Fact]
+    public void AStunOnADryUnitOrWithLessThanTwoTimeUnitsSpreadsNowhere()
+    {
+        var s = new BattleState(1);
+        var l = Place.Unit(s, Side.A, Row.Front);
+        var m = Place.Unit(s, Side.A, Row.Front);
+        s.Ground.Place(GroundKind.Water, new Spot(Side.A, Row.Front, -1), 40);
+        s.Ground.Place(GroundKind.Water, new Spot(Side.A, Row.Front, 1), 40);
+        Statuses.Apply(s, new StatusApplication(l, StatusIds.Stunned, Duration: 1));
+        Assert.False(Statuses.Has(s.GetUnit(m), StatusIds.Stunned));
+    }
 
     [Fact]
     public void AUnitPushedOntoIceSlidesOneRowFurtherAndBumpsApply()
@@ -411,7 +475,9 @@ public class GroundTests
         copy.Ground.Remove(copy.Ground.Effects[0], GroundEndCause.Expired);
         Assert.Single(s.Ground.Effects);
         Assert.Empty(copy.Ground.Effects);
-        Assert.Equal(500, copy.Ground.BuildupOf(a));
+        Assert.Equal(0, copy.Ground.BuildupOf(a));                                              // the built-up 5 landed when the effect ended
+        Assert.Equal(35, copy.GetUnit(a).Hp);
+        Assert.Equal(40, s.GetUnit(a).Hp);
     }
 
     [Fact]

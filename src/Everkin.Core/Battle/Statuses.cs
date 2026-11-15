@@ -310,7 +310,27 @@ public static class Statuses
         AdjustTimelineForSpeed(state, unit, oldSpeed);
 
         state.Emit(new StatusApplied(a.UnitId, a.Id, a.Magnitude, a.Duration, refreshed));
+        if (a.Id == StatusIds.Stunned && !_spreadingStun && a.Duration is { } stunLength) SpreadStunOverWater(state, a.UnitId, stunLength, a.SourceUnitId);
         return true;
+    }
+
+    [ThreadStatic] private static bool _spreadingStun;
+
+    /// <summary>Water: any Stun on a unit standing on water also Stuns the units on the water spots touching it, for half the time (rounded down; game_system.md section 12.2).</summary>
+    private static void SpreadStunOverWater(BattleState state, int unitId, int length, int? source)
+    {
+        if (length / 2 < 1 || !state.Formation.Contains(unitId)) return;
+        var ground = state.Ground;
+        var spot = ground.SpotOf(unitId);
+        if (!ground.Has(spot, GroundKind.Water) || !ground.Affected(spot).Contains(unitId)) return;
+        _spreadingStun = true;
+        try
+        {
+            foreach (var touching in ground.WaterSpotsTouching(spot))
+                foreach (var id in ground.Affected(touching))
+                    if (id != unitId) Apply(state, new StatusApplication(id, StatusIds.Stunned, length / 2, SourceUnitId: source));
+        }
+        finally { _spreadingStun = false; }
     }
 
     /// <summary>Removes a status and its end marker and reports it. Returns false if the unit does not have it.</summary>

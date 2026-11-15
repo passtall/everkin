@@ -38,13 +38,16 @@ public sealed class GroundEffect
     /// <summary>The unit that placed it. Its effects stay if it is KO (section 12.2).</summary>
     public int? SourceUnitId { get; internal set; }
 
-    /// <summary>Poison ground: how long each unit has stood on it, in time units.</summary>
-    internal Dictionary<int, int> StandTimes { get; } = new();
+    /// <summary>Poison gas: how long each unit has stood in it, in time units.</summary>
+    internal Dictionary<int, int> StandTimes { get; private set; } = new();
+
+    /// <summary>Fire met ice or water on this spot: when the effect ends (after at most 10 time units) both end and the spot holds water (ice) or steam (water).</summary>
+    internal bool Combo { get; set; }
 
     internal GroundEffect Copy()
     {
         var c = (GroundEffect)MemberwiseClone();
-        foreach (var kv in StandTimes) c.StandTimes[kv.Key] = kv.Value;
+        c.StandTimes = new Dictionary<int, int>(StandTimes);
         return c;
     }
 }
@@ -84,8 +87,11 @@ public sealed class GroundField
     /// <summary>Poison ground poisons a unit that has stood there for 5 time units, and again for every further 5.</summary>
     public const int PoisonGroundStandTime = 5;
 
-    /// <summary>The length of the Poison status it applies (the named status table: 50 time units).</summary>
-    public const int PoisonStatusLength = 50;
+    /// <summary>A unit in poison gas is Poisoned for 20 time units, at once and again every 5 while it stays (section 12.2).</summary>
+    public const int PoisonStatusLength = 20;
+
+    /// <summary>Fire that meets ice or water burns there for at most 10 time units, then both end (section 12.2).</summary>
+    public const int ComboBurnLength = 10;
 
     /// <summary>Exploding poison ground deals 6 to each unit on it. A rule number: it does not scale.</summary>
     public const int ExplosionDamage = 6;
@@ -153,8 +159,11 @@ public sealed class GroundField
     /// Water spots touch when they are side by side in a row (coordinates 2 apart) or overlap across neighboring rows
     /// (rows next to each other, coordinates at most 1 apart) of one side. Returns the water spots touching this one.
     /// </summary>
-    public IReadOnlyList<Spot> WaterSpotsTouching(Spot spot) =>
-        _effects.Where(e => e.Kind == GroundKind.Water && e.Spot.Side == spot.Side && e.Spot != spot
+    public IReadOnlyList<Spot> WaterSpotsTouching(Spot spot) => SpotsTouching(GroundKind.Water, spot);
+
+    /// <summary>The spots with an effect of this kind that touch the spot (side by side in a row, or overlapping across neighbouring rows).</summary>
+    public IReadOnlyList<Spot> SpotsTouching(GroundKind kind, Spot spot) =>
+        _effects.Where(e => e.Kind == kind && e.Spot.Side == spot.Side && e.Spot != spot
             && ((e.Spot.Row == spot.Row && Math.Abs(e.Spot.Coordinate - spot.Coordinate) == 2)
                 || (Math.Abs((int)e.Spot.Row - (int)spot.Row) == 1 && Math.Abs(e.Spot.Coordinate - spot.Coordinate) <= 1)))
             .Select(e => e.Spot).ToArray();
@@ -162,11 +171,10 @@ public sealed class GroundField
     // ------------------------------------------------------------------ placing and combos
 
     /// <summary>
-    /// Places an effect on a spot for a number of time units, resolving what the effects do to each other (section 12.2):
-    /// placing the same effect again restarts its length; water stops burning ground and fire does not start on water;
-    /// frost turns water to ice and the unit there is Frozen; fire meeting ice makes steam (both end, the unit there is
-    /// Confused for 10 time units, water takes the spot); fire ends Frozen on its spot; fire placed on a row with poison
-    /// ground explodes every poison spot of that row. Returns false when the effect did not start.
+    /// Places an effect on a spot for a number of time units, resolving what the effects do to each other (section 12.2): placing the same effect again
+    /// restarts its length; fire on ice or water burns there for at most 10 time units, then both end and the spot holds water (ice) or steam (water);
+    /// ice placed on water turns it to ice and the unit there is Frozen; water placed on fire is steam at once; fire ends Frozen on its spot; poison gas
+    /// explodes when fire meets it. A unit in new gas is Poisoned for 20 at once. Returns false when the effect did not start.
     /// </summary>
     public bool Place(GroundKind kind, Spot spot, int duration, int? sourceUnitId = null)
     {
@@ -176,34 +184,80 @@ public sealed class GroundField
         switch (kind)
         {
             case GroundKind.Burning:
-                if (Has(spot, GroundKind.Water)) return false;          // fire does not start on water; the water stays
-                if (Has(spot, GroundKind.Ice)) { Steam(spot); return false; }
+                if (Has(spot, GroundKind.Poison))
+                {
+                    AddFire(spot, duration, sourceUnitId);
+                    ExplodeGas(spot);
+                    return true;
+                }
+                if (Find(spot, GroundKind.Water) is { } water) return MeetFire(GroundKind.Burning, spot, duration, sourceUnitId, water);
+                if (Find(spot, GroundKind.Ice) is { } ice) return MeetFire(GroundKind.Burning, spot, duration, sourceUnitId, ice);
                 break;
             case GroundKind.Ice:
-                if (Find(spot, GroundKind.Water) is { } water)
+                if (Find(spot, GroundKind.Water) is { } wet)
                 {
-                    Remove(water, GroundEndCause.Frozen);
+                    Remove(wet, GroundEndCause.Frozen);
                     Add(GroundKind.Ice, spot, duration, sourceUnitId);
                     foreach (var id in Affected(spot))
                         Statuses.Apply(_state, new StatusApplication(id, StatusIds.Frozen, SourceUnitId: sourceUnitId));
                     return true;
                 }
-                if (Has(spot, GroundKind.Burning)) { Steam(spot); return false; }
+                if (Find(spot, GroundKind.Burning) is { } fire) return MeetFire(GroundKind.Ice, spot, duration, sourceUnitId, fire);
                 break;
             case GroundKind.Water:
-                if (Find(spot, GroundKind.Burning) is { } fire) Remove(fire, GroundEndCause.Extinguished);
+                if (Find(spot, GroundKind.Burning) is { } burning)
+                {
+                    Remove(burning, GroundEndCause.Steam);
+                    MakeSteam(spot);                                     // water placed on fire is steam at once
+                    return false;
+                }
+                break;
+            case GroundKind.Poison:
+                if (Has(spot, GroundKind.Burning))
+                {
+                    ExplodeGasAt(spot, includeSpot: false);              // gas placed on fire goes off at once
+                    return false;
+                }
                 break;
         }
 
-        Add(kind, spot, duration, sourceUnitId);
-
-        if (kind == GroundKind.Burning)
-        {
+        var effect = Add(kind, spot, duration, sourceUnitId);
+        if (kind == GroundKind.Burning) AddFire(spot, duration, sourceUnitId, existing: effect);
+        if (kind == GroundKind.Poison)
             foreach (var id in Affected(spot))
-                Statuses.Remove(_state, id, StatusIds.Frozen, StatusEndCause.Fire); // the unit keeps its turn
-            ExplodePoisonInRow(spot.Side, spot.Row);
-        }
+            {
+                effect.StandTimes[id] = 0;
+                Statuses.Apply(_state, new StatusApplication(id, StatusIds.Poison, Duration: PoisonStatusLength, SourceUnitId: sourceUnitId));
+            }
         return true;
+    }
+
+    /// <summary>The fire part that follows placing fire anywhere: fire ends Frozen on its spot (the unit keeps its turn).</summary>
+    private void AddFire(Spot spot, int duration, int? sourceUnitId, GroundEffect? existing = null)
+    {
+        existing ??= Add(GroundKind.Burning, spot, duration, sourceUnitId);
+        foreach (var id in Affected(spot))
+            Statuses.Remove(_state, id, StatusIds.Frozen, StatusEndCause.Fire);
+    }
+
+    /// <summary>Fire meets ice or water on a spot: both burn / stay for at most 10 time units, then both end (ice leaves water, water leaves steam).</summary>
+    private bool MeetFire(GroundKind placed, Spot spot, int duration, int? sourceUnitId, GroundEffect partner)
+    {
+        var partnerLeft = Math.Max(1, partner.EndsAt - _state.Timeline.Now);
+        var length = Math.Max(1, Math.Min(ComboBurnLength, Math.Min(duration, partnerLeft)));
+        var added = Add(placed, spot, length, sourceUnitId);
+        added.Combo = true;
+        Reschedule(partner, length);
+        partner.Combo = true;
+        AddFire(spot, length, sourceUnitId, placed == GroundKind.Burning ? added : partner);
+        return true;
+    }
+
+    private void Reschedule(GroundEffect effect, int remaining)
+    {
+        _state.Timeline.Remove(effect.MarkerEntryId);
+        effect.EndsAt = _state.Timeline.Now + remaining;
+        effect.MarkerEntryId = _state.Timeline.Add(TimelineKind.EffectEnd, remaining, null, TagPrefix + effect.Id).Id;
     }
 
     private GroundEffect Add(GroundKind kind, Spot spot, int duration, int? sourceUnitId)
@@ -217,6 +271,7 @@ public sealed class GroundField
             existing.EndsAt = timeline.Now + duration;
             existing.SourceUnitId = sourceUnitId;
             existing.MarkerEntryId = timeline.Add(TimelineKind.EffectEnd, duration, null, TagPrefix + existing.Id).Id;
+            existing.Combo = false;
             _state.Emit(new GroundEffectPlaced(existing.Id, kind, spot, existing.EndsAt, true));
             return existing;
         }
@@ -235,36 +290,80 @@ public sealed class GroundField
         if (!_effects.Remove(effect)) return;
         _state.Timeline.Remove(effect.MarkerEntryId);
         _state.Emit(new GroundEffectEnded(effect.Id, effect.Kind, effect.Spot, cause));
+        if (effect.Kind == GroundKind.Burning) FinishBurning();
     }
 
-    private void Steam(Spot spot)
+    /// <summary>When burning ground ends, the whole points built up on a unit that no longer stands in any fire land at once and the fraction is dropped (section 10.5).</summary>
+    private void FinishBurning()
     {
-        if (Find(spot, GroundKind.Burning) is { } fire) Remove(fire, GroundEndCause.Steam);
-        if (Find(spot, GroundKind.Ice) is { } ice) Remove(ice, GroundEndCause.Steam);
+        foreach (var id in _buildup.Keys.ToArray())
+        {
+            var unit = _state.GetUnit(id);
+            if (!unit.IsKnockedOut && _effects.Any(e => e.Kind == GroundKind.Burning && Affected(e.Spot).Contains(id))) continue;
+            var whole = _buildup[id] / 100;
+            _buildup.Remove(id);
+            if (whole > 0 && !unit.IsKnockedOut) _state.DealDamage(null, id, whole);
+        }
+    }
+
+    /// <summary>Steam is not a lasting effect: the unit there is Confused for 10 and the spot is left clear.</summary>
+    private void MakeSteam(Spot spot)
+    {
         foreach (var id in Affected(spot))
             Statuses.Apply(_state, new StatusApplication(id, StatusIds.Confused, Duration: SteamConfusionLength));
-        Add(GroundKind.Water, spot, ReferenceLength, null); // water stays on the spot
     }
 
-    private void ExplodePoisonInRow(Side side, Row row)
+    /// <summary>
+    /// Poison gas goes off: the gas spot and every gas spot touching it (side by side in a row, or overlapping across neighbouring rows, and so on).
+    /// Each unit on an exploding spot takes 6 (a rule number, Wards absorb it) and the spots are left clear. Returns whether anything exploded.
+    /// </summary>
+    public bool ExplodeGas(Spot spot) => ExplodeGasAt(spot, includeSpot: true);
+
+    private bool ExplodeGasAt(Spot spot, bool includeSpot)
     {
-        var spots = _effects.Where(e => e.Kind == GroundKind.Poison && e.Spot.Side == side && e.Spot.Row == row).ToList();
-        if (spots.Count == 0) return;
-        var hit = new List<(Spot Spot, int[] Units)>();
-        foreach (var e in spots)
+        var start = _effects.Where(e => e.Kind == GroundKind.Poison && e.Spot == spot).ToList();
+        if (!includeSpot) start = _effects.Where(e => e.Kind == GroundKind.Poison && (e.Spot == spot || SpotsTouching(GroundKind.Poison, spot).Contains(e.Spot))).ToList();
+        if (start.Count == 0)
         {
-            var units = Affected(e.Spot).ToArray();
-            Remove(e, GroundEndCause.Exploded);
-            hit.Add((e.Spot, units));
+            // Gas placed next to nothing but fire: it still goes off on its own spot (nothing to explode: the placement fails).
+            return false;
         }
-        foreach (var (spot, units) in hit)
+        var exploding = new List<GroundEffect>(start);
+        for (var i = 0; i < exploding.Count; i++)
+            foreach (var touching in SpotsTouching(GroundKind.Poison, exploding[i].Spot))
+                if (_effects.FirstOrDefault(e => e.Kind == GroundKind.Poison && e.Spot == touching) is { } more && !exploding.Contains(more))
+                    exploding.Add(more);
+        var hit = new List<(Spot Spot, int[] Units)>();
+        foreach (var e in exploding)
+        {
+            hit.Add((e.Spot, Affected(e.Spot).ToArray()));
+            Remove(e, GroundEndCause.Exploded);
+        }
+        foreach (var (spot2, units) in hit)
         {
             foreach (var id in units)
                 if (!_state.GetUnit(id).IsKnockedOut)
                     _state.DealDamage(null, id, ExplosionDamage);
-            _state.Emit(new PoisonGroundExploded(spot, units));
+            _state.Emit(new PoisonGroundExploded(spot2, units));
         }
-        foreach (var (spot, _) in hit) Place(GroundKind.Burning, spot, ReferenceLength);
+        return true;
+    }
+
+    /// <summary>A unit moved (its own Move or a forced move): a unit that lands in poison gas is Poisoned for 20 at once; one that left starts counting again.</summary>
+    internal void OnUnitMoved(int unitId)
+    {
+        if (_state.GetUnit(unitId).IsKnockedOut || !_state.Formation.Contains(unitId)) return;
+        Accrue();
+        var spot = SpotOf(unitId);
+        foreach (var gas in _effects.Where(e => e.Kind == GroundKind.Poison).ToArray())
+        {
+            if (Affected(gas.Spot).Contains(unitId))
+            {
+                gas.StandTimes[unitId] = 0;
+                Statuses.Apply(_state, new StatusApplication(unitId, StatusIds.Poison, Duration: PoisonStatusLength, SourceUnitId: gas.SourceUnitId));
+            }
+            else gas.StandTimes.Remove(unitId);
+        }
     }
 
     // ------------------------------------------------------------------ time
@@ -279,6 +378,17 @@ public sealed class GroundField
         var effect = _effects.FirstOrDefault(e => e.Id == id && e.MarkerEntryId == entry.Id);
         if (effect is null) return;
         Accrue();
+        if (effect.Combo)
+        {
+            // Fire met ice or water: both end now. Ice leaves water; water leaves steam and the spot is clear.
+            var spot = effect.Spot;
+            var ice = Find(spot, GroundKind.Ice);
+            var water = Find(spot, GroundKind.Water);
+            foreach (var partner in _effects.Where(e => e.Spot == spot && e.Combo).ToArray()) Remove(partner, GroundEndCause.Expired);
+            if (ice is not null) Add(GroundKind.Water, spot, ReferenceLength, null);
+            else if (water is not null) MakeSteam(spot);
+            return;
+        }
         Remove(effect, GroundEndCause.Expired);
     }
 

@@ -314,6 +314,7 @@ public sealed class BattleState
         _timeline = new Timeline();
         _momentum = new Momentum();
         _ground = new GroundField(this);
+        _afterMoveHooks.Add((st, movedId) => st.Ground.OnUnitMoved(movedId));
         Emit(new BattleStarted(seed));
     }
 
