@@ -49,7 +49,9 @@ public static class ClassSkills
 {
     public static IEnumerable<Skill> All(ContentSet content) =>
         BerserkerSkills.All(content)
-            .Concat(ChampionSkills.All(content));
+            .Concat(ChampionSkills.All(content))
+            .Concat(BulwarkSkills.All(content))
+            .Concat(KeeperSkills.All(content));
 }
 
 /// <summary>Marks (game_system.md section 10.5, skills.md Tracker and Champion): only enemies can be Marked; a skill that reads a Mark works on any Marked unit.</summary>

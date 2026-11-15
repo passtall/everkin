@@ -64,6 +64,7 @@ public static class Actions
                 if (!Targeting.IsLegalTarget(state, use.UserId, who, skill.Options with { Delivery = skill.Delivery })) return "not a legal target";
                 if (!skill.TargetFilter(state, use.UserId, who)) return "not a valid target for this skill";
                 if (skill.PlacesRandomly(state, use.UserId)) return skill.PlacementOptionsFor(state, use.UserId, who).Count > 0 ? null : "no free place";
+                if (use.Placement is null && skill.PlacementOptional && skill.PlacementOptionsFor(state, use.UserId, who).Count == 0) return null;
                 if (use.Placement is not { } where) return "needs a place";
                 return skill.PlacementOptionsFor(state, use.UserId, who).Contains(where) ? null : "not a legal place";
             }

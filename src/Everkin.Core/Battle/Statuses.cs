@@ -185,7 +185,7 @@ public static class StatusRules
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
             or StatusIds.Marked or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted
             or StatusIds.GlassBody or StatusIds.StoneShell or StatusIds.Weighted or StatusIds.Stagnant or StatusIds.Betrayed => Polarity.Harmful,
-        StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.Charge or StatusIds.LeapCover or StatusIds.Pledge
+        StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.Charge or StatusIds.Pledge
             or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo or StatusIds.Sidestep or StatusIds.FreeMomentum => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };

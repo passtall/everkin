@@ -124,3 +124,9 @@ public delegate void AfterActionHook(BattleState state, int userId);
 
 /// <summary>An auto event reached its turn; returns true when it was handled.</summary>
 public delegate bool AutoEventHandler(BattleState state, TimelineEntry entry);
+
+/// <summary>A unit that would drop to 0 HP survives with 1 HP when this returns true; the hook keeps its own count (Unbreakable: the first time only).</summary>
+public delegate bool LethalSave(BattleState state, int targetId);
+
+/// <summary>A hit (damage from a skill, not from a status) was partly or fully absorbed by the target's Ward (Thorned Ward).</summary>
+public delegate void WardHitHook(BattleState state, int? sourceUnitId, int targetId, int absorbed);

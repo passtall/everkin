@@ -277,6 +277,9 @@ public sealed class BattleState
     private readonly CowList<AutoEventHandler> _autoEventHandlers = new();
     private readonly CowList<DamageSharing> _damageSharings = new();
     private readonly CowList<LethalGuard> _lethalGuards = new();
+    private readonly CowList<LethalSave> _lethalSaves = new();
+    private readonly CowList<WardHitHook> _wardHitHooks = new();
+    private readonly HashSet<string> _onceKeys = new();
     private readonly CowList<StatusApplicationModifier> _statusApplicationModifiers = new();
     private readonly CowList<SkillDelayModifier> _skillDelayModifiers = new();
     private readonly CowList<TargetHitHook> _targetHitHooks = new();
@@ -334,6 +337,9 @@ public sealed class BattleState
         ScoutedUntil = (int?[])other.ScoutedUntil.Clone();
         _damageSharings = other._damageSharings.Share();
         _lethalGuards = other._lethalGuards.Share();
+        _lethalSaves = other._lethalSaves.Share();
+        _wardHitHooks = other._wardHitHooks.Share();
+        foreach (var key in other._onceKeys) _onceKeys.Add(key);
         MistsUntil = other.MistsUntil;
         _statusApplicationModifiers = other._statusApplicationModifiers.Share();
         _skillDelayModifiers = other._skillDelayModifiers.Share();
@@ -471,6 +477,15 @@ public sealed class BattleState
 
     public IReadOnlyList<LethalGuard> LethalGuards => _lethalGuards;
     public void AddLethalGuard(LethalGuard hook) => _lethalGuards.Add(hook);
+
+    public IReadOnlyList<LethalSave> LethalSaves => _lethalSaves;
+    public void AddLethalSave(LethalSave hook) => _lethalSaves.Add(hook);
+
+    public IReadOnlyList<WardHitHook> WardHitHooks => _wardHitHooks;
+    public void AddWardHitHook(WardHitHook hook) => _wardHitHooks.Add(hook);
+
+    /// <summary>True the first time a key is used in the battle, false after: "the first time" effects (Unbreakable) count with it. Copied with the state.</summary>
+    public bool ConsumeOnce(string key) => _onceKeys.Add(key);
 
     public IReadOnlyList<AfterActionHook> AfterActionHooks => _afterAction;
     public void AddAfterActionHook(AfterActionHook hook) => _afterAction.Add(hook);
@@ -692,6 +707,16 @@ public sealed class BattleState
                     break;
                 }
         }
+        if (result.HpLost >= target.Hp && _lethalSaves.Count > 0)
+        {
+            // Unbreakable: the unit keeps 1 HP instead of being KO.
+            foreach (var save in _lethalSaves)
+                if (save(this, targetId))
+                {
+                    result = new DamageResult(result.Incoming, result.AbsorbedByWard, Math.Max(0, target.Hp - 1), result.WardLeft);
+                    break;
+                }
+        }
         target.Ward = result.WardLeft;
         target.Hp = Math.Max(0, target.Hp - result.HpLost);
         if (result.HpLost > 0 && SharedPoolOf(targetId) is { } pool)
@@ -700,6 +725,8 @@ public sealed class BattleState
             SyncPool(pool);
         }
         Emit(new DamageDealt(sourceUnitId, targetId, source, result, target.Hp));
+        if (result.AbsorbedByWard > 0 && source == DamageSource.Hit && sourceUnitId is not null)
+            foreach (var hook in _wardHitHooks.ToArray()) hook(this, sourceUnitId, targetId, result.AbsorbedByWard);
         if (result.AbsorbedByWard > 0 && target.Ward == 0) Statuses.Remove(this, targetId, StatusIds.Ward, StatusEndCause.Broken);
 
         // Linked Fates / Shared Fate: the linked unit loses half of the HP this unit lost, unreducibly, and that never echoes again.

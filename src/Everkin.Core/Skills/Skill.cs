@@ -98,6 +98,9 @@ public abstract class Skill
     /// <summary>The places a skill that places something may put it.</summary>
     public virtual IReadOnlyList<MoveOption> PlacementOptions(BattleState state, int userId) => Array.Empty<MoveOption>();
 
+    /// <summary>A skill that takes a unit and a place still works when there is no place to go (Leap to Defend: a full row means it cannot move).</summary>
+    public virtual bool PlacementOptional => false;
+
     /// <summary>The places allowed next to a chosen unit, for a skill that takes a unit and a place.</summary>
     public virtual IReadOnlyList<MoveOption> PlacementOptionsFor(BattleState state, int userId, int targetId) => Array.Empty<MoveOption>();
 
@@ -171,7 +174,7 @@ public sealed class SkillContext
     public int Scaled(int atPower5) => DamageMath.Scale(atPower5, State.PowerOf(UserId));
 
     /// <summary>One piece of a hit: who is hit and for how much (a rolled, scaled amount).</summary>
-    public readonly record struct HitSpec(int TargetId, IntRange Range, bool NoInterception = false);
+    public readonly record struct HitSpec(int TargetId, IntRange Range, bool NoInterception = false, bool Unscaled = false);
 
     /// <summary>What happened to one hit.</summary>
     public sealed record HitReport(int TargetId, HitOutcome Outcome, IReadOnlyList<InterceptedShare> Interceptions, int Rolled)
@@ -260,7 +263,7 @@ public sealed class SkillContext
 
         var target = State.GetUnit(spec.TargetId);
         var friendly = target.Side == UserSide;
-        var rolled = DamageMath.Roll(State.Random, Scaled(spec.Range));
+        var rolled = DamageMath.Roll(State.Random, spec.Unscaled ? spec.Range : Scaled(spec.Range));   // Ward Burst deals its Ward as it is
         var tags = _skill.Tags;
 
         var bonus = State.DamageBonuses.Sum(h => h(State, UserId, spec.TargetId));
