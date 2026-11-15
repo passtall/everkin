@@ -84,6 +84,9 @@ public static class StatusIds
     /// <summary>Song of Haste: Speed raised by the magnitude while a Leader's song reaches the unit. Kept by the aura, not applied by a skill.</summary>
     public const string SongHaste = "song_haste";
 
+    /// <summary>Regrowth (Mender keystone): regains HP over time. Magnitude is the HP per 10 time units. Helpful.</summary>
+    public const string Regrowth = "regrowth";
+
     /// <summary>The Sorcerer's curses (Lingering Malice and Witch's Patience look at these).</summary>
     public static bool IsCurse(string statusId) => statusId is Weighted or Stagnant or Betrayed;
 
@@ -151,6 +154,9 @@ public sealed class StatusInstance
     /// <summary>Time units left on the battle clock at the given time, or null for a status without a clock.</summary>
     public int? TimeLeft(int now) => Held ? HeldTimeLeft : EndsAt is { } end ? Math.Max(0, end - now) : null;
 
+    /// <summary>How fast its clock runs down: 1 normally, 2 next to a Cleric with Purifying Aura (a harmful status on an ally). See <see cref="Statuses.SetRate"/>.</summary>
+    public int AuraRate { get; internal set; } = 1;
+
     /// <summary>The battle time up to which the buildup has been counted.</summary>
     public int LastTickTime { get; internal set; }
 
@@ -185,7 +191,7 @@ public static class StatusRules
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
             or StatusIds.Marked or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted
             or StatusIds.GlassBody or StatusIds.StoneShell or StatusIds.Weighted or StatusIds.Stagnant or StatusIds.Betrayed => Polarity.Harmful,
-        StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.Charge or StatusIds.Pledge
+        StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.Regrowth or StatusIds.Charge or StatusIds.Pledge
             or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo or StatusIds.Sidestep or StatusIds.FreeMomentum => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };
@@ -421,6 +427,7 @@ public static class Statuses
         var instance = Get(unit, statusId);
         if (instance is null || instance.MarkerEntryId != entry.Id) return;
         if (statusId == StatusIds.Poison) LandPoison(state, unit, instance);
+        if (statusId == StatusIds.Regrowth) LandRegrowth(state, unit, instance);
         Remove(state, unitId, statusId, StatusEndCause.Expired);
     }
 
@@ -434,10 +441,42 @@ public static class Statuses
         var damaged = new List<int>();
         foreach (var unit in state.Units)
         {
-            if (unit.IsKnockedOut || !unit.StatusStore.TryGetValue(StatusIds.Poison, out var poison)) continue;
-            if (LandPoison(state, unit, poison)) damaged.Add(unit.Id);
+            if (unit.IsKnockedOut) continue;
+            if (unit.StatusStore.TryGetValue(StatusIds.Poison, out var poison) && LandPoison(state, unit, poison)) damaged.Add(unit.Id);
+            if (!unit.IsKnockedOut && unit.StatusStore.TryGetValue(StatusIds.Regrowth, out var regrowth) && LandRegrowth(state, unit, regrowth)) damaged.Add(unit.Id);   // an undead is hurt by healing
         }
         return damaged;
+    }
+
+    /// <summary>Regrowth heals Magnitude HP per 10 time units, built up per time unit and landing whenever any unit gets a turn (section 10.5); the fraction carries over.</summary>
+    private static bool LandRegrowth(BattleState state, Unit unit, StatusInstance regrowth)
+    {
+        if (regrowth.Held) return false;
+        var until = Math.Min(state.Timeline.Now, regrowth.EndsAt ?? state.Timeline.Now);
+        regrowth.BuildupHundredths += Math.Max(0, until - regrowth.LastTickTime) * regrowth.Magnitude * 10;
+        regrowth.LastTickTime = Math.Max(regrowth.LastTickTime, until);
+        var whole = regrowth.BuildupHundredths / 100;
+        regrowth.BuildupHundredths %= 100;
+        if (whole <= 0) return false;
+        state.Heal(regrowth.SourceUnitId, unit.Id, whole);
+        return unit.IsKnockedOut;
+    }
+
+    /// <summary>
+    /// Changes how fast a timed status runs down (Purifying Aura: twice as fast next to the Cleric). The time left, counted at the old rate, becomes
+    /// the time left at the new rate (rounded down, at least 1); its end marker moves on the timeline.
+    /// </summary>
+    public static void SetRate(BattleState state, StatusInstance status, int rate)
+    {
+        if (status.AuraRate == rate) return;
+        if (status.MarkerEntryId is { } marker && !status.Held && state.Timeline.Find(marker) is { } entry)
+        {
+            var remaining = Math.Max(0, entry.Due - state.Timeline.Now);
+            var scaled = Math.Max(1, remaining * status.AuraRate / rate);
+            state.Timeline.AdjustRemaining(entry, scaled - remaining);
+            status.EndsAt = state.Timeline.Now + scaled;
+        }
+        status.AuraRate = rate;
     }
 
     private static bool LandPoison(BattleState state, Unit unit, StatusInstance poison)

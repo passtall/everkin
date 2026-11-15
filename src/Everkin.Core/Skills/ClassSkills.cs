@@ -51,7 +51,29 @@ public static class ClassSkills
         BerserkerSkills.All(content)
             .Concat(ChampionSkills.All(content))
             .Concat(BulwarkSkills.All(content))
-            .Concat(KeeperSkills.All(content));
+            .Concat(KeeperSkills.All(content))
+            .Concat(MenderSkills.All(content))
+            .Concat(ClericSkills.All(content));
+}
+
+/// <summary>Small helpers the class skills share.</summary>
+internal static class ClassHelpers
+{
+    /// <summary>Every row of either side: a skill that picks a row may pick any of them, even one that looks empty (game_system.md section 8.1).</summary>
+    public static IReadOnlyList<RowTarget> AllRows() =>
+        new[] { Side.A, Side.B }.SelectMany(side => new[] { Row.Front, Row.Middle, Row.Rear }.Select(row => new RowTarget(side, row))).ToArray();
+
+    /// <summary>Picks one of several by the battle's seeded roll, each with equal chance; a single choice costs no roll.</summary>
+    public static T Pick<T>(BattleState state, IReadOnlyList<T> options) =>
+        options.Count == 1 ? options[0] : options[state.Random.NextInt(options.Count)];
+
+    /// <summary>The helpful statuses a unit has: its Ward and every status of helpful polarity (stealth is a flag and is handled apart).</summary>
+    public static IReadOnlyList<string> HelpfulStatuses(Unit u)
+    {
+        var list = u.StatusInstances.Keys.Where(id => StatusRules.PolarityOf(id) == Polarity.Helpful).ToList();
+        if (u.Ward > 0 && !list.Contains(StatusIds.Ward)) list.Add(StatusIds.Ward);
+        return list;
+    }
 }
 
 /// <summary>Marks (game_system.md section 10.5, skills.md Tracker and Champion): only enemies can be Marked; a skill that reads a Mark works on any Marked unit.</summary>

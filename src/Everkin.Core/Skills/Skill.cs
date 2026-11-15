@@ -447,6 +447,9 @@ public sealed class SkillContext
     public int HealUnit(int unitId, int amount)
     {
         var healed = State.Heal(UserId, unitId, amount);
+        if (amount > 0 && User.KnownSkills.Contains("regrowth") && !State.GetUnit(unitId).IsKnockedOut && !State.GetUnit(unitId).HealingHurts)
+            // Regrowth: a unit the Mender heals also regains 2 HP every 10 for 20.
+            Statuses.Apply(State, new StatusApplication(unitId, StatusIds.Regrowth, 20, Scaled(2), UserId));
         var overflow = amount - healed;
         if (overflow <= 0 || State.GetUnit(unitId).IsUndead || Statuses.Has(State.GetUnit(unitId), StatusIds.Betrayed) || !User.KnownSkills.Contains("overflowing_care")) return healed;
         var side = State.GetUnit(unitId).Side;

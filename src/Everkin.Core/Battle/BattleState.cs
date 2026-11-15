@@ -110,7 +110,7 @@ public sealed class Unit
     public bool IsRemoved { get; internal set; }
 
     /// <summary>Raised by a necromancer (section 11.5). Healing it hurts it; a resurrection restores the original creature.</summary>
-    public bool IsUndead { get; internal set; }
+    public bool IsUndead { get; set; }
 
     /// <summary>The row the body had before it was raised, for the free slot nearest it on restoration.</summary>
     public Row? OriginalRow { get; internal set; }
