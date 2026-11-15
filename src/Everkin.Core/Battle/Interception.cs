@@ -30,13 +30,15 @@ public sealed record Intercepted(int TargetUnitId, int InterceptorUnitId, int Am
 
 /// <summary>
 /// Interception (game_system.md section 8.2). Defenders stand in rows in front of the target and overlap it horizontally:
-/// 100% overlap gives a 50% chance to intercept, 50% overlap a 25% chance. An interceptor takes the full effect (50%)
+/// 100% overlap gives a 75% chance (melee) or 50% (projectile) to intercept, 50% overlap 50% or 25%. An interceptor takes the full effect (50%)
 /// or half of it, rounded down, with the rest continuing to the next defender and finally the target (50%).
 /// </summary>
 public static class Interception
 {
-    public const int ChanceAtFullOverlap = 50;
-    public const int ChanceAtHalfOverlap = 25;
+    public const int MeleeChanceAtFullOverlap = 75;
+    public const int MeleeChanceAtHalfOverlap = 50;
+    public const int ProjectileChanceAtFullOverlap = 50;
+    public const int ProjectileChanceAtHalfOverlap = 25;
     public const int FullHitChance = 50;
 
     /// <summary>
@@ -56,9 +58,10 @@ public static class Interception
     public static bool IsEligible(BattleState state, Unit unit) =>
         IsEligible(unit) && !state.InterceptionBlockers.Any(b => b(state, unit.Id));
 
-    /// <summary>The chance to intercept for a given horizontal overlap: 50% at 100%, 25% at 50%, none otherwise.</summary>
-    public static int ChanceFor(int overlapPercent) => overlapPercent >= 100 ? ChanceAtFullOverlap
-        : overlapPercent >= 50 ? ChanceAtHalfOverlap
+    /// <summary>The chance to intercept for a given horizontal overlap (section 8.2): melee 75% at 100% and 50% at 50%, projectile 50% and 25%, none otherwise.</summary>
+    public static int ChanceFor(int overlapPercent, Delivery delivery = Delivery.Projectile) =>
+        overlapPercent >= 100 ? (delivery == Delivery.Melee ? MeleeChanceAtFullOverlap : ProjectileChanceAtFullOverlap)
+        : overlapPercent >= 50 ? (delivery == Delivery.Melee ? MeleeChanceAtHalfOverlap : ProjectileChanceAtHalfOverlap)
         : 0;
 
     /// <summary>
@@ -93,9 +96,11 @@ public static class Interception
     /// interceptor. The caller applies each share and then whatever <see cref="InterceptionResult.Remaining"/> reaches
     /// the target, through its shields and reductions as usual. Every interception is reported.
     /// </summary>
-    public static InterceptionResult Resolve(BattleState state, int targetId, int amount, bool splittable = true)
+    public static InterceptionResult Resolve(BattleState state, int targetId, int amount, bool splittable = true, Delivery delivery = Delivery.Projectile, Side? attackerSide = null)
     {
         var position = state.Formation.PositionOf(targetId);
+        // A skill aimed at the user's own side is never intercepted (section 8.2).
+        if (attackerSide == position.Side) return new InterceptionResult(Array.Empty<InterceptedShare>(), amount);
         var shares = new List<InterceptedShare>();
         var remaining = amount;
         var used = new HashSet<int>();
@@ -117,7 +122,7 @@ public static class Interception
             foreach (var id in row)
             {
                 if (used.Contains(id)) continue;
-                var chance = ChanceFor(state.Formation.UnitOverlapPercent(id, targetId));
+                var chance = ChanceFor(state.Formation.UnitOverlapPercent(id, targetId), delivery);
                 if (!state.Random.Chance(chance)) continue;
 
                 remaining = TakeShare(state, targetId, id, remaining, splittable, shares);

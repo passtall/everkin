@@ -22,15 +22,21 @@ public class ContentTests
     public void RealContentLoadsAndHasTheDocumentedSizes()
     {
         var set = ContentLoader.LoadFromDirectory(ContentDir);
-        Assert.Equal(9, set.AttackTypes.Count);
-        Assert.Equal(12, set.Professions.Count);
-        Assert.Equal(9, set.AttackSkills.Count);
-        Assert.Equal(179, set.ProfessionSkills.Count);
+        Assert.Equal(28, set.Classes.Count);
+        Assert.Equal(168, set.Skills.Count);
+        Assert.Equal(84, set.Skills.Count(x => x.Kind == "A"));
+        Assert.Equal(84, set.Skills.Count(x => x.Kind == "K"));
+        Assert.Equal(319, set.Attacks.Count);
         Assert.Equal(319, set.Creatures.Count);
-        Assert.Equal(10, set.Statuses.Count);
-        Assert.Equal("brawl", set.CreaturesById["abacus-strategist"].AttackType);
-        Assert.Null(set.SkillsById["stalk"].Parent);
-        Assert.Equal("stalk", set.SkillsById["creep_closer"].Parent);
+        Assert.Equal(new[] { "tactician", "commander" }, set.CreaturesById["abacus-strategist"].Classes);
+        Assert.Equal("bead_count", set.CreaturesById["abacus-strategist"].Attack);
+        Assert.Equal(new[] { "all_in", "drill" }, set.CreaturesById["abacus-strategist"].Keystones);
+        Assert.Equal(14, set.Classes.Count(c => c.Magical));
+        var bead = set.AttacksById["bead_count"];
+        Assert.Equal(("melee", "single", 3, 4), (bead.Delivery, bead.Shape, bead.Min, bead.Max));
+        Assert.Equal(new AttackExtraDef("delay_turn", 100, Amount: 2), bead.Extra);
+        Assert.Equal("pulse", set.AttacksById["sour_chord"].Shape);
+        Assert.True(set.AttacksById["sour_chord"].Magical);
     }
 
     [Fact]
@@ -67,10 +73,10 @@ public class ContentTests
     }
 
     [Fact]
-    public void UnknownProfessionStopsWithFileAndId()
+    public void UnknownClassStopsWithFileAndId()
     {
         var creatures = Read(ContentLoader.CreaturesFile)
-            .Replace("\"leader\"", "\"jester\"");
+            .Replace("\"tactician\"", "\"jester\"");
         var e = Assert.Throws<ContentException>(() =>
             ContentLoader.LoadFromJson(Read(ContentLoader.ClassesFile), Read(ContentLoader.SkillsFile), creatures, Read(ContentLoader.StatusesFile)));
         Assert.Contains("creatures.json", e.Message);
@@ -78,13 +84,13 @@ public class ContentTests
     }
 
     [Fact]
-    public void MissingParentStopsWithFileAndId()
+    public void AKeystoneOfAnotherClassStopsWithFileAndId()
     {
-        var skills = Read(ContentLoader.SkillsFile).Replace("\"parent\": \"stalk\"", "\"parent\": \"no_such_skill\"");
+        var creatures = Read(ContentLoader.CreaturesFile).Replace("\"all_in\"", "\"drill\"");
         var e = Assert.Throws<ContentException>(() =>
-            ContentLoader.LoadFromJson(Read(ContentLoader.ClassesFile), skills, Read(ContentLoader.CreaturesFile), Read(ContentLoader.StatusesFile)));
-        Assert.Contains("skills.json", e.Message);
-        Assert.Contains("no_such_skill", e.Message);
+            ContentLoader.LoadFromJson(Read(ContentLoader.ClassesFile), Read(ContentLoader.SkillsFile), creatures, Read(ContentLoader.StatusesFile)));
+        Assert.Contains("creatures.json", e.Message);
+        Assert.Contains("drill", e.Message);
     }
 
     [Fact]
@@ -104,7 +110,6 @@ public class ContentTests
             .ToHashSet();
         var set = ContentLoader.LoadFromDirectory(ContentDir);
         Assert.All(set.Statuses, st => Assert.Contains(st.Id, known));
-        Assert.Equal("frost", set.Statuses.Single(st => st.Id == "chilled").Tag);
-        Assert.Equal("20 time units", set.Statuses.Single(st => st.Id == "blind").Duration);
+        Assert.Equal("As stated (Flash Powder: 20)", set.Statuses.Single(st => st.Id == "blind").Duration);
     }
 }

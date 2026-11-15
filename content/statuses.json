@@ -4,71 +4,64 @@
       "id": "blind",
       "name": "Blind",
       "tag": null,
-      "effect": "All the unit's attacks have a 50% chance to miss. Source: the Rogue's flash powder (2026-10-19). A miss shifts Momentum 1 against the unit's side, per section 6.7.",
-      "duration": "20 time units"
+      "effect": "Each attack of the unit has a 50% chance to miss. A miss moves Momentum 1 against the unit's side.",
+      "duration": "As stated (Flash Powder: 20)"
     },
     {
-      "id": "poison",
-      "name": "Poison",
+      "id": "poisoned",
+      "name": "Poisoned",
       "tag": null,
-      "effect": "1 damage per 10 time units, built up and applied whenever any unit gets a turn (5 in total). Weaker than burning ground and longer.",
-      "duration": "50 time units"
+      "effect": "1 damage per 5 time units, built up and landing whenever any unit gets a turn.",
+      "duration": "As stated (usually 20)"
     },
     {
       "id": "bleeding",
       "name": "Bleeding",
       "tag": null,
-      "effect": "2 damage after each `melee` or `move` skill the unit uses.",
+      "effect": "2 damage after each `melee` or `move` skill the unit uses (Move included).",
       "duration": "The unit's next 3 such skills"
     },
     {
       "id": "silenced",
       "name": "Silenced",
       "tag": null,
-      "effect": "The unit cannot use `magical` skills.",
-      "duration": "20 time units"
-    },
-    {
-      "id": "chilled",
-      "name": "Chilled",
-      "tag": "frost",
-      "effect": "The unit's Speed is lowered by 2 (section 6.1).",
-      "duration": "20 time units"
+      "effect": "The unit cannot use `magical` skills or a magical attack.",
+      "duration": "As stated"
     },
     {
       "id": "frozen",
       "name": "Frozen",
-      "tag": "frost",
-      "effect": "The unit's next turn is skipped, at the normal skipped-turn cost (section 6.4). It cannot intercept while Frozen (2026-11-04). It ends early when fire is set on the unit's spot (2026-10-19).",
+      "tag": null,
+      "effect": "The unit's next turn is skipped, at the skipped-turn cost (section 6.1). It cannot intercept. It ends early when fire is set on the unit's spot.",
       "duration": "The unit's next turn"
     },
     {
       "id": "stunned",
       "name": "Stunned",
       "tag": null,
-      "effect": "The unit takes no actions and cannot intercept; the timeline keeps running. Each of its turns that arrives while it is Stunned is skipped, at the cost of a skipped turn (section 6.4; adopted 2026-11-08, owner decision). Any hit ends it early. A new Stun on a Stunned unit keeps whichever time is longer (an exception to the reapplication rule above). Added 2026-11-03.",
-      "duration": "As stated by the skill"
+      "effect": "The unit takes no actions and cannot intercept. Each of its turns that arrives while Stunned is skipped, at the skipped-turn cost. Any hit ends it early.",
+      "duration": "As stated"
     },
     {
       "id": "confused",
       "name": "Confused",
       "tag": null,
-      "effect": "Each skill the unit uses, helpful ones included, has a 50% chance to target a random unit instead: any unit the skill could legally reach, on either side. Added 2026-11-03.",
-      "duration": "As stated by the skill"
+      "effect": "Each skill the unit uses, helpful ones included, has a 50% chance to target a random legal unit instead, on either side.",
+      "duration": "As stated"
     },
     {
       "id": "immobilized",
       "name": "Immobilized",
       "tag": null,
-      "effect": "The unit cannot Move and cannot be moved by any skill (replaces the Rooted and Held candidates). It cannot intercept (2026-11-04). Added 2026-11-03.",
-      "duration": "As stated by the skill"
+      "effect": "The unit cannot Move and cannot be moved. It cannot intercept.",
+      "duration": "As stated"
     },
     {
       "id": "marked",
       "name": "Marked",
       "tag": null,
-      "effect": "Enemy only. Any skill that refers to a Marked enemy works on every Marked enemy, whoever placed the Mark. Each marking skill states its duration and any limit, such as one Mark at a time. Decided 2026-11-01.",
-      "duration": "As stated by the skill"
+      "effect": "Only enemies can be Marked. A skill that reads a Mark works on every Marked enemy, whoever placed it. A Mark lasts 30 time units unless the marking skill says otherwise (Relentless); the marking skill states any limit.",
+      "duration": "30"
     }
   ]
 }

@@ -4,10 +4,9 @@ namespace Everkin.Core.Battle;
 public static class StatusIds
 {
     public const string Blind = "blind";
-    public const string Poison = "poison";
+    public const string Poison = "poisoned";
     public const string Bleeding = "bleeding";
     public const string Silenced = "silenced";
-    public const string Chilled = "chilled";
     public const string Frozen = "frozen";
     public const string Stunned = "stunned";
     public const string Confused = "confused";
@@ -41,11 +40,7 @@ public static class StatusIds
     /// <summary>Its next skill has more Delay by the status's magnitude (Net Trap: +3).</summary>
     public const string NextSkillDelay = "next_skill_delay";
 
-    /// <summary>Haste: Speed raised by the status's magnitude in steps (section 6.1).</summary>
-    public const string Haste = "haste";
 
-    /// <summary>Slow: Speed lowered by the status's magnitude in steps (section 6.1).</summary>
-    public const string Slow = "slow";
 
     /// <summary>Phase Weapon: the unit's next attack has unlimited range (magnitude 1 with Phasing Strike: it also cannot be intercepted). The source is the Sorcerer.</summary>
     public const string Phased = "phased";
@@ -177,9 +172,6 @@ public static class StatusRules
     /// <summary>Confused: each skill has a 50% chance to target a random unit instead.</summary>
     public const int ConfusedRetargetChance = 50;
 
-    /// <summary>Chilled lowers Speed by 2.</summary>
-    public const int ChilledSpeedLoss = 2;
-
     public static ReapplyRule Reapply(string statusId) => statusId switch
     {
         StatusIds.Stunned => ReapplyRule.KeepLongerDuration,
@@ -189,11 +181,11 @@ public static class StatusRules
 
     public static Polarity PolarityOf(string statusId) => statusId switch
     {
-        StatusIds.Blind or StatusIds.Poison or StatusIds.Bleeding or StatusIds.Silenced or StatusIds.Chilled
+        StatusIds.Blind or StatusIds.Poison or StatusIds.Bleeding or StatusIds.Silenced
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
-            or StatusIds.Marked or StatusIds.Slow or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted
+            or StatusIds.Marked or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted
             or StatusIds.GlassBody or StatusIds.StoneShell or StatusIds.Weighted or StatusIds.Stagnant or StatusIds.Betrayed => Polarity.Harmful,
-        StatusIds.Ward or StatusIds.Dampen or StatusIds.Haste or StatusIds.Charge or StatusIds.LeapCover or StatusIds.Pledge
+        StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.Charge or StatusIds.LeapCover or StatusIds.Pledge
             or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo or StatusIds.Sidestep or StatusIds.FreeMomentum => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };
@@ -201,9 +193,6 @@ public static class StatusRules
     /// <summary>How much a status changes Speed, in steps.</summary>
     public static int SpeedModifier(StatusInstance status) => status.Id switch
     {
-        StatusIds.Chilled => -ChilledSpeedLoss,
-        StatusIds.Haste => status.Magnitude,
-        StatusIds.Slow => -status.Magnitude,
         StatusIds.SongHaste => status.Magnitude,
         _ => 0,
     };
@@ -510,6 +499,30 @@ public static class Statuses
         var extra = status.Magnitude;
         Remove(state, unitId, StatusIds.NextSkillDelay, StatusEndCause.Consumed);
         return extra;
+    }
+
+    /// <summary>A Mark lasts 30 time units unless the marking skill says otherwise (game_system.md section 10.5).</summary>
+    public const int MarkLength = 30;
+
+    /// <summary>
+    /// Steals helpful statuses from a unit (game_system.md section 10.5): one, picked by the seeded roll with equal chance, or every one with
+    /// <paramref name="all"/>. Each moves to the thief with its remaining time. Stealth cannot be stolen. Returns how many moved.
+    /// </summary>
+    public static int Steal(BattleState state, int thiefId, int fromId, bool all)
+    {
+        var from = state.GetUnit(fromId);
+        var ids = from.StatusInstances.Keys.Where(id => StatusRules.PolarityOf(id) == Polarity.Helpful).ToList();
+        if (from.Ward > 0 && !ids.Contains(StatusIds.Ward)) ids.Add(StatusIds.Ward);
+        var stolen = 0;
+        while (ids.Count > 0)
+        {
+            var pick = ids.Count == 1 ? 0 : state.Random.NextInt(ids.Count);
+            var id = ids[pick];
+            ids.RemoveAt(pick);
+            if (Transfer(state, fromId, thiefId, id, thiefId)) stolen++;
+            if (!all) break;
+        }
+        return stolen;
     }
 
     /// <summary>

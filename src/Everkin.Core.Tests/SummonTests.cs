@@ -223,7 +223,7 @@ public class SummonTests
         // A lone Rear unit at center 0 is covered by the Middle summon (Middle: 2 cards, centers -1 and 1 -> 50%).
         Assert.Contains(golem, Interception.Defenders(s, target));
         var enemy = s.Formation.Units(Side.B, Row.Front)[0];
-        Assert.True(Targeting.IsLegalTarget(s, enemy, golem, Reach.Unlimited));
+        Assert.True(Targeting.IsLegalTarget(s, enemy, golem));
         Statuses.Apply(s, new StatusApplication(golem, StatusIds.Poison, Duration: 50));
         Assert.True(Statuses.Has(s.GetUnit(golem), StatusIds.Poison));
     }

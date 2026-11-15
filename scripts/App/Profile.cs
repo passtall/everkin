@@ -23,19 +23,18 @@ public sealed class TeamData
 }
 
 /// <summary>
-/// What the player has saved (production section 1.4): the creatures owned, campaign progress, teams and skill builds. JSON with a version number;
+/// What the player has saved (production section 1.4): the creatures owned, campaign progress and teams. JSON with a version number;
 /// older saves are upgraded step by step when loaded.
 /// </summary>
 public sealed class ProfileData
 {
-    public const int CurrentVersion = 2;
+    public const int CurrentVersion = 3;
 
     public int Version { get; set; } = CurrentVersion;
     public List<string> Owned { get; set; } = new();
     public List<string> Completed { get; set; } = new();
     public List<TeamData> Teams { get; set; } = new();
     public int Selected { get; set; }
-    public Dictionary<string, List<string>> Builds { get; set; } = new();
 }
 
 /// <summary>The player's profile, kept in user://profile.json with a temporary-file swap and three backups. Changes save at once (ui_spec: "no Save button").</summary>
@@ -73,6 +72,11 @@ public static class Profile
             if (data.Owned.Count == 0) data.Owned = CampaignDef.StartingCreatures(Game.Content).ToList();
             data.Version = 2;
         }
+        if (data.Version < 3)
+        {
+            // The classes rework (M5.6) replaced every creature's skills: older profiles are reset.
+            return null;
+        }
         if (data.Owned.Count == 0) data.Owned = CampaignDef.StartingCreatures(Game.Content).ToList();
         return data;
     }
@@ -88,7 +92,7 @@ public static class Profile
         _store = path == null ? null : new SaveStore(path);
     }
 
-    // ---------------------------------------------------------------- teams and builds
+    // ---------------------------------------------------------------- teams
 
     public static TeamData CurrentTeam
     {
@@ -100,21 +104,11 @@ public static class Profile
         }
     }
 
-    /// <summary>The build of a creature: the player's own or the default one it arrived with.</summary>
-    public static IReadOnlyList<string> BuildOf(string creatureId) =>
-        Data.Builds.TryGetValue(creatureId, out var b) ? b : Game.Content.DefaultBuilds.TryGetValue(creatureId, out var d) ? d : new List<string>();
-
-    public static void SetBuild(string creatureId, IEnumerable<string> build)
-    {
-        Data.Builds[creatureId] = build.ToList();
-        Save();
-    }
-
     public static int Cost(TeamData team) => team.Units.Where(u => Game.Content.CreaturesById.ContainsKey(u.Creature)).Sum(u => Game.Content.CreaturesById[u.Creature].Cost);
 
-    /// <summary>The team as a battle setup (builds from the profile, rows as saved).</summary>
+    /// <summary>The team as a battle setup (rows as saved).</summary>
     public static TeamSetup ToSetup(TeamData team) =>
-        new(team.Units.Select(u => new UnitSetup(u.Creature, BuildOf(u.Creature).ToArray(), System.Enum.Parse<Row>(u.Row))).ToList());
+        new(team.Units.Select(u => new UnitSetup(u.Creature, System.Enum.Parse<Row>(u.Row))).ToList());
 
     // ---------------------------------------------------------------- collection and campaign progress
 
@@ -169,8 +163,8 @@ public static class Profile
     }
 
     /// <summary>
-    /// The tutorial's one automatic team (game_system section 2.2): every owned creature in a default formation (Guardians, Warriors and short
-    /// melee in front, Polearm and Whip in the middle, Ranged, Magic, Breath and Aura behind). Edit team arranges it, so it is kept in the saved
+    /// The tutorial's one automatic team (game_system section 2.2): every owned creature in a default formation (creatures whose attack is melee or
+    /// melee reach in front, the others behind). Edit team arranges it, so it is kept in the saved
     /// team list under its own name.
     /// </summary>
     public static TeamData TutorialTeam()
@@ -180,7 +174,7 @@ public static class Profile
         foreach (var id in Data.Owned.Where(o => team.Units.All(u => u.Creature != o)).ToList())
         {
             var def = Game.Content.CreaturesById[id];
-            var row = def.AttackType switch { "polearm" or "whip" => "Middle", "ranged" or "magic" or "breath" or "aura" => "Rear", _ => "Front" };
+            var row = Game.Content.AttacksById[def.Attack].Delivery == "projectile" ? "Rear" : "Front";
             team.Units.Add(new TeamUnit { Creature = id, Row = row });
         }
         team.Units.RemoveAll(u => !Data.Owned.Contains(u.Creature));

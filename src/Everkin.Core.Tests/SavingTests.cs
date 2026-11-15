@@ -75,8 +75,7 @@ public class SavingTests : IDisposable
     [Fact]
     public void ABattleReplaysFromItsSavedActionsToTheSamePosition()
     {
-        var trees = new SkillTrees(World.Content);
-        var spec = BattleSetup.RandomSpec(World.Content, trees, 21);
+        var spec = BattleSetup.RandomSpec(World.Content, 21);
         var state = BattleSetup.Create(spec, World.Catalog);
         var save = BattleSave.Of(spec, "harness", null, "hash");
         var level = AiSettings.Load(Path.Combine(World.ContentDir, "ai_settings.json")).Level("harness");
@@ -102,7 +101,7 @@ public class SavingTests : IDisposable
     [Fact]
     public void AnActionThatNoLongerFitsDropsTheSave()
     {
-        var spec = BattleSetup.RandomSpec(World.Content, new SkillTrees(World.Content), 21);
+        var spec = BattleSetup.RandomSpec(World.Content, 21);
         var save = BattleSave.Of(spec, "harness", null, "hash");
         save.Actions.Add(new SavedAction("skill", 0, "no_such_skill", 1));
         Assert.Null(save.Replay(World.Catalog));

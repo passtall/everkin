@@ -27,8 +27,7 @@ public static class Actions
         if (skill.IsPassive) return "a passive is always on and is not used";
         if (skill.IsAttack && state.AttackBans.Any(b => b(state, use.UserId))) return "this unit can never attack";
         if (skill.Magical && !Statuses.CanUseMagical(user)) return "Silenced: magical skills cannot be used";
-        if (user.KnownSkills.Contains("grand_chorus") && !catalog.Content.AttackSkills.Any(a => a.Id == use.SkillId))
-            return "Grand Chorus: only the type-specific attack can be used";
+        if (skill.NeedsFrontRow && !Targeting.InFrontRow(state, use.UserId)) return "needs the Front row";
         var cost = CostOf(state, use.UserId, skill);
         if (!state.Momentum.CanPay(user.Side, cost)) return $"needs the side to be {cost} ahead in Momentum";
         var own = skill.Unavailable(state, use.UserId);
@@ -53,7 +52,7 @@ public static class Actions
                 var opts = skill.Options with { Delivery = skill.Delivery };
                 foreach (var who in new[] { first, second })
                 {
-                    if (!Targeting.IsLegalTarget(state, use.UserId, who, ReachOf(state, use.UserId, skill), opts)) return "not a legal target";
+                    if (!Targeting.IsLegalTarget(state, use.UserId, who, opts)) return "not a legal target";
                     if (!skill.TargetFilter(state, use.UserId, who)) return "not a valid target for this skill";
                 }
                 return skill.PairFilter(state, use.UserId, first, second) ? null : "not a valid pair for this skill";
@@ -62,7 +61,7 @@ public static class Actions
             {
                 if (use.TargetUnitId is not { } who) return "needs a target";
                 if (who < 0 || who >= state.Units.Count) return "unknown target";
-                if (!Targeting.IsLegalTarget(state, use.UserId, who, ReachOf(state, use.UserId, skill), skill.Options with { Delivery = skill.Delivery })) return "not a legal target";
+                if (!Targeting.IsLegalTarget(state, use.UserId, who, skill.Options with { Delivery = skill.Delivery })) return "not a legal target";
                 if (!skill.TargetFilter(state, use.UserId, who)) return "not a valid target for this skill";
                 if (skill.PlacesRandomly(state, use.UserId)) return skill.PlacementOptionsFor(state, use.UserId, who).Count > 0 ? null : "no free place";
                 if (use.Placement is not { } where) return "needs a place";
@@ -72,7 +71,7 @@ public static class Actions
                 if (use.TargetUnitId is not { } target) return "needs a target";
                 if (target < 0 || target >= state.Units.Count) return "unknown target";
                 var options = skill.Options with { Delivery = skill.Delivery };
-                if (!Targeting.IsLegalTarget(state, use.UserId, target, ReachOf(state, use.UserId, skill), options)) return "not a legal target";
+                if (!Targeting.IsLegalTarget(state, use.UserId, target, options)) return "not a legal target";
                 if (!skill.TargetFilter(state, use.UserId, target)) return "not a valid target for this skill";
                 return DistractedFrom(state, use.UserId, skill, target);
         }
@@ -87,16 +86,12 @@ public static class Actions
         return cost;
     }
 
-    /// <summary>The reach a skill has for this user now: unlimited for an attack by a unit with Phase Weapon on it (its next attack), else the skill's own.</summary>
-    public static Reach ReachOf(BattleState state, int userId, Skill skill) =>
-        (skill.IsAttack && Statuses.Has(state.GetUnit(userId), StatusIds.Phased)) || state.ReachOverrides.Any(o => o(state, userId)) ? Reach.Unlimited : skill.Reach;
-
     /// <summary>Every unit that is a legal target of the skill right now (empty for skills that take none).</summary>
     public static IReadOnlyList<int> LegalTargets(BattleState state, SkillCatalog catalog, int userId, string skillId)
     {
         var skill = catalog.Get(skillId);
         if (skill.Target != TargetKind.Unit) return Array.Empty<int>();
-        return Targeting.LegalTargets(state, userId, ReachOf(state, userId, skill), skill.Options with { Delivery = skill.Delivery })
+        return Targeting.LegalTargets(state, userId, skill.Options with { Delivery = skill.Delivery })
             .Where(id => skill.TargetFilter(state, userId, id) && DistractedFrom(state, userId, skill, id) is null).ToArray();
     }
 
@@ -109,7 +104,7 @@ public static class Actions
         if (!skill.IsAttack || Statuses.Get(state.GetUnit(userId), StatusIds.Distracted)?.SourceUnitId is not { } guardian) return null;
         if (guardian == targetId || state.GetUnit(guardian).IsKnockedOut) return null;
         var options = skill.Options with { Delivery = skill.Delivery };
-        return Targeting.IsLegalTarget(state, userId, guardian, ReachOf(state, userId, skill), options) && skill.TargetFilter(state, userId, guardian)
+        return Targeting.IsLegalTarget(state, userId, guardian, options) && skill.TargetFilter(state, userId, guardian)
             ? "Distracted: must target the Guardian" : null;
     }
 
@@ -184,7 +179,7 @@ public static class Actions
         user.LastSkillId = skill.Id;
         user.LastActiveSkillId = skill.Id;
         user.SneakReady = false;
-        Turrets.AfterAction(state, use.UserId);
+        foreach (var hook in state.AfterActionHooks.ToArray()) hook(state, use.UserId);
         state.RunAuras();
         return state.DrainEvents();
     }
@@ -242,7 +237,7 @@ public static class Actions
         state.GetUnit(userId).LastActionIndex = state.ActionCounter;
         state.GetUnit(userId).LastSkillId = null;
         state.GetUnit(userId).SneakReady = false;
-        Turrets.AfterAction(state, userId);
+        foreach (var hook in state.AfterActionHooks.ToArray()) hook(state, userId);
         state.RunAuras();
         return state.DrainEvents();
     }
@@ -256,7 +251,7 @@ public static class Actions
         state.GetUnit(userId).LastActionIndex = state.ActionCounter;
         state.GetUnit(userId).LastSkillId = null;
         state.GetUnit(userId).SneakReady = false;
-        Turrets.AfterAction(state, userId);
+        foreach (var hook in state.AfterActionHooks.ToArray()) hook(state, userId);
         return state.DrainEvents();
     }
 

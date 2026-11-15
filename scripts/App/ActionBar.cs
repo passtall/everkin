@@ -79,14 +79,9 @@ public partial class ActionBar : PanelContainer
         AddChild(_row);
     }
 
-    public static string IconFor(string skillId)
-    {
-        if (Game.Tex($"res://assets/icons/skills/{skillId}.png") != null) return $"res://assets/icons/skills/{skillId}.png";
-        if (Game.Content.AttackSkills.FirstOrDefault(a => a.Id == skillId) is { } a) return $"res://assets/icons/skills/attack-{a.AttackType}.png";
-        if (Game.Content.ProfessionSkills.FirstOrDefault(p => p.Id == skillId) is { } d)
-            return $"res://assets/icons/skills/{d.Profession}-{d.Branch.ToLowerInvariant().Replace(' ', '-')}.png";
-        return "";
-    }
+    /// <summary>The icon of a unique attack or class active: assets/icons/skills/&lt;skill id&gt;.png.</summary>
+    public static string IconFor(string skillId) =>
+        Game.Tex($"res://assets/icons/skills/{skillId}.png") != null ? $"res://assets/icons/skills/{skillId}.png" : "";
 
     /// <summary>Fills the bar for a unit: every active skill it knows (with the reason when it cannot be used now), then Move and Skip Turn.</summary>
     public void Fill(BattleState state, int unitId)
@@ -99,7 +94,6 @@ public partial class ActionBar : PanelContainer
         foreach (var id in unit.KnownSkills.Distinct())
         {
             if (!Game.Catalog.TryGet(id, out var skill) || skill.IsPassive) continue;
-            if (!Game.Content.AttackSkills.Any(a => a.Id == id) && !Game.Content.ProfessionSkills.Any(p => p.Id == id)) continue;
             var slot = new SkillSlot
             {
                 Id = id, Title = Game.SkillName(id), IconPath = IconFor(id), Key = key <= 9 ? key : 0,

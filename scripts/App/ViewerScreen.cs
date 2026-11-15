@@ -67,7 +67,7 @@ public partial class ViewerScreen : Control, IBackNavigable
             bar.AddChild(b);
         }
         var fresh = Ui.Button("New battle", 20);
-        fresh.Pressed += () => Start(BattleSetup.RandomSpec(Game.Content, Game.Trees, (ulong)_seeds.NextInt64(1, 1_000_000)));
+        fresh.Pressed += () => Start(BattleSetup.RandomSpec(Game.Content, (ulong)_seeds.NextInt64(1, 1_000_000)));
         bar.AddChild(fresh);
         var runs = RecordedRuns();
         if (runs.Count > 0)
@@ -91,7 +91,7 @@ public partial class ViewerScreen : Control, IBackNavigable
         top.Position = new Vector2(-140, 8);
         AddChild(top);
 
-        var spec = BattleSetup.RandomSpec(Game.Content, Game.Trees, _firstSeed ?? (ulong)_seeds.NextInt64(1, 1_000_000));
+        var spec = BattleSetup.RandomSpec(Game.Content, _firstSeed ?? (ulong)_seeds.NextInt64(1, 1_000_000));
         Start(spec);
     }
 
@@ -101,7 +101,7 @@ public partial class ViewerScreen : Control, IBackNavigable
         return Directory.Exists(root) ? Directory.GetDirectories(root).Select(Path.GetFileName).Where(n => n != null).Select(n => n!).OrderByDescending(n => n).Take(10).ToList() : new();
     }
 
-    private sealed class RecUnit { public string Creature { get; set; } = ""; public string Side { get; set; } = ""; public string Row { get; set; } = ""; public List<string> Build { get; set; } = new(); }
+    private sealed class RecUnit { public string Creature { get; set; } = ""; public string Side { get; set; } = ""; public string Row { get; set; } = ""; }
     private sealed class Rec { public ulong Seed { get; set; } public List<RecUnit> Units { get; set; } = new(); }
 
     /// <summary>Starts a new battle with the teams and formations of a recorded battle from a run (it need not play out the same way).</summary>
@@ -112,7 +112,7 @@ public partial class ViewerScreen : Control, IBackNavigable
         var lines = File.ReadLines(path).Where(l => l.Length > 2).Take(200).ToList();
         var rec = JsonSerializer.Deserialize<Rec>(lines[_seeds.Next(lines.Count)])!;
         if (rec.Units.Count == 0) return;
-        TeamSetup Team(string side) => new(rec.Units.Where(u => u.Side == side).Select(u => new UnitSetup(u.Creature, u.Build, Enum.Parse<Row>(u.Row))).ToList());
+        TeamSetup Team(string side) => new(rec.Units.Where(u => u.Side == side).Select(u => new UnitSetup(u.Creature, Enum.Parse<Row>(u.Row))).ToList());
         Start(new BattleSpec((ulong)_seeds.NextInt64(1, 1_000_000), Team("A"), Team("B")));
     }
 

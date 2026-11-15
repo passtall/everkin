@@ -18,7 +18,7 @@ public static class Screens
                 return new PlayScreen(main, new Everkin.Core.Setup.BattleSpec((ulong)new Random().NextInt64(1, 1_000_000_000), main.LastSpec.SideA, main.LastSpec.SideB), main.LastLevel, main.LastEncounter);
             case "play":
             {
-                var spec = Everkin.Core.Setup.BattleSetup.RandomSpec(Game.Content, Game.Trees, ulong.TryParse(Arg("seed"), out var s) ? s : 7);
+                var spec = Everkin.Core.Setup.BattleSetup.RandomSpec(Game.Content, ulong.TryParse(Arg("seed"), out var s) ? s : 7);
                 main.LastSpec = spec;
                 main.LastLevel = Arg("level") ?? "easy";
                 return new PlayScreen(main, spec, main.LastLevel) { SelfTest = args.Contains("selftest"), Instant = args.Contains("instant"), AutoSurrender = args.Contains("surrender"), Autoplay = args.Contains("autoplay"), StartOneSide = args.Contains("oneside") };
@@ -39,12 +39,10 @@ public static class Screens
             case "teams":
                 if (args.Contains("demo"))
                 {
-                    var t = Everkin.Core.Setup.BattleSetup.RandomTeam(Game.Content, Game.Trees, new Everkin.Core.Battle.BattleRandom(11));
+                    var t = Everkin.Core.Setup.BattleSetup.RandomTeam(Game.Content, new Everkin.Core.Battle.BattleRandom(11));
                     Profile.CurrentTeam.Units = t.Units.Select(u => new TeamUnit { Creature = u.CreatureId, Row = u.Row.ToString() }).ToList();
                 }
                 return new TeamEditor(main);
-            case "skills":
-                return new SkillTreeEditor(main, Arg("creature") ?? Game.Content.Creatures[0].Id, () => main.Show("teams"));
             case "viewer":
                 return new ViewerScreen(Arg("level") ?? "harness", ulong.TryParse(Arg("seed"), out var seed) ? seed : null).WithMain(main);
             default: return new MenuScreen(main);
@@ -129,7 +127,7 @@ public partial class CardsDemo : Control, IBackNavigable
         var x = 20f;
         foreach (var def in defs)
         {
-            var info = CardInfo.FromCreature(def, Game.CardSkills(new[] { "brawl_strike", "heavy_blow" }));
+            var info = CardInfo.FromCreature(def, Game.CardSkills(Game.Content.ClassSkillsOf(def).Prepend(def.Attack)));
             foreach (var (mode, w) in new[] { (CardMode.Front, 300f), (CardMode.Back, 300f), (CardMode.Compact, 96f) })
             {
                 var card = new CardView { Mode = mode, Position = new Vector2(x, 20), Size = new Vector2(w, w * 1.5f) };

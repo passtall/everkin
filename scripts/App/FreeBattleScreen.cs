@@ -79,7 +79,7 @@ public partial class FreeBattleScreen : Control, IBackNavigable
         if (_team == null) return;
         var seed = (ulong)_random.NextInt64(1, 1_000_000_000);
         var rng = new BattleRandom(seed ^ 0x5EED5E7UL);
-        var enemy = BattleSetup.RandomTeam(Game.Content, Game.Trees, rng);
+        var enemy = BattleSetup.RandomTeam(Game.Content, rng);
         _main.StartBattle(new BattleSpec(seed, Profile.ToSetup(_team), enemy), _level);
     }
 }

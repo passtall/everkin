@@ -120,7 +120,6 @@ public sealed class BattleSave
     public sealed class SavedUnit
     {
         public string Creature { get; set; } = "";
-        public List<string> Build { get; set; } = new();
         public string Row { get; set; } = "Front";
         public bool Boss { get; set; }
     }
@@ -130,13 +129,13 @@ public sealed class BattleSave
     public static BattleSave Of(BattleSpec spec, string level, string? encounter, string contentHash) => new()
     {
         ContentHash = contentHash, Seed = spec.Seed, Level = level, Encounter = encounter,
-        SideA = spec.SideA.Units.Select(u => new SavedUnit { Creature = u.CreatureId, Build = u.Build.ToList(), Row = u.Row.ToString(), Boss = u.Boss }).ToList(),
-        SideB = spec.SideB.Units.Select(u => new SavedUnit { Creature = u.CreatureId, Build = u.Build.ToList(), Row = u.Row.ToString(), Boss = u.Boss }).ToList(),
+        SideA = spec.SideA.Units.Select(u => new SavedUnit { Creature = u.CreatureId, Row = u.Row.ToString(), Boss = u.Boss }).ToList(),
+        SideB = spec.SideB.Units.Select(u => new SavedUnit { Creature = u.CreatureId, Row = u.Row.ToString(), Boss = u.Boss }).ToList(),
     };
 
     public BattleSpec ToSpec() => new(Seed,
-        new TeamSetup(SideA.Select(u => new UnitSetup(u.Creature, u.Build, Enum.Parse<Row>(u.Row), u.Boss)).ToList()),
-        new TeamSetup(SideB.Select(u => new UnitSetup(u.Creature, u.Build, Enum.Parse<Row>(u.Row), u.Boss)).ToList()));
+        new TeamSetup(SideA.Select(u => new UnitSetup(u.Creature, Enum.Parse<Row>(u.Row), u.Boss)).ToList()),
+        new TeamSetup(SideB.Select(u => new UnitSetup(u.Creature, Enum.Parse<Row>(u.Row), u.Boss)).ToList()));
 
     public string ToJson() => JsonSerializer.Serialize(this, Options);
 

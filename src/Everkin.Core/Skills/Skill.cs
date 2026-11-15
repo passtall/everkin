@@ -71,8 +71,8 @@ public abstract class Skill
     /// <summary>`magical` skills are blocked by Silenced (Bolt and every active skill of Sorcerer, Elementalist, Healer, Summoner and Primalist).</summary>
     public virtual bool Magical => false;
 
-    /// <summary>The reach of a skill with a target (section 7.4).</summary>
-    public virtual Reach Reach => Reach.Unlimited;
+    /// <summary>The skill needs its user in its own Front row: melee skills and skills with melee reach (section 8.1).</summary>
+    public virtual bool NeedsFrontRow => Delivery == Battle.Delivery.Melee;
 
     /// <summary>Which side the target may be on, and the other targeting options.</summary>
     public virtual TargetOptions Options => default;
@@ -283,7 +283,7 @@ public sealed class SkillContext
         if (miss > 0 && State.Random.Chance(miss)) return Missed(spec, rolled);
 
         var interception = _skill.Delivery is { } delivery && Interception.CanBeIntercepted(delivery, IgnoresInterception || spec.NoInterception)
-            ? Interception.Resolve(State, spec.TargetId, rolled)
+            ? Interception.Resolve(State, spec.TargetId, rolled, true, delivery, UserSide)
             : new InterceptionResult(Array.Empty<InterceptedShare>(), rolled);
 
         var hpLost = 0;
@@ -302,8 +302,7 @@ public sealed class SkillContext
             hpLost += result.HpLost;
             if (!friendly) foreach (var hook in State.TargetHitHooks.ToArray()) hook(State, UserId, spec.TargetId);
             WasHit(spec.TargetId, triggers, tags);
-            outcome = interception.Intercepted ? HitOutcome.Intercepted
-                : friendly ? HitOutcome.OnActingSide
+            outcome = friendly ? HitOutcome.OnActingSide
                 : result.FullyAbsorbed || Statuses.Has(target, StatusIds.StoneShell) ? HitOutcome.FullyAbsorbed   // Stone Shell takes nothing, like a full shield
                 : HitOutcome.Landed;
         }
@@ -428,7 +427,7 @@ public sealed class SkillContext
     {
         var rolled = DamageMath.Roll(State.Random, Scaled(spec.Range));
         var interception = _skill.Delivery is { } d && Interception.CanBeIntercepted(d)
-            ? Interception.Resolve(State, spec.TargetId, rolled)
+            ? Interception.Resolve(State, spec.TargetId, rolled, true, d, UserSide)
             : new InterceptionResult(Array.Empty<InterceptedShare>(), rolled);
         foreach (var share in interception.Shares)
             if (!State.GetUnit(share.InterceptorId).IsKnockedOut) HealUnit(share.InterceptorId, share.Amount);
@@ -486,7 +485,7 @@ public sealed class SkillContext
     {
         if (_skill.Delivery is { } d && Interception.CanBeIntercepted(d, IgnoresInterception))
         {
-            var r = Interception.Resolve(State, targetId, 1, splittable: false);
+            var r = Interception.Resolve(State, targetId, 1, splittable: false, delivery: d, attackerSide: UserSide);
             if (r.Intercepted) return r.Shares[0].InterceptorId;
         }
         return targetId;

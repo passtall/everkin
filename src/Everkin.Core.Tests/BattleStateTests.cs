@@ -90,8 +90,8 @@ public class BattleRandomTests
 public class BattleStateTests
 {
     private static CreatureDef Creature(string id = "wolf-ranger", int hp = 50, int speed = 5, int power = 5) =>
-        new(id, "Ranger Wolf", "ranged", new[] { "hunter" }, "wolf-01.png", null, "pine_forest",
-            hp, speed, power, 6, new[] { 0, 0, 640, 960 }, new[] { 0, 0, 1024, 1536 }, "reviewed", "");
+        new(id, "Ranger Wolf", new[] { "tracker", "assassin" }, new[] { "relentless", "unseen" }, "bead_count", "wolf-01.png", "pine_forest",
+            hp, speed, power, 6, new[] { 0, 0, 640, 960 }, new[] { 0, 0, 1024, 1536 });
 
     [Fact]
     public void NewBattleReportsItsStartAsAnEvent()

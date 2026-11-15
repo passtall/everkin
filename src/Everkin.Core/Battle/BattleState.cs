@@ -217,7 +217,7 @@ public sealed class Unit
     internal Dictionary<string, StatusInstance> StatusStore => _statusInstances;
 
     /// <summary>
-    /// Speed as the turn formula sees it before clamping to 1–10: the creature's Speed plus Haste, minus Slow and Chilled
+    /// Speed as the turn formula sees it before clamping to 1–10: the creature's Speed plus Song of Haste
     /// (section 6.1). The timeline clamps it when it computes a Wait.
     /// </summary>
     public int EffectiveSpeed => (_statusInstances.ContainsKey(StatusIds.Transmuted) ? Power : Speed) + _statusInstances.Values.Sum(StatusRules.SpeedModifier);
@@ -269,7 +269,8 @@ public sealed class BattleState
     private readonly CowList<AttackBan> _attackBans = new();
     private readonly CowList<StatusRemovedHook> _statusRemovedHooks = new();
     private readonly CowList<DamageModifier> _damageModifiers = new();
-    private readonly CowList<ReachOverride> _reachOverrides = new();
+    private readonly CowList<AfterActionHook> _afterAction = new();
+    private readonly CowList<AutoEventHandler> _autoEventHandlers = new();
     private readonly CowList<DamageSharing> _damageSharings = new();
     private readonly CowList<LethalGuard> _lethalGuards = new();
     private readonly CowList<StatusApplicationModifier> _statusApplicationModifiers = new();
@@ -324,7 +325,8 @@ public sealed class BattleState
         _attackBans = other._attackBans.Share();
         _statusRemovedHooks = other._statusRemovedHooks.Share();
         _damageModifiers = other._damageModifiers.Share();
-        _reachOverrides = other._reachOverrides.Share();
+        _afterAction = other._afterAction.Share();
+        _autoEventHandlers = other._autoEventHandlers.Share();
         ScoutedUntil = (int?[])other.ScoutedUntil.Clone();
         _damageSharings = other._damageSharings.Share();
         _lethalGuards = other._lethalGuards.Share();
@@ -466,8 +468,12 @@ public sealed class BattleState
     public IReadOnlyList<LethalGuard> LethalGuards => _lethalGuards;
     public void AddLethalGuard(LethalGuard hook) => _lethalGuards.Add(hook);
 
-    public IReadOnlyList<ReachOverride> ReachOverrides => _reachOverrides;
-    public void AddReachOverride(ReachOverride hook) => _reachOverrides.Add(hook);
+    public IReadOnlyList<AfterActionHook> AfterActionHooks => _afterAction;
+    public void AddAfterActionHook(AfterActionHook hook) => _afterAction.Add(hook);
+
+    /// <summary>Handlers for auto events that reach their turn; the first that returns true has handled it (turret shots, totem pulses, watchtowers).</summary>
+    public IReadOnlyList<AutoEventHandler> AutoEventHandlers => _autoEventHandlers;
+    public void AddAutoEventHandler(AutoEventHandler hook) => _autoEventHandlers.Add(hook);
 
     /// <summary>Scout Ahead: until this battle time, no unit of the side (indexed by <see cref="Side"/>) can gain stealth.</summary>
     public int?[] ScoutedUntil { get; private set; } = new int?[2];

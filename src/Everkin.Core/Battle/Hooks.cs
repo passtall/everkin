@@ -119,5 +119,8 @@ public delegate IReadOnlyList<int> DamageSharing(BattleState state, int targetId
 /// <summary>A unit that would drop to 0 HP is saved by a totem (Totem of Return): returns the totem that breaks, or null.</summary>
 public delegate int? LethalGuard(BattleState state, int targetId);
 
-/// <summary>True when the unit's skills have unlimited range right now (Boundless Sky while airborne).</summary>
-public delegate bool ReachOverride(BattleState state, int userId);
+/// <summary>Called after a unit took an action (a skill, Move or Skip Turn): the Engineer's turrets fire.</summary>
+public delegate void AfterActionHook(BattleState state, int userId);
+
+/// <summary>An auto event reached its turn; returns true when it was handled.</summary>
+public delegate bool AutoEventHandler(BattleState state, TimelineEntry entry);

@@ -58,7 +58,7 @@ public static class MoveGenerator
     private static IEnumerable<SkillUse> Uses(BattleState state, int userId, Skill skill, int maxPlaces, int maxPairs)
     {
         var options = skill.Options with { Delivery = skill.Delivery };
-        IReadOnlyList<int> Targets() => Targeting.LegalTargets(state, userId, Actions.ReachOf(state, userId, skill), options)
+        IReadOnlyList<int> Targets() => Targeting.LegalTargets(state, userId, options)
             .Where(t => skill.TargetFilter(state, userId, t)).ToArray();
 
         switch (skill.Target)

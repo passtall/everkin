@@ -82,22 +82,36 @@ def to_int(file, ident, field, text):
 # ---------------------------------------------------------------- classes
 
 def parse_classes():
+    """The 28 classes of class_system.md section 2: role, three actives, three keystones, magical flag."""
     f = "class_system.md"
-    attack_types, professions = [], []
+    text = (DOCS / f).read_text(encoding="utf-8")
+    classes = []
     for heading, _, header, rows in read_tables(DOCS / f):
-        if header[:2] == ["Attack Type", "Description"]:
-            for r in rows:
-                name = r["Attack Type"].strip("*")
-                attack_types.append({"id": slug(name), "name": name, "description": r["Description"]})
-        elif header[0] == "Profession":
-            for r in rows:
-                name = r["Profession"].strip("*")
-                professions.append({"id": slug(name), "name": name, "description": r["Description and included archetypes"]})
-    if len(attack_types) != 9:
-        fail(f, "attack types", f"expected 9, found {len(attack_types)}")
-    if len(professions) != 12:
-        fail(f, "professions", f"expected 12, found {len(professions)}")
-    return attack_types, professions
+        if header[:2] != ["Class", "Role"]:
+            continue
+        for r in rows:
+            name = r["Class"].strip("*")
+            actives = [a.strip() for a in r["Actives"].split(",")]
+            keystones = [k.strip() for k in r["Keystones"].split(",")]
+            if len(actives) != 3 or len(keystones) != 3:
+                fail(f, name, "a class has three actives and three keystones")
+            classes.append({"id": slug(name), "name": name, "role": r["Role"], "magical": False,
+                            "actives": [slug(a) for a in actives], "keystones": [slug(k) for k in keystones]})
+    if len(classes) != 28:
+        fail(f, "classes", f"expected 28, found {len(classes)}")
+    m = re.search(r"\*\*Magical classes\.\*\*(.+)", text)
+    if not m:
+        fail(f, "magical classes", "paragraph not found")
+    sentence = m.group(1).split(" is magical")[0]
+    magical = {n.strip() for n in re.split(r",| and ", sentence.replace("Every active of ", "")) if n.strip()}
+    names = {c["name"]: c for c in classes}
+    for n in magical:
+        if n not in names:
+            fail(f, n, "magical class is not a class")
+        names[n]["magical"] = True
+    if len(magical) != 14:
+        fail(f, "magical classes", f"expected 14, found {len(magical)}")
+    return classes
 
 
 # ----------------------------------------------------------------- skills
@@ -105,123 +119,127 @@ def parse_classes():
 DM = re.compile(r"^(\d+)\s*/\s*(\d+)$")
 
 
-def parse_dm(file, ident, text, required):
-    if not text:
-        if required:
-            fail(file, ident, "Delay / Momentum missing")
-        return None, None
-    m = DM.match(text)
-    if not m:
-        fail(file, ident, f"cannot read D / M: {text!r}")
-    return int(m.group(1)), int(m.group(2))
-
-
-def parse_delivery(file, ident, text):
-    if not text:
-        return None, None
-    if text == "As parent":
-        return "inherit", None
-    m = re.match(r"^(Melee|Projectile|Direct|None)(?:\s*·\s*(.+))?$", text)
-    if not m:
-        fail(file, ident, f"cannot read Delivery · Range: {text!r}")
-    return m.group(1).lower(), (m.group(2) or None)
-
-
-def parse_skills(attack_types, professions):
+def parse_skills(classes):
+    """Every class active and keystone of skills.md (84 + 84)."""
     f = "skills.md"
-    text = (DOCS / f).read_text(encoding="utf-8")
-    at_ids = {a["name"]: a["id"] for a in attack_types}
-    prof_ids = {p["name"]: p["id"] for p in professions}
-    attack_skills, skills, branches = [], [], {}
-    # branch lists: the "Branches: ..." line below each profession heading
-    current = None
-    for line in text.splitlines():
-        m = re.match(r"^## (\w+) \((\d+)\)$", line)
-        if m:
-            current = m.group(1)
-            branches[current] = {"count": int(m.group(2)), "names": []}
-        m = re.match(r"^Branches: (.+)\.$", line)
-        if m and current:
-            branches[current]["names"] = [b.strip() for b in m.group(1).split(",")]
+    class_by_name = {c["name"]: c for c in classes}
+    skills = []
     for heading, _, header, rows in read_tables(DOCS / f):
-        if header[0] == "Attack Type":
-            for r in rows:
-                at = r["Attack Type"]
-                if at not in at_ids:
-                    fail(f, at, "unknown Attack Type")
-                name = r["Attack"]
-                d, m_ = parse_dm(f, name, r["D / M"], True)
-                attack_skills.append({"id": slug(name), "name": name, "attackType": at_ids[at],
-                                      "delay": d, "momentum": m_, "effect": r["Effect"]})
-        elif header[0] == "Branch":
-            prof = heading.split(" (")[0]
-            if prof not in prof_ids:
-                fail(f, heading, "unknown profession")
-            for r in rows:
-                name = r["Skill"]
-                ident = f"{prof}/{name}"
-                if r["Branch"] not in branches[prof]["names"]:
-                    fail(f, ident, f"branch {r['Branch']!r} is not in the profession's Branches line")
-                kind_text = r["Kind"]
-                modifier_of = None
-                placement = None
-                mm = re.match(r"^Mod of (.+)$", kind_text)
-                if mm:
-                    kind, modifier_of = "Mod", slug(mm.group(1))
-                elif kind_text in ("A", "P", "K"):
-                    kind = kind_text
-                elif re.fullmatch(r"A \((trap card|construct|summon|totem)\)", kind_text):
-                    kind = "A"
-                    placement = kind_text[3:-1].replace(" ", "_")
+        if header[:2] != ["Skill", "Kind"]:
+            continue
+        if heading not in class_by_name:
+            fail(f, heading, "unknown class")
+        cls = class_by_name[heading]
+        for r in rows:
+            name = r["Skill"]
+            ident = f"{heading}/{name}"
+            kind = r["Kind"]
+            if kind not in ("A", "K"):
+                fail(f, ident, f"unknown Kind {kind!r}")
+            delay = momentum = None
+            delivery = None
+            if kind == "A":
+                m = DM.match(r["D / M"])
+                if not m:
+                    fail(f, ident, f"cannot read D / M: {r['D / M']!r}")
+                delay, momentum = int(m.group(1)), int(m.group(2))
+                d = r["Delivery"]
+                if d == "—":
+                    delivery = "none"
+                elif d in ("Melee", "Projectile", "Direct"):
+                    delivery = d.lower()
                 else:
-                    fail(f, ident, f"unknown Kind {kind_text!r}")
-                d, m_ = parse_dm(f, ident, r["D / M"], kind == "A")
-                delivery, rng = parse_delivery(f, ident, r["Delivery · Range"])
-                needs = None if r["Needs"] in ("—", "-", "") else slug(r["Needs"])
-                if needs is None and kind not in ("A", "P", "K", "Mod"):
-                    fail(f, ident, "starting skill with odd kind")
-                skills.append({
-                    "id": slug(name), "name": name, "profession": prof_ids[prof],
-                    "branch": r["Branch"], "kind": kind,
-                    "placement": placement,
-                    "modifierOf": modifier_of, "parent": needs,
-                    "delay": d, "momentum": m_, "delivery": delivery, "range": rng,
-                    "effect": r["Effect"],
-                })
-    # validation
-    by_id = {}
-    for s in skills + attack_skills:
-        if s["id"] in by_id:
+                    fail(f, ident, f"unknown Delivery {d!r}")
+            skills.append({"id": slug(name), "name": name, "class": cls["id"], "kind": kind,
+                           "delay": delay, "momentum": momentum, "delivery": delivery, "effect": r["Effect"]})
+    seen = {}
+    for s in skills:
+        if s["id"] in seen:
             fail(f, s["id"], "duplicate skill ID")
-        by_id[s["id"]] = s
-    count = {}
-    for s in skills:
-        count[s["profession"]] = count.get(s["profession"], 0) + 1
-        for field in ("parent", "modifierOf"):
-            ref = s[field]
-            if ref is None:
-                continue
-            target = by_id.get(ref)
-            if target is None or "profession" not in target or target["profession"] != s["profession"]:
-                fail(f, s["id"], f"{field} {ref!r} is not a skill of the same profession")
-        if s["modifierOf"] and s["parent"] != s["modifierOf"]:
-            fail(f, s["id"], f"modifier of {s['modifierOf']!r} must need it as parent, needs {s['parent']!r}")
-    for prof, info in branches.items():
-        pid = prof_ids[prof]
-        if count.get(pid, 0) != info["count"]:
-            fail(f, prof, f"heading says {info['count']} skills, table has {count.get(pid, 0)}")
-    # trees: parent chains must end at a starting skill, without cycles, inside one branch
-    for s in skills:
-        seen, cur = set(), s
-        while cur["parent"]:
-            if cur["id"] in seen:
-                fail(f, s["id"], "parent cycle")
-            seen.add(cur["id"])
-            parent = by_id[cur["parent"]]
-            if parent["branch"] != s["branch"]:
-                fail(f, s["id"], f"parent {parent['id']!r} is in another branch")
-            cur = parent
-    return attack_skills, skills, {p: branches[p]["names"] for p in branches}
+        seen[s["id"]] = s
+    for c in classes:
+        for sid, kind in [(a, "A") for a in c["actives"]] + [(k, "K") for k in c["keystones"]]:
+            sk = seen.get(sid)
+            if sk is None or sk["class"] != c["id"] or sk["kind"] != kind:
+                fail(f, f"{c['name']}/{sid}", "listed in class_system.md but missing or different in skills.md")
+    if len(skills) != 168:
+        fail(f, "skills", f"expected 84 actives and 84 keystones, found {len(skills)}")
+    return skills
+
+
+# ---------------------------------------------------------- unique attacks
+
+STATUS_WORDS = {"Stunned": "stunned", "Confused": "confused", "Immobilized": "immobilized", "Blind": "blind",
+                "Silenced": "silenced", "Poisoned": "poisoned"}
+GROUND_WORDS = {"poison gas": "poison", "burning ground": "burning", "ice": "ice", "water": "water"}
+
+
+def parse_attack(file, cid, name, delivery_text, dm, style, effect):
+    ident = f"{cid}/{name}"
+    delivery = {"Melee": "melee", "Projectile": "projectile", "Direct, melee reach": "direct"}.get(delivery_text)
+    if delivery is None:
+        fail(file, ident, f"unknown delivery {delivery_text!r}")
+    m = DM.match(dm)
+    if not m:
+        fail(file, ident, f"cannot read D / M: {dm!r}")
+    if style not in ("lunge", "swing", "shot", "throw", "bolt", "breath", "pulse"):
+        fail(file, ident, f"unknown style {style!r}")
+    pulse = re.match(r"^Every enemy in melee reach takes (\d+)–(\d+)(.*)$", effect)
+    breath = re.match(r"^Hit the target for (\d+)–(\d+) and every unit next to it for (\d+)–(\d+)(.*)$", effect)
+    single = re.match(r"^Hit for (\d+)–(\d+)(.*)$", effect)
+    splash = (0, 0)
+    if pulse:
+        shape, lo, hi, rest = "pulse", int(pulse.group(1)), int(pulse.group(2)), pulse.group(3)
+    elif breath:
+        shape, lo, hi, rest = "splash", int(breath.group(1)), int(breath.group(2)), breath.group(5)
+        splash = (int(breath.group(3)), int(breath.group(4)))
+    elif single:
+        shape, lo, hi, rest = "single", int(single.group(1)), int(single.group(2)), single.group(3)
+    else:
+        fail(file, ident, f"cannot read the damage part: {effect!r}")
+    if delivery == "direct":
+        if shape == "single":
+            fail(file, ident, "a Direct attack is a breath or a pulse")
+    elif shape == "pulse":
+        fail(file, ident, "only Direct attacks pulse")
+    rest = rest.strip()
+    extra = None
+    if rest == ", then the attacker gains stealth.":
+        extra = {"kind": "stealth", "chance": 100}
+    else:
+        em = re.match(r"^;\s*(?:(\d+)%:\s*)?(.+?)\.$", rest)
+        if not em:
+            fail(file, ident, f"cannot read the extra: {rest!r}")
+        chance = int(em.group(1)) if em.group(1) else 100
+        body = em.group(2)
+        mm = re.fullmatch(r"the target is (\w+) for (\d+) time units", body)
+        if mm and mm.group(1) in STATUS_WORDS:
+            extra = {"kind": "status", "status": STATUS_WORDS[mm.group(1)], "duration": int(mm.group(2))}
+        elif body == "the target Bleeds":
+            extra = {"kind": "status", "status": "bleeding", "duration": 0}
+        elif body == "the target is Marked":
+            extra = {"kind": "status", "status": "marked", "duration": 0}
+        elif body == "push the target one row back":
+            extra = {"kind": "push"}
+        elif body == "pull the target one row toward the battle line":
+            extra = {"kind": "pull"}
+        elif body == "steal one helpful status from the target":
+            extra = {"kind": "steal"}
+        else:
+            mm = re.fullmatch(r"(.+?) on the target's spot", body)
+            if mm and mm.group(1) in GROUND_WORDS:
+                extra = {"kind": "ground", "ground": GROUND_WORDS[mm.group(1)]}
+            else:
+                mm = re.fullmatch(r"the target's next turn comes (\d+) time units later", body)
+                if mm:
+                    extra = {"kind": "delay_turn", "amount": int(mm.group(1))}
+        if extra is None:
+            fail(file, ident, f"unknown extra: {body!r}")
+        extra["chance"] = chance
+    return {"id": slug(name), "name": name, "creature": cid, "delivery": delivery, "shape": shape,
+            "delay": int(m.group(1)), "momentum": int(m.group(2)), "style": style,
+            "magical": style in ("bolt", "pulse"), "min": lo, "max": hi, "splashMin": splash[0], "splashMax": splash[1],
+            "extra": extra, "effect": effect}
 
 
 # -------------------------------------------------------------- creatures
@@ -233,10 +251,11 @@ def parse_frame(file, ident, field, text):
     return [to_int(file, ident, field, p.strip()) for p in parts]
 
 
-def parse_creatures(attack_types, professions, skills_by_profession):
+def parse_creatures(classes, skills):
     f = "creature-classes.md"
-    at_ids = {a["name"]: a["id"] for a in attack_types}
-    prof_ids = {p["name"]: p["id"] for p in professions}
+    class_by_name = {c["name"]: c for c in classes}
+    keystone_by_name = {s["name"]: s for s in skills if s["kind"] == "K"}
+    skill_ids = {s["id"] for s in skills}
     biomes = {p.stem for p in (ROOT / "assets" / "backgrounds" / "battle").glob("*.png")}
     roster, details = None, None
     for heading, _, header, rows in read_tables(DOCS / f):
@@ -252,7 +271,8 @@ def parse_creatures(attack_types, professions, skills_by_profession):
         if art in by_art:
             fail(f, art, "duplicate Art file in Card details")
         by_art[art] = r
-    creatures, seen_ids, used = [], set(), set()
+    creatures, attacks, seen_ids, used, attack_ids = [], [], set(), set(), set()
+    used_keystones = set()
     for r in roster:
         cid = unquote(r["Unit"])
         if cid in seen_ids:
@@ -267,40 +287,48 @@ def parse_creatures(attack_types, professions, skills_by_profession):
         used.add(art)
         if d["Name"] != r["Name"]:
             fail(f, cid, f"name differs between tables: {r['Name']!r} vs {d['Name']!r}")
-        at = r["Attack type"]
-        if at not in at_ids:
-            fail(f, cid, f"unknown Attack type {at!r}")
-        profs = [p.strip() for p in r["Professions"].split(",")]
-        if not 1 <= len(profs) <= 2 or len(set(profs)) != len(profs):
-            fail(f, cid, f"a creature has one or two different professions: {profs}")
-        for p in profs:
-            if p not in prof_ids:
-                fail(f, cid, f"unknown profession {p!r}")
+        cls = [c.strip() for c in r["Classes"].split(",")]
+        if len(cls) != 2 or cls[0] == cls[1]:
+            fail(f, cid, f"a creature has two different classes: {cls}")
+        keys = [k.strip() for k in r["Keystones"].split(",")]
+        if len(keys) != 2:
+            fail(f, cid, "a creature has two keystones")
+        for c, k in zip(cls, keys):
+            if c not in class_by_name:
+                fail(f, cid, f"unknown class {c!r}")
+            ks = keystone_by_name.get(k)
+            if ks is None or ks["class"] != class_by_name[c]["id"]:
+                fail(f, cid, f"keystone {k!r} is not a keystone of {c}")
+            used_keystones.add(ks["id"])
         biome = slug(d["Biome"])
         if biome not in biomes:
             fail(f, cid, f"biome {d['Biome']!r} has no assets/backgrounds/battle/{biome}.png")
-        source = unquote(r["Source"])
+        attack = parse_attack(f, cid, r["Attack"], r["Delivery"], r["D / M"], r["Style"], r["Attack effect"])
+        if attack["id"] in attack_ids or attack["id"] in skill_ids:
+            fail(f, cid, f"attack ID {attack['id']!r} is already used by another skill")
+        attack_ids.add(attack["id"])
+        attacks.append(attack)
         creatures.append({
-            "id": cid, "name": r["Name"], "attackType": at_ids[at],
-            "professions": [prof_ids[p] for p in profs],
-            "artFile": art, "source": None if source in ("—", "-") else source,
-            "biome": biome,
+            "id": cid, "name": r["Name"], "classes": [class_by_name[c]["id"] for c in cls],
+            "keystones": [keystone_by_name[k]["id"] for k in keys], "attack": attack["id"],
+            "artFile": art, "biome": biome,
             "hp": to_int(f, cid, "HP", d["HP"]), "speed": to_int(f, cid, "Speed", d["Speed"]),
             "power": to_int(f, cid, "Power", d["Power"]), "cost": to_int(f, cid, "Cost", d["Cost"]),
             "frontFrame": parse_frame(f, cid, "Front frame", d["Front frame"]),
             "rearFrame": parse_frame(f, cid, "Rear frame", d["Rear frame"]),
-            "status": d["Status"], "notes": d["Notes"],
         })
     for art in by_art:
         if art not in used:
             fail(f, art, "Card details row without a roster row")
+    for k in keystone_by_name.values():
+        if k["id"] not in used_keystones:
+            fail(f, k["id"], "keystone used by no creature (class_system section 1)")
     for c in creatures:
         if not 1 <= c["cost"] <= 10:
             fail(f, c["id"], f"Cost {c['cost']} outside 1-10")
-        if c["status"] not in ("reviewed", "draft"):
-            fail(f, c["id"], f"unknown Status {c['status']!r}")
     creatures.sort(key=lambda c: c["id"])
-    return creatures
+    attacks.sort(key=lambda a: a["creature"])
+    return creatures, attacks
 
 
 # --------------------------------------------------------------- statuses
@@ -405,15 +433,12 @@ def by_name_id(creatures, cid):
 # ------------------------------------------------------------------- main
 
 def build():
-    attack_types, professions = parse_classes()
-    attack_skills, skills, branches = parse_skills(attack_types, professions)
-    prof_branches = {p["name"]: branches[p["name"]] for p in professions}
-    for p in professions:
-        p["branches"] = prof_branches[p["name"]]
-    creatures = parse_creatures(attack_types, professions, None)
+    classes = parse_classes()
+    skills = parse_skills(classes)
+    creatures, attacks = parse_creatures(classes, skills)
     return {
-        "classes.json": {"attackTypes": attack_types, "professions": professions},
-        "skills.json": {"attackSkills": attack_skills, "professionSkills": skills},
+        "classes.json": {"classes": classes},
+        "skills.json": {"skills": skills, "attacks": attacks},
         "creatures.json": {"creatures": creatures},
         "statuses.json": {"statuses": parse_statuses()},
         "campaign.json": parse_campaign(creatures),

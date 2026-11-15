@@ -15,7 +15,7 @@ public sealed record EncounterDef(
 
     /// <summary>The enemy team: default builds (game_system section 4.1) and the stated formation; the boss is strengthened when the battle is set up.</summary>
     public TeamSetup EnemyTeam(ContentSet content) =>
-        new(Team.Select(u => new UnitSetup(u.Creature, content.DefaultBuilds.TryGetValue(u.Creature, out var b) ? b : Array.Empty<string>(), Enum.Parse<Row>(u.Row), u.Boss)).ToList());
+        new(Team.Select(u => new UnitSetup(u.Creature, Enum.Parse<Row>(u.Row), u.Boss)).ToList());
 }
 
 /// <summary>The tutorial, a chapter, or the challenge encounters.</summary>

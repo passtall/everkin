@@ -4,7 +4,7 @@ namespace Everkin.Core.Tests;
 
 public class TargetingTests
 {
-    /// <summary>A battle where units are placed one call at a time; each call returns the new unit's id.</summary>
+    /// <summary>A battle where units are placed one call at a time; each call returns the new unit id.</summary>
     private sealed class Board
     {
         public BattleState State { get; } = new(1);
@@ -18,274 +18,170 @@ public class TargetingTests
         }
     }
 
-    // ---- opposing distance, the full table of section 7.4 ----
+    private static int AddUnit(BattleState state, Side side, Row row)
+    {
+        var unit = state.AddUnit(World.Def(), side);
+        state.Formation.Place(unit.Id, side, row);
+        return unit.Id;
+    }
+
+    // ---- no range, melee needs the Front row (section 8.1) ----
+
+    [Fact]
+    public void AnyLegalUnitOnEitherSideCanBeTargetedWhateverTheRows()
+    {
+        var b = new Board();
+        var a = b.Add(Side.A, Row.Rear);
+        var ally = b.Add(Side.A, Row.Front);
+        var eFront = b.Add(Side.B, Row.Front);
+        var eRear = b.Add(Side.B, Row.Rear);
+        Assert.Equal(new[] { a, ally, eFront, eRear }.Order(), Targeting.LegalTargets(b.State, a).Order());
+    }
 
     [Theory]
-    [InlineData(Row.Front, Row.Front, 1)]
-    [InlineData(Row.Front, Row.Middle, 2)]
-    [InlineData(Row.Front, Row.Rear, 3)]
-    [InlineData(Row.Middle, Row.Front, 2)]
-    [InlineData(Row.Middle, Row.Middle, 3)]
-    [InlineData(Row.Middle, Row.Rear, 4)]
-    [InlineData(Row.Rear, Row.Front, 3)]
-    [InlineData(Row.Rear, Row.Middle, 4)]
-    [InlineData(Row.Rear, Row.Rear, 5)]
-    public void DistanceTableWithEveryRowOccupied(Row attackerRow, Row targetRow, int expected)
+    [InlineData(Row.Front, true)]
+    [InlineData(Row.Middle, false)]
+    [InlineData(Row.Rear, false)]
+    public void AMeleeSkillNeedsTheUserInItsOwnFrontRow(Row userRow, bool legal)
     {
         var b = new Board();
-        // Fill every row on both sides so nothing is skipped.
-        var ids = new Dictionary<(Side, Row), int>();
-        foreach (var side in new[] { Side.A, Side.B })
-            foreach (var row in new[] { Row.Front, Row.Middle, Row.Rear })
-                ids[(side, row)] = b.Add(side, row);
-        Assert.Equal(expected, Targeting.OpposingDistance(b.State, ids[(Side.A, attackerRow)], ids[(Side.B, targetRow)]));
+        var u = b.Add(Side.A, userRow);
+        var e = b.Add(Side.B, Row.Rear);
+        Assert.Equal(legal, Targeting.IsLegalTarget(b.State, u, e, new TargetOptions(Delivery: Delivery.Melee)));
+        // Projectile and direct skills work from any row.
+        Assert.True(Targeting.IsLegalTarget(b.State, u, e, new TargetOptions(Delivery: Delivery.Projectile)));
+        Assert.True(Targeting.IsLegalTarget(b.State, u, e, new TargetOptions(Delivery: Delivery.Direct)));
     }
 
     [Fact]
-    public void AttackerInFrontEnemyOnlyInRearIsDistanceOne()
+    public void TheFrontRowRuleCanBeSetAsideForTheSkillsThatSayIt()
     {
         var b = new Board();
-        var a = b.Add(Side.A, Row.Front);
-        var t = b.Add(Side.B, Row.Rear);
-        Assert.Equal(1, Targeting.OpposingDistance(b.State, a, t));
-    }
-
-    [Fact]
-    public void AttackerInRearWithEmptyFrontAndMiddleCountsAsRowOne()
-    {
-        // 20.5: distance to the enemy Front is 1 and to the enemy Rear is 3; it still stands in Rear.
-        var b = new Board();
-        var a = b.Add(Side.A, Row.Rear);
-        var eF = b.Add(Side.B, Row.Front);
-        b.Add(Side.B, Row.Middle);
-        var eR = b.Add(Side.B, Row.Rear);
-        Assert.Equal(1, Targeting.OpposingDistance(b.State, a, eF));
-        Assert.Equal(3, Targeting.OpposingDistance(b.State, a, eR));
-        Assert.Equal(Row.Rear, b.State.Formation.PositionOf(a).Row);
-    }
-
-    [Fact]
-    public void YourOnlyUnitInRearAndEnemiesInMiddleAndRearIsDistanceOne()
-    {
-        // The example under the table.
-        var b = new Board();
-        var a = b.Add(Side.A, Row.Rear);
-        var eM = b.Add(Side.B, Row.Middle);
-        Assert.Equal(1, Targeting.OpposingDistance(b.State, a, eM));
-    }
-
-    [Fact]
-    public void AStealthedOnlyEnemyFrontDoesNotCountSoTheMiddleCountsAsRowOne()
-    {
-        var b = new Board();
-        var a = b.Add(Side.A, Row.Front);
-        b.Add(Side.B, Row.Front, stealthed: true);
-        var eM = b.Add(Side.B, Row.Middle);
-        Assert.Equal(1, Targeting.OpposingDistance(b.State, a, eM));
-    }
-
-    [Fact]
-    public void AKoBodyOnlyEnemyFrontDoesNotCount()
-    {
-        var b = new Board();
-        var a = b.Add(Side.A, Row.Front);
-        b.Add(Side.B, Row.Front, ko: true);
-        var eM = b.Add(Side.B, Row.Middle);
-        Assert.Equal(1, Targeting.OpposingDistance(b.State, a, eM));
-    }
-
-    [Fact]
-    public void StealthedOwnUnitsStillMakeARowCountOnYourOwnSide()
-    {
-        var b = new Board();
-        b.Add(Side.A, Row.Front, stealthed: true);
-        var a = b.Add(Side.A, Row.Middle);
+        var u = b.Add(Side.A, Row.Rear);
         var e = b.Add(Side.B, Row.Front);
-        Assert.Equal(2, Targeting.OpposingDistance(b.State, a, e)); // own Front counts: row 2 + 1 - 1
+        Assert.True(Targeting.IsLegalTarget(b.State, u, e, new TargetOptions(Delivery: Delivery.Melee, AnyRow: true)));
     }
 
     [Fact]
-    public void AKoBodyOnYourOwnSideDoesNotMakeARowCount()
+    public void FrontRowMeansTheRealFrontRowEvenWhenItsAlliesAreGone()
     {
         var b = new Board();
-        b.Add(Side.A, Row.Front, ko: true);
-        var a = b.Add(Side.A, Row.Middle);
+        var u = b.Add(Side.A, Row.Middle);
         var e = b.Add(Side.B, Row.Front);
-        Assert.Equal(1, Targeting.OpposingDistance(b.State, a, e));
+        Assert.False(Targeting.InFrontRow(b.State, u));
+        Assert.False(Targeting.IsLegalTarget(b.State, u, e, new TargetOptions(Delivery: Delivery.Melee)));
     }
 
     [Fact]
-    public void ReviveingAUnitInFrontRestoresTheProtectionWithoutMovingAnyone()
-    {
-        var b = new Board();
-        var a = b.Add(Side.A, Row.Front);
-        var body = b.Add(Side.B, Row.Front, ko: true);
-        var rear = b.Add(Side.B, Row.Rear);
-        Assert.Equal(1, Targeting.OpposingDistance(b.State, a, rear));
-        b.State.GetUnit(body).Hp = 10; // revived
-        Assert.Equal(2, Targeting.OpposingDistance(b.State, a, rear));
-        Assert.Equal(Row.Rear, b.State.Formation.PositionOf(rear).Row);
-    }
-
-    [Fact]
-    public void HorizontalPositionIsIgnoredForDistance()
-    {
-        var b = new Board();
-        var a = b.Add(Side.A, Row.Front);
-        b.Add(Side.B, Row.Front);
-        b.Add(Side.B, Row.Front);
-        var far = b.Add(Side.B, Row.Front);
-        Assert.Equal(1, Targeting.OpposingDistance(b.State, a, far));
-    }
-
-    [Fact]
-    public void DistanceBetweenUnitsOfOneSideIsNotDefined()
-    {
-        var b = new Board();
-        var a = b.Add(Side.A, Row.Front);
-        var c = b.Add(Side.A, Row.Middle);
-        Assert.Throws<ArgumentException>(() => Targeting.OpposingDistance(b.State, a, c));
-    }
-
-    // ---- reach ----
-
-    [Fact]
-    public void ReachHasAMinimumOfOneAndCanBeUnlimited()
-    {
-        Assert.Throws<ArgumentOutOfRangeException>(() => Reach.Distance(0));
-        Assert.True(Reach.Unlimited.Allows(99));
-        Assert.True(Reach.Distance(2).Allows(2));
-        Assert.False(Reach.Distance(2).Allows(3));
-    }
-
-    [Fact]
-    public void EnemySideReachFollowsTheDistance()
-    {
-        var b = new Board();
-        var a = b.Add(Side.A, Row.Front);
-        var eF = b.Add(Side.B, Row.Front);
-        var eM = b.Add(Side.B, Row.Middle);
-        var eR = b.Add(Side.B, Row.Rear);
-        Assert.True(Targeting.InReach(b.State, a, eF, Reach.Distance(1)));
-        Assert.False(Targeting.InReach(b.State, a, eM, Reach.Distance(1)));
-        Assert.True(Targeting.InReach(b.State, a, eM, Reach.Distance(2)));
-        Assert.False(Targeting.InReach(b.State, a, eR, Reach.Distance(2)));
-        Assert.True(Targeting.InReach(b.State, a, eR, Reach.Distance(3)));
-    }
-
-    [Fact]
-    public void ShotReachesTheFarthestVisibleEnemyAtAnyDistance()
-    {
-        // 20.5: "any visible unit" is legal at any distance.
-        var b = new Board();
-        foreach (var row in new[] { Row.Front, Row.Middle, Row.Rear })
-        {
-            b.Add(Side.A, row);
-            b.Add(Side.B, row);
-        }
-        var a = b.State.Formation.Units(Side.A, Row.Rear)[0];
-        var far = b.State.Formation.Units(Side.B, Row.Rear)[0];
-        Assert.Equal(5, Targeting.OpposingDistance(b.State, a, far));
-        Assert.False(Targeting.IsLegalTarget(b.State, a, far, Reach.Distance(4)));
-        Assert.True(Targeting.IsLegalTarget(b.State, a, far, Reach.Unlimited));
-    }
-
-    [Fact]
-    public void OwnSideD1ReachesTheUserAndItsAdjacentUnits()
+    public void MeleeCannotTargetAnAirborneUnitUnlessTheUserIsAirborne()
     {
         var b = new Board();
         var u = b.Add(Side.A, Row.Front);
-        var right = b.Add(Side.A, Row.Front);
-        var far = b.Add(Side.A, Row.Front);
-        var behind = b.Add(Side.A, Row.Middle);
-        Assert.True(Targeting.InReach(b.State, u, u, Reach.Distance(1)));
-        Assert.True(Targeting.InReach(b.State, u, right, Reach.Distance(1)));
-        Assert.False(Targeting.InReach(b.State, u, far, Reach.Distance(1)));
-        // A lone Middle unit behind a 3-card Front row overlaps only the middle Front card (100%): u is the left card, no overlap.
-        Assert.False(Targeting.InReach(b.State, u, behind, Reach.Distance(1)));
+        var e = b.Add(Side.B, Row.Front);
+        b.State.GetUnit(e).IsAirborne = true;
+        var melee = new TargetOptions(Delivery: Delivery.Melee);
+        Assert.False(Targeting.IsLegalTarget(b.State, u, e, melee));
+        Assert.True(Targeting.IsLegalTarget(b.State, u, e, new TargetOptions(Delivery: Delivery.Projectile)));
+        b.State.GetUnit(u).IsAirborne = true;
+        Assert.True(Targeting.IsLegalTarget(b.State, u, e, melee));
+    }
+
+    // ---- melee reach (section 8.1) ----
+
+    [Fact]
+    public void MeleeReachIsTheWholeEnemyFrontRowKoBodiesOutStealthedUnitsIn()
+    {
+        var b = new Board();
+        var u = b.Add(Side.A, Row.Front);
+        var e1 = b.Add(Side.B, Row.Front);
+        var e2 = b.Add(Side.B, Row.Front, stealthed: true);
+        b.Add(Side.B, Row.Front, ko: true);
+        b.Add(Side.B, Row.Middle);
+        Assert.Equal(new[] { e1, e2 }, Targeting.EnemiesInMeleeReach(b.State, u));
     }
 
     [Fact]
-    public void GuardianInFrontReachesAnAllyAtTheFarEndOfItsRearRowWithD2()
+    public void MeleeReachIsEmptyWhenTheUserIsNotInItsFrontRowOrTheEnemyFrontIsEmpty()
     {
-        // 20.5: on its own side, D2 reaches any unit.
         var b = new Board();
-        var g = b.Add(Side.A, Row.Front);
-        for (var i = 0; i < 5; i++) b.Add(Side.A, Row.Rear);
-        var last = b.Add(Side.A, Row.Rear);
-        Assert.True(Targeting.InReach(b.State, g, last, Reach.Distance(2)));
-        Assert.False(Targeting.InReach(b.State, g, last, Reach.Distance(1)));
+        var back = b.Add(Side.A, Row.Middle);
+        var front = b.Add(Side.A, Row.Front);
+        b.Add(Side.B, Row.Middle);
+        Assert.Empty(Targeting.EnemiesInMeleeReach(b.State, front));
+        b.Add(Side.B, Row.Front);
+        Assert.Empty(Targeting.EnemiesInMeleeReach(b.State, back));
+        Assert.Single(Targeting.EnemiesInMeleeReach(b.State, front));
     }
 
     // ---- legality ----
-
-    [Fact]
-    public void EitherSideTargetsAreLegalByDefault()
-    {
-        var b = new Board();
-        var u = b.Add(Side.A, Row.Front);
-        var ally = b.Add(Side.A, Row.Front);
-        var enemy = b.Add(Side.B, Row.Front);
-        Assert.Equal(new[] { u, ally, enemy }, Targeting.LegalTargets(b.State, u, Reach.Distance(1)));
-    }
-
-    [Fact]
-    public void OwnSideOnlyAndEnemySideOnlyRestrictTheSide()
-    {
-        var b = new Board();
-        var u = b.Add(Side.A, Row.Front);
-        var ally = b.Add(Side.A, Row.Front);
-        var enemy = b.Add(Side.B, Row.Front);
-        Assert.Equal(new[] { u, ally }, Targeting.LegalTargets(b.State, u, Reach.Distance(1), new TargetOptions(TargetSide.OwnSideOnly)));
-        Assert.Equal(new[] { enemy }, Targeting.LegalTargets(b.State, u, Reach.Distance(1), new TargetOptions(TargetSide.EnemySideOnly)));
-    }
 
     [Fact]
     public void AStealthedEnemyCannotBeTargetedButAStealthedAllyCan()
     {
         var b = new Board();
         var u = b.Add(Side.A, Row.Front);
-        var ally = b.Add(Side.A, Row.Front, stealthed: true);
+        var ally = b.Add(Side.A, Row.Middle, stealthed: true);
         var enemy = b.Add(Side.B, Row.Front, stealthed: true);
-        Assert.True(Targeting.IsLegalTarget(b.State, u, ally, Reach.Distance(1)));
-        Assert.False(Targeting.IsLegalTarget(b.State, u, enemy, Reach.Unlimited));
+        Assert.False(Targeting.IsLegalTarget(b.State, u, enemy));
+        Assert.True(Targeting.IsLegalTarget(b.State, u, ally));
     }
 
     [Fact]
-    public void KoBodiesAreOnlyTargetsOfResurrection()
+    public void KoBodiesAreOnlyLegalForSkillsThatSayIt()
     {
         var b = new Board();
         var u = b.Add(Side.A, Row.Front);
-        var body = b.Add(Side.A, Row.Front, ko: true);
-        var enemyBody = b.Add(Side.B, Row.Front, ko: true);
-        Assert.False(Targeting.IsLegalTarget(b.State, u, body, Reach.Unlimited));
-        Assert.True(Targeting.IsLegalTarget(b.State, u, body, Reach.Unlimited, new TargetOptions(IncludeKnockedOut: true)));
-        // Resurrection skills can target allied or enemy bodies; the enemy Front here is a body, so reach counts it as its own row.
-        Assert.True(Targeting.IsLegalTarget(b.State, u, enemyBody, Reach.Unlimited, new TargetOptions(IncludeKnockedOut: true)));
+        var body = b.Add(Side.A, Row.Middle, ko: true);
+        Assert.False(Targeting.IsLegalTarget(b.State, u, body));
+        Assert.True(Targeting.IsLegalTarget(b.State, u, body, new TargetOptions(IncludeKnockedOut: true)));
     }
 
     [Fact]
-    public void UnitsNotOnTheBoardAreNeverLegal()
+    public void OwnSideOnlyAndEnemySideOnlyFilterTheSide()
     {
         var b = new Board();
         var u = b.Add(Side.A, Row.Front);
+        var ally = b.Add(Side.A, Row.Middle);
         var enemy = b.Add(Side.B, Row.Front);
-        b.State.Formation.Remove(enemy);
-        Assert.False(Targeting.IsLegalTarget(b.State, u, enemy, Reach.Unlimited));
+        Assert.Equal(new[] { u, ally }, Targeting.LegalTargets(b.State, u, new TargetOptions(TargetSide.OwnSideOnly)));
+        Assert.Equal(new[] { enemy }, Targeting.LegalTargets(b.State, u, new TargetOptions(TargetSide.EnemySideOnly)));
     }
 
-    // ---- nearest ----
+    [Fact]
+    public void ATargetRestrictionRemovesAUnitFromTheLegalTargets()
+    {
+        var b = new Board();
+        var u = b.Add(Side.A, Row.Front);
+        var e1 = b.Add(Side.B, Row.Front);
+        var e2 = b.Add(Side.B, Row.Front);
+        b.State.AddTargetRestriction((_, _, target) => target != e1);
+        Assert.Equal(new[] { u, e2 }, Targeting.LegalTargets(b.State, u));
+    }
+
+    // ---- nearest (section 8.5) ----
 
     [Fact]
-    public void NearestSkipsStealthedAndKoUnitsAndEmptyRows()
+    public void NearestIsTheEnemyInTheFewestRowsFromItsFrontEmptyRowsIgnored()
+    {
+        var b = new Board();
+        var u = b.Add(Side.A, Row.Rear);
+        var middle = b.Add(Side.B, Row.Middle);
+        b.Add(Side.B, Row.Rear);
+        Assert.Equal(new[] { middle }, Targeting.NearestEnemies(b.State, u));
+        Assert.Equal(middle, Targeting.PickNearest(b.State, u));
+    }
+
+    [Fact]
+    public void AStealthedOrKoFrontDoesNotMakeTheFrontRowCountSoTheMiddleIsNearest()
     {
         var b = new Board();
         var u = b.Add(Side.A, Row.Front);
         b.Add(Side.B, Row.Front, stealthed: true);
         b.Add(Side.B, Row.Front, ko: true);
-        var visible = b.Add(Side.B, Row.Middle);
-        b.Add(Side.B, Row.Rear);
-        Assert.Equal(new[] { visible }, Targeting.NearestEnemies(b.State, u, Reach.Unlimited));
+        var middle = b.Add(Side.B, Row.Middle);
+        var rear = b.Add(Side.B, Row.Rear);
+        Assert.Equal(new[] { middle }, Targeting.NearestEnemies(b.State, u));
+        Assert.Contains(rear, Targeting.LegalTargets(b.State, u));
     }
 
     [Fact]
@@ -294,8 +190,8 @@ public class TargetingTests
         var b = new Board();
         var u = b.Add(Side.A, Row.Front);
         b.Add(Side.B, Row.Front, stealthed: true);
-        Assert.Empty(Targeting.NearestEnemies(b.State, u, Reach.Unlimited));
-        Assert.Null(Targeting.PickNearest(b.State, u, Reach.Unlimited));
+        Assert.Empty(Targeting.NearestEnemies(b.State, u));
+        Assert.Null(Targeting.PickNearest(b.State, u));
     }
 
     [Fact]
@@ -306,7 +202,7 @@ public class TargetingTests
         var e = b.Add(Side.B, Row.Front);
         b.Add(Side.B, Row.Rear);
         var before = b.State.Random.Clone();
-        Assert.Equal(e, Targeting.PickNearest(b.State, u, Reach.Unlimited));
+        Assert.Equal(e, Targeting.PickNearest(b.State, u));
         Assert.Equal(before.NextUInt64(), b.State.Random.NextUInt64());
     }
 
@@ -321,7 +217,7 @@ public class TargetingTests
             var u = AddUnit(state, Side.A, Row.Front);
             var e1 = AddUnit(state, Side.B, Row.Front);
             var e2 = AddUnit(state, Side.B, Row.Front);
-            var picked = Targeting.PickNearest(state, u, Reach.Unlimited)!.Value;
+            var picked = Targeting.PickNearest(state, u)!.Value;
             counts[picked == e1 ? 0 : 1]++;
             Assert.Contains(picked, new[] { e1, e2 });
         }
@@ -338,17 +234,8 @@ public class TargetingTests
             AddUnit(state, Side.B, Row.Front);
             AddUnit(state, Side.B, Row.Front);
             AddUnit(state, Side.B, Row.Front);
-            return Targeting.PickNearest(state, u, Reach.Unlimited)!.Value;
+            return Targeting.PickNearest(state, u)!.Value;
         }
         Assert.Equal(Pick(), Pick());
-    }
-
-    private static int AddUnit(BattleState state, Side side, Row row)
-    {
-        var def = new Everkin.Core.Content.CreatureDef("t", "t", "brawl", new[] { "warrior" }, "t.png", null, "ruins",
-            40, 5, 5, 1, new[] { 0, 0, 1, 1 }, new[] { 0, 0, 1, 1 }, "reviewed", "");
-        var unit = state.AddUnit(def, side);
-        state.Formation.Place(unit.Id, side, row);
-        return unit.Id;
     }
 }

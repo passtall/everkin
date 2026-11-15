@@ -5,8 +5,7 @@ namespace Everkin.Core.Tests;
 
 internal static class Place
 {
-    private static readonly CreatureDef Def = new("t", "t", "brawl", new[] { "warrior" }, "t.png", null, "ruins", 40, 5, 5, 1,
-        new[] { 0, 0, 1, 1 }, new[] { 0, 0, 1, 1 }, "reviewed", "");
+    private static readonly CreatureDef Def = World.Def();
 
     public static int Unit(BattleState state, Side side, Row row)
     {

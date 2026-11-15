@@ -33,12 +33,11 @@ public sealed class CardInfo
 
     public static CardInfo FromCreature(CreatureDef def, IEnumerable<CardSkill>? skills = null)
     {
-        var attackType = Game.Content.AttackTypes.FirstOrDefault(a => a.Id == def.AttackType)?.Name ?? def.AttackType;
-        var professions = def.Professions.Select(p => Game.Content.Professions.FirstOrDefault(x => x.Id == p)?.Name ?? p);
+        var classes = def.Classes.Select(c => Game.Content.ClassesById[c].Name);
         return new CardInfo
         {
             Name = def.Name,
-            ClassLine = string.Join(" · ", professions.Prepend(attackType)),
+            ClassLine = string.Join(" · ", classes),
             Biome = def.Biome,
             ArtFile = def.ArtFile,
             FrontFrame = def.FrontFrame.ToArray(),
@@ -261,6 +260,7 @@ public partial class CardView : Control
             DrawRect(rect, new Color(Ui.Bronze, 0.9f), false, Math.Max(1, 3 * s));
             DrawString(Game.BodyBold(), new Vector2(rect.Position.X + 14 * s, rect.Position.Y + 48 * s), shown[i].Name, HorizontalAlignment.Left, rect.Size.X - 190 * s, fs, Ui.Ink);
             DrawString(Game.Body(), new Vector2(rect.Position.X + 14 * s, rect.Position.Y + 88 * s), shown[i].Line, HorizontalAlignment.Left, rect.Size.X - 190 * s, small, new Color("cdbd9a"));
+            if (shown[i].Delay == 0) continue;                                         // a keystone has no Delay or Momentum
             DrawMiniGem(new Vector2(rect.End.X - 120 * s, rect.Position.Y + rect.Size.Y / 2), 30 * s, new Color("2e86c1"), shown[i].Delay.ToString());
             DrawMiniGem(new Vector2(rect.End.X - 46 * s, rect.Position.Y + rect.Size.Y / 2), 30 * s, new Color("b8962e"), shown[i].Momentum.ToString());
         }

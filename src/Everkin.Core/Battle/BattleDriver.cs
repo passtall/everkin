@@ -52,14 +52,15 @@ public static class BattleDriver
                     }
                     if (catalog is not null && unit.AutoSkillId is not null)
                     {
-                        Everkin.Core.Skills.AutonomousTurns.Play(state, catalog, unitId);      // summons and undead play themselves
+                        AutonomousTurns.Play(state, catalog, unitId);      // summons and undead play themselves
                         break;
                     }
                     unit.SneakReady = true;
                     return unitId;
 
                 case TimelineKind.AutoEvent:
-                    Everkin.Core.Skills.Totems.HandleAutoEvent(state, entry);
+                    foreach (var handler in state.AutoEventHandlers.ToArray())
+                        if (handler(state, entry)) break;
                     break;
 
                 default:

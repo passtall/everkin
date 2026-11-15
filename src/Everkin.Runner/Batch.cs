@@ -16,7 +16,6 @@ public sealed class UnitRecord
     public string Creature { get; set; } = "";
     public string Side { get; set; } = "";
     public string Row { get; set; } = "";
-    public List<string> Build { get; set; } = new();
     public int Damage { get; set; }
     public int Taken { get; set; }
     public int Healing { get; set; }
@@ -78,7 +77,6 @@ public static class BatchRunner
         var snapshot = Path.Combine(folder, "snapshot");
         var content = ContentLoader.LoadFromDirectory(snapshot);
         var catalog = SkillCatalog.Create(content);
-        var trees = new SkillTrees(content);
         var settings = AiSettings.Load(Path.Combine(snapshot, "ai_settings.json"));
         var level = settings.Level(info.Level);
 
@@ -100,7 +98,7 @@ public static class BatchRunner
         {
             while (queue.TryDequeue(out var seed))
             {
-                var record = PlayOne(info.Id, seed, content, catalog, trees, level);
+                var record = PlayOne(info.Id, seed, content, catalog, level);
                 var json = JsonSerializer.Serialize(record);
                 lock (writer)
                 {
@@ -117,18 +115,17 @@ public static class BatchRunner
     }
 
     /// <summary>Plays one battle from its seed: random teams, builds and formations, both sides with the same AI settings.</summary>
-    public static BattleRecord PlayOne(string runId, ulong seed, ContentSet content, SkillCatalog catalog, SkillTrees trees, AiLevel level)
+    public static BattleRecord PlayOne(string runId, ulong seed, ContentSet content, SkillCatalog catalog, AiLevel level)
     {
         var record = new BattleRecord { Run = runId, Seed = seed };
         var watch = Stopwatch.StartNew();
         try
         {
-            var spec = BattleSetup.RandomSpec(content, trees, seed);
+            var spec = BattleSetup.RandomSpec(content, seed);
             var state = BattleSetup.Create(spec, catalog);
             var units = state.Units.Select(u => new UnitRecord
             {
-                Creature = u.CreatureId!, Side = u.Side.ToString(), Row = state.Formation.PositionOf(u.Id).Row.ToString(),
-                Build = (u.Side == Side.A ? spec.SideA : spec.SideB).Units.First(x => x.CreatureId == u.CreatureId).Build.ToList(),
+                Creature = u.CreatureId!, Side = u.Side.ToString(), Row = state.Formation.PositionOf(u.Id).Row.ToString()
             }).ToList();
 
             void Observe(BattleEvent e)

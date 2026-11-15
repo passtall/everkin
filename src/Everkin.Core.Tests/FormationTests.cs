@@ -177,8 +177,7 @@ public class FormationTests
     [Fact]
     public void BattleStateKeepsItsFormationThroughClone()
     {
-        var creature = new CreatureDef("wolf-ranger", "Ranger Wolf", "ranged", new[] { "hunter" }, "wolf-01.png", null,
-            "pine_forest", 50, 5, 5, 6, new[] { 0, 0, 640, 960 }, new[] { 0, 0, 1024, 1536 }, "reviewed", "");
+        var creature = World.Def("wolf-ranger", 50);
         var state = new BattleState(1);
         var u = state.AddUnit(creature, Side.A);
         state.Formation.Place(u.Id, Side.A, Row.Front);

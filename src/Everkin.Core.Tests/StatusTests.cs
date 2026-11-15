@@ -93,7 +93,7 @@ public class StatusTests
         // 20.5: the status ends first, so the unit acts without it.
         var (s, a, _) = Duel();
         s.Timeline.Add(TimelineKind.UnitTurn, 8, a);
-        Statuses.Apply(s, new StatusApplication(a, StatusIds.Chilled, Duration: 12));
+        Statuses.Apply(s, new StatusApplication(a, StatusIds.Silenced, Duration: 12));
         s.Timeline.PushBack(s.Timeline.TurnOf(a)!, 4); // joins time unit 12 behind the marker
         var first = s.Timeline.Pop()!;
         Assert.Equal(TimelineKind.EffectEnd, first.Kind);
@@ -407,44 +407,16 @@ public class StatusTests
     // ---- Speed ----
 
     [Fact]
-    public void ChilledLowersSpeedByTwoAndLengthensTheRemainingWait()
-    {
-        var (s, a, _) = Duel();
-        s.GetUnit(a).Speed = 6;
-        var turn = s.Timeline.Add(TimelineKind.UnitTurn, 10, a);
-        Statuses.Apply(s, new StatusApplication(a, StatusIds.Chilled, Duration: 20));
-        Assert.Equal(4, s.GetUnit(a).EffectiveSpeed);
-        Assert.Equal(12, s.Timeline.Remaining(turn));
-        Statuses.Remove(s, a, StatusIds.Chilled, StatusEndCause.Expired);
-        Assert.Equal(10, s.Timeline.Remaining(turn)); // expiry reverses it
-    }
-
-    [Fact]
-    public void HasteAfterFourOfElevenTimeUnitsTurnsSevenRemainingIntoFive()
+    public void SongOfHasteAfterFourOfElevenTimeUnitsTurnsSevenRemainingIntoSix()
     {
         // 20.5.
         var (s, a, _) = Duel();
         s.GetUnit(a).Speed = 5;
         var turn = s.Timeline.Add(TimelineKind.UnitTurn, 11, a);
         AdvanceTo(s, 4);
-        Statuses.Apply(s, new StatusApplication(a, StatusIds.Haste, Duration: 20, Magnitude: 2));
-        Assert.Equal(5, s.Timeline.Remaining(turn));
-        Assert.Equal(7, s.GetUnit(a).EffectiveSpeed);
-    }
-
-    [Fact]
-    public void SlowAndHasteCancelAndEachExpiresOnItsOwn()
-    {
-        var (s, a, _) = Duel();
-        s.GetUnit(a).Speed = 5;
-        var turn = s.Timeline.Add(TimelineKind.UnitTurn, 11, a);
-        Statuses.Apply(s, new StatusApplication(a, StatusIds.Haste, Duration: 20, Magnitude: 2));
-        Statuses.Apply(s, new StatusApplication(a, StatusIds.Slow, Duration: 30, Magnitude: 2));
-        Assert.Equal(5, s.GetUnit(a).EffectiveSpeed);
-        Assert.Equal(11, s.Timeline.Remaining(turn));
-        Statuses.Remove(s, a, StatusIds.Haste, StatusEndCause.Expired);
-        Assert.Equal(3, s.GetUnit(a).EffectiveSpeed);
-        Assert.Equal(13, s.Timeline.Remaining(turn));
+        Statuses.Apply(s, new StatusApplication(a, StatusIds.SongHaste, Duration: 20, Magnitude: 1));
+        Assert.Equal(6, s.Timeline.Remaining(turn));
+        Assert.Equal(6, s.GetUnit(a).EffectiveSpeed);
     }
 
     // ---- Airborne ----
@@ -453,15 +425,14 @@ public class StatusTests
     public void MeleeCannotReachAnAirborneUnitButProjectilesAndOtherAirborneUnitsCan()
     {
         var (s, a, b) = Duel();
-        var reach = Reach.Distance(1);
         Statuses.Apply(s, new StatusApplication(b, StatusIds.Airborne, Duration: 20));
         Assert.True(s.GetUnit(b).IsAirborne);
-        Assert.False(Targeting.IsLegalTarget(s, a, b, reach, new TargetOptions(Delivery: Delivery.Melee)));
-        Assert.True(Targeting.IsLegalTarget(s, a, b, reach, new TargetOptions(Delivery: Delivery.Projectile)));
-        Assert.True(Targeting.IsLegalTarget(s, a, b, reach, new TargetOptions(Delivery: Delivery.Direct)));
-        Assert.True(Targeting.IsLegalTarget(s, a, b, reach)); // delivery not given: reach only
+        Assert.False(Targeting.IsLegalTarget(s, a, b, new TargetOptions(Delivery: Delivery.Melee)));
+        Assert.True(Targeting.IsLegalTarget(s, a, b, new TargetOptions(Delivery: Delivery.Projectile)));
+        Assert.True(Targeting.IsLegalTarget(s, a, b, new TargetOptions(Delivery: Delivery.Direct)));
+        Assert.True(Targeting.IsLegalTarget(s, a, b)); // delivery not given: no melee rule
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Airborne, Duration: 20));
-        Assert.True(Targeting.IsLegalTarget(s, a, b, reach, new TargetOptions(Delivery: Delivery.Melee)));
+        Assert.True(Targeting.IsLegalTarget(s, a, b, new TargetOptions(Delivery: Delivery.Melee)));
     }
 
     [Fact]
@@ -494,7 +465,7 @@ public class StatusTests
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Poison, Duration: 50));
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Stunned, Duration: 10));
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Airborne, Duration: 20));
-        Statuses.Apply(s, new StatusApplication(a, StatusIds.Haste, Duration: 20, Magnitude: 2));
+        Statuses.Apply(s, new StatusApplication(a, StatusIds.SongHaste, Duration: 20, Magnitude: 1));
         s.GetUnit(a).Hp = 0;
         Knockout.Resolve(s, a);
         var unit = s.GetUnit(a);
@@ -512,12 +483,12 @@ public class StatusTests
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Poison, Duration: 50));
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Blind, Duration: 20));
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Ward, Magnitude: 4));
-        Statuses.Apply(s, new StatusApplication(a, StatusIds.Haste, Duration: 20, Magnitude: 2));
+        Statuses.Apply(s, new StatusApplication(a, StatusIds.SongHaste, Duration: 20, Magnitude: 1));
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Airborne, Duration: 20));
         var harmful = Statuses.RemoveAll(s, a, Polarity.Harmful);
         Assert.Equal(new[] { StatusIds.Poison, StatusIds.Blind }.OrderBy(x => x), harmful.OrderBy(x => x));
         var helpful = Statuses.RemoveAll(s, a, Polarity.Helpful);
-        Assert.Equal(new[] { StatusIds.Haste, StatusIds.Ward }.OrderBy(x => x), helpful.OrderBy(x => x));
+        Assert.Equal(new[] { StatusIds.SongHaste, StatusIds.Ward }.OrderBy(x => x), helpful.OrderBy(x => x));
         Assert.True(s.GetUnit(a).IsAirborne); // Airborne is not classified: neither cleanse touches it
         Assert.Equal(0, s.GetUnit(a).Ward);
     }

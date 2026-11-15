@@ -8,8 +8,8 @@ public class BattleDriverTests
     private static BattleState Duel(ulong seed, int speedA = 5, int speedB = 5)
     {
         var s = new BattleState(seed);
-        var a = World.Unit(s, Side.A, Row.Front, "brawl_strike");
-        var b = World.Unit(s, Side.B, Row.Front, "brawl_strike");
+        var a = World.Unit(s, Side.A, Row.Front, "scale_swipe");
+        var b = World.Unit(s, Side.B, Row.Front, "scale_swipe");
         s.GetUnit(a).Speed = speedA;
         s.GetUnit(b).Speed = speedB;
         s.Timeline.ScheduleInitialTurns(s.Units, s.Random);
@@ -31,7 +31,7 @@ public class BattleDriverTests
     {
         var s = Duel(1, speedA: 8, speedB: 5);
         var first = BattleDriver.NextTurn(s)!.Value;
-        Actions.Use(s, World.Catalog, new SkillUse(first, "brawl_strike", 1));
+        Actions.Use(s, World.Catalog, new SkillUse(first, "scale_swipe", 1));
         // Unit 0 acts again at 3 + (3 + 3) = 9, unit 1 at 6: unit 1 is next.
         Assert.Equal(1, BattleDriver.NextTurn(s));
         Assert.Equal(6, s.Timeline.Now);
@@ -108,7 +108,7 @@ public class BattleDriverTests
         foreach (var side in new[] { Side.A, Side.B })
             for (var i = 0; i < 3; i++)
             {
-                var id = World.Unit(s, side, rows[i % 2], "brawl_strike", "polearm_thrust", "shot", "breath", "pulse");
+                var id = World.Unit(s, side, rows[i % 2], "rivet_shot");
                 units.Add(id);
                 s.GetUnit(id).Speed = 3 + ((i * 3 + (side == Side.A ? 0 : 1)) % 6);
             }
@@ -117,9 +117,9 @@ public class BattleDriverTests
         var turns = 0;
         while (BattleDriver.NextTurn(s) is { } unit && turns++ < 500)
         {
-            var best = Targeting.PickNearest(s, unit, Reach.Unlimited);
-            if (best is { } target && Actions.WhyNot(s, World.Catalog, new SkillUse(unit, "shot", target)) is null)
-                hash = hash * 31 + Actions.Use(s, World.Catalog, new SkillUse(unit, "shot", target)).Count;
+            var best = Targeting.PickNearest(s, unit);
+            if (best is { } target && Actions.WhyNot(s, World.Catalog, new SkillUse(unit, "rivet_shot", target)) is null)
+                hash = hash * 31 + Actions.Use(s, World.Catalog, new SkillUse(unit, "rivet_shot", target)).Count;
             else
                 hash = hash * 31 + Actions.SkipTurn(s, unit).Count;
         }

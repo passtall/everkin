@@ -47,7 +47,7 @@ public class CampaignTests
         Assert.Equal(75, BattleSetup.BossHp(50));                                         // Ranger Wolf
         Assert.Equal(110, BattleSetup.BossHp(75));                                        // the other three bosses
         var boss = Campaign.Encounter("1-B");
-        var state = BattleSetup.Create(new BattleSpec(1, BattleSetup.RandomTeam(World.Content, new Skills.SkillTrees(World.Content), new BattleRandom(1)), boss.EnemyTeam(World.Content)), World.Catalog);
+        var state = BattleSetup.Create(new BattleSpec(1, BattleSetup.RandomTeam(World.Content, new BattleRandom(1)), boss.EnemyTeam(World.Content)), World.Catalog);
         var wolf = state.Units.First(u => u.Side == Side.B && u.MaxHp > 50);
         Assert.Equal((75, 7), (wolf.MaxHp, wolf.Power));
     }

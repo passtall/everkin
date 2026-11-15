@@ -4,8 +4,8 @@ using Everkin.Core.Skills;
 
 namespace Everkin.Core.Setup;
 
-/// <summary>One creature of a team: which creature, its skill build (node IDs) and where it stands.</summary>
-public sealed record UnitSetup(string CreatureId, IReadOnlyList<string> Build, Row Row, bool Boss = false);
+/// <summary>One creature of a team: which creature and where it stands.</summary>
+public sealed record UnitSetup(string CreatureId, Row Row, bool Boss = false);
 
 /// <summary>A team: up to six units; within a row the units stand in the order they are listed.</summary>
 public sealed record TeamSetup(IReadOnlyList<UnitSetup> Units)
@@ -28,7 +28,7 @@ public static class BattleSetup
     public const int BossPowerBonus = 2;
 
     /// <summary>
-    /// A ready battle: the units of side A then side B with their Attack Type attack and build skills, the formation, every unit's first
+    /// A ready battle: the units of side A then side B with their unique attack, six class actives and two keystones, the formation, every unit's first
     /// turn on the timeline (ties by the battle's seeded generator) and the passives installed. Call nothing else before the first turn.
     /// </summary>
     public static BattleState Create(BattleSpec spec, SkillCatalog catalog)
@@ -47,8 +47,8 @@ public static class BattleSetup
                     unit.MaxHp = unit.Hp = BossHp(def.Hp);
                     unit.Power = def.Power + BossPowerBonus;
                 }
-                unit.LearnSkill(catalog.AttackSkillFor(def.AttackType));
-                foreach (var node in u.Build) unit.LearnSkill(node);
+                foreach (var skillId in content.ClassSkillsOf(def).Prepend(def.Attack))
+                    if (catalog.Has(skillId)) unit.LearnSkill(skillId);
                 perRow[u.Row].Add(unit.Id);
             }
             foreach (var row in new[] { Row.Front, Row.Middle, Row.Rear })
@@ -61,10 +61,10 @@ public static class BattleSetup
     }
 
     /// <summary>
-    /// A random team of up to six different creatures whose total Cost fits the budget, each with a random legal build and the whole team
+    /// A random team of up to six different creatures whose total Cost fits the budget, the whole team
     /// in a random legal formation. All draws come from <paramref name="random"/>, so a seed gives the same team.
     /// </summary>
-    public static TeamSetup RandomTeam(ContentSet content, SkillTrees trees, BattleRandom random, int budget = TeamBudget, int size = TeamSize)
+    public static TeamSetup RandomTeam(ContentSet content, BattleRandom random, int budget = TeamBudget, int size = TeamSize)
     {
         var roster = content.Creatures;
         var picked = new List<CreatureDef>();
@@ -91,8 +91,7 @@ public static class BattleSetup
         var units = new List<UnitSetup>();
         for (var i = 0; i < picked.Count; i++)
         {
-            var build = SkillBuilds.Random(trees, picked[i].Professions, random);
-            units.Add(new UnitSetup(picked[i].Id, build.Learned.ToArray(), rows[i]));
+            units.Add(new UnitSetup(picked[i].Id, rows[i]));
         }
         return new TeamSetup(units);
     }
@@ -113,9 +112,9 @@ public static class BattleSetup
     }
 
     /// <summary>A random battle spec for a seed: both teams drawn from a generator derived from the seed (separate from the battle's own).</summary>
-    public static BattleSpec RandomSpec(ContentSet content, SkillTrees trees, ulong seed)
+    public static BattleSpec RandomSpec(ContentSet content, ulong seed)
     {
         var random = new BattleRandom(seed ^ 0x5EED5E7UL);
-        return new BattleSpec(seed, RandomTeam(content, trees, random), RandomTeam(content, trees, random));
+        return new BattleSpec(seed, RandomTeam(content, random), RandomTeam(content, random));
     }
 }

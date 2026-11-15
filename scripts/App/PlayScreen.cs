@@ -377,7 +377,7 @@ public partial class PlayScreen : Control, IBackNavigable
     }
 
     private IEnumerable<int> LegalUnits(Skill skill) =>
-        Targeting.LegalTargets(_state, _active, Actions.ReachOf(_state, _active, skill), skill.Options with { Delivery = skill.Delivery })
+        Targeting.LegalTargets(_state, _active, skill.Options with { Delivery = skill.Delivery })
             .Where(t => skill.TargetFilter(_state, _active, t)
                 && (skill.Target != TargetKind.UnitAndPlacement || skill.PlacesRandomly(_state, _active) || skill.PlacementOptionsFor(_state, _active, t).Count > 0));
 

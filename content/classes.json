@@ -1,172 +1,451 @@
 {
-  "attackTypes": [
+  "classes": [
     {
-      "id": "brawl",
-      "name": "Brawl",
-      "description": "The body itself: fists, kicks, martial arts, claws, bites, horns, beaks and fangs"
-    },
-    {
-      "id": "bladed",
-      "name": "Bladed",
-      "description": "Swords, daggers, axes, scythes, and bladed weapons"
-    },
-    {
-      "id": "polearm",
-      "name": "Polearm",
-      "description": "Spears, lances, halberds, and other long-reach weapons"
-    },
-    {
-      "id": "ranged",
-      "name": "Ranged",
-      "description": "Bows, crossbows, slings, and other projectile weapons, and directly thrown objects such as knives, rocks, spears and explosives"
-    },
-    {
-      "id": "magic",
-      "name": "Magic",
-      "description": "Spells, magical bolts, and supernatural projectiles"
-    },
-    {
-      "id": "blunt",
-      "name": "Blunt",
-      "description": "Hammers, clubs, maces, and other blunt weapons"
-    },
-    {
-      "id": "breath",
-      "name": "Breath",
-      "description": "Fire breath, frost breath, poison spit, acid sprays, and similar emissions"
-    },
-    {
-      "id": "whip",
-      "name": "Whip",
-      "description": "Whips, tentacles, tails, vines, and flexible appendages"
-    },
-    {
-      "id": "aura",
-      "name": "Aura",
-      "description": "Continuous or pulsing damage fields surrounding the creature"
-    }
-  ],
-  "professions": [
-    {
-      "id": "hunter",
-      "name": "Hunter",
-      "description": "Tracking, hunting, trapping, survival. Includes Ranger, Tracker, Trapper",
-      "branches": [
-        "Stalker",
-        "Tracker",
-        "Trapper",
-        "Predator"
+      "id": "assassin",
+      "name": "Assassin",
+      "role": "Stealth and a hard strike from it.",
+      "magical": false,
+      "actives": [
+        "vanish",
+        "feint",
+        "backstab"
+      ],
+      "keystones": [
+        "unseen",
+        "vanishing_kill",
+        "venom_blades"
       ]
     },
     {
-      "id": "guardian",
-      "name": "Guardian",
-      "description": "Defensive abilities, endurance, area protection, battlefield control, and protecting allies: intercepting attacks and taking damage for others. Includes Defender, Tank, Sentinel, Bodyguard",
-      "branches": [
-        "Bulwark",
-        "Bodyguard",
-        "Keeper"
+      "id": "tracker",
+      "name": "Tracker",
+      "role": "Marks an enemy, finds stealthed units, shoots the marked.",
+      "magical": false,
+      "actives": [
+        "target",
+        "read_tracks",
+        "hunters_shot"
+      ],
+      "keystones": [
+        "sniff_the_air",
+        "scent_of_blood",
+        "relentless"
       ]
     },
     {
-      "id": "healer",
-      "name": "Healer",
-      "description": "Restoring health, cleansing conditions, regeneration, holy protection. Includes Medic, Cleric, Paladin",
-      "branches": [
-        "Mender",
-        "Cleric",
-        "Lifebinder"
+      "id": "bulwark",
+      "name": "Bulwark",
+      "role": "Stands in front of allies and takes their hits.",
+      "magical": false,
+      "actives": [
+        "leap_to_defend",
+        "rescue",
+        "shield_bash"
+      ],
+      "keystones": [
+        "shield_wall",
+        "hold_position",
+        "unbreakable"
       ]
     },
     {
-      "id": "sorcerer",
-      "name": "Sorcerer",
-      "description": "All non-elemental spells: arcane magic, enchantment, magical enhancement, and dark magic such as curses, hexes and life drain. Includes Enchanter, Warlock, Hexer",
-      "branches": [
-        "Enchantment",
-        "Transmutation",
-        "Malediction"
+      "id": "keeper",
+      "name": "Keeper",
+      "role": "Wards that absorb damage.",
+      "magical": false,
+      "actives": [
+        "ward",
+        "shield_dome",
+        "ward_burst"
+      ],
+      "keystones": [
+        "thorned_ward",
+        "twin_wards",
+        "steadfast_ward"
       ]
     },
     {
-      "id": "elementalist",
-      "name": "Elementalist",
-      "description": "Fire, frost, water, storm and earth magic; earth includes stone and crystal. Includes elemental weapons and armor",
-      "branches": [
-        "Pyromancy",
-        "Stormcalling",
-        "Cryomancy"
+      "id": "mender",
+      "name": "Mender",
+      "role": "Plain healing.",
+      "magical": true,
+      "actives": [
+        "mend",
+        "rain_of_mending",
+        "searing_light"
+      ],
+      "keystones": [
+        "overflowing_care",
+        "regrowth",
+        "triage"
       ]
     },
     {
-      "id": "warrior",
-      "name": "Warrior",
-      "description": "Offensive martial abilities, endurance, combat mastery. Includes Berserker, Duelist, Knight, Monk",
-      "branches": [
-        "Berserker",
-        "Champion",
-        "Whirlwind",
-        "Footwork"
+      "id": "cleric",
+      "name": "Cleric",
+      "role": "Removes statuses, good and bad.",
+      "magical": true,
+      "actives": [
+        "absolve",
+        "dispel",
+        "turn_back"
+      ],
+      "keystones": [
+        "sanctity",
+        "purifying_aura",
+        "judgment"
       ]
     },
     {
-      "id": "leader",
-      "name": "Leader",
-      "description": "Commanding the flow of battle: the shared timeline and Momentum, who acts when, tactical coordination, and moving your own units around the field. Includes Commander, Tactician",
-      "branches": [
-        "Tactician",
-        "Commander",
-        "Bard"
+      "id": "lifebinder",
+      "name": "Lifebinder",
+      "role": "Revives, paid for with its own life.",
+      "magical": true,
+      "actives": [
+        "burnout_heal",
+        "life_for_life",
+        "bound_resurrect"
+      ],
+      "keystones": [
+        "martyr",
+        "phoenix",
+        "lifeblood"
       ]
     },
     {
-      "id": "rogue",
-      "name": "Rogue",
-      "description": "Stealth, precision, critical attacks, executing vulnerable targets, deception, illusions, misdirection, sabotage and theft. Includes Assassin, Ninja, Trickster, Illusionist, Thief",
-      "branches": [
-        "Thief",
-        "Assassin",
-        "Saboteur"
+      "id": "enchanter",
+      "name": "Enchanter",
+      "role": "Enchants an ally's next attack or skill.",
+      "magical": true,
+      "actives": [
+        "echo_enchant",
+        "phase_weapon",
+        "piercing_enchant"
+      ],
+      "keystones": [
+        "twin_enchant",
+        "lingering_magic",
+        "spell_ward"
       ]
     },
     {
-      "id": "tinker",
-      "name": "Tinker",
-      "description": "Making things: potions, chemicals, poisons, mixtures, machinery, gadgets, constructs, mechanical traps. Includes Alchemist, Herbalist, Poisoner, Engineer, Artificer",
-      "branches": [
-        "Engineer",
-        "Chemist",
-        "Pyrotechnician"
+      "id": "transmuter",
+      "name": "Transmuter",
+      "role": "Changes what a unit is: stats, glass, stone.",
+      "magical": true,
+      "actives": [
+        "transmute",
+        "glass_body",
+        "petrify"
+      ],
+      "keystones": [
+        "lasting_change",
+        "brittle_glass",
+        "mirror_form"
+      ]
+    },
+    {
+      "id": "hexer",
+      "name": "Hexer",
+      "role": "Curses.",
+      "magical": true,
+      "actives": [
+        "curse_of_betrayal",
+        "curse_of_weight",
+        "withering_curse"
+      ],
+      "keystones": [
+        "witchs_patience",
+        "lingering_malice",
+        "spreading_curse"
+      ]
+    },
+    {
+      "id": "pyromancer",
+      "name": "Pyromancer",
+      "role": "Fire damage and burning ground.",
+      "magical": true,
+      "actives": [
+        "fireball",
+        "kindle",
+        "row_of_fire"
+      ],
+      "keystones": [
+        "wildfire",
+        "inferno",
+        "ashwalker"
+      ]
+    },
+    {
+      "id": "stormcaller",
+      "name": "Stormcaller",
+      "role": "Lightning, Stuns and wind.",
+      "magical": true,
+      "actives": [
+        "lightning_bolt",
+        "chain_lightning",
+        "tempest"
+      ],
+      "keystones": [
+        "overcharge",
+        "static_field",
+        "eye_of_the_storm"
+      ]
+    },
+    {
+      "id": "cryomancer",
+      "name": "Cryomancer",
+      "role": "Frost: Frozen and ice.",
+      "magical": true,
+      "actives": [
+        "ice_lance",
+        "freeze",
+        "frost_nova"
+      ],
+      "keystones": [
+        "cold_heart",
+        "brittle",
+        "deep_chill"
+      ]
+    },
+    {
+      "id": "berserker",
+      "name": "Berserker",
+      "role": "Raw melee damage and pushing the enemy Front row.",
+      "magical": false,
+      "actives": [
+        "rampage",
+        "sweeping_kick",
+        "battle_roar"
+      ],
+      "keystones": [
+        "reckless_swing",
+        "last_stand",
+        "unstoppable"
+      ]
+    },
+    {
+      "id": "champion",
+      "name": "Champion",
+      "role": "Marks one enemy and duels it.",
+      "magical": false,
+      "actives": [
+        "challenge",
+        "single_combat",
+        "execution"
+      ],
+      "keystones": [
+        "hunt_down",
+        "duelist",
+        "glory"
+      ]
+    },
+    {
+      "id": "tactician",
+      "name": "Tactician",
+      "role": "The timeline and Momentum.",
+      "magical": false,
+      "actives": [
+        "swap_turns",
+        "press_the_advantage",
+        "coordinated_strike"
+      ],
+      "keystones": [
+        "all_in",
+        "inspiring_presence",
+        "initiative"
+      ]
+    },
+    {
+      "id": "commander",
+      "name": "Commander",
+      "role": "Moves your own units.",
+      "magical": false,
+      "actives": [
+        "advance",
+        "switch_places",
+        "rotation"
+      ],
+      "keystones": [
+        "drill",
+        "rally",
+        "vanguard"
+      ]
+    },
+    {
+      "id": "bard",
+      "name": "Bard",
+      "role": "Songs for allies, a lullaby for enemies.",
+      "magical": false,
+      "actives": [
+        "song_of_haste",
+        "war_drums",
+        "lullaby"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "rhythm",
+        "crescendo"
+      ]
+    },
+    {
+      "id": "thief",
+      "name": "Thief",
+      "role": "Steals statuses and skills.",
+      "magical": false,
+      "actives": [
+        "melt_away",
+        "lift_a_skill",
+        "snatch"
+      ],
+      "keystones": [
+        "escape_artist",
+        "master_thief",
+        "shadow_purse"
+      ]
+    },
+    {
+      "id": "saboteur",
+      "name": "Saboteur",
+      "role": "Blinds, delays and breaks plans.",
+      "magical": false,
+      "actives": [
+        "flash_powder",
+        "cut_the_strings",
+        "jam"
+      ],
+      "keystones": [
+        "wrecker",
+        "chaos_agent",
+        "disarm_trap"
+      ]
+    },
+    {
+      "id": "engineer",
+      "name": "Engineer",
+      "role": "Turrets, barricades and traps.",
+      "magical": false,
+      "actives": [
+        "bolt_turret",
+        "barricade",
+        "net_trap"
+      ],
+      "keystones": [
+        "reinforced",
+        "self_repair",
+        "rapid_fire"
+      ]
+    },
+    {
+      "id": "chemist",
+      "name": "Chemist",
+      "role": "Poison and fire on the ground, potions.",
+      "magical": false,
+      "actives": [
+        "poison_gas",
+        "firebomb",
+        "healing_draught"
+      ],
+      "keystones": [
+        "big_finish",
+        "potent_brew",
+        "volatile"
+      ]
+    },
+    {
+      "id": "necromancer",
+      "name": "Necromancer",
+      "role": "Raises and uses the dead.",
+      "magical": true,
+      "actives": [
+        "raise_undead",
+        "corpse_explosion",
+        "desecrate"
+      ],
+      "keystones": [
+        "lich_form",
+        "bone_armor",
+        "deaths_bounty"
       ]
     },
     {
       "id": "summoner",
       "name": "Summoner",
-      "description": "Summoning and commanding additional creatures, spirits, entities, or constructs, including necromancy: raising the dead and bone constructs. Includes Beastmaster, Necromancer",
-      "branches": [
-        "Necromancer",
-        "Golemancer",
-        "Conjurer"
+      "role": "Golems and animated blades.",
+      "magical": true,
+      "actives": [
+        "clay_golem",
+        "rune_golem",
+        "animate_blades"
+      ],
+      "keystones": [
+        "golem_heart",
+        "portal",
+        "quickening"
       ]
     },
     {
-      "id": "primalist",
-      "name": "Primalist",
-      "description": "Primal nature and the soul: plants, roots, beasts, shapeshifting, totems, nature spirits, rituals and life force. Spirits of the dead belong to Summoner. Includes Druid, Shaman",
-      "branches": [
-        "Totemist",
-        "Ritualist",
-        "Spiritwalker"
+      "id": "totemist",
+      "name": "Totemist",
+      "role": "Totems that protect a row.",
+      "magical": true,
+      "actives": [
+        "healing_totem",
+        "spirit_link_totem",
+        "totem_of_return"
+      ],
+      "keystones": [
+        "great_totem",
+        "sturdy_totems",
+        "spirit_shield"
       ]
     },
     {
-      "id": "flying",
-      "name": "Flying",
-      "description": "Flight, aerial mobility, evasive maneuvers, dive attacks, and airborne combat advantages",
-      "branches": [
-        "Mobility",
-        "Skywatch",
-        "Assault"
+      "id": "ritualist",
+      "name": "Ritualist",
+      "role": "Water and ice on the ground.",
+      "magical": true,
+      "actives": [
+        "rain_dance",
+        "hoarfrost",
+        "rite_of_mists"
+      ],
+      "keystones": [
+        "deluge",
+        "tidecaller",
+        "frostbinder"
+      ]
+    },
+    {
+      "id": "spiritwalker",
+      "name": "Spiritwalker",
+      "role": "Possession and soul swaps.",
+      "magical": true,
+      "actives": [
+        "puppet_soul",
+        "life_swap",
+        "forced_step"
+      ],
+      "keystones": [
+        "soul_anchor",
+        "haunting",
+        "puppeteer"
+      ]
+    },
+    {
+      "id": "skyborne",
+      "name": "Skyborne",
+      "role": "Flight, wind and dives.",
+      "magical": false,
+      "actives": [
+        "take_off",
+        "gust",
+        "dive"
+      ],
+      "keystones": [
+        "sky_lord",
+        "eagle_eye",
+        "lift"
       ]
     }
   ]

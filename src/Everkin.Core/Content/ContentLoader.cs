@@ -1,17 +1,15 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Everkin.Core.Skills;
 
 namespace Everkin.Core.Content;
 
-/// <summary>Loads and validates classes.json, skills.json and creatures.json (production.md sections 2.1, 2.2).</summary>
+/// <summary>Loads and validates classes.json, skills.json, creatures.json and statuses.json (production.md sections 2.1, 2.2).</summary>
 public static class ContentLoader
 {
     public const string ClassesFile = "classes.json";
     public const string SkillsFile = "skills.json";
     public const string CreaturesFile = "creatures.json";
     public const string StatusesFile = "statuses.json";
-    public const string DefaultBuildsFile = "default_builds.json";
 
     private static readonly JsonSerializerOptions Options = new()
     {
@@ -19,56 +17,38 @@ public static class ContentLoader
         UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow,
     };
 
-    /// <summary>
-    /// Loads and validates the content files of a folder. The default builds are required unless
-    /// <paramref name="requireDefaultBuilds"/> is false (the tool that makes them has to load the rest first).
-    /// </summary>
-    public static ContentSet LoadFromDirectory(string directory, bool requireDefaultBuilds = true)
-    {
-        var buildsPath = Path.Combine(directory, DefaultBuildsFile);
-        string? builds = null;
-        if (File.Exists(buildsPath)) builds = File.ReadAllText(buildsPath);
-        else if (requireDefaultBuilds) throw new ContentException(DefaultBuildsFile, "(file)", "missing; run the runner command default-builds");
-        return LoadFromJson(
+    public static ContentSet LoadFromDirectory(string directory) =>
+        LoadFromJson(
             File.ReadAllText(Path.Combine(directory, ClassesFile)),
             File.ReadAllText(Path.Combine(directory, SkillsFile)),
             File.ReadAllText(Path.Combine(directory, CreaturesFile)),
-            File.ReadAllText(Path.Combine(directory, StatusesFile)),
-            builds);
-    }
+            File.ReadAllText(Path.Combine(directory, StatusesFile)));
 
-    public static ContentSet LoadFromJson(string classesJson, string skillsJson, string creaturesJson, string statusesJson, string? defaultBuildsJson = null)
+    public static ContentSet LoadFromJson(string classesJson, string skillsJson, string creaturesJson, string statusesJson)
     {
         var classes = Parse<ClassesDoc>(ClassesFile, classesJson);
         var skills = Parse<SkillsDoc>(SkillsFile, skillsJson);
         var creatures = Parse<CreaturesDoc>(CreaturesFile, creaturesJson);
         var statuses = Parse<StatusesDoc>(StatusesFile, statusesJson);
 
+        Unique(CreaturesFile, creatures.Creatures.Select(c => c.Id));
+        Unique(ClassesFile, classes.Classes.Select(c => c.Id));
+        Unique(SkillsFile, skills.Skills.Select(s => s.Id));
+        Unique(SkillsFile, skills.Attacks.Select(a => a.Id));
         var set = new ContentSet
         {
-            AttackTypes = classes.AttackTypes,
-            Professions = classes.Professions,
-            AttackSkills = skills.AttackSkills,
-            ProfessionSkills = skills.ProfessionSkills,
+            Classes = classes.Classes,
+            Skills = skills.Skills,
+            Attacks = skills.Attacks,
             Creatures = creatures.Creatures,
             Statuses = statuses.Statuses,
+            CreaturesById = creatures.Creatures.ToDictionary(c => c.Id),
+            ClassesById = classes.Classes.ToDictionary(c => c.Id),
+            SkillsById = skills.Skills.ToDictionary(s => s.Id),
+            AttacksById = skills.Attacks.ToDictionary(a => a.Id),
         };
         Validate(set);
-        var defaultBuilds = defaultBuildsJson is null
-            ? new Dictionary<string, IReadOnlyList<string>>()
-            : ValidateDefaultBuilds(set, Parse<DefaultBuildsDoc>(DefaultBuildsFile, defaultBuildsJson));
-        return new ContentSet
-        {
-            AttackTypes = set.AttackTypes,
-            Professions = set.Professions,
-            AttackSkills = set.AttackSkills,
-            ProfessionSkills = set.ProfessionSkills,
-            Creatures = set.Creatures,
-            Statuses = set.Statuses,
-            DefaultBuilds = defaultBuilds,
-            CreaturesById = set.Creatures.ToDictionary(c => c.Id),
-            SkillsById = set.ProfessionSkills.ToDictionary(s => s.Id),
-        };
+        return set;
     }
 
     private static T Parse<T>(string file, string json) where T : class
@@ -86,66 +66,57 @@ public static class ContentLoader
 
     private static void Validate(ContentSet set)
     {
-        var attackTypes = Unique(ClassesFile, set.AttackTypes.Select(a => a.Id));
-        var professions = Unique(ClassesFile, set.Professions.Select(p => p.Id));
+        Unique(ClassesFile, set.Classes.Select(c => c.Id));
+        var skillIds = Unique(SkillsFile, set.Skills.Select(s => s.Id));
+        Unique(SkillsFile, set.Attacks.Select(a => a.Id));
+        foreach (var a in set.Attacks)
+            if (skillIds.Contains(a.Id)) throw new ContentException(SkillsFile, a.Id, "an attack shares its ID with a class skill");
 
-        var skillIds = new HashSet<string>();
-        foreach (var a in set.AttackSkills)
+        foreach (var s in set.Skills)
         {
-            if (!skillIds.Add(a.Id)) throw new ContentException(SkillsFile, a.Id, "duplicate skill ID");
-            if (!attackTypes.Contains(a.AttackType))
-                throw new ContentException(SkillsFile, a.Id, $"unknown attack type '{a.AttackType}'");
-        }
-
-        var skills = new Dictionary<string, ProfessionSkillDef>();
-        foreach (var s in set.ProfessionSkills)
-        {
-            if (!skillIds.Add(s.Id)) throw new ContentException(SkillsFile, s.Id, "duplicate skill ID");
-            skills[s.Id] = s;
-            var prof = set.Professions.FirstOrDefault(p => p.Id == s.Profession)
-                ?? throw new ContentException(SkillsFile, s.Id, $"unknown profession '{s.Profession}'");
-            if (!prof.Branches.Contains(s.Branch))
-                throw new ContentException(SkillsFile, s.Id, $"branch '{s.Branch}' is not a branch of {s.Profession}");
-            if (s.Kind is not ("A" or "P" or "K" or "Mod"))
+            if (!set.ClassesById.TryGetValue(s.Class, out var cls))
+                throw new ContentException(SkillsFile, s.Id, $"unknown class '{s.Class}'");
+            if (s.Kind is not ("A" or "K"))
                 throw new ContentException(SkillsFile, s.Id, $"unknown kind '{s.Kind}'");
-            if (s.Kind == "A" && (s.Delay is null || s.Momentum is null))
-                throw new ContentException(SkillsFile, s.Id, "active skill without Delay and Momentum");
-            if (s.Kind == "Mod" && s.ModifierOf is null)
-                throw new ContentException(SkillsFile, s.Id, "modifier without ModifierOf");
+            if (s.Kind == "A" && (s.Delay is null || s.Momentum is null || s.Delivery is null))
+                throw new ContentException(SkillsFile, s.Id, "active skill without Delay, Momentum and delivery");
+            var listed = s.Kind == "A" ? cls.Actives : cls.Keystones;
+            if (!listed.Contains(s.Id))
+                throw new ContentException(SkillsFile, s.Id, $"not listed in the {(s.Kind == "A" ? "actives" : "keystones")} of {s.Class}");
         }
-
-        foreach (var s in skills.Values)
+        foreach (var c in set.Classes)
         {
-            foreach (var reference in new[] { s.Parent, s.ModifierOf })
-            {
-                if (reference is null) continue;
-                if (!skills.TryGetValue(reference, out var target) || target.Profession != s.Profession)
-                    throw new ContentException(SkillsFile, s.Id, $"'{reference}' is not a skill of the same profession");
-            }
-
-            // One parent per node; the chain stays in the branch and ends at a starting skill (game_system section 4.1).
-            var seen = new HashSet<string>();
-            var cur = s;
-            while (cur.Parent is not null)
-            {
-                if (!seen.Add(cur.Id)) throw new ContentException(SkillsFile, s.Id, "parent cycle");
-                cur = skills[cur.Parent];
-                if (cur.Branch != s.Branch)
-                    throw new ContentException(SkillsFile, s.Id, $"parent '{cur.Id}' is in another branch");
-            }
+            if (c.Actives.Count != 3 || c.Keystones.Count != 3)
+                throw new ContentException(ClassesFile, c.Id, "a class has three actives and three keystones");
+            foreach (var id in c.Actives.Concat(c.Keystones))
+                if (!set.SkillsById.ContainsKey(id))
+                    throw new ContentException(ClassesFile, c.Id, $"skill '{id}' is missing from {SkillsFile}");
+        }
+        foreach (var a in set.Attacks)
+        {
+            if (!set.CreaturesById.ContainsKey(a.Creature))
+                throw new ContentException(SkillsFile, a.Id, $"unknown creature '{a.Creature}'");
+            if (a.Delivery is not ("melee" or "projectile" or "direct") || a.Shape is not ("single" or "splash" or "pulse"))
+                throw new ContentException(SkillsFile, a.Id, "unknown delivery or shape");
+            if (a.Min < 1 || a.Max < a.Min) throw new ContentException(SkillsFile, a.Id, "bad damage range");
         }
 
         Unique(StatusesFile, set.Statuses.Select(st => st.Id));
         Unique(CreaturesFile, set.Creatures.Select(c => c.Id));
         foreach (var c in set.Creatures)
         {
-            if (!attackTypes.Contains(c.AttackType))
-                throw new ContentException(CreaturesFile, c.Id, $"unknown attack type '{c.AttackType}'");
-            if (c.Professions.Count is < 1 or > 2 || c.Professions.Distinct().Count() != c.Professions.Count)
-                throw new ContentException(CreaturesFile, c.Id, "a creature has one or two different professions");
-            foreach (var p in c.Professions)
-                if (!professions.Contains(p))
-                    throw new ContentException(CreaturesFile, c.Id, $"unknown profession '{p}'");
+            if (c.Classes.Count != 2 || c.Classes.Distinct().Count() != 2)
+                throw new ContentException(CreaturesFile, c.Id, "a creature has two different classes");
+            if (c.Keystones.Count != 2) throw new ContentException(CreaturesFile, c.Id, "a creature has two keystones");
+            for (var i = 0; i < 2; i++)
+            {
+                if (!set.ClassesById.TryGetValue(c.Classes[i], out var cls))
+                    throw new ContentException(CreaturesFile, c.Id, $"unknown class '{c.Classes[i]}'");
+                if (!cls.Keystones.Contains(c.Keystones[i]))
+                    throw new ContentException(CreaturesFile, c.Id, $"'{c.Keystones[i]}' is not a keystone of {cls.Id}");
+            }
+            if (!set.AttacksById.TryGetValue(c.Attack, out var attack) || attack.Creature != c.Id)
+                throw new ContentException(CreaturesFile, c.Id, $"unknown attack '{c.Attack}'");
             if (c.Hp <= 0 || c.Speed <= 0 || c.Power <= 0)
                 throw new ContentException(CreaturesFile, c.Id, "HP, Speed and Power must be positive");
             if (c.Cost is < 1 or > 10)
@@ -153,30 +124,6 @@ public static class ContentLoader
             if (c.FrontFrame.Count != 4 || c.RearFrame.Count != 4)
                 throw new ContentException(CreaturesFile, c.Id, "frames need four numbers");
         }
-    }
-
-    private static Dictionary<string, IReadOnlyList<string>> ValidateDefaultBuilds(ContentSet set, DefaultBuildsDoc doc)
-    {
-        var trees = new SkillTrees(set);
-        var result = new Dictionary<string, IReadOnlyList<string>>();
-        foreach (var (id, skills) in doc.Builds)
-        {
-            if (!set.CreaturesByIdOrNull(id, out var creature))
-                throw new ContentException(DefaultBuildsFile, id, "not a creature");
-            var problem = SkillBuild.Validate(trees, creature.Professions, skills);
-            if (problem is not null) throw new ContentException(DefaultBuildsFile, id, problem);
-            result[id] = skills;
-        }
-        foreach (var c in set.Creatures)
-            if (!result.ContainsKey(c.Id))
-                throw new ContentException(DefaultBuildsFile, c.Id, "the creature has no default build");
-        return result;
-    }
-
-    private static bool CreaturesByIdOrNull(this ContentSet set, string id, out CreatureDef creature)
-    {
-        creature = set.Creatures.FirstOrDefault(c => c.Id == id)!;
-        return creature is not null;
     }
 
     private static HashSet<string> Unique(string file, IEnumerable<string> ids)
@@ -187,13 +134,11 @@ public static class ContentLoader
         return set;
     }
 
-    private sealed record ClassesDoc(IReadOnlyList<AttackTypeDef> AttackTypes, IReadOnlyList<ProfessionDef> Professions);
+    private sealed record ClassesDoc(IReadOnlyList<ClassDef> Classes);
 
-    private sealed record SkillsDoc(IReadOnlyList<AttackSkillDef> AttackSkills, IReadOnlyList<ProfessionSkillDef> ProfessionSkills);
+    private sealed record SkillsDoc(IReadOnlyList<SkillDef> Skills, IReadOnlyList<AttackDef> Attacks);
 
     private sealed record CreaturesDoc(IReadOnlyList<CreatureDef> Creatures);
 
     private sealed record StatusesDoc(IReadOnlyList<StatusDef> Statuses);
-
-    private sealed record DefaultBuildsDoc(Dictionary<string, string[]> Builds);
 }

@@ -12,7 +12,6 @@ public static class Game
 {
     public static ContentSet Content = null!;
     public static SkillCatalog Catalog = null!;
-    public static SkillTrees Trees = null!;
     public static AiSettings Settings = null!;
     public static CampaignDef Campaign = null!;
 
@@ -27,12 +26,11 @@ public static class Game
     {
         if (Content != null) return;
         string Read(string name) => FileAccess.GetFileAsString("res://content/" + name);
-        Content = ContentLoader.LoadFromJson(Read("classes.json"), Read("skills.json"), Read("creatures.json"), Read("statuses.json"), Read("default_builds.json"));
+        Content = ContentLoader.LoadFromJson(Read("classes.json"), Read("skills.json"), Read("creatures.json"), Read("statuses.json"));
         Catalog = SkillCatalog.Create(Content);
-        Trees = new SkillTrees(Content);
         Settings = AiSettings.FromJson(Read("ai_settings.json"));
         Campaign = CampaignDef.FromJson(Read("campaign.json"), Content);
-        ContentFingerprint = Everkin.Core.Setup.ContentHash.Of(new[] { "classes.json", "skills.json", "creatures.json", "statuses.json", "default_builds.json" }.Select(Read));
+        ContentFingerprint = Everkin.Core.Setup.ContentHash.Of(new[] { "classes.json", "skills.json", "creatures.json", "statuses.json" }.Select(Read));
     }
 
     /// <summary>A texture from res:// (null if the file is missing). Cached.</summary>
@@ -57,32 +55,30 @@ public static class Game
         return f ?? ThemeDB.FallbackFont;
     }
 
-    /// <summary>The display name of a skill ID (Attack Type attacks and profession nodes).</summary>
+    /// <summary>The display name of a skill ID (a unique attack, a class active or a keystone).</summary>
     public static string SkillName(string id) =>
-        Content.AttackSkills.FirstOrDefault(a => a.Id == id)?.Name ?? Content.ProfessionSkills.FirstOrDefault(p => p.Id == id)?.Name ?? id.Replace('_', ' ');
+        Content.AttacksById.TryGetValue(id, out var a) ? a.Name : Content.SkillsById.TryGetValue(id, out var s) ? s.Name : id.Replace('_', ' ');
 
-    /// <summary>The short type line of a skill on a card back, for example "Melee · D1" or "Passive".</summary>
+    /// <summary>The short type line of a skill on a card back, for example "Melee attack" or "Keystone . Berserker".</summary>
     public static string SkillLine(string id)
     {
-        if (Content.AttackSkills.FirstOrDefault(a => a.Id == id) is { } a)
-            return Content.AttackTypes.FirstOrDefault(t => t.Id == a.AttackType)?.Name ?? a.AttackType;
-        if (Content.ProfessionSkills.FirstOrDefault(p => p.Id == id) is not { } d) return "";
-        return d.Kind switch
-        {
-            "P" => "Passive",
-            "K" => "Keystone",
-            "Mod" => "Modifier",
-            _ => string.Join(" · ", new[] { d.Delivery, d.Range }.Where(x => !string.IsNullOrWhiteSpace(x))),
-        };
+        static string Cap(string text) => text.Length == 0 ? text : char.ToUpperInvariant(text[0]) + text[1..];
+        if (Content.AttacksById.TryGetValue(id, out var a))
+            return a.Delivery == "direct" ? (a.Shape == "pulse" ? "Pulse \u00b7 melee reach" : "Breath \u00b7 melee reach") : $"{Cap(a.Delivery)} attack";
+        if (!Content.SkillsById.TryGetValue(id, out var d)) return "";
+        var cls = Content.ClassesById[d.Class].Name;
+        return d.Kind == "K" ? $"Keystone \u00b7 {cls}" : d.Delivery is null or "none" ? cls : $"{Cap(d.Delivery)} \u00b7 {cls}";
     }
 
-    /// <summary>The card-back rows for a list of skill IDs: Delay and Momentum come from the implemented skills.</summary>
+    /// <summary>The card-back rows for a list of skill IDs: Delay and Momentum come from the content (a keystone has neither).</summary>
     public static List<CardSkill> CardSkills(IEnumerable<string> ids)
     {
         var rows = new List<CardSkill>();
         foreach (var id in ids)
-            if (Catalog.TryGet(id, out var skill))
-                rows.Add(new CardSkill(SkillName(id), SkillLine(id), skill.Delay, skill.MomentumCost));
+        {
+            if (Content.AttacksById.TryGetValue(id, out var a)) rows.Add(new CardSkill(a.Name, SkillLine(id), a.Delay, a.Momentum));
+            else if (Content.SkillsById.TryGetValue(id, out var s)) rows.Add(new CardSkill(s.Name, SkillLine(id), s.Delay ?? 0, s.Momentum ?? 0));
+        }
         return rows;
     }
 }

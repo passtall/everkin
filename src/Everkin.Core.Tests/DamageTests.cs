@@ -146,8 +146,7 @@ public class DamageOnStateTests
     private static BattleState StateWithUnits(out int a, out int b, int hp = 50, int power = 5)
     {
         var state = new BattleState(1);
-        var def = new CreatureDef("t", "t", "brawl", new[] { "warrior" }, "t.png", null, "ruins", hp, 5, power, 1,
-            new[] { 0, 0, 1, 1 }, new[] { 0, 0, 1, 1 }, "reviewed", "");
+        var def = World.Def("t", hp, 5, power);
         a = state.AddUnit(def, Side.A).Id;
         b = state.AddUnit(def, Side.B).Id;
         state.DrainEvents();

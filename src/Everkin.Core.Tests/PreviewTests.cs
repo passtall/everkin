@@ -27,34 +27,34 @@ public class PreviewTests
     [Fact]
     public void ADamageRangeIsTheScaledRangeAndTheRealDamageStaysInsideIt()
     {
-        var s = Board(1, out var a, out var t, "brawl_strike");
-        var p = Preview.Skill(s, World.Catalog, Use(a, "brawl_strike", t));
+        var s = Board(1, out var a, out var t, "tail_club");
+        var p = Preview.Skill(s, World.Catalog, Use(a, "tail_club", t));
         var unit = Assert.Single(p.Units, u => u.UnitId == t);
-        Assert.Equal((4, 5), (unit.DamageMin, unit.DamageMax));
-        Assert.Equal((4, 5), (unit.HpLostMin, unit.HpLostMax));
+        Assert.Equal((3, 4), (unit.DamageMin, unit.DamageMax));
+        Assert.Equal((3, 4), (unit.HpLostMin, unit.HpLostMax));
         for (ulong seed = 1; seed <= 30; seed++)
         {
-            var real = Board(seed, out var a2, out var t2, "brawl_strike");
-            Actions.Use(real, World.Catalog, Use(a2, "brawl_strike", t2));
+            var real = Board(seed, out var a2, out var t2, "tail_club");
+            Actions.Use(real, World.Catalog, Use(a2, "tail_club", t2));
             Assert.InRange(40 - real.GetUnit(t2).Hp, unit.HpLostMin, unit.HpLostMax);
         }
 
-        s.GetUnit(a).Power = 3;                                                      // 4–5 at Power 3 is 2–3
-        var weak = Preview.Skill(s, World.Catalog, Use(a, "brawl_strike", t)).Units.Single(u => u.UnitId == t);
-        Assert.Equal((2, 3), (weak.DamageMin, weak.DamageMax));
+        s.GetUnit(a).Power = 3;                                                      // 3–4 at Power 3 is 1–2
+        var weak = Preview.Skill(s, World.Catalog, Use(a, "tail_club", t)).Units.Single(u => u.UnitId == t);
+        Assert.Equal((1, 2), (weak.DamageMin, weak.DamageMax));
     }
 
     [Fact]
     public void AShieldShowsInTheGapBetweenDamageAndHpLost()
     {
-        var s = Board(1, out var a, out var t, "brawl_strike");
+        var s = Board(1, out var a, out var t, "tail_club");
         s.GetUnit(t).Ward = 3;
-        var unit = Preview.Skill(s, World.Catalog, Use(a, "brawl_strike", t)).Units.Single(u => u.UnitId == t);
-        Assert.Equal((4, 5), (unit.DamageMin, unit.DamageMax));
-        Assert.Equal((1, 2), (unit.HpLostMin, unit.HpLostMax));
+        var unit = Preview.Skill(s, World.Catalog, Use(a, "tail_club", t)).Units.Single(u => u.UnitId == t);
+        Assert.Equal((3, 4), (unit.DamageMin, unit.DamageMax));
+        Assert.Equal((0, 1), (unit.HpLostMin, unit.HpLostMax));
     }
 
-    [Fact]
+    [Fact(Skip = "needs class skills (M5.6 step 4)")]
     public void AHealRangeAndAnAreaOfSeveralUnitsArePreviewedPerUnit()
     {
         var s = new BattleState(1);
@@ -75,12 +75,11 @@ public class PreviewTests
     [Fact]
     public void APreviewNeverChangesTheStateOrTheRandomSequence()
     {
-        var s = Board(5, out var a, out var t, "brawl_strike", "gust", "tempest", "healing_draught");
+        var s = Board(5, out var a, out var t, "tail_club", "rivet_shot");
         s.DrainEvents();
         var before = Snapshot(s);
-        Preview.Skill(s, World.Catalog, Use(a, "brawl_strike", t));
-        Preview.Skill(s, World.Catalog, Use(a, "gust", t));
-        Preview.Skill(s, World.Catalog, Use(a, "healing_draught", a));
+        Preview.Skill(s, World.Catalog, Use(a, "tail_club", t));
+        Preview.Skill(s, World.Catalog, Use(a, "rivet_shot", t));
         Preview.SkipTurn(s, a);
         Preview.Move(s, a, Row.Middle, 0);
         Assert.Equal(before, Snapshot(s));
@@ -91,34 +90,33 @@ public class PreviewTests
     public void InterceptorsAreListedWithTheirChanceAndDirectSkillsHaveNone()
     {
         var s = new BattleState(1);
-        var a = World.Unit(s, Side.A, Row.Front, "shot", "mend");
+        var a = World.Unit(s, Side.A, Row.Front, "rivet_shot", "sand_spill");
         var defender = World.Unit(s, Side.B, Row.Front);
         var half = World.Unit(s, Side.B, Row.Front);
         var target = World.Unit(s, Side.B, Row.Middle);                                // centers: Front -1, +1; the target 0 → 50% overlap
-        var p = Preview.Skill(s, World.Catalog, Use(a, "shot", target));
+        var p = Preview.Skill(s, World.Catalog, Use(a, "rivet_shot", target));
         Assert.Equal(new[] { (defender, 25), (half, 25) }, p.Interceptors.Select(i => (i.UnitId, i.Percent)));
-        Assert.Empty(Preview.Skill(s, World.Catalog, Use(a, "mend", target)).Interceptors);      // direct
+        Assert.Empty(Preview.Skill(s, World.Catalog, Use(a, "sand_spill", defender)).Interceptors);      // direct
 
         var s2 = new BattleState(1);
-        var a2 = World.Unit(s2, Side.A, Row.Front, "shot");
+        var a2 = World.Unit(s2, Side.A, Row.Front, "rivet_shot");
         var front = World.Unit(s2, Side.B, Row.Front);
         var behind = World.Unit(s2, Side.B, Row.Middle);                               // the same centre: 100%
-        Assert.Equal((front, 50), Preview.Skill(s2, World.Catalog, Use(a2, "shot", behind)).Interceptors.Select(i => (i.UnitId, i.Percent)).Single());
+        Assert.Equal((front, 50), Preview.Skill(s2, World.Catalog, Use(a2, "rivet_shot", behind)).Interceptors.Select(i => (i.UnitId, i.Percent)).Single());
     }
 
     [Fact]
     public void TheSuccessChanceFallsWithBlindAndIsZeroAgainstSidestep()
     {
-        var s = Board(1, out var a, out var t, "brawl_strike", "mend");
-        Assert.Equal(100, Preview.Skill(s, World.Catalog, Use(a, "brawl_strike", t)).SuccessChance);
+        var s = Board(1, out var a, out var t, "tail_club");
+        Assert.Equal(100, Preview.Skill(s, World.Catalog, Use(a, "tail_club", t)).SuccessChance);
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Blind, Duration: 20));
-        Assert.Equal(50, Preview.Skill(s, World.Catalog, Use(a, "brawl_strike", t)).SuccessChance);
-        Assert.Equal(100, Preview.Skill(s, World.Catalog, Use(a, "mend", a)).SuccessChance);     // not an attack
+        Assert.Equal(50, Preview.Skill(s, World.Catalog, Use(a, "tail_club", t)).SuccessChance);
         Statuses.Apply(s, new StatusApplication(t, StatusIds.Sidestep));
-        Assert.Equal(0, Preview.Skill(s, World.Catalog, Use(a, "brawl_strike", t)).SuccessChance);
+        Assert.Equal(0, Preview.Skill(s, World.Catalog, Use(a, "tail_club", t)).SuccessChance);
     }
 
-    [Fact]
+    [Fact(Skip = "needs class skills (M5.6 step 4)")]
     public void TheMomentumGhostShowsTheMeterAfterTheCost()
     {
         var s = new BattleState(1);
@@ -132,10 +130,10 @@ public class PreviewTests
     [Fact]
     public void TheNextTurnLandsWhereExecutionPutsIt()
     {
-        var s = Board(1, out var a, out var t, "brawl_strike", "gust");
+        var s = Board(1, out var a, out var t, "tail_club", "rivet_shot");
         s.Timeline.ScheduleTurn(t, 6, 5);
         s.Timeline.ScheduleTurn(a, 2, 5);
-        foreach (var (skill, target) in new[] { ("brawl_strike", t), ("gust", t) })
+        foreach (var (skill, target) in new[] { ("tail_club", t), ("rivet_shot", t) })
         {
             var p = Preview.Skill(s, World.Catalog, Use(a, skill, target));
             var real = s.Clone();
@@ -148,7 +146,7 @@ public class PreviewTests
         Assert.Equal(s.Timeline.Now + Timeline.SkippedTurnWait(5), skip.Due);
     }
 
-    [Fact]
+    [Fact(Skip = "needs class skills (M5.6 step 4)")]
     public void OtherTimelineChangesAreListed()
     {
         var s = new BattleState(1);
@@ -165,7 +163,7 @@ public class PreviewTests
         Assert.Contains(p.TimelineShifts, x => x.UnitId == b && x.To < x.From);
     }
 
-    [Fact]
+    [Fact(Skip = "needs class skills (M5.6 step 4)")]
     public void AForcedMovePreviewShowsTheLandingAndABlockedChainShowsNothingMovingAndTheBumpDamage()
     {
         var s = Board(1, out var a, out var t, "gust");
@@ -190,8 +188,8 @@ public class PreviewTests
     [Fact]
     public void AnIllegalUseOnlyReportsTheReason()
     {
-        var s = Board(1, out var a, out var t, "brawl_strike");
-        var p = Preview.Skill(s, World.Catalog, Use(a, "mend", t));
+        var s = Board(1, out var a, out var t, "tail_club");
+        var p = Preview.Skill(s, World.Catalog, Use(a, "no_such_skill", t));
         Assert.False(p.IsLegal);
         Assert.NotNull(p.IllegalReason);
         Assert.Empty(p.Units);

@@ -8,14 +8,11 @@ const string Usage = """
 
     Usage:
       Everkin.Runner --help
-      Everkin.Runner default-builds [--content <folder>]
       Everkin.Runner play --seed <n> --level <easy|normal|hard|name>
       Everkin.Runner run [--level <name>] [--battles 10000] [--first-seed 1] [--threads n] [--resume <run id>]
       Everkin.Runner report --run <run id>
 
     Commands:
-      default-builds   Make content/default_builds.json: one random legal skill build per creature, from a fixed master seed.
-                       Builds that are already stored are kept; only missing creatures get a new one.
       play             Plays one random AI-versus-AI battle from a seed and prints the result and the time it took.
       run              Plays a run of AI-versus-AI battles in parallel into runs/<run id>/ (battles.jsonl, a snapshot of the content and AI
                        settings, then the CSV files and report.md). --resume continues an interrupted run.
@@ -36,8 +33,6 @@ try
 {
     switch (args[0])
     {
-        case "default-builds":
-            return DefaultBuildsCommand(args);
         case "run":
             return RunCommand(args);
         case "report":
@@ -55,31 +50,6 @@ catch (ContentException e)
 {
     Console.Error.WriteLine($"CONTENT ERROR: {e.Message}");
     return 1;
-}
-
-static int DefaultBuildsCommand(string[] args)
-{
-    var folder = FindContentFolder(args);
-    var content = ContentLoader.LoadFromDirectory(folder, requireDefaultBuilds: false);
-    var trees = new SkillTrees(content);
-
-    var path = Path.Combine(folder, ContentLoader.DefaultBuildsFile);
-    Dictionary<string, IReadOnlyList<string>>? existing = null;
-    if (File.Exists(path))
-    {
-        using var doc = JsonDocument.Parse(File.ReadAllText(path));
-        existing = doc.RootElement.GetProperty("builds").EnumerateObject()
-            .ToDictionary(p => p.Name, p => (IReadOnlyList<string>)p.Value.EnumerateArray().Select(e => e.GetString()!).ToArray());
-    }
-
-    var builds = DefaultBuilds.Complete(trees, existing);
-    var added = builds.Count - (existing?.Keys.Count(builds.ContainsKey) ?? 0);
-
-    var options = new JsonSerializerOptions { WriteIndented = true };
-    var json = JsonSerializer.Serialize(new { builds }, options).ReplaceLineEndings("\n") + "\n";
-    File.WriteAllText(path, json, new UTF8Encoding(false));
-    Console.WriteLine($"wrote {path}: {builds.Count} builds ({added} new)");
-    return 0;
 }
 
 static int RunCommand(string[] args)
@@ -102,11 +72,10 @@ static int PlayCommand(string[] args)
     var folder = FindContentFolder(args);
     var content = ContentLoader.LoadFromDirectory(folder);
     var catalog = SkillCatalog.Create(content);
-    var trees = new SkillTrees(content);
     var settings = Everkin.Core.Ai.AiSettings.Load(Path.Combine(folder, "ai_settings.json"));
     var seed = ulong.Parse(Option(args, "--seed") ?? "1");
     var level = settings.Level(Option(args, "--level") ?? "easy");
-    var spec = Everkin.Core.Setup.BattleSetup.RandomSpec(content, trees, seed);
+    var spec = Everkin.Core.Setup.BattleSetup.RandomSpec(content, seed);
     var state = Everkin.Core.Setup.BattleSetup.Create(spec, catalog);
     var aiA = new Everkin.Core.Ai.AiSearch(catalog, level, new Everkin.Core.Battle.BattleRandom(seed + 1));
     var aiB = new Everkin.Core.Ai.AiSearch(catalog, level, new Everkin.Core.Battle.BattleRandom(seed + 2));

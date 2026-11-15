@@ -28,8 +28,8 @@ public static class Report
         var creatures = new Dictionary<string, Tally>();
         var byRow = new Dictionary<(string, string), Tally>();
         var skills = new Dictionary<string, Tally>();
-        var attackTypes = new Dictionary<string, Tally>();
-        var professions = new Dictionary<string, Tally>();
+        var classes = new Dictionary<string, Tally>();
+        var keystones = new Dictionary<string, Tally>();
         var withMates = new Dictionary<(string, string), Tally>();
         var against = new Dictionary<(string, string), Tally>();
 
@@ -55,9 +55,9 @@ public static class Report
                 Add(Get(creatures, u.Creature));
                 Add(Get(byRow, (u.Creature, u.Row)));
                 var def = content.CreaturesById[u.Creature];
-                Add(Get(attackTypes, def.AttackType));
-                foreach (var p in def.Professions) Add(Get(professions, p));
-                foreach (var skill in u.Build.Concat(new[] { u.Skills.Keys.FirstOrDefault(k => content.AttackSkills.Any(a => a.Id == k)) ?? "" }).Where(s => s != "").Distinct())
+                foreach (var c in def.Classes) Add(Get(classes, c));
+                foreach (var k in def.Keystones) Add(Get(keystones, k));
+                foreach (var skill in content.ClassSkillsOf(def).Where(id => content.SkillsById[id].Kind == "A").Append(def.Attack))
                 {
                     var t = Get(skills, skill);
                     t.Appearances++;
@@ -88,8 +88,8 @@ public static class Report
 
         csv.Clear();
         csv.AppendLine("kind,name,appearances,wins,win_rate");
-        foreach (var (n, t) in attackTypes.OrderBy(x => x.Key)) csv.AppendLine($"attack_type,{n},{t.Appearances},{t.Wins},{F(t.Rate)}");
-        foreach (var (n, t) in professions.OrderBy(x => x.Key)) csv.AppendLine($"profession,{n},{t.Appearances},{t.Wins},{F(t.Rate)}");
+        foreach (var (n, t) in classes.OrderBy(x => x.Key)) csv.AppendLine($"class,{n},{t.Appearances},{t.Wins},{F(t.Rate)}");
+        foreach (var (n, t) in keystones.OrderBy(x => x.Key)) csv.AppendLine($"keystone,{n},{t.Appearances},{t.Wins},{F(t.Rate)}");
         File.WriteAllText(Path.Combine(folder, "classes.csv"), csv.ToString());
 
         csv.Clear();
@@ -133,12 +133,12 @@ public static class Report
             md.AppendLine($"| bottom | {n} | {t.Appearances} | {F(t.Rate)} | {F((double)t.Damage / t.Appearances)} | {F((double)t.Healing / t.Appearances)} |");
         md.AppendLine();
 
-        md.AppendLine("## Attack types and professions");
+        md.AppendLine("## Classes and keystones");
         md.AppendLine();
         md.AppendLine("| Kind | Name | Appearances | Win rate % |");
         md.AppendLine("|---|---|---:|---:|");
-        foreach (var (n, t) in attackTypes.OrderByDescending(x => x.Value.Rate)) md.AppendLine($"| attack type | {n} | {t.Appearances} | {F(t.Rate)} |");
-        foreach (var (n, t) in professions.OrderByDescending(x => x.Value.Rate)) md.AppendLine($"| profession | {n} | {t.Appearances} | {F(t.Rate)} |");
+        foreach (var (n, t) in classes.OrderByDescending(x => x.Value.Rate)) md.AppendLine($"| class | {n} | {t.Appearances} | {F(t.Rate)} |");
+        foreach (var (n, t) in keystones.OrderByDescending(x => x.Value.Rate)) md.AppendLine($"| keystone | {n} | {t.Appearances} | {F(t.Rate)} |");
         md.AppendLine();
 
         var skillRanked = skills.Where(x => x.Value.Appearances >= 50).OrderByDescending(x => x.Value.Rate).ToList();
@@ -148,7 +148,7 @@ public static class Report
         md.AppendLine("|---|---|---:|---:|---:|");
         foreach (var (n, t) in skillRanked.Take(15)) md.AppendLine($"| best | {n} | {t.Appearances} | {F(t.Rate)} | {F((double)t.Uses / t.Appearances)} |");
         foreach (var (n, t) in skillRanked.TakeLast(15).Reverse()) md.AppendLine($"| worst | {n} | {t.Appearances} | {F(t.Rate)} | {F((double)t.Uses / t.Appearances)} |");
-        var unused = content.ProfessionSkills.Where(s => s.Kind == "A" || s.Kind.StartsWith("A (")).Where(s => !skills.TryGetValue(s.Id, out var t) || t.Uses == 0).Select(s => s.Id).ToList();
+        var unused = content.Skills.Where(s => s.Kind == "A").Where(s => !skills.TryGetValue(s.Id, out var t) || t.Uses == 0).Select(s => s.Id).ToList();
         md.AppendLine();
         md.AppendLine($"Active skills never used in any battle ({unused.Count}): {string.Join(", ", unused)}");
         md.AppendLine();

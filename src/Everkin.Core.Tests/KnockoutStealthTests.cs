@@ -362,7 +362,7 @@ public class StealthTests
         var enemy = Place.Unit(s, Side.B, Row.Front);
         Stealth.Break(s, enemy, StealthCause.Hit); // no-op: not stealthed yet
         s.GetUnit(enemy).IsStealthed = true;
-        Assert.False(Targeting.IsLegalTarget(s, me, enemy, Reach.Unlimited));
+        Assert.False(Targeting.IsLegalTarget(s, me, enemy));
         Assert.Contains(enemy, AreaPatterns.Row(s, Side.B, Row.Front));
     }
 }

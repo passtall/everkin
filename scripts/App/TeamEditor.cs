@@ -101,7 +101,7 @@ public partial class TeamEditor : Control, IBackNavigable
     private readonly Dictionary<Row, RowDrop> _rows = new();
     private readonly GridContainer _grid = new() { Columns = 5 };
     private readonly Label _page = Ui.Label("", 20);
-    private OptionButton _attack = null!, _profession = null!, _sort = null!, _owned = null!;
+    private OptionButton _class = null!, _sort = null!, _owned = null!;
 
     /// <summary>Where Back leads (the campaign map when opened from it); the main menu by default.</summary>
     public Action? Back { get; init; }
@@ -158,8 +158,7 @@ public partial class TeamEditor : Control, IBackNavigable
         rightBox.AddThemeConstantOverride("separation", 8);
         var filters = new HBoxContainer();
         filters.AddThemeConstantOverride("separation", 8);
-        _attack = Options(filters, "All attack types", Game.Content.AttackTypes.Select(a => (a.Id, a.Name)));
-        _profession = Options(filters, "All professions", Game.Content.Professions.Select(p => (p.Id, p.Name)));
+        _class = Options(filters, "All classes", Game.Content.Classes.Select(c => (c.Id, c.Name)));
         _sort = Options(filters, null, new[] { ("name", "Name"), ("hp", "HP"), ("speed", "Speed"), ("power", "Power"), ("cost", "Cost") });
         _owned = Options(filters, null, new[] { ("owned", "Owned"), ("not", "Not owned") });
         rightBox.AddChild(filters);
@@ -264,7 +263,7 @@ public partial class TeamEditor : Control, IBackNavigable
     {
         var card = new DragCard { CreatureId = def.Id, InTeam = inTeam, Draggable = draggable, Mode = mode, CustomMinimumSize = size, Size = size, SizeFlagsHorizontal = SizeFlags.ShrinkCenter, SizeFlagsVertical = SizeFlags.ShrinkCenter, TooltipText = $"{def.Name}\n{CardInfo.FromCreature(def).ClassLine}\nHP {def.Hp}  Power {def.Power}  Speed {def.Speed}  Cost {def.Cost}" };
         card.Bind(CardInfo.FromCreature(def));
-        card.Clicked += c => _main.Open(new SkillTreeEditor(_main, ((DragCard)c).CreatureId, () => _main.Open(new TeamEditor(_main) { Back = Back, TutorialTeam = TutorialTeam })));
+        card.Clicked += c => Inspect(((DragCard)c).CreatureId);
         card.RightClicked += c => Inspect(((DragCard)c).CreatureId);
         return card;
     }
@@ -355,8 +354,7 @@ public partial class TeamEditor : Control, IBackNavigable
         foreach (var c in _grid.GetChildren()) c.QueueFree();
         var notOwned = Selected(_owned, false) == "not";
         IEnumerable<CreatureDef> list = Game.Content.Creatures.Where(c => Profile.Owns(c.Id) != notOwned);
-        if (Selected(_attack, true) is { } at) list = list.Where(c => c.AttackType == at);
-        if (Selected(_profession, true) is { } pr) list = list.Where(c => c.Professions.Contains(pr));
+        if (Selected(_class, true) is { } cl) list = list.Where(c => c.Classes.Contains(cl));
         list = Selected(_sort, false) switch
         {
             "hp" => list.OrderByDescending(c => c.Hp).ThenBy(c => c.Name),
@@ -382,7 +380,7 @@ public partial class TeamEditor : Control, IBackNavigable
     private void Inspect(string creatureId)
     {
         _inspection?.QueueFree();
-        _inspection = new InspectionLite(CardInfo.FromCreature(Game.Content.CreaturesById[creatureId], Game.CardSkills(Profile.BuildOf(creatureId).Prepend(Game.Catalog.AttackSkillFor(Game.Content.CreaturesById[creatureId].AttackType)))));
+        _inspection = new InspectionLite(CardInfo.FromCreature(Game.Content.CreaturesById[creatureId], Game.CardSkills(Game.Content.ClassSkillsOf(Game.Content.CreaturesById[creatureId]).Prepend(Game.Content.CreaturesById[creatureId].Attack))));
         AddChild(_inspection);
         Ui.Fill(_inspection);
     }

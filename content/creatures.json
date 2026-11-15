@@ -3,12 +3,16 @@
     {
       "id": "abacus-strategist",
       "name": "Tallymarch",
-      "attackType": "brawl",
-      "professions": [
-        "leader"
+      "classes": [
+        "tactician",
+        "commander"
       ],
+      "keystones": [
+        "all_in",
+        "drill"
+      ],
+      "attack": "bead_count",
       "artFile": "abacus-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 40,
       "speed": 5,
@@ -25,20 +29,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "accordion-warlord",
       "name": "Wheezewarden",
-      "attackType": "brawl",
-      "professions": [
-        "leader",
-        "warrior"
+      "classes": [
+        "bard",
+        "berserker"
       ],
+      "keystones": [
+        "grand_chorus",
+        "reckless_swing"
+      ],
+      "attack": "sour_chord",
       "artFile": "accordion-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 40,
       "speed": 5,
@@ -55,19 +60,21 @@
         -62,
         1095,
         1643
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "anchor-sentinel",
       "name": "Barnacle Bulwark",
-      "attackType": "blunt",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "shield_wall",
+        "thorned_ward"
+      ],
+      "attack": "chain_haul",
       "artFile": "anchor-01.png",
-      "source": null,
       "biome": "coast",
       "hp": 65,
       "speed": 3,
@@ -84,20 +91,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "ankylosaur-guardian-club",
       "name": "Clubtail Grumbleback",
-      "attackType": "blunt",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "berserker"
       ],
+      "keystones": [
+        "hold_position",
+        "last_stand"
+      ],
+      "attack": "tail_club",
       "artFile": "ankylosaur-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 70,
       "speed": 3,
@@ -114,19 +122,21 @@
         0,
         1061,
         1592
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "ant-engineer-gear",
       "name": "Cogmarch Ant",
-      "attackType": "ranged",
-      "professions": [
-        "tinker"
+      "classes": [
+        "engineer",
+        "chemist"
       ],
+      "keystones": [
+        "reinforced",
+        "big_finish"
+      ],
+      "attack": "rivet_shot",
       "artFile": "ant-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 20,
       "speed": 8,
@@ -143,19 +153,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "armadillo-knight",
       "name": "Armadillo Knight",
-      "attackType": "blunt",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "shield_wall",
+        "twin_wards"
+      ],
+      "attack": "shield_rush",
       "artFile": "armadillo-02.png",
-      "source": "armadillo-knight.png",
       "biome": "desert",
       "hp": 50,
       "speed": 4,
@@ -172,19 +184,21 @@
         46,
         993,
         1490
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "armadillo-knight-2",
       "name": "Armadillo Recruit",
-      "attackType": "blunt",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "unbreakable",
+        "steadfast_ward"
+      ],
+      "attack": "scale_swipe",
       "artFile": "armadillo-01.png",
-      "source": "armadillo-knight-2.png",
       "biome": "desert",
       "hp": 45,
       "speed": 6,
@@ -201,20 +215,21 @@
         70,
         977,
         1466
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "astrolabe-judge",
       "name": "Starwright Judge",
-      "attackType": "aura",
-      "professions": [
-        "sorcerer",
-        "leader"
+      "classes": [
+        "enchanter",
+        "commander"
       ],
+      "keystones": [
+        "twin_enchant",
+        "rally"
+      ],
+      "attack": "ring_spin",
       "artFile": "astrolabe-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 40,
       "speed": 5,
@@ -231,19 +246,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "aurochs-bodyguard-plate",
       "name": "Ironhide Aurochs",
-      "attackType": "brawl",
-      "professions": [
-        "warrior"
+      "classes": [
+        "berserker",
+        "champion"
       ],
+      "keystones": [
+        "unstoppable",
+        "hunt_down"
+      ],
+      "attack": "trample",
       "artFile": "aurochs-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 65,
       "speed": 3,
@@ -260,20 +277,21 @@
         -6,
         1089,
         1634
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "axolotl-mage-water",
       "name": "Ripplequill",
-      "attackType": "magic",
-      "professions": [
-        "elementalist",
-        "sorcerer"
+      "classes": [
+        "cryomancer",
+        "enchanter"
       ],
+      "keystones": [
+        "cold_heart",
+        "lingering_magic"
+      ],
+      "attack": "bubble_orb",
       "artFile": "axolotl-01.png",
-      "source": null,
       "biome": "lagoon",
       "hp": 20,
       "speed": 8,
@@ -290,20 +308,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "ayeaye-hexer-candle",
       "name": "Candlefinger",
-      "attackType": "magic",
-      "professions": [
-        "sorcerer",
-        "rogue"
+      "classes": [
+        "hexer",
+        "thief"
       ],
+      "keystones": [
+        "witchs_patience",
+        "escape_artist"
+      ],
+      "attack": "wick_flicker",
       "artFile": "ayeaye-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 20,
       "speed": 8,
@@ -320,20 +339,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "badger-summoner-drum",
       "name": "Drumbadger",
-      "attackType": "blunt",
-      "professions": [
+      "classes": [
         "summoner",
-        "leader"
+        "bard"
       ],
+      "keystones": [
+        "golem_heart",
+        "rhythm"
+      ],
+      "attack": "drumroll",
       "artFile": "badger-01.png",
-      "source": null,
       "biome": "autumn_woods",
       "hp": 45,
       "speed": 5,
@@ -350,20 +370,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "ballast-bodyguard",
       "name": "Sandbag Sentinel",
-      "attackType": "blunt",
-      "professions": [
-        "guardian",
-        "flying"
+      "classes": [
+        "bulwark",
+        "skyborne"
       ],
+      "keystones": [
+        "hold_position",
+        "sky_lord"
+      ],
+      "attack": "sand_spill",
       "artFile": "ballast-01.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 50,
       "speed": 5,
@@ -380,20 +401,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "basilisk-sorcerer-gaze",
       "name": "Stonegaze Basilisk",
-      "attackType": "aura",
-      "professions": [
-        "warrior",
-        "rogue"
+      "classes": [
+        "berserker",
+        "thief"
       ],
+      "keystones": [
+        "reckless_swing",
+        "master_thief"
+      ],
+      "attack": "stone_gaze",
       "artFile": "basilisk-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 65,
       "speed": 3,
@@ -410,19 +432,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "bassoon-hexer-requiem",
       "name": "Dirgewind",
-      "attackType": "breath",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "crescendo",
+        "vanguard"
+      ],
+      "attack": "reed_lash",
       "artFile": "bassoon-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 40,
       "speed": 5,
@@ -439,20 +463,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "bat-rogue-shadow",
       "name": "Bat Rogue",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "flying"
+      "classes": [
+        "assassin",
+        "skyborne"
       ],
+      "keystones": [
+        "unseen",
+        "eagle_eye"
+      ],
+      "attack": "shadow_carve",
       "artFile": "bat-02.png",
-      "source": "bat-rogue-shadow.png",
       "biome": "crystal_caverns",
       "hp": 20,
       "speed": 7,
@@ -469,20 +494,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "bat-summoner-moon",
       "name": "Moonwing",
-      "attackType": "magic",
-      "professions": [
-        "flying",
+      "classes": [
+        "skyborne",
         "summoner"
       ],
+      "keystones": [
+        "lift",
+        "portal"
+      ],
+      "attack": "screech",
       "artFile": "bat-01.png",
-      "source": null,
       "biome": "crystal_caverns",
       "hp": 20,
       "speed": 8,
@@ -499,19 +525,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "baton-marshal",
       "name": "Marshal Tempo",
-      "attackType": "polearm",
-      "professions": [
-        "leader"
+      "classes": [
+        "commander",
+        "tactician"
       ],
+      "keystones": [
+        "drill",
+        "inspiring_presence"
+      ],
+      "attack": "ribbon_lash",
       "artFile": "baton-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 40,
       "speed": 5,
@@ -528,20 +556,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "beacon-summoner",
       "name": "Lighthouse Wakelamp",
-      "attackType": "aura",
-      "professions": [
-        "flying",
+      "classes": [
+        "skyborne",
         "summoner"
       ],
+      "keystones": [
+        "sky_lord",
+        "quickening"
+      ],
+      "attack": "lamp_beam",
       "artFile": "beacon-01.png",
-      "source": null,
       "biome": "coast",
       "hp": 70,
       "speed": 3,
@@ -558,20 +587,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "beaver-healer-pump",
       "name": "Pumpwhisker",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "healer"
+      "classes": [
+        "engineer",
+        "mender"
       ],
+      "keystones": [
+        "self_repair",
+        "overflowing_care"
+      ],
+      "attack": "pump_spray",
       "artFile": "beaver-01.png",
-      "source": null,
       "biome": "wet_forest",
       "hp": 40,
       "speed": 5,
@@ -588,20 +618,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "bee-shaman-sun",
       "name": "Sunhum",
-      "attackType": "magic",
-      "professions": [
-        "primalist",
-        "flying"
+      "classes": [
+        "totemist",
+        "skyborne"
       ],
+      "keystones": [
+        "great_totem",
+        "eagle_eye"
+      ],
+      "attack": "sun_sting",
       "artFile": "bee-01.png",
-      "source": null,
       "biome": "flower_meadow",
       "hp": 20,
       "speed": 8,
@@ -618,20 +649,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "beetle-2",
       "name": "Beetle Recruit",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "berserker"
       ],
+      "keystones": [
+        "unbreakable",
+        "last_stand"
+      ],
+      "attack": "beetle_butt",
       "artFile": "beetle-01.png",
-      "source": "beetle-2.png",
       "biome": "jungle",
       "hp": 45,
       "speed": 5,
@@ -648,20 +680,21 @@
         67,
         979,
         1469
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "beetle-engineer-seed",
       "name": "Seedshot Scarab",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "primalist"
+      "classes": [
+        "chemist",
+        "ritualist"
       ],
+      "keystones": [
+        "potent_brew",
+        "deluge"
+      ],
+      "attack": "sprout_shot",
       "artFile": "beetle-04.png",
-      "source": null,
       "biome": "jungle",
       "hp": 30,
       "speed": 8,
@@ -678,20 +711,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "beetle-knight-shield",
       "name": "Beetle Guardian",
-      "attackType": "blunt",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "champion"
       ],
+      "keystones": [
+        "shield_wall",
+        "duelist"
+      ],
+      "attack": "carapace_bash",
       "artFile": "beetle-02.png",
-      "source": "beetle-knight-shield.png",
       "biome": "jungle",
       "hp": 55,
       "speed": 4,
@@ -708,20 +742,21 @@
         42,
         996,
         1494
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "behemoth-titan-iron",
       "name": "Ironbound Behemoth",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "elementalist"
+      "classes": [
+        "bulwark",
+        "stormcaller"
       ],
+      "keystones": [
+        "hold_position",
+        "overcharge"
+      ],
+      "attack": "iron_stomp",
       "artFile": "behemoth-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 75,
       "speed": 3,
@@ -738,20 +773,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "bell-guardian-clapper",
       "name": "Clapperward",
-      "attackType": "blunt",
-      "professions": [
-        "leader",
+      "classes": [
+        "bard",
         "summoner"
       ],
+      "keystones": [
+        "grand_chorus",
+        "golem_heart"
+      ],
+      "attack": "toll",
       "artFile": "bell-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 65,
       "speed": 3,
@@ -768,20 +804,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "bellows-drake",
       "name": "Puffing Forgedrake",
-      "attackType": "breath",
-      "professions": [
-        "tinker",
-        "warrior"
+      "classes": [
+        "engineer",
+        "champion"
       ],
+      "keystones": [
+        "rapid_fire",
+        "glory"
+      ],
+      "attack": "bellows_spit",
       "artFile": "bellows-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 45,
       "speed": 5,
@@ -798,20 +835,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "binturong-bard-vine",
       "name": "Vinelilt",
-      "attackType": "whip",
-      "professions": [
-        "leader",
-        "primalist"
+      "classes": [
+        "bard",
+        "ritualist"
       ],
+      "keystones": [
+        "rhythm",
+        "tidecaller"
+      ],
+      "attack": "vine_lash",
       "artFile": "binturong-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 40,
       "speed": 5,
@@ -828,20 +866,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "bloomspear",
       "name": "Bloomspear",
-      "attackType": "polearm",
-      "professions": [
-        "primalist",
-        "warrior"
+      "classes": [
+        "spiritwalker",
+        "champion"
       ],
+      "keystones": [
+        "soul_anchor",
+        "hunt_down"
+      ],
+      "attack": "petal_pierce",
       "artFile": "bloomspear-01.png",
-      "source": "7_f.png",
       "biome": "flower_meadow",
       "hp": 40,
       "speed": 5,
@@ -858,20 +897,21 @@
         51,
         973,
         1460
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "boar-guard-hex",
       "name": "Hexbristle",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "sorcerer"
+      "classes": [
+        "bulwark",
+        "hexer"
       ],
+      "keystones": [
+        "unbreakable",
+        "lingering_malice"
+      ],
+      "attack": "cursed_gore",
       "artFile": "boar-02.png",
-      "source": null,
       "biome": "autumn_woods",
       "hp": 45,
       "speed": 5,
@@ -888,19 +928,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "boar-magma",
       "name": "Magma Hog",
-      "attackType": "brawl",
-      "professions": [
-        "warrior"
+      "classes": [
+        "berserker",
+        "champion"
       ],
+      "keystones": [
+        "unstoppable",
+        "duelist"
+      ],
+      "attack": "magma_tusk",
       "artFile": "boar-01.png",
-      "source": "10_f.png",
       "biome": "ashlands",
       "hp": 60,
       "speed": 4,
@@ -917,20 +959,21 @@
         272,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "bombardierbeetle-alchemist-acid",
       "name": "Acidpop",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "rogue"
+      "classes": [
+        "chemist",
+        "saboteur"
       ],
+      "keystones": [
+        "volatile",
+        "wrecker"
+      ],
+      "attack": "acid_throw",
       "artFile": "bombardierbeetle-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 30,
       "speed": 8,
@@ -947,20 +990,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "book-summoner-fold",
       "name": "Foldtome",
-      "attackType": "magic",
-      "professions": [
+      "classes": [
         "summoner",
-        "primalist"
+        "spiritwalker"
       ],
+      "keystones": [
+        "portal",
+        "haunting"
+      ],
+      "attack": "paper_cut",
       "artFile": "book-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 40,
       "speed": 5,
@@ -977,20 +1021,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "brazier-summoner-coal",
       "name": "Coalwraith Brazier",
-      "attackType": "aura",
-      "professions": [
+      "classes": [
         "summoner",
-        "elementalist"
+        "pyromancer"
       ],
+      "keystones": [
+        "quickening",
+        "wildfire"
+      ],
+      "attack": "ember_toss",
       "artFile": "brazier-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 50,
       "speed": 5,
@@ -1007,20 +1052,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "buffalo-guard-root",
       "name": "Rootyoke Buffalo",
-      "attackType": "whip",
-      "professions": [
-        "guardian",
-        "primalist"
+      "classes": [
+        "bulwark",
+        "ritualist"
       ],
+      "keystones": [
+        "shield_wall",
+        "frostbinder"
+      ],
+      "attack": "root_snap",
       "artFile": "buffalo-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 65,
       "speed": 3,
@@ -1037,20 +1083,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "bugle-skyrider",
       "name": "Skybrass",
-      "attackType": "breath",
-      "professions": [
-        "leader",
-        "flying"
+      "classes": [
+        "commander",
+        "skyborne"
       ],
+      "keystones": [
+        "rally",
+        "lift"
+      ],
+      "attack": "fanfare",
       "artFile": "bugle-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 20,
       "speed": 8,
@@ -1067,20 +1114,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "candelabrum-warrior-wax",
       "name": "Waxbrawler",
-      "attackType": "brawl",
-      "professions": [
-        "warrior",
-        "sorcerer"
+      "classes": [
+        "berserker",
+        "transmuter"
       ],
+      "keystones": [
+        "reckless_swing",
+        "lasting_change"
+      ],
+      "attack": "hot_wax",
       "artFile": "candelabrum-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 45,
       "speed": 5,
@@ -1097,20 +1145,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "cannon-marauder",
       "name": "Powderbelch",
-      "attackType": "ranged",
-      "professions": [
-        "warrior",
-        "hunter"
+      "classes": [
+        "berserker",
+        "tracker"
       ],
+      "keystones": [
+        "last_stand",
+        "sniff_the_air"
+      ],
+      "attack": "cannon_shot",
       "artFile": "cannon-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 75,
       "speed": 3,
@@ -1127,20 +1176,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "capybara-guard-calm",
       "name": "Calmwater Capybara",
-      "attackType": "aura",
-      "professions": [
-        "healer",
+      "classes": [
+        "lifebinder",
         "summoner"
       ],
+      "keystones": [
+        "martyr",
+        "golem_heart"
+      ],
+      "attack": "water_splash",
       "artFile": "capybara-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 40,
       "speed": 5,
@@ -1157,20 +1207,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "caracal-hunter-spear",
       "name": "Tuftspear",
-      "attackType": "brawl",
-      "professions": [
-        "sorcerer",
-        "rogue"
+      "classes": [
+        "enchanter",
+        "thief"
       ],
+      "keystones": [
+        "spell_ward",
+        "shadow_purse"
+      ],
+      "attack": "spear_throw",
       "artFile": "caracal-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 40,
       "speed": 5,
@@ -1187,20 +1238,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "carillon-summoner-chime",
       "name": "Chimespire",
-      "attackType": "brawl",
-      "professions": [
-        "leader",
-        "guardian"
+      "classes": [
+        "bard",
+        "keeper"
       ],
+      "keystones": [
+        "crescendo",
+        "thorned_ward"
+      ],
+      "attack": "carillon_peal",
       "artFile": "carillon-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 75,
       "speed": 3,
@@ -1217,20 +1269,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "cassowary-captain-horn",
       "name": "Crestcaller",
-      "attackType": "breath",
-      "professions": [
-        "leader",
-        "warrior"
+      "classes": [
+        "bard",
+        "berserker"
       ],
+      "keystones": [
+        "grand_chorus",
+        "unstoppable"
+      ],
+      "attack": "horn_call",
       "artFile": "cassowary-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 40,
       "speed": 5,
@@ -1247,19 +1300,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "caterpillar-bard",
       "name": "Caterpillar Bard",
-      "attackType": "breath",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "rhythm",
+        "vanguard"
+      ],
+      "attack": "silk_spit",
       "artFile": "caterpillar-01.png",
-      "source": "caterpillar-bard.png",
       "biome": "mushroom_grotto",
       "hp": 20,
       "speed": 7,
@@ -1276,20 +1331,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "catfolk-spellblade-moon",
       "name": "Moonclaw Spellblade",
-      "attackType": "bladed",
-      "professions": [
-        "warrior",
-        "rogue"
+      "classes": [
+        "champion",
+        "thief"
       ],
+      "keystones": [
+        "glory",
+        "escape_artist"
+      ],
+      "attack": "moonlit_feint",
       "artFile": "catfolk-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 40,
       "speed": 5,
@@ -1306,20 +1362,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "centipede-assassin-sickle",
       "name": "Sicklecoil",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "warrior"
+      "classes": [
+        "assassin",
+        "champion"
       ],
+      "keystones": [
+        "vanishing_kill",
+        "hunt_down"
+      ],
+      "attack": "venom_fang",
       "artFile": "centipede-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 50,
       "speed": 5,
@@ -1336,20 +1393,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "chalice-of-storms",
       "name": "Stormgoblet",
-      "attackType": "magic",
-      "professions": [
-        "elementalist",
-        "flying"
+      "classes": [
+        "cryomancer",
+        "skyborne"
       ],
+      "keystones": [
+        "brittle",
+        "sky_lord"
+      ],
+      "attack": "frost_spill",
       "artFile": "chalice-01.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 30,
       "speed": 8,
@@ -1366,20 +1424,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "chameleon-trickster-tongue",
       "name": "Shiftscale",
-      "attackType": "whip",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "saboteur",
+        "tracker"
       ],
+      "keystones": [
+        "chaos_agent",
+        "scent_of_blood"
+      ],
+      "attack": "snag_and_vanish",
       "artFile": "chameleon-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 20,
       "speed": 8,
@@ -1396,20 +1455,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "chandelier-summoner-candle",
       "name": "Candlecrown",
-      "attackType": "magic",
-      "professions": [
-        "summoner",
-        "flying"
+      "classes": [
+        "necromancer",
+        "skyborne"
       ],
+      "keystones": [
+        "lich_form",
+        "eagle_eye"
+      ],
+      "attack": "wax_drip",
       "artFile": "chandelier-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 45,
       "speed": 5,
@@ -1426,20 +1486,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "chest-bodyguard-lock",
       "name": "Lockjaw Chest",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "tinker"
+      "classes": [
+        "bulwark",
+        "engineer"
       ],
+      "keystones": [
+        "hold_position",
+        "reinforced"
+      ],
+      "attack": "lid_snap",
       "artFile": "chest-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 55,
       "speed": 5,
@@ -1456,20 +1517,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "chinchilla-summoner-ocarina",
       "name": "Ocarina Puff",
-      "attackType": "magic",
-      "professions": [
-        "leader",
+      "classes": [
+        "bard",
         "summoner"
       ],
+      "keystones": [
+        "crescendo",
+        "portal"
+      ],
+      "attack": "lullnote",
       "artFile": "chinchilla-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 20,
       "speed": 8,
@@ -1486,20 +1548,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "cicada-bard-chime",
       "name": "Chimewing Cicada",
-      "attackType": "magic",
-      "professions": [
-        "sorcerer",
-        "healer"
+      "classes": [
+        "enchanter",
+        "mender"
       ],
+      "keystones": [
+        "twin_enchant",
+        "regrowth"
+      ],
+      "attack": "wing_buzz",
       "artFile": "cicada-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 20,
       "speed": 8,
@@ -1516,19 +1579,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "cinderhorn",
       "name": "Cinderhorn",
-      "attackType": "bladed",
-      "professions": [
-        "warrior"
+      "classes": [
+        "champion",
+        "berserker"
       ],
+      "keystones": [
+        "duelist",
+        "reckless_swing"
+      ],
+      "attack": "cinder_horn",
       "artFile": "cinderhorn-01.png",
-      "source": "8_f.png",
       "biome": "ashlands",
       "hp": 45,
       "speed": 5,
@@ -1545,19 +1610,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "coati-trickster-dice",
       "name": "Diceroll Coati",
-      "attackType": "ranged",
-      "professions": [
-        "rogue"
+      "classes": [
+        "saboteur",
+        "thief"
       ],
+      "keystones": [
+        "disarm_trap",
+        "master_thief"
+      ],
+      "attack": "snake_eyes",
       "artFile": "coati-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 20,
       "speed": 8,
@@ -1574,19 +1641,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "cobra",
       "name": "Hoodspitter",
-      "attackType": "breath",
-      "professions": [
-        "rogue"
+      "classes": [
+        "thief",
+        "saboteur"
       ],
+      "keystones": [
+        "shadow_purse",
+        "wrecker"
+      ],
+      "attack": "venom_spray",
       "artFile": "cobra-01.png",
-      "source": "cobra.png",
       "biome": "desert",
       "hp": 40,
       "speed": 5,
@@ -1603,20 +1672,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "compass-hunter-needle",
       "name": "Northneedle",
-      "attackType": "bladed",
-      "professions": [
-        "hunter",
-        "tinker"
+      "classes": [
+        "assassin",
+        "engineer"
       ],
+      "keystones": [
+        "venom_blades",
+        "self_repair"
+      ],
+      "attack": "needle_point",
       "artFile": "compass-02.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 30,
       "speed": 8,
@@ -1633,19 +1703,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "conchphone-bard-horn",
       "name": "Conchhorn",
-      "attackType": "breath",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "grand_chorus",
+        "drill"
+      ],
+      "attack": "gramophone_blare",
       "artFile": "conchphone-01.png",
-      "source": null,
       "biome": "coast",
       "hp": 45,
       "speed": 5,
@@ -1662,20 +1734,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "corkscrew-stalker",
       "name": "Twistcork",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "tinker"
+      "classes": [
+        "assassin",
+        "engineer"
       ],
+      "keystones": [
+        "unseen",
+        "rapid_fire"
+      ],
+      "attack": "twist_in",
       "artFile": "corkscrew-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 30,
       "speed": 8,
@@ -1692,19 +1765,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "crab-alchemist",
       "name": "Crab Alchemist",
-      "attackType": "ranged",
-      "professions": [
-        "tinker"
+      "classes": [
+        "chemist",
+        "engineer"
       ],
+      "keystones": [
+        "big_finish",
+        "reinforced"
+      ],
+      "attack": "flask_toss",
       "artFile": "crab-01.png",
-      "source": "crab-alchemist.png",
       "biome": "coast",
       "hp": 55,
       "speed": 6,
@@ -1721,19 +1796,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "crab-guard-decoy",
       "name": "Decoy Crab",
-      "attackType": "brawl",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "unbreakable",
+        "twin_wards"
+      ],
+      "attack": "pincer_grip",
       "artFile": "crab-03.png",
-      "source": null,
       "biome": "coast",
       "hp": 50,
       "speed": 5,
@@ -1750,20 +1827,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "crab-smith",
       "name": "Crab Smith",
-      "attackType": "blunt",
-      "professions": [
-        "tinker",
-        "warrior"
+      "classes": [
+        "engineer",
+        "berserker"
       ],
+      "keystones": [
+        "self_repair",
+        "last_stand"
+      ],
+      "attack": "hammer_claw",
       "artFile": "crab-02.png",
-      "source": "crab-smith.png",
       "biome": "coast",
       "hp": 50,
       "speed": 5,
@@ -1780,20 +1858,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "crane-hoist-titan",
       "name": "Hoist Titan",
-      "attackType": "brawl",
-      "professions": [
-        "healer",
-        "tinker"
+      "classes": [
+        "mender",
+        "engineer"
       ],
+      "keystones": [
+        "triage",
+        "rapid_fire"
+      ],
+      "attack": "hook_swing",
       "artFile": "crane-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 75,
       "speed": 3,
@@ -1810,20 +1889,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "crane-summoner-feather",
       "name": "Featherveil Crane",
-      "attackType": "magic",
-      "professions": [
+      "classes": [
         "summoner",
-        "elementalist"
+        "stormcaller"
       ],
+      "keystones": [
+        "quickening",
+        "static_field"
+      ],
+      "attack": "storm_plume",
       "artFile": "crane-02.png",
-      "source": null,
       "biome": "wet_forest",
       "hp": 40,
       "speed": 5,
@@ -1840,19 +1920,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "cricket-bard-fiddle",
       "name": "Fiddlewhit",
-      "attackType": "magic",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "rhythm",
+        "rally"
+      ],
+      "attack": "fiddle_shriek",
       "artFile": "cricket-01.png",
-      "source": null,
       "biome": "flower_meadow",
       "hp": 20,
       "speed": 8,
@@ -1869,20 +1951,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "crocodile-shaman",
       "name": "Crocodile Shaman",
-      "attackType": "brawl",
-      "professions": [
-        "primalist",
-        "warrior"
+      "classes": [
+        "totemist",
+        "berserker"
       ],
+      "keystones": [
+        "sturdy_totems",
+        "unstoppable"
+      ],
+      "attack": "death_roll",
       "artFile": "crocodile-01.png",
-      "source": "crocodile-shaman.png",
       "biome": "swamp",
       "hp": 40,
       "speed": 3,
@@ -1899,20 +1982,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "crow-necromancer-skull",
       "name": "Skullcaw",
-      "attackType": "magic",
-      "professions": [
-        "summoner",
-        "flying"
+      "classes": [
+        "necromancer",
+        "skyborne"
       ],
+      "keystones": [
+        "bone_armor",
+        "lift"
+      ],
+      "attack": "grave_peck",
       "artFile": "crow-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 20,
       "speed": 8,
@@ -1929,19 +2013,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "crucible-summoner",
       "name": "Moltencup",
-      "attackType": "aura",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "shield_wall",
+        "steadfast_ward"
+      ],
+      "attack": "molten_pour",
       "artFile": "crucible-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 55,
       "speed": 5,
@@ -1958,19 +2044,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "cuttlefish-assassin-needle",
       "name": "Needleglow",
-      "attackType": "bladed",
-      "professions": [
-        "rogue"
+      "classes": [
+        "assassin",
+        "thief"
       ],
+      "keystones": [
+        "vanishing_kill",
+        "escape_artist"
+      ],
+      "attack": "ink_cloud",
       "artFile": "cuttlefish-01.png",
-      "source": null,
       "biome": "lagoon",
       "hp": 20,
       "speed": 8,
@@ -1987,19 +2075,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "dormouse-summoner-bell",
       "name": "Bellnap Dormouse",
-      "attackType": "magic",
-      "professions": [
-        "summoner"
+      "classes": [
+        "summoner",
+        "enchanter"
       ],
+      "keystones": [
+        "golem_heart",
+        "lingering_magic"
+      ],
+      "attack": "yawn",
       "artFile": "dormouse-01.png",
-      "source": null,
       "biome": "autumn_woods",
       "hp": 20,
       "speed": 8,
@@ -2016,20 +2106,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "dragon-colossus-ember",
       "name": "Emberwyrm Colossus",
-      "attackType": "breath",
-      "professions": [
-        "warrior",
-        "flying"
+      "classes": [
+        "champion",
+        "skyborne"
       ],
+      "keystones": [
+        "glory",
+        "sky_lord"
+      ],
+      "attack": "ember_breath",
       "artFile": "dragon-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 70,
       "speed": 3,
@@ -2046,20 +2137,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "dragon-elder-obsidian",
       "name": "Obsidian Elder",
-      "attackType": "aura",
-      "professions": [
-        "leader",
-        "flying"
+      "classes": [
+        "commander",
+        "skyborne"
       ],
+      "keystones": [
+        "vanguard",
+        "eagle_eye"
+      ],
+      "attack": "glass_shard_breath",
       "artFile": "dragon-02.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 75,
       "speed": 3,
@@ -2076,20 +2168,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "dragon-sovereign-tempest",
       "name": "Tempest Sovereign",
-      "attackType": "breath",
-      "professions": [
-        "leader",
-        "flying"
+      "classes": [
+        "commander",
+        "skyborne"
       ],
+      "keystones": [
+        "drill",
+        "lift"
+      ],
+      "attack": "tempest_breath",
       "artFile": "dragon-03.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 70,
       "speed": 3,
@@ -2106,20 +2199,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "dragon-titan-glacier",
       "name": "Glacier Titan",
-      "attackType": "breath",
-      "professions": [
-        "elementalist",
-        "guardian"
+      "classes": [
+        "cryomancer",
+        "bulwark"
       ],
+      "keystones": [
+        "deep_chill",
+        "hold_position"
+      ],
+      "attack": "glacier_breath",
       "artFile": "dragon-04.png",
-      "source": null,
       "biome": "arctic",
       "hp": 75,
       "speed": 3,
@@ -2136,20 +2230,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "dragonfly-scout-bow",
       "name": "Reedarrow",
-      "attackType": "ranged",
-      "professions": [
-        "flying",
-        "hunter"
+      "classes": [
+        "skyborne",
+        "tracker"
       ],
+      "keystones": [
+        "sky_lord",
+        "relentless"
+      ],
+      "attack": "reed_arrow",
       "artFile": "dragonfly-01.png",
-      "source": null,
       "biome": "swamp",
       "hp": 20,
       "speed": 8,
@@ -2166,20 +2261,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "drake-titan-crystal",
       "name": "Crystalback Drake",
-      "attackType": "brawl",
-      "professions": [
-        "elementalist",
-        "sorcerer"
+      "classes": [
+        "stormcaller",
+        "transmuter"
       ],
+      "keystones": [
+        "eye_of_the_storm",
+        "brittle_glass"
+      ],
+      "attack": "prism_breath",
       "artFile": "drake-01.png",
-      "source": null,
       "biome": "crystal_caverns",
       "hp": 75,
       "speed": 3,
@@ -2196,19 +2292,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "drawbridge-bodyguard-chain",
       "name": "Chaingate",
-      "attackType": "brawl",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "unbreakable",
+        "thorned_ward"
+      ],
+      "attack": "drawbridge_drop",
       "artFile": "drawbridge-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 75,
       "speed": 3,
@@ -2225,20 +2323,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "drum-summoner-war",
       "name": "Wardrum",
-      "attackType": "aura",
-      "professions": [
-        "leader",
-        "warrior"
+      "classes": [
+        "bard",
+        "berserker"
       ],
+      "keystones": [
+        "crescendo",
+        "reckless_swing"
+      ],
+      "attack": "war_throb",
       "artFile": "drum-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 50,
       "speed": 5,
@@ -2255,20 +2354,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "dugong-guard-crystal",
       "name": "Crystalfin Dugong",
-      "attackType": "aura",
-      "professions": [
-        "sorcerer",
-        "elementalist"
+      "classes": [
+        "transmuter",
+        "stormcaller"
       ],
+      "keystones": [
+        "mirror_form",
+        "overcharge"
+      ],
+      "attack": "tidal_slap",
       "artFile": "dugong-02.png",
-      "source": null,
       "biome": "lagoon",
       "hp": 70,
       "speed": 3,
@@ -2285,20 +2385,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "elephant-summoner-idol",
       "name": "Idolbearer",
-      "attackType": "brawl",
-      "professions": [
+      "classes": [
         "summoner",
-        "primalist"
+        "totemist"
       ],
+      "keystones": [
+        "portal",
+        "spirit_shield"
+      ],
+      "attack": "idol_stomp",
       "artFile": "elephant-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 70,
       "speed": 3,
@@ -2315,20 +2416,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "ferret-summoner-mask",
       "name": "Maskwhisk",
-      "attackType": "brawl",
-      "professions": [
-        "rogue",
+      "classes": [
+        "thief",
         "summoner"
       ],
+      "keystones": [
+        "master_thief",
+        "quickening"
+      ],
+      "attack": "mask_swap",
       "artFile": "ferret-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 20,
       "speed": 8,
@@ -2345,20 +2447,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "fiddlercrab-trickster-coin",
       "name": "Coinclaw",
-      "attackType": "brawl",
-      "professions": [
-        "rogue",
-        "tinker"
+      "classes": [
+        "saboteur",
+        "engineer"
       ],
+      "keystones": [
+        "chaos_agent",
+        "reinforced"
+      ],
+      "attack": "big_claw_pinch",
       "artFile": "fiddlercrab-01.png",
-      "source": null,
       "biome": "coast",
       "hp": 30,
       "speed": 8,
@@ -2375,20 +2478,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "firefly",
       "name": "Firefly",
-      "attackType": "aura",
-      "professions": [
-        "flying",
-        "healer"
+      "classes": [
+        "skyborne",
+        "mender"
       ],
+      "keystones": [
+        "eagle_eye",
+        "overflowing_care"
+      ],
+      "attack": "glow_dart",
       "artFile": "firefly-02.png",
-      "source": "firefly.png",
       "biome": "flower_meadow",
       "hp": 20,
       "speed": 8,
@@ -2405,20 +2509,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "firefly-summoner-lantern",
       "name": "Lanternwing",
-      "attackType": "aura",
-      "professions": [
-        "flying",
+      "classes": [
+        "skyborne",
         "summoner"
       ],
+      "keystones": [
+        "lift",
+        "golem_heart"
+      ],
+      "attack": "lantern_flash",
       "artFile": "firefly-01.png",
-      "source": null,
       "biome": "flower_meadow",
       "hp": 20,
       "speed": 8,
@@ -2435,20 +2540,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "flyingfish-scout-dart",
       "name": "Dartfin",
-      "attackType": "ranged",
-      "professions": [
-        "flying",
-        "rogue"
+      "classes": [
+        "skyborne",
+        "assassin"
       ],
+      "keystones": [
+        "sky_lord",
+        "venom_blades"
+      ],
+      "attack": "dart_shot",
       "artFile": "flyingfish-01.png",
-      "source": null,
       "biome": "lagoon",
       "hp": 20,
       "speed": 8,
@@ -2465,20 +2571,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "fossa-hunter-harpoon",
       "name": "Harpoon Fossa",
-      "attackType": "polearm",
-      "professions": [
-        "hunter",
-        "rogue"
+      "classes": [
+        "tracker",
+        "thief"
       ],
+      "keystones": [
+        "sniff_the_air",
+        "shadow_purse"
+      ],
+      "attack": "harpoon_throw",
       "artFile": "fossa-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 40,
       "speed": 5,
@@ -2495,20 +2602,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "fox-bard",
       "name": "Fox Bard",
-      "attackType": "brawl",
-      "professions": [
-        "leader",
-        "rogue"
+      "classes": [
+        "bard",
+        "thief"
       ],
+      "keystones": [
+        "grand_chorus",
+        "escape_artist"
+      ],
+      "attack": "sly_nip",
       "artFile": "fox-01.png",
-      "source": "fox-bard.png",
       "biome": "autumn_woods",
       "hp": 20,
       "speed": 8,
@@ -2525,20 +2633,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "frigatebird-bard-throat",
       "name": "Throatdrum",
-      "attackType": "breath",
-      "professions": [
-        "leader",
-        "flying"
+      "classes": [
+        "bard",
+        "skyborne"
       ],
+      "keystones": [
+        "rhythm",
+        "eagle_eye"
+      ],
+      "attack": "throat_boom",
       "artFile": "frigatebird-01.png",
-      "source": null,
       "biome": "coast",
       "hp": 40,
       "speed": 5,
@@ -2555,20 +2664,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "frog-bard-dagger",
       "name": "Frog Bard Dagger",
-      "attackType": "bladed",
-      "professions": [
-        "leader",
-        "rogue"
+      "classes": [
+        "bard",
+        "assassin"
       ],
+      "keystones": [
+        "crescendo",
+        "unseen"
+      ],
+      "attack": "leaping_stab",
       "artFile": "frog-01.png",
-      "source": "frog-bard-dagger.png",
       "biome": "swamp",
       "hp": 20,
       "speed": 8,
@@ -2585,20 +2695,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "furnace-titan",
       "name": "Furnace Titan",
-      "attackType": "breath",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "champion",
+        "bulwark"
       ],
+      "keystones": [
+        "hunt_down",
+        "shield_wall"
+      ],
+      "attack": "furnace_blast",
       "artFile": "furnace-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 75,
       "speed": 3,
@@ -2615,20 +2726,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "gargoyle-sentinel-stone",
       "name": "Stonewatch Gargoyle",
-      "attackType": "polearm",
-      "professions": [
-        "flying",
-        "hunter"
+      "classes": [
+        "skyborne",
+        "tracker"
       ],
+      "keystones": [
+        "lift",
+        "scent_of_blood"
+      ],
+      "attack": "petrifying_glare",
       "artFile": "gargoyle-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 55,
       "speed": 5,
@@ -2645,20 +2757,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "gaur-bodyguard-armor",
       "name": "Bolted Gaur",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "berserker"
       ],
+      "keystones": [
+        "hold_position",
+        "last_stand"
+      ],
+      "attack": "armor_stomp",
       "artFile": "gaur-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 70,
       "speed": 3,
@@ -2675,20 +2788,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "gecko-alchemist-resin",
       "name": "Resinpaw",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "rogue"
+      "classes": [
+        "chemist",
+        "thief"
       ],
+      "keystones": [
+        "potent_brew",
+        "master_thief"
+      ],
+      "attack": "resin_flask",
       "artFile": "gecko-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 20,
       "speed": 8,
@@ -2705,20 +2819,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "gecko-summoner-prism",
       "name": "Prismtoe",
-      "attackType": "magic",
-      "professions": [
+      "classes": [
         "summoner",
-        "sorcerer"
+        "transmuter"
       ],
+      "keystones": [
+        "portal",
+        "lasting_change"
+      ],
+      "attack": "split_beam",
       "artFile": "gecko-02.png",
-      "source": null,
       "biome": "crystal_caverns",
       "hp": 20,
       "speed": 8,
@@ -2735,20 +2850,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "goat-shaman-totem",
       "name": "Totemhorn",
-      "attackType": "brawl",
-      "professions": [
-        "primalist",
-        "healer"
+      "classes": [
+        "totemist",
+        "lifebinder"
       ],
+      "keystones": [
+        "great_totem",
+        "phoenix"
+      ],
+      "attack": "horn_butt",
       "artFile": "goat-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 40,
       "speed": 5,
@@ -2765,20 +2881,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "goblet-paladin",
       "name": "Grailward",
-      "attackType": "aura",
-      "professions": [
-        "healer",
-        "warrior"
+      "classes": [
+        "cleric",
+        "champion"
       ],
+      "keystones": [
+        "sanctity",
+        "duelist"
+      ],
+      "attack": "holy_pour",
       "artFile": "goblet-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 50,
       "speed": 5,
@@ -2795,20 +2912,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "golem-colossus-furnace",
       "name": "Furnaceheart Colossus",
-      "attackType": "brawl",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "berserker",
+        "bulwark"
       ],
+      "keystones": [
+        "unstoppable",
+        "unbreakable"
+      ],
+      "attack": "furnace_claw",
       "artFile": "golem-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 75,
       "speed": 3,
@@ -2825,20 +2943,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "golem-engineer-gear",
       "name": "Gearwright Golem",
-      "attackType": "brawl",
-      "professions": [
-        "tinker",
-        "guardian"
+      "classes": [
+        "engineer",
+        "bulwark"
       ],
+      "keystones": [
+        "self_repair",
+        "shield_wall"
+      ],
+      "attack": "steam_vent",
       "artFile": "golem-02.png",
-      "source": null,
       "biome": "ruins",
       "hp": 75,
       "speed": 3,
@@ -2855,20 +2974,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "gong-hexer-dissonance",
       "name": "Discord Gong",
-      "attackType": "aura",
-      "professions": [
-        "leader",
-        "summoner"
+      "classes": [
+        "bard",
+        "necromancer"
       ],
+      "keystones": [
+        "grand_chorus",
+        "deaths_bounty"
+      ],
+      "attack": "dissonance",
       "artFile": "gong-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 50,
       "speed": 5,
@@ -2885,20 +3005,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "gorilla-bodyguard-fists",
       "name": "Ironfist Silverback",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "berserker"
       ],
+      "keystones": [
+        "hold_position",
+        "reckless_swing"
+      ],
+      "attack": "chest_pound",
       "artFile": "gorilla-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 60,
       "speed": 3,
@@ -2915,20 +3036,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "griffin-knight-lance",
       "name": "Lancewing Griffin",
-      "attackType": "polearm",
-      "professions": [
-        "flying",
-        "warrior"
+      "classes": [
+        "skyborne",
+        "champion"
       ],
+      "keystones": [
+        "sky_lord",
+        "glory"
+      ],
+      "attack": "lance_charge",
       "artFile": "griffin-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 65,
       "speed": 3,
@@ -2945,19 +3067,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "harpsichord-bard-keys",
       "name": "Keyclatter",
-      "attackType": "aura",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "rhythm",
+        "rally"
+      ],
+      "attack": "key_cascade",
       "artFile": "harpsichord-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 65,
       "speed": 3,
@@ -2974,20 +3098,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "harpy-eagle-scout-claws",
       "name": "Talonstrike",
-      "attackType": "brawl",
-      "professions": [
-        "flying",
-        "hunter"
+      "classes": [
+        "skyborne",
+        "tracker"
       ],
+      "keystones": [
+        "eagle_eye",
+        "relentless"
+      ],
+      "attack": "raking_claws",
       "artFile": "harpy-eagle-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 40,
       "speed": 5,
@@ -3004,20 +3129,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "hawk-scout-bow",
       "name": "Skybow Hawk",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "flying"
+      "classes": [
+        "tracker",
+        "skyborne"
       ],
+      "keystones": [
+        "sniff_the_air",
+        "lift"
+      ],
+      "attack": "pinning_arrow",
       "artFile": "hawk-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 20,
       "speed": 8,
@@ -3034,19 +3160,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "hermitcrab-sentinel-basalt",
       "name": "Basaltshell",
-      "attackType": "brawl",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "unbreakable",
+        "twin_wards"
+      ],
+      "attack": "magma_crack",
       "artFile": "hermitcrab-01.png",
-      "source": null,
       "biome": "coast",
       "hp": 55,
       "speed": 5,
@@ -3063,20 +3191,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "heron-engineer-wing",
       "name": "Wingwright Heron",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "flying"
+      "classes": [
+        "engineer",
+        "skyborne"
       ],
+      "keystones": [
+        "rapid_fire",
+        "sky_lord"
+      ],
+      "attack": "wing_gust",
       "artFile": "heron-01.png",
-      "source": null,
       "biome": "swamp",
       "hp": 40,
       "speed": 5,
@@ -3093,20 +3222,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "heron-hunter-harpoon",
       "name": "Stillspear",
-      "attackType": "polearm",
-      "professions": [
-        "flying",
-        "warrior"
+      "classes": [
+        "skyborne",
+        "champion"
       ],
+      "keystones": [
+        "eagle_eye",
+        "hunt_down"
+      ],
+      "attack": "spear_hook",
       "artFile": "heron-02.png",
-      "source": null,
       "biome": "swamp",
       "hp": 40,
       "speed": 5,
@@ -3123,20 +3253,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "hippo-healer-potion",
       "name": "Tonic Hippo",
-      "attackType": "breath",
-      "professions": [
-        "healer",
-        "tinker"
+      "classes": [
+        "mender",
+        "chemist"
       ],
+      "keystones": [
+        "regrowth",
+        "volatile"
+      ],
+      "attack": "potion_spit",
       "artFile": "hippo-01.png",
-      "source": null,
       "biome": "swamp",
       "hp": 60,
       "speed": 3,
@@ -3153,20 +3284,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "hornbill-bard-drum",
       "name": "Drumbill",
-      "attackType": "blunt",
-      "professions": [
-        "leader",
-        "flying"
+      "classes": [
+        "bard",
+        "skyborne"
       ],
+      "keystones": [
+        "crescendo",
+        "lift"
+      ],
+      "attack": "beak_drum",
       "artFile": "hornbill-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 40,
       "speed": 5,
@@ -3183,20 +3315,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "horseshoe-champion",
       "name": "Lucky Ironshoe",
-      "attackType": "brawl",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "champion",
+        "bulwark"
       ],
+      "keystones": [
+        "duelist",
+        "shield_wall"
+      ],
+      "attack": "lucky_kick",
       "artFile": "horseshoe-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 55,
       "speed": 5,
@@ -3213,20 +3346,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "horseshoecrab-sentinel-bronze",
       "name": "Bronzeback Sentinel",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "elementalist"
+      "classes": [
+        "bulwark",
+        "stormcaller"
       ],
+      "keystones": [
+        "hold_position",
+        "static_field"
+      ],
+      "attack": "bronze_spike",
       "artFile": "horseshoecrab-01.png",
-      "source": null,
       "biome": "coast",
       "hp": 55,
       "speed": 5,
@@ -3243,20 +3377,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "hourglass-hexer-sand",
       "name": "Sandhex Glass",
-      "attackType": "aura",
-      "professions": [
-        "sorcerer",
-        "leader"
+      "classes": [
+        "hexer",
+        "commander"
       ],
+      "keystones": [
+        "spreading_curse",
+        "vanguard"
+      ],
+      "attack": "sand_pulse",
       "artFile": "hourglass-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 45,
       "speed": 5,
@@ -3273,19 +3408,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "howlermonkey-bard-roar",
       "name": "Roarleaf",
-      "attackType": "breath",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "grand_chorus",
+        "drill"
+      ],
+      "attack": "howl",
       "artFile": "howlermonkey-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 40,
       "speed": 5,
@@ -3302,20 +3439,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-alchemist",
       "name": "Maggie Wren",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "rogue"
+      "classes": [
+        "chemist",
+        "thief"
       ],
+      "keystones": [
+        "big_finish",
+        "shadow_purse"
+      ],
+      "attack": "quick_jab",
       "artFile": "human-02.png",
-      "source": "human-alchemist.png",
       "biome": "ruins",
       "hp": 40,
       "speed": 5,
@@ -3332,20 +3470,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-alchemist-shield",
       "name": "Gerald Hollins",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "guardian"
+      "classes": [
+        "chemist",
+        "bulwark"
       ],
+      "keystones": [
+        "potent_brew",
+        "unbreakable"
+      ],
+      "attack": "flask_barrage",
       "artFile": "human-01.png",
-      "source": "human-alchemist-shield.png",
       "biome": "ruins",
       "hp": 50,
       "speed": 5,
@@ -3362,20 +3501,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-archer",
       "name": "Tom Reed",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "primalist"
+      "classes": [
+        "tracker",
+        "spiritwalker"
       ],
+      "keystones": [
+        "scent_of_blood",
+        "puppeteer"
+      ],
+      "attack": "leg_shot",
       "artFile": "human-07.png",
-      "source": "human-archer.png",
       "biome": "pine_forest",
       "hp": 40,
       "speed": 5,
@@ -3392,20 +3532,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-archer-crystal",
       "name": "Mira Castell",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "sorcerer"
+      "classes": [
+        "tracker",
+        "transmuter"
       ],
+      "keystones": [
+        "relentless",
+        "brittle_glass"
+      ],
+      "attack": "crystal_arrow",
       "artFile": "human-03.png",
-      "source": "human-archer-crystal.png",
       "biome": "crystal_caverns",
       "hp": 40,
       "speed": 5,
@@ -3422,20 +3563,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-archer-frost",
       "name": "Sigrid Halvorsen",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "elementalist"
+      "classes": [
+        "tracker",
+        "cryomancer"
       ],
+      "keystones": [
+        "sniff_the_air",
+        "cold_heart"
+      ],
+      "attack": "frost_arrow",
       "artFile": "human-04.png",
-      "source": "human-archer-frost.png",
       "biome": "arctic",
       "hp": 40,
       "speed": 5,
@@ -3452,20 +3594,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-archer-gear",
       "name": "Otto Brenner",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "tinker"
+      "classes": [
+        "tracker",
+        "engineer"
       ],
+      "keystones": [
+        "scent_of_blood",
+        "reinforced"
+      ],
+      "attack": "gear_arrow",
       "artFile": "human-05.png",
-      "source": "human-archer-gear.png",
       "biome": "ruins",
       "hp": 40,
       "speed": 5,
@@ -3482,20 +3625,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-archer-sun",
       "name": "Lucia Marin",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "healer"
+      "classes": [
+        "tracker",
+        "cleric"
       ],
+      "keystones": [
+        "relentless",
+        "purifying_aura"
+      ],
+      "attack": "sun_arrow",
       "artFile": "human-06.png",
-      "source": "human-archer-sun.png",
       "biome": "savannah",
       "hp": 40,
       "speed": 5,
@@ -3512,19 +3656,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-barbarian",
       "name": "Gunnar Holt",
-      "attackType": "bladed",
-      "professions": [
-        "warrior"
+      "classes": [
+        "berserker",
+        "champion"
       ],
+      "keystones": [
+        "last_stand",
+        "glory"
+      ],
+      "attack": "axe_hook",
       "artFile": "human-09.png",
-      "source": "human-barbarian.png",
       "biome": "mountain",
       "hp": 40,
       "speed": 5,
@@ -3541,20 +3687,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-barbarian-frost",
       "name": "Ragnhild Eriksen",
-      "attackType": "bladed",
-      "professions": [
-        "warrior",
-        "sorcerer"
+      "classes": [
+        "berserker",
+        "enchanter"
       ],
+      "keystones": [
+        "unstoppable",
+        "spell_ward"
+      ],
+      "attack": "frost_axe",
       "artFile": "human-08.png",
-      "source": "human-barbarian-frost.png",
       "biome": "arctic",
       "hp": 40,
       "speed": 5,
@@ -3571,19 +3718,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-bard",
       "name": "Lorenzo Varga",
-      "attackType": "magic",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "rhythm",
+        "rally"
+      ],
+      "attack": "lute_ballad",
       "artFile": "human-11.png",
-      "source": "human-bard.png",
       "biome": "flower_meadow",
       "hp": 40,
       "speed": 5,
@@ -3600,20 +3749,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-bard-shield",
       "name": "Felix Lowell",
-      "attackType": "blunt",
-      "professions": [
-        "leader",
-        "warrior"
+      "classes": [
+        "bard",
+        "berserker"
       ],
+      "keystones": [
+        "crescendo",
+        "reckless_swing"
+      ],
+      "attack": "shield_smash",
       "artFile": "human-10.png",
-      "source": "human-bard-shield.png",
       "biome": "cathedral",
       "hp": 45,
       "speed": 5,
@@ -3630,20 +3780,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-brawler-hook",
       "name": "Jack Morrow",
-      "attackType": "blunt",
-      "professions": [
-        "warrior",
-        "hunter"
+      "classes": [
+        "berserker",
+        "tracker"
       ],
+      "keystones": [
+        "last_stand",
+        "sniff_the_air"
+      ],
+      "attack": "rope_hook",
       "artFile": "human-12.png",
-      "source": "human-brawler-hook.png",
       "biome": "coast",
       "hp": 40,
       "speed": 5,
@@ -3660,20 +3811,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-captain-banner",
       "name": "Helena Strand",
-      "attackType": "polearm",
-      "professions": [
-        "leader",
-        "warrior"
+      "classes": [
+        "commander",
+        "champion"
       ],
+      "keystones": [
+        "vanguard",
+        "hunt_down"
+      ],
+      "attack": "banner_thrust",
       "artFile": "human-13.png",
-      "source": "human-captain-banner.png",
       "biome": "cathedral",
       "hp": 45,
       "speed": 5,
@@ -3690,20 +3842,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-captain-pistol",
       "name": "Carlos Fonseca",
-      "attackType": "ranged",
-      "professions": [
-        "leader",
-        "rogue"
+      "classes": [
+        "commander",
+        "thief"
       ],
+      "keystones": [
+        "drill",
+        "escape_artist"
+      ],
+      "attack": "warning_shot",
       "artFile": "human-14.png",
-      "source": "human-captain-pistol.png",
       "biome": "coast",
       "hp": 40,
       "speed": 5,
@@ -3720,20 +3873,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-captain-rapier",
       "name": "Beatrix Alvarez",
-      "attackType": "bladed",
-      "professions": [
-        "sorcerer",
-        "rogue"
+      "classes": [
+        "enchanter",
+        "thief"
       ],
+      "keystones": [
+        "twin_enchant",
+        "master_thief"
+      ],
+      "attack": "riposte_cut",
       "artFile": "human-15.png",
-      "source": "human-captain-rapier.png",
       "biome": "coast",
       "hp": 40,
       "speed": 5,
@@ -3750,20 +3904,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-cleric-lantern",
       "name": "Agnes Brook",
-      "attackType": "magic",
-      "professions": [
-        "healer",
-        "tinker"
+      "classes": [
+        "cleric",
+        "engineer"
       ],
+      "keystones": [
+        "judgment",
+        "self_repair"
+      ],
+      "attack": "lantern_light",
       "artFile": "human-16.png",
-      "source": "human-cleric-lantern.png",
       "biome": "cathedral",
       "hp": 40,
       "speed": 5,
@@ -3780,20 +3935,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-dancer",
       "name": "Nadia Petrova",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "thief",
+        "tracker"
       ],
+      "keystones": [
+        "shadow_purse",
+        "scent_of_blood"
+      ],
+      "attack": "veil_dance",
       "artFile": "human-18.png",
-      "source": "human-dancer.png",
       "biome": "desert",
       "hp": 40,
       "speed": 5,
@@ -3810,20 +3966,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-dancer-spear",
       "name": "Amara Okafor",
-      "attackType": "polearm",
-      "professions": [
-        "warrior",
-        "elementalist"
+      "classes": [
+        "champion",
+        "stormcaller"
       ],
+      "keystones": [
+        "duelist",
+        "eye_of_the_storm"
+      ],
+      "attack": "lightning_thrust",
       "artFile": "human-17.png",
-      "source": "human-dancer-spear.png",
       "biome": "savannah",
       "hp": 40,
       "speed": 5,
@@ -3840,20 +3997,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-druid",
       "name": "Ivy Calloway",
-      "attackType": "magic",
-      "professions": [
-        "primalist",
-        "healer"
+      "classes": [
+        "ritualist",
+        "lifebinder"
       ],
+      "keystones": [
+        "deluge",
+        "lifeblood"
+      ],
+      "attack": "root_grasp",
       "artFile": "human-20.png",
-      "source": "human-druid.png",
       "biome": "pine_forest",
       "hp": 40,
       "speed": 5,
@@ -3870,20 +4028,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-druid-leaf",
       "name": "Fiona Ashby",
-      "attackType": "magic",
-      "professions": [
-        "primalist",
-        "healer"
+      "classes": [
+        "ritualist",
+        "lifebinder"
       ],
+      "keystones": [
+        "tidecaller",
+        "martyr"
+      ],
+      "attack": "thorn_volley",
       "artFile": "human-19.png",
-      "source": "human-druid-leaf.png",
       "biome": "wet_forest",
       "hp": 40,
       "speed": 5,
@@ -3900,20 +4059,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-duelist-rapier",
       "name": "Camille Moreau",
-      "attackType": "bladed",
-      "professions": [
-        "warrior",
-        "rogue"
+      "classes": [
+        "champion",
+        "thief"
       ],
+      "keystones": [
+        "glory",
+        "escape_artist"
+      ],
+      "attack": "rapier_carve",
       "artFile": "human-21.png",
-      "source": "human-duelist-rapier.png",
       "biome": "cathedral",
       "hp": 40,
       "speed": 5,
@@ -3930,20 +4090,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-engineer-crystal",
       "name": "Lukas Weiss",
-      "attackType": "magic",
-      "professions": [
-        "tinker",
-        "elementalist"
+      "classes": [
+        "engineer",
+        "stormcaller"
       ],
+      "keystones": [
+        "rapid_fire",
+        "overcharge"
+      ],
+      "attack": "arc_discharge",
       "artFile": "human-22.png",
-      "source": "human-engineer-crystal.png",
       "biome": "crystal_caverns",
       "hp": 40,
       "speed": 5,
@@ -3960,20 +4121,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-engineer-hook",
       "name": "Max Hooper",
-      "attackType": "ranged",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "saboteur",
+        "tracker"
       ],
+      "keystones": [
+        "disarm_trap",
+        "relentless"
+      ],
+      "attack": "grapple_yank",
       "artFile": "human-23.png",
-      "source": "human-engineer-hook.png",
       "biome": "ruins",
       "hp": 40,
       "speed": 5,
@@ -3990,20 +4152,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-guard",
       "name": "Peter Holm",
-      "attackType": "polearm",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "champion"
       ],
+      "keystones": [
+        "shield_wall",
+        "hunt_down"
+      ],
+      "attack": "shield_push",
       "artFile": "human-26.png",
-      "source": "human-guard.png",
       "biome": "cathedral",
       "hp": 50,
       "speed": 5,
@@ -4020,20 +4183,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-guard-frost",
       "name": "Ingrid Lund",
-      "attackType": "polearm",
-      "professions": [
-        "warrior",
-        "sorcerer"
+      "classes": [
+        "champion",
+        "enchanter"
       ],
+      "keystones": [
+        "duelist",
+        "lingering_magic"
+      ],
+      "attack": "ice_lance_thrust",
       "artFile": "human-24.png",
-      "source": "human-guard-frost.png",
       "biome": "arctic",
       "hp": 40,
       "speed": 5,
@@ -4050,20 +4214,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-guard-stone",
       "name": "Leo Stone",
-      "attackType": "bladed",
-      "professions": [
-        "elementalist",
-        "warrior"
+      "classes": [
+        "stormcaller",
+        "champion"
       ],
+      "keystones": [
+        "static_field",
+        "glory"
+      ],
+      "attack": "stone_fist",
       "artFile": "human-25.png",
-      "source": "human-guard-stone.png",
       "biome": "mountain",
       "hp": 40,
       "speed": 5,
@@ -4080,20 +4245,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-knight",
       "name": "William Hart",
-      "attackType": "bladed",
-      "professions": [
-        "warrior",
-        "leader"
+      "classes": [
+        "champion",
+        "commander"
       ],
+      "keystones": [
+        "hunt_down",
+        "rally"
+      ],
+      "attack": "valiant_strike",
       "artFile": "human-31.png",
-      "source": "human-knight.png",
       "biome": "cathedral",
       "hp": 55,
       "speed": 5,
@@ -4110,20 +4276,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-knight-2",
       "name": "Johanna Weber",
-      "attackType": "bladed",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "champion",
+        "bulwark"
       ],
+      "keystones": [
+        "duelist",
+        "hold_position"
+      ],
+      "attack": "shield_bump",
       "artFile": "human-27.png",
-      "source": "human-knight-2.png",
       "biome": "cathedral",
       "hp": 50,
       "speed": 5,
@@ -4140,20 +4307,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-knight-banner",
       "name": "Albrecht Lang",
-      "attackType": "blunt",
-      "professions": [
-        "leader",
-        "guardian"
+      "classes": [
+        "commander",
+        "bulwark"
       ],
+      "keystones": [
+        "vanguard",
+        "unbreakable"
+      ],
+      "attack": "rallying_strike",
       "artFile": "human-28.png",
-      "source": "human-knight-banner.png",
       "biome": "cathedral",
       "hp": 50,
       "speed": 5,
@@ -4170,20 +4338,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-knight-hammer",
       "name": "Johanka Weber",
-      "attackType": "blunt",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "champion"
       ],
+      "keystones": [
+        "shield_wall",
+        "glory"
+      ],
+      "attack": "hammer_smash",
       "artFile": "human-29.png",
-      "source": "human-knight-hammer.png",
       "biome": "mountain",
       "hp": 55,
       "speed": 5,
@@ -4200,20 +4369,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-knight-shield",
       "name": "Edwin Marsh",
-      "attackType": "blunt",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "champion"
       ],
+      "keystones": [
+        "hold_position",
+        "hunt_down"
+      ],
+      "attack": "shield_wall_shove",
       "artFile": "human-30.png",
-      "source": "human-knight-shield.png",
       "biome": "cathedral",
       "hp": 55,
       "speed": 5,
@@ -4230,20 +4400,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-mage-crystal",
       "name": "Kai Lindqvist",
-      "attackType": "magic",
-      "professions": [
-        "elementalist",
-        "sorcerer"
+      "classes": [
+        "stormcaller",
+        "transmuter"
       ],
+      "keystones": [
+        "eye_of_the_storm",
+        "mirror_form"
+      ],
+      "attack": "crystal_ray",
       "artFile": "human-32.png",
-      "source": "human-mage-crystal.png",
       "biome": "crystal_caverns",
       "hp": 40,
       "speed": 5,
@@ -4260,20 +4431,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-mage-fire",
       "name": "Carmen Costa",
-      "attackType": "magic",
-      "professions": [
-        "elementalist",
-        "rogue"
+      "classes": [
+        "pyromancer",
+        "thief"
       ],
+      "keystones": [
+        "inferno",
+        "master_thief"
+      ],
+      "attack": "fire_spark",
       "artFile": "human-33.png",
-      "source": "human-mage-fire.png",
       "biome": "ashlands",
       "hp": 40,
       "speed": 5,
@@ -4290,20 +4462,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-mage-frost",
       "name": "Astor Nilsen",
-      "attackType": "magic",
-      "professions": [
-        "elementalist",
-        "sorcerer"
+      "classes": [
+        "cryomancer",
+        "enchanter"
       ],
+      "keystones": [
+        "brittle",
+        "spell_ward"
+      ],
+      "attack": "frost_spark",
       "artFile": "human-34.png",
-      "source": "human-mage-frost.png",
       "biome": "arctic",
       "hp": 40,
       "speed": 5,
@@ -4320,20 +4493,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-mage-stone",
       "name": "Henrik Berg",
-      "attackType": "magic",
-      "professions": [
-        "elementalist",
-        "leader"
+      "classes": [
+        "stormcaller",
+        "commander"
       ],
+      "keystones": [
+        "overcharge",
+        "drill"
+      ],
+      "attack": "stone_bolt",
       "artFile": "human-35.png",
-      "source": "human-mage-stone.png",
       "biome": "mountain",
       "hp": 40,
       "speed": 5,
@@ -4350,20 +4524,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-mage-water",
       "name": "Mateo Santos",
-      "attackType": "magic",
-      "professions": [
-        "elementalist",
-        "hunter"
+      "classes": [
+        "cryomancer",
+        "tracker"
       ],
+      "keystones": [
+        "deep_chill",
+        "sniff_the_air"
+      ],
+      "attack": "frost_missile",
       "artFile": "human-36.png",
-      "source": "human-mage-water.png",
       "biome": "lagoon",
       "hp": 40,
       "speed": 5,
@@ -4380,19 +4555,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-monk-hammer",
       "name": "Kenji Mori",
-      "attackType": "blunt",
-      "professions": [
-        "warrior"
+      "classes": [
+        "berserker",
+        "champion"
       ],
+      "keystones": [
+        "unstoppable",
+        "duelist"
+      ],
+      "attack": "spinning_hammer",
       "artFile": "human-37.png",
-      "source": "human-monk-hammer.png",
       "biome": "mountain",
       "hp": 40,
       "speed": 5,
@@ -4409,20 +4586,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-necromancer-skull",
       "name": "Viktor Graves",
-      "attackType": "bladed",
-      "professions": [
-        "summoner",
-        "warrior"
+      "classes": [
+        "necromancer",
+        "champion"
       ],
+      "keystones": [
+        "lich_form",
+        "glory"
+      ],
+      "attack": "soul_rend",
       "artFile": "human-38.png",
-      "source": "human-necromancer-skull.png",
       "biome": "ruins",
       "hp": 40,
       "speed": 5,
@@ -4439,19 +4617,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-priest",
       "name": "Thomas Abbott",
-      "attackType": "magic",
-      "professions": [
-        "healer"
+      "classes": [
+        "cleric",
+        "mender"
       ],
+      "keystones": [
+        "sanctity",
+        "triage"
+      ],
+      "attack": "smite",
       "artFile": "human-42.png",
-      "source": "human-priest.png",
       "biome": "cathedral",
       "hp": 40,
       "speed": 5,
@@ -4468,20 +4648,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-priest-bell",
       "name": "Martin Becker",
-      "attackType": "blunt",
-      "professions": [
-        "healer",
-        "leader"
+      "classes": [
+        "cleric",
+        "bard"
       ],
+      "keystones": [
+        "purifying_aura",
+        "grand_chorus"
+      ],
+      "attack": "bell_toll",
       "artFile": "human-39.png",
-      "source": "human-priest-bell.png",
       "biome": "cathedral",
       "hp": 40,
       "speed": 5,
@@ -4498,20 +4679,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-priest-moon",
       "name": "Luna Ortiz",
-      "attackType": "magic",
-      "professions": [
-        "healer",
-        "sorcerer"
+      "classes": [
+        "cleric",
+        "hexer"
       ],
+      "keystones": [
+        "judgment",
+        "witchs_patience"
+      ],
+      "attack": "eclipse",
       "artFile": "human-40.png",
-      "source": "human-priest-moon.png",
       "biome": "flower_meadow",
       "hp": 40,
       "speed": 5,
@@ -4528,20 +4710,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-priest-sun",
       "name": "Aurelia Day",
-      "attackType": "ranged",
-      "professions": [
-        "healer",
-        "hunter"
+      "classes": [
+        "cleric",
+        "tracker"
       ],
+      "keystones": [
+        "sanctity",
+        "scent_of_blood"
+      ],
+      "attack": "sun_flare",
       "artFile": "human-41.png",
-      "source": "human-priest-sun.png",
       "biome": "desert",
       "hp": 40,
       "speed": 5,
@@ -4558,19 +4741,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-rogue",
       "name": "Daniel Hart",
-      "attackType": "bladed",
-      "professions": [
-        "rogue"
+      "classes": [
+        "thief",
+        "saboteur"
       ],
+      "keystones": [
+        "shadow_purse",
+        "wrecker"
+      ],
+      "attack": "dirty_trick",
       "artFile": "human-45.png",
-      "source": "human-rogue.png",
       "biome": "ruins",
       "hp": 40,
       "speed": 5,
@@ -4587,20 +4772,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-rogue-potion",
       "name": "Paul Fischer",
-      "attackType": "bladed",
-      "professions": [
-        "tinker",
-        "rogue"
+      "classes": [
+        "chemist",
+        "thief"
       ],
+      "keystones": [
+        "volatile",
+        "escape_artist"
+      ],
+      "attack": "vial_toss",
       "artFile": "human-43.png",
-      "source": "human-rogue-potion.png",
       "biome": "swamp",
       "hp": 40,
       "speed": 5,
@@ -4617,20 +4803,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-rogue-shadow",
       "name": "Nika Volkova",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
+      "classes": [
+        "assassin",
         "summoner"
       ],
+      "keystones": [
+        "vanishing_kill",
+        "quickening"
+      ],
+      "attack": "void_shard",
       "artFile": "human-44.png",
-      "source": "human-rogue-shadow.png",
       "biome": "ruins",
       "hp": 40,
       "speed": 5,
@@ -4647,20 +4834,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-scout-lantern",
       "name": "Elsa Lindgren",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
+      "classes": [
+        "thief",
         "summoner"
       ],
+      "keystones": [
+        "master_thief",
+        "golem_heart"
+      ],
+      "attack": "lantern_glare",
       "artFile": "human-46.png",
-      "source": "human-scout-lantern.png",
       "biome": "pine_forest",
       "hp": 40,
       "speed": 5,
@@ -4677,20 +4865,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-shaman",
       "name": "Kofi Mensah",
-      "attackType": "magic",
-      "professions": [
-        "primalist",
-        "leader"
+      "classes": [
+        "totemist",
+        "commander"
       ],
+      "keystones": [
+        "sturdy_totems",
+        "rally"
+      ],
+      "attack": "ancestor_call",
       "artFile": "human-47.png",
-      "source": "human-shaman.png",
       "biome": "jungle",
       "hp": 40,
       "speed": 5,
@@ -4707,20 +4896,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-smith",
       "name": "Hugo Schmidt",
-      "attackType": "blunt",
-      "professions": [
-        "tinker",
-        "warrior"
+      "classes": [
+        "engineer",
+        "berserker"
       ],
+      "keystones": [
+        "reinforced",
+        "reckless_swing"
+      ],
+      "attack": "smith_crush",
       "artFile": "human-48.png",
-      "source": "human-smith.png",
       "biome": "mountain",
       "hp": 40,
       "speed": 5,
@@ -4737,20 +4927,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-spellblade",
       "name": "Richard Novak",
-      "attackType": "bladed",
-      "professions": [
-        "warrior",
-        "sorcerer"
+      "classes": [
+        "champion",
+        "enchanter"
       ],
+      "keystones": [
+        "hunt_down",
+        "twin_enchant"
+      ],
+      "attack": "glyph_strike",
       "artFile": "human-51.png",
-      "source": "human-spellblade.png",
       "biome": "storm_cliffs",
       "hp": 50,
       "speed": 5,
@@ -4767,20 +4958,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-spellblade-2",
       "name": "Laura Cole",
-      "attackType": "bladed",
-      "professions": [
-        "warrior",
-        "sorcerer"
+      "classes": [
+        "champion",
+        "enchanter"
       ],
+      "keystones": [
+        "duelist",
+        "lingering_magic"
+      ],
+      "attack": "arcane_edge",
       "artFile": "human-49.png",
-      "source": "human-spellblade-2.png",
       "biome": "storm_cliffs",
       "hp": 40,
       "speed": 5,
@@ -4797,20 +4989,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "human-wizard",
       "name": "Arthur Pembroke",
-      "attackType": "magic",
-      "professions": [
-        "sorcerer",
-        "tinker"
+      "classes": [
+        "enchanter",
+        "engineer"
       ],
+      "keystones": [
+        "spell_ward",
+        "self_repair"
+      ],
+      "attack": "hat_trick",
       "artFile": "human-52.png",
-      "source": "human-wizard.png",
       "biome": "cathedral",
       "hp": 40,
       "speed": 5,
@@ -4827,20 +5020,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "hummingbird-duelist-rapier",
       "name": "Rapierbeak",
-      "attackType": "bladed",
-      "professions": [
-        "flying",
-        "rogue"
+      "classes": [
+        "skyborne",
+        "thief"
       ],
+      "keystones": [
+        "sky_lord",
+        "shadow_purse"
+      ],
+      "attack": "flurry",
       "artFile": "hummingbird-01.png",
-      "source": null,
       "biome": "flower_meadow",
       "hp": 20,
       "speed": 8,
@@ -4857,19 +5051,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "hydra-colossus-trident",
       "name": "Tridentmaw Hydra",
-      "attackType": "breath",
-      "professions": [
-        "summoner"
+      "classes": [
+        "summoner",
+        "enchanter"
       ],
+      "keystones": [
+        "portal",
+        "twin_enchant"
+      ],
+      "attack": "trident_gust",
       "artFile": "hydra-01.png",
-      "source": null,
       "biome": "swamp",
       "hp": 70,
       "speed": 3,
@@ -4886,20 +5082,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "hyena-engineer-saw",
       "name": "Sawgrin",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "hunter"
+      "classes": [
+        "engineer",
+        "tracker"
       ],
+      "keystones": [
+        "rapid_fire",
+        "relentless"
+      ],
+      "attack": "cackle",
       "artFile": "hyena-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 40,
       "speed": 5,
@@ -4916,19 +5113,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "ibex-captain-standard",
       "name": "Standardhorn",
-      "attackType": "brawl",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "rhythm",
+        "vanguard"
+      ],
+      "attack": "horn_charge",
       "artFile": "ibex-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 40,
       "speed": 5,
@@ -4945,20 +5144,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "incense-censor",
       "name": "Smokeswing",
-      "attackType": "aura",
-      "professions": [
-        "healer",
+      "classes": [
+        "cleric",
         "summoner"
       ],
+      "keystones": [
+        "purifying_aura",
+        "quickening"
+      ],
+      "attack": "incense_cloud",
       "artFile": "incense-censor-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 50,
       "speed": 5,
@@ -4975,20 +5175,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "inkwell-trickster-quill",
       "name": "Quillspatter",
-      "attackType": "ranged",
-      "professions": [
-        "rogue",
-        "leader"
+      "classes": [
+        "saboteur",
+        "tactician"
       ],
+      "keystones": [
+        "chaos_agent",
+        "initiative"
+      ],
+      "attack": "ink_splash",
       "artFile": "inkwell-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 25,
       "speed": 8,
@@ -5005,19 +5206,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "isopod-sentinel-iron",
       "name": "Ironroll",
-      "attackType": "brawl",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "unbreakable",
+        "steadfast_ward"
+      ],
+      "attack": "iron_roll",
       "artFile": "isopod-01.png",
-      "source": null,
       "biome": "mushroom_grotto",
       "hp": 35,
       "speed": 8,
@@ -5034,20 +5237,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "jackalope-hexer-curse",
       "name": "Cursehorn",
-      "attackType": "aura",
-      "professions": [
-        "summoner",
-        "rogue"
+      "classes": [
+        "necromancer",
+        "thief"
       ],
+      "keystones": [
+        "bone_armor",
+        "escape_artist"
+      ],
+      "attack": "curse_glow",
       "artFile": "jackalope-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 20,
       "speed": 8,
@@ -5064,20 +5268,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "jelly-healer",
       "name": "Mendbloom Jelly",
-      "attackType": "aura",
-      "professions": [
-        "healer",
-        "flying"
+      "classes": [
+        "mender",
+        "skyborne"
       ],
+      "keystones": [
+        "overflowing_care",
+        "eagle_eye"
+      ],
+      "attack": "sting_tendril",
       "artFile": "jellyfish-02.png",
-      "source": "jelly-healer.png",
       "biome": "lagoon",
       "hp": 20,
       "speed": 8,
@@ -5094,20 +5299,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "jelly-mage-storm",
       "name": "Stormbell Jelly",
-      "attackType": "aura",
-      "professions": [
-        "flying",
-        "elementalist"
+      "classes": [
+        "skyborne",
+        "stormcaller"
       ],
+      "keystones": [
+        "lift",
+        "static_field"
+      ],
+      "attack": "storm_hum",
       "artFile": "jelly-01.png",
-      "source": null,
       "biome": "lagoon",
       "hp": 20,
       "speed": 8,
@@ -5124,20 +5330,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "jerboa-trickster-acorn",
       "name": "Acornpop",
-      "attackType": "ranged",
-      "professions": [
-        "rogue",
-        "tinker"
+      "classes": [
+        "saboteur",
+        "engineer"
       ],
+      "keystones": [
+        "disarm_trap",
+        "reinforced"
+      ],
+      "attack": "acorn_shot",
       "artFile": "jerboa-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 20,
       "speed": 8,
@@ -5154,20 +5361,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "kestrel-hunter-lure",
       "name": "Lurewing",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
+      "classes": [
+        "tracker",
         "summoner"
       ],
+      "keystones": [
+        "sniff_the_air",
+        "golem_heart"
+      ],
+      "attack": "talon_dive",
       "artFile": "kestrel-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 20,
       "speed": 8,
@@ -5184,20 +5392,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "kettle-alchemist-siege",
       "name": "Siegekettle",
-      "attackType": "breath",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "champion",
+        "bulwark"
       ],
+      "keystones": [
+        "glory",
+        "shield_wall"
+      ],
+      "attack": "boiling_spout",
       "artFile": "kettle-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 55,
       "speed": 5,
@@ -5214,19 +5423,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "kiln-behemoth",
       "name": "Kiln Behemoth",
-      "attackType": "breath",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "hold_position",
+        "thorned_ward"
+      ],
+      "attack": "kiln_blast",
       "artFile": "kiln-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 75,
       "speed": 3,
@@ -5243,20 +5454,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "kingfisher-captain-dagger",
       "name": "Captain Daggerbill",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "flying"
+      "classes": [
+        "assassin",
+        "skyborne"
       ],
+      "keystones": [
+        "venom_blades",
+        "sky_lord"
+      ],
+      "attack": "dagger_slice",
       "artFile": "kingfisher-01.png",
-      "source": null,
       "biome": "wet_forest",
       "hp": 20,
       "speed": 8,
@@ -5273,20 +5485,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "kinkajou-summoner-idol",
       "name": "Idolpaw",
-      "attackType": "brawl",
-      "professions": [
+      "classes": [
         "summoner",
-        "rogue"
+        "thief"
       ],
+      "keystones": [
+        "portal",
+        "master_thief"
+      ],
+      "attack": "idol_glow",
       "artFile": "kinkajou-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 20,
       "speed": 8,
@@ -5303,20 +5516,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "kite-primalist-tail",
       "name": "Tailwind Kite",
-      "attackType": "whip",
-      "professions": [
-        "flying",
-        "healer"
+      "classes": [
+        "skyborne",
+        "mender"
       ],
+      "keystones": [
+        "eagle_eye",
+        "regrowth"
+      ],
+      "attack": "updraft",
       "artFile": "kite-01.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 20,
       "speed": 8,
@@ -5333,19 +5547,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "komodo-warrior-cleaver",
       "name": "Cleaver Komodo",
-      "attackType": "blunt",
-      "professions": [
-        "warrior"
+      "classes": [
+        "berserker",
+        "champion"
       ],
+      "keystones": [
+        "last_stand",
+        "hunt_down"
+      ],
+      "attack": "venom_bite",
       "artFile": "komodo-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 45,
       "speed": 5,
@@ -5362,20 +5578,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "kraken-colossus-basalt",
       "name": "Basalt Kraken",
-      "attackType": "whip",
-      "professions": [
-        "guardian",
+      "classes": [
+        "bulwark",
         "summoner"
       ],
+      "keystones": [
+        "unbreakable",
+        "quickening"
+      ],
+      "attack": "tentacle_grab",
       "artFile": "kraken-01.png",
-      "source": null,
       "biome": "lagoon",
       "hp": 70,
       "speed": 3,
@@ -5392,19 +5609,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "lantern-healer-prism",
       "name": "Prismlamp",
-      "attackType": "aura",
-      "professions": [
-        "healer"
+      "classes": [
+        "mender",
+        "cleric"
       ],
+      "keystones": [
+        "triage",
+        "judgment"
+      ],
+      "attack": "prism_wave",
       "artFile": "lantern-01.png",
-      "source": null,
       "biome": "crystal_caverns",
       "hp": 30,
       "speed": 8,
@@ -5421,19 +5640,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "lizardfolk-barbarian-axe",
       "name": "Axejaw Lizardfolk",
-      "attackType": "bladed",
-      "professions": [
-        "warrior"
+      "classes": [
+        "berserker",
+        "champion"
       ],
+      "keystones": [
+        "unstoppable",
+        "duelist"
+      ],
+      "attack": "jaw_snap",
       "artFile": "lizardfolk-03.png",
-      "source": null,
       "biome": "swamp",
       "hp": 40,
       "speed": 5,
@@ -5450,19 +5671,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "lizardfolk-ninja-kunai",
       "name": "Kunai Lizardfolk",
-      "attackType": "ranged",
-      "professions": [
-        "rogue"
+      "classes": [
+        "assassin",
+        "thief"
       ],
+      "keystones": [
+        "unseen",
+        "shadow_purse"
+      ],
+      "attack": "smoke_kunai",
       "artFile": "lizardfolk-04.png",
-      "source": null,
       "biome": "swamp",
       "hp": 40,
       "speed": 5,
@@ -5479,19 +5702,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "lobster-bard-castanet",
       "name": "Castanet Lobster",
-      "attackType": "brawl",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "crescendo",
+        "drill"
+      ],
+      "attack": "castanet_clack",
       "artFile": "lobster-01.png",
-      "source": null,
       "biome": "coast",
       "hp": 50,
       "speed": 5,
@@ -5508,19 +5733,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "lobster-engineer-rivet",
       "name": "Rivetclaw",
-      "attackType": "ranged",
-      "professions": [
-        "tinker"
+      "classes": [
+        "engineer",
+        "chemist"
       ],
+      "keystones": [
+        "self_repair",
+        "big_finish"
+      ],
+      "attack": "flask_lob",
       "artFile": "lobster-02.png",
-      "source": null,
       "biome": "coast",
       "hp": 50,
       "speed": 5,
@@ -5537,19 +5764,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "lockbox-dreadnought",
       "name": "Lockbox Dreadnought",
-      "attackType": "brawl",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "shield_wall",
+        "twin_wards"
+      ],
+      "attack": "lid_chomp",
       "artFile": "lockbox-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 75,
       "speed": 3,
@@ -5566,20 +5795,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "loom-binder",
       "name": "Threadbinder Loom",
-      "attackType": "whip",
-      "professions": [
-        "tinker",
-        "leader"
+      "classes": [
+        "engineer",
+        "commander"
       ],
+      "keystones": [
+        "rapid_fire",
+        "rally"
+      ],
+      "attack": "thread_bind",
       "artFile": "loom-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 65,
       "speed": 3,
@@ -5596,20 +5826,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "lyrebird-bard-plume",
       "name": "Plumesong",
-      "attackType": "breath",
-      "professions": [
-        "leader",
-        "flying"
+      "classes": [
+        "bard",
+        "skyborne"
       ],
+      "keystones": [
+        "grand_chorus",
+        "lift"
+      ],
+      "attack": "plume_fan",
       "artFile": "lyrebird-01.png",
-      "source": null,
       "biome": "pine_forest",
       "hp": 20,
       "speed": 8,
@@ -5626,20 +5857,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mammoth-titan-tundra",
       "name": "Tundra Titan",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "elementalist"
+      "classes": [
+        "bulwark",
+        "cryomancer"
       ],
+      "keystones": [
+        "hold_position",
+        "cold_heart"
+      ],
+      "attack": "tundra_stomp",
       "artFile": "mammoth-01.png",
-      "source": null,
       "biome": "arctic",
       "hp": 65,
       "speed": 3,
@@ -5656,19 +5888,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "manatee-healer-shell",
       "name": "Shellmend Manatee",
-      "attackType": "breath",
-      "professions": [
-        "healer"
+      "classes": [
+        "mender",
+        "cleric"
       ],
+      "keystones": [
+        "overflowing_care",
+        "sanctity"
+      ],
+      "attack": "herb_puff",
       "artFile": "manatee-01.png",
-      "source": null,
       "biome": "lagoon",
       "hp": 60,
       "speed": 3,
@@ -5685,20 +5919,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mandrake-primalist-root",
       "name": "Screamroot",
-      "attackType": "whip",
-      "professions": [
-        "primalist",
+      "classes": [
+        "ritualist",
         "summoner"
       ],
+      "keystones": [
+        "frostbinder",
+        "golem_heart"
+      ],
+      "attack": "mandrake_scream",
       "artFile": "mandrake-01.png",
-      "source": null,
       "biome": "swamp",
       "hp": 25,
       "speed": 8,
@@ -5715,19 +5950,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mandrill-brawler-gloves",
       "name": "Glovegrin",
-      "attackType": "brawl",
-      "professions": [
-        "warrior"
+      "classes": [
+        "berserker",
+        "champion"
       ],
+      "keystones": [
+        "reckless_swing",
+        "glory"
+      ],
+      "attack": "haymaker",
       "artFile": "mandrill-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 40,
       "speed": 5,
@@ -5744,20 +5981,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mannequin",
       "name": "Stitchfist Mannequin",
-      "attackType": "brawl",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "berserker",
+        "bulwark"
       ],
+      "keystones": [
+        "last_stand",
+        "unbreakable"
+      ],
+      "attack": "mannequin_slam",
       "artFile": "mannequin-01.png",
-      "source": "34_f.png",
       "biome": "ruins",
       "hp": 50,
       "speed": 5,
@@ -5774,20 +6012,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "manticore-assassin-barb",
       "name": "Barbtail Manticore",
-      "attackType": "whip",
-      "professions": [
-        "rogue",
-        "flying"
+      "classes": [
+        "assassin",
+        "skyborne"
       ],
+      "keystones": [
+        "vanishing_kill",
+        "sky_lord"
+      ],
+      "attack": "barb_lash",
       "artFile": "manticore-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 60,
       "speed": 3,
@@ -5804,20 +6043,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mantis-engineer-blade",
       "name": "Bladewright Mantis",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "tinker"
+      "classes": [
+        "saboteur",
+        "engineer"
       ],
+      "keystones": [
+        "wrecker",
+        "reinforced"
+      ],
+      "attack": "blade_cut",
       "artFile": "mantis-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 45,
       "speed": 5,
@@ -5834,20 +6074,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "marabou-healer-balm",
       "name": "Balmbeak",
-      "attackType": "brawl",
-      "professions": [
-        "tinker",
-        "rogue"
+      "classes": [
+        "engineer",
+        "thief"
       ],
+      "keystones": [
+        "self_repair",
+        "escape_artist"
+      ],
+      "attack": "balm_flask",
       "artFile": "marabou-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 40,
       "speed": 5,
@@ -5864,20 +6105,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "maskrack-summoner-echo",
       "name": "Echomask Rack",
-      "attackType": "aura",
-      "professions": [
+      "classes": [
         "summoner",
-        "flying"
+        "skyborne"
       ],
+      "keystones": [
+        "portal",
+        "eagle_eye"
+      ],
+      "attack": "echo_scream",
       "artFile": "maskrack-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 45,
       "speed": 5,
@@ -5894,20 +6136,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mastiff-guard-shield",
       "name": "Shieldjaw Mastiff",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "hunter"
+      "classes": [
+        "bulwark",
+        "tracker"
       ],
+      "keystones": [
+        "shield_wall",
+        "scent_of_blood"
+      ],
+      "attack": "leg_bite",
       "artFile": "mastiff-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 50,
       "speed": 5,
@@ -5924,20 +6167,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "meerkat-captain-spyglass",
       "name": "Spyglass Meerkat",
-      "attackType": "ranged",
-      "professions": [
-        "leader",
-        "hunter"
+      "classes": [
+        "commander",
+        "tracker"
       ],
+      "keystones": [
+        "vanguard",
+        "relentless"
+      ],
+      "attack": "spotted",
       "artFile": "meerkat-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 20,
       "speed": 8,
@@ -5954,20 +6198,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "millstone-juggernaut",
       "name": "Millstone Juggernaut",
-      "attackType": "blunt",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "berserker",
+        "bulwark"
       ],
+      "keystones": [
+        "unstoppable",
+        "hold_position"
+      ],
+      "attack": "millstone_crush",
       "artFile": "millstone-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 75,
       "speed": 3,
@@ -5984,20 +6229,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mirror-revenant",
       "name": "Mirror Revenant",
-      "attackType": "magic",
-      "professions": [
-        "sorcerer",
-        "flying"
+      "classes": [
+        "enchanter",
+        "skyborne"
       ],
+      "keystones": [
+        "lingering_magic",
+        "lift"
+      ],
+      "attack": "mirror_ray",
       "artFile": "mirror-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 45,
       "speed": 5,
@@ -6014,19 +6260,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mole-engineer-gear",
       "name": "Gearclaw Mole",
-      "attackType": "blunt",
-      "professions": [
-        "tinker"
+      "classes": [
+        "engineer",
+        "chemist"
       ],
+      "keystones": [
+        "rapid_fire",
+        "potent_brew"
+      ],
+      "attack": "headlamp_flash",
       "artFile": "mole-01.png",
-      "source": null,
       "biome": "mushroom_grotto",
       "hp": 20,
       "speed": 8,
@@ -6043,20 +6291,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mole-engineer-hexhammer",
       "name": "Hexhammer Mole",
-      "attackType": "blunt",
-      "professions": [
-        "tinker",
-        "sorcerer"
+      "classes": [
+        "engineer",
+        "hexer"
       ],
+      "keystones": [
+        "reinforced",
+        "lingering_malice"
+      ],
+      "attack": "hexhammer",
       "artFile": "mole-02.png",
-      "source": null,
       "biome": "mushroom_grotto",
       "hp": 20,
       "speed": 8,
@@ -6073,20 +6322,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mongoose-assassin-sickle",
       "name": "Sicklewhisk",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "assassin",
+        "thief"
       ],
+      "keystones": [
+        "venom_blades",
+        "master_thief"
+      ],
+      "attack": "sickle_slash",
       "artFile": "mongoose-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 20,
       "speed": 8,
@@ -6103,19 +6353,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mongoose-hunter-hex",
       "name": "Hexdart Mongoose",
-      "attackType": "ranged",
-      "professions": [
-        "hunter"
+      "classes": [
+        "assassin",
+        "thief"
       ],
+      "keystones": [
+        "unseen",
+        "shadow_purse"
+      ],
+      "attack": "hex_dart",
       "artFile": "mongoose-02.png",
-      "source": null,
       "biome": "savannah",
       "hp": 20,
       "speed": 8,
@@ -6132,20 +6384,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "monkey-trickster-sling",
       "name": "Slingtail",
-      "attackType": "ranged",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "saboteur",
+        "tracker"
       ],
+      "keystones": [
+        "chaos_agent",
+        "sniff_the_air"
+      ],
+      "attack": "sling_stone",
       "artFile": "monkey-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 20,
       "speed": 8,
@@ -6162,20 +6415,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "moray-trickster-hook",
       "name": "Hookgrin Moray",
-      "attackType": "whip",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "saboteur",
+        "tracker"
       ],
+      "keystones": [
+        "disarm_trap",
+        "scent_of_blood"
+      ],
+      "attack": "moray_bite",
       "artFile": "moray-01.png",
-      "source": null,
       "biome": "lagoon",
       "hp": 40,
       "speed": 5,
@@ -6192,20 +6446,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mortar-alchemist-bastion",
       "name": "Bastion Mortar",
-      "attackType": "blunt",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "berserker",
+        "bulwark"
       ],
+      "keystones": [
+        "reckless_swing",
+        "unbreakable"
+      ],
+      "attack": "grind",
       "artFile": "mortar-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 75,
       "speed": 3,
@@ -6222,20 +6477,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "moth-cleric-lantern",
       "name": "Lanternmoth",
-      "attackType": "magic",
-      "professions": [
-        "healer",
-        "flying"
+      "classes": [
+        "cleric",
+        "skyborne"
       ],
+      "keystones": [
+        "purifying_aura",
+        "sky_lord"
+      ],
+      "attack": "lantern_ray",
       "artFile": "moth-02.png",
-      "source": null,
       "biome": "mushroom_grotto",
       "hp": 20,
       "speed": 8,
@@ -6252,20 +6508,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mushroom-druid",
       "name": "Sporedruid",
-      "attackType": "magic",
-      "professions": [
-        "primalist",
-        "healer"
+      "classes": [
+        "ritualist",
+        "lifebinder"
       ],
+      "keystones": [
+        "deluge",
+        "phoenix"
+      ],
+      "attack": "spore_ray",
       "artFile": "mushroom-01.png",
-      "source": "mushroom-druid.png",
       "biome": "mushroom_grotto",
       "hp": 20,
       "speed": 8,
@@ -6282,20 +6539,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "mushroom-sentinel-shield",
       "name": "Capshield",
-      "attackType": "aura",
-      "professions": [
-        "guardian",
-        "primalist"
+      "classes": [
+        "bulwark",
+        "spiritwalker"
       ],
+      "keystones": [
+        "shield_wall",
+        "soul_anchor"
+      ],
+      "attack": "spore_pulse",
       "artFile": "mushroom-03.png",
-      "source": null,
       "biome": "mushroom_grotto",
       "hp": 45,
       "speed": 5,
@@ -6312,20 +6570,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "musicbox-summoner-drum",
       "name": "Windup Drummer",
-      "attackType": "brawl",
-      "professions": [
+      "classes": [
         "summoner",
-        "guardian"
+        "bulwark"
       ],
+      "keystones": [
+        "quickening",
+        "hold_position"
+      ],
+      "attack": "windup_punch",
       "artFile": "musicbox-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 35,
       "speed": 8,
@@ -6342,20 +6601,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "muskox-bodyguard-buckler",
       "name": "Bucklerhorn",
-      "attackType": "blunt",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "berserker"
       ],
+      "keystones": [
+        "unbreakable",
+        "last_stand"
+      ],
+      "attack": "buckler_bash",
       "artFile": "muskox-01.png",
-      "source": null,
       "biome": "arctic",
       "hp": 70,
       "speed": 3,
@@ -6372,19 +6632,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "newt-alchemist-coil",
       "name": "Coilnewt",
-      "attackType": "whip",
-      "professions": [
-        "tinker"
+      "classes": [
+        "chemist",
+        "engineer"
       ],
+      "keystones": [
+        "volatile",
+        "self_repair"
+      ],
+      "attack": "coil_crack",
       "artFile": "newt-01.png",
-      "source": null,
       "biome": "swamp",
       "hp": 20,
       "speed": 8,
@@ -6401,20 +6663,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "olm-summoner-shade",
       "name": "Shadeolm",
-      "attackType": "magic",
-      "professions": [
+      "classes": [
         "summoner",
-        "sorcerer"
+        "enchanter"
       ],
+      "keystones": [
+        "golem_heart",
+        "spell_ward"
+      ],
+      "attack": "shade_ray",
       "artFile": "olm-01.png",
-      "source": null,
       "biome": "crystal_caverns",
       "hp": 20,
       "speed": 8,
@@ -6431,20 +6694,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "opossum-summoner-dice",
       "name": "Dicetail",
-      "attackType": "ranged",
-      "professions": [
+      "classes": [
         "summoner",
-        "leader"
+        "tactician"
       ],
+      "keystones": [
+        "portal",
+        "all_in"
+      ],
+      "attack": "dice_flick",
       "artFile": "opossum-01.png",
-      "source": null,
       "biome": "autumn_woods",
       "hp": 20,
       "speed": 8,
@@ -6461,20 +6725,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "orc-summoner-skull",
       "name": "Grukk Skullcaller",
-      "attackType": "blunt",
-      "professions": [
-        "summoner",
-        "primalist"
+      "classes": [
+        "necromancer",
+        "spiritwalker"
       ],
+      "keystones": [
+        "deaths_bounty",
+        "haunting"
+      ],
+      "attack": "skull_club",
       "artFile": "orc-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 45,
       "speed": 5,
@@ -6491,20 +6756,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "orchidmantis-trickster-leaf",
       "name": "Petalshade",
-      "attackType": "whip",
-      "professions": [
-        "primalist",
-        "rogue"
+      "classes": [
+        "ritualist",
+        "saboteur"
       ],
+      "keystones": [
+        "tidecaller",
+        "wrecker"
+      ],
+      "attack": "petal_slash",
       "artFile": "orchidmantis-01.png",
-      "source": null,
       "biome": "flower_meadow",
       "hp": 20,
       "speed": 8,
@@ -6521,20 +6787,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "organ-summoner",
       "name": "Pipe Organ Choir",
-      "attackType": "breath",
-      "professions": [
-        "leader",
-        "guardian"
+      "classes": [
+        "commander",
+        "bulwark"
       ],
+      "keystones": [
+        "drill",
+        "shield_wall"
+      ],
+      "attack": "pipe_chord",
       "artFile": "organ-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 75,
       "speed": 3,
@@ -6551,20 +6818,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "orrery-sorcerer-orbit",
       "name": "Orbitwright",
-      "attackType": "magic",
-      "professions": [
-        "sorcerer",
-        "leader"
+      "classes": [
+        "enchanter",
+        "commander"
       ],
+      "keystones": [
+        "twin_enchant",
+        "rally"
+      ],
+      "attack": "orbit_missile",
       "artFile": "orrery-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 45,
       "speed": 5,
@@ -6581,20 +6849,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "ossuary-summoner-cube",
       "name": "Bonecube",
-      "attackType": "brawl",
-      "professions": [
-        "summoner",
-        "guardian"
+      "classes": [
+        "necromancer",
+        "bulwark"
       ],
+      "keystones": [
+        "lich_form",
+        "hold_position"
+      ],
+      "attack": "bone_rattle",
       "artFile": "ossuary-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 55,
       "speed": 5,
@@ -6611,20 +6880,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "otter-hunter-sling",
       "name": "Slingwhisker",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "rogue"
+      "classes": [
+        "tracker",
+        "thief"
       ],
+      "keystones": [
+        "relentless",
+        "escape_artist"
+      ],
+      "attack": "river_stone",
       "artFile": "otter-01.png",
-      "source": null,
       "biome": "wet_forest",
       "hp": 20,
       "speed": 8,
@@ -6641,20 +6911,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "owl-wizard",
       "name": "Hootmage",
-      "attackType": "magic",
-      "professions": [
-        "sorcerer",
-        "flying"
+      "classes": [
+        "enchanter",
+        "skyborne"
       ],
+      "keystones": [
+        "lingering_magic",
+        "eagle_eye"
+      ],
+      "attack": "owl_spark",
       "artFile": "owl-01.png",
-      "source": "owl-wizard.png",
       "biome": "pine_forest",
       "hp": 20,
       "speed": 8,
@@ -6671,19 +6942,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "panda-monk-fists",
       "name": "Bamboo Monk",
-      "attackType": "brawl",
-      "professions": [
-        "warrior"
+      "classes": [
+        "berserker",
+        "champion"
       ],
+      "keystones": [
+        "unstoppable",
+        "hunt_down"
+      ],
+      "attack": "palm_strike",
       "artFile": "panda-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 60,
       "speed": 3,
@@ -6700,20 +6973,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "pangolin-guard-decoy",
       "name": "Decoy Pangolin",
-      "attackType": "blunt",
-      "professions": [
-        "guardian",
-        "rogue"
+      "classes": [
+        "bulwark",
+        "thief"
       ],
+      "keystones": [
+        "unbreakable",
+        "master_thief"
+      ],
+      "attack": "scale_bash",
       "artFile": "pangolin-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 50,
       "speed": 5,
@@ -6730,20 +7004,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "pangolin-sorcerer-thunder",
       "name": "Thunderscale",
-      "attackType": "aura",
-      "professions": [
-        "guardian",
+      "classes": [
+        "bulwark",
         "summoner"
       ],
+      "keystones": [
+        "shield_wall",
+        "quickening"
+      ],
+      "attack": "thunder_hum",
       "artFile": "pangolin-02.png",
-      "source": null,
       "biome": "savannah",
       "hp": 50,
       "speed": 5,
@@ -6760,20 +7035,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "panpipe-summoner-reed",
       "name": "Reedcaller",
-      "attackType": "breath",
-      "professions": [
-        "leader",
+      "classes": [
+        "commander",
         "summoner"
       ],
+      "keystones": [
+        "vanguard",
+        "golem_heart"
+      ],
+      "attack": "reed_melody",
       "artFile": "panpipe-01.png",
-      "source": null,
       "biome": "flower_meadow",
       "hp": 25,
       "speed": 8,
@@ -6790,20 +7066,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "peacock-bard-feather",
       "name": "Plumecrown",
-      "attackType": "magic",
-      "professions": [
-        "leader",
-        "flying"
+      "classes": [
+        "bard",
+        "skyborne"
       ],
+      "keystones": [
+        "rhythm",
+        "lift"
+      ],
+      "attack": "feather_fan",
       "artFile": "peacock-01.png",
-      "source": null,
       "biome": "flower_meadow",
       "hp": 40,
       "speed": 5,
@@ -6820,20 +7097,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "phoenix-titan-solar",
       "name": "Solar Phoenix",
-      "attackType": "aura",
-      "professions": [
-        "healer",
-        "elementalist"
+      "classes": [
+        "mender",
+        "pyromancer"
       ],
+      "keystones": [
+        "regrowth",
+        "ashwalker"
+      ],
+      "attack": "solar_flare",
       "artFile": "phoenix-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 60,
       "speed": 3,
@@ -6850,20 +7128,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "pika-summoner-horn",
       "name": "Hornpip",
-      "attackType": "breath",
-      "professions": [
-        "leader",
+      "classes": [
+        "bard",
         "summoner"
       ],
+      "keystones": [
+        "crescendo",
+        "portal"
+      ],
+      "attack": "squeak",
       "artFile": "pika-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 20,
       "speed": 8,
@@ -6880,19 +7159,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "platypus-alchemist-rune",
       "name": "Runebill",
-      "attackType": "breath",
-      "professions": [
-        "tinker"
+      "classes": [
+        "chemist",
+        "engineer"
       ],
+      "keystones": [
+        "big_finish",
+        "rapid_fire"
+      ],
+      "attack": "rune_spray",
       "artFile": "platypus-01.png",
-      "source": null,
       "biome": "wet_forest",
       "hp": 20,
       "speed": 8,
@@ -6909,20 +7190,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "plough-ravager",
       "name": "Furrow Ravager",
-      "attackType": "bladed",
-      "professions": [
-        "warrior",
+      "classes": [
+        "champion",
         "summoner"
       ],
+      "keystones": [
+        "duelist",
+        "quickening"
+      ],
+      "attack": "plough",
       "artFile": "plough-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 75,
       "speed": 3,
@@ -6939,20 +7221,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "pocketwatch-warden",
       "name": "Tickwarden",
-      "attackType": "aura",
-      "professions": [
-        "guardian",
-        "leader"
+      "classes": [
+        "keeper",
+        "commander"
       ],
+      "keystones": [
+        "steadfast_ward",
+        "drill"
+      ],
+      "attack": "tick_tock",
       "artFile": "pocketwatch-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 35,
       "speed": 8,
@@ -6969,20 +7252,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "porcupine-alchemist-shield",
       "name": "Quillflask",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "guardian"
+      "classes": [
+        "chemist",
+        "bulwark"
       ],
+      "keystones": [
+        "potent_brew",
+        "hold_position"
+      ],
+      "attack": "quill_volley",
       "artFile": "porcupine-01.png",
-      "source": null,
       "biome": "autumn_woods",
       "hp": 25,
       "speed": 8,
@@ -6999,19 +7283,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "portcullis-colossus",
       "name": "Portcullis Colossus",
-      "attackType": "blunt",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "unbreakable",
+        "thorned_ward"
+      ],
+      "attack": "portcullis_drop",
       "artFile": "portcullis-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 75,
       "speed": 3,
@@ -7028,20 +7314,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "printingpress-summoner-type",
       "name": "Typesetter",
-      "attackType": "ranged",
-      "professions": [
+      "classes": [
         "summoner",
-        "tinker"
+        "engineer"
       ],
+      "keystones": [
+        "golem_heart",
+        "reinforced"
+      ],
+      "attack": "press_down",
       "artFile": "printingpress-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 75,
       "speed": 3,
@@ -7058,20 +7345,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "prism-hexer",
       "name": "Shardhex",
-      "attackType": "magic",
-      "professions": [
-        "flying",
-        "guardian"
+      "classes": [
+        "skyborne",
+        "keeper"
       ],
+      "keystones": [
+        "sky_lord",
+        "twin_wards"
+      ],
+      "attack": "refraction",
       "artFile": "prism-01.png",
-      "source": null,
       "biome": "crystal_caverns",
       "hp": 30,
       "speed": 8,
@@ -7088,20 +7376,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "puffin-bodyguard-shield",
       "name": "Shieldpuff",
-      "attackType": "blunt",
-      "professions": [
-        "flying",
-        "guardian"
+      "classes": [
+        "skyborne",
+        "bulwark"
       ],
+      "keystones": [
+        "eagle_eye",
+        "shield_wall"
+      ],
+      "attack": "shield_thump",
       "artFile": "puffin-01.png",
-      "source": null,
       "biome": "arctic",
       "hp": 20,
       "speed": 8,
@@ -7118,20 +7407,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "quern-oracle",
       "name": "Grindstone Oracle",
-      "attackType": "blunt",
-      "professions": [
-        "primalist",
-        "flying"
+      "classes": [
+        "spiritwalker",
+        "skyborne"
       ],
+      "keystones": [
+        "puppeteer",
+        "lift"
+      ],
+      "attack": "millstone_spin",
       "artFile": "quern-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 55,
       "speed": 5,
@@ -7148,19 +7438,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "quokka-summoner-pebble",
       "name": "Pebblegrin",
-      "attackType": "magic",
-      "professions": [
-        "summoner"
+      "classes": [
+        "summoner",
+        "enchanter"
       ],
+      "keystones": [
+        "portal",
+        "spell_ward"
+      ],
+      "attack": "happy_glow",
       "artFile": "quokka-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 20,
       "speed": 8,
@@ -7177,20 +7469,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "raccoon-alchemist-potion",
       "name": "Potionpaw",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "rogue"
+      "classes": [
+        "chemist",
+        "thief"
       ],
+      "keystones": [
+        "volatile",
+        "shadow_purse"
+      ],
+      "attack": "snatch_and_run",
       "artFile": "raccoon-01.png",
-      "source": null,
       "biome": "autumn_woods",
       "hp": 20,
       "speed": 8,
@@ -7207,20 +7500,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "ram-bard-bellows",
       "name": "Bellows Ram",
-      "attackType": "breath",
-      "professions": [
-        "leader",
-        "tinker"
+      "classes": [
+        "bard",
+        "engineer"
       ],
+      "keystones": [
+        "grand_chorus",
+        "self_repair"
+      ],
+      "attack": "squeeze_song",
       "artFile": "ram-02.png",
-      "source": null,
       "biome": "mountain",
       "hp": 40,
       "speed": 5,
@@ -7237,20 +7531,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "ram-paladin-sun",
       "name": "Sunhorn Paladin",
-      "attackType": "brawl",
-      "professions": [
-        "leader",
-        "guardian"
+      "classes": [
+        "bard",
+        "keeper"
       ],
+      "keystones": [
+        "rhythm",
+        "steadfast_ward"
+      ],
+      "attack": "sun_slam",
       "artFile": "ram-01.png",
-      "source": "ram-paladin-sun.png",
       "biome": "mountain",
       "hp": 50,
       "speed": 5,
@@ -7267,20 +7562,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "reef-warden",
       "name": "Reef Warden",
-      "attackType": "polearm",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "keeper",
+        "berserker"
       ],
+      "keystones": [
+        "thorned_ward",
+        "reckless_swing"
+      ],
+      "attack": "reef_thrust",
       "artFile": "lizardfolk-02.png",
-      "source": "9_f.png",
       "biome": "lagoon",
       "hp": 45,
       "speed": 6,
@@ -7297,20 +7593,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "reliquary-summoner-seal",
       "name": "Sealed Reliquary",
-      "attackType": "magic",
-      "professions": [
+      "classes": [
         "summoner",
-        "sorcerer"
+        "enchanter"
       ],
+      "keystones": [
+        "quickening",
+        "twin_enchant"
+      ],
+      "attack": "relic_glow",
       "artFile": "reliquary-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 55,
       "speed": 5,
@@ -7327,20 +7624,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "retort-alchemist",
       "name": "Bubblehex Retort",
-      "attackType": "breath",
-      "professions": [
-        "tinker",
-        "guardian"
+      "classes": [
+        "chemist",
+        "bulwark"
       ],
+      "keystones": [
+        "big_finish",
+        "hold_position"
+      ],
+      "attack": "retort_spray",
       "artFile": "retort-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 35,
       "speed": 8,
@@ -7357,20 +7655,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "rhinoceros-guard-shadow",
       "name": "Shadowhorn",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "warrior"
+      "classes": [
+        "assassin",
+        "champion"
       ],
+      "keystones": [
+        "vanishing_kill",
+        "glory"
+      ],
+      "attack": "shadow_slash",
       "artFile": "rhinoceros-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 70,
       "speed": 3,
@@ -7387,20 +7686,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "roadrunner-hunter-whistle",
       "name": "Whistledash",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "flying"
+      "classes": [
+        "tracker",
+        "skyborne"
       ],
+      "keystones": [
+        "sniff_the_air",
+        "sky_lord"
+      ],
+      "attack": "shrill_whistle",
       "artFile": "roadrunner-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 20,
       "speed": 8,
@@ -7417,20 +7717,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "roc-colossus-thunder",
       "name": "Thunder Roc",
-      "attackType": "brawl",
-      "professions": [
-        "hunter",
-        "flying"
+      "classes": [
+        "tracker",
+        "skyborne"
       ],
+      "keystones": [
+        "scent_of_blood",
+        "eagle_eye"
+      ],
+      "attack": "roc_shriek",
       "artFile": "roc-01.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 60,
       "speed": 3,
@@ -7447,20 +7748,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "rooster-captain-banner",
       "name": "Banner Cock",
-      "attackType": "polearm",
-      "professions": [
-        "leader",
-        "warrior"
+      "classes": [
+        "commander",
+        "champion"
       ],
+      "keystones": [
+        "rally",
+        "hunt_down"
+      ],
+      "attack": "dawn_crow",
       "artFile": "rooster-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 20,
       "speed": 8,
@@ -7477,20 +7779,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sableantelope-captain-pennant",
       "name": "Pennant Sable",
-      "attackType": "polearm",
-      "professions": [
-        "leader",
-        "warrior"
+      "classes": [
+        "commander",
+        "champion"
       ],
+      "keystones": [
+        "vanguard",
+        "duelist"
+      ],
+      "attack": "rallying_charge",
       "artFile": "sableantelope-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 40,
       "speed": 5,
@@ -7507,19 +7810,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "safe-hexer-vault",
       "name": "Vaulthex",
-      "attackType": "brawl",
-      "professions": [
-        "guardian"
+      "classes": [
+        "bulwark",
+        "keeper"
       ],
+      "keystones": [
+        "unbreakable",
+        "twin_wards"
+      ],
+      "attack": "lockdown",
       "artFile": "safe-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 75,
       "speed": 3,
@@ -7536,20 +7841,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sail-hexer-night",
       "name": "Nightsail",
-      "attackType": "aura",
-      "professions": [
-        "flying",
-        "rogue"
+      "classes": [
+        "skyborne",
+        "thief"
       ],
+      "keystones": [
+        "lift",
+        "escape_artist"
+      ],
+      "attack": "moonwind_theft",
       "artFile": "sail-01.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 40,
       "speed": 5,
@@ -7566,20 +7872,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "salamander-rogue",
       "name": "Slinkember",
-      "attackType": "brawl",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "thief",
+        "tracker"
       ],
+      "keystones": [
+        "master_thief",
+        "relentless"
+      ],
+      "attack": "ember_swipe",
       "artFile": "salamander-01.png",
-      "source": "salamander-rogue.png",
       "biome": "ashlands",
       "hp": 20,
       "speed": 8,
@@ -7596,20 +7903,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "salamander-summoner-flask",
       "name": "Flaskember",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
+      "classes": [
+        "chemist",
         "summoner"
       ],
+      "keystones": [
+        "potent_brew",
+        "golem_heart"
+      ],
+      "attack": "fume_flask",
       "artFile": "salamander-02.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 20,
       "speed": 8,
@@ -7626,20 +7934,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sarcophagus-warden",
       "name": "Tombwarden",
-      "attackType": "aura",
-      "professions": [
+      "classes": [
         "summoner",
-        "guardian"
+        "keeper"
       ],
+      "keystones": [
+        "portal",
+        "steadfast_ward"
+      ],
+      "attack": "tomb_curse",
       "artFile": "sarcophagus-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 75,
       "speed": 3,
@@ -7656,20 +7965,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "scarab-engineer-rune",
       "name": "Runeshell Scarab",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "hunter"
+      "classes": [
+        "engineer",
+        "tracker"
       ],
+      "keystones": [
+        "rapid_fire",
+        "sniff_the_air"
+      ],
+      "attack": "rune_cannon",
       "artFile": "scarab-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 30,
       "speed": 8,
@@ -7686,20 +7996,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "scorpion",
       "name": "Stingtail",
-      "attackType": "whip",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "thief",
+        "tracker"
       ],
+      "keystones": [
+        "shadow_purse",
+        "scent_of_blood"
+      ],
+      "attack": "stinger",
       "artFile": "scorpion-01.png",
-      "source": "scorpion.png",
       "biome": "desert",
       "hp": 45,
       "speed": 5,
@@ -7716,20 +8027,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "scorpion-healer-ribbon",
       "name": "Ribbonsting",
-      "attackType": "whip",
-      "professions": [
-        "tinker",
-        "hunter"
+      "classes": [
+        "engineer",
+        "tracker"
       ],
+      "keystones": [
+        "reinforced",
+        "relentless"
+      ],
+      "attack": "ribbon_bind",
       "artFile": "scorpion-02.png",
-      "source": null,
       "biome": "desert",
       "hp": 45,
       "speed": 5,
@@ -7746,20 +8058,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "seal-bard-bottle",
       "name": "Bottlenose Bard",
-      "attackType": "breath",
-      "professions": [
-        "tinker",
-        "leader"
+      "classes": [
+        "engineer",
+        "bard"
       ],
+      "keystones": [
+        "self_repair",
+        "crescendo"
+      ],
+      "attack": "splash_song",
       "artFile": "seal-01.png",
-      "source": null,
       "biome": "arctic",
       "hp": 40,
       "speed": 5,
@@ -7776,20 +8089,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sealpress-summoner",
       "name": "Waxseal Press",
-      "attackType": "magic",
-      "professions": [
+      "classes": [
         "summoner",
-        "guardian"
+        "keeper"
       ],
+      "keystones": [
+        "quickening",
+        "thorned_ward"
+      ],
+      "attack": "wax_press",
       "artFile": "sealpress-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 55,
       "speed": 5,
@@ -7806,20 +8120,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "secretarybird-hunter-javelin",
       "name": "Javelin Stalker",
-      "attackType": "polearm",
-      "professions": [
-        "flying",
-        "hunter"
+      "classes": [
+        "skyborne",
+        "assassin"
       ],
+      "keystones": [
+        "sky_lord",
+        "venom_blades"
+      ],
+      "attack": "javelin_throw",
       "artFile": "secretarybird-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 40,
       "speed": 5,
@@ -7836,20 +8151,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "serpent-titan-crown",
       "name": "Crowned Serpent",
-      "attackType": "ranged",
-      "professions": [
-        "rogue",
+      "classes": [
+        "thief",
         "summoner"
       ],
+      "keystones": [
+        "escape_artist",
+        "golem_heart"
+      ],
+      "attack": "royal_venom",
       "artFile": "serpent-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 65,
       "speed": 3,
@@ -7866,20 +8182,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "serval-hunter-crossbow",
       "name": "Boltear",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "rogue"
+      "classes": [
+        "tracker",
+        "thief"
       ],
+      "keystones": [
+        "sniff_the_air",
+        "master_thief"
+      ],
+      "attack": "crossbow_bolt",
       "artFile": "serval-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 20,
       "speed": 8,
@@ -7896,20 +8213,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sewingbox-engineer-ribbon",
       "name": "Stitchkit",
-      "attackType": "whip",
-      "professions": [
-        "tinker",
-        "healer"
+      "classes": [
+        "engineer",
+        "mender"
       ],
+      "keystones": [
+        "rapid_fire",
+        "triage"
+      ],
+      "attack": "stitch_up",
       "artFile": "sewingbox-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 25,
       "speed": 8,
@@ -7926,20 +8244,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sextant-admiral",
       "name": "Admiral Starsight",
-      "attackType": "ranged",
-      "professions": [
-        "hunter",
-        "leader"
+      "classes": [
+        "tracker",
+        "commander"
       ],
+      "keystones": [
+        "scent_of_blood",
+        "drill"
+      ],
+      "attack": "starsight_ray",
       "artFile": "sextant-01.png",
-      "source": null,
       "biome": "coast",
       "hp": 55,
       "speed": 5,
@@ -7956,20 +8275,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "shield-vanguard",
       "name": "Vanguard Aegis",
-      "attackType": "blunt",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "champion"
       ],
+      "keystones": [
+        "shield_wall",
+        "glory"
+      ],
+      "attack": "aegis_bash",
       "artFile": "shield-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 55,
       "speed": 5,
@@ -7986,20 +8306,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "shoebill-captain-pike",
       "name": "Pikebill",
-      "attackType": "polearm",
-      "professions": [
-        "leader",
-        "hunter"
+      "classes": [
+        "commander",
+        "tracker"
       ],
+      "keystones": [
+        "rally",
+        "relentless"
+      ],
+      "attack": "pike_thrust",
       "artFile": "shoebill-01.png",
-      "source": null,
       "biome": "swamp",
       "hp": 40,
       "speed": 5,
@@ -8016,20 +8337,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "shrew-summoner-totem",
       "name": "Totemshrew",
-      "attackType": "magic",
-      "professions": [
+      "classes": [
         "summoner",
-        "primalist"
+        "totemist"
       ],
+      "keystones": [
+        "portal",
+        "spirit_shield"
+      ],
+      "attack": "spirit_nip",
       "artFile": "shrew-01.png",
-      "source": null,
       "biome": "pine_forest",
       "hp": 20,
       "speed": 8,
@@ -8046,20 +8368,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "siphon-alchemist",
       "name": "Siphonworm",
-      "attackType": "whip",
-      "professions": [
-        "tinker",
-        "guardian"
+      "classes": [
+        "chemist",
+        "bulwark"
       ],
+      "keystones": [
+        "volatile",
+        "hold_position"
+      ],
+      "attack": "gas_vent",
       "artFile": "siphon-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 55,
       "speed": 5,
@@ -8076,20 +8399,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sistrum-summoner",
       "name": "Rattlechant",
-      "attackType": "aura",
-      "professions": [
-        "leader",
-        "sorcerer"
+      "classes": [
+        "commander",
+        "enchanter"
       ],
+      "keystones": [
+        "vanguard",
+        "lingering_magic"
+      ],
+      "attack": "rattling_chant",
       "artFile": "sistrum-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 35,
       "speed": 8,
@@ -8106,20 +8430,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sledgehammer-colossus",
       "name": "Sledge Colossus",
-      "attackType": "blunt",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "berserker",
+        "bulwark"
       ],
+      "keystones": [
+        "last_stand",
+        "unbreakable"
+      ],
+      "attack": "sledge_slam",
       "artFile": "sledgehammer-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 75,
       "speed": 3,
@@ -8136,20 +8461,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sloth-guard-bark",
       "name": "Barkhold Sloth",
-      "attackType": "brawl",
-      "professions": [
-        "primalist",
-        "healer"
+      "classes": [
+        "spiritwalker",
+        "mender"
       ],
+      "keystones": [
+        "soul_anchor",
+        "overflowing_care"
+      ],
+      "attack": "slow_claw",
       "artFile": "sloth-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 45,
       "speed": 5,
@@ -8166,20 +8492,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "snail-bard-brewer",
       "name": "Brewshell",
-      "attackType": "aura",
-      "professions": [
-        "tinker",
-        "leader"
+      "classes": [
+        "engineer",
+        "bard"
       ],
+      "keystones": [
+        "reinforced",
+        "grand_chorus"
+      ],
+      "attack": "brew_toss",
       "artFile": "snail-05.png",
-      "source": null,
       "biome": "mushroom_grotto",
       "hp": 25,
       "speed": 8,
@@ -8196,20 +8523,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "snail-cleric-crystal",
       "name": "Prism Snail",
-      "attackType": "magic",
-      "professions": [
-        "elementalist",
-        "healer"
+      "classes": [
+        "stormcaller",
+        "cleric"
       ],
+      "keystones": [
+        "eye_of_the_storm",
+        "judgment"
+      ],
+      "attack": "slime_trail",
       "artFile": "snail-01.png",
-      "source": "snail-cleric-crystal.png",
       "biome": "crystal_caverns",
       "hp": 25,
       "speed": 8,
@@ -8226,20 +8554,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "spikeback",
       "name": "Spikeback",
-      "attackType": "brawl",
-      "professions": [
-        "warrior",
-        "guardian"
+      "classes": [
+        "berserker",
+        "bulwark"
       ],
+      "keystones": [
+        "unstoppable",
+        "shield_wall"
+      ],
+      "attack": "spike_roll",
       "artFile": "spikeback-01.png",
-      "source": "1_f.png",
       "biome": "desert",
       "hp": 65,
       "speed": 4,
@@ -8256,19 +8585,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "spindle-summoner",
       "name": "Spindlewhirl",
-      "attackType": "whip",
-      "professions": [
-        "leader"
+      "classes": [
+        "commander",
+        "tactician"
       ],
+      "keystones": [
+        "drill",
+        "inspiring_presence"
+      ],
+      "attack": "spindle_lash",
       "artFile": "spindle-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 25,
       "speed": 8,
@@ -8285,19 +8616,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "stag-glade",
       "name": "Glade Stag",
-      "attackType": "brawl",
-      "professions": [
-        "primalist"
+      "classes": [
+        "ritualist",
+        "totemist"
       ],
+      "keystones": [
+        "frostbinder",
+        "great_totem"
+      ],
+      "attack": "antler_toss",
       "artFile": "deer-01.png",
-      "source": "26_f.png",
       "biome": "wet_forest",
       "hp": 40,
       "speed": 6,
@@ -8314,20 +8647,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "stag-hunter-shield",
       "name": "Shieldhorn Stag",
-      "attackType": "polearm",
-      "professions": [
-        "hunter",
-        "guardian"
+      "classes": [
+        "tracker",
+        "bulwark"
       ],
+      "keystones": [
+        "sniff_the_air",
+        "hold_position"
+      ],
+      "attack": "hunters_arrow",
       "artFile": "stag-01.png",
-      "source": null,
       "biome": "pine_forest",
       "hp": 40,
       "speed": 5,
@@ -8344,20 +8678,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "stoat-healer-needle",
       "name": "Needlewhisk",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "assassin",
+        "thief"
       ],
+      "keystones": [
+        "unseen",
+        "shadow_purse"
+      ],
+      "attack": "needle_jab",
       "artFile": "stoat-01.png",
-      "source": null,
       "biome": "arctic",
       "hp": 20,
       "speed": 8,
@@ -8374,20 +8709,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sugarglider-scout-sail",
       "name": "Sailglide",
-      "attackType": "ranged",
-      "professions": [
-        "flying",
-        "sorcerer"
+      "classes": [
+        "skyborne",
+        "enchanter"
       ],
+      "keystones": [
+        "eagle_eye",
+        "spell_ward"
+      ],
+      "attack": "gliding_swoop",
       "artFile": "sugarglider-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 20,
       "speed": 8,
@@ -8404,19 +8740,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sundial-vanguard",
       "name": "Noonward",
-      "attackType": "polearm",
-      "professions": [
-        "guardian"
+      "classes": [
+        "keeper",
+        "bulwark"
       ],
+      "keystones": [
+        "twin_wards",
+        "unbreakable"
+      ],
+      "attack": "noon_blade",
       "artFile": "sundial-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 55,
       "speed": 5,
@@ -8433,20 +8771,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "sundrum-hexer",
       "name": "Sunhex Drum",
-      "attackType": "aura",
-      "professions": [
-        "tinker",
-        "guardian"
+      "classes": [
+        "engineer",
+        "keeper"
       ],
+      "keystones": [
+        "self_repair",
+        "steadfast_ward"
+      ],
+      "attack": "booming_beat",
       "artFile": "sundrum-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 55,
       "speed": 5,
@@ -8463,20 +8802,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "tapestry-summoner",
       "name": "Woven Host",
-      "attackType": "aura",
-      "professions": [
+      "classes": [
         "summoner",
-        "guardian"
+        "bulwark"
       ],
+      "keystones": [
+        "quickening",
+        "shield_wall"
+      ],
+      "attack": "woven_snare",
       "artFile": "tapestry-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 55,
       "speed": 5,
@@ -8493,20 +8833,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "tarsier-hexer-mask",
       "name": "Maskeye",
-      "attackType": "brawl",
-      "professions": [
-        "rogue",
-        "sorcerer"
+      "classes": [
+        "thief",
+        "hexer"
       ],
+      "keystones": [
+        "escape_artist",
+        "spreading_curse"
+      ],
+      "attack": "skull_hex",
       "artFile": "tarsier-01.png",
-      "source": null,
       "biome": "jungle",
       "hp": 20,
       "speed": 8,
@@ -8523,20 +8864,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "teapot-alchemist-volcano",
       "name": "Volcano Teapot",
-      "attackType": "breath",
-      "professions": [
-        "tinker",
-        "elementalist"
+      "classes": [
+        "chemist",
+        "pyromancer"
       ],
+      "keystones": [
+        "big_finish",
+        "wildfire"
+      ],
+      "attack": "volcano_spout",
       "artFile": "teapot-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 30,
       "speed": 8,
@@ -8553,20 +8895,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "termite-engineer-drill",
       "name": "Drillmite",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "guardian"
+      "classes": [
+        "engineer",
+        "bulwark"
       ],
+      "keystones": [
+        "rapid_fire",
+        "hold_position"
+      ],
+      "attack": "drill_shot",
       "artFile": "termite-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 25,
       "speed": 8,
@@ -8583,20 +8926,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "termite-summoner-clockwork",
       "name": "Clockmite",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
+      "classes": [
+        "engineer",
         "summoner"
       ],
+      "keystones": [
+        "reinforced",
+        "golem_heart"
+      ],
+      "attack": "clockwork_nip",
       "artFile": "termite-02.png",
-      "source": null,
       "biome": "savannah",
       "hp": 25,
       "speed": 8,
@@ -8613,20 +8957,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "thornfang",
       "name": "Thornfang",
-      "attackType": "brawl",
-      "professions": [
-        "hunter",
-        "warrior"
+      "classes": [
+        "tracker",
+        "berserker"
       ],
+      "keystones": [
+        "scent_of_blood",
+        "reckless_swing"
+      ],
+      "attack": "thorn_claws",
       "artFile": "werewolf-01.png",
-      "source": "6_f.png",
       "biome": "pine_forest",
       "hp": 40,
       "speed": 7,
@@ -8643,20 +8988,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "thorntreant-primalist-bramble",
       "name": "Bramblestalker",
-      "attackType": "aura",
-      "professions": [
-        "primalist",
-        "rogue"
+      "classes": [
+        "spiritwalker",
+        "assassin"
       ],
+      "keystones": [
+        "haunting",
+        "vanishing_kill"
+      ],
+      "attack": "thorn_snare",
       "artFile": "thorntreant-01.png",
-      "source": null,
       "biome": "wet_forest",
       "hp": 70,
       "speed": 3,
@@ -8673,20 +9019,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "toad-bard-bell",
       "name": "Belltoad",
-      "attackType": "magic",
-      "professions": [
-        "leader",
+      "classes": [
+        "bard",
         "summoner"
       ],
+      "keystones": [
+        "rhythm",
+        "portal"
+      ],
+      "attack": "croaking_toll",
       "artFile": "toad-03.png",
-      "source": null,
       "biome": "swamp",
       "hp": 40,
       "speed": 5,
@@ -8703,20 +9050,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "toad-boulder",
       "name": "Boulder Toad",
-      "attackType": "blunt",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "berserker"
       ],
+      "keystones": [
+        "unbreakable",
+        "last_stand"
+      ],
+      "attack": "boulder_belly",
       "artFile": "toad-01.png",
-      "source": "5_f.png",
       "biome": "mountain",
       "hp": 70,
       "speed": 2,
@@ -8733,20 +9081,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "toad-druid",
       "name": "Druid Toad",
-      "attackType": "breath",
-      "professions": [
-        "primalist",
-        "healer"
+      "classes": [
+        "ritualist",
+        "lifebinder"
       ],
+      "keystones": [
+        "deluge",
+        "lifeblood"
+      ],
+      "attack": "spore_croak",
       "artFile": "toad-02.png",
-      "source": "toad-druid.png",
       "biome": "swamp",
       "hp": 40,
       "speed": 5,
@@ -8763,20 +9112,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "tortoise-colossus-mountain",
       "name": "Mountainshell",
-      "attackType": "aura",
-      "professions": [
-        "guardian",
-        "primalist"
+      "classes": [
+        "bulwark",
+        "spiritwalker"
       ],
+      "keystones": [
+        "shield_wall",
+        "puppeteer"
+      ],
+      "attack": "avalanche",
       "artFile": "tortoise-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 75,
       "speed": 3,
@@ -8793,20 +9143,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "tortoise-sentinel-obsidian",
       "name": "Obsidian Tortoise",
-      "attackType": "aura",
-      "professions": [
-        "guardian",
+      "classes": [
+        "bulwark",
         "summoner"
       ],
+      "keystones": [
+        "hold_position",
+        "quickening"
+      ],
+      "attack": "obsidian_shard",
       "artFile": "tortoise-02.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 75,
       "speed": 3,
@@ -8823,20 +9174,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "treant-druid-leaf",
       "name": "Leafwarden",
-      "attackType": "whip",
-      "professions": [
-        "primalist",
-        "healer"
+      "classes": [
+        "ritualist",
+        "lifebinder"
       ],
+      "keystones": [
+        "tidecaller",
+        "martyr"
+      ],
+      "attack": "leaf_storm",
       "artFile": "treant-01.png",
-      "source": null,
       "biome": "wet_forest",
       "hp": 65,
       "speed": 3,
@@ -8853,20 +9205,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "treant-titan-ancient",
       "name": "Elderbough",
-      "attackType": "whip",
-      "professions": [
-        "primalist",
-        "healer"
+      "classes": [
+        "spiritwalker",
+        "mender"
       ],
+      "keystones": [
+        "soul_anchor",
+        "regrowth"
+      ],
+      "attack": "ancient_root",
       "artFile": "treant-02.png",
-      "source": null,
       "biome": "wet_forest",
       "hp": 70,
       "speed": 3,
@@ -8883,20 +9236,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "trowel-crusader",
       "name": "Trowel Crusader",
-      "attackType": "bladed",
-      "professions": [
-        "guardian",
-        "warrior"
+      "classes": [
+        "bulwark",
+        "champion"
       ],
+      "keystones": [
+        "unbreakable",
+        "hunt_down"
+      ],
+      "attack": "trowel_strike",
       "artFile": "trowel-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 55,
       "speed": 5,
@@ -8913,20 +9267,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "tuningfork-champion",
       "name": "Resonant Champion",
-      "attackType": "brawl",
-      "professions": [
-        "leader",
-        "warrior"
+      "classes": [
+        "commander",
+        "champion"
       ],
+      "keystones": [
+        "rally",
+        "duelist"
+      ],
+      "attack": "harmonic_hum",
       "artFile": "tuningfork-01.png",
-      "source": null,
       "biome": "cathedral",
       "hp": 55,
       "speed": 5,
@@ -8943,20 +9298,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "turbine-skyguard",
       "name": "Skyturbine",
-      "attackType": "ranged",
-      "professions": [
-        "flying",
-        "warrior"
+      "classes": [
+        "skyborne",
+        "champion"
       ],
+      "keystones": [
+        "lift",
+        "glory"
+      ],
+      "attack": "turbine_blade",
       "artFile": "turbine-01.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 55,
       "speed": 5,
@@ -8973,20 +9329,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "turtle-bard-frost",
       "name": "Frostshell Bard",
-      "attackType": "breath",
-      "professions": [
-        "guardian",
-        "sorcerer"
+      "classes": [
+        "bulwark",
+        "enchanter"
       ],
+      "keystones": [
+        "shield_wall",
+        "twin_enchant"
+      ],
+      "attack": "frost_chime",
       "artFile": "turtle-03.png",
-      "source": null,
       "biome": "arctic",
       "hp": 50,
       "speed": 5,
@@ -9003,20 +9360,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "turtle-monk",
       "name": "Shellmonk",
-      "attackType": "blunt",
-      "professions": [
-        "healer",
-        "guardian"
+      "classes": [
+        "cleric",
+        "bulwark"
       ],
+      "keystones": [
+        "sanctity",
+        "hold_position"
+      ],
+      "attack": "prayer_palm",
       "artFile": "turtle-02.png",
-      "source": "turtle-monk.png",
       "biome": "coast",
       "hp": 50,
       "speed": 5,
@@ -9033,20 +9391,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "umbrella-guardian-fan",
       "name": "Fanbrella",
-      "attackType": "blunt",
-      "professions": [
-        "flying",
-        "elementalist"
+      "classes": [
+        "skyborne",
+        "stormcaller"
       ],
+      "keystones": [
+        "sky_lord",
+        "overcharge"
+      ],
+      "attack": "parasol_gust",
       "artFile": "umbrella-01.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 25,
       "speed": 8,
@@ -9063,20 +9422,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "velvetworm-hexer-rune",
       "name": "Runevelvet",
-      "attackType": "whip",
-      "professions": [
-        "rogue",
-        "primalist"
+      "classes": [
+        "thief",
+        "spiritwalker"
       ],
+      "keystones": [
+        "master_thief",
+        "haunting"
+      ],
+      "attack": "glue_spit",
       "artFile": "velvetworm-01.png",
-      "source": null,
       "biome": "wet_forest",
       "hp": 20,
       "speed": 8,
@@ -9093,20 +9453,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "vinegaroon-alchemist-flask",
       "name": "Vinegar Flask",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "hunter"
+      "classes": [
+        "chemist",
+        "tracker"
       ],
+      "keystones": [
+        "potent_brew",
+        "relentless"
+      ],
+      "attack": "acid_pinch",
       "artFile": "vinegaroon-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 25,
       "speed": 8,
@@ -9123,20 +9484,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "vise-enforcer",
       "name": "Vise Enforcer",
-      "attackType": "brawl",
-      "professions": [
-        "guardian",
-        "tinker"
+      "classes": [
+        "bulwark",
+        "engineer"
       ],
+      "keystones": [
+        "unbreakable",
+        "self_repair"
+      ],
+      "attack": "vise_grip",
       "artFile": "vise-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 55,
       "speed": 5,
@@ -9153,20 +9515,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "vulture-healer-cinder",
       "name": "Cinderbeak",
-      "attackType": "aura",
-      "professions": [
-        "flying",
-        "elementalist"
+      "classes": [
+        "skyborne",
+        "stormcaller"
       ],
+      "keystones": [
+        "eagle_eye",
+        "static_field"
+      ],
+      "attack": "cinder_dive",
       "artFile": "vulture-01.png",
-      "source": null,
       "biome": "desert",
       "hp": 40,
       "speed": 5,
@@ -9183,19 +9546,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "walrus-bard-horn",
       "name": "Tuskhorn Walrus",
-      "attackType": "breath",
-      "professions": [
-        "leader"
+      "classes": [
+        "bard",
+        "commander"
       ],
+      "keystones": [
+        "crescendo",
+        "vanguard"
+      ],
+      "attack": "horn_blast",
       "artFile": "walrus-01.png",
-      "source": null,
       "biome": "arctic",
       "hp": 60,
       "speed": 3,
@@ -9212,19 +9577,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "warthog-engineer-cannon",
       "name": "Cannon Warthog",
-      "attackType": "ranged",
-      "professions": [
-        "tinker"
+      "classes": [
+        "engineer",
+        "chemist"
       ],
+      "keystones": [
+        "rapid_fire",
+        "volatile"
+      ],
+      "attack": "hand_cannon",
       "artFile": "warthog-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 45,
       "speed": 5,
@@ -9241,20 +9608,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "wasp-alchemist-potion",
       "name": "Stingflask",
-      "attackType": "ranged",
-      "professions": [
-        "tinker",
-        "flying"
+      "classes": [
+        "chemist",
+        "skyborne"
       ],
+      "keystones": [
+        "big_finish",
+        "lift"
+      ],
+      "attack": "venom_sting",
       "artFile": "wasp-01.png",
-      "source": null,
       "biome": "flower_meadow",
       "hp": 20,
       "speed": 8,
@@ -9271,20 +9639,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "weasel-rogue-dagger",
       "name": "Daggerwhisk",
-      "attackType": "bladed",
-      "professions": [
-        "rogue",
-        "hunter"
+      "classes": [
+        "assassin",
+        "thief"
       ],
+      "keystones": [
+        "venom_blades",
+        "shadow_purse"
+      ],
+      "attack": "quick_swipe",
       "artFile": "weasel-01.png",
-      "source": null,
       "biome": "autumn_woods",
       "hp": 20,
       "speed": 8,
@@ -9301,20 +9670,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "weathervane-summoner-arrow",
       "name": "Gustarrow",
-      "attackType": "ranged",
-      "professions": [
+      "classes": [
         "summoner",
-        "flying"
+        "skyborne"
       ],
+      "keystones": [
+        "golem_heart",
+        "sky_lord"
+      ],
+      "attack": "turning_gust",
       "artFile": "weathervane-01.png",
-      "source": null,
       "biome": "storm_cliffs",
       "hp": 55,
       "speed": 5,
@@ -9331,20 +9701,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "weaverbird-summoner-banner",
       "name": "Bannerweave",
-      "attackType": "magic",
-      "professions": [
-        "leader",
+      "classes": [
+        "commander",
         "summoner"
       ],
+      "keystones": [
+        "drill",
+        "portal"
+      ],
+      "attack": "banner_snap",
       "artFile": "weaverbird-01.png",
-      "source": null,
       "biome": "savannah",
       "hp": 20,
       "speed": 8,
@@ -9361,20 +9732,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "wisp-hexer-shadow",
       "name": "Shadowwisp",
-      "attackType": "magic",
-      "professions": [
-        "sorcerer",
-        "rogue"
+      "classes": [
+        "hexer",
+        "assassin"
       ],
+      "keystones": [
+        "witchs_patience",
+        "unseen"
+      ],
+      "attack": "shadow_touch",
       "artFile": "wisp-01.png",
-      "source": null,
       "biome": "ruins",
       "hp": 20,
       "speed": 8,
@@ -9391,20 +9763,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "wolf-ranger",
       "name": "Ranger Wolf",
-      "attackType": "brawl",
-      "professions": [
-        "hunter",
-        "leader"
+      "classes": [
+        "tracker",
+        "commander"
       ],
+      "keystones": [
+        "sniff_the_air",
+        "rally"
+      ],
+      "attack": "ranger_arrow",
       "artFile": "wolf-01.png",
-      "source": "wolf-ranger.png",
       "biome": "pine_forest",
       "hp": 50,
       "speed": 5,
@@ -9421,19 +9794,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "wolverine-warrior-mace",
       "name": "Macefang Wolverine",
-      "attackType": "blunt",
-      "professions": [
-        "warrior"
+      "classes": [
+        "berserker",
+        "champion"
       ],
+      "keystones": [
+        "unstoppable",
+        "hunt_down"
+      ],
+      "attack": "mace_smash",
       "artFile": "wolverine-01.png",
-      "source": null,
       "biome": "arctic",
       "hp": 40,
       "speed": 5,
@@ -9450,20 +9825,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "wyvern-scout-obsidian",
       "name": "Obsidian Wyvern",
-      "attackType": "bladed",
-      "professions": [
-        "flying",
-        "sorcerer"
+      "classes": [
+        "skyborne",
+        "transmuter"
       ],
+      "keystones": [
+        "eagle_eye",
+        "lasting_change"
+      ],
+      "attack": "petrifying_gaze",
       "artFile": "wyvern-01.png",
-      "source": null,
       "biome": "ashlands",
       "hp": 65,
       "speed": 3,
@@ -9480,20 +9856,21 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     },
     {
       "id": "yak-bard-gong",
       "name": "Gongyak",
-      "attackType": "blunt",
-      "professions": [
-        "leader",
+      "classes": [
+        "bard",
         "summoner"
       ],
+      "keystones": [
+        "grand_chorus",
+        "quickening"
+      ],
+      "attack": "gong_crash",
       "artFile": "yak-01.png",
-      "source": null,
       "biome": "mountain",
       "hp": 65,
       "speed": 3,
@@ -9510,9 +9887,7 @@
         0,
         1024,
         1536
-      ],
-      "status": "reviewed",
-      "notes": ""
+      ]
     }
   ]
 }

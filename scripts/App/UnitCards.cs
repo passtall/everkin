@@ -59,6 +59,8 @@ public static class UnitCards
         var statuses = u.StatusInstances.Keys.Where(k => k is not (StatusIds.SongHaste or StatusIds.FreeMomentum)).ToList();
         if (u.Ward > 0 && !statuses.Contains(StatusIds.Ward)) statuses.Add(StatusIds.Ward);
         info.Statuses = statuses;
-        info.Skills = Game.CardSkills(u.KnownSkills.Where(id => Game.Content.AttackSkills.Any(a => a.Id == id) || Game.Content.ProfessionSkills.Any(p => p.Id == id)));
+        info.Skills = u.CreatureId is { } cid && u.Kind == UnitKind.Creature && Game.Content.CreaturesById.TryGetValue(cid, out var def)
+            ? Game.CardSkills(Game.Content.ClassSkillsOf(def).Prepend(def.Attack))
+            : new List<CardSkill>();
     }
 }
