@@ -6,7 +6,7 @@ namespace Everkin.Core.Ai;
 /// <summary>
 /// The position score (game_system section 2.5 "Scoring"): each side's remaining HP as a share of its maximum, every living unit counting
 /// as if it had 25% more HP; each point of Momentum worth 2% of a team's HP; harmful statuses on enemies and helpful ones on allies count a
-/// little, more the longer they last; summons and constructs count at half value. Integers: 10000 is a whole team. Positive favours Side A.
+/// little, more the longer they last; summons and undead count at half value, constructs at nothing. Integers: 10000 is a whole team. Positive favours Side A.
 /// </summary>
 public static class Evaluator
 {
@@ -29,7 +29,7 @@ public static class Evaluator
             var original = u.Kind == UnitKind.Creature && !u.IsUndead;
             if (original && u.OriginalSide == side) den += 5L * u.MaxHp * 100;
             if (u.Side != side || u.IsKnockedOut) continue;
-            var weight = original ? 100 : level.SummonPercent;
+            var weight = original ? 100 : u.Kind == UnitKind.Construct ? level.ConstructPercent : level.SummonPercent;
             num += weight * (4L * u.Hp + u.MaxHp);
             foreach (var s in u.StatusInstances.Values)
             {

@@ -80,7 +80,24 @@ static int PlayCommand(string[] args)
     var aiA = new Everkin.Core.Ai.AiSearch(catalog, level, new Everkin.Core.Battle.BattleRandom(seed + 1));
     var aiB = new Everkin.Core.Ai.AiSearch(catalog, level, new Everkin.Core.Battle.BattleRandom(seed + 2));
     var watch = System.Diagnostics.Stopwatch.StartNew();
-    var result = Everkin.Core.Ai.BattlePlayer.Play(state, catalog, aiA, aiB);
+    Action<Everkin.Core.Battle.BattleEvent>? observe = null;
+    if (args.Contains("--trace"))
+    {
+        string Name(int id) => $"{id}:{state.GetUnit(id).CreatureId ?? state.GetUnit(id).Kind.ToString()}";
+        observe = e =>
+        {
+            switch (e)
+            {
+                case Everkin.Core.Battle.TurnStarted t: Console.WriteLine($"t={t.Time} turn {Name(t.UnitId)} hp {state.GetUnit(t.UnitId).Hp}"); break;
+                case Everkin.Core.Battle.SkillUsed s: Console.WriteLine($"    skill {s.SkillId} -> {(s.TargetUnitId is { } x ? Name(x) : "-")}"); break;
+                case Everkin.Core.Battle.UnitMoved m: Console.WriteLine($"    move {m.From} -> {m.To} ({m.Cause})"); break;
+                case Everkin.Core.Battle.TurnSkipped k: Console.WriteLine($"    skipped {Name(k.UnitId)}"); break;
+                case Everkin.Core.Battle.DamageDealt d when d.Result.HpLost > 0: Console.WriteLine($"    dmg {d.Result.HpLost} on {Name(d.TargetUnitId)}"); break;
+                case Everkin.Core.Battle.UnitKnockedOut k: Console.WriteLine($"    KO {Name(k.UnitId)}"); break;
+            }
+        };
+    }
+    var result = Everkin.Core.Ai.BattlePlayer.Play(state, catalog, aiA, aiB, observe);
     watch.Stop();
     Console.WriteLine($"seed {seed}: {result.Outcome} ({result.Reason}) after {result.Turns} turns, {watch.Elapsed.TotalSeconds:F1} s, nodes {aiA.TotalNodes + aiB.TotalNodes}, choices {aiA.Choices + aiB.Choices}");
     return 0;

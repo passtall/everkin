@@ -130,8 +130,11 @@ public sealed class AiLevel
     /// <summary>Per status that is helpful on an ally or harmful on an enemy at full 20 time units left; fewer time units count proportionally.</summary>
     public int StatusValue { get; init; } = 60;
 
-    /// <summary>Weight of a summon, construct or undead compared with an original, in percent.</summary>
+    /// <summary>Weight of a summon that takes turns, or an undead, compared with an original, in percent.</summary>
     public int SummonPercent { get; init; } = 50;
+
+    /// <summary>Weight of a construct (turret, barricade, trap, totem) compared with an original, in percent. 0: placing one is never score by itself.</summary>
+    public int ConstructPercent { get; init; } = 0;
 }
 
 /// <summary>The AI settings of all levels.</summary>
