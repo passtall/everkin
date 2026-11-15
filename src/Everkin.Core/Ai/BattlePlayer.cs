@@ -29,7 +29,8 @@ public static class BattlePlayer
             if (state.IsOver || unitId is not { } id) break;
             var ai = state.GetUnit(id).Side == Side.A ? aiA : aiB;
             var action = ai.Choose(state, id);
-            action.Apply(state, catalog, id);
+            var events = action.Apply(state, catalog, id);                    // the action drains the state's buffer and returns what happened
+            if (observer is not null) foreach (var e in events) observer(e);
             Observe();
             if (BattleEnd.CheckTurnCap(state, turnCap)) { hitCap = true; Observe(); }
         }

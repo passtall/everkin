@@ -28,11 +28,11 @@ public static class TotemistSkills
     internal static bool IsTotem(Unit u) => u.CreatureId is HealingTotemId or SpiritLinkId or ReturnTotemId;
 
     /// <summary>The totems a Totemist has on the board.</summary>
-    internal static IEnumerable<Unit> TotemsOf(BattleState state, int userId) =>
+    public static IEnumerable<Unit> TotemsOf(BattleState state, int userId) =>
         state.Units.Where(u => u.SummonerId == userId && IsTotem(u) && !u.IsKnockedOut && !u.IsRemoved);
 
     /// <summary>Whether a unit is covered by a totem: an ally in its row, the totem itself included; with Great Totem also the rows next to it.</summary>
-    internal static bool Covers(BattleState state, Unit totem, int unitId)
+    public static bool Covers(BattleState state, Unit totem, int unitId)
     {
         if (!state.Formation.Contains(totem.Id) || !state.Formation.Contains(unitId)) return false;
         var t = state.Formation.PositionOf(totem.Id);
@@ -62,7 +62,7 @@ public static class TotemistSkills
         });
     }
 
-    internal static bool HandleAutoEvent(BattleState state, TimelineEntry entry)
+    public static bool HandleAutoEvent(BattleState state, TimelineEntry entry)
     {
         if (entry.Tag is not { } tag || !tag.StartsWith(HealTagPrefix, StringComparison.Ordinal) || !int.TryParse(tag.AsSpan(HealTagPrefix.Length), out var totemId)) return false;
         var totem = state.GetUnit(totemId);

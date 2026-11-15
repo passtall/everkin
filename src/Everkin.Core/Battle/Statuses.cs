@@ -613,6 +613,7 @@ public static class Statuses
     public static int Steal(BattleState state, int thiefId, int fromId, bool all)
     {
         var from = state.GetUnit(fromId);
+        if (state.GetUnit(thiefId).IsKnockedOut || from.IsKnockedOut) return 0;                  // a thief KO'd by a recoil mid-skill steals nothing
         var ids = from.StatusInstances.Keys.Where(id => StatusRules.PolarityOf(id) == Polarity.Helpful).ToList();
         if (from.Ward > 0 && !ids.Contains(StatusIds.Ward)) ids.Add(StatusIds.Ward);
         var stolen = 0;
