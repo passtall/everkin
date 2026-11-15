@@ -61,7 +61,8 @@ public static class ClassSkills
             .Concat(CryomancerSkills.All(content))
             .Concat(EnchanterSkills.All(content))
             .Concat(TransmuterSkills.All(content))
-            .Concat(HexerSkills.All(content));
+            .Concat(HexerSkills.All(content))
+            .Concat(LifebinderSkills.All(content));
 }
 
 /// <summary>Small helpers the class skills share.</summary>
