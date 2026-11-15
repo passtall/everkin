@@ -83,7 +83,7 @@ The harness plays battles automatically for balance testing and debugging. Battl
 - **Scoring.** A position is scored by each side's remaining HP as a share of its maximum, where every living unit counts as if it had 25% more HP. Each point of Momentum is worth 2% of a team's total HP. Harmful statuses on enemies and helpful ones on allies count a little, more the longer they last. Summons and constructs count like units at half value. The weights live in a settings file per AI level.
 - **Information.** The AI knows only what a player would see. Because stealth limits targeting, not information (section 10.1), that includes stealthed units, their HP and statuses. Opposing future skill choices are not known.
 - **Length cap.** A battle stops after 500 unit turns in total and is recorded as a draw.
-- **Run size.** One test run plays 10,000 battles with seeds 1 to 10,000. Each run gets an ID and stores a snapshot of the rules version, content and AI settings, so any battle can be reproduced from its run ID and seed.
+- **Run size.** One test run plays 10,000 battles with seeds 1 to 10,000, at the **harness** AI level: a cheaper search than Easy (depth 2, only the best first moves looked at further), so a run takes about a day on one PC. Its settings live in the AI settings file like the other levels. Each run gets an ID and stores a snapshot of the rules version, content and AI settings, so any battle can be reproduced from its run ID and seed.
 - **Saved per battle.** Run ID, seed, teams, formations, result and length, plus per-unit damage dealt and taken, healing, KOs and skill uses. No event log.
 - **Report.** Win rate and appearance count per creature, class, keystone and skill; each creature's win rate by starting row; skill usage counts; battle length and draw rate; pair statistics for creatures that do well together and against each other.
 - **Imbalance flags.** The report flags the top and bottom 10% by win rate. Balancing starts with the most extreme.
@@ -185,7 +185,7 @@ There is no Defense, accuracy, evasion, critical hit, mana, resistance or healin
 
 ### 5.2 Damage and healing
 
-**Scaling.** skills.md and creature-classes.md write every number for **Power 5**. Every damage, healing and Ward number of a skill is multiplied by its user's **Power ÷ 5**, rounded down, minimum 1; a range scales at both ends (4–5 at Power 3 is 2–3). Internally each number is a hidden coefficient (hit for 5–6 at Power 5 is 100–120%). A skill may scale from something else only if its text says so. Summons and constructs scale with their summoner's Power; their HP and Speed are fixed. Rule numbers never scale: bump damage, Bleeding, Poisoned, ground-effect damage and the poison explosion.
+**Scaling.** skills.md and creature-classes.md write every number for **Power 5**. Every damage, healing and Ward number of a skill is multiplied by its user's **Power ÷ 5**, rounded down, minimum 1; a range scales at both ends (4–5 at Power 3 is 2–3). Internally each number is a hidden coefficient (hit for 5–6 at Power 5 is 100–120%). A skill may scale from something else only if its text says so. Summons and constructs scale with their summoner's current Power; their HP and Speed are fixed. Rule numbers never scale: bump damage, Bleeding, Poisoned, ground-effect damage and the poison explosion.
 
 **Rolls.** Damage and healing are rolled **uniformly** as a whole number within the range; the displayed range already includes the user's modifiers and is rounded down. There are no critical hits. When a skill or attack hits several units, its damage and every chance are rolled separately for each unit, unless the skill says otherwise.
 
@@ -239,8 +239,10 @@ Internally the timeline tracks progress in time units. Time advances only in jum
 
 - **First turn.** At battle start each unit's first Wait is `11 − Speed`.
 - **When the next Wait starts.** The acting unit's next Wait is set when its skill is used, before the skill's effects. Pushes, pulls or Speed changes that reach the user during its own action apply on top.
-- **Ties.** When turns or other timeline entries fall into the same time unit, the one that joined that time unit **first stays first**. An entry moved by Pull Forward, Push Back or a Speed change joins its new time unit behind the entries already there. Entries created for the same time unit at the same moment (every unit's first turn, several effects from one event) are ordered by the seeded roll, each with equal chance.
-- **Speed changes** (for example Song of Haste's +1) change the remaining Wait by the same number of time units; completed progress never changes. When they end, the remaining Wait changes back. Speed stays within 1–10 for the formula, and a Wait is at least 1.
+- **Ties.** When turns or other timeline entries fall into the same time unit, the one that joined that time unit **first stays first**. An entry moved by Pull Forward, Push Back or a Speed change joins its new time unit behind the entries already there; an entry that is moved but stays in its time unit keeps its place. Entries created for the same time unit at the same moment (every unit's first turn, several effects from one event) are ordered by the seeded roll, each with equal chance.
+- **Speed changes** (for example Song of Haste's +1) change the remaining Wait by the change in Speed as the formula sees it: Speed is clamped to 1–10 first, so +1 at Speed 10 changes nothing. Completed progress never changes. When they end, the remaining Wait changes back. A change that would take the remaining Wait below 0 makes the turn arrive now, like Pull Forward.
+- **Reset** returns an entry to the Wait it was scheduled with and ignores later Speed changes.
+- **Minimum Wait.** Every new Wait (turn, auto event, delayed event, effect end) is at least 1 time unit.
 - **Pull Forward / Push Back** remove or add time units to the remaining Wait. There is no global cap; each skill states its number. If Pull Forward removes more than remains, the turn arrives now and the extra is lost.
 - **Delay changes.** Effects that add or remove Delay never take a skill outside 1–10: after all modifiers, Delay is clamped to 1–10.
 - **Skipped turn.** A skipped turn, chosen or forced, costs like a Delay 5 skill: Wait = 5 + (11 − Speed).
@@ -309,7 +311,7 @@ Reactions are effects, not turns; they change the timeline only when they say so
 
 - A damaging hit that lands moves it **1** toward the acting side. A KO gives no bonus.
 - A missed attack moves it 1 against the attacker.
-- A hit that is intercepted, fully absorbed by a Ward, or lands on the acting side's own unit moves it **0**. A partly absorbed hit still moves it 1.
+- A hit that is fully intercepted, fully absorbed by a Ward, or lands on the acting side's own unit moves it **0**. A partly absorbed hit, or one that is only partly intercepted and still reaches the target, moves it 1.
 - Skills that deal no damage, healing, Move and Skip Turn move it 0, even when they land something harmful.
 - Status ticks and ground damage move it 0. Bump damage moves it 0.
 - **One shift per action:** a multi-hit or area action moves it 1 toward its side if any hit lands, otherwise 1 against if it missed, and 0 if everything was intercepted, unless the skill says otherwise.
@@ -404,7 +406,7 @@ Only `melee` and `projectile` skills can be intercepted, whichever side uses the
 
 **Who can intercept.** Not a unit that is Stunned, Frozen, Immobilized, stealthed or KO. Airborne units intercept and are covered like any other unit, also against melee. Summons and constructs intercept like any unit. Other defenses come only from skills, each stating what it works against.
 
-An intercepted hit moves Momentum 0 (section 6.7). Sequential protection obeys the reaction rules of section 6.6.
+A fully intercepted hit moves Momentum 0 (section 6.7). A status that rides on a hit is rolled once, after the hit, and goes to the first interceptor if the hit was intercepted, otherwise to the target; a miss applies none. Sequential protection obeys the reaction rules of section 6.6.
 
 ### 8.3 Target preview
 
@@ -451,11 +453,13 @@ Movement into a full row or past the formation edge is blocked. Recentering neve
 
 Pushes, pulls and swaps of a unit other than the user follow these rules. Each skill says whether it can move enemies, allies or both.
 
-- **Landing.** A moved unit keeps its horizontal coordinate and lands in the destination row where that falls. If it lands with **100% overlap** on a unit there, that unit is **bumped** on in the same direction, and so on down the chain. If it lands with **50% overlap** between two units, it is inserted between them. If nothing is within reach, it joins the end of the row on that side. Pulls chain the same way toward the battle line.
+- **Landing.** A moved unit keeps its horizontal coordinate and lands in the destination row where that falls. If it lands with **100% overlap** on a unit there, that unit is **bumped** on in the same direction, and so on down the chain. If it lands with **50% overlap** between two units, it is inserted between them. A 50% overlap with the end unit of a row (nothing on its other side) inserts it at that end. If nothing is within reach, it joins the end of the row on that side. Pulls bump the same way toward the battle line: a pulled unit that lands at 100% on a Front unit is blocked at the formation edge.
+- **Several rows.** A unit moved more than one row is bumped only in the destination row; the rows it passes are not touched.
 - **All or nothing.** If every unit in the chain has room, they all move and no damage is dealt. If some unit has nowhere to go (a full row, the formation edge), **nothing moves** and every unit in the chain, the blocker included, takes **1 bump damage**. A 50% insertion into a full row is blocked the same way: the moved unit and the two units around it take 1 each.
 - **Bump damage** is fixed at 1, never scaled or reduced. It is a hit (it breaks stealth and triggers "when hit" reactions) and can KO, but it moves Momentum 0.
 - **Immunity** comes only from skills and statuses (Hold Position, Immobilized, Last Stand, Steadfast Ward).
-- **KO bodies** cannot be moved or swapped unless a skill says so; a swap with a body fails.
+- **KO bodies** cannot be moved or swapped unless a skill says so; a swap with a body fails. A unit that cannot be moved (a KO body, Immobilized) is not a legal target for a skill that moves it.
+- **Blockers in a chain.** A KO body or Immobilized unit in a bump chain blocks it. The body takes no bump damage; the Immobilized unit does.
 - **Attached effects** follow the unit; spot effects stay. Constructs and traps can be moved like units.
 - **Reactions.** Forced movement triggers only reactions that say "when moved".
 - **Stealth** is not affected by movement.
@@ -469,7 +473,7 @@ A stealthed unit cannot be targeted by the opponent, is ignored for "nearest" (s
 - **Gaining.** Stealth comes only from skills and keystones (Vanish, Melt Away, Unseen, Vanishing Kill, Escape Artist) and from one unique attack (Shiftscale's Snag and Vanish: the attacker gains stealth after its hit). There is no global row restriction.
 - **Breaking.** Stealth ends when the unit **attacks or is hit**, whether or not damage gets through: area hits, hits that reach it without targeting it, hits a Ward fully absorbs and bump damage all count. An intercepted hit hits the interceptor instead and does not break it. Damage that is not a hit (Poisoned, Bleeding, ground damage) does not break it. A skill may override this (Feint keeps it). KO ends it, and reveal effects remove it (Read Tracks, Eagle Eye).
 - **Cleansing.** A cleansing skill that hits a stealthed unit removes its stealth (Dispel).
-- **Duration.** Stealth lasts until broken unless a skill adds a timer.
+- **Duration.** Stealth lasts 40 time units unless it is broken first or a skill states another length.
 - **Visibility.** Stealth is all or nothing; adjacency and alignment never reveal a unit. Any stealth may hide a whole side; areas and melee reach still hit stealthed units.
 - **Presentation.** The opponent sees the unit with a clear stealth cue and its turns stay on the timeline. Stealth limits targeting, not information.
 - **Locked targets that become stealthed** (delayed and auto events): a `direct` effect still hits its slot, and whoever stands there. A `projectile` passes the stealthed unit and hits the unit behind it (section 8.4); if nothing is hit, the shot is lost. Row and area effects are unaffected.
@@ -503,7 +507,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 - **One instance per status.** Reapplying refreshes it with the new duration, even if shorter. There is no stacking. A new Stun on a Stunned unit keeps whichever time is longer.
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
 - **No limit** on statuses per unit; the UI handles overflow.
-- **Ticking.** Damage and healing over time build up per time unit and land whenever any unit gets a turn; fractions carry over. Everything built up shows as one number on the unit. A tick that KOs a unit ends its turn.
+- **Ticking.** Damage and healing over time build up per time unit and land whenever any unit gets a turn; fractions carry over. When the effect ends, its built-up whole points land at once and the fraction is dropped (50 time units of Poisoned deal exactly 5). Everything built up shows as one number on the unit. A tick that KOs a unit ends its turn.
 - **Damage from statuses** (Poisoned, Bleeding, Withering Curse) is not a hit and moves Momentum 0. Reductions apply to it; Wards do not absorb it.
 - **Chances.** A stated chance is the real chance; no stat lowers it.
 - **Immunities** come only from skills and keystones (Sanctity, War Drums, Spell Ward, Unstoppable, Steadfast Ward, Eye of the Storm). Creatures have none of their own. Every status applies to summons, constructs and totems unless their skill says otherwise.
@@ -557,10 +561,10 @@ A creature that appears only inside one skill's animation is that skill's effect
 
 ### 11.5 Undead
 
-- **Raising costs a body.** Raise Undead targets a KO body of either side. The body leaves its slot, moves to a free spot on the Necromancer's side (picked by the player or the AI) and becomes an **undead**: the creature's own art in an undead frame, its own unique attack and Speed, with HP and Power from the skill. With no free spot on that side, it cannot be used.
+- **Raising costs a body.** Raise Undead targets a KO body of either side. The body leaves its slot, moves to a free spot on the Necromancer's side (picked by the player or the AI) and becomes an **undead**: the creature's own art in an undead frame, its own unique attack and Speed, with HP from the skill and the Necromancer's current Power. A KO undead's body can be raised again. With no free spot on that side, it cannot be used.
 - **Healing hurts.** Healing an undead damages it by that amount instead.
 - **Bodies stay.** A KO undead leaves its body on the Necromancer's side. The units a battle starts with are never removed from the field.
-- **Revival restores.** Reviving an undead, standing or KO, restores the original creature. It returns to its owner's side, into the free slot nearest its old row, and is scheduled as a new action. With no free slot on the owner's side, it cannot be targeted.
+- **Revival restores.** Reviving an undead, standing or KO, restores the original creature. It returns to its owner's side with the revival HP the skill states, at the end of the row nearest its old row that has a free slot (rows equally near: the seeded roll picks), and is scheduled as a new action. With no free slot on the owner's side, it cannot be targeted.
 - **Defeat.** While raised, the original counts as KO for its owner's defeat check.
 
 ## 12. Ground effects and battle end
@@ -575,10 +579,10 @@ A ground effect sits on a spot (section 7.3) and affects the unit standing there
 
 | Effect | What it does | Combines with | Sources |
 |---|---|---|---|
-| **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Ice: the fire burns there for 10, then both end and the spot holds water, whichever came first. Water: fire set on water burns there for 10, then both end and the water becomes steam; water placed on fire ends the fire at once and stays. Poison gas: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
-| **Ice** | A unit pushed or pulled across it slides one row further (bumps apply). | Fire: water after 10. | Ritualist (Hoarfrost), Cryomancer (Deep Chill), attack extras |
-| **Water** | Harmless alone. | Any Stun on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. Fire set on water: steam after 10. Water placed on fire: the fire ends. | Ritualist (Rain Dance), attack extras |
-| **Steam** | Not a lasting effect: when fire turns water to steam, the unit there is Confused for 10 and the spot is left clear. | | Fire on water |
+| **Burning ground** | 1 damage per 2 time units to the unit there (10 over 20). Wards absorb it. | Ice: the fire burns there for 10, then both end and the spot holds water, whichever came first. Water: fire set on water burns there for 10, then both end and the water becomes steam; water placed on fire turns to steam at once. Poison gas: explosion. | Pyromancer, Chemist (Firebomb), attack extras |
+| **Ice** | A unit pushed or pulled across it slides one row further (bumps apply). With no row there it stops, without damage. Only the moved unit slides, not the units it bumps. | Fire: water after 10. | Ritualist (Hoarfrost), Cryomancer (Deep Chill), attack extras |
+| **Water** | Harmless alone. | Any Stun on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. Fire set on water: steam after 10. Water placed on fire: steam at once. | Ritualist (Rain Dance), attack extras |
+| **Steam** | Not a lasting effect: when fire and water make steam, the unit there is Confused for 10 and the spot is left clear. | | Fire on water, water on fire |
 | **Poison gas** | A unit standing in it is Poisoned for 20 at once (when the gas appears or the unit is moved in), and again every 5 while it stays. Gas lasts 10 unless a skill says otherwise. | **Explodes** when fire meets it, whichever comes first, or when Lightning Bolt or Chain Lightning hits a unit standing in it: that spot and every gas spot touching it (side by side in a row, or overlapping across neighbouring rows, and so on) go off; each unit on an exploding spot takes 6 and the spots are left clear. | Chemist (Poison Gas), Necromancer (Corpse Explosion), attack extras |
 
 Water and gas spots touch when they are side by side in a row or overlap across neighbouring rows.
