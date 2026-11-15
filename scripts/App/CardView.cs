@@ -25,7 +25,7 @@ public sealed class CardInfo
     public int Hp, MaxHp, Speed, Power, Cost;
     public int BaseSpeed, BasePower;
     public List<string> Statuses = new();
-    public bool Ko, Stealthed, Summon, Undead;
+    public bool Ko, Stealthed, Summon, Undead, Airborne, Mirror, Active;
     public bool ShowCost = true;
     public int Seed;
     public List<CardSkill> Skills = new();

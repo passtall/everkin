@@ -28,6 +28,14 @@ public partial class BattleBoard : Control
     private readonly MomentumBar _momentum = new();
     private Rect2 _boardArea;
     private Vector2 _cardSize;
+    private const float LineGap = 26f;
+    private const float Gap = 10f;
+    private readonly DrawControl _ground = new();
+    private readonly List<Pool> _pools = new();
+    private readonly HashSet<int> _placed = new();
+    private readonly Dictionary<int, Tween> _moves = new();
+    private double _time;
+    private int? _activeId;
     private readonly List<Control> _gapMarkers = new();
 
     public Side Bottom { get; private set; } = Side.A;
@@ -64,6 +72,9 @@ public partial class BattleBoard : Control
         Ui.Fill(_background);
         AddChild(_dim);
         Ui.Fill(_dim);
+        _ground.OnDraw = DrawGround;
+        AddChild(_ground);
+        Ui.Fill(_ground);
         _boardLayer.MouseFilter = MouseFilterEnum.Ignore;
         _gapLayer.MouseFilter = MouseFilterEnum.Ignore;
         _fxLayer.MouseFilter = MouseFilterEnum.Ignore;
@@ -96,6 +107,9 @@ public partial class BattleBoard : Control
         foreach (var c in _cards.Values) c.QueueFree();
         _cards.Clear();
         _shown.Clear();
+        _placed.Clear();
+        _moves.Clear();
+        _pools.Clear();
         var biome = state.Units.Where(u => u.Side == bottom.Opposite() && u.CreatureId != null && Game.Content.CreaturesById.ContainsKey(u.CreatureId))
             .Select(u => Game.Content.CreaturesById[u.CreatureId!].Biome).FirstOrDefault() ?? "ruins";
         _background.Texture = Game.Tex($"res://assets/backgrounds/battle/{biome}.png");
@@ -114,11 +128,14 @@ public partial class BattleBoard : Control
             if (present && !_cards.ContainsKey(u.Id)) AddCard(u);
             if (!present && _cards.TryGetValue(u.Id, out var gone)) { gone.QueueFree(); _cards.Remove(u.Id); _shown.Remove(u.Id); }
             if (present) _shown.Add(u.Id);
+            if (present && _cards.TryGetValue(u.Id, out var live)) { live.Info.Mirror = u.Side != Bottom; live.Info.Active = u.Id == _activeId; }
         }
         if (updateInfos)
         {
             foreach (var (id, card) in _cards) UnitCards.Update(_state, _state.GetUnit(id), card.Info);
             _momentum.Value = _state.Momentum.Value * (Bottom == Side.A ? 1 : -1);
+            _pools.Clear();
+            foreach (var g in _state.Ground.Effects) _pools.Add(new Pool(g.Id, g.Kind, g.Spot) { Appear = 1 });
         }
         foreach (var card in _cards.Values) card.QueueRedraw();
         Layout(animate: !updateInfos);
@@ -127,8 +144,11 @@ public partial class BattleBoard : Control
 
     private void AddCard(Unit u)
     {
-        var card = new CardView { Mode = CardMode.Compact, Tag = u.Id };
-        card.Bind(UnitCards.Of(_state, u));
+        var card = new PortraitView { Mode = CardMode.Compact, Tag = u.Id };
+        var info = UnitCards.Of(_state, u);
+        info.Mirror = u.Side != Bottom;
+        info.Active = u.Id == _activeId;
+        card.Bind(info);
         card.Clicked += c => CardClicked?.Invoke((int)c.Tag!);
         card.RightClicked += c => CardRightClicked?.Invoke((int)c.Tag!);
         card.MouseEntered += () => HoverChanged?.Invoke(u.Id);
@@ -139,17 +159,43 @@ public partial class BattleBoard : Control
 
     // ---------------------------------------------------------------- layout
 
-    private float RowY(Side side, Row row)
+    /// <summary>The unit the active glow shows on (null for none).</summary>
+    public int? ActiveUnitId
     {
-        var rows = OneSide ? 3 : 6;
-        var line = OneSide ? 0 : 14f;
-        var index = OneSide
-            ? (side == Bottom ? (int)row : 2 - (int)row)                                  // the shown side: its Front row at the top
-            : side == Bottom ? 3 + (int)row : 2 - (int)row;                               // the far side above: Rear, Middle, Front; the near side: Front, Middle, Rear
-        if (OneSide && side == ShownSide) index = (int)row;
-        var extra = !OneSide && index >= 3 ? line : 0f;
-        return _boardArea.Position.Y + index * (_cardSize.Y + 10) + extra;
+        get => _activeId;
+        set
+        {
+            _activeId = value;
+            foreach (var (id, card) in _cards) card.Info.Active = id == value;
+        }
     }
+
+    /// <summary>Switches the one-side view to the other side, with a smooth slide.</summary>
+    public void ShowSide(Side side)
+    {
+        if (ShownSide == side) return;
+        ShownSide = side;
+        Layout(animate: true);
+    }
+
+    /// <summary>The column of a row from the left edge: the player's Rear, Middle, Front, the battle line, then the enemy's Front, Middle, Rear.</summary>
+    private int Column(Side side, Row row)
+    {
+        var own = side == Bottom;
+        if (OneSide) return side == ShownSide ? (own ? 2 - (int)row : (int)row) : (own ? -5 : 8);
+        return own ? 2 - (int)row : 3 + (int)row;
+    }
+
+    private float ColumnX(int column)
+    {
+        if (OneSide) return _boardArea.Position.X + (_boardArea.Size.X - (3 * _cardSize.X + 2 * Gap)) / 2 + column * (_cardSize.X + Gap);
+        var total = 6 * _cardSize.X + 5 * Gap + LineGap;
+        return _boardArea.Position.X + (_boardArea.Size.X - total) / 2 + column * (_cardSize.X + Gap) + (column >= 3 ? LineGap : 0);
+    }
+
+    private float CoordY(int coordinate) => _boardArea.Position.Y + _boardArea.Size.Y / 2 + coordinate * (_cardSize.Y + Gap) / 2 - _cardSize.Y / 2;
+
+    private Vector2 SpotCentre(Spot spot) => new(ColumnX(Column(spot.Side, spot.Row)) + _cardSize.X / 2, CoordY(spot.Coordinate) + _cardSize.Y / 2);
 
     public void Layout(bool animate)
     {
@@ -161,30 +207,42 @@ public partial class BattleBoard : Control
         var left = Math.Min(300f, w * 0.17f);
         var right = 110f;
         _boardArea = new Rect2(left, top, w - left - right, h - top - bottom);
-        var rows = OneSide ? 3 : 6;
-        var ch = (_boardArea.Size.Y - (rows - 1) * 10 - (OneSide ? 0 : 14)) / rows;
-        var cw = ch * 2f / 3f;
-        var perRow = (_boardArea.Size.X) / 6f - 10;
-        if (cw > perRow) { cw = perRow; ch = cw * 1.5f; }
-        _cardSize = new Vector2(cw, ch);
-        var centerX = _boardArea.Position.X + _boardArea.Size.X / 2;
-        // If one row would be wider than the board, every card in the row shrinks evenly.
+        var fullest = 1;
+        foreach (var side in new[] { Side.A, Side.B })
+        {
+            if (OneSide && side != ShownSide) continue;
+            foreach (var row in new[] { Row.Front, Row.Middle, Row.Rear }) fullest = Math.Max(fullest, _state.Formation.Units(side, row).Count);
+        }
+        var byHeight = (_boardArea.Size.Y - (fullest - 1) * Gap) / fullest;
+        var byWidth = OneSide ? (_boardArea.Size.X - 2 * Gap) / 3f : (_boardArea.Size.X - 5 * Gap - LineGap) / 6f;
+        var p = Math.Max(24f, Math.Min(Math.Min(byHeight, byWidth), OneSide ? 300f : 200f));
+        _cardSize = new Vector2(p, p);
+        var order = 0;
         foreach (var (id, card) in _cards)
         {
-            var u = _state.GetUnit(id);
             if (!_state.Formation.Contains(id) || !_shown.Contains(id)) { card.Visible = false; continue; }
             var pos = _state.Formation.PositionOf(id);
             card.Visible = !OneSide || pos.Side == ShownSide;
-            var coord = _state.Formation.CenterOf(pos);
-            var target = new Vector2(centerX + coord * (cw + 10) / 2 - cw / 2, RowY(pos.Side, pos.Row));
-            card.Size = _cardSize;
-            if (animate && Speed > 0 && card.Position != Vector2.Zero)
+            var target = new Vector2(ColumnX(Column(pos.Side, pos.Row)), CoordY(_state.Formation.CenterOf(pos)));
+            if (_moves.TryGetValue(id, out var running)) { running.Kill(); _moves.Remove(id); }
+            if (_placed.Add(id) && Speed > 0)
             {
-                var tween = CreateTween();
-                tween.TweenProperty(card, "position", target, 0.25 / Speed);
+                // The first appearance: the team slides in from its own screen edge.
+                card.Size = _cardSize;
+                card.Position = new Vector2(pos.Side == Bottom ? -p : w + p, target.Y);
+                var slide = _moves[id] = CreateTween();
+                slide.TweenInterval(0.05 * order++ / Speed);
+                slide.TweenProperty(card, "position", target, 0.5 / Speed).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
+                continue;
             }
-            else card.Position = target;
-            card.ZIndex = 0;
+            if (animate && Speed > 0 && card.Size.X > 1)
+            {
+                var tween = _moves[id] = CreateTween();
+                tween.SetParallel(true);
+                tween.TweenProperty(card, "position", target, 0.25 / Speed);
+                tween.TweenProperty(card, "size", _cardSize, 0.25 / Speed);
+            }
+            else { card.Position = target; card.Size = _cardSize; }
         }
         _momentum.Position = new Vector2(w - right + 20, top + _boardArea.Size.Y * 0.15f);
         _momentum.Size = new Vector2(70, _boardArea.Size.Y * 0.7f);
@@ -192,6 +250,103 @@ public partial class BattleBoard : Control
         {
             tl.Position = new Vector2(20, top + _boardArea.Size.Y * 0.15f);
             tl.Size = new Vector2(left - 40, _boardArea.Size.Y * 0.7f);
+        }
+        _ground.QueueRedraw();
+    }
+
+    public override void _Process(double delta)
+    {
+        _time += delta;
+        if (_pools.Count == 0) return;
+        for (var i = _pools.Count - 1; i >= 0; i--)
+        {
+            var pool = _pools[i];
+            var step = Speed <= 0 ? 1f : (float)(delta * Speed / 0.4);
+            if (pool.Ending) { pool.Fade -= step; if (pool.Fade <= 0) { _pools.RemoveAt(i); continue; } }
+            else if (pool.Appear < 1) pool.Appear = Math.Min(1, pool.Appear + step);
+        }
+        _ground.QueueRedraw();
+    }
+
+    // ---------------------------------------------------------------- ground effects
+
+    private sealed class Pool
+    {
+        public Pool(int id, GroundKind kind, Spot spot) { Id = id; Kind = kind; Spot = spot; }
+        public int Id { get; }
+        public GroundKind Kind { get; }
+        public Spot Spot { get; }
+        public float Appear;
+        public float Fade = 1;
+        public bool Ending;
+    }
+
+    private static Color PoolColor(GroundKind kind) => kind switch
+    {
+        GroundKind.Burning => new Color(0.95f, 0.45f, 0.1f),
+        GroundKind.Ice => new Color(0.75f, 0.9f, 1f),
+        GroundKind.Water => new Color(0.12f, 0.3f, 0.65f),
+        _ => new Color(0.4f, 0.75f, 0.25f),
+    };
+
+    /// <summary>The ground layer: a round pool about 1.3 portraits wide on each spot, touching pools of one effect merged into one patch.</summary>
+    private void DrawGround(DrawControl c)
+    {
+        if (_state == null || _pools.Count == 0) return;
+        var r = _cardSize.X * 0.65f;
+        foreach (var kind in new[] { GroundKind.Water, GroundKind.Ice, GroundKind.Poison, GroundKind.Burning })
+        {
+            var mine = _pools.Where(p => p.Kind == kind && (!OneSide || p.Spot.Side == ShownSide)).ToList();
+            foreach (var pool in mine)
+            {
+                var alpha = 0.5f * Math.Clamp(pool.Appear, 0, 1) * Math.Clamp(pool.Fade, 0, 1);
+                var rad = r * (0.4f + 0.6f * Math.Clamp(pool.Appear, 0, 1));
+                var centre = SpotCentre(pool.Spot);
+                var colour = new Color(PoolColor(kind), alpha);
+                c.DrawCircle(centre, rad, colour);
+                foreach (var other in mine)
+                {
+                    if (other.Id <= pool.Id || other.Spot.Side != pool.Spot.Side || other.Spot.Row != pool.Spot.Row || Math.Abs(other.Spot.Coordinate - pool.Spot.Coordinate) > 2) continue;
+                    c.DrawLine(centre, SpotCentre(other.Spot), colour, rad * 2);
+                }
+                DrawPoolDetail(c, kind, centre, rad, alpha);
+            }
+        }
+    }
+
+    private void DrawPoolDetail(DrawControl c, GroundKind kind, Vector2 centre, float rad, float alpha)
+    {
+        var t = (float)_time;
+        switch (kind)
+        {
+            case GroundKind.Burning:
+                c.DrawCircle(centre, rad * (0.55f + 0.08f * Mathf.Sin(t * 9)), new Color(1f, 0.8f, 0.2f, alpha * 0.7f));
+                for (var i = 0; i < 4; i++)
+                {
+                    var ph = (t * 0.7f + i * 0.25f) % 1f;
+                    c.DrawCircle(centre + new Vector2(Mathf.Sin(i * 2.1f) * rad * 0.5f, -ph * rad), Math.Max(1.5f, rad * 0.05f), new Color(1f, 0.7f, 0.2f, Math.Min(1f, alpha * 1.4f * (1 - ph))));
+                }
+                break;
+            case GroundKind.Ice:
+                c.DrawLine(centre + new Vector2(-rad * 0.6f, 0), centre + new Vector2(rad * 0.5f, -rad * 0.2f), new Color(1, 1, 1, Math.Min(1f, alpha * 1.2f)), 2);
+                c.DrawLine(centre + new Vector2(-rad * 0.1f, -rad * 0.5f), centre + new Vector2(rad * 0.2f, rad * 0.55f), new Color(1, 1, 1, Math.Min(1f, alpha * 1.2f)), 2);
+                var glint = (t * 0.5f) % 1f;
+                c.DrawCircle(centre + new Vector2(-rad * 0.5f + glint * rad, -rad * 0.3f + glint * rad * 0.3f), Math.Max(2f, rad * 0.06f), new Color(1, 1, 1, Math.Min(1f, alpha * 1.6f)));
+                break;
+            case GroundKind.Water:
+                for (var i = 0; i < 2; i++)
+                {
+                    var ph = (t * 0.4f + i * 0.5f) % 1f;
+                    c.DrawArc(centre, rad * (0.3f + 0.6f * ph), 0, Mathf.Tau, 28, new Color(0.6f, 0.8f, 1f, alpha * (1 - ph)), 2);
+                }
+                break;
+            default:
+                for (var i = 0; i < 4; i++)
+                {
+                    var ph = (t * 0.5f + i * 0.25f) % 1f;
+                    c.DrawArc(centre + new Vector2(Mathf.Cos(i * 1.7f) * rad * 0.45f, rad * 0.4f - ph * rad * 0.9f), Math.Max(2f, rad * 0.07f), 0, Mathf.Tau, 12, new Color(0.7f, 1f, 0.5f, Math.Min(1f, alpha * 1.5f * (1 - ph))), 1.5f);
+                }
+                break;
         }
     }
 
@@ -209,7 +364,7 @@ public partial class BattleBoard : Control
             row.AddThemeConstantOverride("separation", 6);
             var stripe = new ColorRect { Color = u.Side == Side.A ? Ui.SideA : Ui.SideB, CustomMinimumSize = new Vector2(5, 0) };
             row.AddChild(stripe);
-            var portrait = new CardView { Mode = CardMode.Compact, CustomMinimumSize = new Vector2(44, 66), MouseFilter = MouseFilterEnum.Ignore };
+            var portrait = new PortraitView { Mode = CardMode.Compact, CustomMinimumSize = new Vector2(56, 56), MouseFilter = MouseFilterEnum.Ignore };
             portrait.Bind(_cards.TryGetValue(id, out var existing) ? existing.Info : UnitCards.Of(_state, u));
             row.AddChild(portrait);
             var text = new VBoxContainer();
@@ -236,7 +391,7 @@ public partial class BattleBoard : Control
         if (_cards.TryGetValue(unitId, out var c)) c.Highlight = h;
     }
 
-    /// <summary>Shows a clickable marker at each gap a unit could land in.</summary>
+    /// <summary>Shows a clickable marker at each gap a unit could land in: a thin bar across the column between two portraits.</summary>
     public void ShowGaps(IEnumerable<GapRef> gaps)
     {
         FirstGap = null;
@@ -244,18 +399,19 @@ public partial class BattleBoard : Control
         {
             FirstGap ??= g;
             var units = _state.Formation.Units(g.Side, g.Row);
-            var cw = _cardSize.X;
-            var centerX = _boardArea.Position.X + _boardArea.Size.X / 2;
-            float x;
-            if (units.Count == 0) x = centerX;
+            var step = (_cardSize.Y + Gap) / 2;
+            var centreY = _boardArea.Position.Y + _boardArea.Size.Y / 2;
+            float y;
+            if (units.Count == 0) y = centreY;
             else
             {
-                float Cx(int id) => centerX + _state.Formation.CenterOf(_state.Formation.PositionOf(id)) * (cw + 10) / 2;
-                x = g.Index <= 0 ? Cx(units[0]) - (cw + 10) / 2
-                    : g.Index >= units.Count ? Cx(units[^1]) + (cw + 10) / 2
-                    : (Cx(units[g.Index - 1]) + Cx(units[g.Index])) / 2;
+                float Cy(int id) => centreY + _state.Formation.CenterOf(_state.Formation.PositionOf(id)) * step;
+                y = g.Index <= 0 ? Cy(units[0]) - step
+                    : g.Index >= units.Count ? Cy(units[^1]) + step
+                    : (Cy(units[g.Index - 1]) + Cy(units[g.Index])) / 2;
             }
-            var marker = new Button { Text = "", CustomMinimumSize = new Vector2(18, _cardSize.Y), Size = new Vector2(18, _cardSize.Y), Position = new Vector2(x - 9, RowY(g.Side, g.Row)) };
+            var x = ColumnX(Column(g.Side, g.Row));
+            var marker = new Button { Text = "", CustomMinimumSize = new Vector2(_cardSize.X, 18), Size = new Vector2(_cardSize.X, 18), Position = new Vector2(x, y - 9) };
             marker.AddThemeStyleboxOverride("normal", Ui.Box(new Color(Ui.Gold, 0.55f), Ui.Gold, 2, 4));
             marker.AddThemeStyleboxOverride("hover", Ui.Box(new Color(1, 1, 1, 0.8f), Colors.White, 2, 4));
             marker.Pressed += () => GapClicked?.Invoke(g);
@@ -347,8 +503,13 @@ public partial class BattleBoard : Control
                 _momentum.Value = m.After * (Bottom == Side.A ? 1 : -1);
                 await Wait(0.1);
                 break;
-            case GroundEffectPlaced:
-                await Wait(0.15);
+            case GroundEffectPlaced gp:
+                if (!gp.Refreshed && _pools.All(p => p.Id != gp.EffectId)) _pools.Add(new Pool(gp.EffectId, gp.Kind, gp.Spot) { Appear = Speed <= 0 ? 1 : 0 });
+                await Wait(0.4);
+                break;
+            case GroundEffectEnded ge:
+                foreach (var p in _pools.Where(p => p.Id == ge.EffectId)) p.Ending = true;
+                await Wait(0.2);
                 break;
         }
     }

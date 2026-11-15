@@ -119,12 +119,15 @@ public partial class PlayScreen : Control, IBackNavigable
         top.AddThemeConstantOverride("separation", 8);
         var view = Ui.Button("View", 20);
         view.Pressed += () => { _board.OneSide = !_board.OneSide; _board.Layout(false); };
+        var sideButton = Ui.Button("◀ ▶", 20);
+        sideButton.Pressed += () => { if (_board.OneSide) _board.ShowSide(_board.ShownSide.Opposite()); };
         var leave = Ui.Button("Leave", 20);
         leave.Pressed += ConfirmLeave;
         var surrender = Ui.Button("Surrender", 20);
         surrender.Pressed += ConfirmSurrender;
         top.AddChild(leave);
         top.AddChild(view);
+        top.AddChild(sideButton);
         top.AddChild(surrender);
         var holder = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.End, MouseFilter = MouseFilterEnum.Ignore };
         holder.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
@@ -144,6 +147,7 @@ public partial class PlayScreen : Control, IBackNavigable
         if (_resume != null && _state.TurnsTaken == 0) _save.Actions.Clear();
         _ai = new AiSearch(Game.Catalog, Game.Settings.Level(_level), new BattleRandom(_spec.Seed * 2 + 2));
         _aiPlayer = new AiSearch(Game.Catalog, Game.Settings.Level("harness"), new BattleRandom(_spec.Seed * 2 + 1));
+        _board.OneSide = StartOneSide;
         _board.Setup(_state, Side.A);
         _ = RunAsync();
     }
@@ -155,6 +159,7 @@ public partial class PlayScreen : Control, IBackNavigable
         while (!_state.IsOver && !_surrendered)
         {
             var unitId = BattleDriver.NextTurn(_state, Game.Catalog);
+            _board.ActiveUnitId = unitId;
             await _board.PlayAsync(_state.DrainEvents());
             if (_left || _state.IsOver || unitId is not { } id) break;
 
@@ -177,6 +182,7 @@ public partial class PlayScreen : Control, IBackNavigable
             _save.Actions.Add(SavedAction.From(id, action));
             if (!_state.IsOver) BattleStore.Save(_save.ToJson());                       // the battle resumes where it stopped (production section 1.4)
             await _board.PlayAsync(events);
+            _board.ShowSide(_board.Bottom);
             _resolving = false;
         }
         if (!_left) ShowResult();
@@ -214,6 +220,7 @@ public partial class PlayScreen : Control, IBackNavigable
     public bool Instant { get; set; }
 
     /// <summary>The AI plays the player's side too (with --autoplay), to check a whole campaign battle end to end.</summary>
+    public bool StartOneSide { get; init; }
     public bool Autoplay { get; set; }
 
     private AiSearch _aiPlayer = null!;
@@ -350,7 +357,9 @@ public partial class PlayScreen : Control, IBackNavigable
         switch (skill.Target)
         {
             case TargetKind.Unit:
-                foreach (var t in Actions.LegalTargets(_state, Game.Catalog, user, skill.Id)) _board.SetHighlight(t, CardHighlight.Legal);
+                var legalTargets = Actions.LegalTargets(_state, Game.Catalog, user, skill.Id);
+                foreach (var t in legalTargets) _board.SetHighlight(t, CardHighlight.Legal);
+                if (legalTargets.Count > 0 && legalTargets.All(t => _state.GetUnit(t).Side != _board.Bottom)) _board.ShowSide(_board.Bottom.Opposite());
                 break;
             case TargetKind.UnitAndPlacement:
             case TargetKind.TwoUnits:

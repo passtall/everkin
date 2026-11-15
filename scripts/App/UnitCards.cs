@@ -55,6 +55,7 @@ public static class UnitCards
         info.Ko = u.IsKnockedOut;
         info.Stealthed = u.IsStealthed;
         info.Undead = u.IsUndead;
+        info.Airborne = u.IsAirborne;
         var statuses = u.StatusInstances.Keys.Where(k => k is not (StatusIds.SongHaste or StatusIds.FreeMomentum)).ToList();
         if (u.Ward > 0 && !statuses.Contains(StatusIds.Ward)) statuses.Add(StatusIds.Ward);
         info.Statuses = statuses;

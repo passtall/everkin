@@ -136,6 +136,7 @@ public partial class ViewerScreen : Control, IBackNavigable
             _stepOnce = false;
 
             var unitId = BattleDriver.NextTurn(_state, Game.Catalog);
+            _board.ActiveUnitId = unitId;
             await _board.PlayAsync(_state.DrainEvents());
             if (_state.IsOver || unitId is not { } id) break;
 

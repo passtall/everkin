@@ -12,7 +12,7 @@ The implementation state, kept current by every Claude Code session ([docs/imple
 
 1. **M2.3, the owner reviews the first run** (unchanged): see the earlier text in this list: run `runs/20261110-190808-harness`, started 2026-11-10 19:08, about 12 hours; resume with `dotnet src/Everkin.Runner/bin/Release/net10.0/Everkin.Runner.dll run --resume 20261110-190808-harness --level harness --battles 10000`, or `report --run <id>` for what exists. Summarize `report.md` and ask the owner to review it. Ask question 16 first (the run level).
 2. **Play-test chapter 1 with the owner** (nobody has played the campaign by hand yet; I checked the screens by screenshots and played battles with the AI standing in for the player). The AI-played tutorial and 1-1 battles were lost, because the AI is weak on a 2 to 6 creature team and the enemy side spams constructs (see question 17). If tutorial and chapter 1 are too hard for a person, the numbers to tune are the team formations and `ai_settings.json` (`summonPercent` of Easy was lowered from 50 to 20 on 2026-11-10 for this; the adopted 50 still stands for Normal and Hard).
-3. **M5.5 battle UI left/right** (before M6.1): the portraits and rings are made (`assets/portraits/`, `assets/frames/portrait-ring*.png`); build the board as the plan's M5.5 says. **M6.1 local two-player** (game_system §2.4) follows: hot-seat battles with the board flipped so the acting player's side is on the left; player 1 picks a saved team, then player 2; both teams side by side, then Fight. The battle screen is `PlayScreen` (player side A vs AI): a second human needs a side switch in `BattleBoard` (`Setup(state, bottom)` exists) and a controller for side B that reuses `AskPlayer`.
+3. **M5.5 is done** (BattleBoard columns, `PortraitView`, ground pools; see Notes). **M6.1 local two-player** (game_system §2.4) follows: hot-seat battles with the board flipped so the acting player's side is on the left; player 1 picks a saved team, then player 2; both teams side by side, then Fight. The battle screen is `PlayScreen` (player side A vs AI): a second human needs a side switch in `BattleBoard` (`Setup(state, bottom)` exists) and a controller for side B that reuses `AskPlayer`.
 
 4. **M5.6 classes rework** (after M5.5): the docs describe the 28 classes, unique attacks and no skill distance; the plan's M5.6 lists the order of work. `tools/content/build_content.py` still parses the old roster columns (Attack type, Professions, Source, Status, Notes) and must be rewritten for the current tables first, so `JsonMatchesTheDocs` fails until then.
 
@@ -36,6 +36,8 @@ None open. All earlier questions are answered and written into the docs. Code th
 - AI test run: 10,000 battles at the harness level (§2.5). The summon flood (18 Animate Blades) and the draws at the 500-turn cap are balance findings for the report, not AI fixes.
 
 ## Notes
+
+- M5.5: `PortraitView : CardView` (disc, masked art by shader, ring, HP badge, KO crack, stealth shimmer, airborne bob, active glow, highlights) replaced the compact card on the board and timeline; `BattleBoard` lays rows out as columns (`Column`, `ColumnX`, `CoordY`; `Bottom` now means the LEFT side), draws ground pools in `_ground` from `GroundEffectPlaced/Ended` events (merged capsules for touching spots, no shaders or particles: drawn in code), `ShowSide` slides the one-side view, `ActiveUnitId` sets the glow, PlayScreen switches to the enemy side when every legal target is an enemy and back after the action, `--oneside` screen argument. New assets need `Godot --headless --path . --import --quit` once (the portrait and ring PNGs had no .import files). Not checked by eye: ground pools (no battle with ground effects was screenshotted), the phone auto-switch by screen size, reduced motion.
 
 - M0.1 uses net10.0 (newest LTS installed, SDK 10.0.301). Verified in M0.2: Godot.NET.Sdk 4.7.2 builds the root project on net10.0 (the editor itself runs on net8 with rollForward).
 - Godot 4.7.2 mono is at `E:\Downloads\Neuer Ordner\Godot_v4.7.2-stable_mono_win64\` (use the `_console.exe` for headless: `--headless --path . --build-solutions --quit`). Running it once adds the NuGet fallback so plain `dotnet build` works at the root. `.import`/`.uid` files are committed (Godot convention).
@@ -136,7 +138,7 @@ None open. All earlier questions are answered and written into the docs. Code th
 - [x] M5.2 World and chapter maps
 - [x] M5.3 Encounters, rewards, tutorial
 - [x] M5.4 Chapter 1
-- [ ] M5.5 Battle UI left/right, round portraits, visible ground effects
+- [x] M5.5 Battle UI left/right, round portraits, visible ground effects
 - [ ] M5.6 Classes rework
 - [ ] M6.1 Local two-player
 - [ ] M7.1 Chapters 2 to 4

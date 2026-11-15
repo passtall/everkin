@@ -21,7 +21,7 @@ public static class Screens
                 var spec = Everkin.Core.Setup.BattleSetup.RandomSpec(Game.Content, Game.Trees, ulong.TryParse(Arg("seed"), out var s) ? s : 7);
                 main.LastSpec = spec;
                 main.LastLevel = Arg("level") ?? "easy";
-                return new PlayScreen(main, spec, main.LastLevel) { SelfTest = args.Contains("selftest"), Instant = args.Contains("instant"), AutoSurrender = args.Contains("surrender"), Autoplay = args.Contains("autoplay") };
+                return new PlayScreen(main, spec, main.LastLevel) { SelfTest = args.Contains("selftest"), Instant = args.Contains("instant"), AutoSurrender = args.Contains("surrender"), Autoplay = args.Contains("autoplay"), StartOneSide = args.Contains("oneside") };
             }
             case "free": return new FreeBattleScreen(main);
             case "world": return new WorldMapScreen(main);
@@ -33,7 +33,7 @@ public static class Screens
                 main.LastSpec = spec;
                 main.LastLevel = enc.Ai;
                 main.LastEncounter = enc.Id;
-                return new PlayScreen(main, spec, enc.Ai, enc.Id) { SelfTest = args.Contains("selftest"), Instant = args.Contains("instant"), AutoSurrender = args.Contains("surrender"), Autoplay = args.Contains("autoplay") };
+                return new PlayScreen(main, spec, enc.Ai, enc.Id) { SelfTest = args.Contains("selftest"), Instant = args.Contains("instant"), AutoSurrender = args.Contains("surrender"), Autoplay = args.Contains("autoplay"), StartOneSide = args.Contains("oneside") };
             }
             case "chapter": return new ChapterMapScreen(main, Game.Campaign.Chapters.First(c => c.Id == (Arg("id") ?? "T")));
             case "teams":
