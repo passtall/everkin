@@ -84,6 +84,9 @@ public static class StatusIds
     /// <summary>Song of Haste: Speed raised by the magnitude while a Leader's song reaches the unit. Kept by the aura, not applied by a skill.</summary>
     public const string SongHaste = "song_haste";
 
+    /// <summary>War Drums (a song): cannot be Stunned or Frozen. Helpful.</summary>
+    public const string WarDrums = "war_drums";
+
     /// <summary>Mirror Form: the unit has another unit's Power and Speed (Magnitude = Power x 100 + Speed). Neither helpful nor harmful.</summary>
     public const string Traded = "traded";
 
@@ -200,7 +203,7 @@ public static class StatusRules
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
             or StatusIds.Marked or StatusIds.LieInWait or StatusIds.NextSkillDelay or StatusIds.Distracted
             or StatusIds.GlassBody or StatusIds.StoneShell or StatusIds.Weighted or StatusIds.Stagnant or StatusIds.Betrayed or StatusIds.Withering => Polarity.Harmful,
-        StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.Regrowth or StatusIds.Charge or StatusIds.Pledge
+        StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.WarDrums or StatusIds.Regrowth or StatusIds.Charge or StatusIds.Pledge
             or StatusIds.ShieldWall or StatusIds.LifeLink or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo or StatusIds.Sidestep or StatusIds.FreeMomentum => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };

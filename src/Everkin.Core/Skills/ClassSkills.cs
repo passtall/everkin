@@ -62,7 +62,10 @@ public static class ClassSkills
             .Concat(EnchanterSkills.All(content))
             .Concat(TransmuterSkills.All(content))
             .Concat(HexerSkills.All(content))
-            .Concat(LifebinderSkills.All(content));
+            .Concat(LifebinderSkills.All(content))
+            .Concat(TacticianSkills.All(content))
+            .Concat(CommanderSkills.All(content))
+            .Concat(BardSkills.All(content));
 }
 
 /// <summary>Small helpers the class skills share.</summary>
