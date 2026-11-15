@@ -458,7 +458,7 @@ public sealed class BattleState
     /// <summary>The shared HP pools of Bound Resurrect (game_system section 10.4).</summary>
     public IReadOnlyList<SharedHp> SharedPools => _sharedPools;
 
-    public SharedHp? SharedPoolOf(int unitId) => _sharedPools.FirstOrDefault(p => p.UnitA == unitId || p.UnitB == unitId);
+    public SharedHp? SharedPoolOf(int unitId) => _sharedPools.FirstOrDefault(p => p.Members.Contains(unitId));
 
     /// <summary>
     /// Two units share one HP pool: its maximum is the sum of both maximum HP and it starts at the given value. Every hit on either
@@ -474,11 +474,20 @@ public sealed class BattleState
     }
 
     /// <summary>The link ends when either unit is KO: the pool goes away and each keeps the HP it shows.</summary>
-    public void EndSharedPool(int unitId) => _sharedPools.RemoveAll(p => p.UnitA == unitId || p.UnitB == unitId);
+    public void EndSharedPool(int unitId) => _sharedPools.RemoveAll(p => p.Members.Contains(unitId));
+
+    /// <summary>A unit joins an existing pool (Bound Resurrect while the Lifebinder already shares): the maximum grows by its maximum HP and the pool by its HP.</summary>
+    public void JoinSharedPool(SharedHp pool, int unitId)
+    {
+        pool.Members.Add(unitId);
+        pool.Max += GetUnit(unitId).MaxHp;
+        pool.Pool = Math.Min(pool.Max, pool.Pool + GetUnit(unitId).Hp);
+        SyncPool(pool);
+    }
 
     private void SyncPool(SharedHp pool)
     {
-        foreach (var id in new[] { pool.UnitA, pool.UnitB })
+        foreach (var id in pool.Members)
             GetUnit(id).Hp = pool.Pool <= 0 ? 0 : Math.Min(pool.Pool, GetUnit(id).MaxHp);
         Emit(new SharedHpChanged(pool.UnitA, pool.UnitB, pool.Pool, pool.Max));
     }
@@ -835,11 +844,11 @@ public sealed class BattleState
         return healed;
     }
 
-    /// <summary>The Sorcerer's unit that gets healing taken by Curse of Betrayal: the living, healable unit of its side with the lowest HP (ties by the seeded roll); null if none.</summary>
+    /// <summary>The Sorcerer's unit that gets healing taken by Curse of Betrayal: the living unit of its side (undead included) with the lowest HP (ties by the seeded roll); null if none.</summary>
     private int? BetrayalRecipient(int sorcererId)
     {
         var side = GetUnit(sorcererId).Side;
-        var candidates = _units.Where(u => u.Side == side && !u.IsKnockedOut && !u.IsRemoved && !u.IsUndead && _formation.Contains(u.Id)).ToList();
+        var candidates = _units.Where(u => u.Side == side && !u.IsKnockedOut && !u.IsRemoved && _formation.Contains(u.Id)).ToList();
         if (candidates.Count == 0) return null;
         var lowest = candidates.Min(u => u.Hp);
         var tied = candidates.Where(u => u.Hp == lowest).ToList();

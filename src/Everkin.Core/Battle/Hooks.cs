@@ -15,30 +15,30 @@ public delegate bool StealthBreakVeto(BattleState state, int unitId, StealthCaus
 /// <summary>Called before an attack resolves against a target; returns another unit to aim it at, or null to leave it.</summary>
 public delegate int? PreHitHook(BattleState state, int attackerId, int targetId);
 
-/// <summary>Two units that share one HP pool (Bound Resurrect, game_system section 10.4).</summary>
+/// <summary>Units that share one HP pool (Bound Resurrect, game_system section 10.4): the Lifebinder and everyone it revived with it while it was sharing.</summary>
 public sealed class SharedHp
 {
     public SharedHp(int unitA, int unitB, int pool, int max, bool boundStrength)
     {
-        UnitA = unitA;
-        UnitB = unitB;
+        Members = new List<int> { unitA, unitB };
         Pool = pool;
         Max = max;
         BoundStrength = boundStrength;
     }
 
-    public int UnitA { get; }
-    public int UnitB { get; }
+    public List<int> Members { get; private set; }
+    public int UnitA => Members[0];
+    public int UnitB => Members[1];
 
     /// <summary>The pool's current HP; the maximum is the sum of both units' maximum HP.</summary>
     public int Pool { get; internal set; }
 
-    public int Max { get; }
+    public int Max { get; internal set; }
 
     /// <summary>The Healer knew Bound Strength: while the two share their pool, both have 1 less Delay on every skill.</summary>
     public bool BoundStrength { get; }
 
-    internal SharedHp Clone() => (SharedHp)MemberwiseClone();
+    internal SharedHp Clone() { var c = (SharedHp)MemberwiseClone(); c.Members = new List<int>(Members); return c; }
 }
 
 /// <summary>True when the unit cannot intercept for others (Keeper of the Gate).</summary>

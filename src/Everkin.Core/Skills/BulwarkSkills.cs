@@ -22,9 +22,9 @@ public static class BulwarkSkills
 }
 
 /// <summary>
-/// Leap to Defend: own side only. The Bulwark moves in front of an ally (any gap of the row in front of it; next to it when the ally stands in the Front
-/// row) and takes the next attack of any delivery aimed at that ally instead, once. If the row is full it cannot move and still takes the attack.
-/// It ends if the Bulwark is KO.
+/// Leap to Defend: own side only. The Bulwark moves in front of an ally (any gap of the row in front of it) and takes the next attack of any delivery aimed
+/// at that ally instead, once. Only when nothing is free in front (or the ally stands in the Front row) it goes next to the ally, on a side picked by the seeded
+/// roll; when neither is possible the skill cannot be used on that ally. It ends if the Bulwark is KO.
 /// </summary>
 public sealed class LeapToDefend : ClassSkill
 {
@@ -34,35 +34,48 @@ public sealed class LeapToDefend : ClassSkill
     public override EffectTags Tags => base.Tags | EffectTags.Move;           // a skill that moves its own user (Bleeding)
     public override bool PlacementOptional => true;
 
-    public override bool TargetFilter(BattleState state, int userId, int targetId) => targetId != userId;
+    public override bool TargetFilter(BattleState state, int userId, int targetId) =>
+        targetId != userId && (InFront(state, userId, targetId).Count > 0 || Beside(state, userId, targetId).Count > 0);
 
-    public override IReadOnlyList<MoveOption> PlacementOptionsFor(BattleState state, int userId, int targetId)
+    /// <summary>The gaps in the row in front of the ally (the player picks one); the first choice.</summary>
+    private static IReadOnlyList<MoveOption> InFront(BattleState state, int userId, int targetId)
     {
         var me = state.Formation.PositionOf(userId);
         var ally = state.Formation.PositionOf(targetId);
-        if (ally.Row == Row.Front)
-        {
-            // Next to the ally in the Front row; a unit already in that row cannot be reordered, so it only stays if it already stands beside the ally.
-            if (me.Row == Row.Front) return Math.Abs(me.Index - ally.Index) == 1 ? new[] { new MoveOption(me.Row, me.Index) } : Array.Empty<MoveOption>();
-            if (!state.Formation.CanPlace(ally.Side, Row.Front)) return Array.Empty<MoveOption>();
-            return new[] { new MoveOption(Row.Front, ally.Index), new MoveOption(Row.Front, ally.Index + 1) };
-        }
+        if (ally.Row == Row.Front) return Array.Empty<MoveOption>();
         var front = (Row)((int)ally.Row - 1);
         if (me.Row == front) return new[] { new MoveOption(me.Row, me.Index) };      // already in front of the ally
         if (!state.Formation.CanPlace(ally.Side, front)) return Array.Empty<MoveOption>();
-        var count = state.Formation.Count(ally.Side, front);
-        return Enumerable.Range(0, count + 1).Select(i => new MoveOption(front, i)).ToArray();
+        return Enumerable.Range(0, state.Formation.Count(ally.Side, front) + 1).Select(i => new MoveOption(front, i)).ToArray();
     }
+
+    /// <summary>The places next to the ally in its own row, the fallback when nothing is free in front of it (the seeded roll picks the side).</summary>
+    private static IReadOnlyList<MoveOption> Beside(BattleState state, int userId, int targetId)
+    {
+        var me = state.Formation.PositionOf(userId);
+        var ally = state.Formation.PositionOf(targetId);
+        if (me.Row == ally.Row) return Math.Abs(me.Index - ally.Index) == 1 ? new[] { new MoveOption(me.Row, me.Index) } : Array.Empty<MoveOption>();
+        if (!state.Formation.CanPlace(ally.Side, ally.Row)) return Array.Empty<MoveOption>();
+        return new[] { new MoveOption(ally.Row, ally.Index), new MoveOption(ally.Row, ally.Index + 1) };
+    }
+
+    public override IReadOnlyList<MoveOption> PlacementOptionsFor(BattleState state, int userId, int targetId) => InFront(state, userId, targetId);
 
     public override void Resolve(SkillContext context)
     {
         var state = context.State;
         var me = state.Formation.PositionOf(context.UserId);
-        if (context.Placement is { } place && !(place.Row == me.Row && place.Index == me.Index))
+        var place = context.Placement;
+        if (place is null)
+        {
+            var beside = Beside(state, context.UserId, context.TargetId!.Value);
+            if (beside.Count > 0) place = beside[state.Random.NextInt(beside.Count)];
+        }
+        if (place is { } to && !(to.Row == me.Row && to.Index == me.Index))
         {
             state.Ground.Accrue();
             var from = state.Formation.Remove(context.UserId);
-            state.Formation.Place(context.UserId, from.Side, place.Row, place.Index);
+            state.Formation.Place(context.UserId, from.Side, to.Row, to.Index);
             state.Emit(new UnitMoved(context.UserId, from, state.Formation.PositionOf(context.UserId), MoveCause.Forced));
             foreach (var hook in state.AfterMoveHooks.ToArray()) hook(state, context.UserId);
         }

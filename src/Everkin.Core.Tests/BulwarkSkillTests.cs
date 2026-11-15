@@ -51,26 +51,39 @@ public class BulwarkSkillTests
     }
 
     [Fact]
-    public void ForAnAllyInTheFrontRowTheBulwarkGoesIntoAGapNextToIt()
+    public void ForAnAllyInTheFrontRowTheBulwarkGoesNextToItOnASideTheSeededRollPicks()
     {
-        var s = new BattleState(1);
-        var b = World.Unit(s, Side.A, Row.Middle, "leap_to_defend");
-        var ally = World.Unit(s, Side.A, Row.Front);
-        var places = World.Catalog.Get("leap_to_defend").PlacementOptionsFor(s, b, ally);
-        Assert.Equal(new[] { new MoveOption(Row.Front, 0), new MoveOption(Row.Front, 1) }, places);
+        var sides = new HashSet<int>();
+        for (ulong seed = 1; seed <= 20; seed++)
+        {
+            var s = new BattleState(seed);
+            var b = World.Unit(s, Side.A, Row.Middle, "leap_to_defend");
+            var ally = World.Unit(s, Side.A, Row.Front);
+            Assert.Empty(World.Catalog.Get("leap_to_defend").PlacementOptionsFor(s, b, ally));   // nothing to pick
+            Run(s, Use(b, "leap_to_defend", ally));
+            Assert.Equal(Row.Front, s.Formation.PositionOf(b).Row);
+            sides.Add(s.Formation.PositionOf(b).Index);
+        }
+        Assert.Equal(2, sides.Count);                                                          // both sides happen
     }
 
     [Fact]
-    public void WhenTheRowIsFullTheBulwarkCannotMoveButStillTakesTheAttack()
+    public void WhenNothingIsFreeInFrontTheBulwarkGoesNextToTheAlly()
     {
-        var (s, b, ally, enemy) = Leap();
+        var (s, b, ally, _) = Leap();
         for (var i = 0; i < 6; i++) World.Unit(s, Side.A, Row.Front);
         Assert.Empty(World.Catalog.Get("leap_to_defend").PlacementOptionsFor(s, b, ally));
-        Assert.Null(Why(s, Use(b, "leap_to_defend", ally)));                              // no place needed
         Run(s, Use(b, "leap_to_defend", ally));
-        Assert.Equal(Row.Rear, s.Formation.PositionOf(b).Row);
-        Run(s, Use(enemy, "rivet_shot", ally));
-        Assert.Equal(0, Lost(s, ally));                                                  // the attack was aimed at the Bulwark (its row may still intercept)
+        Assert.Equal(Row.Middle, s.Formation.PositionOf(b).Row);
+    }
+
+    [Fact]
+    public void WhenBothTheRowInFrontAndTheAllysRowAreFullTheSkillCannotBeUsedOnThatAlly()
+    {
+        var (s, b, ally, _) = Leap();
+        for (var i = 0; i < 6; i++) World.Unit(s, Side.A, Row.Front);
+        for (var i = 0; i < 5; i++) World.Unit(s, Side.A, Row.Middle);
+        Assert.NotNull(Why(s, Use(b, "leap_to_defend", ally)));
     }
 
     [Fact]

@@ -64,23 +64,23 @@ public class BattleDriverTests
     {
         var s = Duel(1, speedA: 5, speedB: 5);
         Statuses.Apply(s, new StatusApplication(1, StatusIds.Poison, Duration: 50));
-        var first = BattleDriver.NextTurn(s)!.Value;          // time 6: 60 hundredths built up
+        var first = BattleDriver.NextTurn(s)!.Value;          // time 6: 120 hundredths built up, 1 has landed
         Assert.Equal(6, s.Timeline.Now);
-        Assert.Equal(40, s.GetUnit(1).Hp);
+        Assert.Equal(39, s.GetUnit(1).Hp);
         Actions.SkipTurn(s, first);
         BattleDriver.NextTurn(s);                              // the other unit's turn at 6 too, then time 17
-        Assert.True(s.GetUnit(1).Hp <= 40);
+        Assert.True(s.GetUnit(1).Hp <= 39);
     }
 
     [Fact]
     public void ATickThatKosTheUnitEndsItsTurn()
     {
         var s = Duel(1, speedA: 5, speedB: 5);
-        s.GetUnit(0).Hp = 1;
+        s.GetUnit(0).Hp = 3;
         Statuses.Apply(s, new StatusApplication(0, StatusIds.Poison, Duration: 50));
         s.Timeline.Add(TimelineKind.DelayedEvent, 1);
-        // Both turns are at 6; the poison has built up 60 hundredths: nothing lands yet. Push time on.
-        s.Timeline.PushBack(s.Timeline.TurnOf(0)!, 10);        // unit 0's turn at 16: 160 hundredths -> 1 lands, KO
+        // Both turns are at 6; the poison has built up 120 hundredths: 1 lands (HP 2). Push time on.
+        s.Timeline.PushBack(s.Timeline.TurnOf(0)!, 10);        // unit 0's turn at 16: 320 hundredths -> 3 in all, KO
         Assert.Equal(1, BattleDriver.NextTurn(s));
         Actions.SkipTurn(s, 1);
         Assert.Null(BattleDriver.NextTurn(s));                 // unit 0 was KO'd by the tick before its turn: the battle is over

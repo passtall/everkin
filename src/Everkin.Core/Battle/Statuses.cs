@@ -178,8 +178,8 @@ public sealed class StatusInstance
 /// <summary>Static facts about status types.</summary>
 public static class StatusRules
 {
-    /// <summary>Poison: 1 damage per 10 time units, which is 10 hundredths of HP per time unit (section 10.5).</summary>
-    public const int PoisonHundredthsPerTimeUnit = 10;
+    /// <summary>Poison: 1 damage per 5 time units, which is 20 hundredths of HP per time unit (section 10.5).</summary>
+    public const int PoisonHundredthsPerTimeUnit = 20;
 
     /// <summary>Bleeding: 2 damage after each melee or move skill. A rule number: it does not scale with Power.</summary>
     public const int BleedingDamage = 2;

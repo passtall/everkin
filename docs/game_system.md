@@ -498,7 +498,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 
 **Burnout Heal:** its healing resolves as one simultaneous block; then the Lifebinder is KO, before reactions are collected, so the Lifebinder's own reactions do not fire (Martyr is a "when KO" trigger and does).
 
-**Bound Resurrect: shared pool.** The pool's maximum is the **sum of both units' maximum HP**; it starts at the reviver's current HP plus the revived unit's revival HP. Every hit on either unit reduces the pool and healing either heals it. When the pool reaches 0, **both units are KO**. The link ends when either unit is KO.
+**Bound Resurrect: shared pool.** The pool's maximum is the **sum of both units' maximum HP**; it starts at the reviver's current HP plus the revived unit's revival HP. Every hit on either unit reduces the pool and healing either heals it. When the pool reaches 0, **both units are KO**. The link ends when either unit is KO. A Lifebinder that already shares a pool can use Bound Resurrect again: the revived unit joins the same pool, whose maximum and current HP grow by that unit's maximum HP and revival HP.
 
 ### 10.5 Statuses
 
@@ -508,7 +508,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 - **One instance per status.** Reapplying refreshes it with the new duration, even if shorter. There is no stacking. A new Stun on a Stunned unit keeps whichever time is longer.
 - **Source.** A status keeps going if its source is KO, unless the skill says it ends.
 - **No limit** on statuses per unit; the UI handles overflow.
-- **Ticking.** Damage and healing over time build up per time unit and land whenever any unit gets a turn; fractions carry over. When the effect ends, its built-up whole points land at once and the fraction is dropped (50 time units of Poisoned deal exactly 5). Everything built up shows as one number on the unit. A tick that KOs a unit ends its turn.
+- **Ticking.** Damage and healing over time build up per time unit and land whenever any unit gets a turn; fractions carry over. When the effect ends, its built-up whole points land at once and the fraction is dropped (50 time units of Poisoned deal exactly 10). Everything built up shows as one number on the unit. A tick that KOs a unit ends its turn.
 - **Damage from statuses** (Poisoned, Bleeding, Withering Curse) is not a hit and moves Momentum 0. Reductions apply to it; Wards do not absorb it.
 - **Chances.** A stated chance is the real chance; no stat lowers it.
 - **Immunities** come only from skills and keystones (Sanctity, War Drums, Spell Ward, Unstoppable, Steadfast Ward, Eye of the Storm). Creatures have none of their own. Every status applies to summons, constructs and totems unless their skill says otherwise.
@@ -584,7 +584,7 @@ A ground effect sits on a spot (section 7.3) and affects the unit standing there
 | **Ice** | A unit pushed or pulled across it slides one row further (bumps apply). With no row there it stops, without damage. Only the moved unit slides, not the units it bumps. | Fire: water after 10. | Ritualist (Hoarfrost), Cryomancer (Deep Chill), attack extras |
 | **Water** | Harmless alone. | Any Stun on a unit standing on water also Stuns the units on water spots touching it, for half the time (rounded down). Ice placed on water: the water turns to ice and the unit there is Frozen. Fire set on water: steam after 10. Water placed on fire: steam at once. | Ritualist (Rain Dance), attack extras |
 | **Steam** | Not a lasting effect: when fire and water make steam, the unit there is Confused for 10 and the spot is left clear. | | Fire on water, water on fire |
-| **Poison gas** | A unit standing in it is Poisoned for 20 at once (when the gas appears or the unit is moved in), and again every 5 while it stays. Gas lasts 10 unless a skill says otherwise. | **Explodes** when fire meets it, whichever comes first, or when Lightning Bolt or Chain Lightning hits a unit standing in it: that spot and every gas spot touching it (side by side in a row, or overlapping across neighbouring rows, and so on) go off; each unit on an exploding spot takes 6 and the spots are left clear. | Chemist (Poison Gas), Necromancer (Corpse Explosion), attack extras |
+| **Poison gas** | A unit standing in it is Poisoned for 20 at once (when the gas appears or the unit is moved in), and again every 5 while it stays. Gas lasts 10 unless a skill says otherwise. | **Explodes** when fire meets it, whichever comes first, or when Lightning Bolt or Chain Lightning hits a unit standing in it: that spot and every gas spot touching it (side by side in a row, or overlapping across neighbouring rows, and so on) go off; each unit on an exploding spot takes 6 and the spots are left clear (the fire that set it off is gone too: fire placed on gas explodes it and does not stay; gas placed on fire explodes at once and no gas is placed). | Chemist (Poison Gas), Necromancer (Corpse Explosion), attack extras |
 
 Water and gas spots touch when they are side by side in a row or overlap across neighbouring rows.
 

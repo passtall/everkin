@@ -353,7 +353,7 @@ public class GroundTests
         Assert.True(s.Ground.Has(new Spot(Side.A, Row.Front, 3), GroundKind.Poison));
         Assert.False(s.Ground.Has(new Spot(Side.A, Row.Front, -5), GroundKind.Poison));         // the gas spots are left clear
         Assert.False(s.Ground.Has(new Spot(Side.A, Row.Front, -3), GroundKind.Poison));
-        Assert.True(s.Ground.Has(new Spot(Side.A, Row.Front, -5), GroundKind.Burning));
+        Assert.False(s.Ground.Has(new Spot(Side.A, Row.Front, -5), GroundKind.Burning));        // the fire does not stay after the explosion
         Assert.Equal(2, s.DrainEvents().OfType<PoisonGroundExploded>().Count());
     }
 

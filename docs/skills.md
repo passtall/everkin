@@ -50,7 +50,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Hold Position | K | | | Enemy effects cannot push, pull or swap the Bulwark. |
 | Unbreakable | K | | | The first time the Bulwark would be KO, it keeps 1 HP instead. |
 
-- **Leap to Defend** lasts until the next attack of any delivery aimed at that ally; that attack is aimed at the Bulwark instead, once. It ends if the Bulwark is KO. If the ally already stands in the Front row, the Bulwark moves into a gap next to it in the Front row instead; if that row is full it cannot move, and still takes the attack.
+- **Leap to Defend** lasts until the next attack of any delivery aimed at that ally; that attack is aimed at the Bulwark instead, once. It ends if the Bulwark is KO. The Bulwark goes in front of the ally first. Only when the row in front has no gap (or the ally already stands in the Front row) does it move into a gap next to the ally in the ally's row; if both sides are free, the seeded roll picks the side. If neither is possible, the skill cannot be used.
 - **Shield Wall:** a melee or projectile attack on a unit behind the wall is intercepted by the nearest wall unit that overlaps that unit by at least 50%, with 100% chance instead of the roll; the hit is still full or partial as usual. Direct attacks pass.
 
 ## Keeper
@@ -141,7 +141,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 - **Curses** are Curse of Betrayal, Curse of Weight and Withering Curse; Witch's Patience and Spreading Curse cover all three. With Witch's Patience a new curse removes the Hexer's earlier one (on any unit).
 - **Spreading Curse:** the curse keeps its remaining time.
-- **Curse of Betrayal:** ties for lowest HP go to the seeded roll. If the Hexer's side has no unit that can be healed, the cursed unit is healed as usual.
+- **Curse of Betrayal:** ties for lowest HP go to the seeded roll. The unit is any living unit of the Hexer's side (the Hexer, summons and undead included; KO units excluded). If the Hexer's side has no unit that can be healed, the cursed unit is healed as usual.
 
 ## Pyromancer
 

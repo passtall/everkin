@@ -187,8 +187,7 @@ public sealed class GroundField
             case GroundKind.Burning:
                 if (Has(spot, GroundKind.Poison))
                 {
-                    AddFire(spot, duration, sourceUnitId);
-                    ExplodeGas(spot);
+                    ExplodeGas(spot);                                    // fire placed on gas explodes it and does not stay
                     return true;
                 }
                 if (Find(spot, GroundKind.Water) is { } water) return MeetFire(GroundKind.Burning, spot, duration, sourceUnitId, water);
@@ -216,7 +215,8 @@ public sealed class GroundField
             case GroundKind.Poison:
                 if (Has(spot, GroundKind.Burning))
                 {
-                    ExplodeGasAt(spot, includeSpot: false);              // gas placed on fire goes off at once
+                    ExplodeGasAt(spot, includeSpot: false);              // gas placed on fire goes off at once; the fire is gone too
+                    foreach (var burn in _effects.Where(e => e.Kind == GroundKind.Burning && e.Spot == spot).ToList()) Remove(burn, GroundEndCause.Exploded);
                     return false;
                 }
                 break;

@@ -91,7 +91,7 @@ public class WorkedChecksTests
         while (s.Timeline.Pop() is { } e)
             if (e.Tag == "clock") break;
         Statuses.TickPoison(s);
-        Assert.Equal(37, s.GetUnit(victim).Hp);                                          // 3 damage after 30 time units
+        Assert.Equal(34, s.GetUnit(victim).Hp);                                          // 6 damage after 30 time units
         Assert.True(Statuses.Has(s.GetUnit(victim), StatusIds.Poison));
     }
 

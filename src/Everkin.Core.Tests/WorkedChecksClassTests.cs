@@ -68,7 +68,7 @@ public class WorkedChecksClassTests
         Assert.False(s.GetUnit(victim).IsStealthed);
         AdvanceTo(s, 10);
         Statuses.TickPoison(s);
-        Assert.Equal(1, Lost(s, victim));                                                    // a poison tick ignores the Ward; 10 time units at 1 per 10
+        Assert.Equal(2, Lost(s, victim));                                                    // a poison tick ignores the Ward; 10 time units at 1 per 5
         Assert.Equal(17, s.GetUnit(victim).Ward);
     }
 

@@ -87,10 +87,7 @@ public sealed class BoundResurrect : ClassSkill
     public override TargetOptions Options => new(IncludeKnockedOut: true);
 
     public override bool TargetFilter(BattleState state, int userId, int targetId) =>
-        LifebinderSkills.CanBeRevived(state, targetId) && state.SharedPoolOf(userId) is null;
-
-    public override string? Unavailable(BattleState state, int userId) =>
-        state.SharedPoolOf(userId) is null ? null : "the Lifebinder already shares its HP";
+        LifebinderSkills.CanBeRevived(state, targetId);
 
     public override void Resolve(SkillContext context)
     {
@@ -98,7 +95,8 @@ public sealed class BoundResurrect : ClassSkill
         var id = context.TargetId!.Value;
         context.ReviveOrRestore(id, LifebinderSkills.QuarterHp(state.GetUnit(id)));
         if (state.GetUnit(id).IsKnockedOut || context.User.IsKnockedOut) return;
-        state.AddSharedPool(context.UserId, id, context.User.Hp + state.GetUnit(id).Hp, boundStrength: false);
+        if (state.SharedPoolOf(context.UserId) is { } pool) state.JoinSharedPool(pool, id);
+        else state.AddSharedPool(context.UserId, id, context.User.Hp + state.GetUnit(id).Hp, boundStrength: false);
     }
 }
 

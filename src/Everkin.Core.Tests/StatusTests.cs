@@ -267,19 +267,19 @@ public class StatusTests
     [Fact]
     public void PoisonBuildsUpPerTimeUnitAndLandsWheneverAnyUnitGetsATurnFiveInTotal()
     {
-        // 20.5: 1 damage per 10 time units for 50 units, 5 in total, landing whenever any unit gets a turn.
+        // 20.5: 1 damage per 5 time units for 50 units, 10 in total, landing whenever any unit gets a turn.
         var (s, a, b) = Duel();
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Poison, Duration: 50, SourceUnitId: b));
-        AdvanceTo(s, 15);
-        Assert.Equal(new[] { a }, Statuses.TickPoison(s));       // 150 hundredths: 1 lands, 50 carried
-        Assert.Equal(39, s.GetUnit(a).Hp);
-        Assert.Equal(50, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.BuildupHundredths);
+        AdvanceTo(s, 13);
+        Assert.Equal(new[] { a }, Statuses.TickPoison(s));       // 260 hundredths: 2 land, 60 carried
+        Assert.Equal(38, s.GetUnit(a).Hp);
+        Assert.Equal(60, Statuses.Get(s.GetUnit(a), StatusIds.Poison)!.BuildupHundredths);
         Assert.Empty(Statuses.TickPoison(s));                    // nothing new yet
         AdvanceTo(s, 40);
-        Statuses.TickPoison(s);                                  // 50 + 250 = 300: 3 land
-        Assert.Equal(36, s.GetUnit(a).Hp);
+        Statuses.TickPoison(s);                                  // 60 + 540 = 600: 6 land
+        Assert.Equal(32, s.GetUnit(a).Hp);
         AdvanceTo(s, 55);                                        // the marker at 50 lands the rest and ends it
-        Assert.Equal(35, s.GetUnit(a).Hp);
+        Assert.Equal(30, s.GetUnit(a).Hp);
         Assert.False(Statuses.Has(s.GetUnit(a), StatusIds.Poison));
     }
 
@@ -289,7 +289,7 @@ public class StatusTests
         var (s, a, _) = Duel();
         Statuses.Apply(s, new StatusApplication(a, StatusIds.Poison, Duration: 50));
         AdvanceTo(s, 55);
-        Assert.Equal(35, s.GetUnit(a).Hp); // 5 in total even though no turn came in between
+        Assert.Equal(30, s.GetUnit(a).Hp); // 10 in total even though no turn came in between
     }
 
     [Fact]
@@ -302,7 +302,7 @@ public class StatusTests
         s.GetUnit(a).IsStealthed = true;
         AdvanceTo(s, 10);
         Statuses.TickPoison(s);
-        Assert.Equal(39, s.GetUnit(a).Hp);
+        Assert.Equal(38, s.GetUnit(a).Hp);
         Assert.Equal(8, s.GetUnit(a).Ward);
         Assert.True(s.GetUnit(a).IsStealthed);
         Assert.Equal(0, s.Momentum.Value);
@@ -318,7 +318,7 @@ public class StatusTests
         Knockout.Resolve(s, b);
         AdvanceTo(s, 10);
         Statuses.TickPoison(s);
-        Assert.Equal(39, s.GetUnit(a).Hp);
+        Assert.Equal(38, s.GetUnit(a).Hp);
     }
 
     [Fact]

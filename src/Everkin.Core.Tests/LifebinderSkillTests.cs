@@ -146,7 +146,7 @@ public class LifebinderSkillTests
     }
 
     [Fact]
-    public void BoundResurrectCannotBeUsedWhileAlreadySharing()
+    public void BoundResurrectWhileAlreadySharingBringsTheNewUnitIntoTheSamePool()
     {
         var (s, h, ally) = Board(1, "bound_resurrect");
         var body = World.Unit(s, Side.A, Row.Rear);
@@ -155,7 +155,13 @@ public class LifebinderSkillTests
         Ko(s, body);
         K.Ready(s, h);
         s.ShiftMomentum(Side.A, 4);
-        Assert.NotNull(Why(s, Use(h, "bound_resurrect", body)));
+        var pool = s.SharedPoolOf(h)!;
+        var max = pool.Max;
+        Assert.Null(Why(s, Use(h, "bound_resurrect", body)));
+        Run(s, Use(h, "bound_resurrect", body));
+        Assert.Same(pool, s.SharedPoolOf(body));
+        Assert.Equal(max + s.GetUnit(body).MaxHp, pool.Max);
+        Assert.Equal(3, pool.Members.Count);
     }
 
     [Fact]
