@@ -376,6 +376,8 @@ public partial class PlayScreen : Control, IBackNavigable
         }
     }
 
+    private IReadOnlyList<int> LegalTargetsOf(Skill skill) => Actions.LegalTargets(_state, Game.Catalog, _active, skill.Id);
+
     private IEnumerable<int> LegalUnits(Skill skill) =>
         Targeting.LegalTargets(_state, _active, skill.Options with { Delivery = skill.Delivery })
             .Where(t => skill.TargetFilter(_state, _active, t)
@@ -388,6 +390,23 @@ public partial class PlayScreen : Control, IBackNavigable
         switch (skill.Target)
         {
             case TargetKind.Unit:
+                if (_partial != null)
+                {
+                    // The second target of Lift a Skill or of Transmute with Mirror Form; clicking the first unit again uses the skill on it alone when that is allowed.
+                    if (id == _partial.TargetUnitId) TryUse(_partial);
+                    else TryUse(_partial with { SecondTargetUnitId = id });
+                    break;
+                }
+                if (skill.SecondTargetFor(_state, Game.Catalog, _active, id) is { } second && LegalTargetsOf(skill).Contains(id))
+                {
+                    _partial = new SkillUse(_active, skill.Id, id);
+                    _board.ClearHighlights();
+                    _board.SetHighlight(_active, CardHighlight.Selected);
+                    _board.SetHighlight(id, CardHighlight.Selected);
+                    foreach (var other in second.Units) _board.SetHighlight(other, CardHighlight.Legal);
+                    _hint.Text = second.Required ? "Choose a target for the copied skill" : "Choose a second unit to trade with, or click the first unit again to use it alone";
+                    break;
+                }
                 TryUse(new SkillUse(_active, skill.Id, id));
                 break;
             case TargetKind.Row:

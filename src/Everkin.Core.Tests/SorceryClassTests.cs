@@ -197,6 +197,21 @@ public class SorceryClassTests
     }
 
     [Fact]
+    public void TransmuteOffersAnOptionalSecondTargetOnlyWithMirrorFormAndTheAiGeneratesThePairs()
+    {
+        var (s, t, e1) = Board(1, "transmute", "mirror_form");
+        var e2 = World.Unit(s, Side.B, Row.Middle);
+        var choice = World.Catalog.Get("transmute").SecondTargetFor(s, World.Catalog, t, e1);
+        Assert.NotNull(choice);
+        Assert.False(choice!.Required);
+        Assert.DoesNotContain(e1, choice.Units);
+        Assert.Contains(e2, choice.Units);
+        Assert.Contains(Everkin.Core.Ai.MoveGenerator.Legal(s, World.Catalog, t), a => a.Use is { SkillId: "transmute", SecondTargetUnitId: not null });
+        var (s2, t2, f) = Board(1, "transmute");
+        Assert.Null(World.Catalog.Get("transmute").SecondTargetFor(s2, World.Catalog, t2, f));
+    }
+
+    [Fact]
     public void TradingNeedsMirrorFormAndTwoDifferentUnits()
     {
         var (s, t, e1) = Board(1, "transmute");

@@ -25,6 +25,9 @@ public enum TargetKind
 }
 
 /// <summary>A unit chose to use a skill, with its target if the skill needs one.</summary>
+/// <summary>The second target a one-target skill can take: the units it may be and whether the skill needs one.</summary>
+public sealed record SecondTargetChoice(IReadOnlyList<int> Units, bool Required);
+
 public sealed record SkillUse(
     int UserId, string SkillId, int? TargetUnitId = null, RowTarget? Row = null, MoveOption? Placement = null,
     int? SecondTargetUnitId = null);
@@ -88,6 +91,12 @@ public abstract class Skill
 
     /// <summary>Extra checks on the whole use, after the target checks (Lift a Skill: the copied skill and its target). Null if fine.</summary>
     public virtual string? CheckUse(BattleState state, SkillCatalog catalog, SkillUse use) => null;
+
+    /// <summary>
+    /// For a skill with one unit target that may or must take a second one (Transmute with Mirror Form: optional; Lift a Skill when the copy needs a target:
+    /// required): the units the second target can be, and whether it is required. Null when the skill takes no second target for this first target.
+    /// </summary>
+    public virtual SecondTargetChoice? SecondTargetFor(BattleState state, SkillCatalog catalog, int userId, int firstId) => null;
 
     /// <summary>For a skill with two targets: whether this pair is allowed.</summary>
     public virtual bool PairFilter(BattleState state, int userId, int firstId, int secondId) => true;

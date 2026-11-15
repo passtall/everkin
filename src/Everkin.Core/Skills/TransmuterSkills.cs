@@ -29,6 +29,11 @@ public sealed class Transmute : ClassSkill
     public Transmute(SkillDef def) : base(def, magical: true) { }
     public override TargetKind Target => TargetKind.Unit;
 
+    public override SecondTargetChoice? SecondTargetFor(BattleState state, SkillCatalog catalog, int userId, int firstId) =>
+        state.GetUnit(userId).KnownSkills.Contains("mirror_form")
+            ? new SecondTargetChoice(Targeting.LegalTargets(state, userId, Options with { Delivery = Delivery }).Where(t => t != firstId).ToArray(), Required: false)
+            : null;
+
     public override string? CheckUse(BattleState state, SkillCatalog catalog, SkillUse use)
     {
         if (use.SecondTargetUnitId is not { } second) return null;

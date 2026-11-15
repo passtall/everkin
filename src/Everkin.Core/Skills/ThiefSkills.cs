@@ -49,6 +49,13 @@ public sealed class LiftASkill : ClassSkill
 
     public override bool TargetFilter(BattleState state, int userId, int targetId) => state.Units.Count > targetId;
 
+    public override SecondTargetChoice? SecondTargetFor(BattleState state, SkillCatalog catalog, int userId, int firstId)
+    {
+        if (Copied(state, catalog, firstId) is not { Target: TargetKind.Unit } copy) return null;
+        var units = state.Units.Where(u => !u.IsKnockedOut && Actions.CanUseFree(state, catalog, new SkillUse(userId, copy.Id, u.Id))).Select(u => u.Id).ToArray();
+        return new SecondTargetChoice(units, Required: true);
+    }
+
     public override string? CheckUse(BattleState state, SkillCatalog catalog, SkillUse use)
     {
         if (use.TargetUnitId is not { } who || who < 0 || who >= state.Units.Count) return null;                 // the target checks report it

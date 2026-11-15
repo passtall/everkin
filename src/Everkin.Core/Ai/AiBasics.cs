@@ -37,7 +37,7 @@ public static class MoveGenerator
         foreach (var skillId in unit.KnownSkills.Distinct())
         {
             if (!catalog.TryGet(skillId, out var skill) || skill.IsPassive) continue;
-            foreach (var use in Uses(state, unitId, skill, maxPlaces, maxPairs))
+            foreach (var use in Uses(state, catalog, unitId, skill, maxPlaces, maxPairs))
                 if (Actions.WhyNot(state, catalog, use) is null) result.Add(new AiAction(AiActionKind.Skill, use));
         }
         if (includeMoveAndSkip)
@@ -55,7 +55,7 @@ public static class MoveGenerator
         return Enumerable.Range(0, max).Select(i => items[max == 1 ? 0 : i * (items.Count - 1) / (max - 1)]).ToArray();
     }
 
-    private static IEnumerable<SkillUse> Uses(BattleState state, int userId, Skill skill, int maxPlaces, int maxPairs)
+    private static IEnumerable<SkillUse> Uses(BattleState state, SkillCatalog catalog, int userId, Skill skill, int maxPlaces, int maxPairs)
     {
         var options = skill.Options with { Delivery = skill.Delivery };
         IReadOnlyList<int> Targets() => Targeting.LegalTargets(state, userId, options)
@@ -70,9 +70,9 @@ public static class MoveGenerator
                 foreach (var t in Targets())
                 {
                     yield return new SkillUse(userId, skill.Id, t);
-                    if (skill.Id == "lift_a_skill")                                   // the copied skill may need a target of its own
-                        foreach (var second in Spread(state.Units.Where(u => u.Id != t && !u.IsKnockedOut).ToArray(), maxPairs))
-                            yield return new SkillUse(userId, skill.Id, t, SecondTargetUnitId: second.Id);
+                    if (skill.SecondTargetFor(state, catalog, userId, t) is { } more)       // Lift a Skill (the copy needs a target), Transmute with Mirror Form
+                        foreach (var second in Spread(more.Units, maxPairs))
+                            yield return new SkillUse(userId, skill.Id, t, SecondTargetUnitId: second);
                 }
                 break;
             case TargetKind.Row:
