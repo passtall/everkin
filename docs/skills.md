@@ -80,7 +80,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Absolve | A | 4 / 0 | Direct | Remove every harmful status from a unit; its next turn is pushed back 2. |
-| Dispel | A | 3 / 0 | Direct | Remove every helpful status (Ward, Haste, stealth, enchantments and others) from a unit. |
+| Dispel | A | 3 / 0 | Direct | Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit. |
 | Turn Back | A | 3 / 0 | Direct | Move one harmful status from a unit onto the unit that applied it. |
 | Sanctity | K | | | The Cleric cannot get harmful statuses. |
 | Purifying Aura | K | | | Harmful statuses on allies next to the Cleric last half as long. |
