@@ -100,7 +100,7 @@ public sealed class Unit
     /// <summary>The side the unit started on: its owner for the defeat check (an original raised as undead still counts as KO for it).</summary>
     public Side OriginalSide { get; }
 
-    public UnitKind Kind { get; internal set; } = UnitKind.Creature;
+    public UnitKind Kind { get; set; } = UnitKind.Creature;
 
     /// <summary>The unit that summoned or raised it. A summon's damage and healing scale with this unit's Power (section 5.2).</summary>
     public int? SummonerId { get; internal set; }
@@ -291,6 +291,7 @@ public sealed class BattleState
     private readonly CowList<DamageSharing> _damageSharings = new();
     private readonly CowList<LethalGuard> _lethalGuards = new();
     private readonly CowList<LethalSave> _lethalSaves = new();
+    private readonly CowList<StealHook> _stealHooks = new();
     private readonly CowList<AfterDamageHook> _afterDamageHooks = new();
     private readonly CowList<StatusRemovalVeto> _removalVetoes = new();
     private readonly CowList<WardHitHook> _wardHitHooks = new();
@@ -354,6 +355,7 @@ public sealed class BattleState
         _damageSharings = other._damageSharings.Share();
         _lethalGuards = other._lethalGuards.Share();
         _lethalSaves = other._lethalSaves.Share();
+        _stealHooks = other._stealHooks.Share();
         _afterDamageHooks = other._afterDamageHooks.Share();
         _removalVetoes = other._removalVetoes.Share();
         _wardHitHooks = other._wardHitHooks.Share();
@@ -498,6 +500,9 @@ public sealed class BattleState
 
     public IReadOnlyList<LethalSave> LethalSaves => _lethalSaves;
     public void AddLethalSave(LethalSave hook) => _lethalSaves.Add(hook);
+
+    public IReadOnlyList<StealHook> StealHooks => _stealHooks;
+    public void AddStealHook(StealHook hook) => _stealHooks.Add(hook);
 
     public IReadOnlyList<AfterDamageHook> AfterDamageHooks => _afterDamageHooks;
     public void AddAfterDamageHook(AfterDamageHook hook) => _afterDamageHooks.Add(hook);

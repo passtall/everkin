@@ -624,6 +624,7 @@ public static class Statuses
             if (Transfer(state, fromId, thiefId, id, thiefId)) stolen++;
             if (!all) break;
         }
+        if (stolen > 0) foreach (var hook in state.StealHooks.ToArray()) hook(state, thiefId, fromId, stolen);
         return stolen;
     }
 

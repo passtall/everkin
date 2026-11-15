@@ -110,8 +110,8 @@ public delegate void TargetHitHook(BattleState state, int attackerId, int target
 /// <summary>Changes a status before it is applied (Showman: Blind and Stunned from the Tinker last twice as long).</summary>
 public delegate StatusApplication StatusApplicationModifier(BattleState state, StatusApplication application);
 
-/// <summary>Extra Delay for the skills a unit uses (Showman: +2 on skills that deal damage). Returns the extra Delay.</summary>
-public delegate int SkillDelayModifier(BattleState state, int userId, bool isAttack);
+/// <summary>Extra Delay for a skill a unit uses (Big Finish: +2 on Firebomb and Poison Gas). Returns the extra Delay.</summary>
+public delegate int SkillDelayModifier(BattleState state, int userId, string skillId);
 
 /// <summary>The other units that share the damage a unit takes (Spirit Link Totem). Empty for none.</summary>
 public delegate IReadOnlyList<int> DamageSharing(BattleState state, int targetId);
@@ -136,3 +136,6 @@ public delegate void AfterDamageHook(BattleState state, int targetId, int hpBefo
 
 /// <summary>True when a cleansing skill cannot remove this status instance (Relentless: the Tracker's Marks).</summary>
 public delegate bool StatusRemovalVeto(BattleState state, int unitId, StatusInstance status, int? byUnitId);
+
+/// <summary>A unit stole statuses (Snatch, an attack that steals): who stole, from whom and how many (Shadow Purse).</summary>
+public delegate void StealHook(BattleState state, int thiefId, int fromId, int count);

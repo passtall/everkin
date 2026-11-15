@@ -132,7 +132,7 @@ public sealed class UniqueAttackSkill : Skill
             }
             case "steal":
                 // Stealing happens only if the hit reaches the target itself (landed or absorbed by a Ward, not taken by an interceptor).
-                return report.Interceptions.Count == 0 && Statuses.Steal(state, context.UserId, report.TargetId, all: false) > 0;
+                return report.Interceptions.Count == 0 && Statuses.Steal(state, context.UserId, report.TargetId, all: context.User.KnownSkills.Contains("master_thief")) > 0;
             case "delay_turn":
                 state.PushTurnBack(receiver, extra.Amount);
                 return false;

@@ -168,7 +168,7 @@ public static class Actions
         // Effects that add Delay to the next skill (Net Trap's +3) count once; Delay stays within 1 to 10 after all modifiers.
         var boundStrength = state.SharedPoolOf(use.UserId) is { BoundStrength: true } ? 1 : 0;   // Bound Strength: 1 less Delay while sharing HP
         ScheduleNextTurn(state, use.UserId, Math.Clamp(skill.Delay + Statuses.ConsumeNextSkillDelay(state, use.UserId) - boundStrength - rhythm
-            + state.SkillDelayModifiers.Sum(m => m(state, use.UserId, skill.IsAttack)), 1, 10));
+            + state.SkillDelayModifiers.Sum(m => m(state, use.UserId, skill.Id)), 1, 10));
 
         if (Statuses.Get(user, StatusIds.LieInWait) is { } lie)
         {
@@ -208,7 +208,7 @@ public static class Actions
         }
         user.LastActionIndex = state.ActionCounter;
         user.LastSkillId = skill.Id;
-        user.LastActiveSkillId = skill.Id;
+        if (skill.Id != "lift_a_skill") user.LastActiveSkillId = skill.Id;          // Lift a Skill is never copied
         user.SneakReady = false;
         foreach (var hook in state.AfterActionHooks.ToArray()) hook(state, use.UserId);
         state.RunAuras();
