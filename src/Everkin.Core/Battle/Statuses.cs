@@ -84,6 +84,9 @@ public static class StatusIds
     /// <summary>Song of Haste: Speed raised by the magnitude while a Leader's song reaches the unit. Kept by the aura, not applied by a skill.</summary>
     public const string SongHaste = "song_haste";
 
+    /// <summary>Ashwalker: +1 Speed while standing on burning ground (kept by an aura sync, no clock).</summary>
+    public const string AshSpeed = "ash_speed";
+
     /// <summary>Regrowth (Mender keystone): regains HP over time. Magnitude is the HP per 10 time units. Helpful.</summary>
     public const string Regrowth = "regrowth";
 
@@ -200,6 +203,7 @@ public static class StatusRules
     public static int SpeedModifier(StatusInstance status) => status.Id switch
     {
         StatusIds.SongHaste => status.Magnitude,
+        StatusIds.AshSpeed => status.Magnitude,
         _ => 0,
     };
 }

@@ -179,6 +179,7 @@ public sealed class GroundField
     public bool Place(GroundKind kind, Spot spot, int duration, int? sourceUnitId = null)
     {
         if (duration < 1) throw new ArgumentOutOfRangeException(nameof(duration));
+        duration = LengthFor(kind, duration, sourceUnitId);
         Accrue();
 
         switch (kind)
@@ -258,6 +259,17 @@ public sealed class GroundField
         _state.Timeline.Remove(effect.MarkerEntryId);
         effect.EndsAt = _state.Timeline.Now + remaining;
         effect.MarkerEntryId = _state.Timeline.Add(TimelineKind.EffectEnd, remaining, null, TagPrefix + effect.Id).Id;
+    }
+
+    /// <summary>A keystone of the unit that places an effect can change its length: Wildfire (burning ground twice as long), Volatile (fire and gas twice as long), Deluge (water for the whole battle).</summary>
+    private int LengthFor(GroundKind kind, int duration, int? sourceUnitId)
+    {
+        if (sourceUnitId is not { } src || src >= _state.Units.Count) return duration;
+        var known = _state.GetUnit(src).KnownSkills;
+        if (kind == GroundKind.Burning && known.Contains("wildfire")) duration *= 2;
+        if (kind is GroundKind.Burning or GroundKind.Poison && known.Contains("volatile")) duration *= 2;
+        if (kind == GroundKind.Water && known.Contains("deluge")) duration = 100000;
+        return duration;
     }
 
     private GroundEffect Add(GroundKind kind, Spot spot, int duration, int? sourceUnitId)
@@ -416,8 +428,12 @@ public sealed class GroundField
 
             if (effect.Kind == GroundKind.Burning)
             {
+            {
+                var rate = BurningHundredthsPerTimeUnit * (effect.SourceUnitId is { } src && src < _state.Units.Count && _state.GetUnit(src).KnownSkills.Contains("inferno") ? 2 : 1);   // Inferno: double damage
                 foreach (var id in covered)
-                    _buildup[id] = _buildup.GetValueOrDefault(id) + dt * BurningHundredthsPerTimeUnit;
+                    if (!_state.GetUnit(id).KnownSkills.Contains("ashwalker"))                                                  // Ashwalker takes none
+                        _buildup[id] = _buildup.GetValueOrDefault(id) + dt * rate;
+            }
             }
             else if (effect.Kind == GroundKind.Poison)
             {

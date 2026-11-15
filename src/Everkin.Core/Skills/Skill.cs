@@ -123,6 +123,7 @@ public sealed class SkillContext
 {
     private readonly Skill _skill;
     private bool _attacked;
+    private List<HitOutcome>? _batched;
     private bool _pierced;
     private bool _expanded;
 
@@ -384,7 +385,8 @@ public sealed class SkillContext
         foreach (var id in Knockout.ResolveAll(State))
             batch.Add(new Trigger(TriggerKind.WhenKo, id, UserId));
 
-        if (shiftMomentum)
+        if (shiftMomentum && _batched is not null) _batched.AddRange(outcomes);          // a multi-hit action shifts once, at its end
+        else if (shiftMomentum)
         {
             var shift = MomentumRules.ActionShift(outcomes);
             foreach (var modifier in State.MomentumShiftModifiers) shift = modifier(State, UserId, shift);   // All In
@@ -402,6 +404,23 @@ public sealed class SkillContext
 
         State.RunAuras();
         BattleEnd.Resolve(State);
+    }
+
+    /// <summary>
+    /// A multi-hit action (a chain): each hit is its own event with its own KO check, but Momentum shifts once for the whole action, when
+    /// <see cref="EndBatch"/> is called (game_system.md section 6.7).
+    /// </summary>
+    public void BeginBatch() => _batched = new List<HitOutcome>();
+
+    /// <summary>Ends a multi-hit action: one Momentum shift from all its hits (the victory check already ran after each event).</summary>
+    public void EndBatch()
+    {
+        var outcomes = _batched;
+        _batched = null;
+        if (outcomes is null) return;
+        var shift = MomentumRules.ActionShift(outcomes);
+        foreach (var modifier in State.MomentumShiftModifiers) shift = modifier(State, UserId, shift);
+        if (shift != 0) State.ShiftMomentum(UserSide, shift);
     }
 
     /// <summary>The user's side and the other.</summary>
