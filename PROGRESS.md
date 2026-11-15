@@ -2,16 +2,16 @@
 
 The implementation state, kept current by every Claude Code session ([docs/implementation-plan.md](docs/implementation-plan.md) says how). If a session stops at any moment, the next one continues from here.
 
-**Last updated:** 2026-11-15. M5.5 is done. M5.6 (classes rework) is under way: content, unique attacks, targeting and interception are on the new rules; the 28 classes are not ported yet.
+**Last updated:** 2026-11-15. M5.6 (classes rework) is done: all 28 classes, unique attacks, new targeting and interception, 732 tests passing, none skipped. Follow-ups below.
 
 ## Current task
 
-**M5.6 step 4a: port the last 6 of the 28 classes** (skills.md is the spec; each class gets `src/Everkin.Core/Skills/<Class>Skills.cs`, tests, and a "20.5" worked check where the table has one). Done so far in M5.6: step 1 (content: `tools/content/build_content.py` rewritten, `content/classes|skills|creatures.json` regenerated, `default_builds.json` removed), step 2 partly (parametric `UniqueAttackSkill`, no range, melee needs the Front row, melee reach, melee interception 75/50, own-side hits never intercepted, "nearest" per section 8.5, Haste/Slow/Chilled statuses gone), step 5 partly (SkillTreeEditor removed, team editor class filter, card back lists attack + 6 actives + 2 keystones, icons by skill ID), step 7 (profile version 3 resets older profiles). Battles now run with the unique attack, Move and Skip Turn only, until the classes are ported. The old code of every profession is in git: `git show 5b15401:src/Everkin.Core/Skills/<Profession>Skills.cs` (and the matching `*SkillTests.cs`); reuse its building blocks (hooks in `BattleState`, `SkillContext`) where a new skill matches an old one.
+**M5.6 follow-ups (the milestone itself is complete):** audit game_system 20.5 row by row against the tests, prune dead status ids and hooks, UI checks for Mirror Form / Lift a Skill second targets, then the harness rerun (step 8). Earlier history of M5.6: step 1 (content: `tools/content/build_content.py` rewritten, `content/classes|skills|creatures.json` regenerated, `default_builds.json` removed), step 2 partly (parametric `UniqueAttackSkill`, no range, melee needs the Front row, melee reach, melee interception 75/50, own-side hits never intercepted, "nearest" per section 8.5, Haste/Slow/Chilled statuses gone), step 5 partly (SkillTreeEditor removed, team editor class filter, card back lists attack + 6 actives + 2 keystones, icons by skill ID), step 7 (profile version 3 resets older profiles). Battles now run with the unique attack, Move and Skip Turn only, until the classes are ported. The old code of every profession is in git: `git show 5b15401:src/Everkin.Core/Skills/<Profession>Skills.cs` (and the matching `*SkillTests.cs`); reuse its building blocks (hooks in `BattleState`, `SkillContext`) where a new skill matches an old one.
 
 ## Next step
 
-1. **Port the last classes** (skills.md is the spec; file `src/Everkin.Core/Skills/<Class>Skills.cs`, register in `ClassSkills.All`, tests in `src/Everkin.Core.Tests`, old code of the same family in git: `git show 5b15401:src/Everkin.Core/Skills/<Profession>Skills.cs`). Done: Berserker, Champion, Bulwark, Keeper, Mender, Cleric, Assassin, Tracker, Pyromancer, Stormcaller, Cryomancer, Enchanter, Transmuter, Hexer, Lifebinder, Tactician, Commander, Bard, Thief, Saboteur, Engineer, Chemist. Left: **Necromancer** (old `SummonerSkills.cs` Necromancy part and `Necromancy` in `Battle/Summons.cs`), **Summoner** (golems, blades; `AutonomousTurns` exists), **Totemist** (old `PrimalistSkills.cs` totems, `Totems.HandleAutoEvent`, `DamageSharings`, `LethalGuards`; register through `state.AddAutoEventHandler`), **Ritualist**, **Spiritwalker**, **Skyborne** (old `FlyingSkills.cs`).
-2. **Rewrite the skipped tests** (`WorkedChecksTests`, `PreviewTests`: `[Fact(Skip = ...)]`) so the whole game_system section 20.5 table is covered (step 3); many rows are already covered in the class tests (marked with 20.5 comments).
+1. **All 28 classes are ported** (done). Open readings are in the list below.
+2. **Audit game_system section 20.5** row by row against the tests (`WorkedChecksTests`, `WorkedChecksClassTests`, class tests); no test is skipped any more.
 3. **Open core changes of step 2**: summon placement on any free spot (Engineer done; Summoner, Totemist, Necromancer use `Summons.PlacementOptions(state, side, all rows)`), raised undead use the Necromancer's current Power and a KO undead's body can be raised again, revived undead return at the end of the nearest row with a free slot (`Necromancy` in `Battle/Summons.cs`), prune the old status IDs no class uses any more (charge, pledge, shield_wall, sidestep, duel is used by Single Combat, fate_link, life_link, stone_shell, stagnant, distracted, phased/piercing/echo stay).
 4. **AI** (step 4): `MoveGenerator` already offers every `TargetKind`; check Transmute with a second target (Mirror Form) and Lift a Skill (second target) are generated; `Evaluator` scores statuses and Momentum generally; score the new statuses (regrowth, withering, traded, ash_speed, war_drums, song_haste) where it matters. **UI** (step 5): target preview with the direct-hit chance (`Preview.Skill` has `Interceptors` with the chance per defender; it must use the delivery: `Interception.ChanceFor(overlap, delivery)`), inspection panel keystones, action bar order (attack first, then the six actives in class order: already so), the optional second target of Transmute (Mirror Form) and the second target of Lift a Skill in `PlayScreen`. **Step 8**: rerun the AI-versus-AI harness, decide the Cost formula (game_system section 5.1) and recalculate Cost.
 5. **M2.3, the owner reviews the first run** (the run `runs/20261110-190808-harness` used the old rules and is history now; a new 10,000-battle run belongs after M5.6 step 8).
@@ -19,7 +19,7 @@ The implementation state, kept current by every Claude Code session ([docs/imple
 
 ## In flight
 
-Nothing uncommitted. M5.6 steps 1, 5 (removals) and 7 are done; step 2 and 4a (the classes) are 22 of 28 done.
+Nothing uncommitted. M5.6 is complete.
 
 ## Questions for the owner
 
@@ -147,7 +147,7 @@ Old readings the code followed that M5.6 changes (most are done now: Momentum fo
 - [x] M5.3 Encounters, rewards, tutorial
 - [x] M5.4 Chapter 1
 - [x] M5.5 Battle UI left/right, round portraits, visible ground effects
-- [ ] M5.6 Classes rework
+- [x] M5.6 Classes rework (all 28 classes, tests un-skipped; follow-ups listed under Next step)
 - [ ] M6.1 Local two-player
 - [ ] M7.1 Chapters 2 to 4
 - [ ] M7.2 Achievements
