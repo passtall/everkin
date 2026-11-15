@@ -14,7 +14,7 @@ A turn-based tactical creature card battler for Windows, Android and iOS, built 
 | `docs/assets/` | Prompts and provenance for every generated asset. |
 | `docs/archive/` | Superseded documents, history only. Never a source for rules. |
 | `assets/` | Everything the game loads: creature and summon art, card frames, backgrounds, icons, brand, fonts, audio. See [assets/README.md](assets/README.md). |
-| `source-art/` | Original creature images. Never changed; `tools/art/clean_creatures.py` makes the cleaned copies in `assets/creatures/`. |
+| `source-art/` | Original creature images (`creatures/`) and battle portraits (`portraits/`). Never changed; `tools/art/clean_creatures.py` makes the cleaned copies in `assets/creatures/`. |
 | `tools/` | Python scripts that build assets: creature art cleaning and generation (`art/`), card backgrounds (`backgrounds/`), sounds (`audio/`), icon contact sheet (`icons/`). |
 | `project.godot` | The Godot project, at the root. Code will go to `src/` (rules core, batch runner, battle service) and `server/` (Spring Boot), as set in production.md §2. |
 | `CLAUDE.md` | How an implementing Claude Code session works. |

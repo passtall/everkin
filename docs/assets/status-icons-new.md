@@ -1,6 +1,6 @@
 # New status icons (5)
 
-Status icons for effects of the 28 classes that have no icon yet (skills.md). Not made yet (2026-11-13). They join the set in [ui-icons.md](ui-icons.md) and must look like it: attach two or three existing icons from `assets/icons/ui/` (for example `status-ward.png`, `status-cursed.png`, `status-marked.png`) as style references. The game overlays a letter or short label on each icon, so the images carry no text. Save to `assets/icons/ui/<file>`.
+Status icons for effects of the 28 classes (skills.md). Made 2026-11-13; the files are in `assets/icons/ui/`. They join the set in [ui-icons.md](ui-icons.md) and must look like it: attach two or three existing icons from `assets/icons/ui/` (for example `status-ward.png`, `status-cursed.png`, `status-marked.png`) as style references. The game overlays a letter or short label on each icon, so the images carry no text. Save to `assets/icons/ui/<file>`.
 
 ## How to run
 

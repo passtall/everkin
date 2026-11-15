@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw
 
 repo = Path(__file__).resolve().parents[2]
 root = repo / 'assets' / 'icons' / 'skills'
-rows = json.loads((repo / 'docs' / 'assets' / 'skill-icons-prompts-used.json').read_text(encoding='utf-8'))
+rows = json.loads((repo / 'docs' / 'assets' / 'records' / 'skill-icons-prompts-used.json').read_text(encoding='utf-8'))
 files = [root / row['file'] for row in rows if (root / row['file']).exists()]
 canvas = Image.new('RGB', (7 * 180, ((len(files) + 6) // 7) * 202), '#12101c')
 draw = ImageDraw.Draw(canvas)
