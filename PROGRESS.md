@@ -19,7 +19,7 @@ The implementation state, kept current by every Claude Code session ([docs/imple
 
 - **M5.7 Momentum costs and skill tooltips (owner, 2026-11-16): done in code, 743 tests pass.** Momentum: `CanPay` needs a lead of 1 for any cost, `Pay` may pass 0 (clamped), reasons and the ghost marker follow. Tooltips: skills.md marks every scaling number with braces (`{4}`, `{8–10}`, owner chose this 2026-11-16; Self-Repair, Regrowth, recoil, Withering and Judgment are marked because the code scales them); `build_content.py` writes `effect` without braces and `template` with them; `Core/Content/SkillTooltips.cs` scales templates and unique-attack damage to the creature's Power; `Ui.SkillTip` is the panel, used by action bar slots (Move, Skip Turn included) and card-back rows (`CardView._GetTooltip`). Tests in `SkillTooltipTests` (all 168 skills and 319 attacks). **Not checked by eye** (hover cannot be screenshotted headless) and **long-press on touch is not built** (Godot shows no tooltip on touch); both belong to the next play-test / M10.1.
 
-- **M5.8 (owner, 2026-11-16): code done, 746 tests pass.** AI scoring, harness formation, Momentum log and report section, Searing Light 4-5, Vanish 1. The second run `runs/20261116-191930-harness` was stopped early by the owner at 5,737 of 10,000 battles; its summaries are in `analysis/`. Next: owner reviews, then the Cost formula proposal (game_system 5.1).
+- **M5.8 (owner, 2026-11-16): code done, 746 tests pass.** AI scoring, harness formation, Momentum log and report section, Searing Light 4-5, Vanish 1. The second run `runs/20261116-191930-harness` was stopped early by the owner at 5,737 of 10,000 battles; its summaries are in `analysis/`. Owner reviewed it (2026-11-16): next is **M5.9 AI improvements** (docs/implementation-plan.md), then a full run, then the Cost formula proposal.
 
 ## In flight
 
@@ -153,7 +153,8 @@ Old readings the code followed that M5.6 changes (most are done now: Momentum fo
 - [x] M5.5 Battle UI left/right, round portraits, visible ground effects
 - [x] M5.6 Classes rework (all 28 classes, tests un-skipped; follow-ups listed under Next step)
 - [x] M5.7 Momentum costs and skill tooltips (touch long-press and an eye check still open)
-- [ ] M5.8 AI and harness fixes, second harness run
+- [x] M5.8 AI and harness fixes, second harness run
+- [ ] M5.9 AI improvements, full harness run, Cost formula
 - [ ] M6.1 Local two-player
 - [ ] M7.1 Chapters 2 to 4
 - [ ] M7.2 Achievements

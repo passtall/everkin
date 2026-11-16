@@ -139,7 +139,14 @@ Each task names the doc sections it implements. Read those sections before codin
   - Harness log and report: the Momentum meter after every unit turn and every payment; the report's Momentum section per side.
   - Content: Searing Light hits for 4–5 (skills.md Mender); Vanish costs 1 Momentum (skills.md Assassin). Regenerate the content JSON and update the tests and tooltips that use these numbers.
   - Then rerun 10,000 harness battles and put the summaries in `analysis/` for the owner.
-  - From that run, propose the Cost formula (game_system §5.1) to the owner and recalculate Cost once approved (M5.6 step 8).
+  - The Cost formula proposal moves to the end of M5.9.
+
+- **M5.9** AI improvements, then a full 10,000-battle harness run (game_system §2.5).
+  - Scoring (§2.5 Scoring): Momentum worth less the further ahead (3 points full, 4–9 half, the cap nothing); a tempo term for how soon each unit's next turn comes, scaled by Power; one weight per status in `ai_settings.json` and the new relevance checks (Silenced, Bleeding); summons weighted by damage per turn with each further summon of a caster counting 20% less; totems and traps scored by what they do over the next 20 time units (barricades and turrets still 0).
+  - Search: always search further at least one costed and one control skill (§2.5 Candidates); at the harness level, one timeline turn deeper after a costed or control skill.
+  - Harness: formation by role (Bulwark or 60+ HP Front, then melee Front, projectile Rear, direct Middle or Rear at random); per skill, log and report how often it was legal, searched further and chosen.
+  - Tests for each scoring part and the candidate rule. Tune the starting weights so a battle stays near 10 s.
+  - Then run 10,000 harness battles and put the summaries in `analysis/` for the owner. From that run, propose the Cost formula (game_system §5.1) to the owner and recalculate Cost once approved (M5.6 step 8).
 
 ### M6 Local two-player
 
