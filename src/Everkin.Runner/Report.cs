@@ -11,7 +11,7 @@ public static class Report
     private sealed class Tally
     {
         public int Appearances, Wins, Draws;
-        public long Damage, Taken, Healing, Kos, Uses;
+        public long Damage, Taken, Healing, Kos, Uses, Legal, Searched;
         public double Rate => Appearances == 0 ? 0 : 100.0 * Wins / Appearances;
     }
 
@@ -64,6 +64,8 @@ public static class Report
                     if (won) t.Wins++;
                     if (draw) t.Draws++;
                     t.Uses += u.Skills.GetValueOrDefault(skill);
+                    t.Legal += u.Legal.GetValueOrDefault(skill);
+                    t.Searched += u.Searched.GetValueOrDefault(skill);
                 }
             }
             for (var i = 0; i < r.Units.Count; i++)
@@ -79,6 +81,7 @@ public static class Report
                 }
         }
 
+        string Pct(long part, long whole) => whole == 0 ? "" : F(100.0 * part / whole);
         string F(double v) => v.ToString("F1", CultureInfo.InvariantCulture);
         var csv = new StringBuilder();
         csv.AppendLine("creature,appearances,wins,draws,win_rate,avg_damage,avg_taken,avg_healing,avg_kos");
@@ -93,7 +96,7 @@ public static class Report
         File.WriteAllText(Path.Combine(folder, "classes.csv"), csv.ToString());
 
         csv.Clear();
-        csv.AppendLine("skill,units_with_skill,wins,win_rate,uses,uses_per_unit");
+        csv.AppendLine("skill,units_with_skill,wins,win_rate,uses,uses_per_unit,legal_turns,searched_turns,chosen_of_legal_pct,searched_of_legal_pct,chosen_of_searched_pct");
         foreach (var (n, t) in skills.OrderBy(x => x.Key)) csv.AppendLine($"{n},{t.Appearances},{t.Wins},{F(t.Rate)},{t.Uses},{F((double)t.Uses / t.Appearances)}");
         File.WriteAllText(Path.Combine(folder, "skills.csv"), csv.ToString());
 
@@ -135,8 +138,8 @@ public static class Report
             var own = samples.Where(t => t.Side == side).ToList();
             var could = own.Where(t => t.CouldPay).ToList();
             var payments = ok.SelectMany(r => r.Payments).Where(p => p.Side == side).ToList();
-            double Pct(int n) => leads.Count == 0 ? 0 : 100.0 * n / leads.Count;
-            md.AppendLine($"| {side} | {leads.Count} | {F(Pct(leads.Count(l => l > 0)))} | {F(Pct(leads.Count(l => l == 0)))} | {F(Pct(leads.Count(l => l < 0)))} | {F(leads.Count == 0 ? 0 : leads.Average())} | {F((double)payments.Count / Math.Max(1, ok.Count))} | {F((double)payments.Sum(p => p.Cost) / Math.Max(1, ok.Count))} | {could.Count} | {F(could.Count == 0 ? 0 : 100.0 * could.Count(t => t.Paid == 0) / could.Count)} |");
+            double PctOf(int n) => leads.Count == 0 ? 0 : 100.0 * n / leads.Count;
+            md.AppendLine($"| {side} | {leads.Count} | {F(PctOf(leads.Count(l => l > 0)))} | {F(PctOf(leads.Count(l => l == 0)))} | {F(PctOf(leads.Count(l => l < 0)))} | {F(leads.Count == 0 ? 0 : leads.Average())} | {F((double)payments.Count / Math.Max(1, ok.Count))} | {F((double)payments.Sum(p => p.Cost) / Math.Max(1, ok.Count))} | {could.Count} | {F(could.Count == 0 ? 0 : 100.0 * could.Count(t => t.Paid == 0) / could.Count)} |");
         }
         md.AppendLine();
         var bySkill = ok.SelectMany(r => r.Payments).GroupBy(p => p.Skill).OrderByDescending(g => g.Count()).Take(15).ToList();
@@ -180,6 +183,21 @@ public static class Report
         var unused = content.Skills.Where(s => s.Kind == "A").Where(s => !skills.TryGetValue(s.Id, out var t) || t.Uses == 0).Select(s => s.Id).ToList();
         md.AppendLine();
         md.AppendLine($"Active skills never used in any battle ({unused.Count}): {string.Join(", ", unused)}");
+        md.AppendLine();
+
+        var decided = skills.Where(x => x.Value.Legal >= 200).ToList();
+        md.AppendLine("## What the AI does with each skill (turns where it was legal, searched further, chosen)");
+        md.AppendLine();
+        md.AppendLine("Skills with at least 200 legal turns. Searched = the search looked at one of its uses further; chosen = it was played.");
+        md.AppendLine();
+        md.AppendLine("| | Skill | Legal turns | Searched % of legal | Chosen % of legal | Chosen % of searched |");
+        md.AppendLine("|---|---|---:|---:|---:|---:|");
+        foreach (var (n, t) in decided.OrderBy(x => (double)x.Value.Uses / x.Value.Legal).Take(15))
+            md.AppendLine($"| rarely chosen | {n} | {t.Legal} | {Pct(t.Searched, t.Legal)} | {Pct(t.Uses, t.Legal)} | {Pct(t.Uses, t.Searched)} |");
+        foreach (var (n, t) in decided.OrderByDescending(x => (double)x.Value.Uses / x.Value.Legal).Take(15))
+            md.AppendLine($"| often chosen | {n} | {t.Legal} | {Pct(t.Searched, t.Legal)} | {Pct(t.Uses, t.Legal)} | {Pct(t.Uses, t.Searched)} |");
+        md.AppendLine();
+        md.AppendLine("The full list is in `skills.csv`.");
         md.AppendLine();
 
         md.AppendLine("## Win rate by starting row (all creatures)");

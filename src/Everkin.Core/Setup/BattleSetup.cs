@@ -89,14 +89,14 @@ public static class BattleSetup
 
         if (placeByAttack)
         {
-            // The harness rule (game_system section 2.5): melee attack Front, projectile Rear, any other Middle; the order inside a row is random.
-            var shuffled = picked.OrderBy(_ => 0).ToList();
+            // The harness rule (game_system section 2.5): by role; the order inside a row is random.
+            var shuffled = picked.ToList();
             for (var i = shuffled.Count - 1; i > 0; i--)
             {
                 var j = random.NextInt(i + 1);
                 (shuffled[i], shuffled[j]) = (shuffled[j], shuffled[i]);
             }
-            return new TeamSetup(shuffled.Select(c => new UnitSetup(c.Id, RowFor(content.AttacksById[c.Attack].Delivery))).ToList());
+            return new TeamSetup(shuffled.Select(c => new UnitSetup(c.Id, RoleRow(content, c, random))).ToList());
         }
         var rows = RandomRows(picked.Count, random);
         var units = new List<UnitSetup>();
@@ -107,7 +107,19 @@ public static class BattleSetup
         return new TeamSetup(units);
     }
 
-    /// <summary>The starting row of the harness's fixed placement rule by the delivery of the unique attack.</summary>
+    /// <summary>
+    /// The harness's placement by role: Bulwark or 60 HP or more Front; otherwise a melee attack Front, a projectile attack Rear, a direct
+    /// attack Middle or Rear by a seeded roll with equal chances.
+    /// </summary>
+    public static Row RoleRow(ContentSet content, CreatureDef c, BattleRandom random)
+    {
+        if (c.Classes.Contains("bulwark") || c.Hp >= 60) return Row.Front;
+        var delivery = content.AttacksById[c.Attack].Delivery;
+        if (delivery == "direct") return random.NextInt(2) == 0 ? Row.Middle : Row.Rear;
+        return RowFor(delivery);
+    }
+
+    /// <summary>The starting row for the delivery of the unique attack alone.</summary>
     public static Row RowFor(string delivery) => delivery switch { "melee" => Row.Front, "projectile" => Row.Rear, _ => Row.Middle };
 
     /// <summary>A random legal formation: each unit gets a row, at most six per row, and the order inside a row follows the unit order.</summary>

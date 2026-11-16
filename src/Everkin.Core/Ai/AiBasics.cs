@@ -127,6 +127,24 @@ public sealed class AiLevel
     /// <summary>Evaluation weights, in hundredths of a percent of a team's HP share (10000 = the whole team).</summary>
     public int MomentumPoint { get; init; } = 50;
 
+    /// <summary>Momentum: the first this-many points of a lead are worth <see cref="MomentumPoint"/> each, points up to <see cref="MomentumHalfPoints"/> half that, the rest (the cap) nothing.</summary>
+    public int MomentumFullPoints { get; init; } = 3;
+    public int MomentumHalfPoints { get; init; } = 9;
+
+    /// <summary>Tempo: worth of one time unit of a Power 5 unit's next turn coming sooner (or later) than normal, same units as the other weights.</summary>
+    public int TempoPerTime { get; init; } = 25;
+
+    /// <summary>Weight of each status by ID (at 20 time units left); a status without an entry uses <see cref="StatusValue"/>.</summary>
+    public Dictionary<string, int> StatusWeights { get; init; } = new();
+
+    public int WeightOf(string statusId) => StatusWeights.TryGetValue(statusId, out var w) ? w : StatusValue;
+
+    /// <summary>Candidates: the search always looks further at the best costed skill and the best control skill (game_system section 2.5).</summary>
+    public bool AlwaysSearchCostedAndControl { get; init; } = true;
+
+    /// <summary>A branch that starts with a costed or control skill is searched one timeline turn deeper (harness level).</summary>
+    public bool DeeperAfterCostedOrControl { get; init; }
+
     /// <summary>Per status that is helpful on an ally or harmful on an enemy at full 20 time units left; fewer time units count proportionally.</summary>
     public int StatusValue { get; init; } = 60;
 

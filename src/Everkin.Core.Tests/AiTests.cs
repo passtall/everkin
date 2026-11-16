@@ -95,18 +95,6 @@ public class AiTests
     }
 
     [Fact]
-    public void TheHarnessPlacesUnitsByTheDeliveryOfTheirUniqueAttack()
-    {
-        for (ulong seed = 1; seed <= 20; seed++)
-        {
-            var spec = BattleSetup.RandomSpec(World.Content, seed);
-            foreach (var u in spec.SideA.Units.Concat(spec.SideB.Units))
-                Assert.Equal(BattleSetup.RowFor(World.Content.AttacksById[World.Content.CreaturesById[u.CreatureId].Attack].Delivery), u.Row);
-        }
-        Assert.Equal((Row.Front, Row.Rear, Row.Middle), (BattleSetup.RowFor("melee"), BattleSetup.RowFor("projectile"), BattleSetup.RowFor("direct")));
-    }
-
-    [Fact]
     public void ARenewedStatusScoresNothingAndAMarkNeedsASkillThatUsesIt()
     {
         var s = new BattleState(1);

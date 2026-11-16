@@ -46,6 +46,7 @@ public enum SummonStrikeKind { Plain, Silence }
 public sealed class SummonStrike : Skill
 {
     private readonly IntRange _range;
+    public IntRange Range => _range;
     private readonly Delivery _delivery;
     private readonly SummonStrikeKind _kind;
 

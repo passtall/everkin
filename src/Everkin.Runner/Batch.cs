@@ -22,6 +22,10 @@ public sealed class UnitRecord
     public int Kos { get; set; }
     public bool Fell { get; set; }
     public Dictionary<string, int> Skills { get; set; } = new();
+
+    /// <summary>Per skill: the unit's turns where it had a legal use, and where the search looked at it further (Skills counts the times it was chosen).</summary>
+    public Dictionary<string, int> Legal { get; set; } = new();
+    public Dictionary<string, int> Searched { get; set; } = new();
 }
 
 /// <summary>The Momentum meter after one unit turn (from side A's view: positive favours A), the side that took it, whether it could have paid for a costed skill, and what it paid.</summary>
@@ -149,12 +153,25 @@ public static class BatchRunner
                 Creature = u.CreatureId!, Side = u.Side.ToString(), Row = state.Formation.PositionOf(u.Id).Row.ToString()
             }).ToList();
 
+            var aiA = new AiSearch(catalog, level, new BattleRandom(seed * 2 + 1));
+            var aiB = new AiSearch(catalog, level, new BattleRandom(seed * 2 + 2));
             var meter = 0;                                  // side A's view, kept up to date from the events
             string? lastSkill = null;
             MomentumTurn? turn = null;
 
+            (AiSearch Ai, int Unit)? pending = null;
+            void Flush()
+            {
+                if (pending is not { } p || p.Unit >= units.Count) return;
+                foreach (var id in p.Ai.LastLegalSkills) units[p.Unit].Legal[id] = units[p.Unit].Legal.GetValueOrDefault(id) + 1;
+                foreach (var id in p.Ai.LastSearchedSkills) units[p.Unit].Searched[id] = units[p.Unit].Searched.GetValueOrDefault(id) + 1;
+                pending = null;
+            }
+
             void OnTurn(BattleState st, int unitId)
             {
+                Flush();
+                pending = (st.GetUnit(unitId).Side == Side.A ? aiA : aiB, unitId);
                 if (turn is not null) turn.Meter = meter;
                 var side = st.GetUnit(unitId).Side;
                 var couldPay = st.Momentum.AdvantageOf(side) >= 1
@@ -194,9 +211,8 @@ public static class BatchRunner
                 }
             }
 
-            var aiA = new AiSearch(catalog, level, new BattleRandom(seed * 2 + 1));
-            var aiB = new AiSearch(catalog, level, new BattleRandom(seed * 2 + 2));
             var result = BattlePlayer.Play(state, catalog, aiA, aiB, Observe, turnObserver: OnTurn);
+            Flush();
             if (turn is not null) turn.Meter = meter;
             record.Result = result.Outcome.ToString();
             record.Reason = result.Reason?.ToString() ?? "";
