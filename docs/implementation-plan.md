@@ -126,11 +126,12 @@ Each task names the doc sections it implements. Read those sections before codin
   7. Saving: bump the save version and reset older profiles.
   8. Then rerun the AI-versus-AI harness, decide the Cost formula (game_system §5.1) and recalculate Cost.
 
-- **M5.7** Momentum costs (game_system §6.7): a skill with a cost only needs its side to be ahead by at least 1, whatever the cost; paying moves the meter the full cost away from the side and may pass 0 into the enemy's favour (clamped at ±10).
+- **M5.7** Momentum costs and skill tooltips. Momentum (game_system §6.7): a skill with a cost only needs its side to be ahead by at least 1, whatever the cost; paying moves the meter the full cost away from the side and may pass 0 into the enemy's favour (clamped at ±10).
   - Core: change `CanPay` / `Pay` (`Momentum`) and every caller that checks a lead (Press the Advantage needs no lead; All In halves the cost, the side must still be ahead).
   - UI: the greyed reason for a costed skill says the side is not ahead on Momentum (ui_spec action bar); the ghost marker on the meter may land past 0.
   - AI: the move generator offers costed skills at any lead of 1 or more; the evaluator already scores the meter.
   - Tests: the two new §20.5 rows (Momentum 3 skill at +1; costed skill at 0) and the existing Momentum tests updated.
+  - Skill tooltips (ui_spec Battle screen, Skill tooltip): every skill on the action bar and every skill and keystone row on a card back shows a tooltip on hover (long-press on touch) with name, class, Delay, Momentum, delivery and the effect text with the creature's current numbers. Check that every one of the 84 actives, 84 keystones, 319 unique attacks, Move and Skip Turn has tooltip text and that the numbers match the creature's Power.
 
 ### M6 Local two-player
 

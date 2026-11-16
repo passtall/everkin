@@ -17,7 +17,7 @@ The implementation state, kept current by every Claude Code session ([docs/imple
 5. **M2.3, the owner reviews the first run** (the run `runs/20261110-190808-harness` used the old rules and is history now; a new 10,000-battle run belongs after M5.6 step 8).
 6. **Play-test chapter 1 with the owner** after M5.6; **M6.1 local two-player** follows (hot-seat: `BattleBoard.Setup(state, bottom)` exists, a controller for side B that reuses `AskPlayer` is missing).
 
-- **M5.7 Momentum costs (owner, 2026-11-16, game_system §6.7):** new milestone in docs/implementation-plan.md: a costed skill only needs the side 1 ahead; paying may pass 0. Not started; the code still checks the old lead rule.
+- **M5.7 Momentum costs and skill tooltips (owner, 2026-11-16):** new milestone in docs/implementation-plan.md: a costed skill only needs the side 1 ahead and paying may pass 0 (game_system §6.7); every skill shows a hover tooltip (ui_spec, Skill tooltip). Not started; the code still checks the old lead rule.
 
 ## In flight
 

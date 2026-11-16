@@ -43,7 +43,7 @@ Only one side shows at a time, with bigger portraits. Picking a skill that targe
 ### Action bar
 
 - An **MMO-style action bar** at the bottom: a framed bar of square icon slots with the skill's name below, a key number (1–9) in the corner, Delay in the bottom corner and the Momentum cost in a gold gem. It hugs its content.
-- **Order:** the unique attack first, then the first class's 3 skills, then the second class's 3 skills, with a small gap between the groups; hovering a slot shows its class name. **Move** and **Skip Turn** are round slots set apart at the right end. Keystones are not on the bar; they are on the card back in the inspection panel.
+- **Order:** the unique attack first, then the first class's 3 skills, then the second class's 3 skills, with a small gap between the groups; hovering a slot shows its skill tooltip (below). **Move** and **Skip Turn** are round slots set apart at the right end. Keystones are not on the bar; they are on the card back in the inspection panel.
 - Unavailable actions are greyed and say why (wrong row for melee, side not ahead on Momentum, no legal target, side full, Silenced).
 - Every slot has an icon: one per skill and one per unique attack.
 
@@ -61,6 +61,7 @@ Only one side shows at a time, with bigger portraits. Picking a skill that targe
 - **Forced movement preview:** a push, pull or swap shows where the moved unit lands, any units bumped along the chain and the insertion point for a 50% landing. A blocked chain shows that nothing moves and marks each unit with the 1 bump damage it would take.
 - **Delayed `direct` effects** mark their slot on the board, not a unit, so the player sees they may hit someone else if the target moves.
 - **Floating numbers:** damage, healing and absorbed damage appear briefly, coloured and with an icon.
+- **Skill tooltip:** hovering any skill, on an action slot (Move and Skip Turn included) or a skill row of a card back (inspection panel, team editor), shows a small panel: name, class (or "Attack" for the unique attack), Delay, Momentum cost, delivery, and the effect text with this creature's current numbers (its Power and modifiers). Keystones on the card back show their tooltip the same way. On touch a long-press on the slot or row shows it; a tap still selects. It opens after a short pause, never covers the slot itself, and closes when the pointer leaves.
 - **Keywords** (Poisoned, `projectile`, Delay, melee reach) show a one-line explanation on hover or tap in the inspection panel and on action slots.
 
 ### Inspection panel
