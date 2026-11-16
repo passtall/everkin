@@ -230,7 +230,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 - **Swap Turns:** the two allies exchange the due times (and tie order) of their next turns.
 - **Press the Advantage** has no time limit; the unit's next skill costs 0 Momentum and needs no lead.
 - **Coordinated Strike:** the two allies are picked at random among the Tactician's allies (not the Tactician itself) whose attack can hit the enemy now; undead use their unique attack, golems and blades their own hit (a melee attack needs the ally in its Front row and a target that is not airborne). If only one can, only it attacks; if none can, nothing happens. The attacks are free.
-- **All In** halves the cost of every skill of the Tactician, including the lead it needs.
+- **All In** halves the cost of every skill of the Tactician; the skill still needs the side to be ahead.
 
 ## Commander
 

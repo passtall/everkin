@@ -44,7 +44,7 @@ Only one side shows at a time, with bigger portraits. Picking a skill that targe
 
 - An **MMO-style action bar** at the bottom: a framed bar of square icon slots with the skill's name below, a key number (1–9) in the corner, Delay in the bottom corner and the Momentum cost in a gold gem. It hugs its content.
 - **Order:** the unique attack first, then the first class's 3 skills, then the second class's 3 skills, with a small gap between the groups; hovering a slot shows its class name. **Move** and **Skip Turn** are round slots set apart at the right end. Keystones are not on the bar; they are on the card back in the inspection panel.
-- Unavailable actions are greyed and say why (wrong row for melee, Momentum lead missing, no legal target, side full, Silenced).
+- Unavailable actions are greyed and say why (wrong row for melee, side not ahead on Momentum, no legal target, side full, Silenced).
 - Every slot has an icon: one per skill and one per unique attack.
 
 ### Interaction states

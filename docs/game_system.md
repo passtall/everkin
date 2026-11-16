@@ -321,7 +321,7 @@ Reactions are effects, not turns; they change the timeline only when they say so
 - The meter clamps at −10 and +10; excess is lost. There is no snowball safeguard for now.
 - A skill may modify the shift if it says so.
 
-**Costs.** A skill may cost **0 to 10** Momentum. It needs the user's side to be at least that far ahead and, when used, moves the meter that many points toward neutral. The cost is paid before any effect and never refunded, even if the skill achieves nothing. If the requirement is not met, the UI says so.
+**Costs.** A skill may cost **0 to 10** Momentum. A skill with a cost needs the user's side to be **ahead** (the meter at least 1 toward it), however big the cost. When used, it moves the meter that many points away from the user's side; this may take the meter past 0, handing the enemy a lead (clamped at −10 and +10). The cost is paid before any effect and never refunded, even if the skill achieves nothing. If the side is not ahead, the UI says so.
 
 Fast units build Momentum with many quick successful actions; strong skills spend it.
 
@@ -734,6 +734,8 @@ Concrete examples of the rules; each becomes a test. They are expected behavior,
 | A Power 3 Mender uses Mend (8–10 at Power 5) | It heals 4–6 (8 × 3 ÷ 5 = 4.8 → 4; 10 × 3 ÷ 5 = 6). |
 | A Power 7 Keeper uses Ward (4 at Power 5) | The Ward absorbs 5 (4 × 7 ÷ 5 = 5.6 → 5). |
 | A unit uses a Momentum 2 skill with its side at +2 and the first hit lands | The cost is paid first (meter 0), then the hit moves it to +1. |
+| A unit uses a Momentum 3 skill with its side at +1 and the hit lands | The skill is allowed (the side is ahead). The cost moves the meter to 2 toward the enemy, then the hit moves it to 1 toward the enemy. |
+| A unit's side is at 0 and it picks a skill with a Momentum cost | Not allowed: the side must be ahead. |
 | Every hit of a Momentum 3 skill is intercepted | The 3 Momentum is not refunded. |
 | A Silence lands on an enemy | Momentum does not change. |
 | A unit uses its attack on its own ally | The ally takes the hit and Momentum does not change. |
