@@ -6,7 +6,7 @@
       "class": "assassin",
       "kind": "A",
       "delay": 4,
-      "momentum": 3,
+      "momentum": 1,
       "delivery": "none",
       "effect": "The Assassin gains stealth and loses every harmful status.",
       "template": "The Assassin gains stealth and loses every harmful status."
@@ -294,8 +294,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Hit for 7–8. Undead take double.",
-      "template": "Hit for {7–8}. Undead take double."
+      "effect": "Hit for 4–5. Undead take double.",
+      "template": "Hit for {4–5}. Undead take double."
     },
     {
       "id": "overflowing_care",

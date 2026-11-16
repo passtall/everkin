@@ -18,7 +18,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Vanish | A | 4 / 3 | — | The Assassin gains stealth and loses every harmful status. |
+| Vanish | A | 4 / 1 | — | The Assassin gains stealth and loses every harmful status. |
 | Feint | A | 3 / 0 | Melee | Only from stealth: a unit is Confused for 10. The Assassin stays stealthed. |
 | Backstab | A | 5 / 2 | Melee | Only from stealth: hit for {8–10} and the target Bleeds. Breaks stealth. |
 | Unseen | K | | | The Assassin starts every battle stealthed. |
@@ -72,7 +72,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 |---|---|---|---|---|
 | Mend | A | 4 / 0 | Direct | Heal a unit for {8–10}. |
 | Rain of Mending | A | 6 / 2 | Direct | Pick a row: every unit in it heals {3–4}, and every unit in the row behind it heals half that. |
-| Searing Light | A | 4 / 0 | Direct | Hit for {7–8}. Undead take double. |
+| Searing Light | A | 4 / 0 | Direct | Hit for {4–5}. Undead take double. |
 | Overflowing Care | K | | | Healing beyond the target's max HP goes to its adjacent ally with the lowest HP. |
 | Regrowth | K | | | A unit the Mender heals also regains {2} HP every 10 for 20. |
 | Triage | K | | | Mend heals double on units below 25% HP. |
