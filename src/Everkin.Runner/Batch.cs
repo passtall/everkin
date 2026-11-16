@@ -165,11 +165,9 @@ public static class BatchRunner
 
             void Observe(BattleEvent e)
             {
+                if (e is SkillUsed su) lastSkill = su.SkillId;
                 switch (e)
                 {
-                    case SkillUsed su:
-                        lastSkill = su.SkillId;
-                        break;
                     case MomentumChanged mc:
                         meter = mc.After;
                         if (mc.Cause == MomentumCause.Cost)
