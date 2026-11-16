@@ -60,7 +60,7 @@ public static class UnitCards
         if (u.Ward > 0 && !statuses.Contains(StatusIds.Ward)) statuses.Add(StatusIds.Ward);
         info.Statuses = statuses;
         info.Skills = u.CreatureId is { } cid && u.Kind == UnitKind.Creature && Game.Content.CreaturesById.TryGetValue(cid, out var def)
-            ? Game.CardSkills(Game.Content.ClassSkillsOf(def).Prepend(def.Attack))
+            ? Game.CardSkills(Game.Content.ClassSkillsOf(def).Prepend(def.Attack), u.Power)
             : new List<CardSkill>();
     }
 }

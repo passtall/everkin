@@ -4,7 +4,7 @@ namespace Everkin.Core.Content;
 public sealed record ClassDef(string Id, string Name, string Role, bool Magical, IReadOnlyList<string> Actives, IReadOnlyList<string> Keystones);
 
 /// <summary>A class active ("A") or keystone ("K") of skills.md. Delivery is melee, projectile, direct or none; Delay and Momentum are only set for actives.</summary>
-public sealed record SkillDef(string Id, string Name, string Class, string Kind, int? Delay, int? Momentum, string? Delivery, string Effect);
+public sealed record SkillDef(string Id, string Name, string Class, string Kind, int? Delay, int? Momentum, string? Delivery, string Effect, string? Template = null);
 
 /// <summary>The one small extra of a unique attack, parsed from its effect text (class_system.md section 4).</summary>
 /// <param name="Kind">status, push, pull, ground, steal, delay_turn or stealth.</param>

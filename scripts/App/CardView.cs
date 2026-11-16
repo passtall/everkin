@@ -11,7 +11,7 @@ public enum CardMode { Front, Back, Compact }
 public enum CardHighlight { None, Legal, Illegal, Selected, Hover }
 
 /// <summary>A skill row on a card back.</summary>
-public sealed record CardSkill(string Name, string Line, int Delay, int Momentum);
+public sealed record CardSkill(string Name, string Line, int Delay, int Momentum, SkillTooltip? Tip = null);
 
 /// <summary>Everything a card shows (ui_spec "Required information hierarchy"). Built from a roster creature or from a unit in a battle.</summary>
 public sealed class CardInfo
@@ -244,6 +244,26 @@ public partial class CardView : Control
         var letter = id.Length > 0 ? char.ToUpper(id[0]).ToString() : "?";
         DrawString(Game.BodyBold(), rect.Position + new Vector2(rect.Size.X * 0.2f, rect.Size.Y * 0.85f), letter, HorizontalAlignment.Left, -1, (int)(rect.Size.Y * 0.8f), Colors.White);
     }
+
+    /// <summary>The back-list row under a local position, or -1 (same geometry as <see cref="DrawBackList"/>).</summary>
+    private int BackRowAt(Vector2 at)
+    {
+        if (_mode != CardMode.Back) return -1;
+        var s = Size.X / 1024f;
+        var row = 118 * s;
+        var index = (int)Math.Floor((at.Y - 260 * s) / row);
+        var inside = at.X >= 190 * s && at.X <= 834 * s && (at.Y - 260 * s) - index * row <= row - 10 * s;
+        return inside && index >= 0 && index < Math.Min(9, _info.Skills.Count) ? index : -1;
+    }
+
+    public override string _GetTooltip(Vector2 atPosition)
+    {
+        var i = BackRowAt(atPosition);
+        return i >= 0 && _info.Skills[i].Tip != null ? "skill:" + i : TooltipText;
+    }
+
+    public override Control? _MakeCustomTooltip(string forText) =>
+        forText.StartsWith("skill:") && int.TryParse(forText.AsSpan(6), out var i) && i < _info.Skills.Count && _info.Skills[i].Tip is { } tip ? Ui.SkillTip(tip) : null;
 
     private void DrawBackList(float s)
     {

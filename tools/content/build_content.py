@@ -151,7 +151,8 @@ def parse_skills(classes):
                 else:
                     fail(f, ident, f"unknown Delivery {d!r}")
             skills.append({"id": slug(name), "name": name, "class": cls["id"], "kind": kind,
-                           "delay": delay, "momentum": momentum, "delivery": delivery, "effect": r["Effect"]})
+                           "delay": delay, "momentum": momentum, "delivery": delivery,
+                           "effect": re.sub(r"\{([^{}]*)\}", r"\g<1>", r["Effect"]), "template": r["Effect"]})
     seen = {}
     for s in skills:
         if s["id"] in seen:

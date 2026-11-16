@@ -380,7 +380,7 @@ public partial class TeamEditor : Control, IBackNavigable
     private void Inspect(string creatureId)
     {
         _inspection?.QueueFree();
-        _inspection = new InspectionLite(CardInfo.FromCreature(Game.Content.CreaturesById[creatureId], Game.CardSkills(Game.Content.ClassSkillsOf(Game.Content.CreaturesById[creatureId]).Prepend(Game.Content.CreaturesById[creatureId].Attack))));
+        _inspection = new InspectionLite(CardInfo.FromCreature(Game.Content.CreaturesById[creatureId], Game.CardSkills(Game.Content.ClassSkillsOf(Game.Content.CreaturesById[creatureId]).Prepend(Game.Content.CreaturesById[creatureId].Attack), Game.Content.CreaturesById[creatureId].Power)));
         AddChild(_inspection);
         Ui.Fill(_inspection);
     }

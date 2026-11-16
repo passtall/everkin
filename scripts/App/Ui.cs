@@ -30,6 +30,34 @@ public static class Ui
         return p;
     }
 
+    /// <summary>The skill tooltip panel (ui_spec "Skill tooltip"): name, class, Delay, Momentum, delivery and the effect text; an optional note (why it cannot be used now).</summary>
+    public static Control SkillTip(Everkin.Core.Content.SkillTooltip tip, string? note = null)
+    {
+        var box = new VBoxContainer { CustomMinimumSize = new Vector2(420, 0) };
+        box.AddThemeConstantOverride("separation", 4);
+        box.AddChild(Label(tip.Name, 26, Gold, true));
+        var facts = new System.Collections.Generic.List<string> { tip.Kind };
+        if (tip.Delay is { } d) facts.Add($"Delay {d}");
+        if (tip.Momentum is { } m) facts.Add($"Momentum {m}");
+        if (tip.Delivery is { } dv) facts.Add(char.ToUpperInvariant(dv[0]) + dv[1..]);
+        box.AddChild(Label(string.Join(" · ", facts), 18, new Color("cdbd9a")));
+        var effect = Label(tip.Effect, 20);
+        effect.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        effect.CustomMinimumSize = new Vector2(420, 0);
+        box.AddChild(effect);
+        if (note != null)
+        {
+            var n = Label(note, 18, new Color("e07060"));
+            n.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+            n.CustomMinimumSize = new Vector2(420, 0);
+            box.AddChild(n);
+        }
+        var margin = new MarginContainer();
+        foreach (var side in new[] { "left", "right", "top", "bottom" }) margin.AddThemeConstantOverride("margin_" + side, 10);
+        margin.AddChild(box);
+        return Panel(margin);
+    }
+
     public static Label Label(string text, int size = 22, Color? color = null, bool bold = false, HorizontalAlignment align = HorizontalAlignment.Left)
     {
         var l = new Label { Text = text, HorizontalAlignment = align };

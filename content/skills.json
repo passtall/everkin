@@ -8,7 +8,8 @@
       "delay": 4,
       "momentum": 3,
       "delivery": "none",
-      "effect": "The Assassin gains stealth and loses every harmful status."
+      "effect": "The Assassin gains stealth and loses every harmful status.",
+      "template": "The Assassin gains stealth and loses every harmful status."
     },
     {
       "id": "feint",
@@ -18,7 +19,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "melee",
-      "effect": "Only from stealth: a unit is Confused for 10. The Assassin stays stealthed."
+      "effect": "Only from stealth: a unit is Confused for 10. The Assassin stays stealthed.",
+      "template": "Only from stealth: a unit is Confused for 10. The Assassin stays stealthed."
     },
     {
       "id": "backstab",
@@ -28,7 +30,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "melee",
-      "effect": "Only from stealth: hit for 8–10 and the target Bleeds. Breaks stealth."
+      "effect": "Only from stealth: hit for 8–10 and the target Bleeds. Breaks stealth.",
+      "template": "Only from stealth: hit for {8–10} and the target Bleeds. Breaks stealth."
     },
     {
       "id": "unseen",
@@ -38,7 +41,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Assassin starts every battle stealthed."
+      "effect": "The Assassin starts every battle stealthed.",
+      "template": "The Assassin starts every battle stealthed."
     },
     {
       "id": "vanishing_kill",
@@ -48,7 +52,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When the Assassin KOs a unit, it gains stealth again."
+      "effect": "When the Assassin KOs a unit, it gains stealth again.",
+      "template": "When the Assassin KOs a unit, it gains stealth again."
     },
     {
       "id": "venom_blades",
@@ -58,7 +63,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Every hit of the Assassin Poisons the target for 20."
+      "effect": "Every hit of the Assassin Poisons the target for 20.",
+      "template": "Every hit of the Assassin Poisons the target for 20."
     },
     {
       "id": "target",
@@ -68,7 +74,8 @@
       "delay": 2,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Mark a unit. A Tracker has one Mark at a time; marking another moves it."
+      "effect": "Mark a unit. A Tracker has one Mark at a time; marking another moves it.",
+      "template": "Mark a unit. A Tracker has one Mark at a time; marking another moves it."
     },
     {
       "id": "read_tracks",
@@ -78,7 +85,8 @@
       "delay": 2,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Pick a row. Every stealthed unit in it is revealed."
+      "effect": "Pick a row. Every stealthed unit in it is revealed.",
+      "template": "Pick a row. Every stealthed unit in it is revealed."
     },
     {
       "id": "hunters_shot",
@@ -88,7 +96,8 @@
       "delay": 4,
       "momentum": 2,
       "delivery": "projectile",
-      "effect": "Hit a Marked unit for 9–11."
+      "effect": "Hit a Marked unit for 9–11.",
+      "template": "Hit a Marked unit for {9–11}."
     },
     {
       "id": "sniff_the_air",
@@ -98,7 +107,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "At battle start, the enemy with the highest Power becomes Marked."
+      "effect": "At battle start, the enemy with the highest Power becomes Marked.",
+      "template": "At battle start, the enemy with the highest Power becomes Marked."
     },
     {
       "id": "scent_of_blood",
@@ -108,7 +118,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When an enemy's HP falls below 20%, it becomes Marked."
+      "effect": "When an enemy's HP falls below 20%, it becomes Marked.",
+      "template": "When an enemy's HP falls below 20%, it becomes Marked."
     },
     {
       "id": "relentless",
@@ -118,7 +129,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Tracker's Marks have no time limit: they last until their target is KO and cannot be removed."
+      "effect": "The Tracker's Marks have no time limit: they last until their target is KO and cannot be removed.",
+      "template": "The Tracker's Marks have no time limit: they last until their target is KO and cannot be removed."
     },
     {
       "id": "leap_to_defend",
@@ -128,7 +140,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Own side only. The Bulwark moves in front of an ally (any gap) and takes the next attack aimed at that ally."
+      "effect": "Own side only. The Bulwark moves in front of an ally (any gap) and takes the next attack aimed at that ally.",
+      "template": "Own side only. The Bulwark moves in front of an ally (any gap) and takes the next attack aimed at that ally."
     },
     {
       "id": "rescue",
@@ -138,7 +151,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "Own side only. Swap places with an ally below half HP."
+      "effect": "Own side only. Swap places with an ally below half HP.",
+      "template": "Own side only. Swap places with an ally below half HP."
     },
     {
       "id": "shield_bash",
@@ -148,7 +162,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "melee",
-      "effect": "Hit for 6–7 and push the target one row back (bumps apply)."
+      "effect": "Hit for 6–7 and push the target one row back (bumps apply).",
+      "template": "Hit for {6–7} and push the target one row back (bumps apply)."
     },
     {
       "id": "shield_wall",
@@ -158,7 +173,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "While 2 or more of your units with Shield Wall stand side by side in one row, attacks on units behind them are always intercepted by them."
+      "effect": "While 2 or more of your units with Shield Wall stand side by side in one row, attacks on units behind them are always intercepted by them.",
+      "template": "While 2 or more of your units with Shield Wall stand side by side in one row, attacks on units behind them are always intercepted by them."
     },
     {
       "id": "hold_position",
@@ -168,7 +184,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Enemy effects cannot push, pull or swap the Bulwark."
+      "effect": "Enemy effects cannot push, pull or swap the Bulwark.",
+      "template": "Enemy effects cannot push, pull or swap the Bulwark."
     },
     {
       "id": "unbreakable",
@@ -178,7 +195,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The first time the Bulwark would be KO, it keeps 1 HP instead."
+      "effect": "The first time the Bulwark would be KO, it keeps 1 HP instead.",
+      "template": "The first time the Bulwark would be KO, it keeps 1 HP instead."
     },
     {
       "id": "ward",
@@ -188,7 +206,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "A unit gains a Ward of 4 until the Keeper's next turn."
+      "effect": "A unit gains a Ward of 4 until the Keeper's next turn.",
+      "template": "A unit gains a Ward of {4} until the Keeper's next turn."
     },
     {
       "id": "shield_dome",
@@ -198,7 +217,8 @@
       "delay": 7,
       "momentum": 5,
       "delivery": "none",
-      "effect": "Every ally gains a Ward of 2 until the Keeper's next turn."
+      "effect": "Every ally gains a Ward of 2 until the Keeper's next turn.",
+      "template": "Every ally gains a Ward of {2} until the Keeper's next turn."
     },
     {
       "id": "ward_burst",
@@ -208,7 +228,8 @@
       "delay": 4,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "A unit's Ward breaks and deals its remaining value to every enemy in melee reach. Needs the Keeper in its Front row; the warded unit may stand anywhere."
+      "effect": "A unit's Ward breaks and deals its remaining value to every enemy in melee reach. Needs the Keeper in its Front row; the warded unit may stand anywhere.",
+      "template": "A unit's Ward breaks and deals its remaining value to every enemy in melee reach. Needs the Keeper in its Front row; the warded unit may stand anywhere."
     },
     {
       "id": "thorned_ward",
@@ -218,7 +239,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When an attack hits a Ward from the Keeper, the attacker takes 3."
+      "effect": "When an attack hits a Ward from the Keeper, the attacker takes 3.",
+      "template": "When an attack hits a Ward from the Keeper, the attacker takes {3}."
     },
     {
       "id": "twin_wards",
@@ -228,7 +250,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Ward also gives the same Ward to one ally next to the target."
+      "effect": "Ward also gives the same Ward to one ally next to the target.",
+      "template": "Ward also gives the same Ward to one ally next to the target."
     },
     {
       "id": "steadfast_ward",
@@ -238,7 +261,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "While a unit has a Ward from the Keeper, it cannot be Stunned or moved by enemies."
+      "effect": "While a unit has a Ward from the Keeper, it cannot be Stunned or moved by enemies.",
+      "template": "While a unit has a Ward from the Keeper, it cannot be Stunned or moved by enemies."
     },
     {
       "id": "mend",
@@ -248,7 +272,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Heal a unit for 8–10."
+      "effect": "Heal a unit for 8–10.",
+      "template": "Heal a unit for {8–10}."
     },
     {
       "id": "rain_of_mending",
@@ -258,7 +283,8 @@
       "delay": 6,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "Pick a row: every unit in it heals 3–4, and every unit in the row behind it heals half that."
+      "effect": "Pick a row: every unit in it heals 3–4, and every unit in the row behind it heals half that.",
+      "template": "Pick a row: every unit in it heals {3–4}, and every unit in the row behind it heals half that."
     },
     {
       "id": "searing_light",
@@ -268,7 +294,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Hit for 7–8. Undead take double."
+      "effect": "Hit for 7–8. Undead take double.",
+      "template": "Hit for {7–8}. Undead take double."
     },
     {
       "id": "overflowing_care",
@@ -278,7 +305,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Healing beyond the target's max HP goes to its adjacent ally with the lowest HP."
+      "effect": "Healing beyond the target's max HP goes to its adjacent ally with the lowest HP.",
+      "template": "Healing beyond the target's max HP goes to its adjacent ally with the lowest HP."
     },
     {
       "id": "regrowth",
@@ -288,7 +316,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "A unit the Mender heals also regains 2 HP every 10 for 20."
+      "effect": "A unit the Mender heals also regains 2 HP every 10 for 20.",
+      "template": "A unit the Mender heals also regains {2} HP every 10 for 20."
     },
     {
       "id": "triage",
@@ -298,7 +327,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Mend heals double on units below 25% HP."
+      "effect": "Mend heals double on units below 25% HP.",
+      "template": "Mend heals double on units below 25% HP."
     },
     {
       "id": "absolve",
@@ -308,7 +338,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Remove every harmful status from a unit; its next turn is pushed back 2."
+      "effect": "Remove every harmful status from a unit; its next turn is pushed back 2.",
+      "template": "Remove every harmful status from a unit; its next turn is pushed back 2."
     },
     {
       "id": "dispel",
@@ -318,7 +349,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit."
+      "effect": "Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit.",
+      "template": "Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit."
     },
     {
       "id": "turn_back",
@@ -328,7 +360,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Move one harmful status from a unit onto the unit that applied it."
+      "effect": "Move one harmful status from a unit onto the unit that applied it.",
+      "template": "Move one harmful status from a unit onto the unit that applied it."
     },
     {
       "id": "sanctity",
@@ -338,7 +371,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Cleric cannot get harmful statuses."
+      "effect": "The Cleric cannot get harmful statuses.",
+      "template": "The Cleric cannot get harmful statuses."
     },
     {
       "id": "purifying_aura",
@@ -348,7 +382,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Harmful statuses on allies next to the Cleric last half as long."
+      "effect": "Harmful statuses on allies next to the Cleric last half as long.",
+      "template": "Harmful statuses on allies next to the Cleric last half as long."
     },
     {
       "id": "judgment",
@@ -358,7 +393,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Each status the Cleric's Dispel removes deals 4 to that unit."
+      "effect": "Each status the Cleric's Dispel removes deals 4 to that unit.",
+      "template": "Each status the Cleric's Dispel removes deals {4} to that unit."
     },
     {
       "id": "burnout_heal",
@@ -368,7 +404,8 @@
       "delay": 7,
       "momentum": 6,
       "delivery": "none",
-      "effect": "The Lifebinder and its adjacent allies heal 6–8; then the Lifebinder is KO (game_system §10.4)."
+      "effect": "The Lifebinder and its adjacent allies heal 6–8; then the Lifebinder is KO (game_system §10.4).",
+      "template": "The Lifebinder and its adjacent allies heal {6–8}; then the Lifebinder is KO (game_system §10.4)."
     },
     {
       "id": "life_for_life",
@@ -378,7 +415,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "The Lifebinder gives up half its current HP to revive a KO unit with that much HP."
+      "effect": "The Lifebinder gives up half its current HP to revive a KO unit with that much HP.",
+      "template": "The Lifebinder gives up half its current HP to revive a KO unit with that much HP."
     },
     {
       "id": "bound_resurrect",
@@ -388,7 +426,8 @@
       "delay": 8,
       "momentum": 4,
       "delivery": "direct",
-      "effect": "Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Lifebinder share one HP pool (game_system §10.4)."
+      "effect": "Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Lifebinder share one HP pool (game_system §10.4).",
+      "template": "Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Lifebinder share one HP pool (game_system §10.4)."
     },
     {
       "id": "martyr",
@@ -398,7 +437,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When the Lifebinder is KO, every ally heals 6–8."
+      "effect": "When the Lifebinder is KO, every ally heals 6–8.",
+      "template": "When the Lifebinder is KO, every ally heals {6–8}."
     },
     {
       "id": "phoenix",
@@ -408,7 +448,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Life for Life costs only a quarter of the Lifebinder's current HP."
+      "effect": "Life for Life costs only a quarter of the Lifebinder's current HP.",
+      "template": "Life for Life costs only a quarter of the Lifebinder's current HP."
     },
     {
       "id": "lifeblood",
@@ -418,7 +459,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When an ally is KO, the Lifebinder heals 5."
+      "effect": "When an ally is KO, the Lifebinder heals 5.",
+      "template": "When an ally is KO, the Lifebinder heals {5}."
     },
     {
       "id": "echo_enchant",
@@ -428,7 +470,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "A unit's next skill happens twice: the second use is free (no Delay, no Momentum) and hits the same target."
+      "effect": "A unit's next skill happens twice: the second use is free (no Delay, no Momentum) and hits the same target.",
+      "template": "A unit's next skill happens twice: the second use is free (no Delay, no Momentum) and hits the same target."
     },
     {
       "id": "phase_weapon",
@@ -438,7 +481,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "A unit's next attack cannot be intercepted."
+      "effect": "A unit's next attack cannot be intercepted.",
+      "template": "A unit's next attack cannot be intercepted."
     },
     {
       "id": "piercing_enchant",
@@ -448,7 +492,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "A unit's next attack also hits the unit behind its target."
+      "effect": "A unit's next attack also hits the unit behind its target.",
+      "template": "A unit's next attack also hits the unit behind its target."
     },
     {
       "id": "twin_enchant",
@@ -458,7 +503,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Each enchantment also goes on one ally next to the target."
+      "effect": "Each enchantment also goes on one ally next to the target.",
+      "template": "Each enchantment also goes on one ally next to the target."
     },
     {
       "id": "lingering_magic",
@@ -468,7 +514,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Each enchantment from the Enchanter lasts for two uses instead of one."
+      "effect": "Each enchantment from the Enchanter lasts for two uses instead of one.",
+      "template": "Each enchantment from the Enchanter lasts for two uses instead of one."
     },
     {
       "id": "spell_ward",
@@ -478,7 +525,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "A unit carrying an enchantment from the Enchanter cannot be Silenced or Stunned."
+      "effect": "A unit carrying an enchantment from the Enchanter cannot be Silenced or Stunned.",
+      "template": "A unit carrying an enchantment from the Enchanter cannot be Silenced or Stunned."
     },
     {
       "id": "transmute",
@@ -488,7 +536,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "A unit's Power and Speed swap values for 20."
+      "effect": "A unit's Power and Speed swap values for 20.",
+      "template": "A unit's Power and Speed swap values for 20."
     },
     {
       "id": "glass_body",
@@ -498,7 +547,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "The next hit on a unit deals 50% more damage. It has no time limit: it waits for that hit."
+      "effect": "The next hit on a unit deals 50% more damage. It has no time limit: it waits for that hit.",
+      "template": "The next hit on a unit deals 50% more damage. It has no time limit: it waits for that hit."
     },
     {
       "id": "petrify",
@@ -508,7 +558,8 @@
       "delay": 7,
       "momentum": 4,
       "delivery": "direct",
-      "effect": "A unit turns to stone: it is Stunned for 10."
+      "effect": "A unit turns to stone: it is Stunned for 10.",
+      "template": "A unit turns to stone: it is Stunned for 10."
     },
     {
       "id": "lasting_change",
@@ -518,7 +569,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Transmute lasts until the end of battle, but only one unit can be transmuted by the Transmuter at a time."
+      "effect": "Transmute lasts until the end of battle, but only one unit can be transmuted by the Transmuter at a time.",
+      "template": "Transmute lasts until the end of battle, but only one unit can be transmuted by the Transmuter at a time."
     },
     {
       "id": "brittle_glass",
@@ -528,7 +580,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Glass Body makes the next hit deal double instead of 50% more."
+      "effect": "Glass Body makes the next hit deal double instead of 50% more.",
+      "template": "Glass Body makes the next hit deal double instead of 50% more."
     },
     {
       "id": "mirror_form",
@@ -538,7 +591,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Transmute can instead make two units trade their Power and Speed: each takes the other's Power and the other's Speed."
+      "effect": "Transmute can instead make two units trade their Power and Speed: each takes the other's Power and the other's Speed.",
+      "template": "Transmute can instead make two units trade their Power and Speed: each takes the other's Power and the other's Speed."
     },
     {
       "id": "curse_of_betrayal",
@@ -548,7 +602,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "For 20, healing the unit would receive goes to the Hexer's unit with the lowest HP instead."
+      "effect": "For 20, healing the unit would receive goes to the Hexer's unit with the lowest HP instead.",
+      "template": "For 20, healing the unit would receive goes to the Hexer's unit with the lowest HP instead."
     },
     {
       "id": "curse_of_weight",
@@ -558,7 +613,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "For 20, a unit cannot Move or become airborne."
+      "effect": "For 20, a unit cannot Move or become airborne.",
+      "template": "For 20, a unit cannot Move or become airborne."
     },
     {
       "id": "withering_curse",
@@ -568,7 +624,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "A unit takes 3 every 10 for 40."
+      "effect": "A unit takes 3 every 10 for 40.",
+      "template": "A unit takes {3} every 10 for 40."
     },
     {
       "id": "witchs_patience",
@@ -578,7 +635,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Hexer's curses last until removed, but it can keep only one curse at a time."
+      "effect": "The Hexer's curses last until removed, but it can keep only one curse at a time.",
+      "template": "The Hexer's curses last until removed, but it can keep only one curse at a time."
     },
     {
       "id": "lingering_malice",
@@ -588,7 +646,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When an enemy removes one of the Hexer's curses, the remover is Silenced for 10."
+      "effect": "When an enemy removes one of the Hexer's curses, the remover is Silenced for 10.",
+      "template": "When an enemy removes one of the Hexer's curses, the remover is Silenced for 10."
     },
     {
       "id": "spreading_curse",
@@ -598,7 +657,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When a cursed unit is KO, its curse jumps to the nearest enemy."
+      "effect": "When a cursed unit is KO, its curse jumps to the nearest enemy.",
+      "template": "When a cursed unit is KO, its curse jumps to the nearest enemy."
     },
     {
       "id": "fireball",
@@ -608,7 +668,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "projectile",
-      "effect": "Hit for 8–9 and set fire to the target's spot."
+      "effect": "Hit for 8–9 and set fire to the target's spot.",
+      "template": "Hit for {8–9} and set fire to the target's spot."
     },
     {
       "id": "kindle",
@@ -618,7 +679,8 @@
       "delay": 2,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Set fire to a unit's spot and the spots next to it."
+      "effect": "Set fire to a unit's spot and the spots next to it.",
+      "template": "Set fire to a unit's spot and the spots next to it."
     },
     {
       "id": "row_of_fire",
@@ -628,7 +690,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "Set fire to a whole row."
+      "effect": "Set fire to a whole row.",
+      "template": "Set fire to a whole row."
     },
     {
       "id": "wildfire",
@@ -638,7 +701,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Pyromancer's burning ground lasts twice as long."
+      "effect": "The Pyromancer's burning ground lasts twice as long.",
+      "template": "The Pyromancer's burning ground lasts twice as long."
     },
     {
       "id": "inferno",
@@ -648,7 +712,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Burning ground from the Pyromancer deals double damage."
+      "effect": "Burning ground from the Pyromancer deals double damage.",
+      "template": "Burning ground from the Pyromancer deals double damage."
     },
     {
       "id": "ashwalker",
@@ -658,7 +723,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Pyromancer takes no damage from burning ground and has +1 Speed while standing on it."
+      "effect": "The Pyromancer takes no damage from burning ground and has +1 Speed while standing on it.",
+      "template": "The Pyromancer takes no damage from burning ground and has +1 Speed while standing on it."
     },
     {
       "id": "lightning_bolt",
@@ -668,7 +734,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "Hit for 9–10. Explodes poison gas the target stands in."
+      "effect": "Hit for 9–10. Explodes poison gas the target stands in.",
+      "template": "Hit for {9–10}. Explodes poison gas the target stands in."
     },
     {
       "id": "chain_lightning",
@@ -678,7 +745,8 @@
       "delay": 5,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "Hit a unit for 1–2, then jump to an adjacent unit and do the same, three more times. Each hit explodes poison gas the unit stands in."
+      "effect": "Hit a unit for 1–2, then jump to an adjacent unit and do the same, three more times. Each hit explodes poison gas the unit stands in.",
+      "template": "Hit a unit for {1–2}, then jump to an adjacent unit and do the same, three more times. Each hit explodes poison gas the unit stands in."
     },
     {
       "id": "tempest",
@@ -688,7 +756,8 @@
       "delay": 8,
       "momentum": 5,
       "delivery": "direct",
-      "effect": "Push every unit in one row one row back (bumps apply)."
+      "effect": "Push every unit in one row one row back (bumps apply).",
+      "template": "Push every unit in one row one row back (bumps apply)."
     },
     {
       "id": "overcharge",
@@ -698,7 +767,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Stormcaller's Chain Lightning jumps two more times (six units in all)."
+      "effect": "The Stormcaller's Chain Lightning jumps two more times (six units in all).",
+      "template": "The Stormcaller's Chain Lightning jumps two more times (six units in all)."
     },
     {
       "id": "static_field",
@@ -708,7 +778,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "A unit that hits the Stormcaller in melee is Stunned for 5."
+      "effect": "A unit that hits the Stormcaller in melee is Stunned for 5.",
+      "template": "A unit that hits the Stormcaller in melee is Stunned for 5."
     },
     {
       "id": "eye_of_the_storm",
@@ -718,7 +789,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Stormcaller cannot be pushed, pulled or Stunned."
+      "effect": "The Stormcaller cannot be pushed, pulled or Stunned.",
+      "template": "The Stormcaller cannot be pushed, pulled or Stunned."
     },
     {
       "id": "ice_lance",
@@ -728,7 +800,8 @@
       "delay": 4,
       "momentum": 2,
       "delivery": "projectile",
-      "effect": "Hit for 7–8; a Frozen target takes double."
+      "effect": "Hit for 7–8; a Frozen target takes double.",
+      "template": "Hit for {7–8}; a Frozen target takes double."
     },
     {
       "id": "freeze",
@@ -738,7 +811,8 @@
       "delay": 7,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "A unit is Frozen."
+      "effect": "A unit is Frozen.",
+      "template": "A unit is Frozen."
     },
     {
       "id": "frost_nova",
@@ -748,7 +822,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "Every enemy in melee reach takes 1–2 and is Frozen."
+      "effect": "Every enemy in melee reach takes 1–2 and is Frozen.",
+      "template": "Every enemy in melee reach takes {1–2} and is Frozen."
     },
     {
       "id": "cold_heart",
@@ -758,7 +833,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Frozen from the Cryomancer lasts 1 more turn, but it can keep only one unit Frozen at a time."
+      "effect": "Frozen from the Cryomancer lasts 1 more turn, but it can keep only one unit Frozen at a time.",
+      "template": "Frozen from the Cryomancer lasts 1 more turn, but it can keep only one unit Frozen at a time."
     },
     {
       "id": "brittle",
@@ -768,7 +844,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Frozen enemies take 50% more damage."
+      "effect": "Frozen enemies take 50% more damage.",
+      "template": "Frozen enemies take 50% more damage."
     },
     {
       "id": "deep_chill",
@@ -778,7 +855,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "A unit the Cryomancer Freezes also gets ice on its spot for 20."
+      "effect": "A unit the Cryomancer Freezes also gets ice on its spot for 20.",
+      "template": "A unit the Cryomancer Freezes also gets ice on its spot for 20."
     },
     {
       "id": "rampage",
@@ -788,7 +866,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "melee",
-      "effect": "Hit for 10–12. The Berserker takes 3."
+      "effect": "Hit for 10–12. The Berserker takes 3.",
+      "template": "Hit for {10–12}. The Berserker takes {3}."
     },
     {
       "id": "sweeping_kick",
@@ -798,7 +877,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "melee",
-      "effect": "Push every enemy in melee reach one row back (bumps apply)."
+      "effect": "Push every enemy in melee reach one row back (bumps apply).",
+      "template": "Push every enemy in melee reach one row back (bumps apply)."
     },
     {
       "id": "battle_roar",
@@ -808,7 +888,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Every enemy in melee reach has its next turn pushed back 5."
+      "effect": "Every enemy in melee reach has its next turn pushed back 5.",
+      "template": "Every enemy in melee reach has its next turn pushed back 5."
     },
     {
       "id": "reckless_swing",
@@ -818,7 +899,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Berserker's hits deal double damage, but it takes half of the damage it deals (rounded down)."
+      "effect": "The Berserker's hits deal double damage, but it takes half of the damage it deals (rounded down).",
+      "template": "The Berserker's hits deal double damage, but it takes half of the damage it deals (rounded down)."
     },
     {
       "id": "last_stand",
@@ -828,7 +910,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Berserker cannot Move or be moved, but deals 50% more damage."
+      "effect": "The Berserker cannot Move or be moved, but deals 50% more damage.",
+      "template": "The Berserker cannot Move or be moved, but deals 50% more damage."
     },
     {
       "id": "unstoppable",
@@ -838,7 +921,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Below a quarter of its HP, the Berserker cannot be Immobilized or Frozen, and its turns cannot be pushed back."
+      "effect": "Below a quarter of its HP, the Berserker cannot be Immobilized or Frozen, and its turns cannot be pushed back.",
+      "template": "Below a quarter of its HP, the Berserker cannot be Immobilized or Frozen, and its turns cannot be pushed back."
     },
     {
       "id": "challenge",
@@ -848,7 +932,8 @@
       "delay": 2,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Mark a unit. A Champion has one Mark from Challenge at a time; marking another moves it."
+      "effect": "Mark a unit. A Champion has one Mark from Challenge at a time; marking another moves it.",
+      "template": "Mark a unit. A Champion has one Mark from Challenge at a time; marking another moves it."
     },
     {
       "id": "single_combat",
@@ -858,7 +943,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "For 10, the Champion and one Marked unit can be targeted only by each other."
+      "effect": "For 10, the Champion and one Marked unit can be targeted only by each other.",
+      "template": "For 10, the Champion and one Marked unit can be targeted only by each other."
     },
     {
       "id": "execution",
@@ -868,7 +954,8 @@
       "delay": 7,
       "momentum": 4,
       "delivery": "melee",
-      "effect": "A Marked unit below 25% HP is KO."
+      "effect": "A Marked unit below 25% HP is KO.",
+      "template": "A Marked unit below 25% HP is KO."
     },
     {
       "id": "hunt_down",
@@ -878,7 +965,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When a Marked enemy moves or is moved, the Champion Stuns it for 5."
+      "effect": "When a Marked enemy moves or is moved, the Champion Stuns it for 5.",
+      "template": "When a Marked enemy moves or is moved, the Champion Stuns it for 5."
     },
     {
       "id": "duelist",
@@ -888,7 +976,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Champion deals 50% more damage to the unit it has Marked."
+      "effect": "The Champion deals 50% more damage to the unit it has Marked.",
+      "template": "The Champion deals 50% more damage to the unit it has Marked."
     },
     {
       "id": "glory",
@@ -898,7 +987,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When the Champion KOs its Marked unit, it heals a quarter of its max HP."
+      "effect": "When the Champion KOs its Marked unit, it heals a quarter of its max HP.",
+      "template": "When the Champion KOs its Marked unit, it heals a quarter of its max HP."
     },
     {
       "id": "swap_turns",
@@ -908,7 +998,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "Own side only. Two allies swap their places on the timeline."
+      "effect": "Own side only. Two allies swap their places on the timeline.",
+      "template": "Own side only. Two allies swap their places on the timeline."
     },
     {
       "id": "press_the_advantage",
@@ -918,7 +1009,8 @@
       "delay": 4,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "A unit's next skill costs no Momentum."
+      "effect": "A unit's next skill costs no Momentum.",
+      "template": "A unit's next skill costs no Momentum."
     },
     {
       "id": "coordinated_strike",
@@ -928,7 +1020,8 @@
       "delay": 5,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "Pick an enemy. Two of your allies make their unique attack on it right now."
+      "effect": "Pick an enemy. Two of your allies make their unique attack on it right now.",
+      "template": "Pick an enemy. Two of your allies make their unique attack on it right now."
     },
     {
       "id": "all_in",
@@ -938,7 +1031,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Tactician's Momentum costs are halved (rounded up), but Momentum gained from its hits is 0."
+      "effect": "The Tactician's Momentum costs are halved (rounded up), but Momentum gained from its hits is 0.",
+      "template": "The Tactician's Momentum costs are halved (rounded up), but Momentum gained from its hits is 0."
     },
     {
       "id": "inspiring_presence",
@@ -948,7 +1042,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When an ally next to the Tactician KOs an enemy with its own skill, Momentum moves 1 more toward your side."
+      "effect": "When an ally next to the Tactician KOs an enemy with its own skill, Momentum moves 1 more toward your side.",
+      "template": "When an ally next to the Tactician KOs an enemy with its own skill, Momentum moves 1 more toward your side."
     },
     {
       "id": "initiative",
@@ -958,7 +1053,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "At battle start, every ally's first turn is pulled forward 5."
+      "effect": "At battle start, every ally's first turn is pulled forward 5.",
+      "template": "At battle start, every ally's first turn is pulled forward 5."
     },
     {
       "id": "advance",
@@ -968,7 +1064,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Own side only. Move every ally in one row one row forward (bumps apply)."
+      "effect": "Own side only. Move every ally in one row one row forward (bumps apply).",
+      "template": "Own side only. Move every ally in one row one row forward (bumps apply)."
     },
     {
       "id": "switch_places",
@@ -978,7 +1075,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Own side only. Two allies swap places."
+      "effect": "Own side only. Two allies swap places.",
+      "template": "Own side only. Two allies swap places."
     },
     {
       "id": "rotation",
@@ -988,7 +1086,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "none",
-      "effect": "Every ally moves one row back, and the Rear row moves to the Front."
+      "effect": "Every ally moves one row back, and the Rear row moves to the Front.",
+      "template": "Every ally moves one row back, and the Rear row moves to the Front."
     },
     {
       "id": "drill",
@@ -998,7 +1097,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "An ally the Commander moves has its next turn pulled forward 3."
+      "effect": "An ally the Commander moves has its next turn pulled forward 3.",
+      "template": "An ally the Commander moves has its next turn pulled forward 3."
     },
     {
       "id": "rally",
@@ -1008,7 +1108,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When an ally is KO, every other ally's next turn is pulled forward 3."
+      "effect": "When an ally is KO, every other ally's next turn is pulled forward 3.",
+      "template": "When an ally is KO, every other ally's next turn is pulled forward 3."
     },
     {
       "id": "vanguard",
@@ -1018,7 +1119,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "An ally the Commander moves into the Front row gains a Ward of 3."
+      "effect": "An ally the Commander moves into the Front row gains a Ward of 3.",
+      "template": "An ally the Commander moves into the Front row gains a Ward of {3}."
     },
     {
       "id": "song_of_haste",
@@ -1028,7 +1130,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "none",
-      "effect": "Song. Allies in the Bard's row have +1 Speed for 20."
+      "effect": "Song. Allies in the Bard's row have +1 Speed for 20.",
+      "template": "Song. Allies in the Bard's row have +1 Speed for 20."
     },
     {
       "id": "war_drums",
@@ -1038,7 +1141,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "none",
-      "effect": "Song. For 20, the Bard and its adjacent allies cannot be Stunned or Frozen."
+      "effect": "Song. For 20, the Bard and its adjacent allies cannot be Stunned or Frozen.",
+      "template": "Song. For 20, the Bard and its adjacent allies cannot be Stunned or Frozen."
     },
     {
       "id": "lullaby",
@@ -1048,7 +1152,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Song. Every enemy in one row has its next turn pushed back 5."
+      "effect": "Song. Every enemy in one row has its next turn pushed back 5.",
+      "template": "Song. Every enemy in one row has its next turn pushed back 5."
     },
     {
       "id": "grand_chorus",
@@ -1058,7 +1163,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Bard's songs reach every ally, but only one of its songs can be active at a time."
+      "effect": "The Bard's songs reach every ally, but only one of its songs can be active at a time.",
+      "template": "The Bard's songs reach every ally, but only one of its songs can be active at a time."
     },
     {
       "id": "rhythm",
@@ -1068,7 +1174,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When an ally uses the same skill twice in a row, the second use has 1 less Delay."
+      "effect": "When an ally uses the same skill twice in a row, the second use has 1 less Delay.",
+      "template": "When an ally uses the same skill twice in a row, the second use has 1 less Delay."
     },
     {
       "id": "crescendo",
@@ -1078,7 +1185,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Bard's songs last 10 longer."
+      "effect": "The Bard's songs last 10 longer.",
+      "template": "The Bard's songs last 10 longer."
     },
     {
       "id": "melt_away",
@@ -1088,7 +1196,8 @@
       "delay": 4,
       "momentum": 2,
       "delivery": "none",
-      "effect": "The Thief gains stealth."
+      "effect": "The Thief gains stealth.",
+      "template": "The Thief gains stealth."
     },
     {
       "id": "lift_a_skill",
@@ -1098,7 +1207,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "Use a copy of the last active skill the target used, with the Thief's own Power."
+      "effect": "Use a copy of the last active skill the target used, with the Thief's own Power.",
+      "template": "Use a copy of the last active skill the target used, with the Thief's own Power."
     },
     {
       "id": "snatch",
@@ -1108,7 +1218,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "melee",
-      "effect": "Hit for 5–6 and steal one helpful status from the target."
+      "effect": "Hit for 5–6 and steal one helpful status from the target.",
+      "template": "Hit for {5–6} and steal one helpful status from the target."
     },
     {
       "id": "escape_artist",
@@ -1118,7 +1229,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The first time the Thief drops below half HP, it gains stealth."
+      "effect": "The first time the Thief drops below half HP, it gains stealth.",
+      "template": "The first time the Thief drops below half HP, it gains stealth."
     },
     {
       "id": "master_thief",
@@ -1128,7 +1240,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Snatch and the Thief's own attack steal every helpful status from the target, not just one."
+      "effect": "Snatch and the Thief's own attack steal every helpful status from the target, not just one.",
+      "template": "Snatch and the Thief's own attack steal every helpful status from the target, not just one."
     },
     {
       "id": "shadow_purse",
@@ -1138,7 +1251,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Each time the Thief steals a status, Momentum moves 1 toward your side."
+      "effect": "Each time the Thief steals a status, Momentum moves 1 toward your side.",
+      "template": "Each time the Thief steals a status, Momentum moves 1 toward your side."
     },
     {
       "id": "flash_powder",
@@ -1148,7 +1262,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Every enemy in melee reach is Blind for 20."
+      "effect": "Every enemy in melee reach is Blind for 20.",
+      "template": "Every enemy in melee reach is Blind for 20."
     },
     {
       "id": "cut_the_strings",
@@ -1158,7 +1273,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "Pick an enemy that owns auto events: its next auto event is removed from the timeline."
+      "effect": "Pick an enemy that owns auto events: its next auto event is removed from the timeline.",
+      "template": "Pick an enemy that owns auto events: its next auto event is removed from the timeline."
     },
     {
       "id": "jam",
@@ -1168,7 +1284,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "projectile",
-      "effect": "A unit's next skill has +5 Delay."
+      "effect": "A unit's next skill has +5 Delay.",
+      "template": "A unit's next skill has +5 Delay."
     },
     {
       "id": "wrecker",
@@ -1178,7 +1295,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Saboteur deals double damage to constructs, totems, traps and barricades."
+      "effect": "The Saboteur deals double damage to constructs, totems, traps and barricades.",
+      "template": "The Saboteur deals double damage to constructs, totems, traps and barricades."
     },
     {
       "id": "chaos_agent",
@@ -1188,7 +1306,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Every skill of the Saboteur that hits an enemy also pushes its next turn back 2."
+      "effect": "Every skill of the Saboteur that hits an enemy also pushes its next turn back 2.",
+      "template": "Every skill of the Saboteur that hits an enemy also pushes its next turn back 2."
     },
     {
       "id": "disarm_trap",
@@ -1198,7 +1317,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Saboteur sets off enemy traps without taking their effect."
+      "effect": "The Saboteur sets off enemy traps without taking their effect.",
+      "template": "The Saboteur sets off enemy traps without taking their effect."
     },
     {
       "id": "bolt_turret",
@@ -1208,7 +1328,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "none",
-      "effect": "Place a turret (HP 8). Each time the Engineer takes a turn, the turret hits the nearest enemy for 2–3."
+      "effect": "Place a turret (HP 8). Each time the Engineer takes a turn, the turret hits the nearest enemy for 2–3.",
+      "template": "Place a turret (HP 8). Each time the Engineer takes a turn, the turret hits the nearest enemy for {2–3}."
     },
     {
       "id": "barricade",
@@ -1218,7 +1339,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "none",
-      "effect": "Place a barricade (HP 10)."
+      "effect": "Place a barricade (HP 10).",
+      "template": "Place a barricade (HP 10)."
     },
     {
       "id": "net_trap",
@@ -1228,7 +1350,8 @@
       "delay": 5,
       "momentum": 1,
       "delivery": "none",
-      "effect": "Place a trap (HP 4). A unit that hits it has +3 Delay on its next skill."
+      "effect": "Place a trap (HP 4). A unit that hits it has +3 Delay on its next skill.",
+      "template": "Place a trap (HP 4). A unit that hits it has +3 Delay on its next skill."
     },
     {
       "id": "reinforced",
@@ -1238,7 +1361,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Engineer's turrets, barricades and traps have double HP."
+      "effect": "The Engineer's turrets, barricades and traps have double HP.",
+      "template": "The Engineer's turrets, barricades and traps have double HP."
     },
     {
       "id": "self_repair",
@@ -1248,7 +1372,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Engineer's turrets and barricades regain 2 HP each time the Engineer takes a turn."
+      "effect": "The Engineer's turrets and barricades regain 2 HP each time the Engineer takes a turn.",
+      "template": "The Engineer's turrets and barricades regain {2} HP each time the Engineer takes a turn."
     },
     {
       "id": "rapid_fire",
@@ -1258,7 +1383,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Bolt Turret fires twice each time."
+      "effect": "Bolt Turret fires twice each time.",
+      "template": "Bolt Turret fires twice each time."
     },
     {
       "id": "poison_gas",
@@ -1268,7 +1394,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Poison gas on a unit's spot and the spots next to it."
+      "effect": "Poison gas on a unit's spot and the spots next to it.",
+      "template": "Poison gas on a unit's spot and the spots next to it."
     },
     {
       "id": "firebomb",
@@ -1278,7 +1405,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "projectile",
-      "effect": "Fire on a unit's spot and the spots next to it, for 20."
+      "effect": "Fire on a unit's spot and the spots next to it, for 20.",
+      "template": "Fire on a unit's spot and the spots next to it, for 20."
     },
     {
       "id": "healing_draught",
@@ -1288,7 +1416,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "projectile",
-      "effect": "A unit heals 6–7."
+      "effect": "A unit heals 6–7.",
+      "template": "A unit heals {6–7}."
     },
     {
       "id": "big_finish",
@@ -1298,7 +1427,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Firebomb and Poison Gas also cover the spots next to those spots (five spots in all), but both have +2 Delay."
+      "effect": "Firebomb and Poison Gas also cover the spots next to those spots (five spots in all), but both have +2 Delay.",
+      "template": "Firebomb and Poison Gas also cover the spots next to those spots (five spots in all), but both have +2 Delay."
     },
     {
       "id": "potent_brew",
@@ -1308,7 +1438,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Healing Draught also removes one harmful status."
+      "effect": "Healing Draught also removes one harmful status.",
+      "template": "Healing Draught also removes one harmful status."
     },
     {
       "id": "volatile",
@@ -1318,7 +1449,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Chemist's fire and poison gas last twice as long."
+      "effect": "The Chemist's fire and poison gas last twice as long.",
+      "template": "The Chemist's fire and poison gas last twice as long."
     },
     {
       "id": "raise_undead",
@@ -1328,7 +1460,8 @@
       "delay": 8,
       "momentum": 4,
       "delivery": "direct",
-      "effect": "Turn a KO'd body of either side into an undead of yours (HP 12), and raise one more random body."
+      "effect": "Turn a KO'd body of either side into an undead of yours (HP 12), and raise one more random body.",
+      "template": "Turn a KO'd body of either side into an undead of yours (HP 12), and raise one more random body."
     },
     {
       "id": "corpse_explosion",
@@ -1338,7 +1471,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "A body or an undead of the Necromancer bursts into poison gas on its spot and the spots next to it."
+      "effect": "A body or an undead of the Necromancer bursts into poison gas on its spot and the spots next to it.",
+      "template": "A body or an undead of the Necromancer bursts into poison gas on its spot and the spots next to it."
     },
     {
       "id": "desecrate",
@@ -1348,7 +1482,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "A KO'd body cannot be revived for 40."
+      "effect": "A KO'd body cannot be revived for 40.",
+      "template": "A KO'd body cannot be revived for 40."
     },
     {
       "id": "lich_form",
@@ -1358,7 +1493,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Healing hurts the Necromancer, but its undead have +2 Power."
+      "effect": "Healing hurts the Necromancer, but its undead have +2 Power.",
+      "template": "Healing hurts the Necromancer, but its undead have +2 Power."
     },
     {
       "id": "bone_armor",
@@ -1368,7 +1504,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "For each undead it has, the Necromancer has a Ward of 2 that renews every turn."
+      "effect": "For each undead it has, the Necromancer has a Ward of 2 that renews every turn.",
+      "template": "For each undead it has, the Necromancer has a Ward of {2} that renews every turn."
     },
     {
       "id": "deaths_bounty",
@@ -1378,7 +1515,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When a unit is KO next to the Necromancer, the Necromancer heals 5."
+      "effect": "When a unit is KO next to the Necromancer, the Necromancer heals 5.",
+      "template": "When a unit is KO next to the Necromancer, the Necromancer heals {5}."
     },
     {
       "id": "clay_golem",
@@ -1388,7 +1526,8 @@
       "delay": 8,
       "momentum": 4,
       "delivery": "none",
-      "effect": "Summon a golem (HP 25, Speed 3) that makes melee hits for 5–6."
+      "effect": "Summon a golem (HP 25, Speed 3) that makes melee hits for 5–6.",
+      "template": "Summon a golem (HP 25, Speed 3) that makes melee hits for {5–6}."
     },
     {
       "id": "rune_golem",
@@ -1398,7 +1537,8 @@
       "delay": 8,
       "momentum": 4,
       "delivery": "none",
-      "effect": "Summon a rune golem (HP 18, Speed 4) that makes melee hits for 3–4; each hit Silences the target for 10."
+      "effect": "Summon a rune golem (HP 18, Speed 4) that makes melee hits for 3–4; each hit Silences the target for 10.",
+      "template": "Summon a rune golem (HP 18, Speed 4) that makes melee hits for {3–4}; each hit Silences the target for 10."
     },
     {
       "id": "animate_blades",
@@ -1408,7 +1548,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "none",
-      "effect": "Summon two sets of flying blades (HP 6, Speed 7) that make projectile hits for 2–3. They last 30."
+      "effect": "Summon two sets of flying blades (HP 6, Speed 7) that make projectile hits for 2–3. They last 30.",
+      "template": "Summon two sets of flying blades (HP 6, Speed 7) that make projectile hits for {2–3}. They last 30."
     },
     {
       "id": "golem_heart",
@@ -1418,7 +1559,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Summoner keeps only one golem (a new one replaces the old), but its golems have double HP (Clay 50, Rune 36)."
+      "effect": "The Summoner keeps only one golem (a new one replaces the old), but its golems have double HP (Clay 50, Rune 36).",
+      "template": "The Summoner keeps only one golem (a new one replaces the old), but its golems have double HP (Clay 50, Rune 36)."
     },
     {
       "id": "portal",
@@ -1428,7 +1570,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Summoner's summons appear on a random free spot of your side instead of being placed."
+      "effect": "The Summoner's summons appear on a random free spot of your side instead of being placed.",
+      "template": "The Summoner's summons appear on a random free spot of your side instead of being placed."
     },
     {
       "id": "quickening",
@@ -1438,7 +1581,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Summoner's summons take their first turn at once."
+      "effect": "The Summoner's summons take their first turn at once.",
+      "template": "The Summoner's summons take their first turn at once."
     },
     {
       "id": "healing_totem",
@@ -1448,7 +1592,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "none",
-      "effect": "Place a totem (HP 8): every 10, allies in its row heal 2."
+      "effect": "Place a totem (HP 8): every 10, allies in its row heal 2.",
+      "template": "Place a totem (HP 8): every 10, allies in its row heal {2}."
     },
     {
       "id": "spirit_link_totem",
@@ -1458,7 +1603,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "none",
-      "effect": "Place a totem (HP 10): damage to allies in its row is split evenly between them."
+      "effect": "Place a totem (HP 10): damage to allies in its row is split evenly between them.",
+      "template": "Place a totem (HP 10): damage to allies in its row is split evenly between them."
     },
     {
       "id": "totem_of_return",
@@ -1468,7 +1614,8 @@
       "delay": 7,
       "momentum": 3,
       "delivery": "none",
-      "effect": "Place a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks."
+      "effect": "Place a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks.",
+      "template": "Place a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks."
     },
     {
       "id": "great_totem",
@@ -1478,7 +1625,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Totemist keeps only one totem (a new one replaces the old), but it has triple HP and also affects the rows next to it."
+      "effect": "The Totemist keeps only one totem (a new one replaces the old), but it has triple HP and also affects the rows next to it.",
+      "template": "The Totemist keeps only one totem (a new one replaces the old), but it has triple HP and also affects the rows next to it."
     },
     {
       "id": "sturdy_totems",
@@ -1488,7 +1636,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Totems of the Totemist have double HP."
+      "effect": "Totems of the Totemist have double HP.",
+      "template": "Totems of the Totemist have double HP."
     },
     {
       "id": "spirit_shield",
@@ -1498,7 +1647,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When a totem of the Totemist breaks, every ally in its row gains a Ward of 4."
+      "effect": "When a totem of the Totemist breaks, every ally in its row gains a Ward of 4.",
+      "template": "When a totem of the Totemist breaks, every ally in its row gains a Ward of {4}."
     },
     {
       "id": "rain_dance",
@@ -1508,7 +1658,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "Water on every spot of one row for 40; allies standing in it heal 4."
+      "effect": "Water on every spot of one row for 40; allies standing in it heal 4.",
+      "template": "Water on every spot of one row for 40; allies standing in it heal {4}."
     },
     {
       "id": "hoarfrost",
@@ -1518,7 +1669,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "Ice on a unit's spot for 20."
+      "effect": "Ice on a unit's spot for 20.",
+      "template": "Ice on a unit's spot for 20."
     },
     {
       "id": "rite_of_mists",
@@ -1528,7 +1680,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "none",
-      "effect": "For 20, projectile hits from units standing on water deal half damage (rounded down, minimum 1)."
+      "effect": "For 20, projectile hits from units standing on water deal half damage (rounded down, minimum 1).",
+      "template": "For 20, projectile hits from units standing on water deal half damage (rounded down, minimum 1)."
     },
     {
       "id": "deluge",
@@ -1538,7 +1691,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Water from the Ritualist lasts until the end of battle."
+      "effect": "Water from the Ritualist lasts until the end of battle.",
+      "template": "Water from the Ritualist lasts until the end of battle."
     },
     {
       "id": "tidecaller",
@@ -1548,7 +1702,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Allies standing on water have 1 less Delay on every skill."
+      "effect": "Allies standing on water have 1 less Delay on every skill.",
+      "template": "Allies standing on water have 1 less Delay on every skill."
     },
     {
       "id": "frostbinder",
@@ -1558,7 +1713,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "A unit standing on the Ritualist's ice is Immobilized."
+      "effect": "A unit standing on the Ritualist's ice is Immobilized.",
+      "template": "A unit standing on the Ritualist's ice is Immobilized."
     },
     {
       "id": "puppet_soul",
@@ -1568,7 +1724,8 @@
       "delay": 6,
       "momentum": 3,
       "delivery": "direct",
-      "effect": "Possession. A unit hits a unit next to it at once with its unique attack."
+      "effect": "Possession. A unit hits a unit next to it at once with its unique attack.",
+      "template": "Possession. A unit hits a unit next to it at once with its unique attack."
     },
     {
       "id": "life_swap",
@@ -1578,7 +1735,8 @@
       "delay": 8,
       "momentum": 5,
       "delivery": "direct",
-      "effect": "Soul swap. Two units swap their current HP (each capped at its max)."
+      "effect": "Soul swap. Two units swap their current HP (each capped at its max).",
+      "template": "Soul swap. Two units swap their current HP (each capped at its max)."
     },
     {
       "id": "forced_step",
@@ -1588,7 +1746,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Possession. A unit moves to a free spot of your choice on its own side."
+      "effect": "Possession. A unit moves to a free spot of your choice on its own side.",
+      "template": "Possession. A unit moves to a free spot of your choice on its own side."
     },
     {
       "id": "soul_anchor",
@@ -1598,7 +1757,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Enemies cannot possess, move or soul-swap the Spiritwalker."
+      "effect": "Enemies cannot possess, move or soul-swap the Spiritwalker.",
+      "template": "Enemies cannot possess, move or soul-swap the Spiritwalker."
     },
     {
       "id": "haunting",
@@ -1608,7 +1768,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "When the Spiritwalker is KO, the unit that KO'd it is Confused for 20."
+      "effect": "When the Spiritwalker is KO, the unit that KO'd it is Confused for 20.",
+      "template": "When the Spiritwalker is KO, the unit that KO'd it is Confused for 20."
     },
     {
       "id": "puppeteer",
@@ -1618,7 +1779,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Puppet Soul hits deal double damage."
+      "effect": "Puppet Soul hits deal double damage.",
+      "template": "Puppet Soul hits deal double damage."
     },
     {
       "id": "take_off",
@@ -1628,7 +1790,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "none",
-      "effect": "The Skyborne is airborne for 40."
+      "effect": "The Skyborne is airborne for 40.",
+      "template": "The Skyborne is airborne for 40."
     },
     {
       "id": "gust",
@@ -1638,7 +1801,8 @@
       "delay": 3,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Wind. Push a unit one row back (bumps apply)."
+      "effect": "Wind. Push a unit one row back (bumps apply).",
+      "template": "Wind. Push a unit one row back (bumps apply)."
     },
     {
       "id": "dive",
@@ -1648,7 +1812,8 @@
       "delay": 5,
       "momentum": 2,
       "delivery": "melee",
-      "effect": "Only while airborne: hit for 9–11, then land."
+      "effect": "Only while airborne: hit for 9–11, then land.",
+      "template": "Only while airborne: hit for {9–11}, then land."
     },
     {
       "id": "sky_lord",
@@ -1658,7 +1823,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Skyborne is always airborne, but has 30% less HP (rounded down)."
+      "effect": "The Skyborne is always airborne, but has 30% less HP (rounded down).",
+      "template": "The Skyborne is always airborne, but has 30% less HP (rounded down)."
     },
     {
       "id": "eagle_eye",
@@ -1668,7 +1834,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "While airborne, the Skyborne reveals stealthed enemies."
+      "effect": "While airborne, the Skyborne reveals stealthed enemies.",
+      "template": "While airborne, the Skyborne reveals stealthed enemies."
     },
     {
       "id": "lift",
@@ -1678,7 +1845,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Take Off also makes one ally next to the Skyborne airborne for the same time."
+      "effect": "Take Off also makes one ally next to the Skyborne airborne for the same time.",
+      "template": "Take Off also makes one ally next to the Skyborne airborne for the same time."
     }
   ],
   "attacks": [

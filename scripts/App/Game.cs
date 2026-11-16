@@ -71,13 +71,13 @@ public static class Game
     }
 
     /// <summary>The card-back rows for a list of skill IDs: Delay and Momentum come from the content (a keystone has neither).</summary>
-    public static List<CardSkill> CardSkills(IEnumerable<string> ids)
+    public static List<CardSkill> CardSkills(IEnumerable<string> ids, int power)
     {
         var rows = new List<CardSkill>();
         foreach (var id in ids)
         {
-            if (Content.AttacksById.TryGetValue(id, out var a)) rows.Add(new CardSkill(a.Name, SkillLine(id), a.Delay, a.Momentum));
-            else if (Content.SkillsById.TryGetValue(id, out var s)) rows.Add(new CardSkill(s.Name, SkillLine(id), s.Delay ?? 0, s.Momentum ?? 0));
+            if (Content.AttacksById.TryGetValue(id, out var a)) rows.Add(new CardSkill(a.Name, SkillLine(id), a.Delay, a.Momentum, SkillTooltips.For(Content, id, power)));
+            else if (Content.SkillsById.TryGetValue(id, out var s)) rows.Add(new CardSkill(s.Name, SkillLine(id), s.Delay ?? 0, s.Momentum ?? 0, SkillTooltips.For(Content, id, power)));
         }
         return rows;
     }

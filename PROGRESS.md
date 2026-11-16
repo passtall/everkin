@@ -17,7 +17,7 @@ The implementation state, kept current by every Claude Code session ([docs/imple
 5. **M2.3, the owner reviews the first run** (the run `runs/20261110-190808-harness` used the old rules and is history now; a new 10,000-battle run belongs after M5.6 step 8).
 6. **Play-test chapter 1 with the owner** after M5.6; **M6.1 local two-player** follows (hot-seat: `BattleBoard.Setup(state, bottom)` exists, a controller for side B that reuses `AskPlayer` is missing).
 
-- **M5.7 Momentum costs and skill tooltips (owner, 2026-11-16):** new milestone in docs/implementation-plan.md: a costed skill only needs the side 1 ahead and paying may pass 0 (game_system §6.7); every skill shows a hover tooltip (ui_spec, Skill tooltip). **Core done** (`Momentum.CanPay` needs a lead of 1 for any cost, `Pay` clamps at ±10, the greyed reason says "needs the side to be ahead in Momentum", the two new 20.5 rows and the old tests updated; 738 tests pass; AI move generator uses `Actions.WhyNot`, so it follows). Still to do: ghost marker on the meter past 0 in the UI, skill tooltips (ui_spec, plan M5.7).
+- **M5.7 Momentum costs and skill tooltips (owner, 2026-11-16): done in code, 743 tests pass.** Momentum: `CanPay` needs a lead of 1 for any cost, `Pay` may pass 0 (clamped), reasons and the ghost marker follow. Tooltips: skills.md marks every scaling number with braces (`{4}`, `{8–10}`, owner chose this 2026-11-16; Self-Repair, Regrowth, recoil, Withering and Judgment are marked because the code scales them); `build_content.py` writes `effect` without braces and `template` with them; `Core/Content/SkillTooltips.cs` scales templates and unique-attack damage to the creature's Power; `Ui.SkillTip` is the panel, used by action bar slots (Move, Skip Turn included) and card-back rows (`CardView._GetTooltip`). Tests in `SkillTooltipTests` (all 168 skills and 319 attacks). **Not checked by eye** (hover cannot be screenshotted headless) and **long-press on touch is not built** (Godot shows no tooltip on touch); both belong to the next play-test / M10.1.
 
 ## In flight
 
@@ -150,6 +150,7 @@ Old readings the code followed that M5.6 changes (most are done now: Momentum fo
 - [x] M5.4 Chapter 1
 - [x] M5.5 Battle UI left/right, round portraits, visible ground effects
 - [x] M5.6 Classes rework (all 28 classes, tests un-skipped; follow-ups listed under Next step)
+- [x] M5.7 Momentum costs and skill tooltips (touch long-press and an eye check still open)
 - [ ] M6.1 Local two-player
 - [ ] M7.1 Chapters 2 to 4
 - [ ] M7.2 Achievements

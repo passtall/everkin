@@ -345,7 +345,7 @@ public partial class PlayScreen : Control, IBackNavigable
         if (cost <= 0) return null;
         var value = _state.Momentum.Value;
         var side = _state.GetUnit(_active).Side;
-        var advantage = _state.Momentum.AdvantageOf(side) - cost;
+        var advantage = Math.Clamp(_state.Momentum.AdvantageOf(side) - cost, -Momentum.Limit, Momentum.Limit);   // may pass 0 (section 6.7)
         var meter = side == Side.A ? advantage : -advantage;
         return meter * (_board.Bottom == Side.A ? 1 : -1);
     }

@@ -127,7 +127,7 @@ public partial class CardsDemo : Control, IBackNavigable
         var x = 20f;
         foreach (var def in defs)
         {
-            var info = CardInfo.FromCreature(def, Game.CardSkills(Game.Content.ClassSkillsOf(def).Prepend(def.Attack)));
+            var info = CardInfo.FromCreature(def, Game.CardSkills(Game.Content.ClassSkillsOf(def).Prepend(def.Attack), def.Power));
             foreach (var (mode, w) in new[] { (CardMode.Front, 300f), (CardMode.Back, 300f), (CardMode.Compact, 96f) })
             {
                 var card = new CardView { Mode = mode, Position = new Vector2(x, 20), Size = new Vector2(w, w * 1.5f) };

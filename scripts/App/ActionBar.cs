@@ -30,7 +30,11 @@ public partial class SkillSlot : Control
         if (e is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left }) Pressed?.Invoke(this);
     }
 
+    public Everkin.Core.Content.SkillTooltip? Tip { get; init; }
+
     public override string _GetTooltip(Vector2 atPosition) => DisabledReason == null ? Title : $"{Title}\n{DisabledReason}";
+
+    public override Control? _MakeCustomTooltip(string forText) => Tip == null ? null : Ui.SkillTip(Tip, DisabledReason);
 
     public override void _Draw()
     {
@@ -97,7 +101,7 @@ public partial class ActionBar : PanelContainer
             var slot = new SkillSlot
             {
                 Id = id, Title = Game.SkillName(id), IconPath = IconFor(id), Key = key <= 9 ? key : 0,
-                Delay = skill.Delay, Momentum = Actions.CostOf(state, unitId, skill), CustomMinimumSize = new Vector2(112, 150),
+                Delay = skill.Delay, Momentum = Actions.CostOf(state, unitId, skill), Tip = Everkin.Core.Content.SkillTooltips.For(Game.Content, id, state.PowerOf(unitId)), CustomMinimumSize = new Vector2(112, 150),
             };
             key++;
             slot.DisabledReason = Reason(state, unitId, skill);
@@ -106,8 +110,8 @@ public partial class ActionBar : PanelContainer
         var sep = new VSeparator();
         _row.AddChild(sep);
         var canMove = Movement.LegalMoves(state, unitId).Count > 0;
-        Add(new SkillSlot { Id = "@move", Title = "Move", IconPath = "res://assets/icons/skills/action-move.png", Round = true, Delay = 5, CustomMinimumSize = new Vector2(96, 130), DisabledReason = canMove ? null : "No free place to move to" });
-        Add(new SkillSlot { Id = "@skip", Title = "Skip Turn", IconPath = "res://assets/icons/skills/action-skip.png", Round = true, Delay = 5, CustomMinimumSize = new Vector2(96, 130) });
+        Add(new SkillSlot { Id = "@move", Title = "Move", IconPath = "res://assets/icons/skills/action-move.png", Round = true, Delay = 5, Tip = Everkin.Core.Content.SkillTooltips.Move, CustomMinimumSize = new Vector2(96, 130), DisabledReason = canMove ? null : "No free place to move to" });
+        Add(new SkillSlot { Id = "@skip", Title = "Skip Turn", IconPath = "res://assets/icons/skills/action-skip.png", Round = true, Delay = 5, Tip = Everkin.Core.Content.SkillTooltips.SkipTurn, CustomMinimumSize = new Vector2(96, 130) });
     }
 
     private void Add(SkillSlot slot)
@@ -135,7 +139,7 @@ public partial class ActionBar : PanelContainer
         var user = state.GetUnit(unitId);
         if (skill.Magical && !Statuses.CanUseMagical(user)) return "Silenced: magical skills cannot be used";
         var cost = Actions.CostOf(state, unitId, skill);
-        if (!state.Momentum.CanPay(user.Side, cost)) return $"Needs the side to be {cost} ahead in Momentum";
+        if (!state.Momentum.CanPay(user.Side, cost)) return "Needs the side to be ahead in Momentum";
         if (skill.Unavailable(state, unitId) is { } own) return own;
         var any = Everkin.Core.Ai.MoveGenerator.Legal(state, Game.Catalog, unitId, includeMoveAndSkip: false)
             .Any(m => m.Use?.SkillId == skill.Id);
