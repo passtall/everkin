@@ -121,6 +121,35 @@ public static class Report
         md.AppendLine($"- Average real time per battle: {F(ok.Count == 0 ? 0 : ok.Average(r => r.Seconds))} s");
         md.AppendLine();
 
+        md.AppendLine("## Momentum per side");
+        md.AppendLine();
+        md.AppendLine("The meter is sampled after every unit turn; lead is the side's own view (positive = ahead).");
+        md.AppendLine();
+        md.AppendLine("| Side | Samples | Ahead % | Level % | Behind % | Average lead | Payments per battle | Momentum paid per battle | Turns it could pay | Of those, did not pay % |");
+        md.AppendLine("|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|");
+        foreach (var side in new[] { "A", "B" })
+        {
+            var sign = side == "A" ? 1 : -1;
+            var samples = ok.SelectMany(r => r.MomentumTurns).ToList();
+            var leads = samples.Select(t => sign * t.Meter).ToList();
+            var own = samples.Where(t => t.Side == side).ToList();
+            var could = own.Where(t => t.CouldPay).ToList();
+            var payments = ok.SelectMany(r => r.Payments).Where(p => p.Side == side).ToList();
+            double Pct(int n) => leads.Count == 0 ? 0 : 100.0 * n / leads.Count;
+            md.AppendLine($"| {side} | {leads.Count} | {F(Pct(leads.Count(l => l > 0)))} | {F(Pct(leads.Count(l => l == 0)))} | {F(Pct(leads.Count(l => l < 0)))} | {F(leads.Count == 0 ? 0 : leads.Average())} | {F((double)payments.Count / Math.Max(1, ok.Count))} | {F((double)payments.Sum(p => p.Cost) / Math.Max(1, ok.Count))} | {could.Count} | {F(could.Count == 0 ? 0 : 100.0 * could.Count(t => t.Paid == 0) / could.Count)} |");
+        }
+        md.AppendLine();
+        var bySkill = ok.SelectMany(r => r.Payments).GroupBy(p => p.Skill).OrderByDescending(g => g.Count()).Take(15).ToList();
+        if (bySkill.Count > 0)
+        {
+            md.AppendLine("Most paid-for skills:");
+            md.AppendLine();
+            md.AppendLine("| Skill | Payments | Momentum paid |");
+            md.AppendLine("|---|---:|---:|");
+            foreach (var g in bySkill) md.AppendLine($"| {g.Key} | {g.Count()} | {g.Sum(p => p.Cost)} |");
+            md.AppendLine();
+        }
+
         var ranked = creatures.Where(x => x.Value.Appearances >= 20).OrderByDescending(x => x.Value.Rate).ToList();
         var tenth = Math.Max(1, ranked.Count / 10);
         md.AppendLine($"## Imbalance flags: top and bottom 10% by win rate ({tenth} each, creatures with at least 20 appearances)");

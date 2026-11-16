@@ -64,7 +64,7 @@ public static class BattleSetup
     /// A random team of up to six different creatures whose total Cost fits the budget, the whole team
     /// in a random legal formation. All draws come from <paramref name="random"/>, so a seed gives the same team.
     /// </summary>
-    public static TeamSetup RandomTeam(ContentSet content, BattleRandom random, int budget = TeamBudget, int size = TeamSize)
+    public static TeamSetup RandomTeam(ContentSet content, BattleRandom random, int budget = TeamBudget, int size = TeamSize, bool placeByAttack = false)
     {
         var roster = content.Creatures;
         var picked = new List<CreatureDef>();
@@ -87,6 +87,17 @@ public static class BattleSetup
             if (picked.Count == size) break;
         }
 
+        if (placeByAttack)
+        {
+            // The harness rule (game_system section 2.5): melee attack Front, projectile Rear, any other Middle; the order inside a row is random.
+            var shuffled = picked.OrderBy(_ => 0).ToList();
+            for (var i = shuffled.Count - 1; i > 0; i--)
+            {
+                var j = random.NextInt(i + 1);
+                (shuffled[i], shuffled[j]) = (shuffled[j], shuffled[i]);
+            }
+            return new TeamSetup(shuffled.Select(c => new UnitSetup(c.Id, RowFor(content.AttacksById[c.Attack].Delivery))).ToList());
+        }
         var rows = RandomRows(picked.Count, random);
         var units = new List<UnitSetup>();
         for (var i = 0; i < picked.Count; i++)
@@ -95,6 +106,9 @@ public static class BattleSetup
         }
         return new TeamSetup(units);
     }
+
+    /// <summary>The starting row of the harness's fixed placement rule by the delivery of the unique attack.</summary>
+    public static Row RowFor(string delivery) => delivery switch { "melee" => Row.Front, "projectile" => Row.Rear, _ => Row.Middle };
 
     /// <summary>A random legal formation: each unit gets a row, at most six per row, and the order inside a row follows the unit order.</summary>
     private static IReadOnlyList<Row> RandomRows(int count, BattleRandom random)
@@ -111,10 +125,10 @@ public static class BattleSetup
         return rows;
     }
 
-    /// <summary>A random battle spec for a seed: both teams drawn from a generator derived from the seed (separate from the battle's own).</summary>
+    /// <summary>A random battle spec for a seed (the harness's: formation by the placement rule): both teams drawn from a generator derived from the seed (separate from the battle's own).</summary>
     public static BattleSpec RandomSpec(ContentSet content, ulong seed)
     {
         var random = new BattleRandom(seed ^ 0x5EED5E7UL);
-        return new BattleSpec(seed, RandomTeam(content, random), RandomTeam(content, random));
+        return new BattleSpec(seed, RandomTeam(content, random, placeByAttack: true), RandomTeam(content, random, placeByAttack: true));
     }
 }

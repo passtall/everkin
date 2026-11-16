@@ -125,7 +125,7 @@ public sealed class AiLevel
     public bool DeeperMoveAndSkip { get; init; }
 
     /// <summary>Evaluation weights, in hundredths of a percent of a team's HP share (10000 = the whole team).</summary>
-    public int MomentumPoint { get; init; } = 200;
+    public int MomentumPoint { get; init; } = 50;
 
     /// <summary>Per status that is helpful on an ally or harmful on an enemy at full 20 time units left; fewer time units count proportionally.</summary>
     public int StatusValue { get; init; } = 60;

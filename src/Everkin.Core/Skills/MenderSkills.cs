@@ -52,7 +52,7 @@ public sealed class RainOfMending : ClassSkill
     }
 }
 
-/// <summary>Searing Light: hit for 7-8; undead take double.</summary>
+/// <summary>Searing Light: hit for 4-5; undead take double.</summary>
 public sealed class SearingLight : ClassSkill
 {
     public SearingLight(SkillDef def) : base(def, magical: true) { }
@@ -62,7 +62,7 @@ public sealed class SearingLight : ClassSkill
     public override void Resolve(SkillContext context)
     {
         var undead = context.State.GetUnit(context.TargetId!.Value).IsUndead;
-        context.Hit(context.TargetId!.Value, undead ? new IntRange(14, 16) : new IntRange(7, 8));
+        context.Hit(context.TargetId!.Value, undead ? new IntRange(8, 10) : new IntRange(4, 5));
     }
 }
 

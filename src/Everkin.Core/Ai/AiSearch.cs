@@ -3,23 +3,48 @@ using Everkin.Core.Skills;
 
 namespace Everkin.Core.Ai;
 
+/// <summary>What the score needs to know besides the position: the skills (which statuses can still do something) and the statuses already there when the search started.</summary>
+public sealed class EvalContext
+{
+    public EvalContext(SkillCatalog catalog, BattleState root)
+    {
+        Catalog = catalog;
+        foreach (var u in root.Units)
+            foreach (var s in u.StatusInstances.Values)
+                Baseline[(u.Id, s.Id, s.SourceUnitId)] = s.EndsAt;
+    }
+
+    public SkillCatalog Catalog { get; }
+
+    /// <summary>Statuses already on a unit at the root of the search (unit, status, source) with the time they end. Renewing one scores nothing: it never counts beyond that end.</summary>
+    public Dictionary<(int Unit, string Status, int? Source), int?> Baseline { get; } = new();
+}
+
 /// <summary>
 /// The position score (game_system section 2.5 "Scoring"): each side's remaining HP as a share of its maximum, every living unit counting
-/// as if it had 25% more HP; each point of Momentum worth 2% of a team's HP; harmful statuses on enemies and helpful ones on allies count a
-/// little, more the longer they last; summons and undead count at half value, constructs at nothing. Integers: 10000 is a whole team. Positive favours Side A.
+/// as if it had 25% more HP; each point of Momentum worth 0.5% of a team's HP; harmful statuses on enemies and helpful ones on allies count a
+/// little, more the longer they last, but only a status that can still do something counts and renewing a status adds nothing; summons and
+/// undead count at half value, constructs at nothing. Integers: 10000 is a whole team. Positive favours Side A.
 /// </summary>
 public static class Evaluator
 {
     public const int Win = 1_000_000;
 
-    public static int Score(BattleState state, AiLevel level)
+    /// <summary>The skills and keystones that read or use a Mark (Tracker and Champion).</summary>
+    private static readonly HashSet<string> MarkUsers = new()
+    {
+        "target", "hunters_shot", "sniff_the_air", "scent_of_blood", "relentless",
+        "challenge", "single_combat", "execution", "hunt_down", "duelist", "glory",
+    };
+
+    public static int Score(BattleState state, AiLevel level, EvalContext? context = null)
     {
         if (state.IsOver)
             return state.Outcome switch { BattleOutcome.SideAWins => Win, BattleOutcome.SideBWins => -Win, _ => 0 };
-        return SideScore(state, Side.A, level) - SideScore(state, Side.B, level) + state.Momentum.Value * level.MomentumPoint;
+        return SideScore(state, Side.A, level, context) - SideScore(state, Side.B, level, context) + state.Momentum.Value * level.MomentumPoint;
     }
 
-    private static int SideScore(BattleState state, Side side, AiLevel level)
+    private static int SideScore(BattleState state, Side side, AiLevel level, EvalContext? context)
     {
         long num = 0, den = 0;
         var statuses = 0L;
@@ -33,22 +58,50 @@ public static class Evaluator
             num += weight * (4L * u.Hp + u.MaxHp);
             if (u.Kind == UnitKind.Construct) continue;                       // a construct's statuses count nothing either
             foreach (var s in u.StatusInstances.Values)
-            {
-                var polarity = StatusRules.PolarityOf(s.Id);
-                if (polarity == Polarity.Helpful) statuses += Remaining(s, state) ;
-            }
+                if (StatusRules.PolarityOf(s.Id) == Polarity.Helpful) statuses += Remaining(state, u, s, context);
         }
         // Harmful statuses on the other side's units count for this side.
         foreach (var u in state.Units)
             if (!u.IsRemoved && !u.IsKnockedOut && u.Side != side && u.Kind != UnitKind.Construct)
                 foreach (var s in u.StatusInstances.Values)
-                    if (StatusRules.PolarityOf(s.Id) == Polarity.Harmful) statuses += Remaining(s, state);
+                    if (StatusRules.PolarityOf(s.Id) == Polarity.Harmful) statuses += Remaining(state, u, s, context);
         var share = den == 0 ? 0 : (int)(num * 10000 / den);
         return share + (int)(statuses * level.StatusValue / 20);
     }
 
-    /// <summary>Time units a status has left, up to 20 (a status without a clock counts as 20).</summary>
-    private static int Remaining(StatusInstance s, BattleState state) => Math.Min(20, s.TimeLeft(state.Timeline.Now) ?? 20);
+    /// <summary>
+    /// Time units a status counts for, up to 20 (a status without a clock counts as 20): none when nothing can use it any more, and never
+    /// beyond the end it had when the search started, so a renewal scores nothing.
+    /// </summary>
+    private static int Remaining(BattleState state, Unit carrier, StatusInstance s, EvalContext? context)
+    {
+        if (context is not null && !CanDoSomething(state, carrier, s, context.Catalog)) return 0;
+        var left = Math.Min(20, s.TimeLeft(state.Timeline.Now) ?? 20);
+        if (context is not null && context.Baseline.TryGetValue((carrier.Id, s.Id, s.SourceUnitId), out var endsAt) && endsAt is { } end)
+            left = Math.Min(left, Math.Max(0, end - state.Timeline.Now));
+        return left;
+    }
+
+    /// <summary>Whether a status still has something to act on (game_system section 2.5 "Scoring").</summary>
+    private static bool CanDoSomething(BattleState state, Unit carrier, StatusInstance s, SkillCatalog catalog)
+    {
+        switch (s.Id)
+        {
+            case StatusIds.Marked:                                              // only while the Mark's owner side has a skill that uses it
+                return state.Units.Any(u => u.Side != carrier.Side && !u.IsRemoved && !u.IsKnockedOut && u.KnownSkills.Any(MarkUsers.Contains));
+            case StatusIds.Phased:
+            case StatusIds.Piercing:                                            // the next attack: the unit needs an attack it can use
+                return carrier.KnownSkills.Any(id => catalog.TryGet(id, out var k) && !k.IsPassive && k.IsAttack && Usable(carrier, k));
+            case StatusIds.Echo:                                                // the next skill
+                return carrier.KnownSkills.Any(id => catalog.TryGet(id, out var k) && !k.IsPassive && Usable(carrier, k));
+            case StatusIds.FreeMomentum:                                        // the next skill with a Momentum cost
+                return carrier.KnownSkills.Any(id => catalog.TryGet(id, out var k) && !k.IsPassive && k.MomentumCost > 0 && Usable(carrier, k));
+            default:                                                            // Ward, songs and the rest sit on a unit that is still standing
+                return true;
+        }
+    }
+
+    private static bool Usable(Unit unit, Skill skill) => !skill.Magical || Statuses.CanUseMagical(unit);
 }
 
 /// <summary>
@@ -61,6 +114,7 @@ public sealed class AiSearch
     private readonly SkillCatalog _catalog;
     private readonly AiLevel _level;
     private readonly BattleRandom _random;
+    private EvalContext? _context;
 
     public AiSearch(SkillCatalog catalog, AiLevel level, BattleRandom random)
     {
@@ -84,6 +138,7 @@ public sealed class AiSearch
         TotalNodes += Nodes;
         Choices++;
         Nodes = 0;
+        _context = new EvalContext(_catalog, real);
         var moves = MoveGenerator.Legal(real, _catalog, unitId, true, _level.MaxPlacements, _level.MaxPairs);
         if (moves.Count == 1) return moves[0];
         var maximizing = real.GetUnit(unitId).Side == Side.A;
@@ -126,10 +181,10 @@ public sealed class AiSearch
     private int Node(BattleState s, int depth, int alpha, int beta)
     {
         Nodes++;
-        if (s.IsOver || depth == 0) return Evaluator.Score(s, _level);
+        if (s.IsOver || depth == 0) return Evaluator.Score(s, _level, _context);
         var next = BattleDriver.NextTurn(s, _catalog);
         s.DrainEvents();
-        if (s.IsOver || next is not { } unitId) return Evaluator.Score(s, _level);
+        if (s.IsOver || next is not { } unitId) return Evaluator.Score(s, _level, _context);
 
         var maximizing = s.GetUnit(unitId).Side == Side.A;
         var moves = MoveGenerator.Legal(s, _catalog, unitId, true, _level.MaxPlacements, _level.MaxPairs);
@@ -140,7 +195,7 @@ public sealed class AiSearch
         }
 
         // Quick score: apply each candidate and evaluate at once; search only the best few.
-        var children = moves.Select(m => { var c = Child(s, unitId, m); return (State: c, Quick: Evaluator.Score(c, _level)); })
+        var children = moves.Select(m => { var c = Child(s, unitId, m); return (State: c, Quick: Evaluator.Score(c, _level, _context)); })
             .OrderBy(x => maximizing ? -x.Quick : x.Quick).Take(_level.Candidates).ToList();
 
         var best = maximizing ? int.MinValue : int.MaxValue;

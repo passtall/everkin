@@ -13,7 +13,7 @@ public sealed record BattleResult(BattleOutcome Outcome, EndReason? Reason, int 
 /// </summary>
 public static class BattlePlayer
 {
-    public static BattleResult Play(BattleState state, SkillCatalog catalog, AiSearch aiA, AiSearch aiB, Action<BattleEvent>? observer = null, int turnCap = BattleEnd.HarnessTurnCap)
+    public static BattleResult Play(BattleState state, SkillCatalog catalog, AiSearch aiA, AiSearch aiB, Action<BattleEvent>? observer = null, int turnCap = BattleEnd.HarnessTurnCap, Action<BattleState, int>? turnObserver = null)
     {
         var hitCap = false;
         void Observe()
@@ -27,6 +27,7 @@ public static class BattlePlayer
             var unitId = BattleDriver.NextTurn(state, catalog);
             Observe();
             if (state.IsOver || unitId is not { } id) break;
+            turnObserver?.Invoke(state, id);                                  // before the unit chooses: the position it sees
             var ai = state.GetUnit(id).Side == Side.A ? aiA : aiB;
             var action = ai.Choose(state, id);
             var events = action.Apply(state, catalog, id);                    // the action drains the state's buffer and returns what happened

@@ -87,4 +87,46 @@ public class AiTests
         Assert.Equal((4, 2, 10), (Settings.Level("normal").Depth, Settings.Level("normal").PickTop, Settings.Level("normal").PickPercent));
         Assert.Equal((6, 1, 0), (Settings.Level("hard").Depth, Settings.Level("hard").PickTop, Settings.Level("hard").PickPercent));
     }
+
+    [Fact]
+    public void AMomentumPointIsHalfAPercentOfATeamsHp()
+    {
+        foreach (var name in new[] { "easy", "normal", "harness", "hard" }) Assert.Equal(50, Settings.Level(name).MomentumPoint);
+    }
+
+    [Fact]
+    public void TheHarnessPlacesUnitsByTheDeliveryOfTheirUniqueAttack()
+    {
+        for (ulong seed = 1; seed <= 20; seed++)
+        {
+            var spec = BattleSetup.RandomSpec(World.Content, seed);
+            foreach (var u in spec.SideA.Units.Concat(spec.SideB.Units))
+                Assert.Equal(BattleSetup.RowFor(World.Content.AttacksById[World.Content.CreaturesById[u.CreatureId].Attack].Delivery), u.Row);
+        }
+        Assert.Equal((Row.Front, Row.Rear, Row.Middle), (BattleSetup.RowFor("melee"), BattleSetup.RowFor("projectile"), BattleSetup.RowFor("direct")));
+    }
+
+    [Fact]
+    public void ARenewedStatusScoresNothingAndAMarkNeedsASkillThatUsesIt()
+    {
+        var s = new BattleState(1);
+        var owner = World.Unit(s, Side.A, Row.Front);
+        var enemy = World.Unit(s, Side.B, Row.Front);
+        var level = Settings.Level("hard");
+        Statuses.Apply(s, new StatusApplication(enemy, StatusIds.Silenced, Duration: 10, SourceUnitId: owner));
+        var context = new EvalContext(World.Catalog, s);
+        var before = Evaluator.Score(s, level, context);
+        Statuses.Apply(s, new StatusApplication(enemy, StatusIds.Silenced, Duration: 20, SourceUnitId: owner));
+        Assert.Equal(before, Evaluator.Score(s, level, context));                          // renewing adds nothing
+        Assert.True(Evaluator.Score(s, level) > before);                                   // without the baseline it would
+
+        var s2 = new BattleState(2);
+        var tracker = World.Unit(s2, Side.A, Row.Front);
+        var target = World.Unit(s2, Side.B, Row.Front);
+        var unmarked = Evaluator.Score(s2, level, new EvalContext(World.Catalog, s2));
+        Statuses.Apply(s2, new StatusApplication(target, StatusIds.Marked, Duration: 20, SourceUnitId: tracker));
+        Assert.Equal(unmarked, Evaluator.Score(s2, level, new EvalContext(World.Catalog, s2)));     // nobody on the side reads a Mark
+        s2.GetUnit(tracker).LearnSkill("hunters_shot");
+        Assert.True(Evaluator.Score(s2, level, new EvalContext(World.Catalog, s2)) > unmarked);
+    }
 }

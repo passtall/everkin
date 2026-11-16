@@ -24,6 +24,25 @@ public sealed class UnitRecord
     public Dictionary<string, int> Skills { get; set; } = new();
 }
 
+/// <summary>The Momentum meter after one unit turn (from side A's view: positive favours A), the side that took it, whether it could have paid for a costed skill, and what it paid.</summary>
+public sealed class MomentumTurn
+{
+    public string Side { get; set; } = "";
+    public int Meter { get; set; }
+    public bool CouldPay { get; set; }
+    public int Paid { get; set; }
+}
+
+/// <summary>One Momentum payment: the side, the skill, the cost and the side's own lead before and after paying.</summary>
+public sealed class MomentumPayment
+{
+    public string Side { get; set; } = "";
+    public string Skill { get; set; } = "";
+    public int Cost { get; set; }
+    public int Before { get; set; }
+    public int After { get; set; }
+}
+
 /// <summary>One recorded battle: run ID, seed, teams, formations, result, length and per-unit statistics. No event log is stored.</summary>
 public sealed class BattleRecord
 {
@@ -36,6 +55,8 @@ public sealed class BattleRecord
     public string? Error { get; set; }
     public double Seconds { get; set; }
     public List<UnitRecord> Units { get; set; } = new();
+    public List<MomentumTurn> MomentumTurns { get; set; } = new();
+    public List<MomentumPayment> Payments { get; set; } = new();
 }
 
 /// <summary>What a run is: stored beside its results so it can be reproduced (game_system section 2.5 "Run size").</summary>
@@ -128,10 +149,36 @@ public static class BatchRunner
                 Creature = u.CreatureId!, Side = u.Side.ToString(), Row = state.Formation.PositionOf(u.Id).Row.ToString()
             }).ToList();
 
+            var meter = 0;                                  // side A's view, kept up to date from the events
+            string? lastSkill = null;
+            MomentumTurn? turn = null;
+
+            void OnTurn(BattleState st, int unitId)
+            {
+                if (turn is not null) turn.Meter = meter;
+                var side = st.GetUnit(unitId).Side;
+                var couldPay = st.Momentum.AdvantageOf(side) >= 1
+                    && MoveGenerator.Legal(st, catalog, unitId, includeMoveAndSkip: false).Any(a => a.Kind == AiActionKind.Skill && Actions.CostOf(st, unitId, catalog.Get(a.Use!.SkillId)) > 0);
+                turn = new MomentumTurn { Side = side.ToString(), CouldPay = couldPay };
+                record.MomentumTurns.Add(turn);
+            }
+
             void Observe(BattleEvent e)
             {
                 switch (e)
                 {
+                    case SkillUsed su:
+                        lastSkill = su.SkillId;
+                        break;
+                    case MomentumChanged mc:
+                        meter = mc.After;
+                        if (mc.Cause == MomentumCause.Cost)
+                        {
+                            var sign = mc.Actor == Side.A ? 1 : -1;
+                            record.Payments.Add(new MomentumPayment { Side = mc.Actor.ToString(), Skill = lastSkill ?? "", Cost = Math.Abs(mc.Before - mc.After), Before = sign * mc.Before, After = sign * mc.After });
+                            if (turn is not null) turn.Paid += Math.Abs(mc.Before - mc.After);
+                        }
+                        break;
                     case DamageDealt d when d.Result.HpLost > 0:
                         if (Original(state, d.TargetUnitId) is { } t) units[t].Taken += d.Result.HpLost;
                         if (d.SourceUnitId is { } s && Original(state, s) is { } a && state.GetUnit(a).Side != state.GetUnit(d.TargetUnitId).Side) units[a].Damage += d.Result.HpLost;
@@ -151,7 +198,8 @@ public static class BatchRunner
 
             var aiA = new AiSearch(catalog, level, new BattleRandom(seed * 2 + 1));
             var aiB = new AiSearch(catalog, level, new BattleRandom(seed * 2 + 2));
-            var result = BattlePlayer.Play(state, catalog, aiA, aiB, Observe);
+            var result = BattlePlayer.Play(state, catalog, aiA, aiB, Observe, turnObserver: OnTurn);
+            if (turn is not null) turn.Meter = meter;
             record.Result = result.Outcome.ToString();
             record.Reason = result.Reason?.ToString() ?? "";
             record.Turns = result.Turns;

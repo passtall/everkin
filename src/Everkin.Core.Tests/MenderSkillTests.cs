@@ -94,18 +94,18 @@ public class MenderSkillTests
     }
 
     [Fact]
-    public void SearingLightHitsForSevenToEightAndUndeadTakeDouble()
+    public void SearingLightHitsForFourToFiveAndUndeadTakeDouble()
     {
         var (s, m, ally) = Board(1, "searing_light");
         var enemy = s.Formation.Units(Side.B, Row.Front)[0];
         Run(s, Use(m, "searing_light", enemy));
-        Assert.InRange(Lost(s, enemy), 7, 8);
+        Assert.InRange(Lost(s, enemy), 4, 5);
 
         var (s2, m2, _) = Board(1, "searing_light");
         var undead = s2.Formation.Units(Side.B, Row.Front)[0];
         s2.GetUnit(undead).IsUndead = true;
         Run(s2, Use(m2, "searing_light", undead));
-        Assert.InRange(Lost(s2, undead), 14, 16);
+        Assert.InRange(Lost(s2, undead), 8, 10);
     }
 
     [Fact]

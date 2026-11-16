@@ -21,7 +21,7 @@ public class AssassinSkillTests
         Assert.False(Has(s, a, StatusIds.Blind));
         Assert.False(Has(s, a, StatusIds.Poison));
         Assert.Equal(3, s.GetUnit(a).Ward);
-        Assert.Equal(3, s.Momentum.Value);                                                  // cost 3 from +6
+        Assert.Equal(5, s.Momentum.Value);                                                  // cost 1 from +6
     }
 
     [Fact]
