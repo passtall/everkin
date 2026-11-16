@@ -84,8 +84,8 @@
     },
     "harness": {
       "depth": 2,
-      "candidates": 6,
-      "rootCandidates": 10,
+      "candidates": 3,
+      "rootCandidates": 8,
       "maxPlacements": 4,
       "maxPairs": 20,
       "pickTop": 1,
