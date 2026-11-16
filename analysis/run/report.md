@@ -1,11 +1,11 @@
-# Run 20261116-191930-harness
+# Run 20261116-210306-harness
 
-AI level **harness**, seeds 1 to 10000, rules commit `b6b59e330bf74e74eed5d36d488030ccc3a0e8e9`.
+AI level **harness**, seeds 1 to 1000, rules commit `6315222681ed8649c5533469435eebadb461a3f6`.
 
-- Battles recorded: 5737 (5737 played to an end, 0 crashed)
-- Side A wins 2789, side B wins 2783, draws 165 (2.9%), of which 165 hit the length cap
-- Battle length in unit turns: median 161, mean 187.2, shortest 38, longest 508
-- Average real time per battle: 9.1 s
+- Battles recorded: 1000 (1000 played to an end, 0 crashed)
+- Side A wins 480, side B wins 487, draws 33 (3.3%), of which 33 hit the length cap
+- Battle length in unit turns: median 167, mean 193.2, shortest 51, longest 503
+- Average real time per battle: 14.3 s
 
 ## Momentum per side
 
@@ -13,257 +13,296 @@ The meter is sampled after every unit turn; lead is the side's own view (positiv
 
 | Side | Samples | Ahead % | Level % | Behind % | Average lead | Payments per battle | Momentum paid per battle | Turns it could pay | Of those, did not pay % |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| A | 844546 | 39.7 | 19.9 | 40.4 | -0.1 | 10.3 | 28.3 | 163046 | 63.8 |
-| B | 844546 | 40.4 | 19.9 | 39.7 | 0.1 | 10.3 | 28.2 | 166476 | 64.5 |
+| A | 155519 | 37.7 | 22.8 | 39.5 | -0.0 | 12.2 | 31.7 | 29332 | 58.4 |
+| B | 155519 | 39.5 | 22.8 | 37.7 | 0.0 | 12.5 | 31.8 | 29875 | 58.2 |
 
 Most paid-for skills:
 
 | Skill | Payments | Momentum paid |
 |---|---:|---:|
-| clay_golem | 21227 | 83010 |
-| dive | 14886 | 29772 |
-| hunters_shot | 12308 | 24616 |
-| animate_blades | 9511 | 18983 |
-| rampage | 9465 | 18930 |
-| lightning_bolt | 8742 | 17484 |
-| lift_a_skill | 6616 | 19848 |
-| shield_dome | 5222 | 26110 |
-| life_swap | 5159 | 25795 |
-| bolt_turret | 4498 | 8996 |
-| ice_lance | 3427 | 6854 |
-| coordinated_strike | 2871 | 7800 |
-| rain_dance | 2516 | 7548 |
-| firebomb | 2437 | 4874 |
-| rain_of_mending | 2277 | 4554 |
+| clay_golem | 2931 | 11582 |
+| hunters_shot | 2613 | 5226 |
+| animate_blades | 2108 | 4209 |
+| lift_a_skill | 1985 | 5955 |
+| dive | 1935 | 3870 |
+| rampage | 1574 | 3148 |
+| lightning_bolt | 1267 | 2534 |
+| net_trap | 1256 | 1256 |
+| rotation | 1140 | 2223 |
+| life_swap | 902 | 4510 |
+| shield_dome | 880 | 4400 |
+| bolt_turret | 763 | 1526 |
+| rain_of_mending | 581 | 1162 |
+| firebomb | 485 | 970 |
+| ice_lance | 481 | 962 |
 
 ## Imbalance flags: top and bottom 10% by win rate (31 each, creatures with at least 20 appearances)
 
 | | Creature | Appearances | Win rate % | Avg damage | Avg healing |
 |---|---|---:|---:|---:|---:|
-| top | muskox-bodyguard-buckler | 174 | 70.7 | 83.7 | 0.0 |
-| top | teapot-alchemist-volcano | 222 | 70.3 | 51.6 | 18.9 |
-| top | inkwell-trickster-quill | 235 | 69.8 | 14.2 | 0.0 |
-| top | toad-boulder | 197 | 69.5 | 91.1 | 0.0 |
-| top | chameleon-trickster-tongue | 241 | 69.3 | 22.1 | 0.0 |
-| top | ossuary-summoner-cube | 187 | 68.4 | 37.8 | 0.0 |
-| top | ankylosaur-guardian-club | 196 | 68.4 | 81.0 | 0.0 |
-| top | beetle-2 | 238 | 68.1 | 76.8 | 0.0 |
-| top | gaur-bodyguard-armor | 193 | 67.9 | 87.0 | 0.0 |
-| top | human-mage-fire | 211 | 67.8 | 48.8 | 0.3 |
-| top | orchidmantis-trickster-leaf | 228 | 66.7 | 11.1 | 7.4 |
-| top | chest-bodyguard-lock | 220 | 66.4 | 53.9 | 0.0 |
-| top | mannequin | 216 | 66.2 | 81.9 | 0.0 |
-| top | sledgehammer-colossus | 165 | 66.1 | 85.2 | 0.0 |
-| top | millstone-juggernaut | 180 | 65.6 | 59.1 | 0.0 |
-| top | horseshoecrab-sentinel-bronze | 213 | 64.8 | 62.1 | 0.0 |
-| top | behemoth-titan-iron | 176 | 64.8 | 59.8 | 0.0 |
-| top | fiddlercrab-trickster-coin | 215 | 64.7 | 11.8 | 0.0 |
-| top | loom-binder | 172 | 64.5 | 72.5 | 0.0 |
-| top | brazier-summoner-coal | 216 | 64.4 | 88.2 | 0.0 |
-| top | vise-enforcer | 209 | 64.1 | 57.7 | 2.6 |
-| top | pangolin-sorcerer-thunder | 215 | 63.3 | 79.6 | 0.0 |
-| top | human-knight-2 | 174 | 63.2 | 51.5 | 0.0 |
-| top | tortoise-sentinel-obsidian | 163 | 63.2 | 98.5 | 0.0 |
-| top | orrery-sorcerer-orbit | 197 | 62.4 | 47.8 | 0.0 |
-| top | human-rogue-shadow | 199 | 62.3 | 100.1 | 0.0 |
-| top | astrolabe-judge | 205 | 62.0 | 44.9 | 0.0 |
-| top | human-knight-shield | 195 | 61.5 | 51.4 | 0.0 |
-| top | mammoth-titan-tundra | 194 | 61.3 | 51.0 | 0.0 |
-| top | bellows-drake | 207 | 60.9 | 78.0 | 0.2 |
-| top | mole-engineer-gear | 291 | 60.8 | 54.1 | 37.2 |
-| bottom | goblet-paladin | 207 | 28.5 | 5.2 | 0.0 |
-| bottom | hydra-colossus-trident | 160 | 28.8 | 30.9 | 0.0 |
-| bottom | quokka-summoner-pebble | 274 | 29.6 | 34.8 | 0.0 |
-| bottom | bat-summoner-moon | 202 | 29.7 | 26.5 | 0.0 |
-| bottom | pocketwatch-warden | 206 | 31.1 | 6.7 | 0.0 |
-| bottom | kettle-alchemist-siege | 176 | 31.8 | 18.7 | 0.3 |
-| bottom | cobra | 210 | 32.4 | 18.0 | 5.8 |
-| bottom | furnace-titan | 157 | 33.1 | 13.7 | 0.0 |
-| bottom | shrew-summoner-totem | 247 | 33.2 | 21.4 | 0.0 |
-| bottom | maskrack-summoner-echo | 212 | 34.0 | 37.0 | 0.0 |
-| bottom | weaverbird-summoner-banner | 244 | 34.0 | 25.6 | 0.0 |
-| bottom | sugarglider-scout-sail | 219 | 34.2 | 8.4 | 0.0 |
-| bottom | dragon-sovereign-tempest | 185 | 35.1 | 8.7 | 0.0 |
-| bottom | human-guard-frost | 239 | 35.1 | 11.8 | 0.0 |
-| bottom | drum-summoner-war | 179 | 35.2 | 8.7 | 0.0 |
-| bottom | pika-summoner-horn | 258 | 35.3 | 26.8 | 0.0 |
-| bottom | crow-necromancer-skull | 215 | 35.3 | 11.7 | 0.0 |
-| bottom | carillon-summoner-chime | 195 | 35.4 | 7.1 | 0.0 |
-| bottom | crucible-summoner | 212 | 35.8 | 15.0 | 0.0 |
-| bottom | mole-engineer-hexhammer | 326 | 35.9 | 13.8 | 0.0 |
-| bottom | kinkajou-summoner-idol | 320 | 35.9 | 41.8 | 0.1 |
-| bottom | roadrunner-hunter-whistle | 241 | 36.1 | 28.4 | 0.0 |
-| bottom | human-priest-moon | 190 | 36.3 | 29.6 | 0.0 |
-| bottom | chinchilla-summoner-ocarina | 231 | 36.4 | 17.5 | 0.0 |
-| bottom | accordion-warlord | 202 | 36.6 | 6.1 | 0.0 |
-| bottom | roc-colossus-thunder | 199 | 36.7 | 33.5 | 0.0 |
-| bottom | serval-hunter-crossbow | 234 | 36.8 | 34.6 | 0.1 |
-| bottom | fossa-hunter-harpoon | 211 | 37.4 | 43.2 | 1.9 |
-| bottom | heron-hunter-harpoon | 192 | 37.5 | 15.1 | 0.0 |
-| bottom | cuttlefish-assassin-needle | 317 | 37.5 | 11.1 | 0.3 |
-| bottom | salamander-rogue | 285 | 37.5 | 19.7 | 0.3 |
+| top | snail-bard-brewer | 38 | 81.6 | 2.8 | 0.0 |
+| top | caterpillar-bard | 46 | 80.4 | 0.6 | 0.0 |
+| top | peacock-bard-feather | 31 | 77.4 | 0.6 | 0.0 |
+| top | frog-bard-dagger | 40 | 75.0 | 1.3 | 0.0 |
+| top | cricket-bard-fiddle | 36 | 75.0 | 2.6 | 0.0 |
+| top | muskox-bodyguard-buckler | 35 | 74.3 | 84.5 | 0.0 |
+| top | badger-summoner-drum | 35 | 74.3 | 44.1 | 0.0 |
+| top | conchphone-bard-horn | 37 | 73.0 | 0.6 | 0.0 |
+| top | seal-bard-bottle | 36 | 72.2 | 1.6 | 0.0 |
+| top | pangolin-sorcerer-thunder | 46 | 71.7 | 91.4 | 0.0 |
+| top | frigatebird-bard-throat | 45 | 71.1 | 0.1 | 0.0 |
+| top | walrus-bard-horn | 27 | 70.4 | 0.6 | 0.0 |
+| top | ibex-captain-standard | 30 | 70.0 | 2.7 | 0.0 |
+| top | binturong-bard-vine | 33 | 69.7 | 2.2 | 9.3 |
+| top | beetle-2 | 39 | 69.2 | 64.1 | 0.0 |
+| top | teapot-alchemist-volcano | 42 | 69.0 | 52.2 | 29.6 |
+| top | golem-colossus-furnace | 35 | 68.6 | 32.9 | 0.0 |
+| top | hornbill-bard-drum | 47 | 68.1 | 2.3 | 0.0 |
+| top | mannequin | 25 | 68.0 | 84.8 | 0.0 |
+| top | gong-hexer-dissonance | 34 | 67.6 | 0.5 | 2.7 |
+| top | human-bard | 43 | 67.4 | 3.7 | 0.0 |
+| top | book-summoner-fold | 30 | 66.7 | 42.0 | 0.0 |
+| top | human-bard-shield | 30 | 66.7 | 29.0 | 0.0 |
+| top | sledgehammer-colossus | 30 | 66.7 | 74.4 | 0.0 |
+| top | lyrebird-bard-plume | 50 | 66.0 | 0.4 | 0.0 |
+| top | cassowary-captain-horn | 41 | 65.9 | 5.3 | 0.0 |
+| top | pika-summoner-horn | 41 | 65.9 | 19.9 | 0.0 |
+| top | ram-bard-bellows | 32 | 65.6 | 0.7 | 0.0 |
+| top | ram-paladin-sun | 26 | 65.4 | 1.0 | 0.0 |
+| top | bassoon-hexer-requiem | 34 | 64.7 | 2.9 | 0.0 |
+| top | dragon-titan-glacier | 34 | 64.7 | 54.0 | 0.0 |
+| bottom | sundrum-hexer | 30 | 6.7 | 3.0 | 1.5 |
+| bottom | shrew-summoner-totem | 35 | 22.9 | 16.8 | 7.3 |
+| bottom | sistrum-summoner | 34 | 23.5 | 13.0 | 0.0 |
+| bottom | phoenix-titan-solar | 28 | 25.0 | 13.0 | 98.4 |
+| bottom | quokka-summoner-pebble | 45 | 26.7 | 35.8 | 0.0 |
+| bottom | owl-wizard | 33 | 27.3 | 22.2 | 0.0 |
+| bottom | caracal-hunter-spear | 28 | 28.6 | 40.3 | 4.2 |
+| bottom | bat-rogue-shadow | 42 | 28.6 | 15.7 | 0.0 |
+| bottom | human-duelist-rapier | 45 | 28.9 | 32.0 | 2.2 |
+| bottom | bat-summoner-moon | 38 | 28.9 | 19.7 | 0.0 |
+| bottom | stag-glade | 27 | 29.6 | 21.3 | 52.7 |
+| bottom | cicada-bard-chime | 47 | 29.8 | 5.0 | 97.8 |
+| bottom | gargoyle-sentinel-stone | 30 | 30.0 | 30.1 | 0.0 |
+| bottom | boar-magma | 30 | 30.0 | 15.5 | 0.0 |
+| bottom | behemoth-titan-iron | 30 | 30.0 | 43.4 | 0.0 |
+| bottom | beetle-knight-shield | 33 | 30.3 | 28.8 | 0.0 |
+| bottom | sugarglider-scout-sail | 26 | 30.8 | 6.1 | 0.0 |
+| bottom | dugong-guard-crystal | 42 | 31.0 | 25.0 | 0.0 |
+| bottom | dragon-sovereign-tempest | 29 | 31.0 | 7.8 | 0.0 |
+| bottom | harpy-eagle-scout-claws | 45 | 31.1 | 36.6 | 0.0 |
+| bottom | human-mage-stone | 38 | 31.6 | 29.3 | 0.0 |
+| bottom | human-wizard | 41 | 31.7 | 26.5 | 0.2 |
+| bottom | goat-shaman-totem | 44 | 31.8 | 14.4 | 44.0 |
+| bottom | mole-engineer-hexhammer | 56 | 32.1 | 14.6 | 0.0 |
+| bottom | panpipe-summoner-reed | 28 | 32.1 | 32.8 | 0.0 |
+| bottom | human-captain-rapier | 43 | 32.6 | 23.7 | 0.9 |
+| bottom | tarsier-hexer-mask | 60 | 33.3 | 25.6 | 1.9 |
+| bottom | ballast-bodyguard | 21 | 33.3 | 56.1 | 0.0 |
+| bottom | human-spellblade | 33 | 33.3 | 9.1 | 0.0 |
+| bottom | human-archer-frost | 51 | 33.3 | 39.5 | 0.0 |
+| bottom | human-guard-frost | 36 | 33.3 | 6.7 | 0.0 |
 
 ## Classes and keystones
 
 | Kind | Name | Appearances | Win rate % |
 |---|---|---:|---:|
-| class | pyromancer | 840 | 63.8 |
-| class | bulwark | 13067 | 55.1 |
-| class | chemist | 5152 | 54.6 |
-| class | saboteur | 3031 | 54.4 |
-| class | berserker | 7182 | 52.3 |
-| class | mender | 3040 | 51.3 |
-| class | engineer | 8597 | 51.1 |
-| class | tactician | 1148 | 50.8 |
-| class | ritualist | 2416 | 49.2 |
-| class | stormcaller | 2959 | 48.4 |
-| class | commander | 8100 | 47.7 |
-| class | champion | 8825 | 47.7 |
-| class | spiritwalker | 2303 | 47.3 |
-| class | cleric | 2751 | 47.0 |
-| class | keeper | 4201 | 47.0 |
-| class | tracker | 8188 | 46.7 |
-| class | summoner | 9763 | 46.5 |
-| class | necromancer | 1495 | 46.5 |
-| class | assassin | 4512 | 46.4 |
-| class | cryomancer | 1478 | 46.3 |
-| class | hexer | 1747 | 46.1 |
-| class | bard | 7300 | 45.9 |
-| class | transmuter | 1465 | 45.7 |
-| class | thief | 9339 | 45.4 |
-| class | enchanter | 4882 | 45.4 |
-| class | lifebinder | 1493 | 45.1 |
-| class | skyborne | 10912 | 45.0 |
-| class | totemist | 1502 | 40.7 |
-| keystone | initiative | 235 | 69.8 |
-| keystone | inferno | 211 | 67.8 |
-| keystone | wildfire | 438 | 67.4 |
-| keystone | chaos_agent | 924 | 63.2 |
-| keystone | last_stand | 2495 | 61.3 |
-| keystone | unbreakable | 4442 | 58.1 |
-| keystone | hold_position | 4346 | 57.9 |
-| keystone | potent_brew | 1656 | 56.0 |
-| keystone | lich_form | 591 | 55.8 |
-| keystone | triage | 864 | 55.7 |
-| keystone | big_finish | 1926 | 55.4 |
-| keystone | quickening | 3057 | 54.6 |
-| keystone | rapid_fire | 2931 | 54.0 |
-| keystone | tidecaller | 819 | 53.2 |
-| keystone | wrecker | 1101 | 52.9 |
-| keystone | rally | 2790 | 52.5 |
-| keystone | volatile | 1570 | 52.2 |
-| keystone | twin_wards | 1494 | 51.7 |
-| keystone | ashwalker | 191 | 51.3 |
-| keystone | soul_anchor | 847 | 51.1 |
-| keystone | rhythm | 2316 | 50.9 |
-| keystone | overcharge | 1009 | 50.6 |
-| keystone | sanctity | 1066 | 50.5 |
-| keystone | scent_of_blood | 2584 | 50.3 |
-| keystone | static_field | 1095 | 50.3 |
-| keystone | self_repair | 2768 | 50.2 |
-| keystone | golem_heart | 3270 | 49.6 |
-| keystone | regrowth | 1125 | 49.6 |
-| keystone | overflowing_care | 1051 | 49.6 |
-| keystone | hunt_down | 3111 | 49.2 |
-| keystone | shield_wall | 4279 | 49.2 |
-| keystone | cold_heart | 663 | 49.0 |
-| keystone | reinforced | 2898 | 48.9 |
-| keystone | unstoppable | 2324 | 48.7 |
-| keystone | brittle_glass | 391 | 48.3 |
-| keystone | twin_enchant | 1664 | 48.0 |
-| keystone | disarm_trap | 1006 | 48.0 |
-| keystone | spreading_curse | 517 | 48.0 |
-| keystone | mirror_form | 424 | 47.6 |
-| keystone | venom_blades | 1474 | 47.6 |
-| keystone | vanguard | 2551 | 47.5 |
-| keystone | martyr | 594 | 47.3 |
-| keystone | deluge | 933 | 47.3 |
-| keystone | glory | 2866 | 47.1 |
-| keystone | frostbinder | 664 | 47.0 |
-| keystone | puppeteer | 596 | 47.0 |
-| keystone | inspiring_presence | 450 | 46.9 |
-| keystone | unseen | 1759 | 46.7 |
-| keystone | relentless | 2762 | 46.5 |
-| keystone | sky_lord | 3744 | 46.5 |
-| keystone | duelist | 2848 | 46.5 |
-| keystone | reckless_swing | 2363 | 46.4 |
-| keystone | judgment | 849 | 46.4 |
-| keystone | thorned_ward | 1326 | 46.2 |
-| keystone | deep_chill | 390 | 46.2 |
-| keystone | witchs_patience | 679 | 46.1 |
-| keystone | master_thief | 3190 | 45.8 |
-| keystone | shadow_purse | 3019 | 45.7 |
-| keystone | grand_chorus | 2607 | 45.4 |
-| keystone | lift | 3507 | 45.0 |
-| keystone | all_in | 463 | 44.9 |
-| keystone | vanishing_kill | 1279 | 44.7 |
-| keystone | escape_artist | 3130 | 44.7 |
-| keystone | lifeblood | 442 | 44.6 |
-| keystone | lingering_malice | 551 | 44.5 |
-| keystone | lingering_magic | 1645 | 44.1 |
-| keystone | spell_ward | 1573 | 43.9 |
-| keystone | haunting | 860 | 43.8 |
-| keystone | deaths_bounty | 419 | 43.7 |
-| keystone | eagle_eye | 3661 | 43.6 |
-| keystone | sniff_the_air | 2842 | 43.6 |
-| keystone | eye_of_the_storm | 855 | 43.4 |
-| keystone | purifying_aura | 836 | 43.3 |
-| keystone | sturdy_totems | 393 | 43.3 |
-| keystone | drill | 2759 | 43.0 |
-| keystone | lasting_change | 650 | 42.9 |
-| keystone | phoenix | 457 | 42.9 |
-| keystone | steadfast_ward | 1381 | 42.5 |
-| keystone | brittle | 425 | 42.1 |
-| keystone | great_totem | 647 | 42.0 |
-| keystone | crescendo | 2377 | 41.6 |
-| keystone | bone_armor | 485 | 37.5 |
-| keystone | spirit_shield | 462 | 36.6 |
-| keystone | portal | 3436 | 36.4 |
+| class | bard | 1228 | 66.5 |
+| class | pyromancer | 143 | 55.2 |
+| class | berserker | 1285 | 54.8 |
+| class | bulwark | 2345 | 51.8 |
+| class | chemist | 935 | 50.6 |
+| class | engineer | 1523 | 50.5 |
+| class | saboteur | 513 | 50.1 |
+| class | summoner | 1664 | 49.4 |
+| class | necromancer | 241 | 49.0 |
+| class | commander | 1380 | 48.7 |
+| class | cryomancer | 301 | 47.2 |
+| class | spiritwalker | 439 | 46.5 |
+| class | tracker | 1452 | 46.0 |
+| class | assassin | 776 | 46.0 |
+| class | keeper | 718 | 45.8 |
+| class | transmuter | 256 | 45.7 |
+| class | cleric | 497 | 45.5 |
+| class | tactician | 192 | 45.3 |
+| class | skyborne | 1840 | 45.2 |
+| class | champion | 1607 | 45.0 |
+| class | ritualist | 374 | 44.9 |
+| class | thief | 1618 | 44.7 |
+| class | lifebinder | 247 | 42.9 |
+| class | stormcaller | 525 | 42.7 |
+| class | mender | 506 | 42.5 |
+| class | totemist | 275 | 41.1 |
+| class | enchanter | 801 | 40.1 |
+| class | hexer | 319 | 38.9 |
+| keystone | rhythm | 396 | 70.7 |
+| keystone | wildfire | 83 | 65.1 |
+| keystone | grand_chorus | 442 | 64.9 |
+| keystone | crescendo | 390 | 64.1 |
+| keystone | initiative | 42 | 61.9 |
+| keystone | last_stand | 439 | 60.8 |
+| keystone | chaos_agent | 171 | 57.3 |
+| keystone | inferno | 32 | 56.2 |
+| keystone | deaths_bounty | 66 | 56.1 |
+| keystone | quickening | 560 | 54.6 |
+| keystone | unbreakable | 761 | 54.3 |
+| keystone | rapid_fire | 492 | 54.3 |
+| keystone | hold_position | 777 | 53.0 |
+| keystone | reckless_swing | 431 | 52.4 |
+| keystone | big_finish | 358 | 52.2 |
+| keystone | triage | 152 | 52.0 |
+| keystone | potent_brew | 271 | 51.3 |
+| keystone | vanguard | 417 | 51.1 |
+| keystone | unstoppable | 415 | 50.8 |
+| keystone | thorned_ward | 234 | 50.4 |
+| keystone | lasting_change | 127 | 50.4 |
+| keystone | tidecaller | 120 | 50.0 |
+| keystone | hunt_down | 576 | 49.7 |
+| keystone | martyr | 101 | 49.5 |
+| keystone | reinforced | 524 | 49.2 |
+| keystone | rally | 497 | 49.1 |
+| keystone | deep_chill | 86 | 48.8 |
+| keystone | disarm_trap | 156 | 48.7 |
+| keystone | haunting | 151 | 48.3 |
+| keystone | shield_wall | 807 | 48.3 |
+| keystone | self_repair | 507 | 48.1 |
+| keystone | scent_of_blood | 460 | 48.0 |
+| keystone | volatile | 306 | 48.0 |
+| keystone | lift | 627 | 47.8 |
+| keystone | unseen | 283 | 47.7 |
+| keystone | golem_heart | 566 | 47.7 |
+| keystone | sniff_the_air | 526 | 47.0 |
+| keystone | lich_form | 98 | 46.9 |
+| keystone | sturdy_totems | 92 | 46.7 |
+| keystone | judgment | 161 | 46.6 |
+| keystone | cold_heart | 131 | 46.6 |
+| keystone | eye_of_the_storm | 142 | 46.5 |
+| keystone | puppeteer | 112 | 46.4 |
+| keystone | brittle | 84 | 46.4 |
+| keystone | drill | 466 | 46.1 |
+| keystone | sky_lord | 584 | 46.1 |
+| keystone | deluge | 148 | 45.9 |
+| keystone | portal | 538 | 45.7 |
+| keystone | vanishing_kill | 244 | 45.5 |
+| keystone | bone_armor | 77 | 45.5 |
+| keystone | sanctity | 194 | 45.4 |
+| keystone | master_thief | 550 | 45.3 |
+| keystone | soul_anchor | 176 | 44.9 |
+| keystone | wrecker | 186 | 44.6 |
+| keystone | venom_blades | 249 | 44.6 |
+| keystone | shadow_purse | 521 | 44.5 |
+| keystone | purifying_aura | 142 | 44.4 |
+| keystone | twin_wards | 255 | 44.3 |
+| keystone | escape_artist | 547 | 44.2 |
+| keystone | glory | 544 | 43.4 |
+| keystone | lifeblood | 60 | 43.3 |
+| keystone | static_field | 208 | 43.3 |
+| keystone | relentless | 466 | 42.9 |
+| keystone | lingering_magic | 268 | 42.9 |
+| keystone | steadfast_ward | 229 | 42.8 |
+| keystone | brittle_glass | 52 | 42.3 |
+| keystone | all_in | 71 | 42.3 |
+| keystone | eagle_eye | 629 | 41.7 |
+| keystone | duelist | 487 | 41.3 |
+| keystone | twin_enchant | 272 | 41.2 |
+| keystone | witchs_patience | 121 | 40.5 |
+| keystone | mirror_form | 77 | 40.3 |
+| keystone | overflowing_care | 172 | 40.1 |
+| keystone | spirit_shield | 70 | 40.0 |
+| keystone | inspiring_presence | 79 | 39.2 |
+| keystone | overcharge | 175 | 38.9 |
+| keystone | lingering_malice | 100 | 38.0 |
+| keystone | spreading_curse | 98 | 37.8 |
+| keystone | frostbinder | 106 | 37.7 |
+| keystone | great_totem | 113 | 37.2 |
+| keystone | regrowth | 182 | 36.8 |
+| keystone | spell_ward | 261 | 36.0 |
+| keystone | phoenix | 86 | 34.9 |
+| keystone | ashwalker | 28 | 25.0 |
 
 ## Skills: best and worst win rate of the units that have them (at least 50 units), and usage
 
 | | Skill | Units | Win rate % | Uses per unit |
 |---|---|---:|---:|---:|
-| best | buckler_bash | 174 | 70.7 | 1.0 |
-| best | volcano_spout | 222 | 70.3 | 0.4 |
-| best | ink_splash | 235 | 69.8 | 14.5 |
-| best | boulder_belly | 197 | 69.5 | 1.1 |
-| best | snag_and_vanish | 241 | 69.3 | 9.1 |
-| best | bone_rattle | 187 | 68.4 | 0.6 |
-| best | tail_club | 196 | 68.4 | 0.6 |
-| best | beetle_butt | 238 | 68.1 | 0.7 |
-| best | armor_stomp | 193 | 67.9 | 0.6 |
-| best | fire_spark | 211 | 67.8 | 5.9 |
-| best | petal_slash | 228 | 66.7 | 6.3 |
-| best | lid_snap | 220 | 66.4 | 1.1 |
-| best | mannequin_slam | 216 | 66.2 | 0.7 |
-| best | sledge_slam | 165 | 66.1 | 1.0 |
-| best | millstone_crush | 180 | 65.6 | 0.6 |
-| worst | holy_pour | 207 | 28.5 | 1.0 |
-| worst | trident_gust | 160 | 28.8 | 0.5 |
-| worst | happy_glow | 274 | 29.6 | 10.7 |
-| worst | screech | 202 | 29.7 | 0.7 |
-| worst | tick_tock | 206 | 31.1 | 1.9 |
-| worst | boiling_spout | 176 | 31.8 | 0.2 |
-| worst | venom_spray | 210 | 32.4 | 0.3 |
-| worst | furnace_blast | 157 | 33.1 | 0.1 |
-| worst | spirit_nip | 247 | 33.2 | 3.1 |
-| worst | echo_scream | 212 | 34.0 | 0.8 |
-| worst | banner_snap | 244 | 34.0 | 2.8 |
-| worst | gliding_swoop | 219 | 34.2 | 5.2 |
-| worst | tempest_breath | 185 | 35.1 | 1.7 |
-| worst | ice_lance_thrust | 239 | 35.1 | 4.3 |
-| worst | war_throb | 179 | 35.2 | 0.2 |
+| best | song_of_haste | 1228 | 66.5 | 1.7 |
+| best | war_drums | 1228 | 66.5 | 1.4 |
+| best | lullaby | 1228 | 66.5 | 10.5 |
+| best | plume_fan | 50 | 66.0 | 0.1 |
+| best | venom_bite | 52 | 63.5 | 3.1 |
+| best | rune_spray | 67 | 62.7 | 0.4 |
+| best | void_shard | 50 | 60.0 | 7.2 |
+| best | balm_flask | 56 | 57.1 | 9.4 |
+| best | axe_hook | 51 | 56.9 | 2.5 |
+| best | windup_punch | 54 | 55.6 | 0.4 |
+| best | fireball | 143 | 55.2 | 2.1 |
+| best | kindle | 143 | 55.2 | 1.0 |
+| best | row_of_fire | 143 | 55.2 | 0.0 |
+| best | rampage | 1285 | 54.8 | 1.2 |
+| best | sweeping_kick | 1285 | 54.8 | 0.0 |
+| worst | hexhammer | 56 | 32.1 | 4.0 |
+| worst | skull_hex | 60 | 33.3 | 12.7 |
+| worst | frost_arrow | 51 | 33.3 | 7.0 |
+| worst | stone_fist | 52 | 34.6 | 3.2 |
+| worst | idol_glow | 54 | 35.2 | 9.5 |
+| worst | sickle_slash | 50 | 36.0 | 0.7 |
+| worst | ancestor_call | 53 | 37.7 | 1.3 |
+| worst | frost_missile | 52 | 38.5 | 6.4 |
+| worst | withering_curse | 319 | 38.9 | 1.0 |
+| worst | curse_of_weight | 319 | 38.9 | 1.3 |
+| worst | curse_of_betrayal | 319 | 38.9 | 0.2 |
+| worst | eclipse | 51 | 39.2 | 0.2 |
+| worst | piercing_enchant | 801 | 40.1 | 0.4 |
+| worst | phase_weapon | 801 | 40.1 | 3.1 |
+| worst | echo_enchant | 801 | 40.1 | 0.3 |
 
-Active skills never used in any battle (9): petrify, curse_of_betrayal, row_of_fire, melt_away, cut_the_strings, desecrate, spirit_link_totem, totem_of_return, rite_of_mists
+Active skills never used in any battle (5): cut_the_strings, desecrate, spirit_link_totem, totem_of_return, rite_of_mists
+
+## What the AI does with each skill (turns where it was legal, searched further, chosen)
+
+Skills with at least 200 legal turns. Searched = the search looked at one of its uses further; chosen = it was played.
+
+| | Skill | Legal turns | Searched % of legal | Chosen % of legal | Chosen % of searched |
+|---|---|---:|---:|---:|---:|
+| rarely chosen | rite_of_mists | 1935 | 0.0 | 0.0 |  |
+| rarely chosen | spirit_link_totem | 1317 | 1.6 | 0.0 | 0.0 |
+| rarely chosen | totem_of_return | 1317 | 0.1 | 0.0 | 0.0 |
+| rarely chosen | desecrate | 680 | 0.9 | 0.0 | 0.0 |
+| rarely chosen | rune_golem | 7676 | 32.9 | 0.0 | 0.1 |
+| rarely chosen | read_tracks | 19896 | 23.6 | 0.1 | 0.4 |
+| rarely chosen | tempest | 2289 | 2.8 | 0.1 | 4.6 |
+| rarely chosen | row_of_fire | 680 | 3.2 | 0.1 | 4.5 |
+| rarely chosen | burnout_heal | 1251 | 2.1 | 0.2 | 7.7 |
+| rarely chosen | press_the_advantage | 1201 | 8.7 | 0.2 | 1.9 |
+| rarely chosen | chain_lightning | 2289 | 11.1 | 0.6 | 5.1 |
+| rarely chosen | swap_turns | 1201 | 6.5 | 0.7 | 10.3 |
+| rarely chosen | melt_away | 7835 | 3.8 | 0.7 | 18.3 |
+| rarely chosen | life_for_life | 781 | 11.3 | 0.8 | 6.8 |
+| rarely chosen | banner_snap | 275 | 7.3 | 1.1 | 15.0 |
+| often chosen | shadow_touch | 741 | 98.9 | 91.2 | 92.2 |
+| often chosen | mirror_ray | 531 | 99.2 | 88.1 | 88.8 |
+| often chosen | antler_toss | 201 | 98.5 | 86.6 | 87.9 |
+| often chosen | hat_trick | 497 | 98.0 | 86.3 | 88.1 |
+| often chosen | orbit_missile | 461 | 97.0 | 86.1 | 88.8 |
+| often chosen | spore_ray | 734 | 99.7 | 84.6 | 84.8 |
+| often chosen | spear_throw | 310 | 98.1 | 83.9 | 85.5 |
+| often chosen | root_grasp | 327 | 99.4 | 83.8 | 84.3 |
+| often chosen | skull_hex | 918 | 95.8 | 82.8 | 86.5 |
+| often chosen | thorn_volley | 331 | 100.0 | 81.6 | 81.6 |
+| often chosen | turbine_blade | 200 | 95.0 | 81.5 | 85.8 |
+| often chosen | ranger_arrow | 409 | 99.5 | 80.4 | 80.8 |
+| often chosen | owl_spark | 592 | 92.6 | 79.9 | 86.3 |
+| often chosen | wax_drip | 425 | 95.3 | 79.1 | 83.0 |
+| often chosen | ring_spin | 352 | 97.2 | 78.4 | 80.7 |
+
+The full list is in `skills.csv`.
 
 ## Win rate by starting row (all creatures)
 
 | Row | Appearances | Win rate % |
 |---|---:|---:|
-| Front | 30143 | 50.4 |
-| Middle | 16229 | 44.7 |
-| Rear | 22472 | 48.9 |
+| Front | 6775 | 47.9 |
+| Middle | 965 | 49.7 |
+| Rear | 4260 | 48.8 |
 
 ## Teammate pairs (at least 25 shared battles)
 
