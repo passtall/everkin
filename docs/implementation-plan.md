@@ -133,6 +133,13 @@ Each task names the doc sections it implements. Read those sections before codin
   - Tests: the two new §20.5 rows (Momentum 3 skill at +1; costed skill at 0) and the existing Momentum tests updated.
   - Skill tooltips (ui_spec Battle screen, Skill tooltip): every skill on the action bar and every skill and keystone row on a card back shows a tooltip on hover (long-press on touch) with name, class, Delay, Momentum, delivery and the effect text with the creature's current numbers. Check that every one of the 84 actives, 84 keystones, 319 unique attacks, Move and Skip Turn has tooltip text and that the numbers match the creature's Power.
 
+- **M5.8** AI and harness fixes, then a second harness run (game_system §2.5).
+  - AI scoring: one point of Momentum is worth 0.5% of a team's HP (`momentumPoint` 50 for every level in `ai_settings.json`); a status counts only while it can still do something, and renewing a status already on the target scores nothing (§2.5 Scoring).
+  - Harness formation: the fixed placement rule by unique-attack delivery (melee Front, projectile Rear, other Middle) replaces random formations.
+  - Harness log and report: the Momentum meter after every unit turn and every payment; the report's Momentum section per side.
+  - Content: Searing Light hits for 4–5 (skills.md Mender); Vanish costs 1 Momentum (skills.md Assassin). Regenerate the content JSON and update the tests and tooltips that use these numbers.
+  - Then rerun 10,000 harness battles and put the summaries in `analysis/` for the owner.
+
 ### M6 Local two-player
 
 - **M6.1** Hot-seat battles with the board flipped so the acting player's side is on the left (game_system §2.4 and the 2P rules).
