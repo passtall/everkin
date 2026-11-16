@@ -148,6 +148,10 @@ Each task names the doc sections it implements. Read those sections before codin
   - Tests for each scoring part and the candidate rule. Tune the starting weights so a battle stays near 10 s.
   - Then run 10,000 harness battles and put the summaries in `analysis/` for the owner. From that run, propose the Cost formula (game_system §5.1) to the owner and recalculate Cost once approved (M5.6 step 8).
 
+- **M5.10** Momentum costs 0–3 (skills.md, class_system §1): every class has at least one free and one costed active.
+  - Content: regenerate the content JSON from skills.md; update the tests, tooltips and AI settings that use the old costs.
+  - Then the full 10,000-battle harness run and the Cost formula proposal that M5.9 left open.
+
 ### M6 Local two-player
 
 - **M6.1** Hot-seat battles with the board flipped so the acting player's side is on the left (game_system §2.4 and the 2P rules).

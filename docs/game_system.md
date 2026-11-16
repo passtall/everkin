@@ -670,6 +670,7 @@ The order of work is in production.md §3 and implementation-plan.md.
 | Party size | Prototype check of six-versus-six readability; a smaller standard team only if it proves crowded. |
 | Cost | The power-score formula for the current classes, decided when AI-versus-AI testing starts; then Cost and the budget of 35 are recalculated and tuned. |
 | Balance | Every number in skills.md and creature-classes.md, tuned by AI-versus-AI testing. |
+| Cleric | The class plays dull: rework its actives and keystones to make it more interesting. |
 | Encounters | Tuning the rosters, boss stats and AI levels of campaign.md in testing. |
 | Content | Each chapter's conflict and later full campaign design. |
 | Statuses | New statuses only when a skill needs one. |

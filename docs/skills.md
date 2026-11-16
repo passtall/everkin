@@ -18,8 +18,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Vanish | A | 4 / 1 | — | The Assassin gains stealth and loses every harmful status. |
-| Feint | A | 3 / 0 | Melee | Only from stealth: a unit is Confused for 10. The Assassin stays stealthed. |
+| Vanish | A | 4 / 0 | — | The Assassin gains stealth and loses every harmful status. |
+| Feint | A | 3 / 1 | Melee | Only from stealth: a unit is Confused for 10. The Assassin stays stealthed. |
 | Backstab | A | 5 / 2 | Melee | Only from stealth: hit for {8–10} and the target Bleeds. Breaks stealth. |
 | Unseen | K | | | The Assassin starts every battle stealthed. |
 | Vanishing Kill | K | | | When the Assassin KOs a unit, it gains stealth again. |
@@ -44,8 +44,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Leap to Defend | A | 3 / 0 | Direct | Own side only. The Bulwark moves in front of an ally (any gap) and takes the next attack aimed at that ally. |
-| Rescue | A | 5 / 2 | Direct | Own side only. Swap places with an ally below half HP. |
-| Shield Bash | A | 4 / 0 | Melee | Hit for {6–7} and push the target one row back (bumps apply). |
+| Rescue | A | 5 / 0 | Direct | Own side only. Swap places with an ally below half HP. |
+| Shield Bash | A | 4 / 1 | Melee | Hit for {6–7} and push the target one row back (bumps apply). |
 | Shield Wall | K | | | While 2 or more of your units with Shield Wall stand side by side in one row, attacks on units behind them are always intercepted by them. |
 | Hold Position | K | | | Enemy effects cannot push, pull or swap the Bulwark. |
 | Unbreakable | K | | | The first time the Bulwark would be KO, it keeps 1 HP instead. |
@@ -58,8 +58,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Ward | A | 3 / 0 | Direct | A unit gains a Ward of {4} until the Keeper's next turn. |
-| Shield Dome | A | 7 / 5 | — | Every ally gains a Ward of {2} until the Keeper's next turn. |
-| Ward Burst | A | 4 / 2 | Direct | A unit's Ward breaks and deals its remaining value to every enemy in melee reach. Needs the Keeper in its Front row; the warded unit may stand anywhere. |
+| Shield Dome | A | 7 / 3 | — | Every ally gains a Ward of {2} until the Keeper's next turn. |
+| Ward Burst | A | 4 / 1 | Direct | A unit's Ward breaks and deals its remaining value to every enemy in melee reach. Needs the Keeper in its Front row; the warded unit may stand anywhere. |
 | Thorned Ward | K | | | When an attack hits a Ward from the Keeper, the attacker takes {3}. |
 | Twin Wards | K | | | Ward also gives the same Ward to one ally next to the target. |
 | Steadfast Ward | K | | | While a unit has a Ward from the Keeper, it cannot be Stunned or moved by enemies. |
@@ -70,7 +70,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Mend | A | 4 / 0 | Direct | Heal a unit for {8–10}. |
+| Mend | A | 4 / 1 | Direct | Heal a unit for {8–10}. |
 | Rain of Mending | A | 6 / 2 | Direct | Pick a row: every unit in it heals {3–4}, and every unit in the row behind it heals half that. |
 | Searing Light | A | 4 / 0 | Direct | Hit for {4–5}. Undead take double. |
 | Overflowing Care | K | | | Healing beyond the target's max HP goes to its adjacent ally with the lowest HP. |
@@ -82,7 +82,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Absolve | A | 4 / 0 | Direct | Remove every harmful status from a unit; its next turn is pushed back 2. |
-| Dispel | A | 3 / 0 | Direct | Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit. |
+| Dispel | A | 3 / 1 | Direct | Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit. |
 | Turn Back | A | 3 / 0 | Direct | Move one harmful status from a unit onto the unit that applied it. |
 | Sanctity | K | | | The Cleric cannot get harmful statuses. |
 | Purifying Aura | K | | | Harmful statuses on allies next to the Cleric last half as long. |
@@ -95,9 +95,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Burnout Heal | A | 7 / 6 | — | The Lifebinder and its adjacent allies heal {6–8}; then the Lifebinder is KO (game_system §10.4). |
-| Life for Life | A | 6 / 3 | Direct | The Lifebinder gives up half its current HP to revive a KO unit with that much HP. |
-| Bound Resurrect | A | 8 / 4 | Direct | Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Lifebinder share one HP pool (game_system §10.4). |
+| Burnout Heal | A | 7 / 1 | — | The Lifebinder and its adjacent allies heal {6–8}; then the Lifebinder is KO (game_system §10.4). |
+| Life for Life | A | 6 / 0 | Direct | The Lifebinder gives up half its current HP to revive a KO unit with that much HP. |
+| Bound Resurrect | A | 8 / 3 | Direct | Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Lifebinder share one HP pool (game_system §10.4). |
 | Martyr | K | | | When the Lifebinder is KO, every ally heals {6–8}. |
 | Phoenix | K | | | Life for Life costs only a quarter of the Lifebinder's current HP. |
 | Lifeblood | K | | | When an ally is KO, the Lifebinder heals {5}. |
@@ -108,9 +108,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Echo Enchant | A | 6 / 3 | Direct | A unit's next skill happens twice: the second use is free (no Delay, no Momentum) and hits the same target. |
+| Echo Enchant | A | 6 / 1 | Direct | A unit's next skill happens twice: the second use is free (no Delay, no Momentum) and hits the same target. |
 | Phase Weapon | A | 3 / 0 | Direct | A unit's next attack cannot be intercepted. |
-| Piercing Enchant | A | 4 / 0 | Direct | A unit's next attack also hits the unit behind its target. |
+| Piercing Enchant | A | 4 / 1 | Direct | A unit's next attack also hits the unit behind its target. |
 | Twin Enchant | K | | | Each enchantment also goes on one ally next to the target. |
 | Lingering Magic | K | | | Each enchantment from the Enchanter lasts for two uses instead of one. |
 | Spell Ward | K | | | A unit carrying an enchantment from the Enchanter cannot be Silenced or Stunned. |
@@ -122,8 +122,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Transmute | A | 4 / 0 | Direct | A unit's Power and Speed swap values for 20. |
-| Glass Body | A | 4 / 0 | Direct | The next hit on a unit deals 50% more damage. It has no time limit: it waits for that hit. |
-| Petrify | A | 7 / 4 | Direct | A unit turns to stone: it is Stunned for 10. |
+| Glass Body | A | 4 / 1 | Direct | The next hit on a unit deals 50% more damage. It has no time limit: it waits for that hit. |
+| Petrify | A | 7 / 3 | Direct | A unit turns to stone: it is Stunned for 10. |
 | Lasting Change | K | | | Transmute lasts until the end of battle, but only one unit can be transmuted by the Transmuter at a time. |
 | Brittle Glass | K | | | Glass Body makes the next hit deal double instead of 50% more. |
 | Mirror Form | K | | | Transmute can instead make two units trade their Power and Speed: each takes the other's Power and the other's Speed. |
@@ -132,7 +132,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Curse of Betrayal | A | 6 / 3 | Direct | For 20, healing the unit would receive goes to the Hexer's unit with the lowest HP instead. |
+| Curse of Betrayal | A | 6 / 1 | Direct | For 20, healing the unit would receive goes to the Hexer's unit with the lowest HP instead. |
 | Curse of Weight | A | 4 / 0 | Direct | For 20, a unit cannot Move or become airborne. |
 | Withering Curse | A | 4 / 0 | Direct | A unit takes {3} every 10 for 40. |
 | Witch's Patience | K | | | The Hexer's curses last until removed, but it can keep only one curse at a time. |
@@ -161,8 +161,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Lightning Bolt | A | 5 / 2 | Direct | Hit for {9–10}. Explodes poison gas the target stands in. |
-| Chain Lightning | A | 5 / 3 | Direct | Hit a unit for {1–2}, then jump to an adjacent unit and do the same, three more times. Each hit explodes poison gas the unit stands in. |
-| Tempest | A | 8 / 5 | Direct | Push every unit in one row one row back (bumps apply). |
+| Chain Lightning | A | 5 / 0 | Direct | Hit a unit for {1–2}, then jump to an adjacent unit and do the same, three more times. Each hit explodes poison gas the unit stands in. |
+| Tempest | A | 8 / 2 | Direct | Push every unit in one row one row back (bumps apply). |
 | Overcharge | K | | | The Stormcaller's Chain Lightning jumps two more times (six units in all). |
 | Static Field | K | | | A unit that hits the Stormcaller in melee is Stunned for 5. |
 | Eye of the Storm | K | | | The Stormcaller cannot be pushed, pulled or Stunned. |
@@ -174,9 +174,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Ice Lance | A | 4 / 2 | Projectile | Hit for {7–8}; a Frozen target takes double. |
-| Freeze | A | 7 / 3 | Direct | A unit is Frozen. |
-| Frost Nova | A | 6 / 3 | Direct | Every enemy in melee reach takes {1–2} and is Frozen. |
+| Ice Lance | A | 4 / 0 | Projectile | Hit for {7–8}; a Frozen target takes double. |
+| Freeze | A | 7 / 1 | Direct | A unit is Frozen. |
+| Frost Nova | A | 6 / 2 | Direct | Every enemy in melee reach takes {1–2} and is Frozen. |
 | Cold Heart | K | | | Frozen from the Cryomancer lasts 1 more turn, but it can keep only one unit Frozen at a time. |
 | Brittle | K | | | Frozen enemies take 50% more damage. |
 | Deep Chill | K | | | A unit the Cryomancer Freezes also gets ice on its spot for 20. |
@@ -188,8 +188,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Rampage | A | 5 / 2 | Melee | Hit for {10–12}. The Berserker takes {3}. |
-| Sweeping Kick | A | 5 / 2 | Melee | Push every enemy in melee reach one row back (bumps apply). |
+| Rampage | A | 5 / 1 | Melee | Hit for {10–12}. The Berserker takes {3}. |
+| Sweeping Kick | A | 5 / 1 | Melee | Push every enemy in melee reach one row back (bumps apply). |
 | Battle Roar | A | 4 / 0 | Direct | Every enemy in melee reach has its next turn pushed back 5. |
 | Reckless Swing | K | | | The Berserker's hits deal double damage, but it takes half of the damage it deals (rounded down). |
 | Last Stand | K | | | The Berserker cannot Move or be moved, but deals 50% more damage. |
@@ -206,8 +206,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
 | Challenge | A | 2 / 0 | Direct | Mark a unit. A Champion has one Mark from Challenge at a time; marking another moves it. |
-| Single Combat | A | 6 / 3 | Direct | For 10, the Champion and one Marked unit can be targeted only by each other. |
-| Execution | A | 7 / 4 | Melee | A Marked unit below 25% HP is KO. |
+| Single Combat | A | 6 / 2 | Direct | For 10, the Champion and one Marked unit can be targeted only by each other. |
+| Execution | A | 7 / 1 | Melee | A Marked unit below 25% HP is KO. |
 | Hunt Down | K | | | When a Marked enemy moves or is moved, the Champion Stuns it for 5. |
 | Duelist | K | | | The Champion deals 50% more damage to the unit it has Marked. |
 | Glory | K | | | When the Champion KOs its Marked unit, it heals a quarter of its max HP. |
@@ -220,9 +220,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Swap Turns | A | 5 / 2 | Direct | Own side only. Two allies swap their places on the timeline. |
-| Press the Advantage | A | 4 / 2 | Direct | A unit's next skill costs no Momentum. |
-| Coordinated Strike | A | 5 / 3 | Direct | Pick an enemy. Two of your allies make their unique attack on it right now. |
+| Swap Turns | A | 5 / 0 | Direct | Own side only. Two allies swap their places on the timeline. |
+| Press the Advantage | A | 4 / 1 | Direct | A unit's next skill costs no Momentum. |
+| Coordinated Strike | A | 5 / 2 | Direct | Pick an enemy. Two of your allies make their unique attack on it right now. |
 | All In | K | | | The Tactician's Momentum costs are halved (rounded up), but Momentum gained from its hits is 0. |
 | Inspiring Presence | K | | | When an ally next to the Tactician KOs an enemy with its own skill, Momentum moves 1 more toward your side. |
 | Initiative | K | | | At battle start, every ally's first turn is pulled forward 5. |
@@ -251,9 +251,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Song of Haste | A | 4 / 0 | — | Song. Allies in the Bard's row have +1 Speed for 20. |
+| Song of Haste | A | 4 / 1 | — | Song. Allies in the Bard's row have +1 Speed for 20. |
 | War Drums | A | 4 / 0 | — | Song. For 20, the Bard and its adjacent allies cannot be Stunned or Frozen. |
-| Lullaby | A | 4 / 0 | Direct | Song. Every enemy in one row has its next turn pushed back 5. |
+| Lullaby | A | 4 / 2 | Direct | Song. Every enemy in one row has its next turn pushed back 5. |
 | Grand Chorus | K | | | The Bard's songs reach every ally, but only one of its songs can be active at a time. |
 | Rhythm | K | | | When an ally uses the same skill twice in a row, the second use has 1 less Delay. |
 | Crescendo | K | | | The Bard's songs last 10 longer. |
@@ -265,9 +265,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Melt Away | A | 4 / 2 | — | The Thief gains stealth. |
-| Lift a Skill | A | 6 / 3 | Direct | Use a copy of the last active skill the target used, with the Thief's own Power. |
-| Snatch | A | 4 / 0 | Melee | Hit for {5–6} and steal one helpful status from the target. |
+| Melt Away | A | 4 / 0 | — | The Thief gains stealth. |
+| Lift a Skill | A | 6 / 1 | Direct | Use a copy of the last active skill the target used, with the Thief's own Power. |
+| Snatch | A | 4 / 1 | Melee | Hit for {5–6} and steal one helpful status from the target. |
 | Escape Artist | K | | | The first time the Thief drops below half HP, it gains stealth. |
 | Master Thief | K | | | Snatch and the Thief's own attack steal every helpful status from the target, not just one. |
 | Shadow Purse | K | | | Each time the Thief steals a status, Momentum moves 1 toward your side. |
@@ -279,8 +279,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Flash Powder | A | 3 / 0 | Direct | Every enemy in melee reach is Blind for 20. |
-| Cut the Strings | A | 5 / 2 | Direct | Pick an enemy that owns auto events: its next auto event is removed from the timeline. |
+| Flash Powder | A | 3 / 1 | Direct | Every enemy in melee reach is Blind for 20. |
+| Cut the Strings | A | 5 / 0 | Direct | Pick an enemy that owns auto events: its next auto event is removed from the timeline. |
 | Jam | A | 3 / 0 | Projectile | A unit's next skill has +5 Delay. |
 | Wrecker | K | | | The Saboteur deals double damage to constructs, totems, traps and barricades. |
 | Chaos Agent | K | | | Every skill of the Saboteur that hits an enemy also pushes its next turn back 2. |
@@ -294,7 +294,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Bolt Turret | A | 5 / 2 | — | Place a turret (HP 8). Each time the Engineer takes a turn, the turret hits the nearest enemy for {2–3}. |
+| Bolt Turret | A | 5 / 1 | — | Place a turret (HP 8). Each time the Engineer takes a turn, the turret hits the nearest enemy for {2–3}. |
 | Barricade | A | 4 / 0 | — | Place a barricade (HP 10). |
 | Net Trap | A | 5 / 1 | — | Place a trap (HP 4). A unit that hits it has +3 Delay on its next skill. |
 | Reinforced | K | | | The Engineer's turrets, barricades and traps have double HP. |
@@ -321,9 +321,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Raise Undead | A | 8 / 4 | Direct | Turn a KO'd body of either side into an undead of yours (HP 12), and raise one more random body. |
+| Raise Undead | A | 8 / 2 | Direct | Turn a KO'd body of either side into an undead of yours (HP 12), and raise one more random body. |
 | Corpse Explosion | A | 5 / 2 | Direct | A body or an undead of the Necromancer bursts into poison gas on its spot and the spots next to it. |
-| Desecrate | A | 5 / 2 | Direct | A KO'd body cannot be revived for 40. |
+| Desecrate | A | 5 / 0 | Direct | A KO'd body cannot be revived for 40. |
 | Lich Form | K | | | Healing hurts the Necromancer, but its undead have +2 Power. |
 | Bone Armor | K | | | For each undead it has, the Necromancer has a Ward of {2} that renews every turn. |
 | Death's Bounty | K | | | When a unit is KO next to the Necromancer, the Necromancer heals {5}. |
@@ -337,9 +337,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Clay Golem | A | 8 / 4 | — | Summon a golem (HP 25, Speed 3) that makes melee hits for {5–6}. |
-| Rune Golem | A | 8 / 4 | — | Summon a rune golem (HP 18, Speed 4) that makes melee hits for {3–4}; each hit Silences the target for 10. |
-| Animate Blades | A | 5 / 2 | — | Summon two sets of flying blades (HP 6, Speed 7) that make projectile hits for {2–3}. They last 30. |
+| Clay Golem | A | 8 / 2 | — | Summon a golem (HP 25, Speed 3) that makes melee hits for {5–6}. |
+| Rune Golem | A | 8 / 2 | — | Summon a rune golem (HP 18, Speed 4) that makes melee hits for {3–4}; each hit Silences the target for 10. |
+| Animate Blades | A | 5 / 0 | — | Summon two sets of flying blades (HP 6, Speed 7) that make projectile hits for {2–3}. They last 30. |
 | Golem Heart | K | | | The Summoner keeps only one golem (a new one replaces the old), but its golems have double HP (Clay 50, Rune 36). |
 | Portal | K | | | The Summoner's summons appear on a random free spot of your side instead of being placed. |
 | Quickening | K | | | The Summoner's summons take their first turn at once. |
@@ -350,9 +350,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Healing Totem | A | 5 / 2 | — | Place a totem (HP 8): every 10, allies in its row heal {2}. |
-| Spirit Link Totem | A | 6 / 3 | — | Place a totem (HP 10): damage to allies in its row is split evenly between them. |
-| Totem of Return | A | 7 / 3 | — | Place a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks. |
+| Healing Totem | A | 5 / 0 | — | Place a totem (HP 8): every 10, allies in its row heal {2}. |
+| Spirit Link Totem | A | 6 / 1 | — | Place a totem (HP 10): damage to allies in its row is split evenly between them. |
+| Totem of Return | A | 7 / 2 | — | Place a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks. |
 | Great Totem | K | | | The Totemist keeps only one totem (a new one replaces the old), but it has triple HP and also affects the rows next to it. |
 | Sturdy Totems | K | | | Totems of the Totemist have double HP. |
 | Spirit Shield | K | | | When a totem of the Totemist breaks, every ally in its row gains a Ward of {4}. |
@@ -366,9 +366,9 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Rain Dance | A | 6 / 3 | Direct | Water on every spot of one row for 40; allies standing in it heal {4}. |
-| Hoarfrost | A | 5 / 2 | Direct | Ice on a unit's spot for 20. |
-| Rite of Mists | A | 6 / 3 | — | For 20, projectile hits from units standing on water deal half damage (rounded down, minimum 1). |
+| Rain Dance | A | 6 / 2 | Direct | Water on every spot of one row for 40; allies standing in it heal {4}. |
+| Hoarfrost | A | 5 / 0 | Direct | Ice on a unit's spot for 20. |
+| Rite of Mists | A | 6 / 1 | — | For 20, projectile hits from units standing on water deal half damage (rounded down, minimum 1). |
 | Deluge | K | | | Water from the Ritualist lasts until the end of battle. |
 | Tidecaller | K | | | Allies standing on water have 1 less Delay on every skill. |
 | Frostbinder | K | | | A unit standing on the Ritualist's ice is Immobilized. |
@@ -379,8 +379,8 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Puppet Soul | A | 6 / 3 | Direct | Possession. A unit hits a unit next to it at once with its unique attack. |
-| Life Swap | A | 8 / 5 | Direct | Soul swap. Two units swap their current HP (each capped at its max). |
+| Puppet Soul | A | 6 / 1 | Direct | Possession. A unit hits a unit next to it at once with its unique attack. |
+| Life Swap | A | 8 / 3 | Direct | Soul swap. Two units swap their current HP (each capped at its max). |
 | Forced Step | A | 4 / 0 | Direct | Possession. A unit moves to a free spot of your choice on its own side. |
 | Soul Anchor | K | | | Enemies cannot possess, move or soul-swap the Spiritwalker. |
 | Haunting | K | | | When the Spiritwalker is KO, the unit that KO'd it is Confused for 20. |
