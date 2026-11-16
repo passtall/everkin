@@ -126,6 +126,12 @@ Each task names the doc sections it implements. Read those sections before codin
   7. Saving: bump the save version and reset older profiles.
   8. Then rerun the AI-versus-AI harness, decide the Cost formula (game_system §5.1) and recalculate Cost.
 
+- **M5.7** Momentum costs (game_system §6.7): a skill with a cost only needs its side to be ahead by at least 1, whatever the cost; paying moves the meter the full cost away from the side and may pass 0 into the enemy's favour (clamped at ±10).
+  - Core: change `CanPay` / `Pay` (`Momentum`) and every caller that checks a lead (Press the Advantage needs no lead; All In halves the cost, the side must still be ahead).
+  - UI: the greyed reason for a costed skill says the side is not ahead on Momentum (ui_spec action bar); the ghost marker on the meter may land past 0.
+  - AI: the move generator offers costed skills at any lead of 1 or more; the evaluator already scores the meter.
+  - Tests: the two new §20.5 rows (Momentum 3 skill at +1; costed skill at 0) and the existing Momentum tests updated.
+
 ### M6 Local two-player
 
 - **M6.1** Hot-seat battles with the board flipped so the acting player's side is on the left (game_system §2.4 and the 2P rules).
