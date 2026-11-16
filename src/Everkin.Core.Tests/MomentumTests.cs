@@ -48,7 +48,40 @@ public class MomentumTests
     }
 
     [Fact]
-    public void ACostNeedsALeadOfThatSizeAndMovesTheMeterTowardNeutral()
+    public void ACostedSkillAtALeadOfOnePassesZeroIntoTheEnemysFavour()
+    {
+        // 20.5: Momentum 3 skill with the side at +1: allowed, the meter goes to -2 (the enemy leads by 2).
+        var m = new Momentum();
+        m.Shift(Side.A, 1);
+        Assert.True(m.CanPay(Side.A, 3));
+        m.Pay(Side.A, 3);
+        Assert.Equal(-2, m.Value);
+        Assert.Equal(2, m.AdvantageOf(Side.B));
+    }
+
+    [Fact]
+    public void ACostedSkillAtZeroIsNotAvailable()
+    {
+        // 20.5: neutral meter: a skill with any cost needs the side to be ahead.
+        var m = new Momentum();
+        Assert.False(m.CanPay(Side.A, 1));
+        Assert.False(m.CanPay(Side.B, 5));
+        Assert.True(m.CanPay(Side.A, 0));
+    }
+
+    [Fact]
+    public void PayingClampsAtTheLimit()
+    {
+        var m = new Momentum();
+        m.Shift(Side.A, 1);
+        m.Pay(Side.A, 10);
+        Assert.Equal(-9, m.Value);
+        m.Shift(Side.B, 10);
+        Assert.Equal(-10, m.Value);
+    }
+
+    [Fact]
+    public void ACostNeedsALeadAndMovesTheMeterTowardNeutral()
     {
         // 20.5: Momentum 2 with the side at +2: the cost is paid first (meter 0), then the hit moves it to +1.
         var m = new Momentum();
@@ -75,10 +108,10 @@ public class MomentumTests
     {
         var m = new Momentum();
         m.Shift(Side.A, 1);
-        Assert.False(m.CanPay(Side.A, 2));
+        Assert.True(m.CanPay(Side.A, 2));
         Assert.False(m.CanPay(Side.B, 1));
         Assert.True(m.CanPay(Side.A, 0));
-        Assert.Throws<InvalidOperationException>(() => m.Pay(Side.A, 2));
+        Assert.Throws<InvalidOperationException>(() => m.Pay(Side.B, 2));
         Assert.Equal(1, m.Value); // nothing was paid
     }
 
@@ -104,6 +137,7 @@ public class MomentumTests
         Assert.Throws<ArgumentOutOfRangeException>(() => m.Pay(Side.A, 11));
         m.Pay(Side.A, 10);
         Assert.Equal(0, m.Value);
+        Assert.False(m.CanPay(Side.A, 1));
     }
 
     [Fact]

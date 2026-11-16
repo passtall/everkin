@@ -29,7 +29,7 @@ public static class Actions
         if (skill.Magical && !Statuses.CanUseMagical(user)) return "Silenced: magical skills cannot be used";
         if (skill.NeedsFrontRow && !Targeting.InFrontRow(state, use.UserId)) return "needs the Front row";
         var cost = CostOf(state, use.UserId, skill);
-        if (!state.Momentum.CanPay(user.Side, cost)) return $"needs the side to be {cost} ahead in Momentum";
+        if (!state.Momentum.CanPay(user.Side, cost)) return "needs the side to be ahead in Momentum";
         var own = skill.Unavailable(state, use.UserId);
         if (own is not null) return own;
 

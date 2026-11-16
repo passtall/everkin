@@ -54,20 +54,21 @@ public sealed class Momentum
     public int AdvantageOf(Side side) => side == Side.A ? Value : -Value;
 
     /// <summary>
-    /// A skill with Momentum cost N needs its side to be at least +N ahead (section 6.7). Costs run from 0 to 10.
+    /// A skill with a Momentum cost (1 to 10) needs its side to be ahead by at least 1, whatever the cost; a free skill is
+    /// always usable, even behind (section 6.7).
     /// </summary>
     public bool CanPay(Side side, int cost) =>
-        cost is >= 0 and <= MaxCost && (cost == 0 || AdvantageOf(side) >= cost);   // a free skill is always usable, even behind
+        cost is >= 0 and <= MaxCost && (cost == 0 || AdvantageOf(side) >= 1);
 
     /// <summary>
-    /// Pays a skill's cost: the meter moves N toward neutral from the side's lead. Paid before any effect and never
-    /// refunded. Throws if the side is not far enough ahead.
+    /// Pays a skill's cost: the meter moves the full cost away from the side, possibly past 0 into the enemy's favour
+    /// (clamped at ±10). Paid before any effect and never refunded. Throws if the side is not ahead.
     /// </summary>
     public void Pay(Side side, int cost)
     {
         if (cost is < 0 or > MaxCost) throw new ArgumentOutOfRangeException(nameof(cost), "A Momentum cost is 0 to 10.");
-        if (!CanPay(side, cost)) throw new InvalidOperationException($"Side {side} is not {cost} ahead.");
-        Value += side == Side.A ? -cost : cost;
+        if (!CanPay(side, cost)) throw new InvalidOperationException($"Side {side} is not ahead in Momentum.");
+        Value = Math.Clamp(Value + (side == Side.A ? -cost : cost), -Limit, Limit);
     }
 
     /// <summary>
