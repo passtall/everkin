@@ -1,0 +1,67 @@
+{
+  "statuses": [
+    {
+      "id": "blind",
+      "name": "Blind",
+      "tag": null,
+      "effect": "Each attack of the unit has a 50% chance to miss. A miss moves Momentum 1 against the unit's side.",
+      "duration": "As stated (Flash Powder: 20)"
+    },
+    {
+      "id": "poisoned",
+      "name": "Poisoned",
+      "tag": null,
+      "effect": "1 damage per 5 time units, built up and landing whenever any unit gets a turn.",
+      "duration": "As stated (usually 20)"
+    },
+    {
+      "id": "bleeding",
+      "name": "Bleeding",
+      "tag": null,
+      "effect": "2 damage after each `melee` or `move` skill the unit uses (Move included).",
+      "duration": "The unit's next 3 such skills"
+    },
+    {
+      "id": "silenced",
+      "name": "Silenced",
+      "tag": null,
+      "effect": "The unit cannot use `magical` skills or a magical attack.",
+      "duration": "As stated"
+    },
+    {
+      "id": "frozen",
+      "name": "Frozen",
+      "tag": null,
+      "effect": "The unit's next turn is skipped, at the skipped-turn cost (section 6.1). It cannot intercept. It ends early when fire is set on the unit's spot.",
+      "duration": "The unit's next turn"
+    },
+    {
+      "id": "stunned",
+      "name": "Stunned",
+      "tag": null,
+      "effect": "The unit takes no actions and cannot intercept. Each of its turns that arrives while Stunned is skipped, at the skipped-turn cost. Any hit ends it early.",
+      "duration": "As stated"
+    },
+    {
+      "id": "confused",
+      "name": "Confused",
+      "tag": null,
+      "effect": "Each skill the unit uses, helpful ones included, has a 50% chance to target a random legal unit instead, on either side.",
+      "duration": "As stated"
+    },
+    {
+      "id": "immobilized",
+      "name": "Immobilized",
+      "tag": null,
+      "effect": "The unit cannot Move and cannot be moved. It cannot intercept.",
+      "duration": "As stated"
+    },
+    {
+      "id": "marked",
+      "name": "Marked",
+      "tag": null,
+      "effect": "Only enemies can be Marked. A skill that reads a Mark works on every Marked enemy, whoever placed it. A Mark lasts 30 time units unless the marking skill says otherwise (Relentless); the marking skill states any limit.",
+      "duration": "30"
+    }
+  ]
+}

@@ -1,0 +1,1233 @@
+{
+  "chapters": [
+    {
+      "id": "T",
+      "name": "The First Lanterns",
+      "biomes": [
+        "autumn_woods"
+      ],
+      "encounters": [
+        {
+          "id": "T1",
+          "name": "Two by the Path",
+          "biome": "autumn_woods",
+          "ai": "easy",
+          "team": [
+            {
+              "creature": "fox-bard",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "kite-primalist-tail",
+              "row": "Middle",
+              "boss": false
+            }
+          ],
+          "cost": 3,
+          "rewards": [
+            "kite-primalist-tail"
+          ]
+        },
+        {
+          "id": "T2",
+          "name": "Ripples in the Leaves",
+          "biome": "autumn_woods",
+          "ai": "easy",
+          "team": [
+            {
+              "creature": "caterpillar-bard",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "axolotl-mage-water",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "dormouse-summoner-bell",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 6,
+          "rewards": [
+            "axolotl-mage-water"
+          ]
+        },
+        {
+          "id": "T3",
+          "name": "The Hollow Oak",
+          "biome": "autumn_woods",
+          "ai": "easy",
+          "team": [
+            {
+              "creature": "pika-summoner-horn",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "raccoon-alchemist-potion",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "opossum-summoner-dice",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "dormouse-summoner-bell",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 11,
+          "rewards": [
+            "pika-summoner-horn",
+            "raccoon-alchemist-potion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "The Lantern Woods",
+      "biomes": [
+        "autumn_woods",
+        "flower_meadow",
+        "mushroom_grotto",
+        "pine_forest",
+        "wet_forest"
+      ],
+      "encounters": [
+        {
+          "id": "1-1",
+          "name": "Humming Meadow",
+          "biome": "flower_meadow",
+          "ai": "easy",
+          "team": [
+            {
+              "creature": "hummingbird-duelist-rapier",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "cricket-bard-fiddle",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "firefly",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "wasp-alchemist-potion",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "bee-shaman-sun",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 14,
+          "rewards": [
+            "bee-shaman-sun"
+          ]
+        },
+        {
+          "id": "1-2",
+          "name": "The Glowing Hollow",
+          "biome": "mushroom_grotto",
+          "ai": "easy",
+          "team": [
+            {
+              "creature": "mole-engineer-gear",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "mole-engineer-hexhammer",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "isopod-sentinel-iron",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "snail-bard-brewer",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "mushroom-druid",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "moth-cleric-lantern",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 17,
+          "rewards": [
+            "isopod-sentinel-iron"
+          ]
+        },
+        {
+          "id": "1-3",
+          "name": "Otter Falls",
+          "biome": "wet_forest",
+          "ai": "easy",
+          "team": [
+            {
+              "creature": "kingfisher-captain-dagger",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "stag-glade",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "platypus-alchemist-rune",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "velvetworm-hexer-rune",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "beaver-healer-pump",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "crane-summoner-feather",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 20,
+          "rewards": [
+            "stag-glade"
+          ]
+        },
+        {
+          "id": "1-4",
+          "name": "Bramble Hill",
+          "biome": "autumn_woods",
+          "ai": "easy",
+          "team": [
+            {
+              "creature": "fox-bard",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "porcupine-alchemist-shield",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "badger-summoner-drum",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "boar-guard-hex",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "opossum-summoner-dice",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 19,
+          "rewards": [
+            "badger-summoner-drum"
+          ]
+        },
+        {
+          "id": "1-5",
+          "name": "The Archer's Clearing",
+          "biome": "pine_forest",
+          "ai": "easy",
+          "team": [
+            {
+              "creature": "human-scout-lantern",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "stag-hunter-shield",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "lyrebird-bard-plume",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "shrew-summoner-totem",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "owl-wizard",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "human-archer",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 26,
+          "rewards": [
+            "human-archer"
+          ]
+        },
+        {
+          "id": "1-B",
+          "name": "The Grey Ranger",
+          "biome": "pine_forest",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "wolf-ranger",
+              "row": "Front",
+              "boss": true
+            },
+            {
+              "creature": "thornfang",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "lyrebird-bard-plume",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "human-druid",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "owl-wizard",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "shrew-summoner-totem",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 28,
+          "rewards": [
+            "wolf-ranger"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "The Sunward Road",
+      "biomes": [
+        "desert",
+        "jungle",
+        "savannah",
+        "swamp"
+      ],
+      "encounters": [
+        {
+          "id": "2-1",
+          "name": "Reedmist Fen",
+          "biome": "swamp",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "lizardfolk-barbarian-axe",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "human-rogue-potion",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "mandrake-primalist-root",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "shoebill-captain-pike",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "dragonfly-scout-bow",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "toad-druid",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 26,
+          "rewards": [
+            "mandrake-primalist-root"
+          ]
+        },
+        {
+          "id": "2-2",
+          "name": "Canopy Drums",
+          "biome": "jungle",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "mandrill-brawler-gloves",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "komodo-warrior-cleaver",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "centipede-assassin-sickle",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "hornbill-bard-drum",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "howlermonkey-bard-roar",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "binturong-bard-vine",
+              "row": "Middle",
+              "boss": false
+            }
+          ],
+          "cost": 29,
+          "rewards": [
+            "centipede-assassin-sickle"
+          ]
+        },
+        {
+          "id": "2-3",
+          "name": "The Shaman's Clearing",
+          "biome": "jungle",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "sloth-guard-bark",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "harpy-eagle-scout-claws",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "fossa-hunter-harpoon",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "human-shaman",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "capybara-guard-calm",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "beetle-engineer-seed",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 30,
+          "rewards": [
+            "human-shaman"
+          ]
+        },
+        {
+          "id": "2-4",
+          "name": "Long Grass",
+          "biome": "savannah",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "caracal-hunter-spear",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "sableantelope-captain-pennant",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "aurochs-bodyguard-plate",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "secretarybird-hunter-javelin",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "hyena-engineer-saw",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "human-archer-sun",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 32,
+          "rewards": [
+            "secretarybird-hunter-javelin"
+          ]
+        },
+        {
+          "id": "2-5",
+          "name": "The Glass Dunes",
+          "biome": "desert",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "human-dancer",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "armadillo-knight",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "cobra",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "hourglass-hexer-sand",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "scorpion",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "human-priest-sun",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 33,
+          "rewards": [
+            "hourglass-hexer-sand"
+          ]
+        },
+        {
+          "id": "2-B",
+          "name": "The Sunken Tomb",
+          "biome": "desert",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "sarcophagus-warden",
+              "row": "Front",
+              "boss": true
+            },
+            {
+              "creature": "basilisk-sorcerer-gaze",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "manticore-assassin-barb",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "vulture-healer-cinder",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "scorpion-healer-ribbon",
+              "row": "Middle",
+              "boss": false
+            }
+          ],
+          "cost": 38,
+          "rewards": [
+            "sarcophagus-warden"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "The Waking Castle",
+      "biomes": [
+        "cathedral",
+        "ruins"
+      ],
+      "encounters": [
+        {
+          "id": "3-1",
+          "name": "The Fallen Gate",
+          "biome": "ruins",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "chest-bodyguard-lock",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "mannequin",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "musicbox-summoner-drum",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "pocketwatch-warden",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "inkwell-trickster-quill",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "book-summoner-fold",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 32,
+          "rewards": [
+            "book-summoner-fold"
+          ]
+        },
+        {
+          "id": "3-2",
+          "name": "The Toppled Workshop",
+          "biome": "ruins",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "siphon-alchemist",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "vise-enforcer",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "ossuary-summoner-cube",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "corkscrew-stalker",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "gong-hexer-dissonance",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "sewingbox-engineer-ribbon",
+              "row": "Middle",
+              "boss": false
+            }
+          ],
+          "cost": 36,
+          "rewards": [
+            "gong-hexer-dissonance"
+          ]
+        },
+        {
+          "id": "3-3",
+          "name": "The Great Hall",
+          "biome": "cathedral",
+          "ai": "normal",
+          "team": [
+            {
+              "creature": "accordion-warlord",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "candelabrum-warrior-wax",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "harpsichord-bard-keys",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "orrery-sorcerer-orbit",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "goblet-paladin",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "incense-censor",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 37,
+          "rewards": [
+            "goblet-paladin"
+          ]
+        },
+        {
+          "id": "3-4",
+          "name": "The Knights' Gallery",
+          "biome": "cathedral",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "human-knight-shield",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "shield-vanguard",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "tuningfork-champion",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "human-knight-2",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "human-priest",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "human-cleric-lantern",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 39,
+          "rewards": [
+            "human-knight-shield"
+          ]
+        },
+        {
+          "id": "3-5",
+          "name": "The Bell Tower",
+          "biome": "cathedral",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "bell-guardian-clapper",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "carillon-summoner-chime",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "gargoyle-sentinel-stone",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "bugle-skyrider",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "mirror-revenant",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "chandelier-summoner-candle",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 40,
+          "rewards": [
+            "mirror-revenant"
+          ]
+        },
+        {
+          "id": "3-B",
+          "name": "The Castle's Heart",
+          "biome": "cathedral",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "organ-summoner",
+              "row": "Front",
+              "boss": true
+            },
+            {
+              "creature": "portcullis-colossus",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "tapestry-summoner",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "sealpress-summoner",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "reliquary-summoner-seal",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "orrery-sorcerer-orbit",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 48,
+          "rewards": [
+            "organ-summoner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "The Dragons' Wake",
+      "biomes": [
+        "arctic",
+        "ashlands",
+        "storm_cliffs"
+      ],
+      "encounters": [
+        {
+          "id": "4-1",
+          "name": "The Frozen Shelf",
+          "biome": "arctic",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "dragon-titan-glacier",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "mammoth-titan-tundra",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "muskox-bodyguard-buckler",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "human-guard-frost",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "turtle-bard-frost",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "human-mage-frost",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 44,
+          "rewards": [
+            "dragon-titan-glacier"
+          ]
+        },
+        {
+          "id": "4-2",
+          "name": "The Thunder Ledge",
+          "biome": "storm_cliffs",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "roc-colossus-thunder",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "human-spellblade",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "dragon-sovereign-tempest",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "turbine-skyguard",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "weathervane-summoner-arrow",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "chalice-of-storms",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 42,
+          "rewards": [
+            "dragon-sovereign-tempest"
+          ]
+        },
+        {
+          "id": "4-3",
+          "name": "The Ember Fields",
+          "biome": "ashlands",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "boar-magma",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "cinderhorn",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "wyvern-scout-obsidian",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "dragon-colossus-ember",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "human-mage-fire",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "phoenix-titan-solar",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 44,
+          "rewards": [
+            "dragon-colossus-ember"
+          ]
+        },
+        {
+          "id": "4-B",
+          "name": "The Obsidian Throne",
+          "biome": "ashlands",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "furnace-titan",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "kiln-behemoth",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "golem-colossus-furnace",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "dragon-elder-obsidian",
+              "row": "Middle",
+              "boss": true
+            },
+            {
+              "creature": "bellows-drake",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "brazier-summoner-coal",
+              "row": "Middle",
+              "boss": false
+            }
+          ],
+          "cost": 51,
+          "rewards": [
+            "dragon-elder-obsidian"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Challenge encounters",
+      "biomes": [
+        "coast",
+        "crystal_caverns",
+        "lagoon",
+        "mountain"
+      ],
+      "encounters": [
+        {
+          "id": "C1",
+          "name": "The Moonlit Lagoon",
+          "biome": "lagoon",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "kraken-colossus-basalt",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "reef-warden",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "dugong-guard-crystal",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "moray-trickster-hook",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "manatee-healer-shell",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "human-mage-water",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 42,
+          "rewards": [
+            "kraken-colossus-basalt"
+          ]
+        },
+        {
+          "id": "C2",
+          "name": "Wreckers' Cove",
+          "biome": "coast",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "anchor-sentinel",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "turtle-monk",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "crab-smith",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "beacon-summoner",
+              "row": "Middle",
+              "boss": false
+            },
+            {
+              "creature": "sextant-admiral",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "human-captain-pistol",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 41,
+          "rewards": [
+            "beacon-summoner"
+          ]
+        },
+        {
+          "id": "C3",
+          "name": "The Under-Vault",
+          "biome": "crystal_caverns",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "drake-titan-crystal",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "prism-hexer",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "human-mage-crystal",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "human-engineer-crystal",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "human-archer-crystal",
+              "row": "Rear",
+              "boss": false
+            },
+            {
+              "creature": "snail-cleric-crystal",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 33,
+          "rewards": [
+            "drake-titan-crystal"
+          ]
+        },
+        {
+          "id": "C4",
+          "name": "Ragnhild's Pass",
+          "biome": "mountain",
+          "ai": "hard",
+          "team": [
+            {
+              "creature": "human-barbarian-frost",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "behemoth-titan-iron",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "tortoise-colossus-mountain",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "griffin-knight-lance",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "ram-paladin-sun",
+              "row": "Front",
+              "boss": false
+            },
+            {
+              "creature": "human-mage-stone",
+              "row": "Rear",
+              "boss": false
+            }
+          ],
+          "cost": 45,
+          "rewards": [
+            "human-barbarian-frost"
+          ]
+        }
+      ]
+    }
+  ],
+  "bossHpFactorPercent": 150,
+  "bossHpStep": 5,
+  "bossPowerBonus": 2
+}

@@ -1,0 +1,9893 @@
+{
+  "creatures": [
+    {
+      "id": "abacus-strategist",
+      "name": "Tallymarch",
+      "classes": [
+        "tactician",
+        "commander"
+      ],
+      "keystones": [
+        "all_in",
+        "drill"
+      ],
+      "attack": "bead_count",
+      "artFile": "abacus-01.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        279,
+        -63,
+        603,
+        905
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "accordion-warlord",
+      "name": "Wheezewarden",
+      "classes": [
+        "bard",
+        "berserker"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "reckless_swing"
+      ],
+      "attack": "sour_chord",
+      "artFile": "accordion-01.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        376,
+        0,
+        750,
+        1125
+      ],
+      "rearFrame": [
+        -6,
+        -62,
+        1095,
+        1643
+      ]
+    },
+    {
+      "id": "anchor-sentinel",
+      "name": "Barnacle Bulwark",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "shield_wall",
+        "thorned_ward"
+      ],
+      "attack": "chain_haul",
+      "artFile": "anchor-01.png",
+      "biome": "coast",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        252,
+        -105,
+        698,
+        1047
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "ankylosaur-guardian-club",
+      "name": "Clubtail Grumbleback",
+      "classes": [
+        "bulwark",
+        "berserker"
+      ],
+      "keystones": [
+        "hold_position",
+        "last_stand"
+      ],
+      "attack": "tail_club",
+      "artFile": "ankylosaur-01.png",
+      "biome": "mountain",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        75,
+        324,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1061,
+        1592
+      ]
+    },
+    {
+      "id": "ant-engineer-gear",
+      "name": "Cogmarch Ant",
+      "classes": [
+        "engineer",
+        "chemist"
+      ],
+      "keystones": [
+        "reinforced",
+        "big_finish"
+      ],
+      "attack": "rivet_shot",
+      "artFile": "ant-01.png",
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        206,
+        57,
+        634,
+        951
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "armadillo-knight",
+      "name": "Armadillo Knight",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "shield_wall",
+        "twin_wards"
+      ],
+      "attack": "shield_rush",
+      "artFile": "armadillo-02.png",
+      "biome": "desert",
+      "hp": 50,
+      "speed": 4,
+      "power": 6,
+      "cost": 6,
+      "frontFrame": [
+        266,
+        255,
+        640,
+        960
+      ],
+      "rearFrame": [
+        31,
+        46,
+        993,
+        1490
+      ]
+    },
+    {
+      "id": "armadillo-knight-2",
+      "name": "Armadillo Recruit",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "unbreakable",
+        "steadfast_ward"
+      ],
+      "attack": "scale_swipe",
+      "artFile": "armadillo-01.png",
+      "biome": "desert",
+      "hp": 45,
+      "speed": 6,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        38,
+        507,
+        640,
+        960
+      ],
+      "rearFrame": [
+        28,
+        70,
+        977,
+        1466
+      ]
+    },
+    {
+      "id": "astrolabe-judge",
+      "name": "Starwright Judge",
+      "classes": [
+        "enchanter",
+        "commander"
+      ],
+      "keystones": [
+        "twin_enchant",
+        "rally"
+      ],
+      "attack": "ring_spin",
+      "artFile": "astrolabe-01.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        278,
+        8,
+        632,
+        948
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "aurochs-bodyguard-plate",
+      "name": "Ironhide Aurochs",
+      "classes": [
+        "berserker",
+        "champion"
+      ],
+      "keystones": [
+        "unstoppable",
+        "hunt_down"
+      ],
+      "attack": "trample",
+      "artFile": "aurochs-01.png",
+      "biome": "savannah",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        296,
+        192,
+        733,
+        1100
+      ],
+      "rearFrame": [
+        9,
+        -6,
+        1089,
+        1634
+      ]
+    },
+    {
+      "id": "axolotl-mage-water",
+      "name": "Ripplequill",
+      "classes": [
+        "cryomancer",
+        "enchanter"
+      ],
+      "keystones": [
+        "cold_heart",
+        "lingering_magic"
+      ],
+      "attack": "bubble_orb",
+      "artFile": "axolotl-01.png",
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        193,
+        98,
+        717,
+        1076
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "ayeaye-hexer-candle",
+      "name": "Candlefinger",
+      "classes": [
+        "hexer",
+        "thief"
+      ],
+      "keystones": [
+        "witchs_patience",
+        "escape_artist"
+      ],
+      "attack": "wick_flicker",
+      "artFile": "ayeaye-01.png",
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        272,
+        144,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "badger-summoner-drum",
+      "name": "Drumbadger",
+      "classes": [
+        "summoner",
+        "bard"
+      ],
+      "keystones": [
+        "golem_heart",
+        "rhythm"
+      ],
+      "attack": "drumroll",
+      "artFile": "badger-01.png",
+      "biome": "autumn_woods",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        262,
+        65,
+        683,
+        1025
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "ballast-bodyguard",
+      "name": "Sandbag Sentinel",
+      "classes": [
+        "bulwark",
+        "skyborne"
+      ],
+      "keystones": [
+        "hold_position",
+        "sky_lord"
+      ],
+      "attack": "sand_spill",
+      "artFile": "ballast-01.png",
+      "biome": "storm_cliffs",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        188,
+        -9,
+        760,
+        1140
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "basilisk-sorcerer-gaze",
+      "name": "Stonegaze Basilisk",
+      "classes": [
+        "berserker",
+        "thief"
+      ],
+      "keystones": [
+        "reckless_swing",
+        "master_thief"
+      ],
+      "attack": "stone_gaze",
+      "artFile": "basilisk-01.png",
+      "biome": "desert",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        345,
+        111,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "bassoon-hexer-requiem",
+      "name": "Dirgewind",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "crescendo",
+        "vanguard"
+      ],
+      "attack": "reed_lash",
+      "artFile": "bassoon-01.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        310,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "bat-rogue-shadow",
+      "name": "Bat Rogue",
+      "classes": [
+        "assassin",
+        "skyborne"
+      ],
+      "keystones": [
+        "unseen",
+        "eagle_eye"
+      ],
+      "attack": "shadow_carve",
+      "artFile": "bat-02.png",
+      "biome": "crystal_caverns",
+      "hp": 20,
+      "speed": 7,
+      "power": 4,
+      "cost": 4,
+      "frontFrame": [
+        239,
+        28,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "bat-summoner-moon",
+      "name": "Moonwing",
+      "classes": [
+        "skyborne",
+        "summoner"
+      ],
+      "keystones": [
+        "lift",
+        "portal"
+      ],
+      "attack": "screech",
+      "artFile": "bat-01.png",
+      "biome": "crystal_caverns",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        326,
+        131,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "baton-marshal",
+      "name": "Marshal Tempo",
+      "classes": [
+        "commander",
+        "tactician"
+      ],
+      "keystones": [
+        "drill",
+        "inspiring_presence"
+      ],
+      "attack": "ribbon_lash",
+      "artFile": "baton-01.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        140,
+        0,
+        770,
+        1154
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "beacon-summoner",
+      "name": "Lighthouse Wakelamp",
+      "classes": [
+        "skyborne",
+        "summoner"
+      ],
+      "keystones": [
+        "sky_lord",
+        "quickening"
+      ],
+      "attack": "lamp_beam",
+      "artFile": "beacon-01.png",
+      "biome": "coast",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        195,
+        -22,
+        779,
+        1169
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "beaver-healer-pump",
+      "name": "Pumpwhisker",
+      "classes": [
+        "engineer",
+        "mender"
+      ],
+      "keystones": [
+        "self_repair",
+        "overflowing_care"
+      ],
+      "attack": "pump_spray",
+      "artFile": "beaver-01.png",
+      "biome": "wet_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        310,
+        124,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "bee-shaman-sun",
+      "name": "Sunhum",
+      "classes": [
+        "totemist",
+        "skyborne"
+      ],
+      "keystones": [
+        "great_totem",
+        "eagle_eye"
+      ],
+      "attack": "sun_sting",
+      "artFile": "bee-01.png",
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        274,
+        187,
+        634,
+        951
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "beetle-2",
+      "name": "Beetle Recruit",
+      "classes": [
+        "bulwark",
+        "berserker"
+      ],
+      "keystones": [
+        "unbreakable",
+        "last_stand"
+      ],
+      "attack": "beetle_butt",
+      "artFile": "beetle-01.png",
+      "biome": "jungle",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        214,
+        321,
+        810,
+        1215
+      ],
+      "rearFrame": [
+        45,
+        67,
+        979,
+        1469
+      ]
+    },
+    {
+      "id": "beetle-engineer-seed",
+      "name": "Seedshot Scarab",
+      "classes": [
+        "chemist",
+        "ritualist"
+      ],
+      "keystones": [
+        "potent_brew",
+        "deluge"
+      ],
+      "attack": "sprout_shot",
+      "artFile": "beetle-04.png",
+      "biome": "jungle",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        348,
+        197,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "beetle-knight-shield",
+      "name": "Beetle Guardian",
+      "classes": [
+        "bulwark",
+        "champion"
+      ],
+      "keystones": [
+        "shield_wall",
+        "duelist"
+      ],
+      "attack": "carapace_bash",
+      "artFile": "beetle-02.png",
+      "biome": "jungle",
+      "hp": 55,
+      "speed": 4,
+      "power": 7,
+      "cost": 9,
+      "frontFrame": [
+        225,
+        255,
+        731,
+        1097
+      ],
+      "rearFrame": [
+        28,
+        42,
+        996,
+        1494
+      ]
+    },
+    {
+      "id": "behemoth-titan-iron",
+      "name": "Ironbound Behemoth",
+      "classes": [
+        "bulwark",
+        "stormcaller"
+      ],
+      "keystones": [
+        "hold_position",
+        "overcharge"
+      ],
+      "attack": "iron_stomp",
+      "artFile": "behemoth-01.png",
+      "biome": "mountain",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        389,
+        92,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "bell-guardian-clapper",
+      "name": "Clapperward",
+      "classes": [
+        "bard",
+        "summoner"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "golem_heart"
+      ],
+      "attack": "toll",
+      "artFile": "bell-01.png",
+      "biome": "cathedral",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        253,
+        65,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "bellows-drake",
+      "name": "Puffing Forgedrake",
+      "classes": [
+        "engineer",
+        "champion"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "glory"
+      ],
+      "attack": "bellows_spit",
+      "artFile": "bellows-01.png",
+      "biome": "ashlands",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        41,
+        419,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "binturong-bard-vine",
+      "name": "Vinelilt",
+      "classes": [
+        "bard",
+        "ritualist"
+      ],
+      "keystones": [
+        "rhythm",
+        "tidecaller"
+      ],
+      "attack": "vine_lash",
+      "artFile": "binturong-01.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        118,
+        77,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "bloomspear",
+      "name": "Bloomspear",
+      "classes": [
+        "spiritwalker",
+        "champion"
+      ],
+      "keystones": [
+        "soul_anchor",
+        "hunt_down"
+      ],
+      "attack": "petal_pierce",
+      "artFile": "bloomspear-01.png",
+      "biome": "flower_meadow",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        259,
+        110,
+        640,
+        960
+      ],
+      "rearFrame": [
+        42,
+        51,
+        973,
+        1460
+      ]
+    },
+    {
+      "id": "boar-guard-hex",
+      "name": "Hexbristle",
+      "classes": [
+        "bulwark",
+        "hexer"
+      ],
+      "keystones": [
+        "unbreakable",
+        "lingering_malice"
+      ],
+      "attack": "cursed_gore",
+      "artFile": "boar-02.png",
+      "biome": "autumn_woods",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        433,
+        181,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "boar-magma",
+      "name": "Magma Hog",
+      "classes": [
+        "berserker",
+        "champion"
+      ],
+      "keystones": [
+        "unstoppable",
+        "duelist"
+      ],
+      "attack": "magma_tusk",
+      "artFile": "boar-01.png",
+      "biome": "ashlands",
+      "hp": 60,
+      "speed": 4,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        35,
+        550,
+        640,
+        960
+      ],
+      "rearFrame": [
+        -2,
+        272,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "bombardierbeetle-alchemist-acid",
+      "name": "Acidpop",
+      "classes": [
+        "chemist",
+        "saboteur"
+      ],
+      "keystones": [
+        "volatile",
+        "wrecker"
+      ],
+      "attack": "acid_throw",
+      "artFile": "bombardierbeetle-01.png",
+      "biome": "desert",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        65,
+        120,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "book-summoner-fold",
+      "name": "Foldtome",
+      "classes": [
+        "summoner",
+        "spiritwalker"
+      ],
+      "keystones": [
+        "portal",
+        "haunting"
+      ],
+      "attack": "paper_cut",
+      "artFile": "book-01.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        220,
+        475,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "brazier-summoner-coal",
+      "name": "Coalwraith Brazier",
+      "classes": [
+        "summoner",
+        "pyromancer"
+      ],
+      "keystones": [
+        "quickening",
+        "wildfire"
+      ],
+      "attack": "ember_toss",
+      "artFile": "brazier-01.png",
+      "biome": "ashlands",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        203,
+        1,
+        740,
+        1110
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "buffalo-guard-root",
+      "name": "Rootyoke Buffalo",
+      "classes": [
+        "bulwark",
+        "ritualist"
+      ],
+      "keystones": [
+        "shield_wall",
+        "frostbinder"
+      ],
+      "attack": "root_snap",
+      "artFile": "buffalo-01.png",
+      "biome": "savannah",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        327,
+        141,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "bugle-skyrider",
+      "name": "Skybrass",
+      "classes": [
+        "commander",
+        "skyborne"
+      ],
+      "keystones": [
+        "rally",
+        "lift"
+      ],
+      "attack": "fanfare",
+      "artFile": "bugle-01.png",
+      "biome": "cathedral",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        377,
+        201,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "candelabrum-warrior-wax",
+      "name": "Waxbrawler",
+      "classes": [
+        "berserker",
+        "transmuter"
+      ],
+      "keystones": [
+        "reckless_swing",
+        "lasting_change"
+      ],
+      "attack": "hot_wax",
+      "artFile": "candelabrum-01.png",
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        212,
+        60,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "cannon-marauder",
+      "name": "Powderbelch",
+      "classes": [
+        "berserker",
+        "tracker"
+      ],
+      "keystones": [
+        "last_stand",
+        "sniff_the_air"
+      ],
+      "attack": "cannon_shot",
+      "artFile": "cannon-01.png",
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        466,
+        72,
+        592,
+        888
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "capybara-guard-calm",
+      "name": "Calmwater Capybara",
+      "classes": [
+        "lifebinder",
+        "summoner"
+      ],
+      "keystones": [
+        "martyr",
+        "golem_heart"
+      ],
+      "attack": "water_splash",
+      "artFile": "capybara-01.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        422,
+        195,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "caracal-hunter-spear",
+      "name": "Tuftspear",
+      "classes": [
+        "enchanter",
+        "thief"
+      ],
+      "keystones": [
+        "spell_ward",
+        "shadow_purse"
+      ],
+      "attack": "spear_throw",
+      "artFile": "caracal-01.png",
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        364,
+        221,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "carillon-summoner-chime",
+      "name": "Chimespire",
+      "classes": [
+        "bard",
+        "keeper"
+      ],
+      "keystones": [
+        "crescendo",
+        "thorned_ward"
+      ],
+      "attack": "carillon_peal",
+      "artFile": "carillon-01.png",
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        161,
+        1,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "cassowary-captain-horn",
+      "name": "Crestcaller",
+      "classes": [
+        "bard",
+        "berserker"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "unstoppable"
+      ],
+      "attack": "horn_call",
+      "artFile": "cassowary-01.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        384,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "caterpillar-bard",
+      "name": "Caterpillar Bard",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "rhythm",
+        "vanguard"
+      ],
+      "attack": "silk_spit",
+      "artFile": "caterpillar-01.png",
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 7,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        57,
+        362,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "catfolk-spellblade-moon",
+      "name": "Moonclaw Spellblade",
+      "classes": [
+        "champion",
+        "thief"
+      ],
+      "keystones": [
+        "glory",
+        "escape_artist"
+      ],
+      "attack": "moonlit_feint",
+      "artFile": "catfolk-01.png",
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        281,
+        44,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "centipede-assassin-sickle",
+      "name": "Sicklecoil",
+      "classes": [
+        "assassin",
+        "champion"
+      ],
+      "keystones": [
+        "vanishing_kill",
+        "hunt_down"
+      ],
+      "attack": "venom_fang",
+      "artFile": "centipede-01.png",
+      "biome": "jungle",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        170,
+        44,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "chalice-of-storms",
+      "name": "Stormgoblet",
+      "classes": [
+        "cryomancer",
+        "skyborne"
+      ],
+      "keystones": [
+        "brittle",
+        "sky_lord"
+      ],
+      "attack": "frost_spill",
+      "artFile": "chalice-01.png",
+      "biome": "storm_cliffs",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        202,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "chameleon-trickster-tongue",
+      "name": "Shiftscale",
+      "classes": [
+        "saboteur",
+        "tracker"
+      ],
+      "keystones": [
+        "chaos_agent",
+        "scent_of_blood"
+      ],
+      "attack": "snag_and_vanish",
+      "artFile": "chameleon-01.png",
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        277,
+        224,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "chandelier-summoner-candle",
+      "name": "Candlecrown",
+      "classes": [
+        "necromancer",
+        "skyborne"
+      ],
+      "keystones": [
+        "lich_form",
+        "eagle_eye"
+      ],
+      "attack": "wax_drip",
+      "artFile": "chandelier-01.png",
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        230,
+        364,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "chest-bodyguard-lock",
+      "name": "Lockjaw Chest",
+      "classes": [
+        "bulwark",
+        "engineer"
+      ],
+      "keystones": [
+        "hold_position",
+        "reinforced"
+      ],
+      "attack": "lid_snap",
+      "artFile": "chest-01.png",
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        205,
+        292,
+        739,
+        1109
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "chinchilla-summoner-ocarina",
+      "name": "Ocarina Puff",
+      "classes": [
+        "bard",
+        "summoner"
+      ],
+      "keystones": [
+        "crescendo",
+        "portal"
+      ],
+      "attack": "lullnote",
+      "artFile": "chinchilla-01.png",
+      "biome": "mountain",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        105,
+        245,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "cicada-bard-chime",
+      "name": "Chimewing Cicada",
+      "classes": [
+        "enchanter",
+        "mender"
+      ],
+      "keystones": [
+        "twin_enchant",
+        "regrowth"
+      ],
+      "attack": "wing_buzz",
+      "artFile": "cicada-01.png",
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        334,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "cinderhorn",
+      "name": "Cinderhorn",
+      "classes": [
+        "champion",
+        "berserker"
+      ],
+      "keystones": [
+        "duelist",
+        "reckless_swing"
+      ],
+      "attack": "cinder_horn",
+      "artFile": "cinderhorn-01.png",
+      "biome": "ashlands",
+      "hp": 45,
+      "speed": 5,
+      "power": 6,
+      "cost": 6,
+      "frontFrame": [
+        272,
+        32,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "coati-trickster-dice",
+      "name": "Diceroll Coati",
+      "classes": [
+        "saboteur",
+        "thief"
+      ],
+      "keystones": [
+        "disarm_trap",
+        "master_thief"
+      ],
+      "attack": "snake_eyes",
+      "artFile": "coati-01.png",
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        135,
+        129,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "cobra",
+      "name": "Hoodspitter",
+      "classes": [
+        "thief",
+        "saboteur"
+      ],
+      "keystones": [
+        "shadow_purse",
+        "wrecker"
+      ],
+      "attack": "venom_spray",
+      "artFile": "cobra-01.png",
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        330,
+        -36,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "compass-hunter-needle",
+      "name": "Northneedle",
+      "classes": [
+        "assassin",
+        "engineer"
+      ],
+      "keystones": [
+        "venom_blades",
+        "self_repair"
+      ],
+      "attack": "needle_point",
+      "artFile": "compass-02.png",
+      "biome": "storm_cliffs",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        189,
+        317,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "conchphone-bard-horn",
+      "name": "Conchhorn",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "drill"
+      ],
+      "attack": "gramophone_blare",
+      "artFile": "conchphone-01.png",
+      "biome": "coast",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        159,
+        538,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "corkscrew-stalker",
+      "name": "Twistcork",
+      "classes": [
+        "assassin",
+        "engineer"
+      ],
+      "keystones": [
+        "unseen",
+        "rapid_fire"
+      ],
+      "attack": "twist_in",
+      "artFile": "corkscrew-01.png",
+      "biome": "ruins",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        207,
+        44,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "crab-alchemist",
+      "name": "Crab Alchemist",
+      "classes": [
+        "chemist",
+        "engineer"
+      ],
+      "keystones": [
+        "big_finish",
+        "reinforced"
+      ],
+      "attack": "flask_toss",
+      "artFile": "crab-01.png",
+      "biome": "coast",
+      "hp": 55,
+      "speed": 6,
+      "power": 4,
+      "cost": 6,
+      "frontFrame": [
+        266,
+        302,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "crab-guard-decoy",
+      "name": "Decoy Crab",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "unbreakable",
+        "twin_wards"
+      ],
+      "attack": "pincer_grip",
+      "artFile": "crab-03.png",
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        297,
+        318,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "crab-smith",
+      "name": "Crab Smith",
+      "classes": [
+        "engineer",
+        "berserker"
+      ],
+      "keystones": [
+        "self_repair",
+        "last_stand"
+      ],
+      "attack": "hammer_claw",
+      "artFile": "crab-02.png",
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        222,
+        287,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "crane-hoist-titan",
+      "name": "Hoist Titan",
+      "classes": [
+        "mender",
+        "engineer"
+      ],
+      "keystones": [
+        "triage",
+        "rapid_fire"
+      ],
+      "attack": "hook_swing",
+      "artFile": "crane-01.png",
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        226,
+        14,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "crane-summoner-feather",
+      "name": "Featherveil Crane",
+      "classes": [
+        "summoner",
+        "stormcaller"
+      ],
+      "keystones": [
+        "quickening",
+        "static_field"
+      ],
+      "attack": "storm_plume",
+      "artFile": "crane-02.png",
+      "biome": "wet_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        135,
+        81,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "cricket-bard-fiddle",
+      "name": "Fiddlewhit",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "rhythm",
+        "rally"
+      ],
+      "attack": "fiddle_shriek",
+      "artFile": "cricket-01.png",
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        178,
+        50,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "crocodile-shaman",
+      "name": "Crocodile Shaman",
+      "classes": [
+        "totemist",
+        "berserker"
+      ],
+      "keystones": [
+        "sturdy_totems",
+        "unstoppable"
+      ],
+      "attack": "death_roll",
+      "artFile": "crocodile-01.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 3,
+      "power": 7,
+      "cost": 6,
+      "frontFrame": [
+        266,
+        290,
+        747,
+        1121
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "crow-necromancer-skull",
+      "name": "Skullcaw",
+      "classes": [
+        "necromancer",
+        "skyborne"
+      ],
+      "keystones": [
+        "bone_armor",
+        "lift"
+      ],
+      "attack": "grave_peck",
+      "artFile": "crow-01.png",
+      "biome": "ruins",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        186,
+        107,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "crucible-summoner",
+      "name": "Moltencup",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "shield_wall",
+        "steadfast_ward"
+      ],
+      "attack": "molten_pour",
+      "artFile": "crucible-01.png",
+      "biome": "ashlands",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        205,
+        60,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "cuttlefish-assassin-needle",
+      "name": "Needleglow",
+      "classes": [
+        "assassin",
+        "thief"
+      ],
+      "keystones": [
+        "vanishing_kill",
+        "escape_artist"
+      ],
+      "attack": "ink_cloud",
+      "artFile": "cuttlefish-01.png",
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        190,
+        214,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "dormouse-summoner-bell",
+      "name": "Bellnap Dormouse",
+      "classes": [
+        "summoner",
+        "enchanter"
+      ],
+      "keystones": [
+        "golem_heart",
+        "lingering_magic"
+      ],
+      "attack": "yawn",
+      "artFile": "dormouse-01.png",
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        203,
+        191,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "dragon-colossus-ember",
+      "name": "Emberwyrm Colossus",
+      "classes": [
+        "champion",
+        "skyborne"
+      ],
+      "keystones": [
+        "glory",
+        "sky_lord"
+      ],
+      "attack": "ember_breath",
+      "artFile": "dragon-01.png",
+      "biome": "ashlands",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        191,
+        68,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "dragon-elder-obsidian",
+      "name": "Obsidian Elder",
+      "classes": [
+        "commander",
+        "skyborne"
+      ],
+      "keystones": [
+        "vanguard",
+        "eagle_eye"
+      ],
+      "attack": "glass_shard_breath",
+      "artFile": "dragon-02.png",
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        183,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "dragon-sovereign-tempest",
+      "name": "Tempest Sovereign",
+      "classes": [
+        "commander",
+        "skyborne"
+      ],
+      "keystones": [
+        "drill",
+        "lift"
+      ],
+      "attack": "tempest_breath",
+      "artFile": "dragon-03.png",
+      "biome": "storm_cliffs",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        221,
+        71,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "dragon-titan-glacier",
+      "name": "Glacier Titan",
+      "classes": [
+        "cryomancer",
+        "bulwark"
+      ],
+      "keystones": [
+        "deep_chill",
+        "hold_position"
+      ],
+      "attack": "glacier_breath",
+      "artFile": "dragon-04.png",
+      "biome": "arctic",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        300,
+        15,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "dragonfly-scout-bow",
+      "name": "Reedarrow",
+      "classes": [
+        "skyborne",
+        "tracker"
+      ],
+      "keystones": [
+        "sky_lord",
+        "relentless"
+      ],
+      "attack": "reed_arrow",
+      "artFile": "dragonfly-01.png",
+      "biome": "swamp",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        342,
+        151,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "drake-titan-crystal",
+      "name": "Crystalback Drake",
+      "classes": [
+        "stormcaller",
+        "transmuter"
+      ],
+      "keystones": [
+        "eye_of_the_storm",
+        "brittle_glass"
+      ],
+      "attack": "prism_breath",
+      "artFile": "drake-01.png",
+      "biome": "crystal_caverns",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        382,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "drawbridge-bodyguard-chain",
+      "name": "Chaingate",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "unbreakable",
+        "thorned_ward"
+      ],
+      "attack": "drawbridge_drop",
+      "artFile": "drawbridge-01.png",
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        173,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "drum-summoner-war",
+      "name": "Wardrum",
+      "classes": [
+        "bard",
+        "berserker"
+      ],
+      "keystones": [
+        "crescendo",
+        "reckless_swing"
+      ],
+      "attack": "war_throb",
+      "artFile": "drum-01.png",
+      "biome": "savannah",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        158,
+        87,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "dugong-guard-crystal",
+      "name": "Crystalfin Dugong",
+      "classes": [
+        "transmuter",
+        "stormcaller"
+      ],
+      "keystones": [
+        "mirror_form",
+        "overcharge"
+      ],
+      "attack": "tidal_slap",
+      "artFile": "dugong-02.png",
+      "biome": "lagoon",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        307,
+        136,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "elephant-summoner-idol",
+      "name": "Idolbearer",
+      "classes": [
+        "summoner",
+        "totemist"
+      ],
+      "keystones": [
+        "portal",
+        "spirit_shield"
+      ],
+      "attack": "idol_stomp",
+      "artFile": "elephant-01.png",
+      "biome": "savannah",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        370,
+        101,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "ferret-summoner-mask",
+      "name": "Maskwhisk",
+      "classes": [
+        "thief",
+        "summoner"
+      ],
+      "keystones": [
+        "master_thief",
+        "quickening"
+      ],
+      "attack": "mask_swap",
+      "artFile": "ferret-01.png",
+      "biome": "ruins",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        37,
+        67,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "fiddlercrab-trickster-coin",
+      "name": "Coinclaw",
+      "classes": [
+        "saboteur",
+        "engineer"
+      ],
+      "keystones": [
+        "chaos_agent",
+        "reinforced"
+      ],
+      "attack": "big_claw_pinch",
+      "artFile": "fiddlercrab-01.png",
+      "biome": "coast",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        296,
+        236,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "firefly",
+      "name": "Firefly",
+      "classes": [
+        "skyborne",
+        "mender"
+      ],
+      "keystones": [
+        "eagle_eye",
+        "overflowing_care"
+      ],
+      "attack": "glow_dart",
+      "artFile": "firefly-02.png",
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        339,
+        425,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "firefly-summoner-lantern",
+      "name": "Lanternwing",
+      "classes": [
+        "skyborne",
+        "summoner"
+      ],
+      "keystones": [
+        "lift",
+        "golem_heart"
+      ],
+      "attack": "lantern_flash",
+      "artFile": "firefly-01.png",
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        84,
+        128,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "flyingfish-scout-dart",
+      "name": "Dartfin",
+      "classes": [
+        "skyborne",
+        "assassin"
+      ],
+      "keystones": [
+        "sky_lord",
+        "venom_blades"
+      ],
+      "attack": "dart_shot",
+      "artFile": "flyingfish-01.png",
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        388,
+        153,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "fossa-hunter-harpoon",
+      "name": "Harpoon Fossa",
+      "classes": [
+        "tracker",
+        "thief"
+      ],
+      "keystones": [
+        "sniff_the_air",
+        "shadow_purse"
+      ],
+      "attack": "harpoon_throw",
+      "artFile": "fossa-01.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        348,
+        194,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "fox-bard",
+      "name": "Fox Bard",
+      "classes": [
+        "bard",
+        "thief"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "escape_artist"
+      ],
+      "attack": "sly_nip",
+      "artFile": "fox-01.png",
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        55,
+        415,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "frigatebird-bard-throat",
+      "name": "Throatdrum",
+      "classes": [
+        "bard",
+        "skyborne"
+      ],
+      "keystones": [
+        "rhythm",
+        "eagle_eye"
+      ],
+      "attack": "throat_boom",
+      "artFile": "frigatebird-01.png",
+      "biome": "coast",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        356,
+        75,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "frog-bard-dagger",
+      "name": "Frog Bard Dagger",
+      "classes": [
+        "bard",
+        "assassin"
+      ],
+      "keystones": [
+        "crescendo",
+        "unseen"
+      ],
+      "attack": "leaping_stab",
+      "artFile": "frog-01.png",
+      "biome": "swamp",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        268,
+        45,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "furnace-titan",
+      "name": "Furnace Titan",
+      "classes": [
+        "champion",
+        "bulwark"
+      ],
+      "keystones": [
+        "hunt_down",
+        "shield_wall"
+      ],
+      "attack": "furnace_blast",
+      "artFile": "furnace-01.png",
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        280,
+        11,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "gargoyle-sentinel-stone",
+      "name": "Stonewatch Gargoyle",
+      "classes": [
+        "skyborne",
+        "tracker"
+      ],
+      "keystones": [
+        "lift",
+        "scent_of_blood"
+      ],
+      "attack": "petrifying_glare",
+      "artFile": "gargoyle-01.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        220,
+        155,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "gaur-bodyguard-armor",
+      "name": "Bolted Gaur",
+      "classes": [
+        "bulwark",
+        "berserker"
+      ],
+      "keystones": [
+        "hold_position",
+        "last_stand"
+      ],
+      "attack": "armor_stomp",
+      "artFile": "gaur-01.png",
+      "biome": "jungle",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        346,
+        226,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "gecko-alchemist-resin",
+      "name": "Resinpaw",
+      "classes": [
+        "chemist",
+        "thief"
+      ],
+      "keystones": [
+        "potent_brew",
+        "master_thief"
+      ],
+      "attack": "resin_flask",
+      "artFile": "gecko-01.png",
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        291,
+        119,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "gecko-summoner-prism",
+      "name": "Prismtoe",
+      "classes": [
+        "summoner",
+        "transmuter"
+      ],
+      "keystones": [
+        "portal",
+        "lasting_change"
+      ],
+      "attack": "split_beam",
+      "artFile": "gecko-02.png",
+      "biome": "crystal_caverns",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        235,
+        12,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "goat-shaman-totem",
+      "name": "Totemhorn",
+      "classes": [
+        "totemist",
+        "lifebinder"
+      ],
+      "keystones": [
+        "great_totem",
+        "phoenix"
+      ],
+      "attack": "horn_butt",
+      "artFile": "goat-01.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        190,
+        46,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "goblet-paladin",
+      "name": "Grailward",
+      "classes": [
+        "cleric",
+        "champion"
+      ],
+      "keystones": [
+        "sanctity",
+        "duelist"
+      ],
+      "attack": "holy_pour",
+      "artFile": "goblet-01.png",
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        264,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "golem-colossus-furnace",
+      "name": "Furnaceheart Colossus",
+      "classes": [
+        "berserker",
+        "bulwark"
+      ],
+      "keystones": [
+        "unstoppable",
+        "unbreakable"
+      ],
+      "attack": "furnace_claw",
+      "artFile": "golem-01.png",
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        266,
+        35,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "golem-engineer-gear",
+      "name": "Gearwright Golem",
+      "classes": [
+        "engineer",
+        "bulwark"
+      ],
+      "keystones": [
+        "self_repair",
+        "shield_wall"
+      ],
+      "attack": "steam_vent",
+      "artFile": "golem-02.png",
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        237,
+        152,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "gong-hexer-dissonance",
+      "name": "Discord Gong",
+      "classes": [
+        "bard",
+        "necromancer"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "deaths_bounty"
+      ],
+      "attack": "dissonance",
+      "artFile": "gong-01.png",
+      "biome": "ruins",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        233,
+        46,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "gorilla-bodyguard-fists",
+      "name": "Ironfist Silverback",
+      "classes": [
+        "bulwark",
+        "berserker"
+      ],
+      "keystones": [
+        "hold_position",
+        "reckless_swing"
+      ],
+      "attack": "chest_pound",
+      "artFile": "gorilla-01.png",
+      "biome": "jungle",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        242,
+        57,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "griffin-knight-lance",
+      "name": "Lancewing Griffin",
+      "classes": [
+        "skyborne",
+        "champion"
+      ],
+      "keystones": [
+        "sky_lord",
+        "glory"
+      ],
+      "attack": "lance_charge",
+      "artFile": "griffin-01.png",
+      "biome": "mountain",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        193,
+        76,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "harpsichord-bard-keys",
+      "name": "Keyclatter",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "rhythm",
+        "rally"
+      ],
+      "attack": "key_cascade",
+      "artFile": "harpsichord-01.png",
+      "biome": "cathedral",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        181,
+        256,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "harpy-eagle-scout-claws",
+      "name": "Talonstrike",
+      "classes": [
+        "skyborne",
+        "tracker"
+      ],
+      "keystones": [
+        "eagle_eye",
+        "relentless"
+      ],
+      "attack": "raking_claws",
+      "artFile": "harpy-eagle-01.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        299,
+        87,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "hawk-scout-bow",
+      "name": "Skybow Hawk",
+      "classes": [
+        "tracker",
+        "skyborne"
+      ],
+      "keystones": [
+        "sniff_the_air",
+        "lift"
+      ],
+      "attack": "pinning_arrow",
+      "artFile": "hawk-01.png",
+      "biome": "mountain",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        264,
+        105,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "hermitcrab-sentinel-basalt",
+      "name": "Basaltshell",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "unbreakable",
+        "twin_wards"
+      ],
+      "attack": "magma_crack",
+      "artFile": "hermitcrab-01.png",
+      "biome": "coast",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        277,
+        291,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "heron-engineer-wing",
+      "name": "Wingwright Heron",
+      "classes": [
+        "engineer",
+        "skyborne"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "sky_lord"
+      ],
+      "attack": "wing_gust",
+      "artFile": "heron-01.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        288,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "heron-hunter-harpoon",
+      "name": "Stillspear",
+      "classes": [
+        "skyborne",
+        "champion"
+      ],
+      "keystones": [
+        "eagle_eye",
+        "hunt_down"
+      ],
+      "attack": "spear_hook",
+      "artFile": "heron-02.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        215,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "hippo-healer-potion",
+      "name": "Tonic Hippo",
+      "classes": [
+        "mender",
+        "chemist"
+      ],
+      "keystones": [
+        "regrowth",
+        "volatile"
+      ],
+      "attack": "potion_spit",
+      "artFile": "hippo-01.png",
+      "biome": "swamp",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        298,
+        152,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "hornbill-bard-drum",
+      "name": "Drumbill",
+      "classes": [
+        "bard",
+        "skyborne"
+      ],
+      "keystones": [
+        "crescendo",
+        "lift"
+      ],
+      "attack": "beak_drum",
+      "artFile": "hornbill-01.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        274,
+        44,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "horseshoe-champion",
+      "name": "Lucky Ironshoe",
+      "classes": [
+        "champion",
+        "bulwark"
+      ],
+      "keystones": [
+        "duelist",
+        "shield_wall"
+      ],
+      "attack": "lucky_kick",
+      "artFile": "horseshoe-01.png",
+      "biome": "savannah",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        230,
+        97,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "horseshoecrab-sentinel-bronze",
+      "name": "Bronzeback Sentinel",
+      "classes": [
+        "bulwark",
+        "stormcaller"
+      ],
+      "keystones": [
+        "hold_position",
+        "static_field"
+      ],
+      "attack": "bronze_spike",
+      "artFile": "horseshoecrab-01.png",
+      "biome": "coast",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        180,
+        239,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "hourglass-hexer-sand",
+      "name": "Sandhex Glass",
+      "classes": [
+        "hexer",
+        "commander"
+      ],
+      "keystones": [
+        "spreading_curse",
+        "vanguard"
+      ],
+      "attack": "sand_pulse",
+      "artFile": "hourglass-01.png",
+      "biome": "desert",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        217,
+        12,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "howlermonkey-bard-roar",
+      "name": "Roarleaf",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "drill"
+      ],
+      "attack": "howl",
+      "artFile": "howlermonkey-01.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        325,
+        83,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-alchemist",
+      "name": "Maggie Wren",
+      "classes": [
+        "chemist",
+        "thief"
+      ],
+      "keystones": [
+        "big_finish",
+        "shadow_purse"
+      ],
+      "attack": "quick_jab",
+      "artFile": "human-02.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-alchemist-shield",
+      "name": "Gerald Hollins",
+      "classes": [
+        "chemist",
+        "bulwark"
+      ],
+      "keystones": [
+        "potent_brew",
+        "unbreakable"
+      ],
+      "attack": "flask_barrage",
+      "artFile": "human-01.png",
+      "biome": "ruins",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        101,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-archer",
+      "name": "Tom Reed",
+      "classes": [
+        "tracker",
+        "spiritwalker"
+      ],
+      "keystones": [
+        "scent_of_blood",
+        "puppeteer"
+      ],
+      "attack": "leg_shot",
+      "artFile": "human-07.png",
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-archer-crystal",
+      "name": "Mira Castell",
+      "classes": [
+        "tracker",
+        "transmuter"
+      ],
+      "keystones": [
+        "relentless",
+        "brittle_glass"
+      ],
+      "attack": "crystal_arrow",
+      "artFile": "human-03.png",
+      "biome": "crystal_caverns",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-archer-frost",
+      "name": "Sigrid Halvorsen",
+      "classes": [
+        "tracker",
+        "cryomancer"
+      ],
+      "keystones": [
+        "sniff_the_air",
+        "cold_heart"
+      ],
+      "attack": "frost_arrow",
+      "artFile": "human-04.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-archer-gear",
+      "name": "Otto Brenner",
+      "classes": [
+        "tracker",
+        "engineer"
+      ],
+      "keystones": [
+        "scent_of_blood",
+        "reinforced"
+      ],
+      "attack": "gear_arrow",
+      "artFile": "human-05.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-archer-sun",
+      "name": "Lucia Marin",
+      "classes": [
+        "tracker",
+        "cleric"
+      ],
+      "keystones": [
+        "relentless",
+        "purifying_aura"
+      ],
+      "attack": "sun_arrow",
+      "artFile": "human-06.png",
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-barbarian",
+      "name": "Gunnar Holt",
+      "classes": [
+        "berserker",
+        "champion"
+      ],
+      "keystones": [
+        "last_stand",
+        "glory"
+      ],
+      "attack": "axe_hook",
+      "artFile": "human-09.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        192,
+        84,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-barbarian-frost",
+      "name": "Ragnhild Eriksen",
+      "classes": [
+        "berserker",
+        "enchanter"
+      ],
+      "keystones": [
+        "unstoppable",
+        "spell_ward"
+      ],
+      "attack": "frost_axe",
+      "artFile": "human-08.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        59,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-bard",
+      "name": "Lorenzo Varga",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "rhythm",
+        "rally"
+      ],
+      "attack": "lute_ballad",
+      "artFile": "human-11.png",
+      "biome": "flower_meadow",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-bard-shield",
+      "name": "Felix Lowell",
+      "classes": [
+        "bard",
+        "berserker"
+      ],
+      "keystones": [
+        "crescendo",
+        "reckless_swing"
+      ],
+      "attack": "shield_smash",
+      "artFile": "human-10.png",
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-brawler-hook",
+      "name": "Jack Morrow",
+      "classes": [
+        "berserker",
+        "tracker"
+      ],
+      "keystones": [
+        "last_stand",
+        "sniff_the_air"
+      ],
+      "attack": "rope_hook",
+      "artFile": "human-12.png",
+      "biome": "coast",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-captain-banner",
+      "name": "Helena Strand",
+      "classes": [
+        "commander",
+        "champion"
+      ],
+      "keystones": [
+        "vanguard",
+        "hunt_down"
+      ],
+      "attack": "banner_thrust",
+      "artFile": "human-13.png",
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-captain-pistol",
+      "name": "Carlos Fonseca",
+      "classes": [
+        "commander",
+        "thief"
+      ],
+      "keystones": [
+        "drill",
+        "escape_artist"
+      ],
+      "attack": "warning_shot",
+      "artFile": "human-14.png",
+      "biome": "coast",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        166,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-captain-rapier",
+      "name": "Beatrix Alvarez",
+      "classes": [
+        "enchanter",
+        "thief"
+      ],
+      "keystones": [
+        "twin_enchant",
+        "master_thief"
+      ],
+      "attack": "riposte_cut",
+      "artFile": "human-15.png",
+      "biome": "coast",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-cleric-lantern",
+      "name": "Agnes Brook",
+      "classes": [
+        "cleric",
+        "engineer"
+      ],
+      "keystones": [
+        "judgment",
+        "self_repair"
+      ],
+      "attack": "lantern_light",
+      "artFile": "human-16.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        34,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-dancer",
+      "name": "Nadia Petrova",
+      "classes": [
+        "thief",
+        "tracker"
+      ],
+      "keystones": [
+        "shadow_purse",
+        "scent_of_blood"
+      ],
+      "attack": "veil_dance",
+      "artFile": "human-18.png",
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-dancer-spear",
+      "name": "Amara Okafor",
+      "classes": [
+        "champion",
+        "stormcaller"
+      ],
+      "keystones": [
+        "duelist",
+        "eye_of_the_storm"
+      ],
+      "attack": "lightning_thrust",
+      "artFile": "human-17.png",
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-druid",
+      "name": "Ivy Calloway",
+      "classes": [
+        "ritualist",
+        "lifebinder"
+      ],
+      "keystones": [
+        "deluge",
+        "lifeblood"
+      ],
+      "attack": "root_grasp",
+      "artFile": "human-20.png",
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-druid-leaf",
+      "name": "Fiona Ashby",
+      "classes": [
+        "ritualist",
+        "lifebinder"
+      ],
+      "keystones": [
+        "tidecaller",
+        "martyr"
+      ],
+      "attack": "thorn_volley",
+      "artFile": "human-19.png",
+      "biome": "wet_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-duelist-rapier",
+      "name": "Camille Moreau",
+      "classes": [
+        "champion",
+        "thief"
+      ],
+      "keystones": [
+        "glory",
+        "escape_artist"
+      ],
+      "attack": "rapier_carve",
+      "artFile": "human-21.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        81,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-engineer-crystal",
+      "name": "Lukas Weiss",
+      "classes": [
+        "engineer",
+        "stormcaller"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "overcharge"
+      ],
+      "attack": "arc_discharge",
+      "artFile": "human-22.png",
+      "biome": "crystal_caverns",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-engineer-hook",
+      "name": "Max Hooper",
+      "classes": [
+        "saboteur",
+        "tracker"
+      ],
+      "keystones": [
+        "disarm_trap",
+        "relentless"
+      ],
+      "attack": "grapple_yank",
+      "artFile": "human-23.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-guard",
+      "name": "Peter Holm",
+      "classes": [
+        "bulwark",
+        "champion"
+      ],
+      "keystones": [
+        "shield_wall",
+        "hunt_down"
+      ],
+      "attack": "shield_push",
+      "artFile": "human-26.png",
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-guard-frost",
+      "name": "Ingrid Lund",
+      "classes": [
+        "champion",
+        "enchanter"
+      ],
+      "keystones": [
+        "duelist",
+        "lingering_magic"
+      ],
+      "attack": "ice_lance_thrust",
+      "artFile": "human-24.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-guard-stone",
+      "name": "Leo Stone",
+      "classes": [
+        "stormcaller",
+        "champion"
+      ],
+      "keystones": [
+        "static_field",
+        "glory"
+      ],
+      "attack": "stone_fist",
+      "artFile": "human-25.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        151,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-knight",
+      "name": "William Hart",
+      "classes": [
+        "champion",
+        "commander"
+      ],
+      "keystones": [
+        "hunt_down",
+        "rally"
+      ],
+      "attack": "valiant_strike",
+      "artFile": "human-31.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-knight-2",
+      "name": "Johanna Weber",
+      "classes": [
+        "champion",
+        "bulwark"
+      ],
+      "keystones": [
+        "duelist",
+        "hold_position"
+      ],
+      "attack": "shield_bump",
+      "artFile": "human-27.png",
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-knight-banner",
+      "name": "Albrecht Lang",
+      "classes": [
+        "commander",
+        "bulwark"
+      ],
+      "keystones": [
+        "vanguard",
+        "unbreakable"
+      ],
+      "attack": "rallying_strike",
+      "artFile": "human-28.png",
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-knight-hammer",
+      "name": "Johanka Weber",
+      "classes": [
+        "bulwark",
+        "champion"
+      ],
+      "keystones": [
+        "shield_wall",
+        "glory"
+      ],
+      "attack": "hammer_smash",
+      "artFile": "human-29.png",
+      "biome": "mountain",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        99,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-knight-shield",
+      "name": "Edwin Marsh",
+      "classes": [
+        "bulwark",
+        "champion"
+      ],
+      "keystones": [
+        "hold_position",
+        "hunt_down"
+      ],
+      "attack": "shield_wall_shove",
+      "artFile": "human-30.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        165,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-mage-crystal",
+      "name": "Kai Lindqvist",
+      "classes": [
+        "stormcaller",
+        "transmuter"
+      ],
+      "keystones": [
+        "eye_of_the_storm",
+        "mirror_form"
+      ],
+      "attack": "crystal_ray",
+      "artFile": "human-32.png",
+      "biome": "crystal_caverns",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-mage-fire",
+      "name": "Carmen Costa",
+      "classes": [
+        "pyromancer",
+        "thief"
+      ],
+      "keystones": [
+        "inferno",
+        "master_thief"
+      ],
+      "attack": "fire_spark",
+      "artFile": "human-33.png",
+      "biome": "ashlands",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-mage-frost",
+      "name": "Astor Nilsen",
+      "classes": [
+        "cryomancer",
+        "enchanter"
+      ],
+      "keystones": [
+        "brittle",
+        "spell_ward"
+      ],
+      "attack": "frost_spark",
+      "artFile": "human-34.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-mage-stone",
+      "name": "Henrik Berg",
+      "classes": [
+        "stormcaller",
+        "commander"
+      ],
+      "keystones": [
+        "overcharge",
+        "drill"
+      ],
+      "attack": "stone_bolt",
+      "artFile": "human-35.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-mage-water",
+      "name": "Mateo Santos",
+      "classes": [
+        "cryomancer",
+        "tracker"
+      ],
+      "keystones": [
+        "deep_chill",
+        "sniff_the_air"
+      ],
+      "attack": "frost_missile",
+      "artFile": "human-36.png",
+      "biome": "lagoon",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        35,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-monk-hammer",
+      "name": "Kenji Mori",
+      "classes": [
+        "berserker",
+        "champion"
+      ],
+      "keystones": [
+        "unstoppable",
+        "duelist"
+      ],
+      "attack": "spinning_hammer",
+      "artFile": "human-37.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 7,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        89,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-necromancer-skull",
+      "name": "Viktor Graves",
+      "classes": [
+        "necromancer",
+        "champion"
+      ],
+      "keystones": [
+        "lich_form",
+        "glory"
+      ],
+      "attack": "soul_rend",
+      "artFile": "human-38.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        214,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-priest",
+      "name": "Thomas Abbott",
+      "classes": [
+        "cleric",
+        "mender"
+      ],
+      "keystones": [
+        "sanctity",
+        "triage"
+      ],
+      "attack": "smite",
+      "artFile": "human-42.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-priest-bell",
+      "name": "Martin Becker",
+      "classes": [
+        "cleric",
+        "bard"
+      ],
+      "keystones": [
+        "purifying_aura",
+        "grand_chorus"
+      ],
+      "attack": "bell_toll",
+      "artFile": "human-39.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        38,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-priest-moon",
+      "name": "Luna Ortiz",
+      "classes": [
+        "cleric",
+        "hexer"
+      ],
+      "keystones": [
+        "judgment",
+        "witchs_patience"
+      ],
+      "attack": "eclipse",
+      "artFile": "human-40.png",
+      "biome": "flower_meadow",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-priest-sun",
+      "name": "Aurelia Day",
+      "classes": [
+        "cleric",
+        "tracker"
+      ],
+      "keystones": [
+        "sanctity",
+        "scent_of_blood"
+      ],
+      "attack": "sun_flare",
+      "artFile": "human-41.png",
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-rogue",
+      "name": "Daniel Hart",
+      "classes": [
+        "thief",
+        "saboteur"
+      ],
+      "keystones": [
+        "shadow_purse",
+        "wrecker"
+      ],
+      "attack": "dirty_trick",
+      "artFile": "human-45.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        192,
+        132,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-rogue-potion",
+      "name": "Paul Fischer",
+      "classes": [
+        "chemist",
+        "thief"
+      ],
+      "keystones": [
+        "volatile",
+        "escape_artist"
+      ],
+      "attack": "vial_toss",
+      "artFile": "human-43.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-rogue-shadow",
+      "name": "Nika Volkova",
+      "classes": [
+        "assassin",
+        "summoner"
+      ],
+      "keystones": [
+        "vanishing_kill",
+        "quickening"
+      ],
+      "attack": "void_shard",
+      "artFile": "human-44.png",
+      "biome": "ruins",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-scout-lantern",
+      "name": "Elsa Lindgren",
+      "classes": [
+        "thief",
+        "summoner"
+      ],
+      "keystones": [
+        "master_thief",
+        "golem_heart"
+      ],
+      "attack": "lantern_glare",
+      "artFile": "human-46.png",
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-shaman",
+      "name": "Kofi Mensah",
+      "classes": [
+        "totemist",
+        "commander"
+      ],
+      "keystones": [
+        "sturdy_totems",
+        "rally"
+      ],
+      "attack": "ancestor_call",
+      "artFile": "human-47.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-smith",
+      "name": "Hugo Schmidt",
+      "classes": [
+        "engineer",
+        "berserker"
+      ],
+      "keystones": [
+        "reinforced",
+        "reckless_swing"
+      ],
+      "attack": "smith_crush",
+      "artFile": "human-48.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        111,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-spellblade",
+      "name": "Richard Novak",
+      "classes": [
+        "champion",
+        "enchanter"
+      ],
+      "keystones": [
+        "hunt_down",
+        "twin_enchant"
+      ],
+      "attack": "glyph_strike",
+      "artFile": "human-51.png",
+      "biome": "storm_cliffs",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-spellblade-2",
+      "name": "Laura Cole",
+      "classes": [
+        "champion",
+        "enchanter"
+      ],
+      "keystones": [
+        "duelist",
+        "lingering_magic"
+      ],
+      "attack": "arcane_edge",
+      "artFile": "human-49.png",
+      "biome": "storm_cliffs",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "human-wizard",
+      "name": "Arthur Pembroke",
+      "classes": [
+        "enchanter",
+        "engineer"
+      ],
+      "keystones": [
+        "spell_ward",
+        "self_repair"
+      ],
+      "attack": "hat_trick",
+      "artFile": "human-52.png",
+      "biome": "cathedral",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "hummingbird-duelist-rapier",
+      "name": "Rapierbeak",
+      "classes": [
+        "skyborne",
+        "thief"
+      ],
+      "keystones": [
+        "sky_lord",
+        "shadow_purse"
+      ],
+      "attack": "flurry",
+      "artFile": "hummingbird-01.png",
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        206,
+        170,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "hydra-colossus-trident",
+      "name": "Tridentmaw Hydra",
+      "classes": [
+        "summoner",
+        "enchanter"
+      ],
+      "keystones": [
+        "portal",
+        "twin_enchant"
+      ],
+      "attack": "trident_gust",
+      "artFile": "hydra-01.png",
+      "biome": "swamp",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        175,
+        -67,
+        729,
+        1094
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "hyena-engineer-saw",
+      "name": "Sawgrin",
+      "classes": [
+        "engineer",
+        "tracker"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "relentless"
+      ],
+      "attack": "cackle",
+      "artFile": "hyena-01.png",
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        332,
+        102,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "ibex-captain-standard",
+      "name": "Standardhorn",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "rhythm",
+        "vanguard"
+      ],
+      "attack": "horn_charge",
+      "artFile": "ibex-01.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        219,
+        38,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "incense-censor",
+      "name": "Smokeswing",
+      "classes": [
+        "cleric",
+        "summoner"
+      ],
+      "keystones": [
+        "purifying_aura",
+        "quickening"
+      ],
+      "attack": "incense_cloud",
+      "artFile": "incense-censor-01.png",
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        183,
+        17,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "inkwell-trickster-quill",
+      "name": "Quillspatter",
+      "classes": [
+        "saboteur",
+        "tactician"
+      ],
+      "keystones": [
+        "chaos_agent",
+        "initiative"
+      ],
+      "attack": "ink_splash",
+      "artFile": "inkwell-01.png",
+      "biome": "ruins",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        190,
+        410,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "isopod-sentinel-iron",
+      "name": "Ironroll",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "unbreakable",
+        "steadfast_ward"
+      ],
+      "attack": "iron_roll",
+      "artFile": "isopod-01.png",
+      "biome": "mushroom_grotto",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        354,
+        359,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "jackalope-hexer-curse",
+      "name": "Cursehorn",
+      "classes": [
+        "necromancer",
+        "thief"
+      ],
+      "keystones": [
+        "bone_armor",
+        "escape_artist"
+      ],
+      "attack": "curse_glow",
+      "artFile": "jackalope-01.png",
+      "biome": "desert",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        313,
+        225,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "jelly-healer",
+      "name": "Mendbloom Jelly",
+      "classes": [
+        "mender",
+        "skyborne"
+      ],
+      "keystones": [
+        "overflowing_care",
+        "eagle_eye"
+      ],
+      "attack": "sting_tendril",
+      "artFile": "jellyfish-02.png",
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        192,
+        16,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "jelly-mage-storm",
+      "name": "Stormbell Jelly",
+      "classes": [
+        "skyborne",
+        "stormcaller"
+      ],
+      "keystones": [
+        "lift",
+        "static_field"
+      ],
+      "attack": "storm_hum",
+      "artFile": "jelly-01.png",
+      "biome": "lagoon",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        205,
+        132,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "jerboa-trickster-acorn",
+      "name": "Acornpop",
+      "classes": [
+        "saboteur",
+        "engineer"
+      ],
+      "keystones": [
+        "disarm_trap",
+        "reinforced"
+      ],
+      "attack": "acorn_shot",
+      "artFile": "jerboa-01.png",
+      "biome": "desert",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        361,
+        51,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "kestrel-hunter-lure",
+      "name": "Lurewing",
+      "classes": [
+        "tracker",
+        "summoner"
+      ],
+      "keystones": [
+        "sniff_the_air",
+        "golem_heart"
+      ],
+      "attack": "talon_dive",
+      "artFile": "kestrel-01.png",
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        171,
+        63,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "kettle-alchemist-siege",
+      "name": "Siegekettle",
+      "classes": [
+        "champion",
+        "bulwark"
+      ],
+      "keystones": [
+        "glory",
+        "shield_wall"
+      ],
+      "attack": "boiling_spout",
+      "artFile": "kettle-01.png",
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        215,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "kiln-behemoth",
+      "name": "Kiln Behemoth",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "hold_position",
+        "thorned_ward"
+      ],
+      "attack": "kiln_blast",
+      "artFile": "kiln-01.png",
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        212,
+        102,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "kingfisher-captain-dagger",
+      "name": "Captain Daggerbill",
+      "classes": [
+        "assassin",
+        "skyborne"
+      ],
+      "keystones": [
+        "venom_blades",
+        "sky_lord"
+      ],
+      "attack": "dagger_slice",
+      "artFile": "kingfisher-01.png",
+      "biome": "wet_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        206,
+        54,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "kinkajou-summoner-idol",
+      "name": "Idolpaw",
+      "classes": [
+        "summoner",
+        "thief"
+      ],
+      "keystones": [
+        "portal",
+        "master_thief"
+      ],
+      "attack": "idol_glow",
+      "artFile": "kinkajou-01.png",
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        257,
+        160,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "kite-primalist-tail",
+      "name": "Tailwind Kite",
+      "classes": [
+        "skyborne",
+        "mender"
+      ],
+      "keystones": [
+        "eagle_eye",
+        "regrowth"
+      ],
+      "attack": "updraft",
+      "artFile": "kite-01.png",
+      "biome": "storm_cliffs",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        262,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "komodo-warrior-cleaver",
+      "name": "Cleaver Komodo",
+      "classes": [
+        "berserker",
+        "champion"
+      ],
+      "keystones": [
+        "last_stand",
+        "hunt_down"
+      ],
+      "attack": "venom_bite",
+      "artFile": "komodo-01.png",
+      "biome": "jungle",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        269,
+        54,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "kraken-colossus-basalt",
+      "name": "Basalt Kraken",
+      "classes": [
+        "bulwark",
+        "summoner"
+      ],
+      "keystones": [
+        "unbreakable",
+        "quickening"
+      ],
+      "attack": "tentacle_grab",
+      "artFile": "kraken-01.png",
+      "biome": "lagoon",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        164,
+        73,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "lantern-healer-prism",
+      "name": "Prismlamp",
+      "classes": [
+        "mender",
+        "cleric"
+      ],
+      "keystones": [
+        "triage",
+        "judgment"
+      ],
+      "attack": "prism_wave",
+      "artFile": "lantern-01.png",
+      "biome": "crystal_caverns",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        168,
+        29,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "lizardfolk-barbarian-axe",
+      "name": "Axejaw Lizardfolk",
+      "classes": [
+        "berserker",
+        "champion"
+      ],
+      "keystones": [
+        "unstoppable",
+        "duelist"
+      ],
+      "attack": "jaw_snap",
+      "artFile": "lizardfolk-03.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        140,
+        22,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "lizardfolk-ninja-kunai",
+      "name": "Kunai Lizardfolk",
+      "classes": [
+        "assassin",
+        "thief"
+      ],
+      "keystones": [
+        "unseen",
+        "shadow_purse"
+      ],
+      "attack": "smoke_kunai",
+      "artFile": "lizardfolk-04.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        223,
+        74,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "lobster-bard-castanet",
+      "name": "Castanet Lobster",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "crescendo",
+        "drill"
+      ],
+      "attack": "castanet_clack",
+      "artFile": "lobster-01.png",
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        202,
+        138,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "lobster-engineer-rivet",
+      "name": "Rivetclaw",
+      "classes": [
+        "engineer",
+        "chemist"
+      ],
+      "keystones": [
+        "self_repair",
+        "big_finish"
+      ],
+      "attack": "flask_lob",
+      "artFile": "lobster-02.png",
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        144,
+        105,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "lockbox-dreadnought",
+      "name": "Lockbox Dreadnought",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "shield_wall",
+        "twin_wards"
+      ],
+      "attack": "lid_chomp",
+      "artFile": "lockbox-01.png",
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        260,
+        120,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "loom-binder",
+      "name": "Threadbinder Loom",
+      "classes": [
+        "engineer",
+        "commander"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "rally"
+      ],
+      "attack": "thread_bind",
+      "artFile": "loom-01.png",
+      "biome": "ruins",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        232,
+        61,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "lyrebird-bard-plume",
+      "name": "Plumesong",
+      "classes": [
+        "bard",
+        "skyborne"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "lift"
+      ],
+      "attack": "plume_fan",
+      "artFile": "lyrebird-01.png",
+      "biome": "pine_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        311,
+        109,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mammoth-titan-tundra",
+      "name": "Tundra Titan",
+      "classes": [
+        "bulwark",
+        "cryomancer"
+      ],
+      "keystones": [
+        "hold_position",
+        "cold_heart"
+      ],
+      "attack": "tundra_stomp",
+      "artFile": "mammoth-01.png",
+      "biome": "arctic",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        244,
+        97,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "manatee-healer-shell",
+      "name": "Shellmend Manatee",
+      "classes": [
+        "mender",
+        "cleric"
+      ],
+      "keystones": [
+        "overflowing_care",
+        "sanctity"
+      ],
+      "attack": "herb_puff",
+      "artFile": "manatee-01.png",
+      "biome": "lagoon",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        278,
+        103,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mandrake-primalist-root",
+      "name": "Screamroot",
+      "classes": [
+        "ritualist",
+        "summoner"
+      ],
+      "keystones": [
+        "frostbinder",
+        "golem_heart"
+      ],
+      "attack": "mandrake_scream",
+      "artFile": "mandrake-01.png",
+      "biome": "swamp",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        269,
+        27,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mandrill-brawler-gloves",
+      "name": "Glovegrin",
+      "classes": [
+        "berserker",
+        "champion"
+      ],
+      "keystones": [
+        "reckless_swing",
+        "glory"
+      ],
+      "attack": "haymaker",
+      "artFile": "mandrill-01.png",
+      "biome": "jungle",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        221,
+        59,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mannequin",
+      "name": "Stitchfist Mannequin",
+      "classes": [
+        "berserker",
+        "bulwark"
+      ],
+      "keystones": [
+        "last_stand",
+        "unbreakable"
+      ],
+      "attack": "mannequin_slam",
+      "artFile": "mannequin-01.png",
+      "biome": "ruins",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        96,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "manticore-assassin-barb",
+      "name": "Barbtail Manticore",
+      "classes": [
+        "assassin",
+        "skyborne"
+      ],
+      "keystones": [
+        "vanishing_kill",
+        "sky_lord"
+      ],
+      "attack": "barb_lash",
+      "artFile": "manticore-01.png",
+      "biome": "desert",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        334,
+        246,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mantis-engineer-blade",
+      "name": "Bladewright Mantis",
+      "classes": [
+        "saboteur",
+        "engineer"
+      ],
+      "keystones": [
+        "wrecker",
+        "reinforced"
+      ],
+      "attack": "blade_cut",
+      "artFile": "mantis-01.png",
+      "biome": "jungle",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        290,
+        54,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "marabou-healer-balm",
+      "name": "Balmbeak",
+      "classes": [
+        "engineer",
+        "thief"
+      ],
+      "keystones": [
+        "self_repair",
+        "escape_artist"
+      ],
+      "attack": "balm_flask",
+      "artFile": "marabou-01.png",
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        259,
+        19,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "maskrack-summoner-echo",
+      "name": "Echomask Rack",
+      "classes": [
+        "summoner",
+        "skyborne"
+      ],
+      "keystones": [
+        "portal",
+        "eagle_eye"
+      ],
+      "attack": "echo_scream",
+      "artFile": "maskrack-01.png",
+      "biome": "ruins",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        253,
+        -31,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mastiff-guard-shield",
+      "name": "Shieldjaw Mastiff",
+      "classes": [
+        "bulwark",
+        "tracker"
+      ],
+      "keystones": [
+        "shield_wall",
+        "scent_of_blood"
+      ],
+      "attack": "leg_bite",
+      "artFile": "mastiff-01.png",
+      "biome": "cathedral",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        326,
+        35,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "meerkat-captain-spyglass",
+      "name": "Spyglass Meerkat",
+      "classes": [
+        "commander",
+        "tracker"
+      ],
+      "keystones": [
+        "vanguard",
+        "relentless"
+      ],
+      "attack": "spotted",
+      "artFile": "meerkat-01.png",
+      "biome": "desert",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        170,
+        149,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "millstone-juggernaut",
+      "name": "Millstone Juggernaut",
+      "classes": [
+        "berserker",
+        "bulwark"
+      ],
+      "keystones": [
+        "unstoppable",
+        "hold_position"
+      ],
+      "attack": "millstone_crush",
+      "artFile": "millstone-01.png",
+      "biome": "savannah",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        250,
+        87,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mirror-revenant",
+      "name": "Mirror Revenant",
+      "classes": [
+        "enchanter",
+        "skyborne"
+      ],
+      "keystones": [
+        "lingering_magic",
+        "lift"
+      ],
+      "attack": "mirror_ray",
+      "artFile": "mirror-01.png",
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        178,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mole-engineer-gear",
+      "name": "Gearclaw Mole",
+      "classes": [
+        "engineer",
+        "chemist"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "potent_brew"
+      ],
+      "attack": "headlamp_flash",
+      "artFile": "mole-01.png",
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        330,
+        126,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mole-engineer-hexhammer",
+      "name": "Hexhammer Mole",
+      "classes": [
+        "engineer",
+        "hexer"
+      ],
+      "keystones": [
+        "reinforced",
+        "lingering_malice"
+      ],
+      "attack": "hexhammer",
+      "artFile": "mole-02.png",
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        258,
+        222,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mongoose-assassin-sickle",
+      "name": "Sicklewhisk",
+      "classes": [
+        "assassin",
+        "thief"
+      ],
+      "keystones": [
+        "venom_blades",
+        "master_thief"
+      ],
+      "attack": "sickle_slash",
+      "artFile": "mongoose-01.png",
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        343,
+        113,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mongoose-hunter-hex",
+      "name": "Hexdart Mongoose",
+      "classes": [
+        "assassin",
+        "thief"
+      ],
+      "keystones": [
+        "unseen",
+        "shadow_purse"
+      ],
+      "attack": "hex_dart",
+      "artFile": "mongoose-02.png",
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        250,
+        109,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "monkey-trickster-sling",
+      "name": "Slingtail",
+      "classes": [
+        "saboteur",
+        "tracker"
+      ],
+      "keystones": [
+        "chaos_agent",
+        "sniff_the_air"
+      ],
+      "attack": "sling_stone",
+      "artFile": "monkey-01.png",
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        150,
+        113,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "moray-trickster-hook",
+      "name": "Hookgrin Moray",
+      "classes": [
+        "saboteur",
+        "tracker"
+      ],
+      "keystones": [
+        "disarm_trap",
+        "scent_of_blood"
+      ],
+      "attack": "moray_bite",
+      "artFile": "moray-01.png",
+      "biome": "lagoon",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        375,
+        51,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mortar-alchemist-bastion",
+      "name": "Bastion Mortar",
+      "classes": [
+        "berserker",
+        "bulwark"
+      ],
+      "keystones": [
+        "reckless_swing",
+        "unbreakable"
+      ],
+      "attack": "grind",
+      "artFile": "mortar-01.png",
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        176,
+        43,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "moth-cleric-lantern",
+      "name": "Lanternmoth",
+      "classes": [
+        "cleric",
+        "skyborne"
+      ],
+      "keystones": [
+        "purifying_aura",
+        "sky_lord"
+      ],
+      "attack": "lantern_ray",
+      "artFile": "moth-02.png",
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        181,
+        130,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mushroom-druid",
+      "name": "Sporedruid",
+      "classes": [
+        "ritualist",
+        "lifebinder"
+      ],
+      "keystones": [
+        "deluge",
+        "phoenix"
+      ],
+      "attack": "spore_ray",
+      "artFile": "mushroom-01.png",
+      "biome": "mushroom_grotto",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        192,
+        223,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "mushroom-sentinel-shield",
+      "name": "Capshield",
+      "classes": [
+        "bulwark",
+        "spiritwalker"
+      ],
+      "keystones": [
+        "shield_wall",
+        "soul_anchor"
+      ],
+      "attack": "spore_pulse",
+      "artFile": "mushroom-03.png",
+      "biome": "mushroom_grotto",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        182,
+        189,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "musicbox-summoner-drum",
+      "name": "Windup Drummer",
+      "classes": [
+        "summoner",
+        "bulwark"
+      ],
+      "keystones": [
+        "quickening",
+        "hold_position"
+      ],
+      "attack": "windup_punch",
+      "artFile": "musicbox-01.png",
+      "biome": "ruins",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        188,
+        88,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "muskox-bodyguard-buckler",
+      "name": "Bucklerhorn",
+      "classes": [
+        "bulwark",
+        "berserker"
+      ],
+      "keystones": [
+        "unbreakable",
+        "last_stand"
+      ],
+      "attack": "buckler_bash",
+      "artFile": "muskox-01.png",
+      "biome": "arctic",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        292,
+        187,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "newt-alchemist-coil",
+      "name": "Coilnewt",
+      "classes": [
+        "chemist",
+        "engineer"
+      ],
+      "keystones": [
+        "volatile",
+        "self_repair"
+      ],
+      "attack": "coil_crack",
+      "artFile": "newt-01.png",
+      "biome": "swamp",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        392,
+        265,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "olm-summoner-shade",
+      "name": "Shadeolm",
+      "classes": [
+        "summoner",
+        "enchanter"
+      ],
+      "keystones": [
+        "golem_heart",
+        "spell_ward"
+      ],
+      "attack": "shade_ray",
+      "artFile": "olm-01.png",
+      "biome": "crystal_caverns",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        194,
+        45,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "opossum-summoner-dice",
+      "name": "Dicetail",
+      "classes": [
+        "summoner",
+        "tactician"
+      ],
+      "keystones": [
+        "portal",
+        "all_in"
+      ],
+      "attack": "dice_flick",
+      "artFile": "opossum-01.png",
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        335,
+        148,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "orc-summoner-skull",
+      "name": "Grukk Skullcaller",
+      "classes": [
+        "necromancer",
+        "spiritwalker"
+      ],
+      "keystones": [
+        "deaths_bounty",
+        "haunting"
+      ],
+      "attack": "skull_club",
+      "artFile": "orc-01.png",
+      "biome": "ruins",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        224,
+        20,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "orchidmantis-trickster-leaf",
+      "name": "Petalshade",
+      "classes": [
+        "ritualist",
+        "saboteur"
+      ],
+      "keystones": [
+        "tidecaller",
+        "wrecker"
+      ],
+      "attack": "petal_slash",
+      "artFile": "orchidmantis-01.png",
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        240,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "organ-summoner",
+      "name": "Pipe Organ Choir",
+      "classes": [
+        "commander",
+        "bulwark"
+      ],
+      "keystones": [
+        "drill",
+        "shield_wall"
+      ],
+      "attack": "pipe_chord",
+      "artFile": "organ-01.png",
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        181,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "orrery-sorcerer-orbit",
+      "name": "Orbitwright",
+      "classes": [
+        "enchanter",
+        "commander"
+      ],
+      "keystones": [
+        "twin_enchant",
+        "rally"
+      ],
+      "attack": "orbit_missile",
+      "artFile": "orrery-01.png",
+      "biome": "cathedral",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        211,
+        76,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "ossuary-summoner-cube",
+      "name": "Bonecube",
+      "classes": [
+        "necromancer",
+        "bulwark"
+      ],
+      "keystones": [
+        "lich_form",
+        "hold_position"
+      ],
+      "attack": "bone_rattle",
+      "artFile": "ossuary-01.png",
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        235,
+        55,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "otter-hunter-sling",
+      "name": "Slingwhisker",
+      "classes": [
+        "tracker",
+        "thief"
+      ],
+      "keystones": [
+        "relentless",
+        "escape_artist"
+      ],
+      "attack": "river_stone",
+      "artFile": "otter-01.png",
+      "biome": "wet_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        268,
+        142,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "owl-wizard",
+      "name": "Hootmage",
+      "classes": [
+        "enchanter",
+        "skyborne"
+      ],
+      "keystones": [
+        "lingering_magic",
+        "eagle_eye"
+      ],
+      "attack": "owl_spark",
+      "artFile": "owl-01.png",
+      "biome": "pine_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        192,
+        97,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "panda-monk-fists",
+      "name": "Bamboo Monk",
+      "classes": [
+        "berserker",
+        "champion"
+      ],
+      "keystones": [
+        "unstoppable",
+        "hunt_down"
+      ],
+      "attack": "palm_strike",
+      "artFile": "panda-01.png",
+      "biome": "mountain",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 6,
+      "frontFrame": [
+        181,
+        48,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "pangolin-guard-decoy",
+      "name": "Decoy Pangolin",
+      "classes": [
+        "bulwark",
+        "thief"
+      ],
+      "keystones": [
+        "unbreakable",
+        "master_thief"
+      ],
+      "attack": "scale_bash",
+      "artFile": "pangolin-01.png",
+      "biome": "savannah",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        354,
+        150,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "pangolin-sorcerer-thunder",
+      "name": "Thunderscale",
+      "classes": [
+        "bulwark",
+        "summoner"
+      ],
+      "keystones": [
+        "shield_wall",
+        "quickening"
+      ],
+      "attack": "thunder_hum",
+      "artFile": "pangolin-02.png",
+      "biome": "savannah",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        372,
+        184,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "panpipe-summoner-reed",
+      "name": "Reedcaller",
+      "classes": [
+        "commander",
+        "summoner"
+      ],
+      "keystones": [
+        "vanguard",
+        "golem_heart"
+      ],
+      "attack": "reed_melody",
+      "artFile": "panpipe-01.png",
+      "biome": "flower_meadow",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        189,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "peacock-bard-feather",
+      "name": "Plumecrown",
+      "classes": [
+        "bard",
+        "skyborne"
+      ],
+      "keystones": [
+        "rhythm",
+        "lift"
+      ],
+      "attack": "feather_fan",
+      "artFile": "peacock-01.png",
+      "biome": "flower_meadow",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        399,
+        53,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "phoenix-titan-solar",
+      "name": "Solar Phoenix",
+      "classes": [
+        "mender",
+        "pyromancer"
+      ],
+      "keystones": [
+        "regrowth",
+        "ashwalker"
+      ],
+      "attack": "solar_flare",
+      "artFile": "phoenix-01.png",
+      "biome": "ashlands",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        188,
+        12,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "pika-summoner-horn",
+      "name": "Hornpip",
+      "classes": [
+        "bard",
+        "summoner"
+      ],
+      "keystones": [
+        "crescendo",
+        "portal"
+      ],
+      "attack": "squeak",
+      "artFile": "pika-01.png",
+      "biome": "mountain",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        207,
+        153,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "platypus-alchemist-rune",
+      "name": "Runebill",
+      "classes": [
+        "chemist",
+        "engineer"
+      ],
+      "keystones": [
+        "big_finish",
+        "rapid_fire"
+      ],
+      "attack": "rune_spray",
+      "artFile": "platypus-01.png",
+      "biome": "wet_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        335,
+        207,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "plough-ravager",
+      "name": "Furrow Ravager",
+      "classes": [
+        "champion",
+        "summoner"
+      ],
+      "keystones": [
+        "duelist",
+        "quickening"
+      ],
+      "attack": "plough",
+      "artFile": "plough-01.png",
+      "biome": "savannah",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        306,
+        233,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "pocketwatch-warden",
+      "name": "Tickwarden",
+      "classes": [
+        "keeper",
+        "commander"
+      ],
+      "keystones": [
+        "steadfast_ward",
+        "drill"
+      ],
+      "attack": "tick_tock",
+      "artFile": "pocketwatch-01.png",
+      "biome": "ruins",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        246,
+        37,
+        711,
+        1067
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "porcupine-alchemist-shield",
+      "name": "Quillflask",
+      "classes": [
+        "chemist",
+        "bulwark"
+      ],
+      "keystones": [
+        "potent_brew",
+        "hold_position"
+      ],
+      "attack": "quill_volley",
+      "artFile": "porcupine-01.png",
+      "biome": "autumn_woods",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        359,
+        185,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "portcullis-colossus",
+      "name": "Portcullis Colossus",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "unbreakable",
+        "thorned_ward"
+      ],
+      "attack": "portcullis_drop",
+      "artFile": "portcullis-01.png",
+      "biome": "cathedral",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        263,
+        -21,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "printingpress-summoner-type",
+      "name": "Typesetter",
+      "classes": [
+        "summoner",
+        "engineer"
+      ],
+      "keystones": [
+        "golem_heart",
+        "reinforced"
+      ],
+      "attack": "press_down",
+      "artFile": "printingpress-01.png",
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        229,
+        61,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "prism-hexer",
+      "name": "Shardhex",
+      "classes": [
+        "skyborne",
+        "keeper"
+      ],
+      "keystones": [
+        "sky_lord",
+        "twin_wards"
+      ],
+      "attack": "refraction",
+      "artFile": "prism-01.png",
+      "biome": "crystal_caverns",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        300,
+        243,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "puffin-bodyguard-shield",
+      "name": "Shieldpuff",
+      "classes": [
+        "skyborne",
+        "bulwark"
+      ],
+      "keystones": [
+        "eagle_eye",
+        "shield_wall"
+      ],
+      "attack": "shield_thump",
+      "artFile": "puffin-01.png",
+      "biome": "arctic",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        337,
+        221,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "quern-oracle",
+      "name": "Grindstone Oracle",
+      "classes": [
+        "spiritwalker",
+        "skyborne"
+      ],
+      "keystones": [
+        "puppeteer",
+        "lift"
+      ],
+      "attack": "millstone_spin",
+      "artFile": "quern-01.png",
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        218,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "quokka-summoner-pebble",
+      "name": "Pebblegrin",
+      "classes": [
+        "summoner",
+        "enchanter"
+      ],
+      "keystones": [
+        "portal",
+        "spell_ward"
+      ],
+      "attack": "happy_glow",
+      "artFile": "quokka-01.png",
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        119,
+        132,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "raccoon-alchemist-potion",
+      "name": "Potionpaw",
+      "classes": [
+        "chemist",
+        "thief"
+      ],
+      "keystones": [
+        "volatile",
+        "shadow_purse"
+      ],
+      "attack": "snatch_and_run",
+      "artFile": "raccoon-01.png",
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        211,
+        124,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "ram-bard-bellows",
+      "name": "Bellows Ram",
+      "classes": [
+        "bard",
+        "engineer"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "self_repair"
+      ],
+      "attack": "squeeze_song",
+      "artFile": "ram-02.png",
+      "biome": "mountain",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        204,
+        42,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "ram-paladin-sun",
+      "name": "Sunhorn Paladin",
+      "classes": [
+        "bard",
+        "keeper"
+      ],
+      "keystones": [
+        "rhythm",
+        "steadfast_ward"
+      ],
+      "attack": "sun_slam",
+      "artFile": "ram-01.png",
+      "biome": "mountain",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        275,
+        62,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "reef-warden",
+      "name": "Reef Warden",
+      "classes": [
+        "keeper",
+        "berserker"
+      ],
+      "keystones": [
+        "thorned_ward",
+        "reckless_swing"
+      ],
+      "attack": "reef_thrust",
+      "artFile": "lizardfolk-02.png",
+      "biome": "lagoon",
+      "hp": 45,
+      "speed": 6,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        352,
+        64,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "reliquary-summoner-seal",
+      "name": "Sealed Reliquary",
+      "classes": [
+        "summoner",
+        "enchanter"
+      ],
+      "keystones": [
+        "quickening",
+        "twin_enchant"
+      ],
+      "attack": "relic_glow",
+      "artFile": "reliquary-01.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        191,
+        -3,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "retort-alchemist",
+      "name": "Bubblehex Retort",
+      "classes": [
+        "chemist",
+        "bulwark"
+      ],
+      "keystones": [
+        "big_finish",
+        "hold_position"
+      ],
+      "attack": "retort_spray",
+      "artFile": "retort-01.png",
+      "biome": "ruins",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        187,
+        148,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "rhinoceros-guard-shadow",
+      "name": "Shadowhorn",
+      "classes": [
+        "assassin",
+        "champion"
+      ],
+      "keystones": [
+        "vanishing_kill",
+        "glory"
+      ],
+      "attack": "shadow_slash",
+      "artFile": "rhinoceros-01.png",
+      "biome": "savannah",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        247,
+        203,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "roadrunner-hunter-whistle",
+      "name": "Whistledash",
+      "classes": [
+        "tracker",
+        "skyborne"
+      ],
+      "keystones": [
+        "sniff_the_air",
+        "sky_lord"
+      ],
+      "attack": "shrill_whistle",
+      "artFile": "roadrunner-01.png",
+      "biome": "desert",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        141,
+        15,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "roc-colossus-thunder",
+      "name": "Thunder Roc",
+      "classes": [
+        "tracker",
+        "skyborne"
+      ],
+      "keystones": [
+        "scent_of_blood",
+        "eagle_eye"
+      ],
+      "attack": "roc_shriek",
+      "artFile": "roc-01.png",
+      "biome": "storm_cliffs",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        278,
+        95,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "rooster-captain-banner",
+      "name": "Banner Cock",
+      "classes": [
+        "commander",
+        "champion"
+      ],
+      "keystones": [
+        "rally",
+        "hunt_down"
+      ],
+      "attack": "dawn_crow",
+      "artFile": "rooster-01.png",
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        133,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sableantelope-captain-pennant",
+      "name": "Pennant Sable",
+      "classes": [
+        "commander",
+        "champion"
+      ],
+      "keystones": [
+        "vanguard",
+        "duelist"
+      ],
+      "attack": "rallying_charge",
+      "artFile": "sableantelope-01.png",
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        301,
+        60,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "safe-hexer-vault",
+      "name": "Vaulthex",
+      "classes": [
+        "bulwark",
+        "keeper"
+      ],
+      "keystones": [
+        "unbreakable",
+        "twin_wards"
+      ],
+      "attack": "lockdown",
+      "artFile": "safe-01.png",
+      "biome": "ruins",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        258,
+        58,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sail-hexer-night",
+      "name": "Nightsail",
+      "classes": [
+        "skyborne",
+        "thief"
+      ],
+      "keystones": [
+        "lift",
+        "escape_artist"
+      ],
+      "attack": "moonwind_theft",
+      "artFile": "sail-01.png",
+      "biome": "storm_cliffs",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        284,
+        167,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "salamander-rogue",
+      "name": "Slinkember",
+      "classes": [
+        "thief",
+        "tracker"
+      ],
+      "keystones": [
+        "master_thief",
+        "relentless"
+      ],
+      "attack": "ember_swipe",
+      "artFile": "salamander-01.png",
+      "biome": "ashlands",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        7,
+        367,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "salamander-summoner-flask",
+      "name": "Flaskember",
+      "classes": [
+        "chemist",
+        "summoner"
+      ],
+      "keystones": [
+        "potent_brew",
+        "golem_heart"
+      ],
+      "attack": "fume_flask",
+      "artFile": "salamander-02.png",
+      "biome": "ashlands",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        306,
+        240,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sarcophagus-warden",
+      "name": "Tombwarden",
+      "classes": [
+        "summoner",
+        "keeper"
+      ],
+      "keystones": [
+        "portal",
+        "steadfast_ward"
+      ],
+      "attack": "tomb_curse",
+      "artFile": "sarcophagus-01.png",
+      "biome": "desert",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        250,
+        9,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "scarab-engineer-rune",
+      "name": "Runeshell Scarab",
+      "classes": [
+        "engineer",
+        "tracker"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "sniff_the_air"
+      ],
+      "attack": "rune_cannon",
+      "artFile": "scarab-01.png",
+      "biome": "desert",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        375,
+        286,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "scorpion",
+      "name": "Stingtail",
+      "classes": [
+        "thief",
+        "tracker"
+      ],
+      "keystones": [
+        "shadow_purse",
+        "scent_of_blood"
+      ],
+      "attack": "stinger",
+      "artFile": "scorpion-01.png",
+      "biome": "desert",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        124,
+        428,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "scorpion-healer-ribbon",
+      "name": "Ribbonsting",
+      "classes": [
+        "engineer",
+        "tracker"
+      ],
+      "keystones": [
+        "reinforced",
+        "relentless"
+      ],
+      "attack": "ribbon_bind",
+      "artFile": "scorpion-02.png",
+      "biome": "desert",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        336,
+        378,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "seal-bard-bottle",
+      "name": "Bottlenose Bard",
+      "classes": [
+        "engineer",
+        "bard"
+      ],
+      "keystones": [
+        "self_repair",
+        "crescendo"
+      ],
+      "attack": "splash_song",
+      "artFile": "seal-01.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        292,
+        148,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sealpress-summoner",
+      "name": "Waxseal Press",
+      "classes": [
+        "summoner",
+        "keeper"
+      ],
+      "keystones": [
+        "quickening",
+        "thorned_ward"
+      ],
+      "attack": "wax_press",
+      "artFile": "sealpress-01.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        253,
+        -6,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "secretarybird-hunter-javelin",
+      "name": "Javelin Stalker",
+      "classes": [
+        "skyborne",
+        "assassin"
+      ],
+      "keystones": [
+        "sky_lord",
+        "venom_blades"
+      ],
+      "attack": "javelin_throw",
+      "artFile": "secretarybird-01.png",
+      "biome": "savannah",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        313,
+        7,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "serpent-titan-crown",
+      "name": "Crowned Serpent",
+      "classes": [
+        "thief",
+        "summoner"
+      ],
+      "keystones": [
+        "escape_artist",
+        "golem_heart"
+      ],
+      "attack": "royal_venom",
+      "artFile": "serpent-01.png",
+      "biome": "jungle",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        286,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "serval-hunter-crossbow",
+      "name": "Boltear",
+      "classes": [
+        "tracker",
+        "thief"
+      ],
+      "keystones": [
+        "sniff_the_air",
+        "master_thief"
+      ],
+      "attack": "crossbow_bolt",
+      "artFile": "serval-01.png",
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        321,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sewingbox-engineer-ribbon",
+      "name": "Stitchkit",
+      "classes": [
+        "engineer",
+        "mender"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "triage"
+      ],
+      "attack": "stitch_up",
+      "artFile": "sewingbox-01.png",
+      "biome": "ruins",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        138,
+        266,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sextant-admiral",
+      "name": "Admiral Starsight",
+      "classes": [
+        "tracker",
+        "commander"
+      ],
+      "keystones": [
+        "scent_of_blood",
+        "drill"
+      ],
+      "attack": "starsight_ray",
+      "artFile": "sextant-01.png",
+      "biome": "coast",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        228,
+        -3,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "shield-vanguard",
+      "name": "Vanguard Aegis",
+      "classes": [
+        "bulwark",
+        "champion"
+      ],
+      "keystones": [
+        "shield_wall",
+        "glory"
+      ],
+      "attack": "aegis_bash",
+      "artFile": "shield-01.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        175,
+        52,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "shoebill-captain-pike",
+      "name": "Pikebill",
+      "classes": [
+        "commander",
+        "tracker"
+      ],
+      "keystones": [
+        "rally",
+        "relentless"
+      ],
+      "attack": "pike_thrust",
+      "artFile": "shoebill-01.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        216,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "shrew-summoner-totem",
+      "name": "Totemshrew",
+      "classes": [
+        "summoner",
+        "totemist"
+      ],
+      "keystones": [
+        "portal",
+        "spirit_shield"
+      ],
+      "attack": "spirit_nip",
+      "artFile": "shrew-01.png",
+      "biome": "pine_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        218,
+        116,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "siphon-alchemist",
+      "name": "Siphonworm",
+      "classes": [
+        "chemist",
+        "bulwark"
+      ],
+      "keystones": [
+        "volatile",
+        "hold_position"
+      ],
+      "attack": "gas_vent",
+      "artFile": "siphon-01.png",
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        223,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sistrum-summoner",
+      "name": "Rattlechant",
+      "classes": [
+        "commander",
+        "enchanter"
+      ],
+      "keystones": [
+        "vanguard",
+        "lingering_magic"
+      ],
+      "attack": "rattling_chant",
+      "artFile": "sistrum-01.png",
+      "biome": "desert",
+      "hp": 35,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        172,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sledgehammer-colossus",
+      "name": "Sledge Colossus",
+      "classes": [
+        "berserker",
+        "bulwark"
+      ],
+      "keystones": [
+        "last_stand",
+        "unbreakable"
+      ],
+      "attack": "sledge_slam",
+      "artFile": "sledgehammer-01.png",
+      "biome": "mountain",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        217,
+        33,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sloth-guard-bark",
+      "name": "Barkhold Sloth",
+      "classes": [
+        "spiritwalker",
+        "mender"
+      ],
+      "keystones": [
+        "soul_anchor",
+        "overflowing_care"
+      ],
+      "attack": "slow_claw",
+      "artFile": "sloth-01.png",
+      "biome": "jungle",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        248,
+        168,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "snail-bard-brewer",
+      "name": "Brewshell",
+      "classes": [
+        "engineer",
+        "bard"
+      ],
+      "keystones": [
+        "reinforced",
+        "grand_chorus"
+      ],
+      "attack": "brew_toss",
+      "artFile": "snail-05.png",
+      "biome": "mushroom_grotto",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        292,
+        319,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "snail-cleric-crystal",
+      "name": "Prism Snail",
+      "classes": [
+        "stormcaller",
+        "cleric"
+      ],
+      "keystones": [
+        "eye_of_the_storm",
+        "judgment"
+      ],
+      "attack": "slime_trail",
+      "artFile": "snail-01.png",
+      "biome": "crystal_caverns",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        331,
+        244,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "spikeback",
+      "name": "Spikeback",
+      "classes": [
+        "berserker",
+        "bulwark"
+      ],
+      "keystones": [
+        "unstoppable",
+        "shield_wall"
+      ],
+      "attack": "spike_roll",
+      "artFile": "spikeback-01.png",
+      "biome": "desert",
+      "hp": 65,
+      "speed": 4,
+      "power": 6,
+      "cost": 9,
+      "frontFrame": [
+        256,
+        355,
+        768,
+        1152
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "spindle-summoner",
+      "name": "Spindlewhirl",
+      "classes": [
+        "commander",
+        "tactician"
+      ],
+      "keystones": [
+        "drill",
+        "inspiring_presence"
+      ],
+      "attack": "spindle_lash",
+      "artFile": "spindle-01.png",
+      "biome": "ruins",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        246,
+        -31,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "stag-glade",
+      "name": "Glade Stag",
+      "classes": [
+        "ritualist",
+        "totemist"
+      ],
+      "keystones": [
+        "frostbinder",
+        "great_totem"
+      ],
+      "attack": "antler_toss",
+      "artFile": "deer-01.png",
+      "biome": "wet_forest",
+      "hp": 40,
+      "speed": 6,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        256,
+        288,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "stag-hunter-shield",
+      "name": "Shieldhorn Stag",
+      "classes": [
+        "tracker",
+        "bulwark"
+      ],
+      "keystones": [
+        "sniff_the_air",
+        "hold_position"
+      ],
+      "attack": "hunters_arrow",
+      "artFile": "stag-01.png",
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        333,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "stoat-healer-needle",
+      "name": "Needlewhisk",
+      "classes": [
+        "assassin",
+        "thief"
+      ],
+      "keystones": [
+        "unseen",
+        "shadow_purse"
+      ],
+      "attack": "needle_jab",
+      "artFile": "stoat-01.png",
+      "biome": "arctic",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        380,
+        230,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sugarglider-scout-sail",
+      "name": "Sailglide",
+      "classes": [
+        "skyborne",
+        "enchanter"
+      ],
+      "keystones": [
+        "eagle_eye",
+        "spell_ward"
+      ],
+      "attack": "gliding_swoop",
+      "artFile": "sugarglider-01.png",
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        208,
+        148,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sundial-vanguard",
+      "name": "Noonward",
+      "classes": [
+        "keeper",
+        "bulwark"
+      ],
+      "keystones": [
+        "twin_wards",
+        "unbreakable"
+      ],
+      "attack": "noon_blade",
+      "artFile": "sundial-01.png",
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        356,
+        222,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sundrum-hexer",
+      "name": "Sunhex Drum",
+      "classes": [
+        "engineer",
+        "keeper"
+      ],
+      "keystones": [
+        "self_repair",
+        "steadfast_ward"
+      ],
+      "attack": "booming_beat",
+      "artFile": "sundrum-01.png",
+      "biome": "desert",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        182,
+        -65,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "tapestry-summoner",
+      "name": "Woven Host",
+      "classes": [
+        "summoner",
+        "bulwark"
+      ],
+      "keystones": [
+        "quickening",
+        "shield_wall"
+      ],
+      "attack": "woven_snare",
+      "artFile": "tapestry-01.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        279,
+        -22,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "tarsier-hexer-mask",
+      "name": "Maskeye",
+      "classes": [
+        "thief",
+        "hexer"
+      ],
+      "keystones": [
+        "escape_artist",
+        "spreading_curse"
+      ],
+      "attack": "skull_hex",
+      "artFile": "tarsier-01.png",
+      "biome": "jungle",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 1,
+      "frontFrame": [
+        166,
+        120,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "teapot-alchemist-volcano",
+      "name": "Volcano Teapot",
+      "classes": [
+        "chemist",
+        "pyromancer"
+      ],
+      "keystones": [
+        "big_finish",
+        "wildfire"
+      ],
+      "attack": "volcano_spout",
+      "artFile": "teapot-01.png",
+      "biome": "ashlands",
+      "hp": 30,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        198,
+        123,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "termite-engineer-drill",
+      "name": "Drillmite",
+      "classes": [
+        "engineer",
+        "bulwark"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "hold_position"
+      ],
+      "attack": "drill_shot",
+      "artFile": "termite-01.png",
+      "biome": "savannah",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        333,
+        212,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "termite-summoner-clockwork",
+      "name": "Clockmite",
+      "classes": [
+        "engineer",
+        "summoner"
+      ],
+      "keystones": [
+        "reinforced",
+        "golem_heart"
+      ],
+      "attack": "clockwork_nip",
+      "artFile": "termite-02.png",
+      "biome": "savannah",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        288,
+        107,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "thornfang",
+      "name": "Thornfang",
+      "classes": [
+        "tracker",
+        "berserker"
+      ],
+      "keystones": [
+        "scent_of_blood",
+        "reckless_swing"
+      ],
+      "attack": "thorn_claws",
+      "artFile": "werewolf-01.png",
+      "biome": "pine_forest",
+      "hp": 40,
+      "speed": 7,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        344,
+        102,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "thorntreant-primalist-bramble",
+      "name": "Bramblestalker",
+      "classes": [
+        "spiritwalker",
+        "assassin"
+      ],
+      "keystones": [
+        "haunting",
+        "vanishing_kill"
+      ],
+      "attack": "thorn_snare",
+      "artFile": "thorntreant-01.png",
+      "biome": "wet_forest",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        237,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "toad-bard-bell",
+      "name": "Belltoad",
+      "classes": [
+        "bard",
+        "summoner"
+      ],
+      "keystones": [
+        "rhythm",
+        "portal"
+      ],
+      "attack": "croaking_toll",
+      "artFile": "toad-03.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        243,
+        201,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "toad-boulder",
+      "name": "Boulder Toad",
+      "classes": [
+        "bulwark",
+        "berserker"
+      ],
+      "keystones": [
+        "unbreakable",
+        "last_stand"
+      ],
+      "attack": "boulder_belly",
+      "artFile": "toad-01.png",
+      "biome": "mountain",
+      "hp": 70,
+      "speed": 2,
+      "power": 7,
+      "cost": 9,
+      "frontFrame": [
+        256,
+        304,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "toad-druid",
+      "name": "Druid Toad",
+      "classes": [
+        "ritualist",
+        "lifebinder"
+      ],
+      "keystones": [
+        "deluge",
+        "lifeblood"
+      ],
+      "attack": "spore_croak",
+      "artFile": "toad-02.png",
+      "biome": "swamp",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        352,
+        284,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "tortoise-colossus-mountain",
+      "name": "Mountainshell",
+      "classes": [
+        "bulwark",
+        "spiritwalker"
+      ],
+      "keystones": [
+        "shield_wall",
+        "puppeteer"
+      ],
+      "attack": "avalanche",
+      "artFile": "tortoise-01.png",
+      "biome": "mountain",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        337,
+        85,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "tortoise-sentinel-obsidian",
+      "name": "Obsidian Tortoise",
+      "classes": [
+        "bulwark",
+        "summoner"
+      ],
+      "keystones": [
+        "hold_position",
+        "quickening"
+      ],
+      "attack": "obsidian_shard",
+      "artFile": "tortoise-02.png",
+      "biome": "ashlands",
+      "hp": 75,
+      "speed": 3,
+      "power": 6,
+      "cost": 10,
+      "frontFrame": [
+        353,
+        293,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "treant-druid-leaf",
+      "name": "Leafwarden",
+      "classes": [
+        "ritualist",
+        "lifebinder"
+      ],
+      "keystones": [
+        "tidecaller",
+        "martyr"
+      ],
+      "attack": "leaf_storm",
+      "artFile": "treant-01.png",
+      "biome": "wet_forest",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        230,
+        35,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "treant-titan-ancient",
+      "name": "Elderbough",
+      "classes": [
+        "spiritwalker",
+        "mender"
+      ],
+      "keystones": [
+        "soul_anchor",
+        "regrowth"
+      ],
+      "attack": "ancient_root",
+      "artFile": "treant-02.png",
+      "biome": "wet_forest",
+      "hp": 70,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        190,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "trowel-crusader",
+      "name": "Trowel Crusader",
+      "classes": [
+        "bulwark",
+        "champion"
+      ],
+      "keystones": [
+        "unbreakable",
+        "hunt_down"
+      ],
+      "attack": "trowel_strike",
+      "artFile": "trowel-01.png",
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        228,
+        56,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "tuningfork-champion",
+      "name": "Resonant Champion",
+      "classes": [
+        "commander",
+        "champion"
+      ],
+      "keystones": [
+        "rally",
+        "duelist"
+      ],
+      "attack": "harmonic_hum",
+      "artFile": "tuningfork-01.png",
+      "biome": "cathedral",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        256,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "turbine-skyguard",
+      "name": "Skyturbine",
+      "classes": [
+        "skyborne",
+        "champion"
+      ],
+      "keystones": [
+        "lift",
+        "glory"
+      ],
+      "attack": "turbine_blade",
+      "artFile": "turbine-01.png",
+      "biome": "storm_cliffs",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        161,
+        0,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "turtle-bard-frost",
+      "name": "Frostshell Bard",
+      "classes": [
+        "bulwark",
+        "enchanter"
+      ],
+      "keystones": [
+        "shield_wall",
+        "twin_enchant"
+      ],
+      "attack": "frost_chime",
+      "artFile": "turtle-03.png",
+      "biome": "arctic",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        384,
+        244,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "turtle-monk",
+      "name": "Shellmonk",
+      "classes": [
+        "cleric",
+        "bulwark"
+      ],
+      "keystones": [
+        "sanctity",
+        "hold_position"
+      ],
+      "attack": "prayer_palm",
+      "artFile": "turtle-02.png",
+      "biome": "coast",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        192,
+        75,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "umbrella-guardian-fan",
+      "name": "Fanbrella",
+      "classes": [
+        "skyborne",
+        "stormcaller"
+      ],
+      "keystones": [
+        "sky_lord",
+        "overcharge"
+      ],
+      "attack": "parasol_gust",
+      "artFile": "umbrella-01.png",
+      "biome": "storm_cliffs",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        217,
+        5,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "velvetworm-hexer-rune",
+      "name": "Runevelvet",
+      "classes": [
+        "thief",
+        "spiritwalker"
+      ],
+      "keystones": [
+        "master_thief",
+        "haunting"
+      ],
+      "attack": "glue_spit",
+      "artFile": "velvetworm-01.png",
+      "biome": "wet_forest",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        384,
+        255,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "vinegaroon-alchemist-flask",
+      "name": "Vinegar Flask",
+      "classes": [
+        "chemist",
+        "tracker"
+      ],
+      "keystones": [
+        "potent_brew",
+        "relentless"
+      ],
+      "attack": "acid_pinch",
+      "artFile": "vinegaroon-01.png",
+      "biome": "desert",
+      "hp": 25,
+      "speed": 8,
+      "power": 3,
+      "cost": 4,
+      "frontFrame": [
+        205,
+        289,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "vise-enforcer",
+      "name": "Vise Enforcer",
+      "classes": [
+        "bulwark",
+        "engineer"
+      ],
+      "keystones": [
+        "unbreakable",
+        "self_repair"
+      ],
+      "attack": "vise_grip",
+      "artFile": "vise-01.png",
+      "biome": "ruins",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 7,
+      "frontFrame": [
+        250,
+        185,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "vulture-healer-cinder",
+      "name": "Cinderbeak",
+      "classes": [
+        "skyborne",
+        "stormcaller"
+      ],
+      "keystones": [
+        "eagle_eye",
+        "static_field"
+      ],
+      "attack": "cinder_dive",
+      "artFile": "vulture-01.png",
+      "biome": "desert",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        173,
+        46,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "walrus-bard-horn",
+      "name": "Tuskhorn Walrus",
+      "classes": [
+        "bard",
+        "commander"
+      ],
+      "keystones": [
+        "crescendo",
+        "vanguard"
+      ],
+      "attack": "horn_blast",
+      "artFile": "walrus-01.png",
+      "biome": "arctic",
+      "hp": 60,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        176,
+        136,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "warthog-engineer-cannon",
+      "name": "Cannon Warthog",
+      "classes": [
+        "engineer",
+        "chemist"
+      ],
+      "keystones": [
+        "rapid_fire",
+        "volatile"
+      ],
+      "attack": "hand_cannon",
+      "artFile": "warthog-01.png",
+      "biome": "savannah",
+      "hp": 45,
+      "speed": 5,
+      "power": 5,
+      "cost": 5,
+      "frontFrame": [
+        314,
+        46,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "wasp-alchemist-potion",
+      "name": "Stingflask",
+      "classes": [
+        "chemist",
+        "skyborne"
+      ],
+      "keystones": [
+        "big_finish",
+        "lift"
+      ],
+      "attack": "venom_sting",
+      "artFile": "wasp-01.png",
+      "biome": "flower_meadow",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        310,
+        143,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "weasel-rogue-dagger",
+      "name": "Daggerwhisk",
+      "classes": [
+        "assassin",
+        "thief"
+      ],
+      "keystones": [
+        "venom_blades",
+        "shadow_purse"
+      ],
+      "attack": "quick_swipe",
+      "artFile": "weasel-01.png",
+      "biome": "autumn_woods",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 2,
+      "frontFrame": [
+        351,
+        162,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "weathervane-summoner-arrow",
+      "name": "Gustarrow",
+      "classes": [
+        "summoner",
+        "skyborne"
+      ],
+      "keystones": [
+        "golem_heart",
+        "sky_lord"
+      ],
+      "attack": "turning_gust",
+      "artFile": "weathervane-01.png",
+      "biome": "storm_cliffs",
+      "hp": 55,
+      "speed": 5,
+      "power": 5,
+      "cost": 8,
+      "frontFrame": [
+        288,
+        37,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "weaverbird-summoner-banner",
+      "name": "Bannerweave",
+      "classes": [
+        "commander",
+        "summoner"
+      ],
+      "keystones": [
+        "drill",
+        "portal"
+      ],
+      "attack": "banner_snap",
+      "artFile": "weaverbird-01.png",
+      "biome": "savannah",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        155,
+        76,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "wisp-hexer-shadow",
+      "name": "Shadowwisp",
+      "classes": [
+        "hexer",
+        "assassin"
+      ],
+      "keystones": [
+        "witchs_patience",
+        "unseen"
+      ],
+      "attack": "shadow_touch",
+      "artFile": "wisp-01.png",
+      "biome": "ruins",
+      "hp": 20,
+      "speed": 8,
+      "power": 3,
+      "cost": 3,
+      "frontFrame": [
+        289,
+        78,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "wolf-ranger",
+      "name": "Ranger Wolf",
+      "classes": [
+        "tracker",
+        "commander"
+      ],
+      "keystones": [
+        "sniff_the_air",
+        "rally"
+      ],
+      "attack": "ranger_arrow",
+      "artFile": "wolf-01.png",
+      "biome": "pine_forest",
+      "hp": 50,
+      "speed": 5,
+      "power": 5,
+      "cost": 6,
+      "frontFrame": [
+        331,
+        152,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "wolverine-warrior-mace",
+      "name": "Macefang Wolverine",
+      "classes": [
+        "berserker",
+        "champion"
+      ],
+      "keystones": [
+        "unstoppable",
+        "hunt_down"
+      ],
+      "attack": "mace_smash",
+      "artFile": "wolverine-01.png",
+      "biome": "arctic",
+      "hp": 40,
+      "speed": 5,
+      "power": 5,
+      "cost": 4,
+      "frontFrame": [
+        277,
+        180,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "wyvern-scout-obsidian",
+      "name": "Obsidian Wyvern",
+      "classes": [
+        "skyborne",
+        "transmuter"
+      ],
+      "keystones": [
+        "eagle_eye",
+        "lasting_change"
+      ],
+      "attack": "petrifying_gaze",
+      "artFile": "wyvern-01.png",
+      "biome": "ashlands",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 8,
+      "frontFrame": [
+        357,
+        150,
+        640,
+        960
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "yak-bard-gong",
+      "name": "Gongyak",
+      "classes": [
+        "bard",
+        "summoner"
+      ],
+      "keystones": [
+        "grand_chorus",
+        "quickening"
+      ],
+      "attack": "gong_crash",
+      "artFile": "yak-01.png",
+      "biome": "mountain",
+      "hp": 65,
+      "speed": 3,
+      "power": 6,
+      "cost": 7,
+      "frontFrame": [
+        244,
+        79,
+        800,
+        1200
+      ],
+      "rearFrame": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    }
+  ]
+}
