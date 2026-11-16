@@ -139,6 +139,7 @@ Each task names the doc sections it implements. Read those sections before codin
   - Harness log and report: the Momentum meter after every unit turn and every payment; the report's Momentum section per side.
   - Content: Searing Light hits for 4–5 (skills.md Mender); Vanish costs 1 Momentum (skills.md Assassin). Regenerate the content JSON and update the tests and tooltips that use these numbers.
   - Then rerun 10,000 harness battles and put the summaries in `analysis/` for the owner.
+  - From that run, propose the Cost formula (game_system §5.1) to the owner and recalculate Cost once approved (M5.6 step 8).
 
 ### M6 Local two-player
 
