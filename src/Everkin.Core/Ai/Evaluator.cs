@@ -196,6 +196,8 @@ public static class Evaluator
             case StatusIds.Phased:
             case StatusIds.Piercing:                                            // the next attack: the unit needs an attack it can use
                 return carrier.KnownSkills.Any(id => catalog.TryGet(id, out var k) && !k.IsPassive && k.IsAttack && Usable(carrier, k));
+            case StatusIds.WarDrums:                                            // only while an enemy can Stun or Freeze (its effect text says so)
+                return state.Units.Any(u => u.Side != carrier.Side && !u.IsRemoved && !u.IsKnockedOut && u.KnownSkills.Any(id => StunsOrFreezes(catalog, id)));
             case StatusIds.Echo:                                                // the next skill
                 return carrier.KnownSkills.Any(id => catalog.TryGet(id, out var k) && !k.IsPassive && Usable(carrier, k));
             case StatusIds.FreeMomentum:                                        // the next skill with a Momentum cost
@@ -203,6 +205,14 @@ public static class Evaluator
             default:                                                            // Ward, songs and the rest sit on a unit that is still standing
                 return true;
         }
+    }
+
+    private static bool StunsOrFreezes(SkillCatalog catalog, string skillId)
+    {
+        var content = catalog.Content;
+        var text = content.SkillsById.TryGetValue(skillId, out var skill) ? skill.Effect
+            : content.AttacksById.TryGetValue(skillId, out var attack) ? attack.Effect : null;
+        return text is not null && (text.Contains("Stun", StringComparison.Ordinal) || text.Contains("Frozen", StringComparison.Ordinal) || text.Contains("Freeze", StringComparison.Ordinal));
     }
 
     private static bool Usable(Unit unit, Skill skill) => !skill.Magical || Statuses.CanUseMagical(unit);

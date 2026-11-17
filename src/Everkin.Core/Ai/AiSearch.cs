@@ -36,7 +36,7 @@ public sealed class AiSearch
     public IReadOnlySet<string> LastSearchedSkills { get; private set; } = new HashSet<string>();
 
     /// <summary>A candidate first move with what the search needs to know about it.</summary>
-    private sealed record Candidate(AiAction Move, int Score, bool Costed, bool Control);
+    private sealed record Candidate(AiAction Move, int Score, bool Costed, bool Control, int Effect = 0);
 
     /// <summary>Chooses the action of the unit whose turn it is. The state is not changed.</summary>
     public AiAction Choose(BattleState real, int unitId)
@@ -62,22 +62,24 @@ public sealed class AiSearch
                 var child = Child(real, unitId, cand.Move);
                 var costed = cand.Costed;
                 var control = cand.Control;
+                var effect = cand.Effect;
                 if (depth == 1 && cand.Move.Kind == AiActionKind.Skill)
                 {
                     costed = IsCosted(real, unitId, cand.Move);
                     control = IsControl(real, child, unitId);
                 }
+                if (depth == 1) effect = EffectRank(real, child, unitId, cand.Move);
                 // The harness looks one timeline turn further after a costed or control skill, so its payoff can show.
                 var further = _level.DeeperAfterCostedOrControl && depth >= 2 && (costed || control) ? 0 : 1;
                 // A weaker level needs the true score of every top move, so it searches each with a full window.
                 var score = Node(child, depth - further, _level.PickTop > 1 ? int.MinValue : alpha, _level.PickTop > 1 ? int.MaxValue : beta);
-                scored.Add(new Candidate(cand.Move, score, costed, control));
+                scored.Add(new Candidate(cand.Move, score, costed, control, effect));
                 if (_level.PickTop <= 1)
                 {
                     if (maximizing) alpha = Math.Max(alpha, score); else beta = Math.Min(beta, score);
                 }
             }
-            ranked = scored.OrderBy(x => maximizing ? -x.Score : x.Score).ToList();      // the best move first for the next, deeper round
+            ranked = scored.OrderBy(x => maximizing ? -x.Score : x.Score).ThenByDescending(x => x.Effect).ToList();      // the best move first for the next, deeper round
             if (_level.RootCandidates > 0) ranked = Trim(ranked, Math.Max(_level.RootCandidates, _level.PickTop));
             if (depth == 1 && _level.Depth >= 2)
                 LastSearchedSkills = ranked.Where(c => c.Move.Kind == AiActionKind.Skill).Select(c => c.Move.Use!.SkillId).ToHashSet();
@@ -101,6 +103,28 @@ public sealed class AiSearch
             if (control is not null && !kept.Contains(control)) kept.Add(control);
         }
         return kept;
+    }
+
+    /// <summary>
+    /// How much a first move does, for breaking ties (game_system section 2.5 "Ties"): 2 when the enemy lost HP, 1 when a skill changed anything else
+    /// (a status, an ally's HP, a summon, the Momentum meter, a turn), 0 for a move, a Skip Turn or a skill that only changed positions.
+    /// </summary>
+    private static int EffectRank(BattleState before, BattleState after, int unitId, AiAction move)
+    {
+        if (move.Kind != AiActionKind.Skill) return 0;
+        var side = before.GetUnit(unitId).Side;
+        int EnemyHp(BattleState s) => s.Units.Where(u => u.Side != side && u.Kind != UnitKind.Construct).Sum(u => u.Hp);
+        if (EnemyHp(after) < EnemyHp(before)) return 2;
+        if (after.Units.Count != before.Units.Count || after.Momentum.Value != before.Momentum.Value) return 1;
+        foreach (var u in before.Units)
+        {
+            var now = after.GetUnit(u.Id);
+            if (now.Hp != u.Hp || now.Ward != u.Ward || now.IsKnockedOut != u.IsKnockedOut || now.IsRemoved != u.IsRemoved || now.StatusInstances.Count != u.StatusInstances.Count) return 1;
+            foreach (var (id, status) in now.StatusInstances)
+                if (!u.StatusInstances.TryGetValue(id, out var old) || old.EndsAt != status.EndsAt) return 1;
+            if (before.Timeline.TurnOf(u.Id)?.Due != after.Timeline.TurnOf(u.Id)?.Due && u.Id != unitId) return 1;
+        }
+        return 0;
     }
 
     private bool IsCosted(BattleState before, int unitId, AiAction move) =>
