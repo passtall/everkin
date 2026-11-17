@@ -69,7 +69,11 @@ public static class TotemistSkills
         if (state.IsOver || totem.IsKnockedOut || totem.IsRemoved) return true;
         var amount = DamageMath.Scale(PulseHeal, state.PowerOf(totemId));
         foreach (var id in state.Units.Where(u => !u.IsKnockedOut && Covers(state, totem, u.Id)).Select(u => u.Id).ToArray())
+        {
+            // A heal on an undead hurts it and can KO it, and a unit KO'd earlier in this pulse cannot be healed any more.
+            if (state.GetUnit(id).IsKnockedOut) continue;
             state.Heal(totemId, id, amount);
+        }
         state.Timeline.Add(TimelineKind.AutoEvent, PulseEvery, totemId, HealTagPrefix + totemId);
         Actions.Settle(state, totemId);
         return true;
