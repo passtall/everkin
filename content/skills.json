@@ -1889,9 +1889,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "chain_haul",
@@ -2102,9 +2102,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "sand_spill",
@@ -2124,9 +2124,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "stone_gaze",
@@ -2212,9 +2212,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "ribbon_lash",
@@ -2404,9 +2404,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "bellows_spit",
@@ -2425,9 +2425,9 @@
       "extra": {
         "kind": "ground",
         "ground": "burning",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: burning ground on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: burning ground on the target's spot."
     },
     {
       "id": "vine_lash",
@@ -2617,9 +2617,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "hot_wax",
@@ -2726,9 +2726,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "horn_call",
@@ -2748,9 +2748,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "silk_spit",
@@ -2919,9 +2919,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "wing_buzz",
@@ -2940,9 +2940,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "cinder_horn",
@@ -3005,9 +3005,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "needle_point",
@@ -3049,9 +3049,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "twist_in",
@@ -3265,9 +3265,9 @@
       "extra": {
         "kind": "ground",
         "ground": "burning",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: burning ground on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: burning ground on the target's spot."
     },
     {
       "id": "ink_cloud",
@@ -3287,9 +3287,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "yawn",
@@ -3308,9 +3308,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "ember_breath",
@@ -3329,9 +3329,9 @@
       "extra": {
         "kind": "ground",
         "ground": "burning",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 3–4 and every unit next to it for 1–2; 20%: burning ground on the target's spot."
+      "effect": "Hit the target for 3–4 and every unit next to it for 1–2; 50%: burning ground on the target's spot."
     },
     {
       "id": "glass_shard_breath",
@@ -3371,9 +3371,9 @@
       "splashMax": 2,
       "extra": {
         "kind": "push",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: push the target one row back."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: push the target one row back."
     },
     {
       "id": "glacier_breath",
@@ -3392,9 +3392,9 @@
       "extra": {
         "kind": "ground",
         "ground": "ice",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: ice on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: ice on the target's spot."
     },
     {
       "id": "reed_arrow",
@@ -3435,9 +3435,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "drawbridge_drop",
@@ -3479,9 +3479,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "tidal_slap",
@@ -3608,9 +3608,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "dart_shot",
@@ -3692,9 +3692,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "leaping_stab",
@@ -3735,9 +3735,9 @@
       "extra": {
         "kind": "ground",
         "ground": "burning",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: burning ground on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: burning ground on the target's spot."
     },
     {
       "id": "petrifying_glare",
@@ -3822,9 +3822,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "horn_butt",
@@ -3906,9 +3906,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "dissonance",
@@ -3928,9 +3928,9 @@
         "kind": "status",
         "status": "silenced",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Silenced for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Silenced for 5 time units."
     },
     {
       "id": "chest_pound",
@@ -3950,9 +3950,9 @@
         "kind": "status",
         "status": "stunned",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Stunned for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Stunned for 5 time units."
     },
     {
       "id": "lance_charge",
@@ -3992,9 +3992,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "raking_claws",
@@ -4077,9 +4077,9 @@
       "splashMax": 2,
       "extra": {
         "kind": "push",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: push the target one row back."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: push the target one row back."
     },
     {
       "id": "spear_hook",
@@ -4118,9 +4118,9 @@
       "extra": {
         "kind": "ground",
         "ground": "poison",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: poison gas on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: poison gas on the target's spot."
     },
     {
       "id": "beak_drum",
@@ -4203,9 +4203,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "howl",
@@ -4225,9 +4225,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "quick_jab",
@@ -4696,9 +4696,9 @@
         "kind": "status",
         "status": "stunned",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Stunned for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Stunned for 5 time units."
     },
     {
       "id": "grapple_yank",
@@ -5013,9 +5013,9 @@
         "kind": "status",
         "status": "stunned",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Stunned for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Stunned for 5 time units."
     },
     {
       "id": "soul_rend",
@@ -5079,9 +5079,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "eclipse",
@@ -5101,9 +5101,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "sun_flare",
@@ -5231,9 +5231,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "smith_crush",
@@ -5362,9 +5362,9 @@
         "kind": "status",
         "status": "stunned",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Stunned for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Stunned for 5 time units."
     },
     {
       "id": "cackle",
@@ -5384,9 +5384,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "horn_charge",
@@ -5426,9 +5426,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "ink_splash",
@@ -5490,9 +5490,9 @@
         "kind": "status",
         "status": "silenced",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Silenced for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Silenced for 5 time units."
     },
     {
       "id": "sting_tendril",
@@ -5534,9 +5534,9 @@
         "kind": "status",
         "status": "stunned",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Stunned for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Stunned for 5 time units."
     },
     {
       "id": "acorn_shot",
@@ -5599,9 +5599,9 @@
       "extra": {
         "kind": "ground",
         "ground": "burning",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: burning ground on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: burning ground on the target's spot."
     },
     {
       "id": "kiln_blast",
@@ -5620,9 +5620,9 @@
       "extra": {
         "kind": "ground",
         "ground": "burning",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: burning ground on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: burning ground on the target's spot."
     },
     {
       "id": "dagger_slice",
@@ -5684,9 +5684,9 @@
       "splashMax": 2,
       "extra": {
         "kind": "push",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: push the target one row back."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: push the target one row back."
     },
     {
       "id": "venom_bite",
@@ -5748,9 +5748,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "jaw_snap",
@@ -5814,9 +5814,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "flask_lob",
@@ -5901,9 +5901,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "tundra_stomp",
@@ -5944,9 +5944,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "mandrake_scream",
@@ -5966,9 +5966,9 @@
         "kind": "status",
         "status": "stunned",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Stunned for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Stunned for 5 time units."
     },
     {
       "id": "haymaker",
@@ -6096,9 +6096,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "leg_bite",
@@ -6402,9 +6402,9 @@
       "extra": {
         "kind": "ground",
         "ground": "poison",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: poison gas on the target's spot."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: poison gas on the target's spot."
     },
     {
       "id": "windup_punch",
@@ -6575,9 +6575,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "orbit_missile",
@@ -6726,9 +6726,9 @@
         "kind": "status",
         "status": "stunned",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Stunned for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Stunned for 5 time units."
     },
     {
       "id": "reed_melody",
@@ -6748,9 +6748,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "feather_fan",
@@ -6770,9 +6770,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "solar_flare",
@@ -6791,9 +6791,9 @@
       "extra": {
         "kind": "ground",
         "ground": "burning",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: burning ground on the target's spot."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: burning ground on the target's spot."
     },
     {
       "id": "squeak",
@@ -6834,9 +6834,9 @@
       "extra": {
         "kind": "ground",
         "ground": "poison",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: poison gas on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: poison gas on the target's spot."
     },
     {
       "id": "plough",
@@ -6854,9 +6854,9 @@
       "splashMax": 2,
       "extra": {
         "kind": "push",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: push the target one row back."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: push the target one row back."
     },
     {
       "id": "tick_tock",
@@ -6875,9 +6875,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "quill_volley",
@@ -6963,9 +6963,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "shield_thump",
@@ -7003,9 +7003,9 @@
       "splashMax": 2,
       "extra": {
         "kind": "push",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: push the target one row back."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: push the target one row back."
     },
     {
       "id": "happy_glow",
@@ -7067,9 +7067,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "sun_slam",
@@ -7130,9 +7130,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "retort_spray",
@@ -7151,9 +7151,9 @@
       "extra": {
         "kind": "ground",
         "ground": "poison",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: poison gas on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: poison gas on the target's spot."
     },
     {
       "id": "shadow_slash",
@@ -7195,9 +7195,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "roc_shriek",
@@ -7216,9 +7216,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "dawn_crow",
@@ -7238,9 +7238,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "rallying_charge",
@@ -7692,9 +7692,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "sledge_slam",
@@ -7950,9 +7950,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "woven_snare",
@@ -8015,9 +8015,9 @@
       "extra": {
         "kind": "ground",
         "ground": "burning",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: burning ground on the target's spot."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: burning ground on the target's spot."
     },
     {
       "id": "drill_shot",
@@ -8124,9 +8124,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "boulder_belly",
@@ -8167,9 +8167,9 @@
       "extra": {
         "kind": "ground",
         "ground": "poison",
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: poison gas on the target's spot."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: poison gas on the target's spot."
     },
     {
       "id": "avalanche",
@@ -8188,9 +8188,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 2–3; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 2–3; 50%: the target's next turn comes 2 time units later."
     },
     {
       "id": "obsidian_shard",
@@ -8232,9 +8232,9 @@
         "kind": "status",
         "status": "blind",
         "duration": 10,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 20%: the target is Blind for 10 time units."
+      "effect": "Hit the target for 2–3 and every unit next to it for 1–2; 50%: the target is Blind for 10 time units."
     },
     {
       "id": "ancient_root",
@@ -8298,9 +8298,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "turbine_blade",
@@ -8492,9 +8492,9 @@
         "kind": "status",
         "status": "confused",
         "duration": 5,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target is Confused for 5 time units."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target is Confused for 5 time units."
     },
     {
       "id": "hand_cannon",
@@ -8705,9 +8705,9 @@
       "extra": {
         "kind": "delay_turn",
         "amount": 2,
-        "chance": 20
+        "chance": 50
       },
-      "effect": "Every enemy in melee reach takes 1–2; 20%: the target's next turn comes 2 time units later."
+      "effect": "Every enemy in melee reach takes 1–2; 50%: the target's next turn comes 2 time units later."
     }
   ]
 }
