@@ -6,7 +6,7 @@
       "class": "assassin",
       "kind": "A",
       "delay": 4,
-      "momentum": 1,
+      "momentum": 0,
       "delivery": "none",
       "effect": "The Assassin gains stealth and loses every harmful status.",
       "template": "The Assassin gains stealth and loses every harmful status."
@@ -17,7 +17,7 @@
       "class": "assassin",
       "kind": "A",
       "delay": 3,
-      "momentum": 0,
+      "momentum": 1,
       "delivery": "melee",
       "effect": "Only from stealth: a unit is Confused for 10. The Assassin stays stealthed.",
       "template": "Only from stealth: a unit is Confused for 10. The Assassin stays stealthed."
@@ -149,7 +149,7 @@
       "class": "bulwark",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 0,
       "delivery": "direct",
       "effect": "Own side only. Swap places with an ally below half HP.",
       "template": "Own side only. Swap places with an ally below half HP."
@@ -160,7 +160,7 @@
       "class": "bulwark",
       "kind": "A",
       "delay": 4,
-      "momentum": 0,
+      "momentum": 1,
       "delivery": "melee",
       "effect": "Hit for 6–7 and push the target one row back (bumps apply).",
       "template": "Hit for {6–7} and push the target one row back (bumps apply)."
@@ -215,7 +215,7 @@
       "class": "keeper",
       "kind": "A",
       "delay": 7,
-      "momentum": 5,
+      "momentum": 3,
       "delivery": "none",
       "effect": "Every ally gains a Ward of 2 until the Keeper's next turn.",
       "template": "Every ally gains a Ward of {2} until the Keeper's next turn."
@@ -226,7 +226,7 @@
       "class": "keeper",
       "kind": "A",
       "delay": 4,
-      "momentum": 2,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "A unit's Ward breaks and deals its remaining value to every enemy in melee reach. Needs the Keeper in its Front row; the warded unit may stand anywhere.",
       "template": "A unit's Ward breaks and deals its remaining value to every enemy in melee reach. Needs the Keeper in its Front row; the warded unit may stand anywhere."
@@ -270,7 +270,7 @@
       "class": "mender",
       "kind": "A",
       "delay": 4,
-      "momentum": 0,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "Heal a unit for 8–10.",
       "template": "Heal a unit for {8–10}."
@@ -347,7 +347,7 @@
       "class": "cleric",
       "kind": "A",
       "delay": 3,
-      "momentum": 0,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit.",
       "template": "Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit."
@@ -402,10 +402,10 @@
       "class": "lifebinder",
       "kind": "A",
       "delay": 7,
-      "momentum": 6,
+      "momentum": 1,
       "delivery": "none",
-      "effect": "The Lifebinder and its adjacent allies heal 6–8; then the Lifebinder is KO (game_system §10.4).",
-      "template": "The Lifebinder and its adjacent allies heal {6–8}; then the Lifebinder is KO (game_system §10.4)."
+      "effect": "Every ally in the Lifebinder's row and in the rows next to it heals 4–6; then the Lifebinder is KO (game_system §10.4).",
+      "template": "Every ally in the Lifebinder's row and in the rows next to it heals {4–6}; then the Lifebinder is KO (game_system §10.4)."
     },
     {
       "id": "life_for_life",
@@ -413,7 +413,7 @@
       "class": "lifebinder",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 0,
       "delivery": "direct",
       "effect": "The Lifebinder gives up half its current HP to revive a KO unit with that much HP.",
       "template": "The Lifebinder gives up half its current HP to revive a KO unit with that much HP."
@@ -424,7 +424,7 @@
       "class": "lifebinder",
       "kind": "A",
       "delay": 8,
-      "momentum": 4,
+      "momentum": 3,
       "delivery": "direct",
       "effect": "Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Lifebinder share one HP pool (game_system §10.4).",
       "template": "Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Lifebinder share one HP pool (game_system §10.4)."
@@ -468,7 +468,7 @@
       "class": "enchanter",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "A unit's next skill happens twice: the second use is free (no Delay, no Momentum) and hits the same target.",
       "template": "A unit's next skill happens twice: the second use is free (no Delay, no Momentum) and hits the same target."
@@ -490,7 +490,7 @@
       "class": "enchanter",
       "kind": "A",
       "delay": 4,
-      "momentum": 0,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "A unit's next attack also hits the unit behind its target.",
       "template": "A unit's next attack also hits the unit behind its target."
@@ -545,7 +545,7 @@
       "class": "transmuter",
       "kind": "A",
       "delay": 4,
-      "momentum": 0,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "The next hit on a unit deals 50% more damage. It has no time limit: it waits for that hit.",
       "template": "The next hit on a unit deals 50% more damage. It has no time limit: it waits for that hit."
@@ -556,7 +556,7 @@
       "class": "transmuter",
       "kind": "A",
       "delay": 7,
-      "momentum": 4,
+      "momentum": 3,
       "delivery": "direct",
       "effect": "A unit turns to stone: it is Stunned for 10.",
       "template": "A unit turns to stone: it is Stunned for 10."
@@ -600,7 +600,7 @@
       "class": "hexer",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "For 20, healing the unit would receive goes to the Hexer's unit with the lowest HP instead.",
       "template": "For 20, healing the unit would receive goes to the Hexer's unit with the lowest HP instead."
@@ -743,7 +743,7 @@
       "class": "stormcaller",
       "kind": "A",
       "delay": 5,
-      "momentum": 3,
+      "momentum": 0,
       "delivery": "direct",
       "effect": "Hit a unit for 1–2, then jump to an adjacent unit and do the same, three more times. Each hit explodes poison gas the unit stands in.",
       "template": "Hit a unit for {1–2}, then jump to an adjacent unit and do the same, three more times. Each hit explodes poison gas the unit stands in."
@@ -754,7 +754,7 @@
       "class": "stormcaller",
       "kind": "A",
       "delay": 8,
-      "momentum": 5,
+      "momentum": 2,
       "delivery": "direct",
       "effect": "Push every unit in one row one row back (bumps apply).",
       "template": "Push every unit in one row one row back (bumps apply)."
@@ -798,7 +798,7 @@
       "class": "cryomancer",
       "kind": "A",
       "delay": 4,
-      "momentum": 2,
+      "momentum": 0,
       "delivery": "projectile",
       "effect": "Hit for 7–8; a Frozen target takes double.",
       "template": "Hit for {7–8}; a Frozen target takes double."
@@ -809,7 +809,7 @@
       "class": "cryomancer",
       "kind": "A",
       "delay": 7,
-      "momentum": 3,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "A unit is Frozen.",
       "template": "A unit is Frozen."
@@ -820,7 +820,7 @@
       "class": "cryomancer",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 2,
       "delivery": "direct",
       "effect": "Every enemy in melee reach takes 1–2 and is Frozen.",
       "template": "Every enemy in melee reach takes {1–2} and is Frozen."
@@ -864,7 +864,7 @@
       "class": "berserker",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 1,
       "delivery": "melee",
       "effect": "Hit for 10–12. The Berserker takes 3.",
       "template": "Hit for {10–12}. The Berserker takes {3}."
@@ -875,7 +875,7 @@
       "class": "berserker",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 1,
       "delivery": "melee",
       "effect": "Push every enemy in melee reach one row back (bumps apply).",
       "template": "Push every enemy in melee reach one row back (bumps apply)."
@@ -941,7 +941,7 @@
       "class": "champion",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 2,
       "delivery": "direct",
       "effect": "For 10, the Champion and one Marked unit can be targeted only by each other.",
       "template": "For 10, the Champion and one Marked unit can be targeted only by each other."
@@ -952,7 +952,7 @@
       "class": "champion",
       "kind": "A",
       "delay": 7,
-      "momentum": 4,
+      "momentum": 1,
       "delivery": "melee",
       "effect": "A Marked unit below 25% HP is KO.",
       "template": "A Marked unit below 25% HP is KO."
@@ -996,7 +996,7 @@
       "class": "tactician",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 0,
       "delivery": "direct",
       "effect": "Own side only. Two allies swap their places on the timeline.",
       "template": "Own side only. Two allies swap their places on the timeline."
@@ -1007,7 +1007,7 @@
       "class": "tactician",
       "kind": "A",
       "delay": 4,
-      "momentum": 2,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "A unit's next skill costs no Momentum.",
       "template": "A unit's next skill costs no Momentum."
@@ -1018,7 +1018,7 @@
       "class": "tactician",
       "kind": "A",
       "delay": 5,
-      "momentum": 3,
+      "momentum": 2,
       "delivery": "direct",
       "effect": "Pick an enemy. Two of your allies make their unique attack on it right now.",
       "template": "Pick an enemy. Two of your allies make their unique attack on it right now."
@@ -1128,7 +1128,7 @@
       "class": "bard",
       "kind": "A",
       "delay": 4,
-      "momentum": 0,
+      "momentum": 1,
       "delivery": "none",
       "effect": "Song. Allies in the Bard's row have +1 Speed for 20.",
       "template": "Song. Allies in the Bard's row have +1 Speed for 20."
@@ -1150,7 +1150,7 @@
       "class": "bard",
       "kind": "A",
       "delay": 4,
-      "momentum": 0,
+      "momentum": 2,
       "delivery": "direct",
       "effect": "Song. Every enemy in one row has its next turn pushed back 5.",
       "template": "Song. Every enemy in one row has its next turn pushed back 5."
@@ -1194,7 +1194,7 @@
       "class": "thief",
       "kind": "A",
       "delay": 4,
-      "momentum": 2,
+      "momentum": 0,
       "delivery": "none",
       "effect": "The Thief gains stealth.",
       "template": "The Thief gains stealth."
@@ -1205,7 +1205,7 @@
       "class": "thief",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "Use a copy of the last active skill the target used, with the Thief's own Power.",
       "template": "Use a copy of the last active skill the target used, with the Thief's own Power."
@@ -1216,7 +1216,7 @@
       "class": "thief",
       "kind": "A",
       "delay": 4,
-      "momentum": 0,
+      "momentum": 1,
       "delivery": "melee",
       "effect": "Hit for 5–6 and steal one helpful status from the target.",
       "template": "Hit for {5–6} and steal one helpful status from the target."
@@ -1260,7 +1260,7 @@
       "class": "saboteur",
       "kind": "A",
       "delay": 3,
-      "momentum": 0,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "Every enemy in melee reach is Blind for 20.",
       "template": "Every enemy in melee reach is Blind for 20."
@@ -1271,7 +1271,7 @@
       "class": "saboteur",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 0,
       "delivery": "direct",
       "effect": "Pick an enemy that owns auto events: its next auto event is removed from the timeline.",
       "template": "Pick an enemy that owns auto events: its next auto event is removed from the timeline."
@@ -1326,7 +1326,7 @@
       "class": "engineer",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 1,
       "delivery": "none",
       "effect": "Place a turret (HP 8). Each time the Engineer takes a turn, the turret hits the nearest enemy for 2–3.",
       "template": "Place a turret (HP 8). Each time the Engineer takes a turn, the turret hits the nearest enemy for {2–3}."
@@ -1458,7 +1458,7 @@
       "class": "necromancer",
       "kind": "A",
       "delay": 8,
-      "momentum": 4,
+      "momentum": 2,
       "delivery": "direct",
       "effect": "Turn a KO'd body of either side into an undead of yours (HP 12), and raise one more random body.",
       "template": "Turn a KO'd body of either side into an undead of yours (HP 12), and raise one more random body."
@@ -1480,7 +1480,7 @@
       "class": "necromancer",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 0,
       "delivery": "direct",
       "effect": "A KO'd body cannot be revived for 40.",
       "template": "A KO'd body cannot be revived for 40."
@@ -1524,7 +1524,7 @@
       "class": "summoner",
       "kind": "A",
       "delay": 8,
-      "momentum": 4,
+      "momentum": 2,
       "delivery": "none",
       "effect": "Summon a golem (HP 25, Speed 3) that makes melee hits for 5–6.",
       "template": "Summon a golem (HP 25, Speed 3) that makes melee hits for {5–6}."
@@ -1535,7 +1535,7 @@
       "class": "summoner",
       "kind": "A",
       "delay": 8,
-      "momentum": 4,
+      "momentum": 2,
       "delivery": "none",
       "effect": "Summon a rune golem (HP 18, Speed 4) that makes melee hits for 3–4; each hit Silences the target for 10.",
       "template": "Summon a rune golem (HP 18, Speed 4) that makes melee hits for {3–4}; each hit Silences the target for 10."
@@ -1546,7 +1546,7 @@
       "class": "summoner",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 0,
       "delivery": "none",
       "effect": "Summon two sets of flying blades (HP 6, Speed 7) that make projectile hits for 2–3. They last 30.",
       "template": "Summon two sets of flying blades (HP 6, Speed 7) that make projectile hits for {2–3}. They last 30."
@@ -1590,7 +1590,7 @@
       "class": "totemist",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 0,
       "delivery": "none",
       "effect": "Place a totem (HP 8): every 10, allies in its row heal 2.",
       "template": "Place a totem (HP 8): every 10, allies in its row heal {2}."
@@ -1601,7 +1601,7 @@
       "class": "totemist",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 1,
       "delivery": "none",
       "effect": "Place a totem (HP 10): damage to allies in its row is split evenly between them.",
       "template": "Place a totem (HP 10): damage to allies in its row is split evenly between them."
@@ -1612,7 +1612,7 @@
       "class": "totemist",
       "kind": "A",
       "delay": 7,
-      "momentum": 3,
+      "momentum": 2,
       "delivery": "none",
       "effect": "Place a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks.",
       "template": "Place a totem (HP 6): the first ally in its row that would be KO keeps 1 HP instead, and the totem breaks."
@@ -1656,7 +1656,7 @@
       "class": "ritualist",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 2,
       "delivery": "direct",
       "effect": "Water on every spot of one row for 40; allies standing in it heal 4.",
       "template": "Water on every spot of one row for 40; allies standing in it heal {4}."
@@ -1667,7 +1667,7 @@
       "class": "ritualist",
       "kind": "A",
       "delay": 5,
-      "momentum": 2,
+      "momentum": 0,
       "delivery": "direct",
       "effect": "Ice on a unit's spot for 20.",
       "template": "Ice on a unit's spot for 20."
@@ -1678,7 +1678,7 @@
       "class": "ritualist",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 1,
       "delivery": "none",
       "effect": "For 20, projectile hits from units standing on water deal half damage (rounded down, minimum 1).",
       "template": "For 20, projectile hits from units standing on water deal half damage (rounded down, minimum 1)."
@@ -1722,7 +1722,7 @@
       "class": "spiritwalker",
       "kind": "A",
       "delay": 6,
-      "momentum": 3,
+      "momentum": 1,
       "delivery": "direct",
       "effect": "Possession. A unit hits a unit next to it at once with its unique attack.",
       "template": "Possession. A unit hits a unit next to it at once with its unique attack."
@@ -1733,7 +1733,7 @@
       "class": "spiritwalker",
       "kind": "A",
       "delay": 8,
-      "momentum": 5,
+      "momentum": 3,
       "delivery": "direct",
       "effect": "Soul swap. Two units swap their current HP (each capped at its max).",
       "template": "Soul swap. Two units swap their current HP (each capped at its max)."

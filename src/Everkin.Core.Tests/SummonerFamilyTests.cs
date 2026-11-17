@@ -51,7 +51,7 @@ public class SummonerFamilyTests
         Assert.Equal(3, s.PowerOf(body));
         Assert.Equal(4, s.GetUnit(body).Speed);                                              // it keeps its own Speed
         Assert.Equal("tail_club", s.GetUnit(body).AutoSkillId);                              // and its own unique attack
-        Assert.Equal(2, s.Momentum.Value);                                                   // cost 4
+        Assert.Equal(4, s.Momentum.Value);  // M5.10 costs
     }
 
     [Fact]
@@ -187,7 +187,7 @@ public class SummonerFamilyTests
         var golem = s.Units.Single(u => u.CreatureId == "clay_golem");
         Assert.Equal((25, 3, Row.Rear), (golem.Hp, golem.Speed, s.Formation.PositionOf(golem.Id).Row));
         Assert.Equal(18, s.Timeline.TurnOf(golem.Id)!.Due);                                  // 20.5: appears at 10, first acts at 10 + 8
-        Assert.Equal(2, s.Momentum.Value);
+        Assert.Equal(4, s.Momentum.Value);
     }
 
     [Fact]

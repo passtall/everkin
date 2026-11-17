@@ -24,7 +24,7 @@ public class RogueTinkerClassTests
         var (s, t, _) = Board(1, "melt_away");
         Run(s, Use(t, "melt_away"));
         Assert.True(s.GetUnit(t).IsStealthed);
-        Assert.Equal(4, s.Momentum.Value);
+        Assert.Equal(6, s.Momentum.Value);
     }
 
     [Fact]
@@ -73,7 +73,7 @@ public class RogueTinkerClassTests
         Run(s, Use(t, "snatch", e));
         Assert.True(Has(s, t, StatusIds.SongHaste) && Has(s, t, StatusIds.WarDrums));
         Assert.False(Has(s, e, StatusIds.SongHaste) || Has(s, e, StatusIds.WarDrums));
-        Assert.Equal(6 + 0 + 3, s.Momentum.Value);                                          // snatch costs 0, the Ward absorbs the whole hit (no shift), three steals move 3
+        Assert.Equal(6 - 1 + 3, s.Momentum.Value);                                          // snatch costs 1, the Ward absorbs the whole hit (no shift), three steals move 3
     }
 
     [Fact]
@@ -119,7 +119,7 @@ public class RogueTinkerClassTests
         Assert.Equal("tail_club", s.GetUnit(enemy).LastActiveSkillId);
         Run(s, Use(thief, "lift_a_skill", enemy, second: victim));
         Assert.InRange(Lost(s, victim), 6, 8);                                               // 3-4 at Power 10
-        Assert.Equal(5 - 3 + 1, s.Momentum.Value);                                          // the enemy hit moved it to 5, the copy costs 3, its hit moves 1
+        Assert.Equal(5 - 1 + 1, s.Momentum.Value);                                          // the enemy hit moved it to 5, the copy costs 1, its hit moves 1
     }
 
     [Fact]
@@ -171,7 +171,7 @@ public class RogueTinkerClassTests
         Assert.Null(Why(s, Use(sab, "cut_the_strings", e)));
         Run(s, Use(sab, "cut_the_strings", e));
         Assert.Equal(new[] { later.Id }, s.Timeline.Upcoming().Where(x => x.Kind == TimelineKind.AutoEvent).Select(x => x.Id));
-        Assert.Equal(4, s.Momentum.Value);
+        Assert.Equal(6, s.Momentum.Value);
     }
 
     [Fact]
@@ -280,7 +280,7 @@ public class RogueTinkerClassTests
         BattleStart.Install(s, World.Catalog);
         s.ShiftMomentum(Side.A, 6);
         Run(s, Use(eng, "bolt_turret", place: new MoveOption(Row.Rear, 0)));
-        Assert.Equal(6 - 2 + 1, s.Momentum.Value);                                           // cost 2, one shot lands: +1
+        Assert.Equal(6 - 1 + 1, s.Momentum.Value);                                           // cost 1, one shot lands: +1
         var turret = s.Units.Single(u => u.CreatureId == "bolt_turret");
         s.Timeline.AddNow(eng, "turret:" + turret.Id);
         s.GetUnit(eng).Hp = 0;

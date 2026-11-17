@@ -63,6 +63,7 @@ public class PreviewTests
         var other = World.Unit(s, Side.A, Row.Middle);
         World.Unit(s, Side.B, Row.Front);
         s.GetUnit(ally).Hp = 10;
+        s.ShiftMomentum(Side.A, 3);
         s.GetUnit(other).Hp = 10;
         var mend = Preview.Skill(s, World.Catalog, Use(healer, "mend", ally)).Units.Single();
         Assert.Equal((8, 10), (mend.HealMin, mend.HealMax));
@@ -122,7 +123,7 @@ public class PreviewTests
         var t = World.Unit(s, Side.B, Row.Front);
         s.ShiftMomentum(Side.A, 5);
         var p = Preview.Skill(s, World.Catalog, Use(a, "freeze", t));
-        Assert.Equal((3, 5, 2), (p.MomentumCost, p.MomentumBefore, p.MomentumAfterCost));
+        Assert.Equal((1, 5, 4), (p.MomentumCost, p.MomentumBefore, p.MomentumAfterCost));
     }
 
     [Fact]

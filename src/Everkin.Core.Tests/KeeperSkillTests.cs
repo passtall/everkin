@@ -63,7 +63,7 @@ public class KeeperSkillTests
         Assert.Equal(2, s.GetUnit(ally).Ward);
         Assert.Equal(0, s.GetUnit(e).Ward);
         Assert.Equal(0, s.GetUnit(body).Ward);
-        Assert.Equal(1, s.Momentum.Value);                                                // cost 5 from +6
+        Assert.Equal(3, s.Momentum.Value);  // M5.10 costs
     }
 
     [Fact]
@@ -80,7 +80,7 @@ public class KeeperSkillTests
         Assert.Equal(3, Lost(s, e1));
         Assert.Equal(3, Lost(s, e2));
         Assert.Equal(0, Lost(s, back));
-        Assert.Equal(5, s.Momentum.Value);                                                // cost 2 (6 -> 4), then the hits land: 5
+        Assert.Equal(6, s.Momentum.Value);  // M5.10 costs
     }
 
     [Fact]
@@ -110,7 +110,7 @@ public class KeeperSkillTests
         Run(s, Use(k, "ward_burst", k));
         Assert.Equal(0, s.GetUnit(k).Ward);
         Assert.Equal(0, Lost(s, e));
-        Assert.Equal(4, s.Momentum.Value);
+        Assert.Equal(5, s.Momentum.Value);
     }
 
     [Fact]

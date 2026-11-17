@@ -33,7 +33,7 @@ public class LeaderClassTests
         Run(s, Use(t, "swap_turns", a, second: b));
         Assert.Equal(db, s.Timeline.TurnOf(a)!.Due);
         Assert.Equal(da, s.Timeline.TurnOf(b)!.Due);
-        Assert.Equal(4, s.Momentum.Value);
+        Assert.Equal(6, s.Momentum.Value);
     }
 
     [Fact]
@@ -43,8 +43,8 @@ public class LeaderClassTests
         var t = World.Unit(s, Side.A, Row.Front, "press_the_advantage");
         var a = World.Unit(s, Side.A, Row.Middle, "lightning_bolt");
         var e = World.Unit(s, Side.B, Row.Front);
-        s.ShiftMomentum(Side.A, 3);
-        Run(s, Use(t, "press_the_advantage", a));                                         // costs 2: a lead of 1 is left, Lightning Bolt would need 2
+        s.ShiftMomentum(Side.A, 2);
+        Run(s, Use(t, "press_the_advantage", a));                                         // costs 1: a lead of 1 is left, Lightning Bolt would need 2
         Assert.Equal(1, s.Momentum.Value);
         Assert.Null(Why(s, Use(a, "lightning_bolt", e)));
         Run(s, Use(a, "lightning_bolt", e));
@@ -66,7 +66,7 @@ public class LeaderClassTests
         var events = Run(s, Use(t, "coordinated_strike", enemy));
         Assert.Equal(3, events.OfType<SkillUsed>().Count());                               // Coordinated Strike and two attacks
         Assert.InRange(Lost(s, enemy), 6, 8);                                              // two attacks of 3-4
-        Assert.Equal(6 - 3 + 2, s.Momentum.Value);                                         // cost 3, then each attack shifts 1
+        Assert.Equal(6 - 2 + 2, s.Momentum.Value);                                         // cost 2, then each attack shifts 1
     }
 
     [Fact]
@@ -80,7 +80,7 @@ public class LeaderClassTests
         s.ShiftMomentum(Side.A, 6);
         Run(s, Use(t, "coordinated_strike", enemy));
         Assert.Equal(0, Lost(s, enemy));
-        Assert.Equal(3, s.Momentum.Value);
+        Assert.Equal(4, s.Momentum.Value);
 
         var shooter = s.AddUnit(World.Def("ant-engineer-gear"), Side.A);
         s.Formation.Place(shooter.Id, Side.A, Row.Rear);
@@ -273,6 +273,7 @@ public class LeaderClassTests
         s.Timeline.ScheduleTurn(mate, 5, 5);
         AdvanceTo(s, 4);
         var remaining = s.Timeline.Remaining(s.Timeline.TurnOf(mate)!);
+        s.ShiftMomentum(Side.A, 6);
         Run(s, Use(bard, "song_of_haste"));
         Assert.Equal(6, s.GetUnit(mate).EffectiveSpeed);
         Assert.Equal(6, s.GetUnit(bard).EffectiveSpeed);
@@ -289,6 +290,7 @@ public class LeaderClassTests
         var mate = World.Unit(s, Side.A, Row.Front);
         var late = World.Unit(s, Side.A, Row.Middle);
         World.Unit(s, Side.B, Row.Front);
+        s.ShiftMomentum(Side.A, 6);
         Run(s, Use(bard, "song_of_haste"));
         Movement.Move(s, late, Row.Front, 0);                                              // arrives later: does not get it
         Assert.False(Has(s, late, StatusIds.SongHaste));
@@ -331,6 +333,7 @@ public class LeaderClassTests
         foreach (var id in new[] { e1, e2, back }) s.Timeline.ScheduleTurn(id, 5, 5);
         var due = s.Timeline.TurnOf(e1)!.Due;
         Assert.NotNull(Why(s, Use(bard, "lullaby", row: new RowTarget(Side.A, Row.Front))));      // enemy rows only
+        s.ShiftMomentum(Side.A, 6);
         Run(s, Use(bard, "lullaby", row: new RowTarget(Side.B, Row.Front)));
         Assert.Equal(due + 5, s.Timeline.TurnOf(e1)!.Due);
         Assert.Equal(due + 5, s.Timeline.TurnOf(e2)!.Due);
@@ -345,6 +348,7 @@ public class LeaderClassTests
         var rear = World.Unit(s, Side.A, Row.Rear);
         World.Unit(s, Side.B, Row.Front);
         BattleStart.Install(s, World.Catalog);
+        s.ShiftMomentum(Side.A, 6);
         Run(s, Use(bard, "song_of_haste"));
         Assert.True(Has(s, rear, StatusIds.SongHaste));
         K.Ready(s, bard);
@@ -361,6 +365,7 @@ public class LeaderClassTests
         var bard = World.Unit(s, Side.A, Row.Front, "song_of_haste", "crescendo");
         World.Unit(s, Side.B, Row.Front);
         BattleStart.Install(s, World.Catalog);
+        s.ShiftMomentum(Side.A, 6);
         Run(s, Use(bard, "song_of_haste"));
         Assert.Equal(30, Statuses.Get(s.GetUnit(bard), StatusIds.SongHaste)!.TimeLeft(s.Timeline.Now));
     }

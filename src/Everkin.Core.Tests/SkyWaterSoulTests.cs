@@ -205,7 +205,7 @@ public class SkyWaterSoulTests
         Run(s, Use(w, "life_swap", a, second: b));
         Assert.Equal(20, s.GetUnit(a).Hp);
         Assert.Equal(5, s.GetUnit(b).Hp);
-        Assert.Equal(1, s.Momentum.Value);                                                   // cost 5
+        Assert.Equal(3, s.Momentum.Value);  // M5.10 costs
         K.Ready(s, w);
         s.ShiftMomentum(Side.A, 5);
         s.GetUnit(a).Hp = 40;

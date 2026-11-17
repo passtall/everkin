@@ -130,7 +130,7 @@ public static class BatchRunner
                     output.WriteLine(json);
                     output.Flush();
                     finished++;
-                    if (finished % 25 == 0)
+                    if (finished % 500 == 0)
                         log($"  {finished}/{todo.Count} battles, {watch.Elapsed.TotalMinutes:F1} min, about {(todo.Count - finished) * watch.Elapsed.TotalMinutes / finished:F0} min left");
                 }
             }

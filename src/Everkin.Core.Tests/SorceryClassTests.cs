@@ -84,6 +84,7 @@ public class SorceryClassTests
         var front = World.Unit(s, Side.B, Row.Front);
         var behind = World.Unit(s, Side.B, Row.Middle);
         BattleStart.Install(s, World.Catalog);
+        s.ShiftMomentum(Side.A, 6);
         Run(s, Use(en, "piercing_enchant", a));
         K.Ready(s, a);
         Run(s, Use(a, "rivet_shot", front));
@@ -248,7 +249,7 @@ public class SorceryClassTests
         var (s, t, e) = Board(1, "petrify");
         Run(s, Use(t, "petrify", e));
         Assert.Equal(10, Statuses.Get(s.GetUnit(e), StatusIds.Stunned)!.TimeLeft(s.Timeline.Now));
-        Assert.Equal(2, s.Momentum.Value);                                                // cost 4 from +6
+        Assert.Equal(3, s.Momentum.Value);  // M5.10 costs
     }
 
     // ---- Hexer ----

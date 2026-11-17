@@ -174,7 +174,7 @@ public class ElementalSkillTests
         var hit = row.Where(id => Lost(s, id) > 0).ToList();
         Assert.Equal(4, hit.Count);
         Assert.All(hit, id => Assert.InRange(Lost(s, id), 1, 2));
-        Assert.Equal(4, s.Momentum.Value + 0);                                                // cost 3 (6 -> 3), then one shift of 1 for the whole chain
+        Assert.Equal(7, s.Momentum.Value + 0);  // M5.10 costs
     }
 
     [Fact]
@@ -225,7 +225,7 @@ public class ElementalSkillTests
         var rear = World.Unit(s, Side.B, Row.Rear);
         Run(s, Use(c, "tempest", row: new RowTarget(Side.B, Row.Front)));
         Assert.Equal(f, s.Formation.Units(Side.B, Row.Middle));
-        Assert.Equal(1, s.Momentum.Value);
+        Assert.Equal(4, s.Momentum.Value);
         K.Ready(s, c);
         s.ShiftMomentum(Side.A, 4);
         Run(s, Use(c, "tempest", row: new RowTarget(Side.B, Row.Rear)));                      // the Rear row stays
@@ -293,7 +293,7 @@ public class ElementalSkillTests
         s.Timeline.ScheduleTurn(e, 5, 5);
         Run(s, Use(c, "freeze", e));
         Assert.True(Has(s, e, StatusIds.Frozen));
-        Assert.Equal(3, s.Momentum.Value);
+        Assert.Equal(5, s.Momentum.Value);
     }
 
     [Fact]

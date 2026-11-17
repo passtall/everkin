@@ -110,7 +110,7 @@ public class BulwarkSkillTests
         Run(s, Use(b, "rescue", weak));
         Assert.Equal(Row.Rear, s.Formation.PositionOf(b).Row);
         Assert.Equal(Row.Front, s.Formation.PositionOf(weak).Row);
-        Assert.Equal(4, s.Momentum.Value);                                               // cost 2
+        Assert.Equal(6, s.Momentum.Value);  // M5.10 costs
     }
 
     [Fact]

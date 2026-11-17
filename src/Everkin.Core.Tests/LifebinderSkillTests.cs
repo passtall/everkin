@@ -45,7 +45,7 @@ public class LifebinderSkillTests
         Assert.Equal(10, s.GetUnit(far).Hp);
         Assert.True(s.GetUnit(h).IsKnockedOut);
         Assert.Contains(events, e => e is UnitKnockedOut { UnitId: var u } && u == h);
-        Assert.Equal(0, s.Momentum.Value);                                              // cost 6
+        Assert.Equal(5, s.Momentum.Value);  // M5.10 costs
     }
 
     [Fact]
@@ -125,7 +125,7 @@ public class LifebinderSkillTests
         Assert.Equal(35, pool.Pool);
         Assert.Equal(35, s.GetUnit(h).Hp);
         Assert.Equal(20, s.GetUnit(ally).Hp);
-        Assert.Equal(2, s.Momentum.Value);                                               // cost 4
+        Assert.Equal(3, s.Momentum.Value);  // M5.10 costs
     }
 
     [Fact]

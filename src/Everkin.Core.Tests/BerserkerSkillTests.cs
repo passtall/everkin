@@ -74,7 +74,7 @@ public class BerserkerSkillTests
         s.Formation.Place(e, Side.B, Row.Middle);
         Assert.Null(Why(s, Use(u, "sweeping_kick")));
         Run(s, Use(u, "sweeping_kick"));
-        Assert.Equal(4, s.Momentum.Value);                                   // cost 2 from +6
+        Assert.Equal(5, s.Momentum.Value);  // M5.10 costs
         Assert.Equal(Row.Middle, s.Formation.PositionOf(e).Row);
     }
 

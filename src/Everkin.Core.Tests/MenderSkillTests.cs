@@ -134,6 +134,7 @@ public class MenderSkillTests
         s.GetUnit(target).Hp = 39;
         s.GetUnit(hurt).Hp = 30;
         s.GetUnit(hurtMore).Hp = 20;                                                       // not adjacent to the target (two places away)
+        s.ShiftMomentum(Side.A, 6);
         Run(s, Use(m, "mend", target));
         Assert.Equal(40, s.GetUnit(target).Hp);
         Assert.InRange(s.GetUnit(hurt).Hp, 37, 39);                                        // 8-10 minus 1 healed on the target

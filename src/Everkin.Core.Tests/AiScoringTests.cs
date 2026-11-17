@@ -142,7 +142,7 @@ public class AiScoringTests
     public void TheSearchAlwaysLooksFurtherAtACostedSkill()
     {
         var s = new BattleState(1);
-        var a = World.Unit(s, Side.A, Row.Front, "mend", "rain_of_mending", "searing_light");
+        var a = World.Unit(s, Side.A, Row.Front, "rain_of_mending", "searing_light");
         for (var i = 0; i < 3; i++) World.Unit(s, Side.B, Row.Front);
         s.ShiftMomentum(Side.A, 5);
         s.Timeline.ScheduleTurn(a, 1, 5);
