@@ -95,7 +95,7 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Burnout Heal | A | 7 / 1 | — | The Lifebinder and its adjacent allies heal {6–8}; then the Lifebinder is KO (game_system §10.4). |
+| Burnout Heal | A | 7 / 1 | — | Every ally in the Lifebinder's row and in the rows next to it heals {4–6}; then the Lifebinder is KO (game_system §10.4). |
 | Life for Life | A | 6 / 0 | Direct | The Lifebinder gives up half its current HP to revive a KO unit with that much HP. |
 | Bound Resurrect | A | 8 / 3 | Direct | Revive a KO unit at 25% of its max HP (rounded down, minimum 1); it and the Lifebinder share one HP pool (game_system §10.4). |
 | Martyr | K | | | When the Lifebinder is KO, every ally heals {6–8}. |

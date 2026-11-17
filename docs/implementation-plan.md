@@ -150,7 +150,9 @@ Each task names the doc sections it implements. Read those sections before codin
 
 - **M5.10** Momentum costs 0–3 (skills.md, class_system §1): every class has at least one free and one costed active.
   - Content: regenerate the content JSON from skills.md; update the tests, tooltips and AI settings that use the old costs.
-  - Then the full 10,000-battle harness run and the Cost formula proposal that M5.9 left open.
+  - Burnout Heal: every ally in the Lifebinder's row and the rows next to it heals 4–6, then the Lifebinder is KO (skills.md).
+  - AI scoring (game_system §2.5): stealth by the hits it keeps off and the from-stealth skills it unlocks; Spirit Link Totem by the KOs it prevents; Totem of Return as a share of the ally it would save.
+  - Then the full 10,000-battle harness run and the Cost formula proposal that M5.9 left open. In that run's report, check whether these skills are now used: Rune Golem, Life for Life, Melt Away, Swap Turns, Sweeping Kick, Tempest, Execution, Single Combat, Puppet Soul, Rescue, Corpse Explosion, Curse of Betrayal, Glass Body, Echo Enchant, Frost Nova, Hoarfrost.
 
 ### M6 Local two-player
 
