@@ -110,9 +110,28 @@ static int PlayCommand(string[] args)
     var seed = ulong.Parse(Option(args, "--seed") ?? "1");
     var level = settings.Level(Option(args, "--level") ?? "easy");
     var spec = Everkin.Core.Setup.BattleSetup.RandomSpec(content, seed);
+    var batchName = Option(args, "--batch");
+    if (batchName is not null)
+    {
+        var batch = Everkin.Runner.TeamBatch.Load(Everkin.Runner.TeamBatch.PathOf(RepoRoot(), batchName));
+        spec = batch.SpecFor(seed, long.Parse(Option(args, "--index") ?? "0")).Spec;
+    }
     var state = Everkin.Core.Setup.BattleSetup.Create(spec, catalog);
     var aiA = new Everkin.Core.Ai.AiSearch(catalog, level, new Everkin.Core.Battle.BattleRandom(seed + 1));
     var aiB = new Everkin.Core.Ai.AiSearch(catalog, level, new Everkin.Core.Battle.BattleRandom(seed + 2));
+    var watchCreature = Option(args, "--watch");
+    if (watchCreature is not null)
+    {
+        void Show(Everkin.Core.Battle.BattleState st, int unitId, IReadOnlyList<(Everkin.Core.Ai.AiAction Move, int Score, int Effect)> ranked)
+        {
+            var u = st.GetUnit(unitId);
+            if (u.CreatureId != watchCreature) return;
+            Console.WriteLine($"-- t={st.Timeline.Now} {u.CreatureId} (side {u.Side}, HP {u.Hp}) chooses among {ranked.Count} searched moves:");
+            foreach (var r in ranked.Take(10)) Console.WriteLine($"     score {r.Score,7}  effect {r.Effect}  {r.Move}");
+        }
+        aiA.OnChosen = Show;
+        aiB.OnChosen = Show;
+    }
     var watch = System.Diagnostics.Stopwatch.StartNew();
     Action<Everkin.Core.Battle.BattleEvent>? observe = null;
     if (args.Contains("--trace"))

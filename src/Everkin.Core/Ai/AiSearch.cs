@@ -38,6 +38,9 @@ public sealed class AiSearch
     /// <summary>A candidate first move with what the search needs to know about it.</summary>
     private sealed record Candidate(AiAction Move, int Score, bool Costed, bool Control, int Effect = 0);
 
+    /// <summary>For tools: called with the searched first moves (best first) with their scores and tie-break ranks, when a choice is made.</summary>
+    public Action<BattleState, int, IReadOnlyList<(AiAction Move, int Score, int Effect)>>? OnChosen { get; set; }
+
     /// <summary>Chooses the action of the unit whose turn it is. The state is not changed.</summary>
     public AiAction Choose(BattleState real, int unitId)
     {
@@ -85,6 +88,7 @@ public sealed class AiSearch
                 LastSearchedSkills = ranked.Where(c => c.Move.Kind == AiActionKind.Skill).Select(c => c.Move.Use!.SkillId).ToHashSet();
         }
 
+        OnChosen?.Invoke(real, unitId, ranked.Select(c => (c.Move, c.Score, c.Effect)).ToList());
         if (_level.PickTop > 1 && _level.PickPercent > 0 && _random.Chance(_level.PickPercent))
             return ranked[_random.NextInt(Math.Min(_level.PickTop, ranked.Count))].Move;
         return ranked[0].Move;
