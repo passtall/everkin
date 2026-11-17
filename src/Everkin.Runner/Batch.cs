@@ -58,6 +58,10 @@ public sealed class BattleRecord
     public bool HitCap { get; set; }
     public string? Error { get; set; }
     public double Seconds { get; set; }
+
+    /// <summary>Team batch runs only: the IDs of the two teams (the batch file is copied into the run).</summary>
+    public string? TeamA { get; set; }
+    public string? TeamB { get; set; }
     public List<UnitRecord> Units { get; set; } = new();
     public List<MomentumTurn> MomentumTurns { get; set; } = new();
     public List<MomentumPayment> Payments { get; set; } = new();
@@ -72,6 +76,9 @@ public sealed class RunInfo
     public ulong FirstSeed { get; set; }
     public string Commit { get; set; } = "";
     public string Started { get; set; } = "";
+
+    /// <summary>The name of the team batch the battles were played with (null: random teams).</summary>
+    public string? Batch { get; set; }
 }
 
 /// <summary>Plays AI-versus-AI battles in parallel and records them (milestone M2.2).</summary>
@@ -79,7 +86,7 @@ public static class BatchRunner
 {
     public static string RunsFolder(string repoRoot) => Path.Combine(repoRoot, "runs");
 
-    public static RunInfo Start(string repoRoot, string contentFolder, string level, int battles, ulong firstSeed, string? resumeId = null)
+    public static RunInfo Start(string repoRoot, string contentFolder, string level, int battles, ulong firstSeed, string? resumeId = null, string? batch = null)
     {
         var id = resumeId ?? $"{DateTime.Now:yyyyMMdd-HHmmss}-{level}";
         var folder = Path.Combine(RunsFolder(repoRoot), id);
@@ -90,7 +97,8 @@ public static class BatchRunner
         Directory.CreateDirectory(Path.Combine(folder, "snapshot"));
         foreach (var file in Directory.GetFiles(contentFolder, "*.json"))
             File.Copy(file, Path.Combine(folder, "snapshot", Path.GetFileName(file)), overwrite: true);
-        var info = new RunInfo { Id = id, Level = level, Battles = battles, FirstSeed = firstSeed, Commit = GitCommit(repoRoot), Started = DateTime.Now.ToString("s") };
+        var info = new RunInfo { Id = id, Level = level, Battles = battles, FirstSeed = firstSeed, Commit = GitCommit(repoRoot), Started = DateTime.Now.ToString("s"), Batch = batch };
+        if (batch is not null) File.Copy(TeamBatch.PathOf(repoRoot, batch), Path.Combine(folder, "batch.json"), overwrite: true);
         File.WriteAllText(infoPath, JsonSerializer.Serialize(info, new JsonSerializerOptions { WriteIndented = true }));
         return info;
     }
@@ -105,6 +113,7 @@ public static class BatchRunner
         var settings = AiSettings.Load(Path.Combine(snapshot, "ai_settings.json"));
         var level = settings.Level(info.Level);
 
+        var batch = info.Batch is null ? null : TeamBatch.Load(Path.Combine(folder, "batch.json"));
         var resultsPath = Path.Combine(folder, "battles.jsonl");
         var done = new HashSet<ulong>();
         if (File.Exists(resultsPath))
@@ -123,7 +132,7 @@ public static class BatchRunner
         {
             while (queue.TryDequeue(out var seed))
             {
-                var record = PlayOne(info.Id, seed, content, catalog, level);
+                var record = PlayOne(info.Id, seed, content, catalog, level, batch, (long)(seed - info.FirstSeed));
                 var json = JsonSerializer.Serialize(record);
                 lock (writer)
                 {
@@ -140,13 +149,20 @@ public static class BatchRunner
     }
 
     /// <summary>Plays one battle from its seed: random teams, builds and formations, both sides with the same AI settings.</summary>
-    public static BattleRecord PlayOne(string runId, ulong seed, ContentSet content, SkillCatalog catalog, AiLevel level)
+    public static BattleRecord PlayOne(string runId, ulong seed, ContentSet content, SkillCatalog catalog, AiLevel level, TeamBatch? batch = null, long index = 0)
     {
         var record = new BattleRecord { Run = runId, Seed = seed };
         var watch = Stopwatch.StartNew();
         try
         {
-            var spec = BattleSetup.RandomSpec(content, seed);
+            BattleSpec spec;
+            if (batch is null) spec = BattleSetup.RandomSpec(content, seed);
+            else
+            {
+                (spec, var teamA, var teamB) = batch.SpecFor(seed, index);
+                record.TeamA = teamA;
+                record.TeamB = teamB;
+            }
             var state = BattleSetup.Create(spec, catalog);
             var units = state.Units.Select(u => new UnitRecord
             {

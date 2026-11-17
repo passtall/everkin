@@ -11,11 +11,16 @@ const string Usage = """
       Everkin.Runner play --seed <n> --level <easy|normal|hard|name>
       Everkin.Runner run [--level <name>] [--battles 10000] [--first-seed 1] [--threads n] [--resume <run id>]
       Everkin.Runner report --run <run id>
+      Everkin.Runner teams build --name <batch> [--seed 1] [--per-creature 1] [--note "text"]
+      Everkin.Runner run --batch <batch> [--battles 1000] ...
 
     Commands:
       play             Plays one random AI-versus-AI battle from a seed and prints the result and the time it took.
       run              Plays a run of AI-versus-AI battles in parallel into runs/<run id>/ (battles.jsonl, a snapshot of the content and AI
                        settings, then the CSV files and report.md). --resume continues an interrupted run.
+      teams build      Builds a named batch of sample teams (teams/batches/<name>.json): every creature anchors the same number of teams,
+                       built by the role rules of TeamBuilder (melee front, ranged rear, one Commander, support with a payoff, Cost 33-35).
+      run --batch      Plays the battles between the teams of a batch (each team gets the same number of battles as the focus team).
       report           Writes the CSV files and report.md again from the recorded battles of a run.
 
     Options:
@@ -40,6 +45,8 @@ try
             return 0;
         case "play":
             return PlayCommand(args);
+        case "teams":
+            return TeamsCommand(args);
         default:
             Console.Error.WriteLine($"Unknown command '{args[0]}'.");
             Console.Error.WriteLine(Usage);
@@ -59,10 +66,37 @@ static int RunCommand(string[] args)
     var battles = int.Parse(Option(args, "--battles") ?? "10000");
     var seed = ulong.Parse(Option(args, "--first-seed") ?? "1");
     var threads = int.Parse(Option(args, "--threads") ?? Math.Max(1, Environment.ProcessorCount - 1).ToString());
-    var info = Everkin.Runner.BatchRunner.Start(RepoRoot(), folder, level, battles, seed, Option(args, "--resume"));
+    var info = Everkin.Runner.BatchRunner.Start(RepoRoot(), folder, level, battles, seed, Option(args, "--resume"), Option(args, "--batch"));
     Everkin.Runner.BatchRunner.Run(RepoRoot(), folder, info, threads, Console.WriteLine);
     Everkin.Runner.Report.Write(RepoRoot(), info.Id, Console.WriteLine);
     return 0;
+}
+
+static int TeamsCommand(string[] args)
+{
+    if (args.Length < 2 || args[1] != "build") throw new ArgumentException("usage: teams build --name <batch>");
+    var folder = FindContentFolder(args);
+    var content = ContentLoader.LoadFromDirectory(folder);
+    var name = Option(args, "--name") ?? throw new ArgumentException("--name <batch> is needed");
+    var batch = Everkin.Runner.TeamBatch.Build(content, name, ulong.Parse(Option(args, "--seed") ?? "1"), int.Parse(Option(args, "--per-creature") ?? "1"),
+        Option(args, "--note") ?? "", GitCommit(RepoRoot()));
+    batch.Save(RepoRoot());
+    var costs = batch.Teams.Select(t => t.Cost).ToList();
+    Console.WriteLine($"batch {name}: {batch.Teams.Count} teams, Cost {costs.Min()}-{costs.Max()} (mean {costs.Average():F1}), {costs.Count(c => c >= 33)} at 33 or more");
+    foreach (var g in batch.Teams.GroupBy(t => t.Template)) Console.WriteLine($"  {g.Key}: {g.Count()}");
+    return 0;
+}
+
+static string GitCommit(string root)
+{
+    try
+    {
+        var p = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("git", "rev-parse HEAD") { WorkingDirectory = root, RedirectStandardOutput = true, UseShellExecute = false });
+        var text = p!.StandardOutput.ReadToEnd().Trim();
+        p.WaitForExit();
+        return text;
+    }
+    catch { return ""; }
 }
 
 static string RepoRoot() => Path.GetDirectoryName(FindContentFolder(Array.Empty<string>()))!;

@@ -111,6 +111,24 @@ public static class Report
         foreach (var ((a, b), t) in against.Where(x => x.Value.Appearances >= 10).OrderBy(x => x.Key)) csv.AppendLine($"opponent,{a},{b},{t.Appearances},{t.Wins},{F(t.Rate)}");
         File.WriteAllText(Path.Combine(folder, "pairs.csv"), csv.ToString());
 
+        if (ok.Any(r => r.TeamA is not null))
+        {
+            // Team batch runs: how each team and each template did.
+            var teams = new Dictionary<string, Tally>();
+            foreach (var r in ok.Where(r => r.TeamA is not null))
+                foreach (var (id, side) in new[] { (r.TeamA!, "A"), (r.TeamB!, "B") })
+                {
+                    var t = Get(teams, id);
+                    t.Appearances++;
+                    if (r.Result == (side == "A" ? "SideAWins" : "SideBWins")) t.Wins++;
+                    if (r.Result == "Draw") t.Draws++;
+                }
+            csv.Clear();
+            csv.AppendLine("team,battles,wins,draws,win_rate");
+            foreach (var (id, t) in teams.OrderBy(x => x.Key, StringComparer.Ordinal)) csv.AppendLine($"{id},{t.Appearances},{t.Wins},{t.Draws},{F(t.Rate)}");
+            File.WriteAllText(Path.Combine(folder, "teams.csv"), csv.ToString());
+        }
+
         // The Markdown report.
         var md = new StringBuilder();
         var turns = ok.Select(r => r.Turns).OrderBy(x => x).ToList();
