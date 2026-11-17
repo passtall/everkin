@@ -1,8 +1,8 @@
 {
-  "Id": "20261116-210306-harness",
+  "Id": "20261117-175706-harness",
   "Level": "harness",
-  "Battles": 1000,
+  "Battles": 10000,
   "FirstSeed": 1,
-  "Commit": "6315222681ed8649c5533469435eebadb461a3f6",
-  "Started": "2026-11-16T21:03:06"
+  "Commit": "8a33ca860a60ad27b2a30f1f87028ac0676d8d43",
+  "Started": "2026-11-17T17:57:06"
 }

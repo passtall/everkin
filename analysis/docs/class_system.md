@@ -6,6 +6,7 @@ This document owns the classes, the keystone and unique attack rules, and how cl
 
 - **Two classes.** Every creature has exactly two different classes. Both may be close relatives (Mender and Cleric); there is no main class.
 - **Six skills.** Each class has three active skills. A creature can always use all six actives of its two classes. There are no skill points, skill trees, builds or respecs.
+- **Momentum costs.** Every active costs 0 to 3 Momentum. Each class has at least one active that costs nothing and at least one that costs Momentum.
 - **Two keystones.** Each class has three keystones (powerful passives). A creature has one keystone from each of its classes, fixed in the roster: the player never picks them, and two creatures of the same class can have different keystones. Every keystone is used by at least one creature.
 - **One unique attack.** Every creature has its own attack (section 4). There are no shared attacks.
 

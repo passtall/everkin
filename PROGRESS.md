@@ -21,7 +21,7 @@ The implementation state, kept current by every Claude Code session ([docs/imple
 
 - **M5.8 (owner, 2026-11-16): code done, 746 tests pass.** AI scoring, harness formation, Momentum log and report section, Searing Light 4-5, Vanish 1. The second run `runs/20261116-191930-harness` was stopped early by the owner at 5,737 of 10,000 battles; its summaries are in `analysis/`. Owner reviewed it (2026-11-16): next is **M5.9 AI improvements** (docs/implementation-plan.md), then a full run, then the Cost formula proposal.
 - **M5.9 (2026-11-16): code done, 754 tests pass.** AI scoring (Momentum diminishing, tempo, status weights, summons, totems and traps), candidate and depth rules, role formation, skill decision log and report. Harness settings: candidates 3, rootCandidates 8 (about 14 s per battle). Run `runs/20261116-210306-harness` (1,000 battles by the owner's choice) is in `analysis/`. Readings: Spirit Link, Totem of Return, turrets and barricades score 0; the Net Trap scores one 3-unit Delay; the deeper search applies at the first move only. The full 10,000-battle run and the Cost formula proposal are still to do.
-- **M5.10 (owner, 2026-11-16), next:** new Momentum costs 0–3 for all 84 actives are in skills.md (every class has a free and a costed active). Regenerate content, update tests, then the full run and the Cost formula proposal. Open design todo: Cleric rework (game_system §19).
+- **M5.10 (2026-11-17): done, 754 tests pass.** New Momentum costs 0–3 (skills.md) regenerated into content; tests updated. Run `runs/20261117-175706-harness` was stopped by the owner at 4,085 of 10,000 battles (3.7% draws, 16.6 s per battle); it and the docs are in `analysis/`. Next: the Cost formula proposal (game_system §5.1) for the owner's approval. Open design todo: Cleric rework (game_system §19).
 
 ## In flight
 
@@ -157,7 +157,7 @@ Old readings the code followed that M5.6 changes (most are done now: Momentum fo
 - [x] M5.7 Momentum costs and skill tooltips (touch long-press and an eye check still open)
 - [x] M5.8 AI and harness fixes, second harness run
 - [x] M5.9 AI improvements (1,000-battle run)
-- [ ] M5.10 Momentum costs 0–3, full harness run, Cost formula
+- [x] M5.10 Momentum costs 0–3, harness run (4,085 battles); Cost formula proposal still to do
 - [ ] M6.1 Local two-player
 - [ ] M7.1 Chapters 2 to 4
 - [ ] M7.2 Achievements
