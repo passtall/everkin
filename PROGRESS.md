@@ -29,6 +29,8 @@ The implementation state, kept current by every Claude Code session ([docs/imple
 
 - **Balance round 1, Bard (owner, 2026-11-18): done in docs, content and code, 760 tests pass.** Why weak: 877 appearances, Bard creatures deal 3-17 damage and win 32-37% outside the Summoner pairs; the AI casts `war_drums` (3.4 per appearance) far more than Haste (0.8) or Lullaby (2.1). **Now:** War Drums (Delay 4, free) protects the Bard and adjacent allies from Stunned, Frozen, Confused and Immobilized; Song of Haste (Delay 4, Momentum 1) also pulls each reached ally's next turn forward 3 once, at cast; Crescendo became **Echo** (keystone ID `echo`, 11 roster rows renamed): when the Bard casts a song, its other lasting song that is still running is renewed to 20 (nothing if it ended; with Grand Chorus it does nothing); Grand Chorus, Rhythm and Lullaby unchanged. AI: War Drums counts only against an enemy whose effect text Stuns, Freezes, Confuses or Immobilizes (game_system section 2.5). Still to do in the round: Tactician (40%), Mender (42-43%), then Hexer; then rerun `baseline-1` (1,000 battles) to measure the Cleric, Bard and pulse changes together.
 
+- **Round 1 measurement (2026-11-18, `analysis-round1/`, run on `baseline-1`, 1,000 battles, same seeds as the run before):** class win rates before -> after pulse 50% + Cleric + Bard changes: Cleric 38.7 -> 44.4 (damage 25 -> 48), Bard 40.3 -> 46.3, Hexer 37.2 -> 42.1, Tactician 40.3 -> 44.2, Mender 41.9 -> 43.1, Commander 44.6 -> 46.4, Keeper 43.9 -> 45.0; Summoner 73.3 -> 71.7 (untouched). No crashes, 2.3% draws. Still low: Mender, Tactician, Cleric. Open: Decision 2 (melee), Decision 3 (Commander keystones `drill`, `vanguard`).
+
 ## In flight
 
 Nothing uncommitted. M5.6 is complete.
