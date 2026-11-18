@@ -66,6 +66,33 @@ public sealed class TeamBatch
         return batch;
     }
 
+    /// <summary>
+    /// A batch with every constellation of <see cref="TeamBuilder.Constellations"/> built <paramref name="perConstellation"/> times (the anchors go round the
+    /// creatures whose role fits, so every creature anchors about equally often), plus <paramref name="perCreature"/> template teams for every creature.
+    /// </summary>
+    public static TeamBatch BuildConstellations(ContentSet content, string name, ulong seed, int perConstellation, int perCreature, string note, string commit)
+    {
+        var batch = Build(content, name, seed, perCreature, note, commit);
+        var creatures = content.Creatures.OrderBy(c => c.Id, StringComparer.Ordinal).ToList();
+        var cursor = 0;
+        foreach (var (cname, slots) in TeamBuilder.Constellations())
+        {
+            var fitting = creatures.Where(c => TeamBuilder.Fits(content, c, slots)).ToList();
+            for (var k = 0; k < perConstellation; k++)
+            {
+                var anchor = fitting[(cursor++) % fitting.Count];
+                var random = new BattleRandom(seed ^ Hash(cname) ^ Hash(anchor.Id) ^ ((ulong)(k + 1) * 0xD1B54A32D192ED03UL));
+                var built = TeamBuilder.Build(content, anchor, random, constellation: cname, constellationSlots: slots);
+                batch.Teams.Add(new BatchTeam
+                {
+                    Id = $"{cname}:{anchor.Id}#{k + 1}", Anchor = anchor.Id, Template = cname, Cost = built.Cost,
+                    Units = built.Team.Units.Select(u => new BatchUnit { Creature = u.CreatureId, Row = u.Row.ToString() }).ToList(),
+                });
+            }
+        }
+        return batch;
+    }
+
     public TeamSetup SetupOf(BatchTeam t) => new(t.Units.Select(u => new UnitSetup(u.Creature, Enum.Parse<Row>(u.Row))).ToList());
 
     /// <summary>

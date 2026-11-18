@@ -5,6 +5,7 @@ Use this prompt at the start of a session, after a harness run with a team batch
 ## Background
 
 - Sample teams are built by `src/Everkin.Core/Setup/TeamBuilder.cs` (version in `TeamBuilder.Version`) and stored as named batches in `teams/batches/<name>.json`. A run copies its batch into `runs/<id>/batch.json`.
+- Builder version 2 adds `TeamBuilder.Constellations()`: all 120 useful role mixes (someone in front and someone behind, at least two attackers, supports never outnumber attackers, at most three blockers and three supports). `constellations-1` has each built 5 times plus one template team per creature; use the constellation name in `Template` to compare role mixes.
 - Rules of the builder (owner decisions 2026-11-17): rule-based builder; roles derived from the unique attack and classes (`TeamBuilder.RoleOf`); templates `balanced`, `wall`, `aggro`, `support_heavy`; every team built around one anchor creature, equal teams per creature; Cost 33 to 35; melee in the Front row, ranged in the Rear, blockers in the middle of the Front row; at most one Commander; healers need two durable frontliners, a Bard two attackers, a Hexer or Saboteur three attackers.
 - A batch run plays teams of the same batch against each other (`TeamBatch.SpecFor`); the report adds `teams.csv` (battles, wins and win rate per team).
 - Batches are never edited after a run. A rule change makes a new batch (`baseline-1`, `baseline-2`, ... or a name that says the change). One batch stays the baseline so a change is always measured against the same teams.

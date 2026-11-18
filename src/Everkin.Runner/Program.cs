@@ -11,7 +11,7 @@ const string Usage = """
       Everkin.Runner play --seed <n> --level <easy|normal|hard|name>
       Everkin.Runner run [--level <name>] [--battles 10000] [--first-seed 1] [--threads n] [--resume <run id>]
       Everkin.Runner report --run <run id>
-      Everkin.Runner teams build --name <batch> [--seed 1] [--per-creature 1] [--note "text"]
+      Everkin.Runner teams build --name <batch> [--seed 1] [--per-creature 1] [--per-constellation 0] [--note "text"]
       Everkin.Runner run --batch <batch> [--battles 1000] ...
 
     Commands:
@@ -78,8 +78,12 @@ static int TeamsCommand(string[] args)
     var folder = FindContentFolder(args);
     var content = ContentLoader.LoadFromDirectory(folder);
     var name = Option(args, "--name") ?? throw new ArgumentException("--name <batch> is needed");
-    var batch = Everkin.Runner.TeamBatch.Build(content, name, ulong.Parse(Option(args, "--seed") ?? "1"), int.Parse(Option(args, "--per-creature") ?? "1"),
-        Option(args, "--note") ?? "", GitCommit(RepoRoot()));
+    var perConstellation = int.Parse(Option(args, "--per-constellation") ?? "0");
+    var batch = perConstellation > 0
+        ? Everkin.Runner.TeamBatch.BuildConstellations(content, name, ulong.Parse(Option(args, "--seed") ?? "1"), perConstellation,
+            int.Parse(Option(args, "--per-creature") ?? "1"), Option(args, "--note") ?? "", GitCommit(RepoRoot()))
+        : Everkin.Runner.TeamBatch.Build(content, name, ulong.Parse(Option(args, "--seed") ?? "1"), int.Parse(Option(args, "--per-creature") ?? "1"),
+            Option(args, "--note") ?? "", GitCommit(RepoRoot()));
     batch.Save(RepoRoot());
     var costs = batch.Teams.Select(t => t.Cost).ToList();
     Console.WriteLine($"batch {name}: {batch.Teams.Count} teams, Cost {costs.Min()}-{costs.Max()} (mean {costs.Average():F1}), {costs.Count(c => c >= 33)} at 33 or more");

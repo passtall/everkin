@@ -17,7 +17,7 @@ public sealed record BuiltTeam(string Anchor, string Template, TeamSetup Team, i
 public static class TeamBuilder
 {
     /// <summary>Bumped whenever the rules below change, so a batch file says which builder made it.</summary>
-    public const int Version = 1;
+    public const int Version = 2;
 
     public const int MinCost = 33;
 
@@ -39,6 +39,36 @@ public static class TeamBuilder
         ["aggro"] = new[] { "Frontliner", "Frontliner", "Ranged", "Ranged", "Caster", "Flex" },
         ["support_heavy"] = new[] { "Blocker", "Frontliner", "Ranged", "Support", "Support", "Flex" },
     };
+
+    /// <summary>
+    /// Every useful team constellation: how many blockers (b), frontliners (f), ranged (r), casters (c, summoners included) and supports (s) a team of six has.
+    /// Useful means: someone stands in front and someone behind, at least two attackers, supports never outnumber the attackers, at most three blockers
+    /// and three supports. The name reads "b1-f1-r2-c1-s1"; the slots are in the order blocker, frontliner, ranged, caster, support.
+    /// </summary>
+    public static IReadOnlyList<(string Name, IReadOnlyList<string> Slots)> Constellations()
+    {
+        var list = new List<(string, IReadOnlyList<string>)>();
+        for (var b = 0; b <= 3; b++)
+        for (var f = 0; f <= 4; f++)
+        for (var r = 0; r <= 4; r++)
+        for (var c = 0; c <= 3; c++)
+        for (var s = 0; s <= 3; s++)
+        {
+            if (b + f + r + c + s != BattleSetup.TeamSize || b + f < 1 || r + c < 1 || f + r + c < 2 || s > f + r + c) continue;
+            var slots = new List<string>();
+            slots.AddRange(Enumerable.Repeat("Blocker", b));
+            slots.AddRange(Enumerable.Repeat("Frontliner", f));
+            slots.AddRange(Enumerable.Repeat("Ranged", r));
+            slots.AddRange(Enumerable.Repeat("Caster", c));
+            slots.AddRange(Enumerable.Repeat("Support", s));
+            list.Add(($"b{b}-f{f}-r{r}-c{c}-s{s}", slots));
+        }
+        return list;
+    }
+
+    /// <summary>Whether the creature's role fits one of the slots (a Flex slot fits anyone).</summary>
+    public static bool Fits(ContentSet content, CreatureDef c, IReadOnlyList<string> slots) =>
+        slots.Select(Parse).Any(s => Accepts(s, RoleOf(content, c)));
 
     public static TeamRole RoleOf(ContentSet content, CreatureDef c)
     {
@@ -92,14 +122,25 @@ public static class TeamBuilder
     /// A team built around <paramref name="anchor"/>: a template whose slots fit the anchor's role is drawn, the other slots are filled (attackers and
     /// blockers first, support last) within the payoff rules, and the Cost is brought to 33-35. If no attempt reaches 33 the nearest one is kept.
     /// </summary>
-    public static BuiltTeam Build(ContentSet content, CreatureDef anchor, BattleRandom random, int budget = BattleSetup.TeamBudget)
+    public static BuiltTeam Build(ContentSet content, CreatureDef anchor, BattleRandom random, int budget = BattleSetup.TeamBudget,
+        string? constellation = null, IReadOnlyList<string>? constellationSlots = null)
     {
         var role = RoleOf(content, anchor);
-        var names = new List<string> { "balanced", "wall", "aggro", "support_heavy" };
-        for (var i = names.Count - 1; i > 0; i--) { var j = random.NextInt(i + 1); (names[i], names[j]) = (names[j], names[i]); }
-        var fitting = names.Where(n => Templates[n].Select(Parse).Any(s => s != Slot.Flex && Accepts(s, role)) || Templates[n].Select(Parse).Contains(Slot.Flex)).ToList();
-        var template = fitting.Count > 0 ? fitting[0] : names[0];
-        var slots = Templates[template].Select(Parse).ToList();
+        string template;
+        List<Slot> slots;
+        if (constellationSlots is not null)
+        {
+            template = constellation ?? "custom";
+            slots = constellationSlots.Select(Parse).ToList();
+        }
+        else
+        {
+            var names = new List<string> { "balanced", "wall", "aggro", "support_heavy" };
+            for (var i = names.Count - 1; i > 0; i--) { var j = random.NextInt(i + 1); (names[i], names[j]) = (names[j], names[i]); }
+            var fitting = names.Where(n => Templates[n].Select(Parse).Any(s => s != Slot.Flex && Accepts(s, role)) || Templates[n].Select(Parse).Contains(Slot.Flex)).ToList();
+            template = fitting.Count > 0 ? fitting[0] : names[0];
+            slots = Templates[template].Select(Parse).ToList();
+        }
 
         // The anchor takes its own slot (a matching specific one, else a Flex slot); the rest are filled in the order below.
         var anchorSlot = slots.FindIndex(s => s != Slot.Flex && Accepts(s, role));
