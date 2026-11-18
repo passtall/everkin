@@ -1,0 +1,9 @@
+{
+  "Id": "20261118-213438-harness",
+  "Level": "harness",
+  "Battles": 10000,
+  "FirstSeed": 1,
+  "Commit": "83c422d2ea2a24a5dd3dc9590a52e6641d6668ad",
+  "Started": "2026-11-18T21:34:38",
+  "Batch": "constellations-1"
+}
