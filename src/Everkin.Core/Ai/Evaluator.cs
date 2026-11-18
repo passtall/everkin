@@ -214,7 +214,8 @@ public static class Evaluator
         var content = catalog.Content;
         var text = content.SkillsById.TryGetValue(skillId, out var skill) ? skill.Effect
             : content.AttacksById.TryGetValue(skillId, out var attack) ? attack.Effect : null;
-        return text is not null && (text.Contains("Stun", StringComparison.Ordinal) || text.Contains("Frozen", StringComparison.Ordinal) || text.Contains("Freeze", StringComparison.Ordinal));
+        return text is not null && (text.Contains("Stun", StringComparison.Ordinal) || text.Contains("Frozen", StringComparison.Ordinal) || text.Contains("Freeze", StringComparison.Ordinal)
+            || text.Contains("Confus", StringComparison.Ordinal) || text.Contains("Immobiliz", StringComparison.Ordinal));
     }
 
     private static bool Usable(Unit unit, Skill skill) => !skill.Magical || Statuses.CanUseMagical(unit);

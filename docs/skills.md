@@ -254,15 +254,18 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Song of Haste | A | 4 / 1 | — | Song. Allies in the Bard's row have +1 Speed for 20. |
-| War Drums | A | 4 / 0 | — | Song. For 20, the Bard and its adjacent allies cannot be Stunned or Frozen. |
+| Song of Haste | A | 4 / 1 | — | Song. Allies in the Bard's row have +1 Speed for 20, and each one's next turn comes 3 time units sooner. |
+| War Drums | A | 4 / 0 | — | Song. For 20, the Bard and its adjacent allies cannot be Stunned, Frozen, Confused or Immobilized. |
 | Lullaby | A | 4 / 2 | Direct | Song. Every enemy in one row has its next turn pushed back 5. |
 | Grand Chorus | K | | | The Bard's songs reach every ally, but only one of its songs can be active at a time. |
 | Rhythm | K | | | When an ally uses the same skill twice in a row, the second use has 1 less Delay. |
-| Crescendo | K | | | The Bard's songs last 10 longer. |
+| Echo | K | | | When the Bard casts a song, its other lasting song that is still active is renewed for 20. |
 
-- **Songs** are magical. Song of Haste and War Drums count the Bard as an ally and last 20; casting one again restarts it. The same song from several Bards does not add up: the strongest applies. Lullaby is instant, so Crescendo and the one-song limit of Grand Chorus do not touch it. Who a song reaches is fixed when it is cast: a unit that leaves keeps it, a unit that arrives does not get it.
+- **Songs** are magical. Song of Haste and War Drums count the Bard as an ally and last 20; casting one again restarts it. The same song from several Bards does not add up: the strongest applies. Lullaby is instant, so the one-song limit of Grand Chorus does not touch it. Who a song reaches is fixed when it is cast: a unit that leaves keeps it, a unit that arrives does not get it.
 - **Rhythm:** a Move or Skip Turn between the two uses breaks the streak.
+- **Song of Haste** pulls each ally's next turn forward 3 once, when it is cast, for every ally it reaches (the Bard included); casting it again pulls again, a renewal by Echo does not.
+- **Echo:** the lasting songs are Song of Haste and War Drums; Lullaby is instant and is never renewed. Echo renews the Bard's other lasting song only if it is still running, on the units that still hold it, restarting its time at 20, at no cost and without a new pull; it renews nothing if the other song has ended. With Grand Chorus the other song ends when a new one is cast, so Echo does nothing there.
+- **Owner decisions 2026-11-18 (balance round 1):** War Drums protects against four controls instead of two; Song of Haste gains the immediate pull; Crescendo (songs last 10 longer) became Echo; Grand Chorus, Rhythm and Lullaby stay.
 
 ## Thief
 

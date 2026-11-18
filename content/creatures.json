@@ -442,7 +442,7 @@
         "commander"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "vanguard"
       ],
       "attack": "reed_lash",
@@ -1248,7 +1248,7 @@
         "keeper"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "thorned_ward"
       ],
       "attack": "carillon_peal",
@@ -1527,7 +1527,7 @@
         "summoner"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "portal"
       ],
       "attack": "lullnote",
@@ -2333,7 +2333,7 @@
         "berserker"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "reckless_swing"
       ],
       "attack": "war_throb",
@@ -2674,7 +2674,7 @@
         "assassin"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "unseen"
       ],
       "attack": "leaping_stab",
@@ -3294,7 +3294,7 @@
         "skyborne"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "lift"
       ],
       "attack": "beak_drum",
@@ -3759,7 +3759,7 @@
         "berserker"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "reckless_swing"
       ],
       "attack": "shield_smash",
@@ -5712,7 +5712,7 @@
         "commander"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "drill"
       ],
       "attack": "castanet_clack",
@@ -7138,7 +7138,7 @@
         "summoner"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "portal"
       ],
       "attack": "squeak",
@@ -8069,7 +8069,7 @@
       ],
       "keystones": [
         "self_repair",
-        "crescendo"
+        "echo"
       ],
       "attack": "splash_song",
       "artFile": "seal-01.png",
@@ -9556,7 +9556,7 @@
         "commander"
       ],
       "keystones": [
-        "crescendo",
+        "echo",
         "vanguard"
       ],
       "attack": "horn_blast",

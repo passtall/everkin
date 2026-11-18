@@ -1130,8 +1130,8 @@
       "delay": 4,
       "momentum": 1,
       "delivery": "none",
-      "effect": "Song. Allies in the Bard's row have +1 Speed for 20.",
-      "template": "Song. Allies in the Bard's row have +1 Speed for 20."
+      "effect": "Song. Allies in the Bard's row have +1 Speed for 20, and each one's next turn comes 3 time units sooner.",
+      "template": "Song. Allies in the Bard's row have +1 Speed for 20, and each one's next turn comes 3 time units sooner."
     },
     {
       "id": "war_drums",
@@ -1141,8 +1141,8 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "none",
-      "effect": "Song. For 20, the Bard and its adjacent allies cannot be Stunned or Frozen.",
-      "template": "Song. For 20, the Bard and its adjacent allies cannot be Stunned or Frozen."
+      "effect": "Song. For 20, the Bard and its adjacent allies cannot be Stunned, Frozen, Confused or Immobilized.",
+      "template": "Song. For 20, the Bard and its adjacent allies cannot be Stunned, Frozen, Confused or Immobilized."
     },
     {
       "id": "lullaby",
@@ -1178,15 +1178,15 @@
       "template": "When an ally uses the same skill twice in a row, the second use has 1 less Delay."
     },
     {
-      "id": "crescendo",
-      "name": "Crescendo",
+      "id": "echo",
+      "name": "Echo",
       "class": "bard",
       "kind": "K",
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "The Bard's songs last 10 longer.",
-      "template": "The Bard's songs last 10 longer."
+      "effect": "When the Bard casts a song, its other lasting song that is still active is renewed for 20.",
+      "template": "When the Bard casts a song, its other lasting song that is still active is renewed for 20."
     },
     {
       "id": "melt_away",

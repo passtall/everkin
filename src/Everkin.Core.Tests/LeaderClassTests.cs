@@ -258,7 +258,7 @@ public class LeaderClassTests
     {
         foreach (var id in new[] { "song_of_haste", "war_drums", "lullaby" })
             Assert.True(World.Catalog.Get(id).Magical);
-        foreach (var id in new[] { "grand_chorus", "rhythm", "crescendo" })
+        foreach (var id in new[] { "grand_chorus", "rhythm", "echo" })
             Assert.True(World.Catalog.Get(id).IsPassive);
     }
 
@@ -278,7 +278,7 @@ public class LeaderClassTests
         Assert.Equal(6, s.GetUnit(mate).EffectiveSpeed);
         Assert.Equal(6, s.GetUnit(bard).EffectiveSpeed);
         Assert.Equal(5, s.GetUnit(other).EffectiveSpeed);
-        Assert.Equal(remaining - 1, s.Timeline.Remaining(s.Timeline.TurnOf(mate)!));      // 20.5: the remaining Wait shrinks by the Speed change
+        Assert.True(s.Timeline.Remaining(s.Timeline.TurnOf(mate)!) <= remaining - 1 - BardSkills.HastePull + 1);   // the Speed change shrinks the wait (20.5), and the song pulls the turn 3 sooner
         Assert.Equal(20, Statuses.Get(s.GetUnit(mate), StatusIds.SongHaste)!.TimeLeft(s.Timeline.Now));
     }
 
@@ -326,7 +326,7 @@ public class LeaderClassTests
     public void LullabyPushesBackTheNextTurnOfEveryEnemyInOneRowByFiveAndIsInstant()
     {
         var s = new BattleState(1);
-        var bard = World.Unit(s, Side.A, Row.Front, "lullaby", "crescendo", "grand_chorus");
+        var bard = World.Unit(s, Side.A, Row.Front, "lullaby", "echo", "grand_chorus");
         var e1 = World.Unit(s, Side.B, Row.Front);
         var e2 = World.Unit(s, Side.B, Row.Front);
         var back = World.Unit(s, Side.B, Row.Middle);
@@ -359,15 +359,61 @@ public class LeaderClassTests
     }
 
     [Fact]
-    public void CrescendoMakesSongsLastTenLonger()
+    public void SongOfHastePullsEachReachedAllysNextTurnForwardThreeOnceAtCast()
     {
         var s = new BattleState(1);
-        var bard = World.Unit(s, Side.A, Row.Front, "song_of_haste", "crescendo");
+        var bard = World.Unit(s, Side.A, Row.Front, "song_of_haste");
+        var mate = World.Unit(s, Side.A, Row.Front);
+        var other = World.Unit(s, Side.A, Row.Middle);
+        World.Unit(s, Side.B, Row.Front);
+        s.ShiftMomentum(Side.A, 6);
+        s.Timeline.ScheduleTurn(mate, 5, 5);
+        s.Timeline.ScheduleTurn(other, 5, 5);
+        var otherDue = s.Timeline.TurnOf(other)!.Due;
+        var mateDue = s.Timeline.TurnOf(mate)!.Due;
+        Run(s, Use(bard, "song_of_haste"));
+        Assert.Equal(otherDue, s.Timeline.TurnOf(other)!.Due);                              // not in the row: no pull
+        Assert.True(s.Timeline.TurnOf(mate)!.Due <= mateDue - BardSkills.HastePull);       // pulled (the Speed change may shorten it further)
+    }
+
+    [Fact]
+    public void WarDrumsAlsoStopConfusedAndImmobilized()
+    {
+        var s = new BattleState(1);
+        var bard = World.Unit(s, Side.A, Row.Front, "war_drums");
+        var next = World.Unit(s, Side.A, Row.Front);
+        World.Unit(s, Side.B, Row.Front);
+        BattleStart.Install(s, World.Catalog);
+        Run(s, Use(bard, "war_drums"));
+        Assert.False(Statuses.Apply(s, new StatusApplication(next, StatusIds.Confused, Duration: 5)));
+        Assert.False(Statuses.Apply(s, new StatusApplication(next, StatusIds.Immobilized, Duration: 5)));
+        Assert.True(Statuses.Apply(s, new StatusApplication(next, StatusIds.Blind, Duration: 5)));
+    }
+
+    [Fact]
+    public void EchoRenewsTheOtherLastingSongOnlyWhileItIsStillRunning()
+    {
+        var s = new BattleState(1);
+        var bard = World.Unit(s, Side.A, Row.Front, "song_of_haste", "war_drums", "echo");
         World.Unit(s, Side.B, Row.Front);
         BattleStart.Install(s, World.Catalog);
         s.ShiftMomentum(Side.A, 6);
-        Run(s, Use(bard, "song_of_haste"));
-        Assert.Equal(30, Statuses.Get(s.GetUnit(bard), StatusIds.SongHaste)!.TimeLeft(s.Timeline.Now));
+        Run(s, Use(bard, "war_drums"));
+        AdvanceTo(s, 12);
+        Assert.Equal(8, Statuses.Get(s.GetUnit(bard), StatusIds.WarDrums)!.TimeLeft(s.Timeline.Now));
+        Run(s, Use(bard, "song_of_haste"));                                                  // casts Haste, renews War Drums
+        Assert.Equal(20, Statuses.Get(s.GetUnit(bard), StatusIds.WarDrums)!.TimeLeft(s.Timeline.Now));
+        Assert.Equal(20, Statuses.Get(s.GetUnit(bard), StatusIds.SongHaste)!.TimeLeft(s.Timeline.Now));
+
+        var s2 = new BattleState(1);                                                         // the other song already ended: nothing comes back
+        var bard2 = World.Unit(s2, Side.A, Row.Front, "song_of_haste", "war_drums", "echo");
+        World.Unit(s2, Side.B, Row.Front);
+        BattleStart.Install(s2, World.Catalog);
+        s2.ShiftMomentum(Side.A, 6);
+        Run(s2, Use(bard2, "war_drums"));
+        AdvanceTo(s2, 25);
+        Run(s2, Use(bard2, "song_of_haste"));
+        Assert.False(Has(s2, bard2, StatusIds.WarDrums));
     }
 
     [Fact]

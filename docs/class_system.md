@@ -33,7 +33,7 @@ A skill or keystone text that names its class ("the Bard", "the Engineer") means
 | **Champion** | Marks one enemy and duels it. | Challenge, Single Combat, Execution | Hunt Down, Duelist, Glory |
 | **Tactician** | The timeline and Momentum. | Swap Turns, Press the Advantage, Coordinated Strike | All In, Inspiring Presence, Initiative |
 | **Commander** | Moves your own units. | Advance, Switch Places, Rotation | Drill, Rally, Vanguard |
-| **Bard** | Songs for allies, a lullaby for enemies. | Song of Haste, War Drums, Lullaby | Grand Chorus, Rhythm, Crescendo |
+| **Bard** | Songs for allies, a lullaby for enemies. | Song of Haste, War Drums, Lullaby | Grand Chorus, Rhythm, Echo |
 | **Thief** | Steals statuses and skills. | Melt Away, Lift a Skill, Snatch | Escape Artist, Master Thief, Shadow Purse |
 | **Saboteur** | Blinds, delays and breaks plans. | Flash Powder, Cut the Strings, Jam | Wrecker, Chaos Agent, Disarm Trap |
 | **Engineer** | Turrets, barricades and traps. | Bolt Turret, Barricade, Net Trap | Reinforced, Self-Repair, Rapid Fire |
