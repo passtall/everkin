@@ -137,7 +137,7 @@ Each task names the doc sections it implements. Read those sections before codin
   - AI scoring: one point of Momentum is worth 0.5% of a team's HP (`momentumPoint` 50 for every level in `ai_settings.json`); a status counts only while it can still do something, and renewing a status already on the target scores nothing (§2.5 Scoring).
   - Harness formation: the fixed placement rule by unique-attack delivery (melee Front, projectile Rear, other Middle) replaces random formations.
   - Harness log and report: the Momentum meter after every unit turn and every payment; the report's Momentum section per side.
-  - Content: Searing Light hits for 4–5 (skills.md Mender); Vanish costs 1 Momentum (skills.md Assassin). Regenerate the content JSON and update the tests and tooltips that use these numbers.
+  - Content: Vanish costs 1 Momentum (skills.md Assassin). Regenerate the content JSON and update the tests and tooltips that use these numbers.
   - Then rerun 10,000 harness battles and put the summaries in `analysis/` for the owner.
   - The Cost formula proposal moves to the end of M5.9.
 
@@ -153,6 +153,11 @@ Each task names the doc sections it implements. Read those sections before codin
   - Burnout Heal: every ally in the Lifebinder's row and the rows next to it heals 4–6, then the Lifebinder is KO (skills.md).
   - AI scoring (game_system §2.5): stealth by the hits it keeps off and the from-stealth skills it unlocks; Spirit Link Totem by the KOs it prevents; Totem of Return as a share of the ally it would save.
   - Then the full 10,000-battle harness run and the Cost formula proposal that M5.9 left open. In that run's report, check whether these skills are now used: Rune Golem, Life for Life, Melt Away, Swap Turns, Sweeping Kick, Tempest, Execution, Single Combat, Puppet Soul, Rescue, Corpse Explosion, Curse of Betrayal, Glass Body, Echo Enchant, Frost Nova, Hoarfrost.
+
+- **M5.11** Sample teams and balance round 1 (owner, 2026-11-18).
+  - Sample teams: `TeamBuilder` builds a team around each anchor creature from role templates (docs/team-improvement-prompt.md, game_system §2.5); named batches in `teams/batches/`; `run --batch`; `teams.csv` in the report. Improve the builder from new run data with that prompt; the owner approves every change.
+  - Balance round 1 (skills.md owner notes, class_system §4): chance extras on pulse and splash attacks 50%; melee reach passes over empty rows (game_system §8.1); the Cleric, Bard and Mender reworked; AI ties and War Drums scoring (§2.5). Open: Decision 2 (melee single attacks trail projectile), the Commander keystones Drill and Vanguard, the Tactician, the Totemist and the Hexer.
+  - Still missing: icons for the new skills (`smite_the_afflicted`, `divine_intervention`, `sun_burst`, `echo`) and the removal of the old ones (`dispel`, `turn_back`, `searing_light`).
 
 ### M6 Local two-player
 

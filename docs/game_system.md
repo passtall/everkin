@@ -482,7 +482,6 @@ A stealthed unit cannot be targeted by the opponent, is ignored for "nearest" (s
 
 - **Gaining.** Stealth comes only from skills and keystones (Vanish, Melt Away, Unseen, Vanishing Kill, Escape Artist) and from one unique attack (Shiftscale's Snag and Vanish: the attacker gains stealth after its hit). There is no global row restriction.
 - **Breaking.** Stealth ends when the unit **attacks or is hit**, whether or not damage gets through: area hits, hits that reach it without targeting it, hits a Ward fully absorbs and bump damage all count. An intercepted hit hits the interceptor instead and does not break it. Damage that is not a hit (Poisoned, Bleeding, ground damage) does not break it. A skill may override this (Feint keeps it). KO ends it, and reveal effects remove it (Read Tracks, Eagle Eye).
-- **Cleansing.** A cleansing skill that hits a stealthed unit removes its stealth (Dispel).
 - **Duration.** Stealth lasts 40 time units unless it is broken first or a skill states another length.
 - **Visibility.** Stealth is all or nothing; adjacency and alignment never reveal a unit. Any stealth may hide a whole side: melee reach then hits nobody; row-targeted areas still hit the stealthed units in the chosen row, and a unit that is hit loses its stealth.
 - **Presentation.** The opponent sees the unit with a clear stealth cue and its turns stay on the timeline. Stealth limits targeting, not information.
@@ -511,7 +510,7 @@ A revived unit returns to its own body's slot and is scheduled **as though the r
 
 ### 10.5 Statuses
 
-**What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth, Press the Advantage, Regrowth) and harmful ones (the named statuses, curses, hexes and Glass Body) are told apart for cleansing and stealing. Transmute, Single Combat, the Leap to Defend guard and airborne are neither: nothing cleanses, dispels or steals them.
+**What a status is.** Any effect with a duration on a unit: the named statuses below, Wards, enchantments, curses, song effects, Marks and stealth. Helpful ones (Wards, enchantments, songs, stealth, Press the Advantage, Absolve's immunity) and harmful ones (the named statuses, curses, hexes and Glass Body) are told apart for cleansing and stealing. Transmute, Single Combat, the Leap to Defend guard and airborne are neither: nothing cleanses or steals them.
 
 - **Durations** run in time units on the battle clock (section 6.1), whatever the unit does. Exceptions: effects that last "until the caster's next turn" (Ward, Shield Dome; they also end when the caster is KO), Frozen (skips turns) and Bleeding (counts skills).
 - **One instance per status.** Reapplying refreshes it with the new duration, even if shorter. There is no stacking. A new Stun on a Stunned unit keeps whichever time is longer.
@@ -671,8 +670,7 @@ The order of work is in production.md §3 and implementation-plan.md.
 |---|---|
 | Party size | Prototype check of six-versus-six readability; a smaller standard team only if it proves crowded. |
 | Cost | The power-score formula for the current classes, decided when AI-versus-AI testing starts; then Cost and the budget of 35 are recalculated and tuned. |
-| Balance | Every number in skills.md and creature-classes.md, tuned by AI-versus-AI testing. |
-| Cleric | The class plays dull: rework its actives and keystones to make it more interesting. |
+| Balance | Every number in skills.md and creature-classes.md, tuned by AI-versus-AI testing. Balance round 1 (2026-11-18) reworked the Cleric, Bard and Mender; the Tactician, Totemist, Hexer, the Commander keystones and the melee attacks are still open. |
 | Encounters | Tuning the rosters, boss stats and AI levels of campaign.md in testing. |
 | Content | Each chapter's conflict and later full campaign design. |
 | Statuses | New statuses only when a skill needs one. |
