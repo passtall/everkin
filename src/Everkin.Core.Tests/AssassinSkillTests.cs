@@ -25,7 +25,7 @@ public class AssassinSkillTests
     }
 
     [Fact]
-    public void VanishWorksForASidesLastVisibleUnitAndTheEnemyCanStillHitItWithAreas()
+    public void VanishWorksForASidesLastVisibleUnitAndMeleeReachThenHitsNobody()
     {
         var s = new BattleState(1);
         var a = World.Unit(s, Side.A, Row.Front, "vanish");
@@ -34,9 +34,9 @@ public class AssassinSkillTests
         Run(s, Use(a, "vanish"));
         Assert.True(s.GetUnit(a).IsStealthed);
         Assert.Empty(Actions.LegalTargets(s, World.Catalog, e, "sour_chord").Where(t => t == a));
-        Run(s, Use(e, "sour_chord"));                                                       // the pulse hits the stealthed unit and breaks its stealth
-        Assert.InRange(Lost(s, a), 1, 2);
-        Assert.False(s.GetUnit(a).IsStealthed);
+        Run(s, Use(e, "sour_chord"));                                                       // every living enemy is stealthed: melee reach hits nobody
+        Assert.Equal(0, Lost(s, a));
+        Assert.True(s.GetUnit(a).IsStealthed);
     }
 
     [Fact]

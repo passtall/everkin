@@ -117,16 +117,16 @@ public class TargetingTests
     }
 
     [Fact]
-    public void MeleeReachPassesOverRowsWithOnlyKoBodiesOrOnlyStealthedUnitsButFallsBackToStealthedOnes()
+    public void MeleeReachPassesOverRowsWithOnlyKoBodiesOrOnlyStealthedUnitsAndHitsNobodyWhenEveryoneIsStealthed()
     {
         var b = new Board();
         var u = b.Add(Side.A, Row.Front);
         b.Add(Side.B, Row.Front, ko: true);
-        var hidden = b.Add(Side.B, Row.Middle, stealthed: true);
+        b.Add(Side.B, Row.Middle, stealthed: true);
         var rear = b.Add(Side.B, Row.Rear);
         Assert.Equal(new[] { rear }, Targeting.EnemiesInMeleeReach(b.State, u));             // KO-only and stealth-only rows are passed over
         b.State.GetUnit(rear).Hp = 0;
-        Assert.Equal(new[] { hidden }, Targeting.EnemiesInMeleeReach(b.State, u));           // no visible unit left: the stealthed one is still hit
+        Assert.Empty(Targeting.EnemiesInMeleeReach(b.State, u));                             // every living enemy is stealthed: nobody is hit
     }
 
     // ---- legality ----
