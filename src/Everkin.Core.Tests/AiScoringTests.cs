@@ -142,8 +142,10 @@ public class AiScoringTests
     public void TheSearchAlwaysLooksFurtherAtACostedSkill()
     {
         var s = new BattleState(1);
-        var a = World.Unit(s, Side.A, Row.Front, "rain_of_mending", "searing_light");
+        var a = World.Unit(s, Side.A, Row.Front, "rain_of_mending", "mend");
         for (var i = 0; i < 3; i++) World.Unit(s, Side.B, Row.Front);
+        var hurt = World.Unit(s, Side.A, Row.Middle);
+        s.GetUnit(hurt).Hp = 10;
         s.ShiftMomentum(Side.A, 5);
         s.Timeline.ScheduleTurn(a, 1, 5);
         var narrow = new AiLevel { Depth = 2, Candidates = 1, RootCandidates = 1, PickTop = 1, AlwaysSearchCostedAndControl = true };

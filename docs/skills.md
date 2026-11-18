@@ -70,12 +70,17 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Mend | A | 4 / 1 | Direct | Heal a unit for {8–10}. |
-| Rain of Mending | A | 6 / 2 | Direct | Pick a row: every unit in it heals {3–4}, and every unit in the row behind it heals half that. |
-| Searing Light | A | 4 / 0 | Direct | Hit for {4–5}. Undead take double. |
+| Mend | A | 4 / 0 | Direct | Heal a unit for {8–10}. |
+| Rain of Mending | A | 6 / 2 | Direct | Every ally heals {4–5}. |
+| Sun Burst | A | 5 / 2 | Direct | Every enemy takes {2–3} and every ally heals {2–3}. |
 | Overflowing Care | K | | | Healing beyond the target's max HP goes to its adjacent ally with the lowest HP. |
-| Regrowth | K | | | A unit the Mender heals also regains {2} HP every 10 for 20. |
+| Regrowth | K | | | A unit the Mender heals also gains a Ward of {2} until its next turn. |
 | Triage | K | | | Mend heals double on units below 25% HP. |
+
+- **Rain of Mending** takes no target and heals every living ally on the board (healing an undead hurts it).
+- **Sun Burst** takes no target and works from any row: it hits every living enemy on the board, stealthed ones too (each one hit loses its stealth), and heals every living ally. It is a Direct skill, so it cannot be intercepted; the hits are one simultaneous block with one Momentum shift. The heals come after the hits.
+- **Regrowth:** the Ward comes with every heal of Mend, Rain of Mending and Sun Burst; a unit that is healed again keeps the larger Ward. It does not apply to an undead (healing hurts it).
+- **Owner decisions 2026-11-18 (balance round 1):** Mend lost its Momentum cost; Rain of Mending became a team heal; Searing Light was replaced by Sun Burst; Regrowth became a Ward; Overflowing Care and Triage stay. Reason: the Mender's creatures attacked with Searing Light 6 times per battle and healed 2, because a free 4–5 hit beat a Momentum-costing heal.
 
 ## Cleric
 

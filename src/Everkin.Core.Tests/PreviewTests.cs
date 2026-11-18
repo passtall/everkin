@@ -68,9 +68,10 @@ public class PreviewTests
         var mend = Preview.Skill(s, World.Catalog, Use(healer, "mend", ally)).Units.Single();
         Assert.Equal((8, 10), (mend.HealMin, mend.HealMax));
         s.ShiftMomentum(Side.A, 3);
-        var rain = Preview.Skill(s, World.Catalog, Use(healer, "rain_of_mending", row: new RowTarget(Side.A, Row.Middle)));
-        Assert.Equal(2, rain.Units.Count);
-        Assert.All(rain.Units, u => Assert.Equal((3, 4), (u.HealMin, u.HealMax)));
+        var rain = Preview.Skill(s, World.Catalog, Use(healer, "rain_of_mending"));
+        var healed = rain.Units.Where(u => u.HealMax > 0 && (u.UnitId == ally || u.UnitId == other)).ToList();
+        Assert.Equal(2, healed.Count);
+        Assert.All(healed, u => Assert.Equal((4, 5), (u.HealMin, u.HealMax)));
     }
 
     [Fact]

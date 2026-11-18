@@ -469,8 +469,8 @@ public sealed class SkillContext
     {
         var healed = State.Heal(UserId, unitId, amount);
         if (amount > 0 && User.KnownSkills.Contains("regrowth") && !State.GetUnit(unitId).IsKnockedOut && !State.GetUnit(unitId).HealingHurts)
-            // Regrowth: a unit the Mender heals also regains 2 HP every 10 for 20.
-            Statuses.Apply(State, new StatusApplication(unitId, StatusIds.Regrowth, 20, Scaled(2), UserId));
+            // Regrowth: a unit the Mender heals also gains a Ward of 2 until its next turn.
+            Statuses.Apply(State, new StatusApplication(unitId, StatusIds.Ward, Magnitude: Scaled(2), SourceUnitId: UserId, EndsAtNextTurnOf: unitId));
         var overflow = amount - healed;
         if (overflow <= 0 || State.GetUnit(unitId).IsUndead || Statuses.Has(State.GetUnit(unitId), StatusIds.Betrayed) || !User.KnownSkills.Contains("overflowing_care")) return healed;
         var side = State.GetUnit(unitId).Side;

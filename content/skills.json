@@ -270,7 +270,7 @@
       "class": "mender",
       "kind": "A",
       "delay": 4,
-      "momentum": 1,
+      "momentum": 0,
       "delivery": "direct",
       "effect": "Heal a unit for 8–10.",
       "template": "Heal a unit for {8–10}."
@@ -283,19 +283,19 @@
       "delay": 6,
       "momentum": 2,
       "delivery": "direct",
-      "effect": "Pick a row: every unit in it heals 3–4, and every unit in the row behind it heals half that.",
-      "template": "Pick a row: every unit in it heals {3–4}, and every unit in the row behind it heals half that."
+      "effect": "Every ally heals 4–5.",
+      "template": "Every ally heals {4–5}."
     },
     {
-      "id": "searing_light",
-      "name": "Searing Light",
+      "id": "sun_burst",
+      "name": "Sun Burst",
       "class": "mender",
       "kind": "A",
-      "delay": 4,
-      "momentum": 0,
+      "delay": 5,
+      "momentum": 2,
       "delivery": "direct",
-      "effect": "Hit for 4–5. Undead take double.",
-      "template": "Hit for {4–5}. Undead take double."
+      "effect": "Every enemy takes 2–3 and every ally heals 2–3.",
+      "template": "Every enemy takes {2–3} and every ally heals {2–3}."
     },
     {
       "id": "overflowing_care",
@@ -316,8 +316,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "A unit the Mender heals also regains 2 HP every 10 for 20.",
-      "template": "A unit the Mender heals also regains {2} HP every 10 for 20."
+      "effect": "A unit the Mender heals also gains a Ward of 2 until its next turn.",
+      "template": "A unit the Mender heals also gains a Ward of {2} until its next turn."
     },
     {
       "id": "triage",

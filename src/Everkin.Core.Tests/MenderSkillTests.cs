@@ -56,69 +56,67 @@ public class MenderSkillTests
     [Fact]
     public void MendIsMagicalSoSilencedBlocksIt()
     {
-        var (s, m, ally) = Board(1, "mend", "searing_light");
+        var (s, m, ally) = Board(1, "mend", "sun_burst");
         Statuses.Apply(s, new StatusApplication(m, StatusIds.Silenced, Duration: 20));
         Assert.Contains("Silenced", Why(s, Use(m, "mend", ally)));
-        Assert.Contains("Silenced", Why(s, Use(m, "searing_light", 2)));
+        Assert.Contains("Silenced", Why(s, Use(m, "sun_burst")));
     }
 
     [Fact]
-    public void RainOfMendingHealsTheRowAndHalfThatInTheRowBehind()
+    public void MendCostsNoMomentum()
+    {
+        var (s, m, ally) = Board(1, "mend");
+        var before = s.Momentum.Value;
+        Run(s, Use(m, "mend", ally));
+        Assert.Equal(before, s.Momentum.Value);
+    }
+
+    [Fact]
+    public void RainOfMendingHealsEveryAllyFourToFiveForTwoMomentum()
     {
         var s = new BattleState(1);
         var m = World.Unit(s, Side.A, Row.Front, "rain_of_mending");
-        var mid1 = World.Unit(s, Side.A, Row.Middle);
-        var mid2 = World.Unit(s, Side.A, Row.Middle);
+        var mid = World.Unit(s, Side.A, Row.Middle);
         var rear = World.Unit(s, Side.A, Row.Rear);
-        World.Unit(s, Side.B, Row.Front);
+        var enemy = World.Unit(s, Side.B, Row.Front);
         s.ShiftMomentum(Side.A, 6);
-        foreach (var id in new[] { m, mid1, mid2, rear }) s.GetUnit(id).Hp = 10;
-        Run(s, Use(m, "rain_of_mending", row: new RowTarget(Side.A, Row.Middle)));
-        Assert.InRange(s.GetUnit(mid1).Hp - 10, 3, 4);
-        Assert.InRange(s.GetUnit(mid2).Hp - 10, 3, 4);
-        Assert.InRange(s.GetUnit(rear).Hp - 10, 1, 2);
-        Assert.Equal(10, s.GetUnit(m).Hp);
+        foreach (var id in new[] { m, mid, rear, enemy }) s.GetUnit(id).Hp = 10;
+        Run(s, Use(m, "rain_of_mending"));
+        foreach (var id in new[] { m, mid, rear }) Assert.InRange(s.GetUnit(id).Hp - 10, 4, 5);
+        Assert.Equal(10, s.GetUnit(enemy).Hp);                                            // enemies are not healed
         Assert.Equal(4, s.Momentum.Value);
     }
 
     [Fact]
-    public void RainOfMendingCanPickAnyRowOfEitherSideEvenAnEmptyOne()
+    public void SunBurstHitsEveryEnemyTwoToThreeAndHealsEveryAllyTwoToThree()
     {
         var s = new BattleState(1);
-        var m = World.Unit(s, Side.A, Row.Front, "rain_of_mending");
-        World.Unit(s, Side.B, Row.Front);
+        var m = World.Unit(s, Side.A, Row.Rear, "sun_burst");
+        var ally = World.Unit(s, Side.A, Row.Front);
+        var e1 = World.Unit(s, Side.B, Row.Front);
+        var e2 = World.Unit(s, Side.B, Row.Middle);
+        var e3 = World.Unit(s, Side.B, Row.Rear);
         s.ShiftMomentum(Side.A, 6);
-        Assert.Null(Why(s, Use(m, "rain_of_mending", row: new RowTarget(Side.B, Row.Rear))));
-        Run(s, Use(m, "rain_of_mending", row: new RowTarget(Side.B, Row.Rear)));
-        Assert.Equal(4, s.Momentum.Value);                                                // cost paid, nothing healed
+        s.GetUnit(m).Hp = 10;
+        s.GetUnit(ally).Hp = 10;
+        Assert.Null(Why(s, Use(m, "sun_burst")));                                          // works from the Rear row
+        Run(s, Use(m, "sun_burst"));
+        foreach (var e in new[] { e1, e2, e3 }) Assert.InRange(Lost(s, e), 2, 3);
+        Assert.InRange(s.GetUnit(m).Hp - 10, 2, 3);
+        Assert.InRange(s.GetUnit(ally).Hp - 10, 2, 3);
+        Assert.Equal(5, s.Momentum.Value);                                                 // paid 2, then the landed hits shift 1 back
     }
 
     [Fact]
-    public void SearingLightHitsForFourToFiveAndUndeadTakeDouble()
+    public void SunBurstIsDirectSoItIsNeverIntercepted()
     {
-        var (s, m, ally) = Board(1, "searing_light");
-        var enemy = s.Formation.Units(Side.B, Row.Front)[0];
-        Run(s, Use(m, "searing_light", enemy));
-        Assert.InRange(Lost(s, enemy), 4, 5);
-
-        var (s2, m2, _) = Board(1, "searing_light");
-        var undead = s2.Formation.Units(Side.B, Row.Front)[0];
-        s2.GetUnit(undead).IsUndead = true;
-        Run(s2, Use(m2, "searing_light", undead));
-        Assert.InRange(Lost(s2, undead), 8, 10);
-    }
-
-    [Fact]
-    public void SearingLightIsADirectAttackSoItIsNeverIntercepted()
-    {
-        var (s, m, _) = Board(1, "searing_light");
-        var front = World.Unit(s, Side.B, Row.Front);
-        var back = World.Unit(s, Side.B, Row.Middle);
-        for (ulong seed = 1; seed <= 20; seed++)
-        {
-            var s2 = s.Clone();
-            Assert.DoesNotContain(Actions.Use(s2, World.Catalog, Use(m, "searing_light", back)), e => e is Intercepted);
-        }
+        var s = new BattleState(1);
+        var m = World.Unit(s, Side.A, Row.Front, "sun_burst");
+        World.Unit(s, Side.B, Row.Front);
+        World.Unit(s, Side.B, Row.Front);
+        World.Unit(s, Side.B, Row.Rear);
+        s.ShiftMomentum(Side.A, 6);
+        Assert.DoesNotContain(Run(s, Use(m, "sun_burst")), e => e is Intercepted);
     }
 
     [Fact]
@@ -142,24 +140,16 @@ public class MenderSkillTests
     }
 
     [Fact]
-    public void RegrowthGivesTwoHpEveryTenTimeUnitsForTwentyToAHealedUnit()
+    public void RegrowthGivesAHealedUnitAWardOfTwoUntilItsNextTurn()
     {
         var (s, m, ally) = Board(1, "mend", "regrowth");
-        s.GetUnit(ally).Hp = 1;
+        s.Timeline.ScheduleTurn(ally, 5, 5);
         Run(s, Use(m, "mend", ally));
-        var hp = s.GetUnit(ally).Hp;
-        var status = Statuses.Get(s.GetUnit(ally), StatusIds.Regrowth)!;
-        Assert.Equal(20, status.TimeLeft(s.Timeline.Now));
-        Assert.Equal(2, status.Magnitude);
-        Assert.Equal(Polarity.Helpful, StatusRules.PolarityOf(StatusIds.Regrowth));
-        s.Timeline.Add(TimelineKind.DelayedEvent, 10, tag: "t1");
-        s.Timeline.Add(TimelineKind.UnitTurn, 10, ally);
-        AdvanceTo(s, 10);
-        Statuses.TickPoison(s);
-        Assert.Equal(hp + 2, s.GetUnit(ally).Hp);
-        AdvanceTo(s, 20);
-        Assert.False(Has(s, ally, StatusIds.Regrowth));
-        Assert.Equal(hp + 4, s.GetUnit(ally).Hp);                                          // whole points land at the end
+        Assert.Equal(2, s.GetUnit(ally).Ward);
+        Assert.False(Has(s, ally, StatusIds.Regrowth));                                    // the old heal-over-time status is gone
+        var (s2, m2, ally2) = Board(1, "mend");                                            // without the keystone: no Ward
+        Run(s2, Use(m2, "mend", ally2));
+        Assert.Equal(0, s2.GetUnit(ally2).Ward);
     }
 
     [Fact]

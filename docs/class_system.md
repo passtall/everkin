@@ -20,7 +20,7 @@ A skill or keystone text that names its class ("the Bard", "the Engineer") means
 | **Tracker** | Marks an enemy, finds stealthed units, shoots the marked. | Target, Read Tracks, Hunter's Shot | Sniff the Air, Scent of Blood, Relentless |
 | **Bulwark** | Stands in front of allies and takes their hits. | Leap to Defend, Rescue, Shield Bash | Shield Wall, Hold Position, Unbreakable |
 | **Keeper** | Wards that absorb damage. | Ward, Shield Dome, Ward Burst | Thorned Ward, Twin Wards, Steadfast Ward |
-| **Mender** | Plain healing. | Mend, Rain of Mending, Searing Light | Overflowing Care, Regrowth, Triage |
+| **Mender** | Plain healing. | Mend, Rain of Mending, Sun Burst | Overflowing Care, Regrowth, Triage |
 | **Cleric** | Removes statuses, good and bad. | Absolve, Smite the Afflicted, Divine Intervention | Sanctity, Purifying Aura, Judgment |
 | **Lifebinder** | Revives, paid for with its own life. | Burnout Heal, Life for Life, Bound Resurrect | Martyr, Phoenix, Lifeblood |
 | **Enchanter** | Enchants an ally's next attack or skill. | Echo Enchant, Phase Weapon, Piercing Enchant | Twin Enchant, Lingering Magic, Spell Ward |

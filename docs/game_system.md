@@ -760,7 +760,7 @@ Concrete examples of the rules; each becomes a test. They are expected behavior,
 | A Bleeding unit uses a projectile skill | It takes nothing. |
 | A Blind unit's attack misses | The miss moves Momentum 1 against its side. |
 | A Silenced unit's attack has the bolt style | It cannot use it (a bolt attack is magical). |
-| A Silenced Mender's turn arrives | It cannot use Mend, Rain of Mending or Searing Light, but can use a physical attack, Move or Skip Turn. |
+| A Silenced Mender's turn arrives | It cannot use Mend, Rain of Mending or Sun Burst, but can use a physical attack, Move or Skip Turn. |
 | A Frozen unit's turn arrives | The turn is skipped and Frozen ends. |
 | Fire is set on a Frozen unit's spot | Frozen ends early and the unit keeps its turn. |
 | A Stunned unit's turn arrives | The turn is skipped and costs 5 + (11 − Speed); the Stun keeps running. |
