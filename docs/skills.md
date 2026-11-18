@@ -81,15 +81,18 @@ All numbers are first drafts, tuned in AI-versus-AI testing (game_system §2.5).
 
 | Skill | Kind | D / M | Delivery | Effect |
 |---|---|---|---|---|
-| Absolve | A | 4 / 0 | Direct | Remove every harmful status from a unit; its next turn is pushed back 2. |
-| Dispel | A | 3 / 1 | Direct | Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit. |
-| Turn Back | A | 3 / 0 | Direct | Move one harmful status from a unit onto the unit that applied it. |
+| Absolve | A | 4 / 0 | Direct | Remove every harmful status from a unit; for 10 it cannot get new harmful statuses. |
+| Smite the Afflicted | A | 4 / 0 | Direct | Hit an enemy for {3–4}, plus {2} for each harmful status on it (up to {6} extra). |
+| Divine Intervention | A | 6 / 3 | Direct | Every ally loses every harmful status and gains a Ward of {3} until the Cleric's next turn. |
 | Sanctity | K | | | The Cleric cannot get harmful statuses. |
-| Purifying Aura | K | | | Harmful statuses on allies next to the Cleric last half as long. |
-| Judgment | K | | | Each status the Cleric's Dispel removes deals {4} to that unit. |
+| Purifying Aura | K | | | Harmful statuses on allies in the Cleric's row last half as long. |
+| Judgment | K | | | Each harmful status that Absolve or Divine Intervention removes deals {4} to the enemy that applied it. |
 
-- **Purifying Aura** works while an ally stands next to the Cleric: the time of its harmful statuses runs down twice as fast there.
-- **Turn Back:** if the unit has several harmful statuses whose applier is still standing, the seeded roll picks one, each with equal chance. For a status from a ground effect, the unit that placed the effect is the applier.
+- **Purifying Aura** works for every ally in the Cleric's row (the Cleric included): the time of its harmful statuses runs down twice as fast there.
+- **Absolve:** the immunity for 10 is a status of its own that a later Absolve renews; harmful statuses already on the unit are removed first. It does not stop the unit's own side from applying one.
+- **Smite the Afflicted:** the extra counts the harmful statuses on the target when the hit lands, before any of them ends.
+- **Judgment:** each removed status deals its 4 to the unit that applied it (a status from a ground effect: the unit that placed the effect); a status whose applier is gone or KO deals nothing. Damage is a hit-free blow that Ward and Dampen reduce like the Cleric's other damage.
+- **Owner decision 2026-11-18 (balance round 1):** Dispel and Turn Back were replaced by Smite the Afflicted and Divine Intervention because the Cleric's skills were reactive and its creatures with a weak attack lost; Absolve lost its push back and gained the immunity; Judgment and Purifying Aura were reworked to fit. Sanctity stays.
 
 ## Lifebinder
 

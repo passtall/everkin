@@ -196,6 +196,8 @@ public static class Evaluator
             case StatusIds.Phased:
             case StatusIds.Piercing:                                            // the next attack: the unit needs an attack it can use
                 return carrier.KnownSkills.Any(id => catalog.TryGet(id, out var k) && !k.IsPassive && k.IsAttack && Usable(carrier, k));
+            case StatusIds.Absolved:                                            // Absolve's immunity counts nothing: the cleanse is what the AI scores
+                return false;
             case StatusIds.WarDrums:                                            // only while an enemy can Stun or Freeze (its effect text says so)
                 return state.Units.Any(u => u.Side != carrier.Side && !u.IsRemoved && !u.IsKnockedOut && u.KnownSkills.Any(id => StunsOrFreezes(catalog, id)));
             case StatusIds.Echo:                                                // the next skill

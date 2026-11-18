@@ -87,8 +87,8 @@
       "magical": true,
       "actives": [
         "absolve",
-        "dispel",
-        "turn_back"
+        "smite_the_afflicted",
+        "divine_intervention"
       ],
       "keystones": [
         "sanctity",

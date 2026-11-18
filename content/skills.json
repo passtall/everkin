@@ -338,30 +338,30 @@
       "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Remove every harmful status from a unit; its next turn is pushed back 2.",
-      "template": "Remove every harmful status from a unit; its next turn is pushed back 2."
+      "effect": "Remove every harmful status from a unit; for 10 it cannot get new harmful statuses.",
+      "template": "Remove every harmful status from a unit; for 10 it cannot get new harmful statuses."
     },
     {
-      "id": "dispel",
-      "name": "Dispel",
+      "id": "smite_the_afflicted",
+      "name": "Smite the Afflicted",
       "class": "cleric",
       "kind": "A",
-      "delay": 3,
-      "momentum": 1,
-      "delivery": "direct",
-      "effect": "Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit.",
-      "template": "Remove every helpful status (Ward, songs, stealth, enchantments and others) from a unit."
-    },
-    {
-      "id": "turn_back",
-      "name": "Turn Back",
-      "class": "cleric",
-      "kind": "A",
-      "delay": 3,
+      "delay": 4,
       "momentum": 0,
       "delivery": "direct",
-      "effect": "Move one harmful status from a unit onto the unit that applied it.",
-      "template": "Move one harmful status from a unit onto the unit that applied it."
+      "effect": "Hit an enemy for 3–4, plus 2 for each harmful status on it (up to 6 extra).",
+      "template": "Hit an enemy for {3–4}, plus {2} for each harmful status on it (up to {6} extra)."
+    },
+    {
+      "id": "divine_intervention",
+      "name": "Divine Intervention",
+      "class": "cleric",
+      "kind": "A",
+      "delay": 6,
+      "momentum": 3,
+      "delivery": "direct",
+      "effect": "Every ally loses every harmful status and gains a Ward of 3 until the Cleric's next turn.",
+      "template": "Every ally loses every harmful status and gains a Ward of {3} until the Cleric's next turn."
     },
     {
       "id": "sanctity",
@@ -382,8 +382,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Harmful statuses on allies next to the Cleric last half as long.",
-      "template": "Harmful statuses on allies next to the Cleric last half as long."
+      "effect": "Harmful statuses on allies in the Cleric's row last half as long.",
+      "template": "Harmful statuses on allies in the Cleric's row last half as long."
     },
     {
       "id": "judgment",
@@ -393,8 +393,8 @@
       "delay": null,
       "momentum": null,
       "delivery": null,
-      "effect": "Each status the Cleric's Dispel removes deals 4 to that unit.",
-      "template": "Each status the Cleric's Dispel removes deals {4} to that unit."
+      "effect": "Each harmful status that Absolve or Divine Intervention removes deals 4 to the enemy that applied it.",
+      "template": "Each harmful status that Absolve or Divine Intervention removes deals {4} to the enemy that applied it."
     },
     {
       "id": "burnout_heal",

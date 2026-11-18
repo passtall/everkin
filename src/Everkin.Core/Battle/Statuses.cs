@@ -66,6 +66,9 @@ public static class StatusIds
     /// <summary>Ashwalker: +1 Speed while standing on burning ground (kept by an aura sync, no clock).</summary>
     public const string AshSpeed = "ash_speed";
 
+    /// <summary>Absolve: for 10 the unit cannot get harmful statuses. Helpful.</summary>
+    public const string Absolved = "absolved";
+
     /// <summary>Regrowth (Mender keystone): regains HP over time. Magnitude is the HP per 10 time units. Helpful.</summary>
     public const string Regrowth = "regrowth";
 
@@ -167,7 +170,7 @@ public static class StatusRules
             or StatusIds.Frozen or StatusIds.Stunned or StatusIds.Confused or StatusIds.Immobilized
             or StatusIds.Marked or StatusIds.NextSkillDelay
             or StatusIds.GlassBody or StatusIds.Weighted or StatusIds.Betrayed or StatusIds.Withering => Polarity.Harmful,
-        StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.WarDrums or StatusIds.Regrowth
+        StatusIds.Ward or StatusIds.Dampen or StatusIds.SongHaste or StatusIds.WarDrums or StatusIds.Regrowth or StatusIds.Absolved
             or StatusIds.Phased or StatusIds.Piercing or StatusIds.Echo or StatusIds.FreeMomentum => Polarity.Helpful,
         _ => Polarity.Unclassified,
     };
