@@ -7,7 +7,7 @@ Every active skill and keystone of the 28 classes in [class_system.md](class_sys
 - **Kind:** A = active skill, K = keystone (a passive; a creature has one keystone per class, fixed in the roster).
 - **D / M:** Delay (1 is quickest) and Momentum cost.
 - **Delivery:** `Melee` or `Projectile` (both can be intercepted) or `Direct` (cannot). **—** means the skill takes no target. A melee skill can be used only while its user stands in its own Front row (game_system §8.1).
-- **Melee reach** in a text means every enemy in the enemy's Front row; the user must stand in its own Front row, whatever the delivery (game_system §8.1).
+- **Melee reach** in a text means every enemy in the enemy's first row that holds a visible living unit (Front, else Middle, else Rear; game_system §8.1); the user must stand in its own Front row, whatever the delivery (game_system §8.1).
 - **Numbers** are written for Power 5. Every damage, healing and Ward number of a skill or keystone is multiplied by the user's (or keystone owner's) Power ÷ 5, rounded down, minimum 1 (game_system §5.2). Rule numbers (bump, Bleeding, Poisoned and ground damage) do not scale. A number in braces, such as `{4}` or `{8–10}`, is one that scales; the tooltip multiplies exactly those numbers, and the generator strips the braces from the effect text. Durations are in time units; 10 is about one turn.
 - **Targets:** a targeted skill works on any legal unit on either side; "own side only" marks the exceptions. No skill targets an empty spot: ground effects go on a unit's spot or on a row (game_system §8.1).
 - **Magical:** the actives of the magical classes and the Bard's songs (class_system §2) are magical; everything else is physical.

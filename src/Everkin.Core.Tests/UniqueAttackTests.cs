@@ -164,16 +164,19 @@ public class UniqueAttackTests
     }
 
     [Fact]
-    public void APulseAgainstAnEmptyFrontRowCanBeUsedHitsNobodyAndSpendsItsDelay()
+    public void APulseAgainstAnEmptyFrontRowHitsTheMiddleRowAndSpendsItsDelay()
     {
         var s = State();
         var a = World.Unit(s, Side.A, Row.Front, "sour_chord");
-        World.Unit(s, Side.B, Row.Middle);
+        var mid = World.Unit(s, Side.B, Row.Middle);
+        World.Unit(s, Side.B, Row.Rear);
         Assert.Null(Actions.WhyNot(s, World.Catalog, new SkillUse(a, "sour_chord")));
         Use(s, a, "sour_chord");
         Assert.Equal(Timeline.Wait(4, 5), s.Timeline.TurnOf(a)!.Due);
-        Assert.Equal(0, s.Momentum.Value);
+        Assert.True(Lost(s, mid) > 0);                                                       // the first row with a visible unit is hit
     }
+
+    private static int Lost(BattleState s, int unit) => s.GetUnit(unit).MaxHp - s.GetUnit(unit).Hp;
 
     [Fact]
     public void AMiddleRowUnitCannotUseAPulse()

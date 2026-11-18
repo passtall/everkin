@@ -2,7 +2,7 @@
 
 Every creature that has art: its unit name, display name, two classes, two keystones and unique attack ([class_system.md](class_system.md)), and below, its biome, stats, Cost and card crops. Skill and keystone texts are in [skills.md](skills.md).
 
-**Roster table.** Keystones are listed in the order of the classes (one from each). The attack columns give its delivery, Delay / Momentum, animation style and effect at Power 5. "Direct, melee reach" attacks are breaths and pulses: they need the creature in its Front row and hit the enemy Front row (game_system §8.1).
+**Roster table.** Keystones are listed in the order of the classes (one from each). The attack columns give its delivery, Delay / Momentum, animation style and effect at Power 5. "Direct, melee reach" attacks are breaths and pulses: they need the creature in its Front row and hit the first enemy row that holds a visible living unit (game_system §8.1).
 
 **Art files** are `assets/creatures/{species}-{nn}.png`, with a two-digit counter per species; the battle portrait has the same name in `assets/portraits/`.
 

@@ -26,14 +26,20 @@ public static class Targeting
         state.Formation.Contains(unitId) && state.Formation.PositionOf(unitId).Row == Row.Front;
 
     /// <summary>
-    /// Melee reach (section 8.1): every enemy in the enemy's real Front row, KO bodies excluded, stealthed units included. Empty when the user is not in its
-    /// own Front row, or the row holds nobody.
+    /// Melee reach (section 8.1): every enemy in the enemy's first row that holds a visible living unit (Front, else Middle, else Rear; rows with no living unit,
+    /// only KO bodies or only stealthed units are passed over), KO bodies excluded, stealthed units of that row included. When no row holds a visible unit,
+    /// the first row with a living stealthed unit counts. Empty when the user is not in its own Front row, or no living enemy is left.
     /// </summary>
     public static IReadOnlyList<int> EnemiesInMeleeReach(BattleState state, int userId)
     {
         if (!InFrontRow(state, userId)) return Array.Empty<int>();
         var enemy = state.GetUnit(userId).Side.Opposite();
-        return state.Formation.Units(enemy, Row.Front).Where(id => !state.GetUnit(id).IsKnockedOut).ToArray();
+        IReadOnlyList<int> Living(Row row) => state.Formation.Units(enemy, row).Where(id => !state.GetUnit(id).IsKnockedOut).ToArray();
+        foreach (var row in new[] { Row.Front, Row.Middle, Row.Rear })
+            if (Living(row).Any(id => !state.GetUnit(id).IsStealthed)) return Living(row);
+        foreach (var row in new[] { Row.Front, Row.Middle, Row.Rear })
+            if (Living(row).Count > 0) return Living(row);
+        return Array.Empty<int>();
     }
 
     /// <summary>

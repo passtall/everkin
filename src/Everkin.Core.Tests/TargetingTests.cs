@@ -101,16 +101,32 @@ public class TargetingTests
     }
 
     [Fact]
-    public void MeleeReachIsEmptyWhenTheUserIsNotInItsFrontRowOrTheEnemyFrontIsEmpty()
+    public void MeleeReachIsEmptyWhenTheUserIsNotInItsFrontRowOrNoLivingEnemyIsLeft()
     {
         var b = new Board();
         var back = b.Add(Side.A, Row.Middle);
         var front = b.Add(Side.A, Row.Front);
-        b.Add(Side.B, Row.Middle);
-        Assert.Empty(Targeting.EnemiesInMeleeReach(b.State, front));
-        b.Add(Side.B, Row.Front);
+        var mid = b.Add(Side.B, Row.Middle);
+        Assert.Equal(new[] { mid }, Targeting.EnemiesInMeleeReach(b.State, front));          // the Front row is empty: the Middle row is hit
+        var f = b.Add(Side.B, Row.Front);
         Assert.Empty(Targeting.EnemiesInMeleeReach(b.State, back));
-        Assert.Single(Targeting.EnemiesInMeleeReach(b.State, front));
+        Assert.Equal(new[] { f }, Targeting.EnemiesInMeleeReach(b.State, front));
+        b.State.GetUnit(f).Hp = 0;
+        b.State.GetUnit(mid).Hp = 0;
+        Assert.Empty(Targeting.EnemiesInMeleeReach(b.State, front));
+    }
+
+    [Fact]
+    public void MeleeReachPassesOverRowsWithOnlyKoBodiesOrOnlyStealthedUnitsButFallsBackToStealthedOnes()
+    {
+        var b = new Board();
+        var u = b.Add(Side.A, Row.Front);
+        b.Add(Side.B, Row.Front, ko: true);
+        var hidden = b.Add(Side.B, Row.Middle, stealthed: true);
+        var rear = b.Add(Side.B, Row.Rear);
+        Assert.Equal(new[] { rear }, Targeting.EnemiesInMeleeReach(b.State, u));             // KO-only and stealth-only rows are passed over
+        b.State.GetUnit(rear).Hp = 0;
+        Assert.Equal(new[] { hidden }, Targeting.EnemiesInMeleeReach(b.State, u));           // no visible unit left: the stealthed one is still hit
     }
 
     // ---- legality ----

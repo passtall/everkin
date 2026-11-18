@@ -67,7 +67,7 @@ public class BerserkerSkillTests
     }
 
     [Fact]
-    public void SweepingKickWithAnEmptyEnemyFrontRowIsStillUsedAndSpendsItsDelayAndCost()
+    public void SweepingKickWithAnEmptyEnemyFrontRowHitsTheMiddleRowAndSpendsItsDelayAndCost()
     {
         var (s, u, e) = Board(1, "sweeping_kick");
         s.Formation.Remove(e);
@@ -75,7 +75,7 @@ public class BerserkerSkillTests
         Assert.Null(Why(s, Use(u, "sweeping_kick")));
         Run(s, Use(u, "sweeping_kick"));
         Assert.Equal(5, s.Momentum.Value);  // M5.10 costs
-        Assert.Equal(Row.Middle, s.Formation.PositionOf(e).Row);
+        Assert.Equal(Row.Rear, s.Formation.PositionOf(e).Row);                              // the Middle row is the row hit: it is pushed back
     }
 
     [Fact]

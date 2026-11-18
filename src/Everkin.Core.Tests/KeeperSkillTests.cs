@@ -104,12 +104,12 @@ public class KeeperSkillTests
     public void WardBurstWithNobodyInReachStillBreaksTheWardAndSpendsTheTurn()
     {
         var (s, k, e) = Board(1, "ward_burst");
-        s.Formation.Remove(e);
-        s.Formation.Place(e, Side.B, Row.Middle);
+        s.GetUnit(e).Hp = 0;                                                                // no living enemy is left: nobody in reach
+        Knockout.ResolveAll(s);
         s.GetUnit(k).Ward = 5;
         Run(s, Use(k, "ward_burst", k));
         Assert.Equal(0, s.GetUnit(k).Ward);
-        Assert.Equal(0, Lost(s, e));
+        Assert.Equal(40, Lost(s, e));
         Assert.Equal(5, s.Momentum.Value);
     }
 

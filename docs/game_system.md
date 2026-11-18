@@ -364,7 +364,7 @@ There is no facing or rear-attack system.
 
 ### 7.4 Rows
 
-Rows keep their identity when they empty: units never move forward on their own when allies fall. **"Front row" always means a side's real Front row.** If it is empty, no unit of that side can use melee until a unit moves into it, and enemy skills with melee reach against that side hit nobody (section 8.1).
+Rows keep their identity when they empty: units never move forward on their own when allies fall. **"Front row" always means a side's real Front row.** If it is empty, no unit of that side can use melee until a unit moves into it, and enemy skills with melee reach against that side pass over it and hit the first row that holds a visible living unit (section 8.1).
 
 Skills have **no range**: rows matter for melee, interception, area shapes and movement only.
 
@@ -389,7 +389,7 @@ Every unit uses one card width and one unit of row capacity. **Bosses are normal
 
 - **No range.** A skill can target any legal unit on either side; using it on the other side is the player's choice, even when it is usually a weak one. **Own side only** skills are the exception: Leap to Defend, Rescue, Swap Turns, Advance and Switch Places. Curse of Betrayal works on any unit, and the healing it takes always goes to the Hexer's side.
 - **Melee needs the Front row.** A unit can use a `melee` skill or attack only while it stands in its own Front row. Projectile and direct skills work from any row. Dive and Puppet Soul's forced hit are the only exceptions.
-- **Melee reach.** A skill or attack that works "in melee reach" (pulses, breaths, Frost Nova, Sweeping Kick, Battle Roar, Flash Powder, Ward Burst) needs its user in its own Front row, whatever its delivery, and hits **every enemy in the enemy's Front row** (a breath picks one of them as its target). If that row is empty the skill can still be used but hits nobody, and its turn and cost are spent.
+- **Melee reach.** A skill or attack that works "in melee reach" (pulses, breaths, Frost Nova, Sweeping Kick, Battle Roar, Flash Powder, Ward Burst) needs its user in its own Front row, whatever its delivery, and hits **every enemy in the enemy's first row that holds a visible living unit**, looking from the Front row to the Middle to the Rear (a breath picks one of them as its target). Rows with no living unit, with only KO bodies, or with only stealthed units are passed over (owner, 2026-11-18); in the row that is hit, stealthed units are hit too. If no row holds a visible unit, the first row with a living stealthed unit counts, so a last stealthed unit can still be hit (section 10.1). If no living unit is left, the skill can still be used but hits nobody, and its turn and cost are spent.
 - **Airborne.** Melee cannot target an airborne unit (section 10.6).
 - **Stealth.** A stealthed enemy cannot be targeted (section 10.1).
 - **No empty spots.** No skill targets an empty spot: a ground effect goes on a target unit's spot or on a row. Placing a summon, construct, turret, trap, totem or barricade on a free spot is placement, not targeting (section 11).
@@ -543,7 +543,7 @@ Only the ground burns, never a unit: a unit takes fire damage only from standing
 
 Some skills make a unit **airborne** (Take Off, Lift, Sky Lord). Airborne is a state on the unit, removed by KO, by Dive and by skills that make it land.
 
-- **Reach.** Melee cannot reach an airborne unit, Dive included. Projectile and direct skills, areas and pulses can (a pulse or breath still hits only the enemy Front row).
+- **Reach.** Melee cannot reach an airborne unit, Dive included. Projectile and direct skills, areas and pulses can (a pulse or breath still hits only one enemy row: the first with a visible living unit, section 8.1).
 - **Ground effects.** An airborne unit ignores every ground effect, including those already on its spot.
 - **Own skills.** An airborne unit uses its skills as normal, melee from its Front row included.
 - **Interception.** An airborne unit intercepts and is covered like any other unit, melee included.
@@ -719,7 +719,7 @@ Concrete examples of the rules; each becomes a test. They are expected behavior,
 | Two units in the row in front each half-cover the target | A random one of them, each with equal chance, tries first. |
 | A unit in the Middle row has only a melee attack | It cannot attack; it can use its non-melee class skills, Move or Skip Turn. |
 | A side's Front row is empty | None of its units can use melee until one moves into Front. |
-| A Breath attack is used while the enemy Front row is empty | It can be used; it hits nobody, and its Delay is spent. |
+| A Breath attack is used while the enemy Front row is empty | It hits the first enemy row that holds a visible living unit (the Middle row, or the Rear row when that is empty too). If no living enemy is left it hits nobody, and its Delay is spent. |
 | A pulse attack is used while the enemy Front row holds three units, one of them stealthed | All three are hit (an area hits stealthed units). |
 | A Breath attack hits a Front unit that has a neighbour and a Middle unit behind it at 50% overlap | Both are adjacent and take the splash. |
 | A Breath attack hits a Front unit, the Middle row is empty and a Rear unit is behind it at 100% | The Rear unit is not adjacent and is not hit. |
